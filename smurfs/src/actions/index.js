@@ -1,15 +1,49 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
+export const RETRIEVING_SMURF = 'RETRIEVING_SMURF';
+export const SMURF_RETRIEVED = 'SMURF_RETRIEVED';
+export const ADDING_SMURF = 'ADDING_SMURF';
+export const SMURF_ADDED = 'SMURF_ADDED';
+export const UPDATING_SMURF = 'UPDATING_SMURF';
+export const SMURF_UPDATED = 'SMURF_UPDATED';
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const SMURF_DELETED = 'SMURF_DELETED';
+export const ERROR = 'ERROR';
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+const smurlURL = 'http://localhost:3333/smurfs';
+
+export const addSmurf = smurf => {
+  const newSmurf = axios.post(`${smurlURL}/create`, smurf);
+  return dispatch => {
+    dispatch({ type: ADDING_SMURF });
+    newSmurf
+      .then(({data}) => {
+        dispatch({ type: SMURF_ADDED, payload: data});
+      })
+      .catch(error => {
+        dispatch({type: ERROR, payload: error});
+      });
+  };
+};
+
+export const retrieveSmurf = () => {
+  const getSmurfs = axios.get(`${smurlURL}/get`);
+  
+  return dispatch => { 
+    dispatch({ type: RETRIEVING_SMURF });
+  getSmurfs
+    .then(response => {
+      console.log("Get Smurf Data Recieved", response);
+      dispatchEvent({ type: SMURF_RETRIEVED, payload: response });
+    })
+    .catch(error => {
+      dispatchEvent({ type: ERROR, payload: error })
+    });
+  };
+};
+
+export const updateSmurf = () => {
+
+}
+export const deleteSmurf = () => {
+
+}
