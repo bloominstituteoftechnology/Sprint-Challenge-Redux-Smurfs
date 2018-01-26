@@ -15,7 +15,7 @@
 * Middleware is software that "gets in the middle" between actions and reducers. It intercepts every action and modifies or cancels it as needed.
 
 * 5) Describe redux-thunk, what does it allow us to do? How does it change our action-creators?
-* Redux-thunk is middleware that looks at every action as it's passing through the system and, if it's a function, it calls that function.
+* Redux-thunk is middleware that looks at every action as it's passing through the system and, if it's a function, it calls that function. Thunk allows such functions to be called asynchronously.
 
 * 6) Which react-redux method links up our components with our redux store?
 * Connect is used to link components to the store. The connect statement has two arguments: the first is a set of parameters (including functions and objects) that will be passed as props to the second argument. A successful connect will attach the component (the second argument) with those parameters to the store. For example:
