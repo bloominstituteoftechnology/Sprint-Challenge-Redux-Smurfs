@@ -1,0 +1,11 @@
+.smurf {
+    border: solid 1px silver;
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+button {
+    margin: 10px 5px 0 5px;
+}
