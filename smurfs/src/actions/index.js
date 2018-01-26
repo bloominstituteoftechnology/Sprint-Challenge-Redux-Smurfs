@@ -31,7 +31,7 @@ export const getSmurfs = _ => {
         .catch(err => {
           dispatch({ type: SMURFS_FETCHING_ERROR, payload: err });
         });
-    }, 1);
+    }, 1000);
   };
 };
 
@@ -48,6 +48,6 @@ export const addSmurf = smurf => {
         .catch(err => {
           dispatch({ type: SMURF_ADDING_ERROR, payload: err });
         });
-    }, 1);
+    }, 1000);
   };
 };

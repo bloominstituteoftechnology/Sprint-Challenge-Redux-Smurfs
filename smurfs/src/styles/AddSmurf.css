@@ -1,13 +1,17 @@
 .AddSmurf {
-	height: 23px;
+	height: 150px;
 
 	display: flex;
 	justify-content: center;
 }
 
+.AddSmurfButton {
+	width: 100px;
+}
+
 .IsAddingSmurf {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
@@ -17,7 +21,7 @@
 
 	text-align: center;
 
-	margin-right: 4px;
+	margin-bottom: 10px;
 }
 
 .InputForm {
@@ -27,8 +31,8 @@
 }
 
 .AddSmurfInput {
-	margin-left: 1px;
-	margin-right: 1px;
+	margin-top: 1px;
+	margin-bottom: 1px;
 
 	text-align: center;
 }
@@ -38,7 +42,7 @@
 
 	text-align: center;
 
-	margin-left: 4px;
+	margin-top: 10px;
 }
 
 .AddSmurfButtonContainer {

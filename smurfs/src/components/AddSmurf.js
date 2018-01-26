@@ -32,75 +32,54 @@ class AddSmurf extends Component {
 	};
 
 	addSmurfHandler = _ => {
-		// if (this.checkSmurf()) {
-		const newSmurf = {};
+		if (this.checkSmurf()) {
+			const newSmurf = {};
 
-		newSmurf.name = this.state.name;
-		newSmurf.age = Number(this.state.age);
-		newSmurf.height = this.state.height;
+			newSmurf.name = this.state.name;
+			newSmurf.age = Number(this.state.age);
+			newSmurf.height = this.state.height;
 
-		this.CancelAddSmurfButtonClickHandler();
+			this.CancelAddSmurfButtonClickHandler();
 
-		this.props.addSmurfHandler(newSmurf);
-		// }
+			this.props.addSmurfHandler(newSmurf);
+		}
 	};
 
-	// checkSmurf = _ => {
-	// 	const isOkayToAdd = true;
+	checkSmurf = _ => {
+		const isOkayToAdd = true;
 
-	// 	for (let i = 0; i < this.props.SmurfKeys.length; i++) {
-	// 		const height = this.props.SmurfKeys[i];
+		if (
+			this.state.name === '' &&
+			this.state.age === '' &&
+			this.state.height === ''
+		) {
+			window.alert('Please add name, age, and height');
+			return !isOkayToAdd;
+		} else if (this.state.name === '' && this.state.age === '') {
+			window.alert('Please add name and age');
+			return !isOkayToAdd;
+		} else if (this.state.name === '' && this.state.height === '') {
+			window.alert('Please add name and height');
+			return !isOkayToAdd;
+		} else if (this.state.age === '' && this.state.height === '') {
+			window.alert('Please add age and height');
+			return !isOkayToAdd;
+		} else if (this.state.name === '') {
+			window.alert('Please add name');
+			return !isOkayToAdd;
+		} else if (this.state.age === '') {
+			window.alert('Please add age');
+			return !isOkayToAdd;
+		} else if (this.state.height === '') {
+			window.alert('Please add height');
+			return !isOkayToAdd;
+		} else if (!this.state.height.includes(' cm')) {
+			window.alert('Please add cm to height i.e. 11 cm');
+			return !isOkayToAdd;
+		}
 
-	// 		if (height === this.state.height) {
-	// 			window.alert("New Smurf's height already exists in database.");
-	// 			return !isOkayToAdd;
-	// 		}
-	// 	}
-
-	// 	if (
-	// 		this.state.name === '' &&
-	// 		this.state.age === '' &&
-	// 		this.state.height === ''
-	// 	) {
-	// 		window.alert("Please add Smurf's name, age, and height");
-	// 		return !isOkayToAdd;
-	// 	} else if (this.state.name === '' && this.state.age === '') {
-	// 		window.alert("Please add Smurf's name and age");
-	// 		return !isOkayToAdd;
-	// 	} else if (this.state.name === '' && this.state.height === '') {
-	// 		window.alert("Please add Smurf's name and height");
-	// 		return !isOkayToAdd;
-	// 	} else if (this.state.age === '' && this.state.height === '') {
-	// 		window.alert("Please add Smurf's age and height");
-	// 		return !isOkayToAdd;
-	// 	} else if (this.state.name === '') {
-	// 		window.alert("Please add Smurf's name");
-	// 		return !isOkayToAdd;
-	// 	} else if (this.state.age === '') {
-	// 		window.alert("Please add Smurf's age");
-	// 		return !isOkayToAdd;
-	// 	} else if (this.state.height === '') {
-	// 		window.alert("Please add Smurf's height");
-	// 		return !isOkayToAdd;
-	// 	} else if (
-	// 		!this.state.height.includes('@') &&
-	// 		!this.state.height.includes('.')
-	// 	) {
-	// 		window.alert("Please check Smurf's height for @ and .");
-	// 		return !isOkayToAdd;
-	// 	} else if (!this.state.height.includes('@')) {
-	// 		window.alert("Please check Smurf's height for @");
-	// 		return !isOkayToAdd;
-	// 	} else if (!this.state.height.includes('.')) {
-	// 		window.alert("Please check Smurf's height for .");
-	// 		return !isOkayToAdd;
-	// 	} else if (this.state.height.length < 7) {
-	// 		window.alert('Please enter a valid height');
-	// 		return !isOkayToAdd;
-	// 	}
-
-	// 	return isOkayToAdd;
-	// };
+		return isOkayToAdd;
+	};
 
 	render() {
 		return (

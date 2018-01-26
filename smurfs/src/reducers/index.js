@@ -17,6 +17,7 @@ const initialState = {
 
   deletingSmurfs: false,
 
+  showUi: false,
   error: false,
 };
 
@@ -29,18 +30,21 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingSmurfs: true,
+        showUi: false,
       };
     case actionType.SMURFS_FETCHING_SUCCESS:
       return {
         ...state,
+        smurfs: action.payload,
         fetchingSmurfs: false,
         smurfsFetched: true,
-        smurfs: action.payload,
+        showUi: true,
       };
     case actionType.SMURFS_FETCHING_ERROR:
       return {
         ...state,
         fetchingSmurfs: false,
+        showUi: true,
         error: action.payload,
       };
 
@@ -51,18 +55,21 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         addingSmurf: true,
+        showUi: false,
       };
     case actionType.SMURF_ADDING_SUCCESS:
       return {
         ...state,
+        smurfs: action.payload,
         addingSmurf: false,
         smurfAdded: true,
-        smurfs: action.payload,
+        showUi: true,
       };
     case actionType.SMURF_ADDING_ERROR:
       return {
         ...state,
         addingSmurf: false,
+        showUi: true,
         error: action.payload,
       };
 

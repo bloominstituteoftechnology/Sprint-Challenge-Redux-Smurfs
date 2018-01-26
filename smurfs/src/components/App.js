@@ -9,12 +9,7 @@ import AddSmurf from './AddSmurf';
 import logo from '../assets/logo.svg';
 
 import '../styles/App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I connect my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+
 class App extends Component {
   componentDidMount() {
     this.props.getSmurfs();
@@ -24,25 +19,53 @@ class App extends Component {
     this.props.addSmurf(newSmurf);
   };
 
+  // editSmurf = (smurf, index) => {
+  //   this.props.editSmurf(smurf, index);
+  // };
+
   // deleteSmurf = index => {
   //   this.props.deleteSmurf(index);
   // };
 
-  // editSmurf = (smurf, index) => {
-  //   this.props.editSmurf(smurf, index);
-  // };
+  deleteAllFriendsButtonHandler = _ => {
+    if (
+      this.props.smurfs.length > 0 &&
+      window.confirm(
+        'This will annihilate your village. This CANNOT be undone. Are you sure you want to continue?'
+      )
+    ) {
+      const count = this.props.smurfs.length;
+
+      for (let i = 0; i <= count; i++) {
+        this.deleteSmurf(0);
+      }
+    }
+  };
 
   render() {
     return (
       <div className="App">
         <Header />
 
+        <div className="TopStatusBar">
+          <button
+            className="DeleteVillageButton"
+            onClick={this.deleteAllFriendsButtonHandler}
+          >
+            &#x2622;
+          </button>
+        </div>
+
         <AddSmurf
           className="App__addSmurf"
           addSmurfHandler={this.addSmurfHandler}
         />
 
-        <Smurfs className="App__smurfs" smurfs={this.props.smurfs} />
+        {this.props.showUi ? (
+          <Smurfs className="App__smurfs" smurfs={this.props.smurfs} />
+        ) : (
+          <img src={logo} className="LoadingPicture" alt="loading-logo" />
+        )}
       </div>
     );
   }
@@ -50,6 +73,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
+    showUi: state.showUi,
     smurfs: state.smurfs,
   };
 };
