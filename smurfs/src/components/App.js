@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="App">
         <div><h1>SMURFS VILLAGE</h1></div>
-        <div><AddForm /></div>
+        <div className="Add-form"><AddForm /></div>
         <div><Smurfs /></div>
       </div>
     );
