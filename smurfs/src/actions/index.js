@@ -20,9 +20,8 @@ export const ERROR = 'ERROR';
 export const getSmurfs = () => {
   return dispatch => {
     axios.get('http://localhost:3333/smurfs')
-      .then(({smurfs}) => {
-        console.log('RESPONSE: ', {smurfs});
-        dispatch({ type: SMURFS_RECEIVED, payload: smurfs })
+      .then(({data}) => {
+        dispatch({ type: SMURFS_RECEIVED, payload: data })
       })
       .catch(error => {
         dispatch({ type: ERROR, payload: error })

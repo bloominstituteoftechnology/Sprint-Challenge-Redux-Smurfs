@@ -26,7 +26,7 @@ const smurfReducer = (state = initialState, action) => {
     case SMURFS_RECEIVED:
       return {...state, smurfs: action.payload}
     case SMURF_ADDED:
-      return {...state}
+      return {...state} //incomplete placeholder code
     case ERROR:
       return {...state, error: action.payload}
     default:
