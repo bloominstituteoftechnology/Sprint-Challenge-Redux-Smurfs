@@ -3,13 +3,44 @@ import { connect } from 'react-redux';
 import { getSmurfs } from '../actions';
 
 class Smurfs extends Component {
+	componentDidMount() {
+		this.props.getSmurfs();
+	}
+
 	render() {
+		// console.log('*******this.props', this.props);
+		const { smurfs, fetchingSmurfs } = this.props;
 		return (
-			<div>Hello there</div>
+			<div className='Smurfs'>
+				{fetchingSmurfs ? (<h2>Loading...</h2>) :
+					(<ul className='Smurfs-grid'>
+						{smurfs.map((smurf) => {
+							return (
+								<div>
+									<li className='Smurf'>
+										<div>{smurf.name}</div>
+										<div>{`Age: ${smurf.age}`}</div>
+										<div>{`Height: ${smurf.height}`}</div>
+									</li>
+								</div>
+							);
+						})}
+					</ul>
+				)}
+			</div>
 		);
 	}
 }
 
-export default connect(null)(Smurfs);
+const mapStateToProps = (state) => {
+	// console.log('********state', state);
+	return {
+		smurfs: state.smurfsReducer.smurfs,
+		fetchingSmurfs: state.smurfsReducer.fetchingSmurfs,
+		error: state.smurfsReducer.error
+	}
+}
+
+export default connect(mapStateToProps, { getSmurfs })(Smurfs);
 
 //<div></div>
