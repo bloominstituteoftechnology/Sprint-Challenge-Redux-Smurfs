@@ -16,8 +16,8 @@ class Smurfs extends Component {
 					(<ul className='Smurfs-grid'>
 						{smurfs.map((smurf) => {
 							return (
-								<div>
-									<li className='Smurf'>
+								<div key={smurf.id} className='Smurf'>
+									<li>
 										<div>{smurf.name}</div>
 										<div>{`Age: ${smurf.age}`}</div>
 										<div>{`Height: ${smurf.height}`}</div>
