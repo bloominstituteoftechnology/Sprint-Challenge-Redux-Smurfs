@@ -11,6 +11,6 @@
 3. Application State vs. Component State
     a. Application State is data that is germane to the entire application. 
     b. Component State is data being manipulated by a single component before being returned to Application State.
-4. Middleware:
-5. Redux-Thunk:
+4. Middleware provides a way to log actions/errors, report crashes, and make API calls between a dispatch (action call) and the time that action reaches a reducer. This makes it easier to take advantage of the separation of State and the Store. 
+5. Redux-Thunk is an asynchronous middleware that allows an app/program to dispatch other than actions. Multiple calls can be daisy-chained together, and the last one must issue an action that has an object as payload in order for the Redux synchronous data flow to occur. 
 6. Connect is the method that links the components of a React App to the Store of a Redux App. See [this diagram](./pics/connect.jpg).
