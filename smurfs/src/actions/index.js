@@ -25,7 +25,9 @@ export const getSmurfs = _ => {
 
   return dispatch => {
     dispatch({ type: RESET_ACTION_STATE });
+
     dispatch({ type: SMURFS_FETCHING });
+
     setTimeout(_ => {
       smurfAPiCall
         .then(({ data }) => {
@@ -45,6 +47,7 @@ export const addSmurf = smurf => {
     dispatch({ type: RESET_ACTION_STATE });
 
     dispatch({ type: SMURF_ADDING });
+
     setTimeout(_ => {
       smurfAPiCall
         .then(({ data }) => {
@@ -57,9 +60,26 @@ export const addSmurf = smurf => {
   };
 };
 
-export const editSmurf = _ => {
+export const editSmurf = editedSmurf => {
+  const smurfAPiCall = axios.put(
+    `${ADDRESS}/smurfs/${editedSmurf.id}`,
+    editedSmurf
+  );
+
   return dispatch => {
     dispatch({ type: RESET_ACTION_STATE });
+
+    dispatch({ type: SMURF_EDITING });
+
+    setTimeout(_ => {
+      smurfAPiCall
+        .then(({ data }) => {
+          dispatch({ type: SMURF_EDITING_SUCCESS, payload: data });
+        })
+        .catch(err => {
+          dispatch({ type: SMURF_EDITING_ERROR, payload: err });
+        });
+    }, 1000);
   };
 };
 
@@ -70,6 +90,7 @@ export const deleteSmurf = id => {
     dispatch({ type: RESET_ACTION_STATE });
 
     dispatch({ type: SMURF_DELETING });
+
     setTimeout(_ => {
       smurfAPiCall
         .then(({ data }) => {

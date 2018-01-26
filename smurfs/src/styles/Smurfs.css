@@ -1,6 +1,9 @@
 .Smurfs {
   margin-bottom: 20px;
 
+  padding-left: 100px;
+  padding-right: 100px;
+
   text-align: center;
 
   display: flex;

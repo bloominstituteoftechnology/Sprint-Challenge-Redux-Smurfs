@@ -1,0 +1,35 @@
+.EditSmurf {
+	margin-top: 20px;
+	margin-bottom: 10px;
+
+	display: flex;
+	justify-content: center;
+}
+
+.EditingSmurf {
+	display: inherit;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.InputForm {
+	display: inherit;
+	flex-direction: inherit;
+	align-items: center;
+}
+
+.AddSmurfInput {
+	margin-top: 1px;
+	margin-bottom: 1px;
+
+	text-align: center;
+}
+
+.editSmurfConfirmButton {
+	width: 100px;
+
+	text-align: center;
+
+	margin-top: 20px;
+}

@@ -31,6 +31,7 @@ const rootReducer = (state = initialState, action) => {
 
     case actionType.RESET_ACTION_STATE:
       return {
+        ...state,
         smurfsFetched: false,
         smurfAdded: false,
         smurfUpdated: false,
@@ -99,7 +100,10 @@ const rootReducer = (state = initialState, action) => {
     case actionType.SMURF_EDITING_SUCCESS:
       return {
         ...state,
-        smurfs: action.payload,
+        smurfs: state.smurfs.map(smurf => {
+          if (smurf.id === action.payload.id) return action.payload;
+          return smurf;
+        }),
         updatingSmurf: false,
         smurfUpdated: true,
         showUi: true,
@@ -122,7 +126,6 @@ const rootReducer = (state = initialState, action) => {
         showUi: false,
       };
     case actionType.SMURF_DELETING_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload.id),

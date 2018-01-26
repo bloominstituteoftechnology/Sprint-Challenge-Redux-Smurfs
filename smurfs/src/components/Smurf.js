@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteSmurf } from '../actions';
+import { editSmurf, deleteSmurf } from '../actions';
 
 import EditSmurf from './EditSmurf';
 
@@ -38,6 +38,10 @@ class Smurf extends Component {
 		this.setState({ isEditing: !this.state.isEditing });
 	};
 
+	editSmurfHandler = editedSmurf => {
+		this.props.editSmurf({ ...editedSmurf, id: this.state.id });
+	};
+
 	render() {
 		return (
 			<div className="Smurf">
@@ -70,14 +74,6 @@ class Smurf extends Component {
 									cancel
 								</button>
 							</div>
-
-							<EditSmurf
-								name={this.state.name}
-								age={this.state.age}
-								height={this.state.height}
-								submitEditHandler={this.submitEditHandler}
-								SmurfKeys={this.props.SmurfKeys}
-							/>
 						</div>
 					)}
 					<div className="HeartButtonContainer">
@@ -103,22 +99,10 @@ class Smurf extends Component {
 							</li>
 						</div>
 					) : (
-						<div className="IsEditingSmurf">
-							<button
-								className="CancelEditButton"
-								onClick={this.editButtonClickedHandler}
-							>
-								cancel
-							</button>
-
-							<EditSmurf
-								name={this.state.name}
-								age={this.state.age}
-								height={this.state.height}
-								submitEditHandler={this.submitEditHandler}
-								SmurfKeys={this.props.SmurfKeys}
-							/>
-						</div>
+						<EditSmurf
+							smurf={this.state}
+							editSmurfHandler={this.editSmurfHandler}
+						/>
 					)}
 				</div>
 
@@ -134,4 +118,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps, { deleteSmurf })(Smurf);
+export default connect(mapStateToProps, { editSmurf, deleteSmurf })(Smurf);

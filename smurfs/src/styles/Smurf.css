@@ -21,6 +21,7 @@
 
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .DeleteSmurfButtonContainer {
@@ -42,7 +43,7 @@
 
 .EditButtonContainer {
 	height: 18px;
-	width: 50px;
+	width: 100px;
 
 	display: inherit;
 	justify-content: center;
@@ -50,7 +51,7 @@
 }
 
 .EditButton {
-	width: 40px;
+	width: 100px;
 
 	display: inherit;
 	justify-content: center;
@@ -59,11 +60,17 @@
 
 .CancelEditButtonContainer {
 	height: 18px;
-	width: 30px;
+	width: 100px;
 
 	display: inherit;
 	justify-content: center;
 	align-items: center;
+}
+
+.CancelEditButton {
+	width: 100px;
+
+	margin-bottom: 20px;
 }
 
 .HeartButtonContainer {
@@ -100,10 +107,6 @@
 }
 
 .Smurf__listItem--height {
-}
-
-.CancelEditButton {
-	margin-bottom: 20px;
 }
 
 .SmurfsDetailedHeader {
