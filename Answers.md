@@ -1,7 +1,7 @@
 ## Questions - Self Study - You can exercise your Google-Fu for this and any other _Sprint Challenge_ in the future.
 
 1. Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
-    * `.map()`, `.filer()` and `.concat()` are three array methods that do not produce side-effects to the original array.
+    * `.map()`, `.filter()` and `.concat()` are three array methods that do not produce side-effects to the original array.
     * `Object.assign({}, obj, extension)` or `{...obj, extension}` can be used to create a new object while extending the properties.
 1. Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
     * Actions are sort of like event listeners in that they signal to the reducers that a user-interface event has occured. The reducers specify the changes that need to be made based on the action type that occurred. The store holds all of the reducers and various state changes before they are sent to the user-interface.
