@@ -9,6 +9,7 @@ export const GOT_SMURFS = "GOT_SMURFS";
 export const ADDING_SMURF = "ADDING_SMURF";
 export const DELETING_SMURF = "DELETING_SMURF";
 export const GETTING_SMURFS = "GETTING_SMURFS";
+export const ERROR = "ERROR";
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -20,15 +21,17 @@ export const GETTING_SMURFS = "GETTING_SMURFS";
    U - updateSmurf
    D - deleteSmurf
 */
-const smurfs = axios.get('http://localhost:3333/smurfs');
 
 export const getSmurfs = () => {
+  const smurfsUrl = axios.get('http://localhost:3333/smurfs');
   return dispatch => {
     dispatch({ type: GETTING_SMURFS });
-    smurfs.then(({data}) => {
+    smurfsUrl.then(({data}) => {
       dispatch({ type: GOT_SMURFS, payload: data })
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+      dispatch({ type: ERROR, payload: err})
+    });
   }
 }
 
@@ -37,8 +40,20 @@ export const addSmurfs = (smurf) => {
     dispatch({ type: ADDING_SMURF });
     axios.post('http://localhost:3333/smurfs', smurf)
     .then(({ data }) => {
-      dispatch => ({ ADDED_SMURF });
+      dispatch({ type: ADDED_SMURF });
+    })
+    .then(() => {
+      dispatch({ type: GETTING_SMURFS })
+      axios.get('http://localhost:3333/smurfs')
+      .then(({ data }) => {
+        dispatch({ type: GOT_SMURFS, payload: data})
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err})
+      })
     })
     .catch(err => console.error(err));
   }
 }
+
+
