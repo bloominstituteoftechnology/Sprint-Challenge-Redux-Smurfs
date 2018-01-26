@@ -1,7 +1,7 @@
 # Assessing your Redux Fu
 
 * The objective of this challenge is to get you used to answering a few questions about `Redux/Immutability` that are commonly asked in interviews.
-* We also have some more reps for you to help hammer in the knowledge you've thus far learned.
+* We also have some more reps for you to help hammer in the knowledge you've learned thus far.
 * Answers to your written questions will be recorded in _Answers.md_
 * This is to be worked on alone but you can use outside resources. You can _reference_ any old code you may have, and the React Documentation, however, please refrain from copying and pasting any of your answers. Try and understand the question and put your responses in your own words. Be as thorough as possible when explaining something.
 * **Just a friendly Reminder** Don't fret or get anxious about this, this is a no-pressure assessment that is only going to help guide you here in the near future. This is NOT a pass/fail situation.
