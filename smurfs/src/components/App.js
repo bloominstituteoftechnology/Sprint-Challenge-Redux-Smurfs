@@ -28,9 +28,9 @@ App.defaultProps - {
 }
 
 const mapStateToProps = state => {
-  return (
-    smurfs: state.smurfs,
-  )
+  return {
+    smurfs: state,
+  }
 }
 
 export default connect(mapStateToProps, { getSmurfs })( App );

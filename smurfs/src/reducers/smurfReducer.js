@@ -15,16 +15,16 @@ export const rootReducer = (state = initialState, action) => {
             return { ...state, gettingSmurfs: true };
         case actionTypes.SMURFS_FETCHED:
             return { ...state, gettingSmurfs: false, smurfs: action.payload };
-        case actionTypes.UPDATING_SMURFS:
+        case actionTypes.UPDATING_SMURF:
             return { ...state, updatingSmurf: true };
         case actionTypes.SMURF_UPDATED:
-            return { ...state, friend: action.payload, updatingSmurfs: false };
+            return { ...state, friend: action.payload, updatingSmurf: false };
         case actionTypes.DELETING_SMURF:
             return { ...state, deletingSmurf: true };
         case actionTypes.SMURF_DELETED:
             return { ...state, smurfs: action.payload, creatingSmurf: false };
         case actionTypes.ADDING_SMURF:
-            return { ...state, deletingSmurf: true };
+            return { ...state, creatingSmurf: true };
         case actionTypes.SMURF_ADDED:
             return { ...state, smurfs: action.payload, creatingSmurf: false };
         case actionTypes.ERROR:

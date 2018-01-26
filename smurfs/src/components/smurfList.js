@@ -1,8 +1,8 @@
 import React from 'react';
 
 const SmurfList = (props) => {
-    if (!props.smurfs.length) {
-        props.smurfs.name = 'Oh Snap! All the Smurfs are Gone!';
+    if (!props.length) {
+        return 'Oh Snap! All the Smurfs are Gone!';
     }
     return (
         <ul>
