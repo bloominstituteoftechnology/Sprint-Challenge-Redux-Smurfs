@@ -56,16 +56,16 @@ export const createSmurf = (values) => {
 }
 
 export const deleteSmurf = (id) => {
-  const deletedSmurf = axios.delete(`${url}/`, {
-    data: {
-      id
-    }
-  });
   return (dispatch) => {
     dispatch({ type: DELETING_SMURF });
-    deletedSmurf
+    axios
+      .delete(`${url}/${id}`)
       .then(({ data }) => {
-        dispatch({ type: DELETE_SMURF_SUCCESS, payload: data });
+        return axios
+                .get(url)
+                .then(({ data }) => {
+                  dispatch({ type: DELETE_SMURF_SUCCESS, payload: data });
+                })
       })
       .catch(error => {
         dispatch({ type: DELETE_SMURF_FAILURE, payload: error });

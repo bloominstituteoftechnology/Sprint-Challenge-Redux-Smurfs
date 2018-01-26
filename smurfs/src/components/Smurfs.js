@@ -9,7 +9,7 @@ class Smurfs extends Component {
 
 	render() {
 		// console.log('*******this.props', this.props);
-		const { smurfs, fetchingSmurfs } = this.props;
+		const { smurfs, fetchingSmurfs, deleteSmurf } = this.props;
 		return (
 			<div className='Smurfs'>
 				{fetchingSmurfs ? (<h2>Loading...</h2>) :
