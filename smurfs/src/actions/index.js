@@ -32,4 +32,4 @@ export const getSmurfs = () => {
   }
 }
 
-// addSmurfs()
+// addSmurfs() action creator
