@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSmurfs, deleteSmurf } from '../actions';
+import UpdateForm from './UpdateForm';
 
 class Smurfs extends Component {
 	componentDidMount() {
@@ -23,6 +24,9 @@ class Smurfs extends Component {
 										<div>{`Height: ${smurf.height}`}</div>
 									</li>
 									<button onClick={() => deleteSmurf(smurf.id)}>Delete</button>
+									<div className="Update-form">
+										<UpdateForm id={smurf.id}/>
+									</div>
 								</div>
 							);
 						})}

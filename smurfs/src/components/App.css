@@ -44,6 +44,16 @@ li {
   margin-right: 5px;
 }
 
+.Update-form {
+}
+
+.Update-form input{
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 5px 52px;
+
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
