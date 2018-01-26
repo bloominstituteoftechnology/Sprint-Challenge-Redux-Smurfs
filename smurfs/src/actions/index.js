@@ -16,6 +16,10 @@ export const UPDATING_SMURF = 'UPDATING_SMURF';
 export const SMURF_UPDATED = 'SMURF_UPDATED';
 export const UPDATING_SMURF_ERROR = 'UPDATING_SMURF_ERROR';
 
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const SMURF_DELETED = 'SMURF_DELETED';
+export const DELETING_SMURF_ERROR = 'DELETING_SMURF_ERROR';
+
 
 
 /*
@@ -53,8 +57,22 @@ export const updateSmurf = (smurf, id) => {
   return dispatch => {
     dispatch({type: UPDATING_SMURF})
     axios.put(`${url}/${id}`, smurf)
-    .then(response => {dispatch({type: SMURF_UPDATED, payload: response.data})})
+    .then(response => {
+      return axios.get(url)
+      .then(response => {dispatch({type: SMURF_UPDATED, payload: response.data})})
+    })
     .catch(error => {dispatch({type: UPDATING_SMURF_ERROR, payload: error})})
   }
 }
 
+export const deleteSmurf = id => {
+  return dispatch => {
+    dispatch({type: DELETING_SMURF})
+    axios.delete(`${url}/${id}`)
+    .then(response => {
+      return axios.get(url)
+      .then(response => {dispatch({type: SMURF_DELETED, payload: response.data})})
+    })
+    .catch(error => {dispatch({type: DELETING_SMURF_ERROR, payload: error })})
+  }
+}
