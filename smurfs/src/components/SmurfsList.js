@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions';
 
+import './SmurfList.css';
+
 class SmurfsList extends Component {
 
   componentDidMount() {
@@ -24,8 +26,14 @@ class SmurfsList extends Component {
     )
   }
 }
-SmurfsList.defaultProps = {
+SmurfsList.defaultProps = {  // needed to deal with null problem, but there must be a better way...
   smurfs: [],
 }
 
-export default connect(null, {getSmurfs})(SmurfsList);
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+  }
+}
+
+export default connect(mapStateToProps, {getSmurfs})(SmurfsList);

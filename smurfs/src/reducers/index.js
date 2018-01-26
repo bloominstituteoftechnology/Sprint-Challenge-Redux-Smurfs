@@ -1,7 +1,11 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { SMURFS_RECEIVED, SMURF_ADDED, ERROR } from '../actions';
+import {
+  GETTING_SMURFS, SMURFS_RECEIVED,
+  ADDING_SMURF, SMURF_ADDED,
+  ERROR,
+} from '../actions';
 
 /*
  Your initial/default state for this project could look a lot like this
@@ -23,12 +27,16 @@ const initialState = {
 */
 const smurfReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GETTING_SMURFS:
+      return {...state, fetchingSmurfs: true}
     case SMURFS_RECEIVED:
-      return {...state, smurfs: action.payload}
+      return {...state, smurfs: action.payload, fetchingSmurfs: false}
+    case ADDING_SMURF:
+      return {...state, addingSmurf: true}
     case SMURF_ADDED:
-      return {...state} //incomplete placeholder code
+      return {...state, smurfs: action.payload, addingSmurf: false}
     case ERROR:
-      return {...state, error: action.payload}
+      return {...state, error: action.payload, fetchingSmurfs: false, addingSmurf: false}
     default:
       return state;
   };
