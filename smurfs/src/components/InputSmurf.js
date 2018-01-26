@@ -47,7 +47,7 @@ class InputSmurf extends Component {
             name="height"
             value={this.state.height}
           />
-          <button onClick={() => this.submitChangeHandler}>Submit</button>
+          <button>Submit</button>
         </form>
       </div>
     );

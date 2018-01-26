@@ -6,8 +6,8 @@ const SmurfList = props => {
       <h1>THIS IS THE SMURF KINGDOM</h1>
       <ul>
         {console.log("THIS IS PROPS", props)}
-        {this.props.smurfs.map(item => {
-          return <li key={item.id}>{item.name}</li>
+        {props.smurfs.map((item, i) => {
+          return <li key={i}>{item.name}</li>
         })}
       </ul>
     </div>

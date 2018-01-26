@@ -30,6 +30,10 @@ class App extends Component {
   }
 }
 
+App.defaultProps = {
+  smurfs: [],
+}
+
 const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,

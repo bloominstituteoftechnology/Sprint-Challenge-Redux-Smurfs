@@ -25,7 +25,7 @@ const initialState = {
   updatedSmurf: false,
   deletingSmurf: false,
   deletedSmurf: false,
-  error: false,
+  error: null,
 }
 
 export const smurfReducer = (state = initialState, action) => {
@@ -39,7 +39,7 @@ export const smurfReducer = (state = initialState, action) => {
     case ADDED_SMURF:
       return {...state, smurfs: action.payload, addingSmurf: false, addedSmurf: true};
     case ERROR:
-      return {...state, error: true}
+      return {...state, error: action.payload}
     default:
       return state;
   }
