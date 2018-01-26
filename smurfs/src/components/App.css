@@ -22,6 +22,38 @@
   font-size: large;
 }
 
+li {
+  list-style-type: none;
+}
+
+.Smurfs-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Smurf {
+  background-color: #fff;
+  color: rgba(0,0,0,0.7);
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+  margin: 1rem;
+  padding: 1rem;
+  min-width: 15rem;
+}
+
+.Add-form input {
+  margin-right: 5px;
+}
+
+.Update-form {
+}
+
+.Update-form input{
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 5px 52px;
+
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
