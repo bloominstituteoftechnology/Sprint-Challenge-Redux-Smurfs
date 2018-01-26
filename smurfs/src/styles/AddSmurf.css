@@ -1,0 +1,46 @@
+.AddSmurf {
+	height: 23px;
+
+	display: flex;
+	justify-content: center;
+}
+
+.IsAddingSmurf {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.CancelAddSmurfButton {
+	width: 100px;
+
+	text-align: center;
+
+	margin-right: 4px;
+}
+
+.InputForm {
+	display: inherit;
+	flex-direction: inherit;
+	align-items: center;
+}
+
+.AddSmurfInput {
+	margin-left: 1px;
+	margin-right: 1px;
+
+	text-align: center;
+}
+
+.AddSmurfConfirmButton {
+	width: 100px;
+
+	text-align: center;
+
+	margin-left: 4px;
+}
+
+.AddSmurfButtonContainer {
+	height: 23px;
+}
