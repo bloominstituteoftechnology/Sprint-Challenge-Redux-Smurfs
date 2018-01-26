@@ -4,7 +4,16 @@
 }
 
 .TopStatusBar {
+  height: 75px;
+
   margin-top: 4px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.TopStatusBarButtons {
+  height: 18px;
 
   display: inherit;
   flex-direction: row;
@@ -12,10 +21,11 @@
 }
 
 .DeleteVillageButton {
-  /*  height: 35px;
-  width: 35px;*/
-
   margin-left: 7px;
+}
+
+.EditVillageButton {
+  margin-right: 7px;
 }
 
 .ShowSmurfs {
@@ -31,7 +41,7 @@
 
 .LoadingPicture {
   animation: LoadingPicture-spin infinite 5s linear;
-  height: 284px;
+  height: 300px;
 }
 
 @keyframes LoadingPicture-spin {

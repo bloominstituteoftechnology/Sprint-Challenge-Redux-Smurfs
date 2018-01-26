@@ -19,7 +19,7 @@ export default function Smurfs(props) {
         })
       ) : (
         <div className="NoSmurfs">
-          <h2>&#x21E7; No smurfs. Add some smurfs! &#x21E7;</h2>
+          <h2>&#x21E7; No smurfs in village. Invite some smurfs! &#x21E7;</h2>
         </div>
       )}
     </div>

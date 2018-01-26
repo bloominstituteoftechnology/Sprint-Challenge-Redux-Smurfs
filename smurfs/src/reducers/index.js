@@ -6,6 +6,7 @@ import * as actionType from '../actions';
 
 const initialState = {
   smurfs: [],
+  evictedSmurfs: [],
 
   fetchingSmurfs: false,
   smurfsFetched: false,
@@ -14,8 +15,10 @@ const initialState = {
   smurfAdded: false,
 
   updatingSmurf: false,
+  smurfUpdated: false,
 
-  deletingSmurfs: false,
+  deletingSmurf: false,
+  smurfDeleted: false,
 
   showUi: false,
   error: false,
@@ -23,6 +26,17 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    // *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+    // reset action state
+
+    case actionType.RESET_ACTION_STATE:
+      return {
+        smurfsFetched: false,
+        smurfAdded: false,
+        smurfUpdated: false,
+        smurfDeleted: false,
+      };
+
     // *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
     // get smurfs
 
@@ -69,6 +83,58 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         addingSmurf: false,
+        showUi: true,
+        error: action.payload,
+      };
+
+    // *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+    // edit smurf
+
+    case actionType.SMURF_EDITING:
+      return {
+        ...state,
+        updatingSmurf: true,
+        showUi: false,
+      };
+    case actionType.SMURF_EDITING_SUCCESS:
+      return {
+        ...state,
+        smurfs: action.payload,
+        updatingSmurf: false,
+        smurfUpdated: true,
+        showUi: true,
+      };
+    case actionType.SMURF_EDITING_ERROR:
+      return {
+        ...state,
+        updatingSmurf: false,
+        showUi: true,
+        error: action.payload,
+      };
+
+    // *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+    // delete smurf
+
+    case actionType.SMURF_DELETING:
+      return {
+        ...state,
+        deletingSmurf: true,
+        showUi: false,
+      };
+    case actionType.SMURF_DELETING_SUCCESS:
+      console.log(action.payload);
+      return {
+        ...state,
+        smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload.id),
+        evictedSmurfs: [...state.evictedSmurfs, action.payload],
+        deletingSmurf: false,
+        smurfDeleted: true,
+        showUi: true,
+      };
+    case actionType.SMURF_DELETING_ERROR:
+      return {
+        ...state,
+        deletingSmurf: false,
         showUi: true,
         error: action.payload,
       };

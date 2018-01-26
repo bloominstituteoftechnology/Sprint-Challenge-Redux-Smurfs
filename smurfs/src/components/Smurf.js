@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { deleteSmurf } from '../actions';
 
 import EditSmurf from './EditSmurf';
 
@@ -15,7 +17,7 @@ class Smurf extends Component {
 
 	componentDidMount() {
 		this.setState({
-			index: this.props.index,
+			id: this.props.smurf.id,
 			name: this.props.smurf.name,
 			age: this.props.smurf.age,
 			height: this.props.smurf.height,
@@ -26,13 +28,10 @@ class Smurf extends Component {
 	deleteSmurfButtonClicked = _ => {
 		if (
 			window.confirm(
-				`This will remove ${
-					this.state.name
-				} as a smurf? This CANNOT be undone. Are you sure you want to continue?`
+				`Are you sure you want to evict ${this.state.name} from the village?`
 			)
 		)
-			// this.props.deleteSmurfHandler(Number(this.state.index));
-			console.log(' ');
+			this.props.deleteSmurf(this.state.id);
 	};
 
 	editButtonClickedHandler = _ => {
@@ -43,28 +42,34 @@ class Smurf extends Component {
 		return (
 			<div className="Smurf">
 				<div className="ButtonsHeader">
-					<button
-						className="DeleteSmurfButton"
-						onClick={this.deleteSmurfButtonClicked}
-					>
-						&#215;
-					</button>
+					<div className="DeleteSmurfButtonContainer">
+						<button
+							className="DeleteSmurfButton"
+							onClick={this.deleteSmurfButtonClicked}
+						>
+							&#215;
+						</button>
+					</div>
 
 					{!this.state.isEditing ? (
-						<button
-							className="EditButton"
-							onClick={this.editButtonClickedHandler}
-						>
-							edit
-						</button>
-					) : (
-						<div className="IsEditingSmurf">
+						<div className="EditButtonContainer">
 							<button
-								className="CancelEditButton"
+								className="EditButton"
 								onClick={this.editButtonClickedHandler}
 							>
-								cancel
+								edit
 							</button>
+						</div>
+					) : (
+						<div className="IsEditingSmurf">
+							<div className="CancelEditButtonContainer">
+								<button
+									className="CancelEditButton"
+									onClick={this.editButtonClickedHandler}
+								>
+									cancel
+								</button>
+							</div>
 
 							<EditSmurf
 								name={this.state.name}
@@ -75,8 +80,9 @@ class Smurf extends Component {
 							/>
 						</div>
 					)}
-
-					<button className="ButtonHeader__spacer">&hearts;</button>
+					<div className="HeartButtonContainer">
+						<button className="HeartButton">&hearts;</button>
+					</div>
 				</div>
 
 				<div className="SmurfMainContainer">
@@ -122,4 +128,10 @@ class Smurf extends Component {
 	}
 }
 
-export default Smurf;
+const mapStateToProps = state => {
+	return {
+		//
+	};
+};
+
+export default connect(mapStateToProps, { deleteSmurf })(Smurf);

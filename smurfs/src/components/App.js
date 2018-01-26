@@ -31,7 +31,7 @@ class App extends Component {
     if (
       this.props.smurfs.length > 0 &&
       window.confirm(
-        'This will annihilate your village. This CANNOT be undone. Are you sure you want to continue?'
+        'This will annihilate your village. Just kidding. But this will evict all your smurfs. Are you sure you want to continue?'
       )
     ) {
       const count = this.props.smurfs.length;
@@ -48,18 +48,22 @@ class App extends Component {
         <Header />
 
         <div className="TopStatusBar">
-          <button
-            className="DeleteVillageButton"
-            onClick={this.deleteAllFriendsButtonHandler}
-          >
-            &#x2622;
-          </button>
-        </div>
+          <div className="TopStatusBarButtons">
+            <button
+              className="DeleteVillageButton"
+              onClick={this.deleteAllFriendsButtonHandler}
+            >
+              &#x2622;
+            </button>
 
-        <AddSmurf
-          className="App__addSmurf"
-          addSmurfHandler={this.addSmurfHandler}
-        />
+            <AddSmurf
+              className="App__addSmurf"
+              addSmurfHandler={this.addSmurfHandler}
+            />
+
+            <button className="EditVillageButton">&#x270e;</button>
+          </div>
+        </div>
 
         {this.props.showUi ? (
           <Smurfs className="App__smurfs" smurfs={this.props.smurfs} />
@@ -75,6 +79,7 @@ const mapStateToProps = state => {
   return {
     showUi: state.showUi,
     smurfs: state.smurfs,
+    evictedSmurfs: state.evictedSmurfs,
   };
 };
 

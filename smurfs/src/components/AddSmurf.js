@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import logo from '../assets/logo.svg';
+
 import '../styles/AddSmurf.css';
 
 class AddSmurf extends Component {
@@ -84,26 +86,35 @@ class AddSmurf extends Component {
 	render() {
 		return (
 			<div className="AddSmurf">
-				<div>
-					{!this.state.isAddingSmurf ? (
-						<div className="AddSmurfButtonContainer">
-							<button
-								className="AddSmurfButton"
-								onClick={this.AddSmurfButtonClickHandler}
-							>
-								add Smurf
-							</button>
+				{!this.state.isAddingSmurf ? (
+					<div className="AddSmurfButtonContainer">
+						<button
+							className="AddSmurfButton"
+							onClick={this.AddSmurfButtonClickHandler}
+						>
+							invite smurf
+						</button>
+						<div className="VillageRow">
+							<img src={logo} className="VillagePicture" alt="village" />
+							<img src={logo} className="VillagePicture" alt="village" />
+							<img src={logo} className="VillagePicture" alt="village" />
+							<img src={logo} className="VillagePicture" alt="village" />
+							<img src={logo} className="VillagePicture" alt="village" />
+							<img src={logo} className="VillagePicture" alt="village" />
+							<img src={logo} className="VillagePicture" alt="village" />
 						</div>
-					) : (
-						<div className="IsAddingSmurf">
-							<button
-								className="CancelAddSmurfButton"
-								onClick={this.CancelAddSmurfButtonClickHandler}
-							>
-								cancel
-							</button>
+					</div>
+				) : (
+					<div className="IsAddingSmurf">
+						<button
+							className="CancelAddSmurfButton"
+							onClick={this.CancelAddSmurfButtonClickHandler}
+						>
+							cancel
+						</button>
 
-							<form className="InputForm">
+						<form className="InputForm">
+							<div className="InputForm__inputs">
 								<input
 									className="AddSmurfInput"
 									onChange={this.handleInputChange}
@@ -131,17 +142,17 @@ class AddSmurf extends Component {
 									value={this.state.height}
 									placeholder="height"
 								/>
+							</div>
 
-								<input
-									className="AddSmurfConfirmButton"
-									type="button"
-									value="submit"
-									onClick={this.addSmurfHandler}
-								/>
-							</form>
-						</div>
-					)}
-				</div>
+							<input
+								className="AddSmurfConfirmButton"
+								type="button"
+								value="invite"
+								onClick={this.addSmurfHandler}
+							/>
+						</form>
+					</div>
+				)}
 			</div>
 		);
 	}

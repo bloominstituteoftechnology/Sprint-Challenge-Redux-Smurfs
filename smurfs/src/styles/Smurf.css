@@ -23,28 +23,69 @@
 	justify-content: space-between;
 }
 
-.DeleteSmurfButton {
+.DeleteSmurfButtonContainer {
 	height: 18px;
-	width: 20px;
+	width: 30px;
 
 	display: inherit;
 	justify-content: center;
 	align-items: center;
 }
 
-.ButtonHeader__space {
+.DeleteSmurfButton {
+	width: 25px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+}
+
+.EditButtonContainer {
 	height: 18px;
-	width: 20px;
+	width: 50px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+}
+
+.EditButton {
+	width: 40px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+}
+
+.CancelEditButtonContainer {
+	height: 18px;
+	width: 30px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+}
+
+.HeartButtonContainer {
+	height: 18px;
+	width: 30px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+}
+
+.HeartButton {
+	width: 25px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
 }
 
 .SmurfMainContainer {
 	display: inherit;
 	justify-content: flex-start;
-}
-
-.EditButtonHeader {
-	width: 250px;
-	margin-bottom: 20px;
 }
 
 .Smurf__listItem {

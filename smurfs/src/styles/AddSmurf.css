@@ -1,18 +1,47 @@
 .AddSmurf {
-	height: 150px;
+	height: 100px;
 
 	display: flex;
 	justify-content: center;
+}
+
+.AddSmurfButtonContainer {
+	height: 75px;
+
+	display: inherit;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .AddSmurfButton {
 	width: 100px;
 }
 
+.VillageRow {
+	display: inherit;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.VillagePicture {
+	animation: VillagePicture-spin infinite 30s linear;
+	height: 30px;
+}
+
+@keyframes VillagePicture-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
 .IsAddingSmurf {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 }
 
@@ -30,9 +59,16 @@
 	align-items: center;
 }
 
+.InputForm__inputs {
+	display: inherit;
+	flex-direction: row;
+}
+
 .AddSmurfInput {
-	margin-top: 1px;
-	margin-bottom: 1px;
+	margin-left: 1px;
+	margin-right: 1px;
+
+	width: 160px;
 
 	text-align: center;
 }
@@ -43,8 +79,4 @@
 	text-align: center;
 
 	margin-top: 10px;
-}
-
-.AddSmurfButtonContainer {
-	height: 23px;
 }
