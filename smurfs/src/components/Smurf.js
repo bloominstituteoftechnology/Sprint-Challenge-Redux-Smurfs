@@ -45,11 +45,11 @@ class Smurf extends Component {
     render() {
         return (
             <div className="smurf">
-                <ul>
-                    <li>{this.props.smurf.name}</li>
-                    <li>{this.props.smurf.age} years old</li>
-                    <li>{this.props.smurf.height} tall</li>
-                </ul>
+                <div>
+                    <div>{this.props.smurf.name}</div>
+                    <div>{this.props.smurf.age} years old</div>
+                    <div>{this.props.smurf.height} tall</div>
+                </div>
                 <button onClick={this.updateToggle}>Update</button>
                 <button onClick={this.smurfDelete}>Delete</button>
                 <form style={this.state.update ? null : {display: 'none'}}>
