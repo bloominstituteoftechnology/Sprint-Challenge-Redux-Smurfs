@@ -4,6 +4,7 @@
 import {
   GETTING_SMURFS, SMURFS_RECEIVED,
   ADDING_SMURF, SMURF_ADDED,
+  DELETING_SMURF, SMURF_DELETED,
   ERROR,
 } from '../actions';
 
@@ -35,8 +36,12 @@ const smurfReducer = (state = initialState, action) => {
       return {...state, addingSmurf: true}
     case SMURF_ADDED:
       return {...state, smurfs: action.payload, addingSmurf: false}
+    case DELETING_SMURF:
+      return {...state, deletingSmurf: true}
+    case SMURF_DELETED:
+      return {...state, deletingSmurf: false}  // this server's delete does not return anything
     case ERROR:
-      return {...state, error: action.payload, fetchingSmurfs: false, addingSmurf: false}
+      return {...state, error: action.payload, fetchingSmurfs: false, addingSmurf: false, deletingSmurf: false}
     default:
       return state;
   };

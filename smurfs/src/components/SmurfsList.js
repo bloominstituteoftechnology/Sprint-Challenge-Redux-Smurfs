@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions';
+import { getSmurfs, deleteSmurf } from '../actions';
 
 import './SmurfList.css';
 
@@ -19,6 +19,7 @@ class SmurfsList extends Component {
               <div>Name: {smurf.name}</div>
               <div>Age: {smurf.age}</div>
               <div>Height: {smurf.height}</div>
+              <button onClick={() => this.props.deleteSmurf(smurf.id)}>Delete me</button>
             </li>
           )
         })}
@@ -36,4 +37,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {getSmurfs})(SmurfsList);
+export default connect(mapStateToProps, {getSmurfs, deleteSmurf})(SmurfsList);

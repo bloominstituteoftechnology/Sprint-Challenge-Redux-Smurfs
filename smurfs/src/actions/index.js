@@ -7,6 +7,8 @@ export const GETTING_SMURFS = 'GETTING_SMURFS';
 export const SMURFS_RECEIVED = 'SMURFS_RECEIVED';
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const SMURF_ADDED = 'SMURF_ADDED';
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const SMURF_DELETED = 'SMURF_DELETED';
 export const ERROR = 'ERROR';
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -37,7 +39,20 @@ export const createSmurf = (smurf) => {
     dispatch({ type: ADDING_SMURF });
     axios.post('http://localhost:3333/smurfs', smurf)
       .then(({data}) => {
-        dispatch({ type: SMURF_ADDED, payload: data})
+        dispatch({ type: SMURF_ADDED, payload: data })
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error })
+      })
+  }
+}
+
+export const deleteSmurf = (id) => {
+  return dispatch => {
+    dispatch({ type: DELETING_SMURF });
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
+      .then(() => {
+        dispatch({ type: SMURF_DELETED }) // no payload as this server does not return anything on delete
       })
       .catch(error => {
         dispatch({ type: ERROR, payload: error })
