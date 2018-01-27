@@ -1,0 +1,117 @@
+.Smurf {
+	width: 250px;
+	height: 200px;
+
+	background-color: #fff;
+	color: rgba(0, 0, 0, 0.7);
+	box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+		0 2px 4px rgba(0, 0, 0, 0.24);
+	margin: 1rem;
+	padding: 1rem;
+	min-width: 15rem;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.ButtonsHeader {
+	width: 250px;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.DeleteSmurfButtonContainer {
+	height: 18px;
+	width: 30px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+}
+
+.DeleteSmurfButton {
+	width: 25px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+}
+
+.EditButtonContainer {
+	height: 18px;
+	width: 100px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+}
+
+.EditButton {
+	width: 100px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+}
+
+.CancelEditButtonContainer {
+	height: 18px;
+	width: 100px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+}
+
+.CancelEditButton {
+	width: 100px;
+
+	margin-bottom: 20px;
+}
+
+.HeartButtonContainer {
+	height: 18px;
+	width: 30px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+}
+
+.HeartButton {
+	width: 25px;
+
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+}
+
+.SmurfMainContainer {
+	display: inherit;
+	justify-content: flex-start;
+}
+
+.Smurf__listItem {
+	list-style-type: none;
+}
+
+.Smurf__listItem--name {
+}
+
+.Smurf__listItem--age {
+	margin-bottom: 4px;
+}
+
+.Smurf__listItem--height {
+}
+
+.SmurfsDetailedHeader {
+	height: 50px;
+
+	display: inherit;
+	align-items: flex-end;
+}
