@@ -21,10 +21,14 @@
 }
 
 .DeleteVillageButton {
+  width: 35px;
+
   margin-left: 7px;
 }
 
 .EditVillageButton {
+  width: 35px;
+
   margin-right: 7px;
 }
 

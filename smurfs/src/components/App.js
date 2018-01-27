@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs, addSmurf } from '../actions';
+import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
 
 import Header from './Header';
 import Smurfs from './Smurfs';
@@ -15,17 +15,14 @@ class App extends Component {
     this.props.getSmurfs();
   }
 
+  componentWillReceiveProps(nextProps) {
+    // console.log('next', nextProps);
+    // console.log('current', this.props);
+  }
+
   addSmurfHandler = newSmurf => {
     this.props.addSmurf(newSmurf);
   };
-
-  // editSmurf = (smurf, index) => {
-  //   this.props.editSmurf(smurf, index);
-  // };
-
-  // deleteSmurf = index => {
-  //   this.props.deleteSmurf(index);
-  // };
 
   deleteAllFriendsButtonHandler = _ => {
     if (
@@ -34,15 +31,18 @@ class App extends Component {
         'This will annihilate your village. Just kidding. But this will evict all your smurfs. Are you sure you want to continue?'
       )
     ) {
-      const count = this.props.smurfs.length;
-
-      for (let i = 0; i <= count; i++) {
-        this.deleteSmurf(0);
-      }
+      [...this.props.smurfs].forEach(smurf => {
+        this.props.deleteSmurf(smurf.id);
+      });
+      console.log('finish delete all');
+      // for (let i = 0; i <= this.props.smurfs.length-1; i++) {
+      //   this.props.deleteSmurf(this.props.smurfs[i].id);
+      // }
     }
   };
 
   render() {
+    console.log(this.props.smurfs);
     return (
       <div className="App">
         <Header />
@@ -53,7 +53,7 @@ class App extends Component {
               className="DeleteVillageButton"
               onClick={this.deleteAllFriendsButtonHandler}
             >
-              &#x2622;
+              &#x2672;
             </button>
 
             <AddSmurf
@@ -83,4 +83,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
+export default connect(mapStateToProps, {
+  getSmurfs,
+  addSmurf,
+  deleteSmurf,
+})(App);

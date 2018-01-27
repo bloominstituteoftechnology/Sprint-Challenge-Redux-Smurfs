@@ -20,6 +20,9 @@ const initialState = {
   deletingSmurf: false,
   smurfDeleted: false,
 
+  deletingSmurfs: false,
+  smurfsDeleted: false,
+
   showUi: false,
   error: false,
 };
@@ -32,10 +35,7 @@ const rootReducer = (state = initialState, action) => {
     case actionType.RESET_ACTION_STATE:
       return {
         ...state,
-        smurfsFetched: false,
-        smurfAdded: false,
-        smurfUpdated: false,
-        smurfDeleted: false,
+        showUi: false,
       };
 
     // *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
@@ -123,7 +123,6 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         deletingSmurf: true,
-        showUi: false,
       };
     case actionType.SMURF_DELETING_SUCCESS:
       return {
@@ -132,7 +131,6 @@ const rootReducer = (state = initialState, action) => {
         evictedSmurfs: [...state.evictedSmurfs, action.payload],
         deletingSmurf: false,
         smurfDeleted: true,
-        showUi: true,
       };
     case actionType.SMURF_DELETING_ERROR:
       return {
@@ -140,6 +138,35 @@ const rootReducer = (state = initialState, action) => {
         deletingSmurf: false,
         showUi: true,
         error: action.payload,
+      };
+
+    // *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+    // delete all smurfs
+
+    case actionType.SMURFS_DELETING:
+      return {
+        ...state,
+        deletingSmurfs: true,
+      };
+    case actionType.SMURFS_DELETING_SUCCESS:
+      return {
+        ...state,
+        smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload.id),
+        evictedSmurfs: [...state.evictedSmurfs, action.payload],
+        deletingSmurfs: false,
+        smurfDeleteds: true,
+        showUi: false,
+      };
+    case actionType.SMURFS_DELETING_ERROR:
+      return {
+        ...state,
+        deletingSmurf: false,
+        error: action.payload,
+      };
+    case actionType.SHOW_UI:
+      return {
+        ...state,
+        showUi: true,
       };
 
     // *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~

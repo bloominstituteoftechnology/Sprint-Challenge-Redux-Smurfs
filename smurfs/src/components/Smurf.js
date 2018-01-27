@@ -13,6 +13,7 @@ class Smurf extends Component {
 		age: null,
 		height: null,
 		isEditing: null,
+		isFavorited: null,
 	};
 
 	componentDidMount() {
@@ -22,8 +23,17 @@ class Smurf extends Component {
 			age: this.props.smurf.age,
 			height: this.props.smurf.height,
 			isEditing: false,
+			isFavorited: false,
 		});
 	}
+
+	editButtonClickedHandler = _ => {
+		this.setState({ isEditing: !this.state.isEditing });
+	};
+
+	editSmurfHandler = editedSmurf => {
+		this.props.editSmurf({ ...editedSmurf, id: this.state.id });
+	};
 
 	deleteSmurfButtonClicked = _ => {
 		if (
@@ -34,17 +44,16 @@ class Smurf extends Component {
 			this.props.deleteSmurf(this.state.id);
 	};
 
-	editButtonClickedHandler = _ => {
-		this.setState({ isEditing: !this.state.isEditing });
-	};
-
-	editSmurfHandler = editedSmurf => {
-		this.props.editSmurf({ ...editedSmurf, id: this.state.id });
+	favoriteButtonClicked = _ => {
+		this.setState({ isFavorited: !this.state.isFavorited });
 	};
 
 	render() {
 		return (
-			<div className="Smurf">
+			<div
+				className="Smurf"
+				style={!this.state.isFavorited ? {} : { backgroundColor: '#ff4d5c' }}
+			>
 				<div className="ButtonsHeader">
 					<div className="DeleteSmurfButtonContainer">
 						<button
@@ -77,7 +86,15 @@ class Smurf extends Component {
 						</div>
 					)}
 					<div className="HeartButtonContainer">
-						<button className="HeartButton">&hearts;</button>
+						<button
+							className="HeartButton"
+							onClick={this.favoriteButtonClicked}
+							style={
+								!this.state.isFavorited ? {} : { backgroundColor: '#ff9aa2' }
+							}
+						>
+							&hearts;
+						</button>
 					</div>
 				</div>
 

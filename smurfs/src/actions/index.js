@@ -18,6 +18,12 @@ export const SMURF_DELETING = 'SMURF_DELETING';
 export const SMURF_DELETING_SUCCESS = 'SMURF_DELETING_SUCCESS';
 export const SMURF_DELETING_ERROR = 'SMURF_DELETING_ERROR';
 
+export const SMURFS_DELETING = 'SMURFS_DELETING';
+export const SMURFS_DELETING_SUCCESS = 'SMURFS_DELETING_SUCCESS';
+export const SMURFS_DELETING_ERROR = 'SMURFS_DELETING_ERROR';
+
+export const SHOW_UI = 'SHOW_UI';
+
 const ADDRESS = 'http://localhost:3333';
 
 export const getSmurfs = _ => {
@@ -36,7 +42,7 @@ export const getSmurfs = _ => {
         .catch(err => {
           dispatch({ type: SMURFS_FETCHING_ERROR, payload: err });
         });
-    }, 1000);
+    }, Math.floor(Math.random() * 10000) / 2);
   };
 };
 
@@ -56,7 +62,7 @@ export const addSmurf = smurf => {
         .catch(err => {
           dispatch({ type: SMURF_ADDING_ERROR, payload: err });
         });
-    }, 1000);
+    }, Math.floor(Math.random() * 10000) / 2);
   };
 };
 
@@ -79,7 +85,7 @@ export const editSmurf = editedSmurf => {
         .catch(err => {
           dispatch({ type: SMURF_EDITING_ERROR, payload: err });
         });
-    }, 1000);
+    }, Math.floor(Math.random() * 10000) / 2);
   };
 };
 
@@ -98,10 +104,14 @@ export const deleteSmurf = id => {
             type: SMURF_DELETING_SUCCESS,
             payload: data.SmurfRemoved,
           });
+          dispatch({
+            type: SHOW_UI,
+          });
         })
         .catch(err => {
           dispatch({ type: SMURF_DELETING_ERROR, payload: err });
         });
-    }, 1000);
+    }, Math.floor(Math.random() * 10000) / 2);
   };
 };
+
