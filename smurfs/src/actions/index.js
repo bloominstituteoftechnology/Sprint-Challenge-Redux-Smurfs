@@ -6,7 +6,7 @@ export const SMURFS_FETCHING_ERROR = 'SMURFS_FETCHING_ERROR';
 
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const SMURF_ADDED = 'SMURF_ADDED';
-export const SMURF_ADDED_ERROR = 'SMURG_ADDED_ERROR';
+export const SMURF_ADDED_ERROR = 'SMURF_ADDED_ERROR';
 
 export const UPDATING_SMURF = 'UPDATING_SMURF';
 export const SMURF_UPDATED = 'SMURF_UPDATED';
@@ -25,6 +25,9 @@ export const getSmurfs = () => {
     .then(({ data }) => {
       dispatch({ type: SMURFS_FETCHED, payload: data })
     })
+    .catch(err => {
+      dispatch({ type: ERROR, payload: err})
+    })
   }
 }
 
@@ -40,6 +43,9 @@ export const addSmurf = (smurf) => {
       axios.get('http://localhost:3333/smurfs')
       .then(({ data }) => {
         dispatch({ type: SMURFS_FETCHED, payload: data })
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err })
       })
     })
       .catch(err => {

@@ -2,7 +2,7 @@ import React from 'react';
 
 const SmurfList = (props) => {
     if (!props.length) {
-        return 'Oh Snap! All the Smurfs are Gone!';
+        return 'Oh Snap! Where are all of the Smurfs!';
     }
     return (
         <ul>
