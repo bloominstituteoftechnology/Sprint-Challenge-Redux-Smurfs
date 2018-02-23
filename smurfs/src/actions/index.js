@@ -1,7 +1,23 @@
+import axios from 'axios';
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+export const IS_FETCHING = 'IS_FETCHING';
+export const SMURFS_FETCHED = 'SMURFS_FETCHED';
+export const ERROR_FETCHING_SMURFS = 'ERROR_FETCHING_SMURFS';
+
+export const getSmurfs = () => {
+  
+};
+
+export const IS_ADDING = 'IS_ADDING';
+export const SMURF_ADDED = 'SMURF_ADDED';
+export const ERROR_ADDING_SMURF = 'ERROR_ADDING_SMURF';
+
+export const addSmurf = () => {
+
+};
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
