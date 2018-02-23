@@ -45,6 +45,7 @@ class SmurfForm extends Component {
           placeholder="Height"
           value={this.state.value}
           />
+          <button type="submit">Add Smurf</button>
         </form>
       </div>
     );
