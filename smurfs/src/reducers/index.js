@@ -1,14 +1,13 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import {IS_FETCHING, SMURFS_FETCHED, ERROR_FETCHING_SMURFS } from '../actions/getSmurfs';
+
 
 const initialState = {
   smurfs: [],
-  fetchingSmurfs: false
-  addingSmurf: false
-  updatingSmurf: false
-  deletingSmurfs: false
-  error: true
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurfs: false,
+  error: false
  };
 
 
@@ -18,3 +17,21 @@ const initialState = {
   This will guard your namespacing issues.
   Components can read your store as, `state` and not `state.fooReducer`.
 */
+
+export const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case IS_FETCHING:
+      return { ...state, fetchingSmurfs: true };
+      case SMURFS_FETCHED:
+      // console.log('Smurfs: ', action.payload);
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        smurfs: action.payload,
+      };
+    case ERROR_FETCHING_SMURFS:
+      return { ...state, fetchingSmurfs: false, error: action.payload };
+    default:
+      return state;
+  }
+};

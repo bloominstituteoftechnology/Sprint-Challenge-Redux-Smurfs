@@ -1,7 +1,10 @@
 import React from 'react';
 
+
+
 const Smurfs = (props) => {
   return (
+  <ul>
     {props.smurfs.map((smurf, i) => {
       return <li>
         <div>{smurf.name}</div>
@@ -9,6 +12,7 @@ const Smurfs = (props) => {
         <div>{smurf.height}</div>
       </li>
     })}
+  </ul>
   );
 }
 
