@@ -1,15 +1,56 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+let URL = 'http://localhost:3333/smurfs/';
+
+export const addSmurf = (smurfInfo) => {
+  return dispatch => {
+    dispatch({ type: 'ADDING_SMURF' });
+    axios.post(`${URL}`, smurfInfo)
+      .then(response => {
+        dispatch({ type: 'SMURF_ADDED', payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: 'ERROR_ADDING_SMURF', payload: error});
+      });
+  };
+};
+
+export const loadSmurfs = () => {
+  console.log('loading again');
+  return dispatch => {
+    dispatch({ type: 'IS_LOADING_SMURFS' });
+    axios.get(`${URL}`)
+      .then(response => {
+        dispatch({ type: 'SMURFS_LOADED', payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: 'ERROR_LOADING_SMURFS', payload: error });
+      });
+  };
+};
+
+export const updateSmurf = (smurfInfo) => {
+  return dispatch => {
+    dispatch({ type: 'UPDATING_SMURF' });
+    axios.put(`${URL}${smurfInfo.id}`, smurfInfo)
+      .then(response => {
+        dispatch({ type: 'Smurf_UPDATED', payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: 'ERROR_UPDATING_FRIEND', payload: error});
+      });
+  };
+};
+
+export const removeSmurf = (id) => {
+  return dispatch => {
+    dispatch({ type: 'REMOVING_SMURF' });
+    axios.delete(`${URL}${id}`)
+      .then(response => {
+        dispatch({ type: 'SMURF_REMOVED', payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: 'ERROR_REMOVING_SMURF', payload: error});
+      });
+  };
+};
