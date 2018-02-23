@@ -7,16 +7,38 @@ export const IS_FETCHING = 'IS_FETCHING';
 export const SMURFS_FETCHED = 'SMURFS_FETCHED';
 export const ERROR_FETCHING_SMURFS = 'ERROR_FETCHING_SMURFS';
 
+const URL = 'http://localhost:3333';
+
 export const getSmurfs = () => {
-  
+  const smurfs = axios.get(`${URL}/smurfs`);
+  return dispatch => {
+    dipatch({ type: IS_FETCHING });
+    smurfs
+      .then(({ data }) => {
+        dispatch({ type: SMURFS_FETCHED, payload: data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR_FETCHING_SMURFS, payload: err});
+      });
+  };
 };
 
 export const IS_ADDING = 'IS_ADDING';
 export const SMURF_ADDED = 'SMURF_ADDED';
 export const ERROR_ADDING_SMURF = 'ERROR_ADDING_SMURF';
 
-export const addSmurf = () => {
-
+export const addSmurf = (smurf) => {
+  const smurfs = axios.post(`${URL}/smurfs`, {...smurf});
+  return dispatch => {
+    dipatch({ type: IS_FETCHING });
+    smurfs
+      .then(({ data }) => {
+        dispatch({ type: SMURFS_FETCHED, payload: data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR_FETCHING_SMURFS, payload: err});
+      });
+  };
 };
 
 /*
