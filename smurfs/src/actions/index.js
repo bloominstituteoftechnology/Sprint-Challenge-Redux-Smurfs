@@ -5,12 +5,12 @@ export const FETCHED = 'FETCHED';
 export const ERROR_FETCHING = 'ERROR_FETCHING';
 
 export const getSmurfs = () => {
-  const smurfList = axios.get('http://localhost:3333/smurfs');
+  const smurfList = axios.get('http://localhost:3333/smurfs/');
   return dispatch => {
     dispatch({ type: FETCHING });
     smurfList
-      .then(data => {
-        dispatch({ type: FETCHED, payload: data });
+      .then(response => {
+        dispatch({ type: FETCHED, payload: response.data });
       })
       .catch(err => {
         dispatch({ type: ERROR_FETCHING, payload: err });
