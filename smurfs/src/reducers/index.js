@@ -24,13 +24,10 @@ export const rootReducer = (state = initialState, action) => {
       return { ...state, fetchingSmurfs: true };
       case SMURFS_FETCHED:
       // console.log('Smurfs: ', action.payload);
-      return {
-        ...state,
-        fetchingSmurfs: false,
-        smurfs: action.payload,
-      };
+      return { ...state, fetchingSmurfs: false, smurfs: action.payload };
     case ERROR_FETCHING_SMURFS:
       return { ...state, fetchingSmurfs: false, error: action.payload };
+    
     default:
       return state;
   }
