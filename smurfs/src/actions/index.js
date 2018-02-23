@@ -12,7 +12,7 @@ const URL = 'http://localhost:3333';
 export const getSmurfs = () => {
   const smurfs = axios.get(`${URL}/smurfs`);
   return dispatch => {
-    dipatch({ type: IS_FETCHING });
+    dispatch({ type: IS_FETCHING });
     smurfs
       .then(({ data }) => {
         dispatch({ type: SMURFS_FETCHED, payload: data });
@@ -30,7 +30,7 @@ export const ERROR_ADDING_SMURF = 'ERROR_ADDING_SMURF';
 export const addSmurf = (smurf) => {
   const smurfs = axios.post(`${URL}/smurfs`, {...smurf});
   return dispatch => {
-    dipatch({ type: IS_FETCHING });
+    dispatch({ type: IS_FETCHING });
     smurfs
       .then(({ data }) => {
         dispatch({ type: SMURFS_FETCHED, payload: data });
