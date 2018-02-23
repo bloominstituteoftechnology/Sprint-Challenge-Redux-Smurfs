@@ -2,7 +2,8 @@
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
-
+export const RECEIVING_SMURFS = 'RECEIVING_SMURFS';
+export const RECEIVED_SMURFS = 'RECEIVED_SMURFS';
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
