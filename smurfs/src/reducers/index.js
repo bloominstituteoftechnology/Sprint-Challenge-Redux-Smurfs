@@ -1,6 +1,7 @@
 import {
   RECEIVING_SMURFS,
   RECEIVED_SMURFS, 
+  ERROR_RECEIVING,
 } from '../actions';
 
 const initialState = {

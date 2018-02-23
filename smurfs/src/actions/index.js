@@ -1,9 +1,9 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
+
 export const RECEIVING_SMURFS = 'RECEIVING_SMURFS';
 export const RECEIVED_SMURFS = 'RECEIVED_SMURFS';
+export const ERROR_RECEIVING = 'ERROR_RECEIVING';
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -14,3 +14,19 @@ export const RECEIVED_SMURFS = 'RECEIVED_SMURFS';
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const getSmurfs = () => {
+  const monkeys = axios.get('http://localhost:3333/smurfs');
+  return dispatch => {
+    dispatch ({type: RECEIVING_SMURFS});
+    monkeys
+      .then(( { data }) => {
+        dispatch({ type: RECEIVED_SMURFS, payload: data });
+        console.log(data);
+      })
+      .catch(err => {
+        dispatch({ type: ERROR_RECEIVING, payload: err})
+        console.log('there was an error', err)
+      })
+  }
+}
