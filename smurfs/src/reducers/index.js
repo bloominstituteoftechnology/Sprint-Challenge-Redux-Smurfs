@@ -27,6 +27,8 @@ const smurfs = (state = initialState, action) => {
         fetching: false,
         error: action.payload,
       };
+    default:
+      return state;
   }
 };
 
