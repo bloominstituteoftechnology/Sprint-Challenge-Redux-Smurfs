@@ -4,7 +4,7 @@ export const SMURF_SAVED = 'SMURF_SAVED';
 export const ERROR_SAVING_SMURFS = 'ERROR_SAVING_SMURFS';
 
 export const createNewSmurf = (newSmurfObj) => {
-  const smurfs = axios.post('http://localhost:3333/smurfs', newSmurfObj );
+  const smurfs = axios.post('http://localhost:3333/smurfs/', newSmurfObj );
   return dispatch => {
     dispatch({ type: IS_SAVING });
     smurfs
