@@ -16,17 +16,17 @@ import { IS_ADDING, SMURF_ADDED, ERROR_ADDING_SMURF } from '../actions';
  export const rootReducer = (state = initialState, action) => {
    switch (action.type) {
     case IS_FETCHING:
-      return null;
+      return { ...state, fetchingSmurfs: true };
     case SMURFS_FETCHED:
-      return null;
+      return { ...state, fetchingSmurfs: false, smurfs: action.payload };
     case ERROR_FETCHING_SMURFS:
-      return null;
+      return { ...state, fetchingSmurfs: false, error: action.payload };
     case IS_ADDING:
-      return null;
+      return { ...state, addingSmurf: true };
     case SMURF_ADDED:
-      return null;
+      return { ...state, addingSmurf: false, smurfs: action.payload };
     case ERROR_ADDING_SMURF:
-      return null;
+      return { ...state, addingSmurf: false, error: action.payload };
     default:
       return state;    
    }
