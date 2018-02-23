@@ -32,7 +32,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getSmurfs})(App);
+export default connect(mapStateToProps, { getSmurfs })(App);
 
 /*
  Just remember, `how do I connect my components to redux?`
