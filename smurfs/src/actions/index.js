@@ -9,7 +9,7 @@ export const ADDING_SMURF = 'ADDING_SMURF';
 const URL = `http://localhost:3333/`;
 
 export const getSmurfs = () => {
-  const smurfs = axios.get(`${URL}/smurfs`);
+  const smurfs = axios.get(`${URL}smurfs`);
   return dispatch => {
     dispatch({ type: GETTING_SMURFS });
     smurfs
@@ -23,7 +23,7 @@ export const getSmurfs = () => {
 };
 
 export const addSmurf = smurf => {
-  const newSmurf = axios.post(`${URL}/smurfs`, smurf);
+  const newSmurf = axios.post(`${URL}smurfs`, smurf);
   return dispatch => {
     dispatch({ type: ADDING_SMURF });
     newSmurf
