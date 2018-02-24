@@ -1,4 +1,3 @@
-import * as smurfActions from '../actions';
 
 const smurfReducer = (state = [], action) => {
   switch (action.type) {
