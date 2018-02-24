@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addSmurf } from '../actions';
+import { addSmurf, getSmurfs } from '../actions';
 import { connect } from 'react-redux';
 
 class SmurfForm extends Component {
@@ -7,6 +7,9 @@ class SmurfForm extends Component {
         name: '',
         age: '',
         height: '',
+    }
+    componentDidMount() {
+        this.props.getSmurfs();
     }
     handleInputChange = event => {
         this.setState({ [event.target.name]: event.target.value });
@@ -45,8 +48,8 @@ class SmurfForm extends Component {
               placeholder="Height"
               onChange={this.handleInputChange}
             />
-            <button onClick={() => this.handleAddSmurf()} type="button">
-              Add New Friend
+            <button className="SmurfForm__Button" onClick={() => this.handleAddSmurf()} type="button">
+              Call a Smurf Out from Hiding
             </button>
           </form>
         );
@@ -56,9 +59,9 @@ class SmurfForm extends Component {
 const mapStateToProps = state => {
     return {
       error: state.error,
-      creatingFriend: state.creatingFriend
+      creatingSmurf: state.creatingSmurf
     };
   };
   
-  export default connect(mapStateToProps, { addSmurf })(SmurfForm);
+  export default connect(mapStateToProps, { getSmurfs, addSmurf })(SmurfForm);
   

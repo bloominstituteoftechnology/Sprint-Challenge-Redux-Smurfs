@@ -1,0 +1,63 @@
+@import "reset";
+@import "mixins";
+
+.App {
+    background: @smurfblue;
+    height: 1000px;
+    display: flex;
+    flex-flow: column;
+    min-height: 100%;
+    position: relative;
+    .header {
+        background: white;
+        padding: 15px 0px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 3.2rem;
+        font-weight: 700;
+        text-shadow: 2px 2px #ddd;
+        color: @smurfblue;
+    }
+    .SmurfForm {
+        margin: 30px;
+        display: flex;
+        flex-flow: column;
+        width: 150px;
+        position: absolute;
+        top: 100px;
+        border: solid white 30px;
+        border-radius: 5px;
+        background: white;
+        .input {
+            border-radius: 5px;
+            margin-bottom: 15px;
+            background: white;
+        }
+        .SmurfForm__Button {
+            background: @smurfblue;
+            padding: 3px;
+            color: white;
+            border: solid #ddd 1px;
+            border-radius: 5px;
+            font-size: 1.8rem;
+        }
+    }
+    .smurfs {
+        display: flex;
+        flex-flow: row;
+        margin: 8px;
+        justify-content : center;
+        .smurf {
+            display: flex;
+            flex-flow: column;
+            padding: 3px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 2px 2px #ddd;
+            margin: 30px;
+            .smurf__name {
+                font-size: 1.6rem;
+                font-weight: 500;
+            }
+        }
+    }
+}
