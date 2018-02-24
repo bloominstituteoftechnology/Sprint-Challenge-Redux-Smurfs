@@ -23,8 +23,18 @@
   background: rgba(255, 255, 255, 0.164);
 }
 
+.smurf__form-edit {
+  width: 60%;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  margin-top: -30px;
+}
+
 .form__text {
   padding-top: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
 }
 
 .form__input {
@@ -103,6 +113,17 @@
   margin: 25px 15px 0px 15px;
   border-radius: 20px;
   width: 90px;
+  background: rgba(182, 182, 255, 0.384);
+  border: white;
+  align-self: center;
+  width: 35%;
+}
+
+.edit-buttons {
+  border-radius: 20px;
+  width: 90px;
+  margin-top: -5px;
+  padding: 10px;
   background: rgba(182, 182, 255, 0.384);
   border: white;
   align-self: center;

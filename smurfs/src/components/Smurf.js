@@ -44,12 +44,12 @@ class Smurf extends Component {
   editForm = () => {
     return (
       <div className="each__smurf">
-        <div className="edit-smurf__form">
+        <div className="smurf__form-edit">
           <form type="submit" onSubmit={this.addSmurf}>
-            <div className="edit-form__text">Edit your Smurf</div>
+            <div className="form__text">Edit your Smurf</div>
             <input
               type="text"
-              className="edit-form__input"
+              className="form__input"
               placeholder="Name"
               onChange={this.updateState}
               name="name"
@@ -57,7 +57,7 @@ class Smurf extends Component {
             />
             <input
               type="number"
-              className="edit-form__input"
+              className="form__input"
               placeholder="Age"
               onChange={this.updateState}
               name="age"
@@ -65,13 +65,13 @@ class Smurf extends Component {
             />
             <input
               type="number"
-              className="edit-form__input"
+              className="form__input"
               placeholder="Height"
               onChange={this.updateState}
               name="height"
               value={this.state.height}
             />
-            <input type="submit" value="submit" className="edit-form__button" />
+            <input type="submit" value="submit" className="edit-buttons" />
           </form>
         </div>
       </div>
