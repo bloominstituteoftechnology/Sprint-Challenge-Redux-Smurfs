@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { deleteSmurf } from '../actions';
 import './smurfList.css';
 
 const SmurfList = (props) => {
@@ -12,10 +14,11 @@ const SmurfList = (props) => {
           <div>{smurf.age} smurf-years old</div>
           <div className="container__item-header" >Height</div>
           <div>{smurf.height} cm tall</div>
+          <button onClick={() => {props.deleteSmurf(smurf.id)}}>Delete {smurf.name}</button>
         </li>
       })}
     </ul>
   );
 };
 
-export default SmurfList;
+export default connect(null, { deleteSmurf })(SmurfList);
