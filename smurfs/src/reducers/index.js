@@ -23,7 +23,13 @@ const smurfReducer = (state = [], action) => {
       return { ...state, updating: true, updated: false };
 
     case 'SMURF_UPDATED':
-      return { ...state, updated: true, updating: false, payload: action.payload };
+    console.log('update payload', action.payload);
+      return { ...state, updated: true,
+        updating: false,
+        payload: state.payload.map(item =>
+          (item.id === action.payload.id) ?
+            item = action.payload : item )
+      };
 
     case 'ERROR_UPDATING_SMURFS':
       return { ...state, updated: false, updating: false, payload: action.payload };

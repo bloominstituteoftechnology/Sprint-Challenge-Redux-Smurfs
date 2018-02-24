@@ -17,6 +17,7 @@ class UpdateSmurfForm extends React.Component {
       age: this.state.age,
       height: this.state.height,
     });
+    this.props.deactivateEdit();
   }
 
   onChange = (event) => {

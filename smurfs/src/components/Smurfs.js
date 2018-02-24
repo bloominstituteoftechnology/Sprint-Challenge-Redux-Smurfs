@@ -14,8 +14,12 @@ class Smurfs extends React.Component {
     this.props.loadSmurfs();
   }
 
-  toggleEdit = (id, name, age, height) => {
+  activateEdit = (id, name, age, height) => {
     this.setState({ update: !this.state.update, smurf: { id, name, age, height }});
+  }
+
+  deactivateEdit = () => {
+    this.setState({ update: false });
   }
 
   removeSmurf = (id) => {
@@ -34,7 +38,7 @@ class Smurfs extends React.Component {
                   <div>{smurf.name}</div>
                   <div>{smurf.age}</div>
                   <div>{smurf.height}{'cm'}</div>
-                  <button onClick={() => this.toggleEdit(smurf.id, smurf.name, smurf.age, smurf.email)}>Edit</button>
+                  <button onClick={() => this.activateEdit(smurf.id, smurf.name, smurf.age, smurf.height)}>Edit</button>
                   <button onClick={() => this.props.removeSmurf(smurf.id)}>Remove</button>
                 </li>
               );
@@ -45,7 +49,7 @@ class Smurfs extends React.Component {
           Loading...
         </div>
         }
-        { this.state.update ? <UpdateSmurfForm smurf={this.smurf} /> : null }
+        { this.state.update ? <UpdateSmurfForm smurf={this.state.smurf} deactivateEdit={this.deactivateEdit} /> : null }
       </div>
     );
   }
@@ -55,6 +59,8 @@ const mapStateToProps = (state) => {
   return {
     smurfs: state.payload,
     loaded: state.loaded,
+    updated: state.updated,
+    removed: state.removed,
   };
 };
 
