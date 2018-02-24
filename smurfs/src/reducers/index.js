@@ -20,3 +20,78 @@
   This will guard your namespacing issues.
   Components can read your store as, `state` and not `state.fooReducer`.
 */
+
+import * as actionType from '../actions';
+
+const initialState = {
+  smurfs: [],
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
+  deletingSmurfs: false,
+  error: null,
+};
+
+export const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+
+    // Fetch 
+    case actionType.FETCHING_SMURFS:
+    return {
+      ...state,
+      fetchingSmurfs: true
+    };
+
+    // Add
+    case actionType.ADDING_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload, 
+        addingSmurf: false
+      };
+ 
+      // Update
+      case actionType.UPDATING_SMURF:
+      return {
+        ...state,
+        updatingSmurf: true
+      };
+
+      case actionType.UPDATE_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload,
+        updatingSmurf: false
+      };
+
+      // Delete
+      case actionType.DELETING_SMURF:
+      return {
+        ...state,
+        deletingSmurf: true,
+      };
+
+      case actionType.DELETE_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload,
+        deletingSmurf: false,
+      };
+
+      // Error
+      case actionTypes.ERROR:
+      return {
+        ...state,
+        fetchingSmurf: false,
+        deletingSmurf: false,
+        updatingSmurf: false,
+        error: action.payload
+      };
+
+    default:
+      return state;
+  }
+};
+
+export default rootReducer;
