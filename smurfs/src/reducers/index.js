@@ -1,6 +1,6 @@
 import {IS_FETCHING, SMURFS_FETCHED, ERROR_FETCHING_SMURFS } from '../actions/getSmurfs';
 import { DELETING_SMURF, SMURF_DELETED, ERROR_DELETING_SMURF } from '../actions/deleteSmurf';
-
+import { IS_ADDING, SMURF_ADDED, ERROR_ADDING_SMURF } from '../actions/createNewSmurf';
 
 const initialState = {
   smurfs: [],
@@ -8,7 +8,7 @@ const initialState = {
   addingSmurf: false,
   updatingSmurf: false,
   deletingSmurfs: false,
-  error: false
+  error: null
  };
 
 
@@ -28,12 +28,18 @@ export const rootReducer = (state = initialState, action) => {
       return { ...state, fetchingSmurfs: false, smurfs: action.payload };
     case ERROR_FETCHING_SMURFS:
       return { ...state, fetchingSmurfs: false, error: action.payload };
+    case IS_ADDING:
+      return { ...state, addingSmurf: true };
+    case SMURF_ADDED:
+      return { ...state, addingSmurf: false, smurfs: action.payload };
+    case ERROR_ADDING_SMURF:
+      return { ...state, addingSmurf: false, error: action.payload };
     case DELETING_SMURF:
       return { ...state, deletingSmurfs: true };
     case SMURF_DELETED:
       return { ...state, deletingSmurfs: false, smurfs: action.payload };
     case ERROR_DELETING_SMURF:
-      return { ...state, deletingSmurfs: false, error: action.payload }
+      return { ...state, deletingSmurfs: false, error: action.payload };
     default:
       return state;
   }

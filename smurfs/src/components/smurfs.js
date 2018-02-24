@@ -9,11 +9,11 @@ const Smurfs = (props) => {
   return (
   <ul>
     {props.smurfs.map((smurf, i) => {
-      return <li key={i+'a'}>
+      return <li key={smurf.id}>
         <div>{smurf.name}</div>
         <div>{smurf.age}</div>
         <div>{smurf.height}</div>
-        <button onClick={() => props.deleteSmurf({ i })}>Delete</button>
+        <button onClick={() => props.deleteSmurf({  })}>Delete</button>
       </li>
     })}
   </ul>
