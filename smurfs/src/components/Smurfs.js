@@ -33,6 +33,7 @@ class Smurfs extends React.Component {
         { this.props.loaded ?
         <ul className='smurf-container'>
           { this.props.smurfs.map((smurf) => {
+            console.log(smurf);
               return (
                 <li key={smurf.id} className='smurf'>
                   <div className='smurf-info'>

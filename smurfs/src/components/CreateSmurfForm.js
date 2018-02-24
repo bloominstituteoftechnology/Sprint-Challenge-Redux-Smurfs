@@ -6,7 +6,7 @@ class CreateSmurfForm extends React.Component {
   state = {
     name: '',
     age: '',
-    email: '',
+    height: '',
   }
 
   onSubmit = (event) => {
@@ -36,9 +36,9 @@ class CreateSmurfForm extends React.Component {
       <div className='create-smurf-container'>
         <div className='create-smurf-header'>Add Smurf</div>
         <form onSubmit={this.onSubmit} className='create-smurf'>
-            <input onChange={this.onChange} type='text' placeholder='name' name='name' value={this.state.name} require='true' />
-            <input onChange={this.onChange} type='number' placeholder='age' name='age' value={this.state.age} require='true' />
-            <input onChange={this.onChange} type='number' placeholder='height' name='height' value={this.state.height} require='true' />
+            <input onChange={this.onChange} type='text' placeholder='name' name='name' value={this.state.name} required='true' />
+            <input onChange={this.onChange} type='number' placeholder='age' name='age' value={this.state.age} required='true' />
+            <input onChange={this.onChange} type='number' placeholder='height' name='height' value={this.state.height} required='true' />
             <button type='submit'>Add Smurf</button>
         </form>
       </div>
