@@ -28,7 +28,6 @@ const initialState = {
   fetchingSmurfs: false,
   addingSmurf: false,
   updatingSmurf: false,
-  deletingSmurf: false,
   deletingSmurfs: false,
   error: null,
 };
@@ -47,7 +46,7 @@ export const rootReducer = (state = initialState, action) => {
     case actionType.ADDING_SMURF:
       return {
         ...state,
-        smurfs: action.payload, 
+        smurfs: action.paylsload, 
         addingSmurf: false
       };
  
