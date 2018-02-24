@@ -40,14 +40,25 @@ body {
   font-size: 1rem;
   .flex-center-mix();
   flex-direction: column;
+
+  .App-header {
+    .flex-center-mix();
+    position: absolute;
+    top: 150px;
+    font-size: 1.1rem;
+  }
 }
 
 .smurf-container {
-  width: 20%;
+  width: 384px;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   .smurf {
     width: 300px;
     height: 100px;
+    margin-left: 45px;
     flex-direction: row;
     .flex-center-mix();
 
@@ -89,9 +100,12 @@ body {
 .create-smurf-container {
   .flex-center-mix();
   flex-direction: column;
+  border-top: 1px solid #cecece;
+  padding-top: 5px;
 
   .create-smurf-header {
     user-select: none;
+    margin: 7px;
   }
 
   .create-smurf {
@@ -100,7 +114,7 @@ body {
 
     input {
       height: 20px;
-      margin: 2px;
+      margin: 0px 2px 5px 2px;
       padding-left: 6px;
       border-radius: 2px;
       border: 1px solid #cecece;
@@ -121,7 +135,7 @@ body {
   height: 200px;
   width: 300px;
   background: #E5E5E5;
-  box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 70px 15px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   .flex-center-mix();
   flex-direction: column;
