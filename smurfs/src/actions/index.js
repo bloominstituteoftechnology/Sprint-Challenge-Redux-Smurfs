@@ -1,7 +1,57 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
+
+export const FETCHING = 'FETCHING';
+export const FETCHED = 'FETCHED';
+export const ERROR_FETCHING = 'ERROR_FETCHING';
+export const ADDING = 'ADDING';
+export const ADDED = 'ADDED';
+export const REMOVING = 'REMOVING';
+export const REMOVED = 'REMOVED';
+export const ERROR_REMOVING = 'ERROR_REMOVING';
+export const ERROR_ADDING = 'ERROR_ADDING';
+
+
+export const getSmurfs = () => {
+  const smurfGet = axios.get('http://localhost:3333/smurfs/');
+  return dispatch => {
+    dispatch({ type: FETCHING });
+    smurfGet
+      .then(response => {
+        dispatch({ type: FETCHED, payload: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR_FETCHING, payload: err });
+      });
+  };
+};
+
+export const addSmurf = (smurf) => {
+  const smurfPost = axios.post('http://localhost:3333/smurfs/', smurf);
+  return dispatch => {
+    dispatch({ type: ADDING });
+    smurfPost
+    .then((response) => {
+      dispatch({ type: ADDED, payload: response.data });
+    })
+    .catch(err => {
+      dispatch({ type: ERROR_ADDING, payload: err });
+    })
+  }
+}
+
+export const removeSmurf = (id) => {
+  const smurfRemove = axios.delete(`http://localhost:3333/smurfs/${id}`, id);
+  return dispatch => {
+    dispatch({ type: REMOVING });
+    smurfRemove
+    .then((response) => {
+      dispatch({ type: REMOVED, payload: response.data.SmurfRemoved.id });
+    })
+    .catch(err => {
+      dispatch({ type: ERROR_REMOVING, payload: err });
+    })
+  }
+}
 
 /*
   For this project you'll need at least 2 action creators for the main portion,

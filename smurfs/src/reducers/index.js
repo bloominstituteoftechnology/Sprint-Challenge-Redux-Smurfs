@@ -1,22 +1,81 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import {
+  FETCHING,
+  FETCHED,
+  ADDING,
+  ADDED,
+  REMOVING,
+  REMOVED,
+  ERROR_FETCHING,
+  ERROR_ADDING,
+  ERROR_REMOVING,
+} from '../actions';
 
-/*
- Your initial/default state for this project could look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurfs: false
-   error: true
- }
-*/
+const initialState = {
+  fetching: false,
+  fetched: false,
+  adding: false,
+  added: false,
+  error: null,
+  smurfs: [],
+};
 
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
-  Components can read your store as, `state` and not `state.fooReducer`.
-*/
+const smurfs = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCHING:
+      return {
+        ...state,
+        fetching: true,
+      };
+    case FETCHED:
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        smurfs: action.payload,
+      };
+    case ERROR_FETCHING:
+      return {
+        ...state,
+        fetching: false,
+        error: action.payload,
+      };
+    case ADDING:
+      return {
+        ...state,
+        adding: true,
+      }
+    case ADDED:
+      return {
+        ...state,
+        adding: false,
+        added: true,
+        smurfs: action.payload
+      }
+    case ERROR_ADDING:
+      return {
+        ...state,
+        error: action.payload,
+      }
+    case REMOVING:
+      return {
+        ...state,
+        removing: true,
+      }
+    case REMOVED:
+      return {
+        ...state,
+        removing: false,
+        removed: true,
+        smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload)
+      }
+    case ERROR_REMOVING:
+      return {
+        ...state,
+        error: action.payload,
+      }
+    default:
+      return state;
+  }
+};
+
+export default smurfs;
