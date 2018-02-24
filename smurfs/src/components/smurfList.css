@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container__item {
+  list-style-type: none;
+  margin: 0 5px;
+}
+
+.container__item-header {
+  font-weight: bold;
+}
