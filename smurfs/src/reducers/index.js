@@ -32,7 +32,7 @@ const smurfReducer = (state = [], action) => {
       return { ...state, removing: true, removed: false };
 
     case 'SMURF_REMOVED':
-      return { ...state, removed: true, removing: false, payload: action.payload };
+      return { ...state, removed: true, removing: false, payload: state.payload.filter(item => item.id !== action.payload) };
 
     case 'ERROR_REMOVING_SMURF':
       return { ...state, removed: false, removing: false, payload: action.payload };
