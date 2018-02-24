@@ -46,7 +46,7 @@ const smurfs = (state = initialState, action) => {
         ...state,
         adding: false,
         added: true,
-        smurfs: [...smurfs, action.payload]
+        smurfs: action.payload
       }
     case ERROR_ADDING:
       return {
