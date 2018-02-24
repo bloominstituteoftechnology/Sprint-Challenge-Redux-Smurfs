@@ -18,7 +18,7 @@ export const addSmurf = (smurfInfo) => {
 export const loadSmurfs = () => {
   console.log('loading again');
   return dispatch => {
-    dispatch({ type: 'IS_LOADING_SMURFS' });
+    dispatch({ type: 'LOADING_SMURFS' });
     axios.get(`${URL}`)
       .then(response => {
         dispatch({ type: 'SMURFS_LOADED', payload: response.data });
@@ -34,7 +34,7 @@ export const updateSmurf = (smurfInfo) => {
     dispatch({ type: 'UPDATING_SMURF' });
     axios.put(`${URL}${smurfInfo.id}`, smurfInfo)
       .then(response => {
-        dispatch({ type: 'Smurf_UPDATED', payload: response.data });
+        dispatch({ type: 'SMURF_UPDATED', payload: response.data });
       })
       .catch(error => {
         dispatch({ type: 'ERROR_UPDATING_FRIEND', payload: error});

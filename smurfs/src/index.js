@@ -4,13 +4,17 @@ import './index.css';
 import App from './components/App';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import /* You need some sore of reducer */ './reducers';
+import smurfReducer from  './reducers';
+
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  () => {}, // this is the most basic reducer. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+  smurfReducer,
+  composeEnhancers(
+    applyMiddleware(thunk, logger))
 );
 
 ReactDOM.render(
