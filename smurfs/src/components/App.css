@@ -1,28 +1,137 @@
-.App {
+* {
+  margin: 0px;
+  padding: 0px;
   text-align: center;
+  align-content: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.form__container {
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  background: rgba(191, 191, 255, 0.884);
+  margin-bottom: 25px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.smurf__form {
+  width: 60%;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  background: rgba(255, 255, 255, 0.164);
 }
 
-.App-title {
-  font-size: 1.5em;
+.smurf__form-edit {
+  width: 60%;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  margin-top: -30px;
 }
 
-.App-intro {
-  font-size: large;
+.form__text {
+  padding-top: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.form__input {
+  height: 30px;
+  width: 200px;
+  margin: 15px;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+.form__button {
+  width: 100px;
+  background: lightgray;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 3px;
+}
+
+.smurf {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+  list-style-type: none;
+  border: 1px solid gray;
+  margin: 25px;
+  padding: 15px;
+  height: 140px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.smurf__name {
+  font-weight: bold;
+}
+
+.smurf__email {
+  font-style: italic;
+}
+
+.smurfs__list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  background: rgb(179, 179, 179);
+}
+
+.each__smurf {
+  width: 400px;
+  height: 200px;
+  background: rgba(248, 248, 248, 0.301);
+  padding: 30px 0px;
+  margin: 30px;
+  border-radius: 15px;
+  justify-content: center;
+  display: flex;
+}
+
+.smurf_ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.smurf__data {
+  padding: 1px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 26px;
+}
+
+.buttons {
+  padding: 10px;
+  margin: 25px 15px 0px 15px;
+  border-radius: 20px;
+  width: 90px;
+  background: rgba(182, 182, 255, 0.384);
+  border: white;
+  align-self: center;
+  width: 35%;
+}
+
+.edit-buttons {
+  border-radius: 20px;
+  width: 90px;
+  margin-top: -5px;
+  padding: 10px;
+  background: rgba(182, 182, 255, 0.384);
+  border: white;
+  align-self: center;
+  width: 35%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
