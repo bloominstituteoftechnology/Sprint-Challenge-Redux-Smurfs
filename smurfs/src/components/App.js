@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getSmurfs, addSmurf } from '../actions';
+import { getSmurfs } from '../actions';
 import Smurfs from './Smurfs';
+import SmurfForm from './SmurfForm';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -14,6 +15,7 @@ class App extends Component {
     this.props.getSmurfs();
   }
   render() {
+    console.log('App Props: ', this.props)
     return (
       <div className="App">
         <div className="header">
@@ -22,7 +24,7 @@ class App extends Component {
             <p className="fetching"> calling your smurfs ... </p>
           ) : null}
         </div>
-        
+        <SmurfForm smurfs={this.props.smurfs}/>
         <Smurfs smurfs={this.props.smurfs} className="smurfs"/>
       </div>
     );
