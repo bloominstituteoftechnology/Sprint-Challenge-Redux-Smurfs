@@ -4,9 +4,9 @@ class Smurf extends React.Component {
   render() {
     return (
       <li>
-        {this.props.smurf.name} <br />
-        {this.props.smurf.age} <br />
-        {this.props.smurf.height} <br />
+        Name: {this.props.smurf.name} <br />
+        Age: {this.props.smurf.age} years old<br />
+        Height: {this.props.smurf.height} cm tall<br />
       </li>
     );
   };
