@@ -1,4 +1,4 @@
-import { IS_FETCHING, SMURFS_FETCHED, ERROR } from '../actions';
+import { IS_FETCHING, SMURFS_FETCHED, ERROR, ADDING_SMURF, ADD_SMURF } from '../actions';
 
 const smurfState = {
    smurfs: [],
@@ -17,14 +17,25 @@ const smurfState = {
           fetchingSmurfs: true, 
       };
       case SMURFS_FETCHED:
-            return {
-              ...state,
-              smurfsFetched: true,
-              fetchingSmurfs: false,
-              smurfs: action.payload
+        return {
+          ...state,
+          smurfsFetched: true,
+          fetchingSmurfs: false,
+          smurfs: action.payload
             };
-          case ERROR:
-            return { ...state, fetchingSmurfs: false, error: action.payload };
+      case ADDING_SMURF:
+        return { 
+          ...state, 
+          addingSmurf: true,
+        };
+      case ADD_SMURF:
+        return {
+          ...state,
+          addingSmurf: false,
+          friends: action.payload
+        }
+      case ERROR:
+        return { ...state, fetchingSmurfs: false, error: action.payload };
       
       default:
           return state;

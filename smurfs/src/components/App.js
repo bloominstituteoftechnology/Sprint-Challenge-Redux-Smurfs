@@ -20,7 +20,7 @@ class App extends Component {
       <div className="App">
         <div className="header">
           <h1>SMURFS! 2.0 W/ Redux</h1>
-          {this.props.fetchingFriends ? (
+          {this.props.fetchingSmurfs ? (
             <p className="fetching"> calling your smurfs ... </p>
           ) : null}
         </div>
@@ -34,6 +34,8 @@ const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
+    addingSmurfs: state.addingSmurfs,
+    addSmurf: state.addSmurf,
     error: state.error
   }
 }
