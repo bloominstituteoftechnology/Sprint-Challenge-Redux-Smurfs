@@ -6,6 +6,12 @@ import './App.css';
  Just remember, `how do I connect my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
+// import { connect } from 'react-redux';
+// import { getSmurfs, addSmurf, updateSmurf, deleteSmurf } from '../actions';
+import SmurfForm from './SmurfForm';
+// import Smurfs from './Smurfs';
+
+
 class App extends Component {
   render() {
     return (
@@ -14,6 +20,10 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+
+        <SmurfForm />
+        {/* <Smurfs /> */}
+
       </div>
     );
   }
