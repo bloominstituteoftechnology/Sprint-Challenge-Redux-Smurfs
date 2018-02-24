@@ -43,10 +43,9 @@ export const updateSmurf = (updatedSmurf, id) => {
   return dispatch => {
     dispatch({ type: UPDATING_SMURF });
     smurfs
-      .then(getSmurfs())
-      .then(payload => {
-        dispatch({ type: UPDATED_SMURF, payload: payload.data });
-      })
+    .then(payload => {
+      dispatch({ type: UPDATED_SMURF, payload: payload.data });
+    })
       .catch(error => {
         dispatch({ type: ERROR, payload: error });
       });
@@ -58,8 +57,8 @@ export const deleteSmurf = (deletingSmurf, id) => {
   return dispatch => {
     dispatch({ type: DELETING_SMURF });
     smurfs
-      .then(() => {
-        dispatch({ type: DELETED_SMURF });
+      .then((payload) => {
+        dispatch({ type: DELETED_SMURF, payload: payload.data });
       })
       .catch(error => {
         dispatch({ type: ERROR, payload: error });

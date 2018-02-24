@@ -1,28 +1,76 @@
-.App {
+* {
+  margin: 0px;
+  padding: 0px;
   text-align: center;
+  align-content: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.form__container {
+  align-items: center;
+  border: 1px solid red;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  display: flex;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.smurf__form {
+  border: 1px blue solid;
+  width: 60%;
+  align-content: center;
+  justify-content: center;
+  display: flex;
 }
 
-.App-title {
-  font-size: 1.5em;
+.form__text {
+  padding-top: 15px;
 }
 
-.App-intro {
-  font-size: large;
+.form__input {
+  height: 30px;
+  width: 200px;
+  margin: 15px;
+  border: 1px solid gray;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.form__button {
+  width: 100px;
+  background: lightgray;
+  padding: 5px;
+  margin: 10px;
+}
+
+.friend {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+  list-style-type: none;
+  border: 1px solid gray;
+  margin: 25px;
+  padding: 15px;
+  height: 140px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.friend__name {
+  font-weight: bold;
+}
+
+.friend__email {
+  font-style: italic;
+}
+
+.friends__list {
+  max-width: 1000px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

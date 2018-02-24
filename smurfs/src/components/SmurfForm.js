@@ -35,35 +35,37 @@ class SmurfForm extends Component {
 
   render() {
     return (
-      <div className="smurf__form">
-        <form type="submit" onSubmit={this.addSmurf}>
-          <div className="form__text">Add a new Smurf!</div>
-          <input
-            type="text"
-            className="form__input"
-            placeholder="Name"
-            onChange={this.updateSmurf}
-            name="name"
-            value={this.state.name}
-          />
-          <input
-            type="number"
-            className="form__input"
-            placeholder="Age"
-            onChange={this.updateSmurf}
-            name="age"
-            value={this.state.age}
-          />
-          <input
-            type="number"
-            className="form__input"
-            placeholder="Height"
-            onChange={this.updateSmurf}
-            name="height"
-            value={this.state.height}
-          />
-          <input type="submit" value="submit" className="form__button" />
-        </form>
+      <div className="form__container">
+        <div className="smurf__form">
+          <form type="submit" onSubmit={this.addSmurf}>
+            <div className="form__text">Add a new Smurf!</div>
+            <input
+              type="text"
+              className="form__input"
+              placeholder="Name"
+              onChange={this.updateSmurf}
+              name="name"
+              value={this.state.name}
+            />
+            <input
+              type="number"
+              className="form__input"
+              placeholder="Age"
+              onChange={this.updateSmurf}
+              name="age"
+              value={this.state.age}
+            />
+            <input
+              type="number"
+              className="form__input"
+              placeholder="Height"
+              onChange={this.updateSmurf}
+              name="height"
+              value={this.state.height}
+            />
+            <input type="submit" value="submit" className="form__button" />
+          </form>
+        </div>
       </div>
     );
   }

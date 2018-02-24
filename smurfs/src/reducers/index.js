@@ -57,9 +57,12 @@ export const reducer = (state = initialState, action) => {
     case UPDATED_SMURF:
       return {
         ...state,
+        smurfs: state.smurfs.map(smurf => {
+          if (smurf.id === action.payload.id) return action.payload;
+          return smurf;
+        }),
         updatingSmurf: false,
-        updatedSmurf: true,
-        smurfs: [...state.smurfs, action.payload],
+        updateSmurf: true,
       };
     case DELETING_SMURF:
       return {
@@ -69,6 +72,9 @@ export const reducer = (state = initialState, action) => {
     case DELETED_SMURF:
       return {
         ...state,
+        smurfs: state.smurfs.filter(smurf => {
+          return smurf.id !== action.payload.id;
+        }),
         deletingSmurf: false,
         deletedSmurf: true,
       };
