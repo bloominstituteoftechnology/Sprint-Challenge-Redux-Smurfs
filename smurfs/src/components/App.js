@@ -26,7 +26,7 @@ class App extends Component {
         </header>
         <div className="Flex-Container">
         {this.props.fetchingSmurfs ? (
-            <button>Cool</button>
+            <button>Test</button>
           ) : (
             <Smurfs smurfs={this.props.smurfs} />
           )}
