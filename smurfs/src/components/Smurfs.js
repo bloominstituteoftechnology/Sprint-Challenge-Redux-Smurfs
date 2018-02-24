@@ -31,15 +31,19 @@ class Smurfs extends React.Component {
     return (
       <div>
         { this.props.loaded ?
-        <ul>
+        <ul className='smurf-container'>
           { this.props.smurfs.map((smurf) => {
               return (
-                <li key={smurf.id}>
-                  <div>{smurf.name}</div>
-                  <div>{smurf.age}</div>
-                  <div>{smurf.height}{'cm'}</div>
-                  <button onClick={() => this.activateEdit(smurf.id, smurf.name, smurf.age, smurf.height)}>Edit</button>
-                  <button onClick={() => this.props.removeSmurf(smurf.id)}>Remove</button>
+                <li key={smurf.id} className='smurf'>
+                  <div className='smurf-info'>
+                    <div><span className='smurf-info-label'>Name:</span> <span>{smurf.name}</span></div>
+                    <div><span className='smurf-info-label'>Age:</span> <span>{smurf.age}{'yr'}</span></div>
+                    <div><span className='smurf-info-label'>Height:</span> <span>{smurf.height}{'cm'}</span></div>
+                  </div>
+                  <div className='smurf-buttons'>
+                    <button onClick={() => this.activateEdit(smurf.id, smurf.name, smurf.age, smurf.height)}>Edit</button>
+                    <button onClick={() => this.props.removeSmurf(smurf.id)}>Remove</button>
+                  </div>
                 </li>
               );
             })}

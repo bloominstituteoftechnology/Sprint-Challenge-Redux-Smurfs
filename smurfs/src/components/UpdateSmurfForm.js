@@ -30,9 +30,9 @@ class UpdateSmurfForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>Update Friend</div>
-        <form onSubmit={this.onSubmit}>
+      <div className='update-smurf-container'>
+        <div className='update-smurf-header'>Update Friend</div>
+        <form onSubmit={this.onSubmit} className='update-smurf'>
           <input onChange={this.onChange} type='text' placeholder='name' name='name' value={this.state.name} require='true' />
           <input onChange={this.onChange} type='number' placeholder='age' name='age' value={this.state.age} require='true' />
           <input onChange={this.onChange} type='number' placeholder='height' name='height' value={this.state.height} require='true' />

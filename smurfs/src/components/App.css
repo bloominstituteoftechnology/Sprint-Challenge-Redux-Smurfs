@@ -1,0 +1,203 @@
+html,
+body,
+#root,
+#root > div {
+  height: 100%;
+}
+.button-mix {
+  outline: none;
+  font-family: inherit;
+  font-size: 0.8em;
+  border-radius: 3px;
+  border: 1px double rgba(81, 113, 131, 0.8);
+  background: #f5f5f5;
+  padding: 4px 6px 2px 6px;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 2px;
+  cursor: pointer;
+  line-height: 5px;
+}
+.button-mix:hover {
+  border: 2px double #5aacdb;
+  padding: 4px 5px 2px 5px;
+}
+.button-mix:active {
+  background: rgba(90, 172, 219, 0.3);
+}
+.flex-center-mix {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  color: rgba(0, 0, 0, 0.9);
+  background: #e6e6e6;
+  font-family: Nunito Sans;
+  font-size: 62.5%;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+}
+.App {
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.smurf-container {
+  width: 20%;
+}
+.smurf-container .smurf {
+  width: 300px;
+  height: 100px;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.smurf-container .smurf .smurf-info {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.smurf-container .smurf .smurf-info div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1px;
+  border-bottom: 1px solid #cecece;
+}
+.smurf-container .smurf .smurf-info div .smurf-info-label {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.6);
+  user-select: none;
+  margin-right: 5px;
+}
+.smurf-container .smurf .smurf-buttons {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.smurf-container .smurf .smurf-buttons button {
+  height: 19px;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.8em;
+  border-radius: 3px;
+  border: 1px double rgba(81, 113, 131, 0.8);
+  background: #f5f5f5;
+  padding: 4px 6px 2px 6px;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 2px;
+  cursor: pointer;
+  line-height: 5px;
+  margin-bottom: 3px;
+}
+.smurf-container .smurf .smurf-buttons button:hover {
+  border: 2px double #5aacdb;
+  padding: 4px 5px 2px 5px;
+}
+.smurf-container .smurf .smurf-buttons button:active {
+  background: rgba(90, 172, 219, 0.3);
+}
+.create-smurf-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.create-smurf-container .create-smurf-header {
+  user-select: none;
+}
+.create-smurf-container .create-smurf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.create-smurf-container .create-smurf input {
+  height: 20px;
+  margin: 2px;
+  padding-left: 6px;
+  border-radius: 2px;
+  border: 1px solid #cecece;
+}
+.create-smurf-container .create-smurf button {
+  height: 19px;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.8em;
+  border-radius: 3px;
+  border: 1px double rgba(81, 113, 131, 0.8);
+  background: #f5f5f5;
+  padding: 4px 6px 2px 6px;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 2px;
+  cursor: pointer;
+  line-height: 5px;
+}
+.create-smurf-container .create-smurf button:hover {
+  border: 2px double #5aacdb;
+  padding: 4px 5px 2px 5px;
+}
+.create-smurf-container .create-smurf button:active {
+  background: rgba(90, 172, 219, 0.3);
+}
+.update-smurf-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 200px;
+  width: 300px;
+  background: #E5E5E5;
+  box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.update-smurf-container .update-smurf-header {
+  margin-bottom: 10px;
+  user-select: none;
+}
+.update-smurf-container .update-smurf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.update-smurf-container .update-smurf input {
+  height: 20px;
+  margin: 2px;
+  padding-left: 6px;
+  border-radius: 2px;
+  border: 1px solid #cecece;
+}
+.update-smurf-container .update-smurf button {
+  height: 19px;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.8em;
+  border-radius: 3px;
+  border: 1px double rgba(81, 113, 131, 0.8);
+  background: #f5f5f5;
+  padding: 4px 6px 2px 6px;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 2px;
+  cursor: pointer;
+  line-height: 5px;
+}
+.update-smurf-container .update-smurf button:hover {
+  border: 2px double #5aacdb;
+  padding: 4px 5px 2px 5px;
+}
+.update-smurf-container .update-smurf button:active {
+  background: rgba(90, 172, 219, 0.3);
+}
