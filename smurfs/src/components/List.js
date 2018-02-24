@@ -17,7 +17,8 @@ class List extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    smurfs: state.smurfs
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs
   } 
 }
 

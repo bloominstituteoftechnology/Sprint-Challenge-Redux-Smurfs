@@ -40,24 +40,20 @@ export const fetchSmurfs = () => {
   };
 };
 
-export const addSmurf = () => {
+export const addSmurf = (smurf) => {
 
-  const request = axios.post('https://localhost:3333/smurfs');
+  const request = axios.post('http://localhost:3333/smurfs', smurf);
 
   return dispatch => {
-
     dispatch({ type: ADDING_SMURF });
     // after the data is fetched
-    // set time out to simulates a longer delay on api request
-    setTimeout(()=>{
-       request
-      .then((res) => {
-        // dispatch action
-        dispatch({ type: FETCHED_SMURFS, payload: res.data });
-      })
-      .catch((err) => {
-        console.log('ERROR!', err);
-      });
-    }, 2000); 
+     request
+    .then((res) => {
+      // dispatch action
+      dispatch({ type: FETCHED_SMURFS, payload: res.data });
+    })
+    .catch((err) => {
+      console.log('ERROR!', err);
+    });
   };
 };
