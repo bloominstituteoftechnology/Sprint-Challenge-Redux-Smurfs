@@ -31,7 +31,7 @@ import { IS_DELETING, SMURF_DELETED, ERROR_DELETING_SMURF } from '../actions';
     case IS_DELETING:
       return { ...state, deletingSmurf: true };
     case SMURF_DELETED:
-      return { ...state, deletingSmurf: false, smurfs: state[smurfs].filter(smurf => smurf.id !== action.payload.id) };
+      return { ...state, deletingSmurf: false, smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload.id) };
     case ERROR_DELETING_SMURF:
       return { ...state, deletingSmurf: false, error: action.payload };
     default:

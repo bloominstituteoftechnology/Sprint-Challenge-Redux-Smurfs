@@ -46,7 +46,7 @@ export const SMURF_DELETED = 'SMURF_DELETED';
 export const ERROR_DELETING_SMURF = 'ERROR_DELETING_SMURF';
 
 export const deleteSmurf = (id) => {
-  const deletedSmurf = axios.delete(`${URL}/smurfs`, {data: {id}});
+  const deletedSmurf = axios.delete(`${URL}/smurfs/${id}`, {data: {id}});
   return dispatch => {
     dispatch({ type: IS_DELETING });
     deletedSmurf
