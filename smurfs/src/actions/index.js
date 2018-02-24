@@ -28,8 +28,7 @@ export const addSmurf = (smurf) => {
     dispatch({ type: ADDING });
     smurfPost
     .then((response) => {
-      console.log(response);
-      dispatch({ type: ADDED, payload: response });
+      dispatch({ type: ADDED, payload: response.data });
     })
     .catch(err => {
       dispatch({ type: ERROR_ADDING, payload: err });
