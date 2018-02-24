@@ -1,22 +1,30 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import {FETCHING_SMURFS, ADDING_SMURF, UPDATING_SMURF, FETCHED_SMURFS} from '../actions';
 
-/*
- Your initial/default state for this project could look a lot like this
- {
+const initialState = {
    smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurfs: false
+   fetchingSmurfs: false,
+   addingSmurf: false,
+   updatingSmurf: false,
+   deletingSmurfs: false,
    error: true
- }
-*/
+};
 
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
-  Components can read your store as, `state` and not `state.fooReducer`.
-*/
+export const smurfReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCHING_SMURFS:
+      return { ...state, fetchingSmurfs: true };
+
+    case ADDING_SMURF:
+      return { ...state, addingSmurf: true };
+
+    case UPDATING_SMURF:
+      return { ...state, updatingSmurf: true };
+
+    // handle get and post 
+    case FETCHED_SMURFS:
+      return { ...state, smurfs: action.payload, fetchingSmurfs: false };
+
+    default:
+      return state;
+  }
+};
