@@ -39,11 +39,11 @@ export const addSmurf = newSmurf => {
 
 export const updateSmurf = (updatedSmurf, id) => {
   const smurfs = axios.put(`http://localhost:3333/smurfs/${id}`, updatedSmurf);
+
   return dispatch => {
     dispatch({ type: UPDATING_SMURF });
     smurfs
-      // .then(payload => addSmurf(payload.data))
-      .then(deleteSmurf(updatedSmurf, id))
+      .then(getSmurfs())
       .then(payload => {
         dispatch({ type: UPDATED_SMURF, payload: payload.data });
       })
@@ -58,8 +58,7 @@ export const deleteSmurf = (deletingSmurf, id) => {
   return dispatch => {
     dispatch({ type: DELETING_SMURF });
     smurfs
-      .then(getSmurfs())
-      .then(payload => {
+      .then(() => {
         dispatch({ type: DELETED_SMURF });
       })
       .catch(error => {
