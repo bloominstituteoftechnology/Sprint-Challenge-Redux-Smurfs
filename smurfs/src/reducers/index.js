@@ -73,12 +73,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         smurfs: state.smurfs.filter(smurf => {
-          return smurf.id !== action.payload.id;
+          return smurf.id !== action.payload.SmurfRemoved.id;
         }),
         deletingSmurf: false,
         deletedSmurf: true,
       };
-    case ERROR: //reset everything to false
+    case ERROR:
       return {
         ...state,
         fetchingSmurfs: false,

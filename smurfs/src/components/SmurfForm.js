@@ -39,6 +39,7 @@ class SmurfForm extends Component {
         <div className="smurf__form">
           <form type="submit" onSubmit={this.addSmurf}>
             <div className="form__text">Add a new Smurf!</div>
+            <div>
             <input
               type="text"
               className="form__input"
@@ -63,6 +64,7 @@ class SmurfForm extends Component {
               name="height"
               value={this.state.height}
             />
+            </div>
             <input type="submit" value="submit" className="form__button" />
           </form>
         </div>
