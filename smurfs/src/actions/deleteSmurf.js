@@ -6,7 +6,7 @@ export const ERROR_DELETING_SMURF = 'ERROR_DELETING_SMURF';
 
 
 export const deleteSmurf = id => {
-  const deletingSmurf = axios.delete('http://localhost:3333/smurfs:id', { id });
+  const deletingSmurf = axios.delete(`http://localhost:3333/smurfs/${id}`, { data: {id}});
   return dispatch => {
     dispatch({ type: DELETING_SMURF });
     deletingSmurf

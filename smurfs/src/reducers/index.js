@@ -37,7 +37,7 @@ export const rootReducer = (state = initialState, action) => {
     case DELETING_SMURF:
       return { ...state, deletingSmurfs: true };
     case SMURF_DELETED:
-      return { ...state, deletingSmurfs: false, smurfs: action.payload };
+      return { ...state, deletingSmurfs: false, smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload.SmurfRemoved.id) };
     case ERROR_DELETING_SMURF:
       return { ...state, deletingSmurfs: false, error: action.payload };
     default:

@@ -13,7 +13,7 @@ const Smurfs = (props) => {
         <div>{smurf.name}</div>
         <div>{smurf.age}</div>
         <div>{smurf.height}</div>
-        <button onClick={() => props.deleteSmurf({  })}>Delete</button>
+        <button onClick={() => {props.deleteSmurf(smurf.id)}}>Delete</button>
       </li>
     })}
   </ul>
