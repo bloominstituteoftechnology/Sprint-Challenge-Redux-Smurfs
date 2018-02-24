@@ -8,8 +8,8 @@ export const SmurfList = props => {
         return (
           <ul key={smurf.id}>
             <li>Name: {smurf.name}</li>
-            <li>Age: {smurf.age}</li>
-            <li>Height: {smurf.height}</li>
+            <li>Age: {smurf.age} years</li>
+            <li>Height: {smurf.height} cm</li>
           </ul>
         );
       })}
