@@ -1,6 +1,18 @@
 html, body, #root, #root>div {
   height: 100%;
 }
+::-webkit-input-placeholder {
+  user-select: none;
+}
+::-moz-placeholder {
+  user-select: none;
+}
+:-ms-input-placeholder {
+  user-select: none;
+}
+:-moz-placeholder {
+  user-select: none;
+}
 .button-mix {
   outline: none;
   font-family: inherit;
@@ -13,6 +25,7 @@ html, body, #root, #root>div {
   margin: 2px;
   cursor: pointer;
   line-height: 5px;
+  user-select: none;
 
   &:hover {
     border: 2px double #5aacdb;
@@ -42,6 +55,7 @@ body {
   flex-direction: column;
 
   .App-header {
+    user-select: none;
     .flex-center-mix();
     position: absolute;
     top: 150px;
