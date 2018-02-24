@@ -3,6 +3,7 @@
 */
 import { IS_FETCHING, SMURFS_FETCHED, ERROR_FETCHING_SMURFS } from '../actions';
 import { IS_ADDING, SMURF_ADDED, ERROR_ADDING_SMURF } from '../actions';
+import { IS_DELETING, SMURF_DELETED, ERROR_DELETING_SMURF } from '../actions';
 
  const initialState = {
    smurfs: [],
@@ -27,6 +28,12 @@ import { IS_ADDING, SMURF_ADDED, ERROR_ADDING_SMURF } from '../actions';
       return { ...state, addingSmurf: false, smurfs: action.payload };
     case ERROR_ADDING_SMURF:
       return { ...state, addingSmurf: false, error: action.payload };
+    case IS_DELETING:
+      return { ...state, deletingSmurf: true };
+    case SMURF_DELETED:
+      return { ...state, deletingSmurf: false, smurfs: state[smurfs].filter(smurf => smurf.id !== action.payload.id) };
+    case ERROR_DELETING_SMURF:
+      return { ...state, deletingSmurf: false, error: action.payload };
     default:
       return state;    
    }

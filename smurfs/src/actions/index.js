@@ -30,13 +30,31 @@ export const ERROR_ADDING_SMURF = 'ERROR_ADDING_SMURF';
 export const addSmurf = (smurf) => {
   const smurfs = axios.post(`${URL}/smurfs`, {...smurf});
   return dispatch => {
-    dispatch({ type: IS_FETCHING });
+    dispatch({ type: IS_ADDING });
     smurfs
       .then(({ data }) => {
-        dispatch({ type: SMURFS_FETCHED, payload: data });
+        dispatch({ type: SMURF_ADDED, payload: data });
       })
       .catch(err => {
-        dispatch({ type: ERROR_FETCHING_SMURFS, payload: err});
+        dispatch({ type: ERROR_ADDING_SMURF, payload: err});
+      });
+  };
+};
+
+export const IS_DELETING = 'IS_DELETING';
+export const SMURF_DELETED = 'SMURF_DELETED';
+export const ERROR_DELETING_SMURF = 'ERROR_DELETING_SMURF';
+
+export const deleteSmurf = (id) => {
+  const deletedSmurf = axios.delete(`${URL}/smurfs`, {data: {id}});
+  return dispatch => {
+    dispatch({ type: IS_DELETING });
+    deletedSmurf
+      .then(({ data }) => {
+        dispatch({ type: SMURF_DELETED, payload: data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR_DELETING_SMURF, payload: err});
       });
   };
 };
