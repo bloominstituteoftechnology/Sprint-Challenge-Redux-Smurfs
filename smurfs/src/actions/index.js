@@ -5,21 +5,38 @@
 import axios from 'axios';
 export const IS_FETCHING = 'IS_FETCHING';
 export const SMURFS_FETCHED = 'SMURFS_FETCHED';
-export const ERROR_FETCHING_SMURFS = 'ERROR_FETCHING_SMURFS';
+export const ERROR = 'ERROR';
+export const CREATING_SMURF = 'CREATING_SMURF';
+export const CREATE_SMURF = 'CREATE_SMURF';
+
+const URL = 'http://localhost:3333/smurfs'
 
 export const getSmurfs = () => {
-    const smurfs = axios.get('http://localhost:3333/smurfs'); 
+    const smurfs = axios.get(`${URL}`); 
        return dispatch => {
            dispatch({ type: IS_FETCHING });
            smurfs
-             .then(response => {
-                 dispatch({ type: SMURFS_FETCHED, payload: response.data });
+             .then(({data}) => {
+                 dispatch({ type: SMURFS_FETCHED, payload: data });
                 })
              .catch(err => {
-                dispatch({ type: ERROR_FETCHING_SMURFS, payload: err });
+                dispatch({ type: ERROR, payload: err });
         });
     };   
 }; 
+export const addSmurf = smurf => {
+  const newSmurf = axios.post(`${URL}`, smurf);
+  return dispatch => {
+    dispatch({ type: CREATING_SMURF });
+    newSmurf
+      .then(({ data }) => {
+        dispatch({ type: CREATE_SMURF, payload: data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
