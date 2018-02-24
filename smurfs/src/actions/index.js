@@ -21,12 +21,32 @@ export const UPDATING_SMURF = 'UPDATING_SMURF';
 export const FETCHED_SMURFS = 'FETCHED_SMURFS';
 
 export const fetchSmurfs = () => {
+  const request = axios.get('http://localhost:3333/smurfs');
 
-  const request = axios.get('https://localhost:3333/smurfs');
+  return dispatch => {
+    dispatch({ type: FETCHING_SMURFS });
+    // after the data is fetched
+    // set time out to simulates a longer delay on api request
+    setTimeout(()=>{
+       request
+      .then((res) => {
+        // dispatch action
+        dispatch({ type: FETCHED_SMURFS, payload: res.data });
+      })
+      .catch((err) => {
+        console.log('ERROR!', err);
+      });
+    }, 2000); 
+  };
+};
+
+export const addSmurf = () => {
+
+  const request = axios.post('https://localhost:3333/smurfs');
 
   return dispatch => {
 
-    dispatch({ type: FETCHING_SMURFS });
+    dispatch({ type: ADDING_SMURF });
     // after the data is fetched
     // set time out to simulates a longer delay on api request
     setTimeout(()=>{
