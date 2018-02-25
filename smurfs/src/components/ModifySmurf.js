@@ -7,6 +7,7 @@ class ModifySmurf extends React.Component {
     name: '',
     age: '',
     height: '',
+    id: '',
   }
 
   componentDidMount() {
@@ -18,7 +19,7 @@ class ModifySmurf extends React.Component {
   submitNewSmurf = (event) => {
     event.preventDefault();
     const newSmurf = Object.assign({}, this.state);
-    this.props.updateSmurf(newSmurf);
+    this.props.updateSmurf(newSmurf, newSmurf.id);
     this.props.doneModifying();
   };
 

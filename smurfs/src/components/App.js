@@ -4,8 +4,13 @@ import { getSmurfs } from '../actions';
 import './App.css';
 import AddSmurfForm from './AddSmurfForm';
 import SmurfList from './SmurfList';
+import ModifySmurf from './ModifySmurf';
 
 class App extends Component {
+  state = {
+    smurfToModify: {},
+    isModifying: false,
+  }
 
   componentDidMount() {
     this.props.getSmurfs();
@@ -18,9 +23,22 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <AddSmurfForm />
-        <SmurfList smurfs={smurfs} />
+        { this.state.isModifying ? (
+          <ModifySmurf doneModifying={this.setModifyingFalse}/>
+        ) : (
+          <SmurfList smurfs={smurfs} sendInfoToApp={this.transferModifyingInfo} />
+        )
+        }
       </div>
     );
+  }
+
+  setModifyingFalse() {
+    this.setState({smurfToModify: {}, isModifying: false})
+  }
+
+  transferModifyingInfo(smurf) {
+    this.setState({ smurfToModify: { ...smurf }, isModifying: true})
   }
 }
 
