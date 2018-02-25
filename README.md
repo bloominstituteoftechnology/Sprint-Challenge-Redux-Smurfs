@@ -6,30 +6,35 @@
 * This is to be worked on alone but you can use outside resources. You can _reference_ any old code you may have, and the React Documentation, however, please refrain from copying and pasting any of your answers. Try and understand the question and put your responses in your own words. Be as thorough as possible when explaining something.
 * **Just a friendly Reminder** Don't fret or get anxious about this, this is a no-pressure assessment that is only going to help guide you here in the near future. This is NOT a pass/fail situation.
 
-[]  ## Start by forking and cloning this repository.
+[x]  ## Start by forking and cloning this repository.
 
 ## Questions - Self Study - You can exercise your Google-Fu for this and any other _Sprint Challenge_ in the future.
 
-[]  1. Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
+[x]  1. Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
 
-[]  2. Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+[x]  2. Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 
-[]  3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
+[x]  3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
 
-[]  4. What is middleware?
+[x]  4. What is middleware?
 
-[]  5. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+[x]  5. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 
-[]  6. Which `react-redux` method links up our `components` with our `redux store`?
+[x]  6. Which `react-redux` method links up our `components` with our `redux store`?
 
 ## Initializing Project - READ THIS CAREFULLY, you have two apps here. A server, and a client.
 
-* `cd` into the forked copy of this repo.
-* **RUN** `npm install` to retrieve all `server-side` the dependencies.
-* **LOOK** at all the files you've been given for this project. One important file to note is `server.js`. This file contains an **API** that you are going to be interfacing with. Below is documentation on how to interact with the **API**.
-* **RUN** `npm start` to get your API up and running on `http://localhost:3333`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data.
-* After your API is up and running, you can open chrome and type in `http://localhost:3333/smurfs`. You should see an empty Array `[]` returned to you. This is an array that your **API** will be using to store our Smurf Data.
-* **LOOK** at your `smurfs` directory and notice it's just a plain ol' React App that we've built using `create-react-app`.
+[x]  * `cd` into the forked copy of this repo.
+
+[x]  * **RUN** `npm install` to retrieve all `server-side` the dependencies.
+
+[x]  * **LOOK** at all the files you've been given for this project. One important file to note is `server.js`. This file contains an **API** that you are going to be interfacing with. Below is documentation on how to interact with the **API**.
+
+[x]  * **RUN** `npm start` to get your API up and running on `http://localhost:3333`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data.
+
+[x]  * After your API is up and running, you can open chrome and type in `http://localhost:3333/smurfs`. You should see an empty Array `[]` returned to you. This is an array that your **API** will be using to store our Smurf Data.
+
+[x]  * **LOOK** at your `smurfs` directory and notice it's just a plain ol' React App that we've built using `create-react-app`.
 * We've added a typical `redux` file structure for:
 
 ```
@@ -41,9 +46,11 @@ src
     - index.js
 ```
 
-* **Open** `src/index.js` to make sure that your app is ready to roll with the proper middleware.
-* **cd** into `smurfs` and run `npm install` to retrieve the client side dependencies.
-* **RUN** `npm start` to fire up your React application. There ought to be a pretty little message awaiting you welcoming you to the app. `Follow` the prompting.
+[x]  * **Open** `src/index.js` to make sure that your app is ready to roll with the proper middleware.
+
+[x]  * **cd** into `smurfs` and run `npm install` to retrieve the client side dependencies.
+
+[]  * **RUN** `npm start` to fire up your React application. There ought to be a pretty little message awaiting you welcoming you to the app. `Follow` the prompting.
 
 ## Project Description
 
