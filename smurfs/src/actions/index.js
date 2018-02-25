@@ -42,8 +42,8 @@ export const fetchSmurfs = () => {
   };
 };
 
-export const addSmurf = (smurf, id) => {
-  const newSmurf = axios.post(`${URL}/${id}`, smurf);
+export const addSmurf = (smurf) => {
+  const newSmurf = axios.post(`${URL}/`, smurf);
   return dispatch => {
     dispatch({ type: ADDING_SMURF });
     newSmurf
@@ -82,7 +82,6 @@ export const deleteSmurf = id => {
     deletedSmurf
       .then(({ data }) => {
         dispatch({ type: DELETE_SMURF, payload: data });
-        // dispatch({ type: SINGLE_SMURF, payload: {} });
       })
       .catch(error => {
         dispatch({ type: ERROR, payload: error });

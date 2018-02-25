@@ -35,6 +35,7 @@ export const smurfReducer = (state = initialState, action) => {
     case actionTypes.UPDATING_SMURF:
       return { ...state, updatingSmurf: true };
     case actionTypes.UPDATE_SMURF:
+      console.log('UPDATE payload', action.payload);
       return { ...state, smurfs: action.payload, updatingSmurf: false };
     case actionTypes.DELETING_SMURF:
       return { ...state, deletingSmurf: true };

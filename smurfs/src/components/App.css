@@ -27,6 +27,16 @@
   to { transform: rotate(360deg); }
 }
 
+.Smurf-Container {
+  display: flex;
+}
+li {
+  list-style: none;
+}
+.Smurf-List {
+  text-align: left;
+}
+
 .Column-Layout {
   display: flex;
   flex-direction: column;

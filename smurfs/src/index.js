@@ -9,9 +9,10 @@ import { Provider } from 'react-redux';
 import {smurfReducer} from './reducers';
 
 const store = createStore(
-  smurfReducer,
-  applyMiddleware(thunk, logger), 
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  smurfReducer, 
+  applyMiddleware(thunk, logger)
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(
+  // )
 );
 
 ReactDOM.render(

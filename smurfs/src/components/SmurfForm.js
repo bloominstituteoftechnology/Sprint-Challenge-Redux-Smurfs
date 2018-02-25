@@ -12,7 +12,8 @@ class SmurfForm extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleAddSmurf = _ => {
+  handleAddSmurf = (event) => {
+      event.preventDefault();
       const { name, age, height } = this.state;
         this.props.addSmurf({ name, age, height });
         this.setState({ name: '', age: '', height: '' });
@@ -45,7 +46,7 @@ class SmurfForm extends Component {
           placeholder="Height"
           onChange={this.handleInputChange}
         />
-        <button onClick={() => this.handleAddSmurf()} type="button">
+        <button onClick={this.handleAddSmurf} type="button">
           Add New Smurf
         </button>
       </form>
