@@ -18,8 +18,8 @@ export const getSmurfs = () => {
         dispatch({ type: RECEIVED_SMURFS, payload: data });
       })
       .catch(err => {
-        dispatch({ type: ERROR_RECEIVING, payload: err})
-        console.log('there was an error', err)
+        dispatch({ type: ERROR_RECEIVING, payload: err });
+        console.log('there was an error', err);
       })
   }
 }
@@ -34,8 +34,8 @@ export const postSmurf = () => {
         console.log(data);
       })
       .catch(err => {
-        dispatch({ type: ERROR_ADDING, payload: err})
-        console.log('there was an error', err)
+        dispatch({ type: ERROR_ADDING, payload: err });
+        console.log('there was an error', err);
       })
   }
 }

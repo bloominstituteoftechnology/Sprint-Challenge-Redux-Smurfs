@@ -1,6 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { postSmurf } from './actions';
+import { postSmurf } from '../actions';
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+  input {
+    display: block;
+    width: 200px;
+  }
+`;
 
 class PostSmurf extends React.Component {
   state = {
@@ -17,12 +25,41 @@ class PostSmurf extends React.Component {
     });
   }
 
+  handleChange = () => {
+    console.log('changing');
+  }
+
   render() {
     return(
-      <h1>SMURF LIST</h1>
+      <StyledDiv>
+        <form onSubmit={() => this.handleSubmit()}>
+          <input 
+            type='text'
+            placeholder='name'
+            required
+            onChange={this.handleChange}
+            value={this.state.name}
+          />
+          <input 
+            type='number'
+            placeholder='age'
+            required
+            onChange={this.handleChange}
+            value={this.state.age}
+          />
+          <input 
+            type='email'
+            placeholder='email'
+            required
+            onChange={this.handleChange}
+            value={this.state.email}
+          />
+          <button type='submit'>Submit</button>
+        </form>
+      </StyledDiv>
     )
   }
 
 } 
 
-export default connect (null, { postSmurf })(PostSmurf);
+export default connect(null, { postSmurf })(PostSmurf);

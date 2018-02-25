@@ -17,7 +17,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" style={ {maxWidth: '800px', backgroundColor: '#88ccff', margin: '0 auto'} }>
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <PostSmurf />
       </div>
