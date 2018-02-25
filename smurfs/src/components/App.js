@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
 import {getSmurfs} from '../actions';
+import {Grid, Col} from 'react-bootstrap'
 
 /*
  to wire this component up you're going to need a few things.
