@@ -13,24 +13,29 @@ class PostSmurf extends React.Component {
     height: '',
   }
 
-  handleSubmit = () => {
-    this.props.postSmurf({
-      name: this.state.name,
-      age: this.state.age,
-      height: this.state.height,
-    });
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.postSmurf(this.state)
+    this.setState( {
+      name: '',
+      age: '',
+      height: '',
+    } );
   }
 
-  handleChange = () => {
-    console.log('changing');
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   }
 
   render() {
     return(
       <StyledDiv>
-        <form onSubmit={() => this.handleSubmit()}>
+        <form onSubmit={this.handleSubmit}>
           <input 
             type='text'
+            name='name'
             placeholder='name'
             required
             onChange={this.handleChange}
@@ -38,17 +43,19 @@ class PostSmurf extends React.Component {
           />
           <input 
             type='number'
+            name='age'
             placeholder='age'
             required
             onChange={this.handleChange}
             value={this.state.age}
           />
           <input 
-            type='email'
-            placeholder='email'
+            type='text'
+            name='height'
+            placeholder='height'
             required
             onChange={this.handleChange}
-            value={this.state.email}
+            value={this.state.height}
           />
           <button type='submit'>Submit</button>
         </form>

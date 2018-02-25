@@ -24,8 +24,8 @@ export const getSmurfs = () => {
   }
 }
 
-export const postSmurf = () => {
-  const monkeys = axios.post(URL);
+export const postSmurf = (data) => {
+  const monkeys = axios.post(URL, data);
   return dispatch => {
     dispatch ({type: ADDING_SMURF});
     monkeys
