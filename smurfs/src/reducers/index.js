@@ -47,9 +47,11 @@ const smurfState = {
           deletingSmurf: true
         };
       case DELETE_SMURF:
+        console.log("DELETE_SMURF action: ", action);
+        console.log("DELETE_SMURF state: ", state);
         return { 
           ...state,
-          smurfs: action.payload,
+          smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload.SmurfRemoved.id),
           deletingSmurf: false
         }
       case ERROR:
