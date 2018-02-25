@@ -31,7 +31,6 @@ export const postSmurf = (data) => {
     monkeys
       .then(( { data }) => {
         dispatch({ type: ADDED_SMURF, payload: data });
-        console.log(data);
       })
       .catch(err => {
         dispatch({ type: ERROR_ADDING, payload: err });

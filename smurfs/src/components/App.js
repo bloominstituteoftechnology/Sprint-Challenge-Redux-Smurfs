@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PostSmurf from './PostSmurf';
-// import Smurfs from './Smurfs';
+import { Smurfs } from './Smurfs';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions';
 import styled from 'styled-components';
@@ -18,7 +18,7 @@ const StyledDiv = styled.div`
   }
 `;
 
-class App extends Component {
+class App extends React.Component {
 
   componentDidMount = () => {
     this.props.getSmurfs();
@@ -29,19 +29,22 @@ class App extends Component {
       <StyledDiv>
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <PostSmurf />
-        {/* <Smurfs /> */}
-        {this.props.smurfs.forEach(val => {
-          console.log(val);
-        })}
+        {this.props.smurfs.length > 0 ?
+          this.props.smurfs.map(smurf => {
+            return (
+              <Smurfs smurf={smurf} />
+            );
+          })
+          : null}
       </StyledDiv>
     );
   }
 }
 
-const mappStateToProps = state => {
+const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
   }
 };
 
-export default connect(mappStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs })(App);
