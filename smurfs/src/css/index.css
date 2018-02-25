@@ -194,19 +194,41 @@ table {
   box-shadow: 2px 2px #ddd;
   margin: 30px;
   position: relative;
+  height: 150px;
 }
 .App .smurfs .smurf .smurf__name {
   font-size: 1.6rem;
   font-weight: 500;
   padding: 17px;
 }
+.App .smurfs .smurf .smurf__age {
+  padding: 8px 0px;
+}
+.App .smurfs .smurf .smurf__height {
+  padding: 8px 0px;
+}
 .App .smurfs .smurf .delete-button {
   display: none;
 }
-.App .smurfs .smurf:hover {
+.App .smurfs .smurf .edit-button {
+  display: none;
+}
+.App .smurfs .smurf:hover .edit-button {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  color: gray;
+  align-self: center;
+  text-align: center;
+  padding: 8px 0px;
+}
+.App .smurfs .smurf:hover .edit-button:hover {
+  cursor: pointer;
+}
+.App .smurfs .smurf:hover:hover {
   cursor: default;
 }
-.App .smurfs .smurf:hover .delete-button {
+.App .smurfs .smurf:hover:hover .delete-button {
   display: flex;
   position: absolute;
   top: 8px;
@@ -215,6 +237,6 @@ table {
   font-weight: 100;
   color: gray;
 }
-.App .smurfs .smurf:hover .delete-button:hover {
+.App .smurfs .smurf:hover:hover .delete-button:hover {
   cursor: pointer;
 }

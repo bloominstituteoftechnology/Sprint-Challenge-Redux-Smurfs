@@ -17,8 +17,11 @@ class Smurfs extends Component {
                       x
                     </div>
                     <div className="smurf__name">{smurf.name}</div>
-                    <div>age: {smurf.age}</div>
-                    <div>height: {smurf.height}</div>
+                    <div className="smurf__age">age: {smurf.age}</div>
+                    <div className="smurf__height">height: {smurf.height}</div>
+                      <div className="edit-button" onClick={() => {}} >
+                      edit
+                    </div>
                   </div>
               )}
             ) :

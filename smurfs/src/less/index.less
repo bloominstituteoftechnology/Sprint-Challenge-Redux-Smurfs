@@ -67,30 +67,54 @@
             box-shadow: 2px 2px #ddd;
             margin: 30px;
             position: relative;
+            height: 150px;
             .smurf__name {
                 font-size: 1.6rem;
                 font-weight: 500;
                 padding: 17px;
             }
+            .smurf__age {
+                padding: 8px 0px;
+            }
+            .smurf__height {
+                padding: 8px 0px;
+            }
             .delete-button {
                 display: none;
+            }
+            .edit-button {
+                display: none;
+            }
+            &:hover {
+                .edit-button {
+                    display: flex;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-weight: 100;
+                    color: gray;
+                    align-self: center;
+                    text-align: center;
+                    padding: 8px 0px;
+                    &:hover {
+                        cursor: pointer;
+                    } // edit-button hover
             }
             &:hover {
                 cursor: default; 
                 .delete-button {
-                        display: flex;
-                        position: absolute;
-                        top: 8px;
-                        right: 8px;
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-weight: 100;
-                        color: gray;
-                        &:hover {
-                            cursor: pointer;
-                        } //hover
+                    display: flex;
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-weight: 100;
+                    color: gray;
+                    &:hover {
+                        cursor: pointer;
+                    } //hover
+
                 } // delete-button
             } // hover
         } // smurf
     } // smurfs
 }
-
+}
