@@ -6,7 +6,7 @@ const initialState = {
   smurfsFetched: false,
   addingSmurf: false,
   updatingSmurf: false,
-  deletingSmurfs: false,
+  deletingSmurf: false,
   error: false
 };
 
@@ -15,7 +15,8 @@ export default (state = initialState, action) => {
     case actionTypes.FETCHING_SMURFS:
       return {
         ...state,
-        fetchingSmurfs: true
+        fetchingSmurfs: true,
+        smurfsFetched: false
       };
     case actionTypes.SMURFS_FETCHED:
       return {
@@ -46,6 +47,23 @@ export default (state = initialState, action) => {
       return {
         ...state,
         addingSmurf: false,
+        error: action.payload
+      };
+    case actionTypes.DELETING_SMURF:
+      return {
+        ...state,
+        deletingSmurf: true
+      };
+    case actionTypes.SMURF_DELETED:
+      return {
+        ...state,
+        deletingSmurf: false,
+        smurfs: state.smurfs.filter(smurf => smurf.id !== action.id)
+      };
+    case actionTypes.ERROR_DELETING_SMURF:
+      return {
+        ...state,
+        deletingSmurf: false,
         error: action.payload
       };
     default:
