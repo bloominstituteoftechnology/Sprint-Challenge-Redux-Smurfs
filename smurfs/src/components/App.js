@@ -30,9 +30,9 @@ class App extends React.Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <PostSmurf />
         {this.props.smurfs.length > 0 ?
-          this.props.smurfs.map(smurf => {
+          this.props.smurfs.map((smurf, index) => {
             return (
-              <Smurfs smurf={smurf} />
+              <Smurfs key={index} smurf={smurf} />
             );
           })
           : null}
