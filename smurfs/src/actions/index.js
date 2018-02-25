@@ -5,6 +5,7 @@ export const GET_SMURFS = 'GET_SMURFS';
 export const GETTING_SMURFS = 'GETTING_SMURFS';
 export const CREATING_SMURF = 'CREATING_SMURF';
 export const CREATE_SMURF = 'CREATE_SMURF';
+export const SMURF_CREATED = 'SMURF_CREATED';
 export const UPDATE_SMURF = 'UPDATE_SMURF';
 export const DELETE_SMURF = 'DELETE_SMURF';
 export const UPDATING_SMURF = 'UPDATING_SMURF';
@@ -20,18 +21,32 @@ export const DELETING_SMURF = 'DELETING_SMURF';
    U - updateSmurf
    D - deleteSmurf
 */
-const URL = 'http://localhost:5000/smurfs';
+const URL = 'http://localhost:3333/smurfs';
 
 export const getSmurfs = () => {
-  const friends = axios.get(`${URL}/get`);
+  const friends = axios.get(`${URL}`);
   return dispatch => {
     dispatch({ type: GETTING_SMURFS });
     friends
-      .then(response => {
-        dispatch({ type: GET_SMURFS, payload: response.data });
+      .then(({ data }) => {
+        dispatch({ type: GET_SMURFS, payload: data });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
+
+export const createSmurf = data => {
+  return dispatch => {
+    dispatch({ type: CREATE_SMURF });
+    axios
+      .post(`${URL}/`, data)
+      .then(({ data }) => {
+        dispatch({ type: GET_SMURFS, payload: data });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error });
       });
   };
 };
