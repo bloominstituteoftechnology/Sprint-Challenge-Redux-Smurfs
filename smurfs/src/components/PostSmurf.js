@@ -4,10 +4,6 @@ import { postSmurf } from '../actions';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
-  input {
-    display: block;
-    width: 200px;
-  }
 `;
 
 class PostSmurf extends React.Component {
