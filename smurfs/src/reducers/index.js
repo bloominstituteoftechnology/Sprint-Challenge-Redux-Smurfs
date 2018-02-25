@@ -5,6 +5,9 @@ import {
   ADDING_SMURF,
   ADDED_SMURF,
   ERROR_ADDING,
+  DELETING_SMURF,
+  DELETED_SMURF,
+  ERROR_DELETING,
 } from '../actions';
 
 const initialState = {
@@ -14,7 +17,9 @@ const initialState = {
    addingSmurf: false,
    addedSmurf: false,
    updatingSmurf: false,
-   deletingSmurfs: false,
+   updatedSmurf: false,
+   deletingSmurf: false,
+   deletedSmurf: false,
    error: null,
 }
 
@@ -32,6 +37,12 @@ export const rootReducer = (state = initialState, action) => {
       return {...state, addingSmurf: false, addedSmurf: true, smurfs: action.payload};
     case ERROR_ADDING:
       return {...state, addingSmurf: false, error: true};
+    case DELETING_SMURF:
+      return {...state, deletingSmurf: true};
+    case DELETED_SMURF:
+      return {...state, deletingSmurf: false, deletedSmurf: true}
+    case ERROR_DELETING:
+      return {...state, error: true}
     default:
       return state;
   }

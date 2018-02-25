@@ -1,6 +1,6 @@
 import React from 'react';
 import PostSmurf from './PostSmurf';
-import { Smurfs } from './Smurfs';
+import Smurfs from './Smurfs';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions';
 import styled from 'styled-components';
