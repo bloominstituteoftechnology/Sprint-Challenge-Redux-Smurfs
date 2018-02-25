@@ -10,20 +10,20 @@ class Smurfs extends Component {
         console.log('What is this: ', this);
         return (
             <div className="smurfs">
-        {this.props.smurfs ? this.props.smurfs.map((smurf) => {
-          return (
-            <div className="smurf" key={smurf.id}>
-              <div className="delete-button" onClick={() => {this.handleDeleteSmurf(smurf.id)}}>
-                X
-              </div>
-              <div className="smurf__name">{smurf.name}</div>
-                <div>age: {smurf.age}</div>
-                <div>height: {smurf.height}</div>
+              {this.props.smurfs ? this.props.smurfs.map((smurf) => {
+                return (
+                  <div className="smurf" key={smurf.id}>
+                    <div className="delete-button" onClick={() => {this.handleDeleteSmurf(smurf.id)}}>
+                      x
+                    </div>
+                    <div className="smurf__name">{smurf.name}</div>
+                    <div>age: {smurf.age}</div>
+                    <div>height: {smurf.height}</div>
+                  </div>
+              )}
+            ) :
+              <div></div> }
             </div>
-            )}
-          ) :
-        <div></div> }
-      </div>
     )
 }
  }
