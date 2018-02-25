@@ -19,7 +19,7 @@
         text-shadow: 2px 2px #ddd;
         color: @smurfblue;
         width: 100%;
-    }
+    } // header
     .SmurfForm {
         margin: 30px;
         display: flex;
@@ -35,7 +35,7 @@
             border-radius: 5px;
             margin-bottom: 15px;
             background: white;
-        }
+        } // input
         .SmurfForm__Button {
             background: @smurfblue;
             padding: 3px;
@@ -43,8 +43,11 @@
             border: solid #ddd 1px;
             border-radius: 5px;
             font-size: 1.8rem;
-        }
-    }
+            &:hover {
+                cursor: pointer;
+            }
+        } // SmurfForm__Button
+    } // SmurfForm
     .smurfs {
         display: flex;
         flex-flow: row wrap;
@@ -63,10 +66,30 @@
             border-radius: 5px;
             box-shadow: 2px 2px #ddd;
             margin: 30px;
+            position: relative;
             .smurf__name {
                 font-size: 1.6rem;
                 font-weight: 500;
+                padding: 17px;
             }
-        }
-    }
+            .delete-button {
+                display: none;
+            }
+            &:hover {
+                cursor: default; 
+                .delete-button {
+                        display: flex;
+                        position: absolute;
+                        top: 8px;
+                        right: 8px;
+                        color: black;
+                        font-weight: 900;
+                        &:hover {
+                            cursor: pointer;
+                        } //hover
+                } // delete-button
+            } // hover
+        } // smurf
+    } // smurfs
 }
+

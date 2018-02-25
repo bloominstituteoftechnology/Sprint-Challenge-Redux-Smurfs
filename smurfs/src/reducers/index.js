@@ -1,11 +1,18 @@
-import { IS_FETCHING, SMURFS_FETCHED, ERROR, ADDING_SMURF, ADD_SMURF } from '../actions';
+import { IS_FETCHING, 
+  SMURFS_FETCHED, 
+  ERROR, 
+  ADDING_SMURF, 
+  ADD_SMURF,
+  DELETING_SMURF,
+  DELETE_SMURF,
+ } from '../actions';
 
 const smurfState = {
    smurfs: [],
    fetchingSmurfs: false,
    addingSmurf: false,
    updatingSmurf: false,
-   deletingSmurfs: false,
+   deletingSmurf: false,
    error: true
  }
 
@@ -34,9 +41,23 @@ const smurfState = {
           addingSmurf: false,
           smurfs: action.payload
         }
+      case DELETING_SMURF:
+        return { 
+          ...state, 
+          deletingSmurf: true
+        };
+      case DELETE_SMURF:
+        return { 
+          ...state,
+          smurfs: action.payload,
+          deletingSmurf: false
+        }
       case ERROR:
-        return { ...state, fetchingSmurfs: false, error: action.payload };
-      
+        return { 
+          ...state, 
+          fetchingSmurfs: false, 
+          error: action.payload 
+        };
       default:
           return state;
   }

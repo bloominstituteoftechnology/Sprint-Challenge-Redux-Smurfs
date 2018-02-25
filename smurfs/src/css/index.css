@@ -171,6 +171,9 @@ table {
   border-radius: 5px;
   font-size: 1.8rem;
 }
+.App .SmurfForm .SmurfForm__Button:hover {
+  cursor: pointer;
+}
 .App .smurfs {
   display: flex;
   flex-flow: row wrap;
@@ -190,8 +193,27 @@ table {
   border-radius: 5px;
   box-shadow: 2px 2px #ddd;
   margin: 30px;
+  position: relative;
 }
 .App .smurfs .smurf .smurf__name {
   font-size: 1.6rem;
   font-weight: 500;
+  padding: 17px;
+}
+.App .smurfs .smurf .delete-button {
+  display: none;
+}
+.App .smurfs .smurf:hover {
+  cursor: default;
+}
+.App .smurfs .smurf:hover .delete-button {
+  display: flex;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: black;
+  font-weight: 900;
+}
+.App .smurfs .smurf:hover .delete-button:hover {
+  cursor: pointer;
 }
