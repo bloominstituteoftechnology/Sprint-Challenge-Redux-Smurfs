@@ -32,7 +32,7 @@ const smurfState = {
         return {
           ...state,
           addingSmurf: false,
-          friends: action.payload
+          smurfs: action.payload
         }
       case ERROR:
         return { ...state, fetchingSmurfs: false, error: action.payload };
