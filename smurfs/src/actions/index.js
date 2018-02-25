@@ -59,6 +59,24 @@ export const deleteSmurf = (id) => {
   };
 };
 
+export const IS_UPDATING = 'IS_UPDATING';
+export const SMURF_UPDATED = 'SMURF_UPDATED';
+export const ERROR_UPDATING_SMURF = 'ERROR_UPDATING_SMURF';
+
+export const updateSmurf = (newSmurf, id) => {
+  const updatedSmurf = axios.put(`${URL}/smurfs/${id}`, { ...newSmurf });
+  return dispatch => {
+    dispatch({ type: IS_UPDATING });
+    updatedSmurf
+      .then(({ data }) => {
+        dispatch({ type: SMURF_UPDATED, payload: data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR_UPDATING_SMURF, payload: err});
+      });
+  };
+};
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
