@@ -41,11 +41,11 @@
 }
 .x {
   float: right;
-  background-color: aliceblue;
+  background-color: white;
   color: #222;
   border-style: none;
 }
 .x:hover {
   background-color: #222;
-  color: aliceblue;
+  color: white;
 }

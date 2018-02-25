@@ -30,7 +30,7 @@ class AddSmurfForm extends Component {
           name="height"
           onChange={this.handleInput}
         />
-        <button type="onSumit">Save</button>
+        <button type="onSubmit">Save</button>
       </form>
     );
   }

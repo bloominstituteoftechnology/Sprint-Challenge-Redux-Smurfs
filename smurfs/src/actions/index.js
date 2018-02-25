@@ -44,7 +44,6 @@ export const deleteSmurf = id => {
     dispatch({ type: DELETING_SMURF });
     targetSmurf
       .then(({ data: { SmurfRemoved } }) => {
-        console.log("FIND ME!!!!!!!!!!!!! ", SmurfRemoved);
         dispatch({ type: SMURF_DELETED, payload: SmurfRemoved, id: id });
       })
       .catch(error => {

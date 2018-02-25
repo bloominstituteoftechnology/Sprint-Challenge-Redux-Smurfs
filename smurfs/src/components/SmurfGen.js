@@ -4,7 +4,7 @@ const SmurfGen = props => {
   return props.smurfs.map((smurf, i) => {
     return (
       <div className="smurf" key={smurf.id}>
-        <button className="x" onClick={props.delete(smurf.id)}>
+        <button className="x" onClick={() => props.delete(smurf.id)}>
           X
         </button>
         <li className="stats">{`Name: ${smurf.name}`}</li>
