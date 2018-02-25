@@ -38,8 +38,11 @@ import { IS_UPDATING, SMURF_UPDATED, ERROR_UPDATING_SMURF } from '../actions';
     case IS_UPDATING:
       return { ...state, updatingSmurf: true };
     case SMURF_UPDATED:
-      console.log(action);
-      return { ...state, updatingSmurf: false };
+      return { ...state, updatingSmurf: false, smurfs: state.smurfs.map(smurf => { 
+        if (smurf.id === action.payload.id) {
+          return {...action.payload};
+       } else return smurf;
+      })};
     case ERROR_UPDATING_SMURF:
       return { ...state, updatingSmurf: false, error: action.payload };
     default:

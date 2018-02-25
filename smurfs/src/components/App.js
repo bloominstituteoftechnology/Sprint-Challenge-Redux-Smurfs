@@ -24,7 +24,7 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <AddSmurfForm />
         { this.state.isModifying ? (
-          <ModifySmurf doneModifying={this.setModifyingFalse}/>
+          <ModifySmurf doneModifying={this.setModifyingFalse} smurfInfo={Object.assign({}, this.state.smurfToModify)}/>
         ) : (
           <SmurfList smurfs={smurfs} sendInfoToApp={this.transferModifyingInfo} />
         )
@@ -33,13 +33,13 @@ class App extends Component {
     );
   }
 
-  setModifyingFalse() {
+  setModifyingFalse = () => {
     this.setState({smurfToModify: {}, isModifying: false})
-  }
+  };
 
-  transferModifyingInfo(smurf) {
+  transferModifyingInfo = (smurf) => {
     this.setState({ smurfToModify: { ...smurf }, isModifying: true})
-  }
+  };
 }
 
 const mapStateToProps = state => {

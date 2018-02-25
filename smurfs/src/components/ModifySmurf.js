@@ -11,15 +11,19 @@ class ModifySmurf extends React.Component {
   }
 
   componentDidMount() {
-    console.log('before the setting', this.state);
     this.setState({...this.props.smurfInfo})
-    console.log('after the setting', this.state);
   }
 
   submitNewSmurf = (event) => {
     event.preventDefault();
     const newSmurf = Object.assign({}, this.state);
     this.props.updateSmurf(newSmurf, newSmurf.id);
+    this.setState({
+      name: '',
+      age: '',
+      height: '',
+      id: '',
+    })
     this.props.doneModifying();
   };
 

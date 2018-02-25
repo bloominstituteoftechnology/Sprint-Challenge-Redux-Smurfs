@@ -14,7 +14,8 @@ const SmurfList = (props) => {
           <div>{smurf.age} smurf-years old</div>
           <div className="container__item-header" >Height</div>
           <div>{smurf.height} cm tall</div>
-          <button onClick={() => {props.deleteSmurf(smurf.id)}}>Delete {smurf.name}</button>
+          <button onClick={() => { props.deleteSmurf(smurf.id) }}>Delete {smurf.name}</button>
+          <button onClick={() => { props.sendInfoToApp(smurf) }}>Modify {smurf.name}</button>
         </li>
       })}
     </ul>
