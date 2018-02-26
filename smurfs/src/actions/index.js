@@ -15,7 +15,22 @@ export const getSmurfs = () => {
     smurfs
       .then(response => {
         console.log('getSmurfs response', response);
-        dispatch({ type: FETCHING_SMURFS , payload: response.data});
+        dispatch({ type: SMURFS_FETCHED , payload: response.data});
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error });
+      })
+  }
+}
+
+export const addSmurfs = (smurfData) => {
+  const smurfs = axios.post(`${URL}`, smurfData);
+  return dispatch => {
+    dispatch({ type: SAVING_SMURFS });
+    smurfs
+      .then(response => {
+        console.log('addSmurfs response', response);
+        dispatch({ type: SMURFS_SAVED, payload: response.data })
       })
       .catch(error => {
         dispatch({ type: ERROR, payload: error });
