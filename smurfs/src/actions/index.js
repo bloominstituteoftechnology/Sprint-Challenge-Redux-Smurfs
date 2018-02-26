@@ -13,3 +13,42 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+// actionCreators
+addSmurf
+export const addFriend = (friend) => {
+  const newFriend = axios.post('http://localhost:5000//api/friends/create', friend);
+  console.log(newFriend)
+  return dispatch => {
+    dispatch({ type: SAVING_FRIENDS });
+      newFriend
+        .then(response => {
+          console.log("is submit new friend working? : ", response)
+          dispatch({ type: FRIENDS_SAVED, payload: response.data});
+      })
+        .catch(error => {
+          dispatch({ type: ERROR_SAVING_FRIENDS, payload: error})
+        })
+  }
+};
+getSmurfs
+export const getFriends = () => {
+  const friends = axios.get('http://localhost:5000/api/friends/get');
+  return dispatch => {
+    dispatch({ type: FETCHING_FRIENDS });
+    friends
+      .then(response => {
+        dispatch({ type: FRIENDS_FETCHED, payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR_FETCHING_FRIENDS, payload: error });
+      });
+  };
+};
+
+updateSmurf
+deleteSmurf
+
+//actionTypes
+
+export default 
