@@ -15,9 +15,9 @@ class Smurfs extends Component {
             this.props.smurfs.map((smurf) => {
               return (
                 <li key={smurf.id} className="Smurf">
-                  {smurf.name} <br/>
-                  {smurf.age} <br/>
-                  {smurf.height} <br/>
+                  <b>Name:</b> {smurf.name} <br/>
+                  <b>Age:</b> {smurf.age} <br/>
+                  <b>Height:</b> {smurf.height} <br/>
                   <button onClick={() => {this.props.destroySmurf(smurf.id)}}>Destroy</button>
                 </li>
               )
