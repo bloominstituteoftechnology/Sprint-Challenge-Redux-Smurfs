@@ -13,6 +13,7 @@
    U - updateSmurf
    D - deleteSmurf
 */
+import axios from 'axios';
 
 export const ADDSMURF = 'ADDSMURF';
 
@@ -27,11 +28,7 @@ export const getSmurfs = () => {
     dispatch({ type: GETSMURFS })
     axios
     .get(`${url}`)
-    .then(response => {
-      dispatch({ type: SMURFS_RECEIVED, payload: response.data })
-    })
-    .catch(error => {
-      dispatch({ type: ERROR_GETTING_SMURFS, payload: error })
-    })
+    .then(response => dispatch({ type: SMURFS_RECEIVED, payload: response.data }))
+    .catch(error => dispatch({ type: ERROR_GETTING_SMURFS, payload: error }))
   }
 }

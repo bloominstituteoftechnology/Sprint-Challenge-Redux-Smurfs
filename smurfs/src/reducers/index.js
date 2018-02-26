@@ -1,3 +1,5 @@
+import { SMURFS_RECEIVED, GETSMURFS } from "../actions/index";
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
@@ -21,8 +23,13 @@
   Components can read your store as, `state` and not `state.fooReducer`.
 */
 
-export const smurfReducer = (state = initialState, actions) => {
+export const smurfReducer = (state = initialState, action) => {
   switch(action.type) {
-    
+    case GETSMURFS:
+      return {...state, fetchingSmurfs: true };
+    case SMURFS_RECEIVED:
+      return {...state, fetchingSmurfs: false, smurfs: action.payload };
+    default:
+    return state;
   }
 }
