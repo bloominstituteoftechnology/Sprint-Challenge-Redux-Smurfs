@@ -1,4 +1,4 @@
-import {FETCHING_SMURFS, ADDING_SMURF, UPDATING_SMURF, FETCHED_SMURFS, EDITED_SMURF, EDIT_TOGGLE} from '../actions';
+import {FETCHING_SMURFS, ADDING_SMURF, UPDATING_SMURF, FETCHED_SMURFS, EDITED_SMURF, EDIT_TOGGLE, DELETE_SMURF} from '../actions';
 
 const initialState = {
    smurfs: [],
@@ -33,8 +33,14 @@ export const smurfReducer = (state = initialState, action) => {
       });
       return {...state, smurfs: updatedSmurf}
 
+      case DELETE_SMURF:
+      let deleteSmurf = state.smurfs.filter((smurf)=>{
+        return smurf.id !== action.payload;
+      });
+      return {...state, smurfs: deleteSmurf}
+
       case EDIT_TOGGLE:
-      let updatedEdit = state.smurfs.map((smurf, i)=>{
+      let updatedEdit = state.smurfs.map((smurf)=>{
         if(smurf.id === action.payload){
           return { ...smurf, editing: true }
         }

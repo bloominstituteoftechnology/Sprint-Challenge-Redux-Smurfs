@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editSmurf, editToggle } from '../actions';
+import { editSmurf, editToggle, deleteSmurf } from '../actions';
 
 class Smurf extends React.Component {
 	
@@ -18,13 +18,17 @@ class Smurf extends React.Component {
     });
   }
 
-    addEditSmurf = ()=>{
+    saveEditSmurf = ()=>{
 
     this.props.editSmurf(this.state);
   }
 
   handleEdit = (id) => {
   	this.props.editToggle(id);
+  }
+
+   handleDelete = (id) => {
+  	this.props.deleteSmurf(id);
   }
 
 
@@ -36,8 +40,8 @@ class Smurf extends React.Component {
             <div><input onChange={this.handleChange} name="name" value={this.state.name} /></div>
             <div><input onChange={this.handleChange} name="age" value={this.state.age} /></div>
             <div><input onChange={this.handleChange} name="height" value={this.state.height} /></div>
-            <button onClick={()=>{this.addEditSmurf()}}>Save</button>
-            <button>Delete</button>
+            <button onClick={()=>{this.saveEditSmurf()}}>Save</button>
+            <button onClick={()=>{this.handleDelete(this.props.id)}}>Delete</button>
             </div>
         );
       }else{
@@ -47,7 +51,7 @@ class Smurf extends React.Component {
               <div>{smurf.age}</div>
               <div>{smurf.height}</div>
               <button onClick={()=>{this.handleEdit(this.props.id)}}>Edit</button>
-              <button>Delete</button>
+              <button onClick={()=>{this.handleDelete(this.props.id)}}>Delete</button>
               </div>
         );
       }
@@ -64,4 +68,4 @@ class Smurf extends React.Component {
 
 
 
-export default connect(null, {editSmurf, editToggle})(Smurf);
+export default connect(null, {editSmurf, editToggle, deleteSmurf})(Smurf);

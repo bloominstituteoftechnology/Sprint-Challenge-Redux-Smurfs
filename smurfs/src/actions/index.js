@@ -5,6 +5,7 @@ export const UPDATING_SMURF = 'UPDATING_SMURF';
 export const FETCHED_SMURFS = 'FETCHED_SMURFS';
 export const EDITED_SMURF = 'EDITED_SMURF';
 export const EDIT_TOGGLE = 'EDIT_TOGGLE';
+export const DELETE_SMURF = 'DELETE_SMURF';
 
 export const fetchSmurfs = () => {
   const request = axios.get('http://localhost:3333/smurfs');
@@ -52,17 +53,32 @@ export const editToggle = (id)=>{
 }
 
 export const editSmurf = (smurf) => {
-  console.log('from input', smurf);
   const request = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
 
   return dispatch => {
     // dispatch({ type: EDITING_SMURF });
     // after the data is fetched
-     request
-    .then((res) => {
-      console.log('res from editing', res.data); 
+    request
+    .then((res) => { 
       // dispatch action
       dispatch({ type: EDITED_SMURF, payload: res.data });
+    })
+    .catch((err) => {
+      console.log('ERROR!', err);
+    });
+  };
+};
+
+export const deleteSmurf = (id) => {
+  const request = axios.delete(`http://localhost:3333/smurfs/${id}`);
+
+  return dispatch => {
+    // dispatch({ type: DELETING_SMURF });
+    // after the data is fetched
+    request
+    .then((res) => {
+      // dispatch action
+      dispatch({ type: DELETE_SMURF, payload: res.data.SmurfRemoved.id });
     })
     .catch((err) => {
       console.log('ERROR!', err);
