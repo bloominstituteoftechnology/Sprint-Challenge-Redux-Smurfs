@@ -6,9 +6,11 @@
 import axios from 'axios';
 
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
-export const ADDING_SMURF = 'ADDING_SMURFS';
-export const UPDATING_SMURFS = 'UPDATING_SMURFS';
-export const DELETING_SMURFS = 'DELETING_SMURFS';
+export const FETCHED_SMURFS = 'FETCHED_SMURFS';
+export const ADDING_SMURF = 'ADDING_SMURF';
+export const ADDED_SMURF = 'ADDED_SMURF';
+export const UPDATING_SMURF = 'UPDATING_SMURF';
+export const DELETING_SMURF = 'DELETING_SMURF';
 export const ERROR = 'ERROR';
 
 /*
@@ -23,28 +25,29 @@ export const ERROR = 'ERROR';
 */
 
 export const getSmurfs = () => {
-  let smurfs = axios.get('http://localhost:3333/smurfs/');
+  const smurfs = axios.get('http://localhost:3333/smurfs/');
   return dispatch => {
     dispatch({ type: FETCHING_SMURFS });
     smurfs
-    .then(data => {
-      dispatch({ type: FETCHED_SMURFS, payload: data })
-    .catch(error => {
-      dispatch({ type: ERROR, payload: error })
-    });
-  });
+      .then(allSmurfs => {
+        dispatch({ type: FETCHED_SMURFS, payload: allSmurfs.data });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error });
+      });
+  };
 };
 
-// export const addSmurfs = () => {
-
-// };
-
-// export const updateSmurf = () => {
-
-// };
-
-// export const deleteSmurf = () => {
-
-// };
-
-}
+export const addSmurf = smurf => {
+  const smurfs = axios.post('http://localhost:3333/smurfs/', smurf);
+  return dispatch => {
+    dispatch({ type: ADDING_SMURF });
+    smurfs
+      .then(allSmurfs => {
+        dispatch({ type: ADDED_SMURF, payload: allSmurfs.data });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error });
+      });
+  };
+};
