@@ -23,17 +23,26 @@ export const ERROR = 'ERROR';
 */
 
 export const getSmurfs = () => {
-
+  let smurfs = axios.get('http://localhost:3333/smurfs/');
+  return dispatch => {
+    dispatch({ type: FETCHING_SMURFS });
+    smurfs
+    .then(data => {
+      dispatch({ type: FETCHED_SMURFS, payload: data })
+    .catch(error => {
+      dispatch({ type: ERROR, payload: error })
+    });
+  });
 };
 
-export const addSmurfs = () => {
+// export const addSmurfs = () => {
 
-};
+// };
 
-export const updateSmurf = () => {
+// export const updateSmurf = () => {
 
-};
+// };
 
-export const deleteSmurf = () => {
+// export const deleteSmurf = () => {
 
-};
+// };

@@ -2,6 +2,8 @@
   Be sure to import in all of the action types from `../actions`
 */
 
+import * as typeActions from '../actions';
+
 /*
  Your initial/default state for this project could look a lot like this
  {
@@ -20,3 +22,7 @@
   This will guard your namespacing issues.
   Components can read your store as, `state` and not `state.fooReducer`.
 */
+
+export const reducer = () => {
+
+};
