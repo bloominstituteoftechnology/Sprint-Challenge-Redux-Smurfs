@@ -13,8 +13,8 @@ class App extends Component {
   render() {
     const { smurfs } = this.props;
     return (
-      <div>
-        {this.props.fetchingSmurfs ? <h1>Loading Smurfs</h1> : <h1>'Smurf Village'</h1>}
+      <div style={{width:"800px", background:"lightblue"}}>
+        {this.props.fetchingSmurfs ? <h1>Loading Smurfs</h1> : <h1 style={{textAlign:"center", fontSize:"2.5rem"}}>'Smurf Village'</h1>}
         <SmurfForm />
         <SmurfVillage smurfs={smurfs} />
       </div>

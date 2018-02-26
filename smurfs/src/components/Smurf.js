@@ -4,8 +4,8 @@ import { deleteSmurf } from '../actions/index.js';
 
 const Smurf = props => {
   return (
-    <div>
-      <h1>Name: {props.smurf.name}</h1>
+    <div style={{border:"2px solid pink", padding:"10px", width:"50%", display:'flex', alignItems:'center', flexDirection:'column'}}>
+      <h1 style={{fontSize:"2rem"}}>Name: {props.smurf.name}</h1>
       <ul>
         <li>Age: {props.smurf.age}</li>
         <li>Height: {props.smurf.height} cm</li>

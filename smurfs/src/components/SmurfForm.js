@@ -12,7 +12,7 @@ class SmurfForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSumbit}>
+      <form onSubmit={this.handleSumbit} style={{display:"flex", justifyContent:"space-between"}}>
         <label>Name</label>
         <input type="text" value={this.state.name} onChange={this.handleNameChange} />
         <label>Age</label>

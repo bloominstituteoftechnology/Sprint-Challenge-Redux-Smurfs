@@ -4,7 +4,7 @@ import Smurf from './Smurf.js';
 
 const SmurfVillage = props => {
   return (
-    <div>
+    <div style={{display:'flex',flexFlow:'wrap'}}>
       {props.smurfs.map((smurf,index) => {
         return <Smurf index={index} key={smurf.id} smurf={smurf} />;
       })}
