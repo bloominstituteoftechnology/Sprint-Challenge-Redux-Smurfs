@@ -12,7 +12,7 @@ import reducer from './reducers';
 
 const store = createStore(
   reducer,
-  applyMiddleware(promise(), thunk, logger())
+  applyMiddleware(promise(), thunk, logger)
 );
 
 ReactDOM.render(
