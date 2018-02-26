@@ -1,4 +1,4 @@
-import { SMURFS_RECEIVED, GETSMURFS } from "../actions/index";
+import { SMURFS_RECEIVED, GETSMURFS, ERROR_GETTING_SMURFS, SMURF_ADDED, ERROR_CREATING_SMURF, ADDSMURF } from "../actions/index";
 
 /*
   Be sure to import in all of the action types from `../actions`
@@ -12,7 +12,7 @@ import { SMURFS_RECEIVED, GETSMURFS } from "../actions/index";
    addingSmurf: false,
    updatingSmurf: false,
    deletingSmurfs: false,
-   error: true,
+   error: false,
  }
 
 
@@ -29,6 +29,14 @@ export const smurfReducer = (state = initialState, action) => {
       return {...state, fetchingSmurfs: true };
     case SMURFS_RECEIVED:
       return {...state, fetchingSmurfs: false, smurfs: action.payload };
+    case ERROR_GETTING_SMURFS:
+      return {...state, error: true, fetchingSmurfs: false};
+    case ADDSMURF:
+      return {...state, addingSmurf: true}
+    case SMURF_ADDED:
+      return {...state, addingSmurf: false, smurfs: action.payload};
+    case ERROR_CREATING_SMURF:
+      return {...state, error: true, addingSmurf: false}
     default:
     return state;
   }
