@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Smurf from './Smurf.js';
+
 const SmurfVillage = props => {
   return (
     <div>
