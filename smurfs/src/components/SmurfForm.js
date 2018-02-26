@@ -18,12 +18,13 @@ class SmurfForm extends React.Component {
         <label>Age</label>
         <input type="number" value={this.state.age} onChange={this.handleAgeChange} />
         <label>Email</label>
-        <input type="height" value={this.state.age} onChange={this.handleHeightChange} />
+        <input type="height" value={this.state.height} onChange={this.handleHeightChange} />
         <button type="submit">Add Smurf</button>
       </form>
     );
   }
 
+  //Blanking on how to handle all three with one handler
   handleNameChange = event => {
     this.setState({ name: event.target.value });
   };
@@ -37,12 +38,12 @@ class SmurfForm extends React.Component {
   handleSumbit = event => {
     event.preventDefault();
     let currentId = this.state.id;
-    this.props.addFriend(this.state);
+    this.props.addSmurf(this.state);
     this.setState({
       name: '',
       age: '',
       height: '',
-      id: ++currentId,
+      id: currentId++,
     });
   };
 }

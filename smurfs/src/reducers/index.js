@@ -23,11 +23,12 @@ const rootReducer = (state = initialState, action) => {
     case actions.ADDING_SMURFS:
       return { ...state, addingSmurfs: true };
     case actions.ADDED_SMURFS:
+      console.log('Added_smurfs payload: ', action.payload);
       return {
         ...state,
         addingSmurfs: false,
         addedSmurfs: true,
-        smurfs: [...state, action.payload],
+        smurfs: action.payload,
       };
     case actions.ERROR:
       return { ...state, fetchingSmurfs: false, addingSmurfs: false, error: action.payload };

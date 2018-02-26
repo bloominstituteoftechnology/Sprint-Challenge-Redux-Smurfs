@@ -1,15 +1,15 @@
 import React from 'react';
 
-const SmurfVillage = props => {
+const Smurf = props => {
   return (
     <div>
-      <h1>Name: {props.name}</h1>
+      <h1>Name: {props.smurf.name}</h1>
       <ul>
-        <li>Age: {props.age}</li>
-        <li>Height: {props.height}</li>
+        <li>Age: {props.smurf.age}</li>
+        <li>Height: {props.smurf.height}</li>
       </ul>
     </div>
   );
 };
 
-export default SmurfVillage;
+export default Smurf;
