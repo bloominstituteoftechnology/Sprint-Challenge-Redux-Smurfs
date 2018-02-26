@@ -24,8 +24,25 @@
 
 .Smurf {
   margin: 2%;
+  width: 28%;
+  border: 1px solid grey;
+  border-radius: 4px;
 }
 
+.SmurfList {
+  background: #88CCFF;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  border: 1px solid black;
+
+}
+
+.input {
+  border-radius: 5px;
+  margin: 1%;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
