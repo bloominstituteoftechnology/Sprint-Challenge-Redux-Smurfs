@@ -6,15 +6,15 @@ class Smurfs extends Component {
   render() {
     return (
       <div className="Smurfs-Container">
-        {this.props.smurfs.length > 0 && <h1>Smurfs Village!</h1>}
+        {this.props.smurfs.length > 0 && <h2>Smurf Horde!</h2>}
 
         <ul>
           {this.props.gettingSmurfs ? (
             <p>Loading Smurfs...</p>
           ) : (
-            (this.props.smurfs || []).map((smurf, i) => {
+            this.props.smurfs.map((smurf) => {
               return (
-                <li key={i} className="Smurf">
+                <li key={smurf.id} className="Smurf">
                   {smurf.name} <br/>
                   {smurf.age} <br/>
                   {smurf.height} <br/>

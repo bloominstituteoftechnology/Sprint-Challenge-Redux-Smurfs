@@ -44,7 +44,7 @@ export const smurfsReducer = (state = initialState, action) => {
         updatingSmurf: false,
         smurfs: state.smurfs.map((smurf) => {
           if (smurf.id === action.payload.id) {
-            return action.payload;
+            return action.payload.foundSmurf;
           } else { 
             return smurf;
           }
