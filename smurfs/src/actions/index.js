@@ -10,6 +10,7 @@ export const UPDATE_SMURF = 'UPDATE_SMURF';
 export const DELETE_SMURF = 'DELETE_SMURF';
 export const FETCHING = 'FETCHING';
 export const ERROR_GETTING_SMURFS = 'ERROR_GETTING_SMURFS';
+export const SHOW_CREATE_FORM = 'SHOW_CREATE_FORM';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -39,11 +40,32 @@ export const getSmurfs = () => {
     };
 };
 
-export const addSmurfs = () => {
+export const addSmurf = (smurf) => {
 
+    const newSmurf = axios.post('http://localhost:3333/smurfs', {
+        name:smurf.name,
+        age:smurf.age,
+        height:smurf.height,
+    });
+
+    return dispatch => {
+        newSmurf
+            .then(({data}) => {
+                dispatch({type: ADD_SMURF, payload: data});
+            })
+            .catch(err => {
+                dispatch({type: ERROR_GETTING_SMURFS, payload: err});
+            });
+    };
 };
 
-export const updateSmurfs = () => {
+export const showCreateForm = (val) => {
+    return dispatch => {
+        dispatch({type: SHOW_CREATE_FORM, showCreateForm: val});
+    };
+};
+
+export const updateSmurf = () => {
 
 };
 
