@@ -18,7 +18,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         fetchingSmurfs: false,
         fetchedSmurfs: true,
-        smurfs: actions.payload,
+        smurfs: action.payload,
       };
     case actions.ADDING_SMURFS:
       return { ...state, addingSmurfs: true };
@@ -27,7 +27,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         addingSmurfs: false,
         addedSmurfs: true,
-        smurfs: [ ...state, action.payload ],
+        smurfs: [...state, action.payload],
       };
     case actions.ERROR:
       return { ...state, fetchingSmurfs: false, addingSmurfs: false, error: action.payload };

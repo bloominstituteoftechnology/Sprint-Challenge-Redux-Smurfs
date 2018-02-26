@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div>
         {this.props.fetchingSmurfs ? <h1>Loading Smurfs</h1> : <h1>'Smurf Village'</h1>}
-        {/* <SmurfForm /> */}
+        <SmurfForm />
         <SmurfVillage smurfs={smurfs} />
       </div>
     );

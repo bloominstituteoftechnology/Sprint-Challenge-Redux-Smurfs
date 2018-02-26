@@ -19,13 +19,8 @@ export const getSmurfs = () => {
   };
 };
 
-//I believe I was told this was the incorrect way to get IDs in a peer review, but I can't remember
-//which repo had this comment and what the remedy was and don't won't to spend what little time we get
-//for the sprint to look...
-let nextID = 0;
 export const addSmurf = smurf => {
-  const intermediary = { ...smurf, id: nextID++ };
-  const newSmurf = axios.post('http://localhost:3333/smurfs', intermediary);
+  const newSmurf = axios.post('http://localhost:3333/smurfs', smurf);
   return dispatch => {
     dispatch({ type: ADDING_SMURFS });
     newSmurf
