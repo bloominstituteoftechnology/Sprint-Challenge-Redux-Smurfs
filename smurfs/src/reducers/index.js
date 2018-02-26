@@ -17,6 +17,10 @@ export default (state = initialState, action) => {
       return { ...state, fetchingSmurfs: true};
     case actionTypes.SMURFS_FETCHED:
       return { ...state, smurfs: action.payload, fetchingSmurfs: false, smurfsFetched: true};
+    case actionTypes.SAVING_SMURFS:
+      return { ...state, savingSmurfs: true};
+    case actionTypes.SMURFS_SAVED:
+      return { ...state, savingSmurfs: false, smurfsSaved: true, smurfs: action.payload}
     case actionTypes.ERROR:
       return { ...state, 
         fetchingSmurfs: false,
