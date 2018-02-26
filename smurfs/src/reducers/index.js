@@ -5,6 +5,10 @@ import { IS_FETCHING,
   ADD_SMURF,
   DELETING_SMURF,
   DELETE_SMURF,
+  THIS_SMURF,
+  TOGGLE_EDIT_SMURF,
+  EDIT_SMURF,
+  EDITING_SMURF,
  } from '../actions';
 
 const smurfState = {
@@ -13,7 +17,10 @@ const smurfState = {
    addingSmurf: false,
    updatingSmurf: false,
    deletingSmurf: false,
-   error: true
+   error: true,
+   smurfSelected: {},
+   showEdit: false,
+   updatingSmurf: false,
  }
 
  const smurfs = (state = smurfState, action) => {
@@ -53,6 +60,28 @@ const smurfState = {
           ...state,
           smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload.SmurfRemoved.id),
           deletingSmurf: false
+        }
+      case THIS_SMURF:
+        return {
+          ...state,
+          smurfSelected: action.payload,
+          showEdit: false
+        }
+      case TOGGLE_EDIT_SMURF:
+        return {
+          ...state,
+          showEdit: !state.showEdit 
+        }
+      case EDITING_SMURF:
+        return {
+          ...state,
+          updatingSmurf: true
+        }
+      case EDIT_SMURF:
+        return {
+          ...state,
+          updatingSmurf: false,
+          smurfs: action.payload
         }
       case ERROR:
         return { 

@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
-import { deleteSmurf } from '../actions';
+import { deleteSmurf, toggleShowEdit, updateThisSmurf } from '../actions';
 import { connect } from 'react-redux';
+import EditSmurfForm from './EditSmurfForm';
 
 class Smurfs extends Component {
     handleDeleteSmurf = id => {
         this.props.deleteSmurf(id);
+    }
+    handleUpdateThisSmurf = smurf => {
+      this.props.updateThisSmurf(smurf);
+    }
+    handleShowEdit = () => {
+      this.props.toggleShowEdit()
     }
     render() {
         console.log('What is this: ', this);
@@ -19,9 +26,12 @@ class Smurfs extends Component {
                     <div className="smurf__name">{smurf.name}</div>
                     <div className="smurf__age">age: {smurf.age}</div>
                     <div className="smurf__height">height: {smurf.height}</div>
-                      <div className="edit-button" onClick={() => {}} >
+                      <div className="edit-button" onClick={() => this.props.toggleShowEdit()} >
                       edit
                     </div>
+                    {this.props.showEdit ? (
+                      <EditSmurfForm smurf={this.props.smurfSelected} />
+                    ) : null}
                   </div>
               )}
             ) :
@@ -35,8 +45,10 @@ class Smurfs extends Component {
    return {
        deletingSmurf: state.deletingSmurf,
        error: state.error,
+       showEdit: state.showEdit,
+       smurfSelected: state.smurfSelected
    } 
  }
      
  
- export default connect(mapStateToProps, { deleteSmurf })(Smurfs);
+ export default connect(mapStateToProps, { deleteSmurf, toggleShowEdit, updateThisSmurf })(Smurfs);

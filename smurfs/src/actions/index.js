@@ -10,6 +10,10 @@ export const ADDING_SMURF = 'ADDING_SMURF';
 export const ADD_SMURF = 'ADD_SMURF';
 export const DELETING_SMURF = 'DELETING_SMURF';
 export const DELETE_SMURF = 'DELETE_SMURF';
+export const THIS_SMURF = 'THIS_SMURF';
+export const TOGGLE_EDIT_SMURF = 'TOGGLE_EDIT_SMURF';
+export const EDIT_SMURF = 'EDIT_SMURF';
+export const EDITING_SMURF = 'EDITING_SMURF';
 
 const URL = 'http://localhost:3333/smurfs'
 
@@ -50,6 +54,30 @@ export const deleteSmurf = (id) => {
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
       });
+  };
+};
+export const editSmurf = (id) => {
+  const editedSmurf = axios.put(`${URL}/${id}/`, id);
+  return dispatch => {
+    dispatch({ type: EDITING_SMURF });
+    editedSmurf
+      .then(({data}) => {
+        dispatch({ type: EDIT_SMURF, payload: data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  }
+}
+export const toggleShowEdit = () => {
+  return {
+    type: TOGGLE_EDIT_SMURF
+  };
+};
+export const updateThisSmurf = smurf => {
+  return {
+    type: THIS_SMURF,
+    payload: smurf
   };
 };
 
