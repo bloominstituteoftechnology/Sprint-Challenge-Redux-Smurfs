@@ -15,9 +15,18 @@ class App extends Component {
         <h1 className="title">
           SMURFS! 2.0 <AddSmurfForm save={this.props.addSmurf} />
         </h1>
-        <div className="smurfDisplay">
-          <SmurfGen smurfs={this.props.smurfs} delete={this.props.deleteSmurf} />
-        </div>
+        {this.props.fetchingSmurfs ||
+        this.props.deletingSmurf ||
+        this.props.addingSmurf ? (
+          <h2 className="title">Loading Smurfs...</h2>
+        ) : (
+          <div className="smurfDisplay">
+            <SmurfGen
+              smurfs={this.props.smurfs}
+              delete={this.props.deleteSmurf}
+            />
+          </div>
+        )}
       </div>
     );
   }
