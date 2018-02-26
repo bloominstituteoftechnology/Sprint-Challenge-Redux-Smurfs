@@ -6,7 +6,7 @@ const Smurf = props => {
       <h1>Name: {props.smurf.name}</h1>
       <ul>
         <li>Age: {props.smurf.age}</li>
-        <li>Height: {props.smurf.height}</li>
+        <li>Height: {props.smurf.height} cm</li>
       </ul>
     </div>
   );
