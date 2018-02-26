@@ -1,22 +1,56 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I connect my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import SmurfForm from './SmurfForm';
+import Smurfs from './Smurfs';
+import * as actions from '../actions';
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.props.actions.getSmurfData();
+  }
+
   render() {
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+      <div className="App container">
+        <SmurfForm {...this.props}/>
+        <Smurfs {...this.props}/>
       </div>
     );
   }
+  /*componentDidMount() {
+    this.loadSmurfs();
+  }
+
+  loadSmurfs = () => {
+    axios
+      .get('http://localhost:3333/smurfs')
+      .then(response => {
+        this.setState({
+          smurfs: response.data,
+        });
+      })
+      .catch(() => {
+        console.error('error getting data');
+      });
+  };*/
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    smurfs: state.smurfs
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
