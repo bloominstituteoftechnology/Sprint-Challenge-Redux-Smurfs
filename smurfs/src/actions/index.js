@@ -23,17 +23,17 @@ export const getSmurfs = () => {
 //which repo had this comment and what the remedy was and don't won't to spend what little time we get
 //for the sprint to look...
 let nextID = 0;
-export const addSmurf = (smurf) => {
-  const intermediary = {...smurf, id: nextID++};
+export const addSmurf = smurf => {
+  const intermediary = { ...smurf, id: nextID++ };
   const newSmurf = axios.post('http://localhost:3333/smurfs', intermediary);
   return dispatch => {
     dispatch({ type: ADDING_SMURFS });
-      newSmurf
-        .then(response => {
-          dispatch({ type: ADDED_SMURFS, payload: response.data});
+    newSmurf
+      .then(response => {
+        dispatch({ type: ADDED_SMURFS, payload: response.data });
       })
-        .catch(error => {
-          dispatch({ type: ERROR, payload: error})
-        })
-  }
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error });
+      });
+  };
 };
