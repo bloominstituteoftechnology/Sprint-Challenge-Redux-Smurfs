@@ -10,7 +10,7 @@
    addingSmurf: false
    updatingSmurf: false
    deletingSmurfs: false
-   error: true
+   error: null
  }
 */
 
