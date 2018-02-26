@@ -32,11 +32,23 @@ class Form extends React.Component {
       <div>
         <form onSubmit={this.addNewSmurf}>
 
-        <input value={this.state.name} name="name" placeholder="Name" onChange={this.handleChange} /><br/>
+        <input 
+        value={this.state.name} 
+        name="name" 
+        placeholder="Name" 
+        onChange={this.handleChange} /><br/>
 
-        <input value={this.state.age} name="age" placeholder="Age" onChange={this.handleChange} /><br/>
+        <input 
+        value={this.state.age} 
+        name="age" 
+        placeholder="Age" 
+        onChange={this.handleChange} /><br/>
 
-        <input value={this.state.height} name="height" placeholder="Height" onChange={this.handleChange} /><br/>
+        <input 
+        value={this.state.height} 
+        name="height" 
+        placeholder="Height" 
+        onChange={this.handleChange} /><br/>
 
         <button type="submit">Add Smurf</button>
         </form>

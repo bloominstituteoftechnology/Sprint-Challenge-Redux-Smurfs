@@ -1,4 +1,4 @@
-import {FETCHING_SMURFS, ADDING_SMURF, UPDATING_SMURF, FETCHED_SMURFS} from '../actions';
+import {FETCHING_SMURFS, ADDING_SMURF, UPDATING_SMURF, FETCHED_SMURFS, EDITED_SMURF, EDIT_TOGGLE} from '../actions';
 
 const initialState = {
    smurfs: [],
@@ -24,7 +24,26 @@ export const smurfReducer = (state = initialState, action) => {
     case FETCHED_SMURFS:
       return { ...state, smurfs: action.payload, fetchingSmurfs: false };
 
+    case EDITED_SMURF:
+      let updatedSmurf = state.smurfs.map((smurf)=>{
+        if(smurf.id === action.payload.id){
+          return action.payload;
+        }
+        return smurf;
+      });
+      return {...state, smurfs: updatedSmurf}
+
+      case EDIT_TOGGLE:
+      let updatedEdit = state.smurfs.map((smurf, i)=>{
+        if(smurf.id === action.payload){
+          return { ...smurf, editing: true }
+        }
+        return smurf;
+      });
+      return {...state, smurfs: updatedEdit}
+
     default:
       return state;
   }
 };
+      

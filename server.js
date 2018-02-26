@@ -13,7 +13,22 @@ const sendUserError = (msg, res) => {
   return;
 };
 
-let smurfs = [];
+let smurfs = [
+    {
+        "name": "Brainey",
+        "age": 200,
+        "height": "5cm",
+        "id": 0,
+        "editing": false
+    },
+    {
+        "name": "Sleepy",
+        "age": 200,
+        "height": "5cm",
+        "id": 1,
+        "editing": true
+    }
+];
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
@@ -45,7 +60,7 @@ server.post('/smurfs', (req, res) => {
 
 server.put('/smurfs/:id', (req, res) => {
   const { id } = req.params;
-  const { name, age, height } = req.body;
+  const { name, age, height, editing } = req.body;
   const findSmurfById = smurf => {
     return smurf.id == id;
   };
@@ -56,6 +71,7 @@ server.put('/smurfs/:id', (req, res) => {
     if (name) foundSmurf.name = name;
     if (age) foundSmurf.age = age;
     if (height) foundSmurf.height = height;
+    foundSmurf.editing = false;
     res.json(foundSmurf);
   }
 });

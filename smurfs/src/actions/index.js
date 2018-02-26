@@ -1,24 +1,10 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
-
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
-
 import axios from 'axios';
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const UPDATING_SMURF = 'UPDATING_SMURF';
 export const FETCHED_SMURFS = 'FETCHED_SMURFS';
+export const EDITED_SMURF = 'EDITED_SMURF';
+export const EDIT_TOGGLE = 'EDIT_TOGGLE';
 
 export const fetchSmurfs = () => {
   const request = axios.get('http://localhost:3333/smurfs');
@@ -51,6 +37,32 @@ export const addSmurf = (smurf) => {
     .then((res) => {
       // dispatch action
       dispatch({ type: FETCHED_SMURFS, payload: res.data });
+    })
+    .catch((err) => {
+      console.log('ERROR!', err);
+    });
+  };
+};
+
+export const editToggle = (id)=>{
+  return {
+    type: EDIT_TOGGLE,
+    payload: id
+  }
+}
+
+export const editSmurf = (smurf) => {
+  console.log('from input', smurf);
+  const request = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
+
+  return dispatch => {
+    // dispatch({ type: EDITING_SMURF });
+    // after the data is fetched
+     request
+    .then((res) => {
+      console.log('res from editing', res.data); 
+      // dispatch action
+      dispatch({ type: EDITED_SMURF, payload: res.data });
     })
     .catch((err) => {
       console.log('ERROR!', err);

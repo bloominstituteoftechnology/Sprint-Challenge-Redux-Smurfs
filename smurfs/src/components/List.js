@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Smurf from './Smurf';
 
 class List extends React.Component {
-
   render() {
     return (
       <div>
-        {this.props.fetchingSmurfs ? <div>Loading...</div> : 
-        this.props.smurfs.map((smurf)=>{
-          return <div key={smurf.id}>{smurf.name}</div>
+        {this.props.smurfs.map((smurf)=>{
+          return(<Smurf key={smurf.id} smurf={smurf} id={smurf.id} />); 
         })}
       </div>
     );
@@ -18,7 +17,7 @@ class List extends React.Component {
 const mapStateToProps = (state) => {
   return {
     smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs
+    fetchingSmurfs: state.fetchingSmurfs,
   } 
 }
 
