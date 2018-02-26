@@ -23,12 +23,15 @@ export const ERROR_GETTING_SMURFS = 'ERROR_GETTING_SMURFS';
 */
 
 export const getSmurfs = () => {
-    const smurfs = axios.get('http://localhost:5000/smurfs/');
+    const smurfs = axios.get('http://localhost:3333/smurfs/');
+    console.log('Coming  back from server with smurfs: ', smurfs);
     return dispatch => {
-        dispatch({type: FETCHING});
+        dispatch({type: FETCHING, fetching: true});
         smurfs
             .then(response => {
+                console.log('response.data',response.data)
                 dispatch({type: GET_SMURFS, payload: response.data});
+                dispatch({type: FETCHING, fetching: false});
             })
             .catch(err => {
                 dispatch({type: ERROR_GETTING_SMURFS, payload: err});
