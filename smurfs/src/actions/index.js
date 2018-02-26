@@ -16,6 +16,8 @@
 import axios from 'axios';
 
 export const ADDSMURF = 'ADDSMURF';
+export const SMURF_ADDED = 'SMURF_ADDED';
+export const ERROR_CREATING_SMURF = 'ERROR_CREATING_SMURF';
 
 export const GETSMURFS = 'GETSMURFS';
 export const SMURFS_RECEIVED = 'SMURFS_RECEIVED';
@@ -30,5 +32,15 @@ export const getSmurfs = () => {
     .get(`${url}`)
     .then(response => dispatch({ type: SMURFS_RECEIVED, payload: response.data }))
     .catch(error => dispatch({ type: ERROR_GETTING_SMURFS, payload: error }))
+  }
+}
+
+export const addSmurf = (data) => {
+  return dispatch => {
+    dispatch({ type: ADDSMURF })
+    axios
+    .post(`${url}`, data)
+    .then(({ data }) => dispatch({ type: SMURF_ADDED, payload: data }))
+    .catch(error => dispatch({ type: ERROR_CREATING_SMURF, payload: error }))
   }
 }

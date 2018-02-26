@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createSmurf } from '../actions/index';
+import CreateSmurfFrom from './createSmurfForm';
 import { getSmurfs } from '../actions/index';
 import { connect } from 'react-redux';
 
@@ -27,6 +27,7 @@ class App extends Component {
         );
         })}
       </ul>
+      <CreateSmurfFrom />
 
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
