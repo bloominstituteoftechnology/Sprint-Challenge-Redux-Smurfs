@@ -34,7 +34,7 @@ const rootReducer = (state = initialState, action) => {
     case actions.DELETING_SMURFS:
       return { ...state, deletingSmurfs: true };
     case actions.DELETED_SMURFS:
-      return { ...state, deletingSmurfs: false, deletedSmurfs: true, smurfs: action.payload };
+      return { ...state, deletingSmurfs: false, deletedSmurfs: true, smurfs: [...state.smurfs.slice(0, action.payload), ...state.smurfs.slice(action.payload + 1)]};
     case actions.ERROR:
       return { ...state, fetchingSmurfs: false, addingSmurfs: false, error: action.payload };
     default:

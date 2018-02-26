@@ -5,8 +5,8 @@ import Smurf from './Smurf.js';
 const SmurfVillage = props => {
   return (
     <div>
-      {props.smurfs.map(smurf => {
-        return <Smurf key={smurf.id} smurf={smurf} />;
+      {props.smurfs.map((smurf,index) => {
+        return <Smurf index={index} key={smurf.id} smurf={smurf} />;
       })}
     </div>
   );
