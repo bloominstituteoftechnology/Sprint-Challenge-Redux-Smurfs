@@ -3,16 +3,16 @@
 */
 
 /*
- Your initial/default state for this project could look a lot like this
- {
+ Your initial/default state for this project could look a lot like this */
+ const initialState = {
    smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurfs: false
-   error: true
+   fetchingSmurfs: false,
+   addingSmurf: false,
+   updatingSmurf: false,
+   deletingSmurfs: false,
+   error: true,
  }
-*/
+
 
 /*
   You'll only need one smurf reducer for this project.
@@ -20,3 +20,9 @@
   This will guard your namespacing issues.
   Components can read your store as, `state` and not `state.fooReducer`.
 */
+
+export const smurfReducer = (state = initialState, actions) => {
+  switch(action.type) {
+    
+  }
+}
