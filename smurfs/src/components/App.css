@@ -1,10 +1,20 @@
 .App {
   text-align: center;
+  background-color: green;
+}
+
+.header {
+  background-color: yellow;
+}
+
+.smurfs {
+  background: red;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  background-color: red;
 }
 
 .App-header {
