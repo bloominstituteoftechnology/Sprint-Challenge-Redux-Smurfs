@@ -9,7 +9,7 @@ const initialState = {
   error: false,
 };
 
-export const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.FETCHING_SMURFS:
       return { ...state, fetchingSmurfs: true };
@@ -27,7 +27,7 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         addingSmurfs: false,
         addedSmurfs: true,
-        smurfs: [ ...smurfs, action.payload ],
+        smurfs: [ ...state, action.payload ],
       };
     case actions.ERROR:
       return { ...state, fetchingSmurfs: false, addingSmurfs: false, error: action.payload };
@@ -35,3 +35,5 @@ export const rootReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default rootReducer;
