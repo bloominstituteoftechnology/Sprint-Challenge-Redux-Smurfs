@@ -60,7 +60,7 @@ export const smurfsReducer = (state = initialState, action) => {
         ...state,
         deletingSmurf: false,
         smurfs: state.smurfs.filter((smurf) => {
-          return smurf.name !== action.payload.name;
+          return smurf.id !== action.payload.SmurfRemoved.id;
         })
       }
     case actionTypes.ERROR:

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Smurfs from './smurfs';
-import { getSmurfs } from '../actions';
+import { getSmurfs, destroySmurf } from '../actions';
 import './App.css';
 import CreateSmurfForm from './createSmurfForm';
 
@@ -24,6 +24,7 @@ class App extends Component {
         <Smurfs 
           smurfs={this.props.smurfs}
           gettingSmurfs={this.props.gettingSmurfs}
+          destroySmurf={this.props.destroySmurf}
         />
       </div>
     );
@@ -39,4 +40,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs })(App)
+export default connect(mapStateToProps, { getSmurfs, destroySmurf })(App)
