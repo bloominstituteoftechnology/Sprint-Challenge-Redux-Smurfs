@@ -5,7 +5,13 @@ function SmurfList (props) {
   return (
     <div className="SmurfList">
       {props.smurfs.map((smurf, index) => {
-        return <li key={index}>{smurf}</li> 
+        return (
+          <div className="Smurf" key={index}>
+            <li>Name: {smurf.name}</li>
+            <li>Age: {smurf.age}</li>
+            <li>Height: {smurf.height}</li>
+          </div>
+        ) 
       })}
     </div>
   )
