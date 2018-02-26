@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
 
 class Smurfs extends Component {
   render() {
@@ -24,14 +23,5 @@ class Smurfs extends Component {
     )
   }
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     smurfs: state.smurfsReducer.smurfs,
-//     gettingSmurfs: state.smurfsReducer.gettingSmurfs,
-//   }
-// }
-
-// export default connect(mapStateToProps)(Smurfs);
 
 export default Smurfs;

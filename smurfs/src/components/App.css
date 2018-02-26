@@ -1,10 +1,24 @@
-.App {
-  text-align: center;
+body {
+  background-image: url('../papa_smurf.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: Genava;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App {
+  text-align: center;
+  padding: 50px;
+  color: rgba(255, 255, 255, 0.815);
+  border: 25px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1%;
+  background-color: rgba(57, 118, 158, 0.2);
+  width: 80%;
+  margin-top: 40px;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .App-header {
@@ -22,7 +36,21 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.Smurfs-Container ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
 }
+
+.Smurfs-Container li {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5%;
+  width: 120px;
+  height: auto;
+  padding: 20px;
+  border-radius: 2%;
+  margin: 5px;
+  background-color: rgba(57, 118, 158, 0.6);
+  list-style-type: none;
+}
+

@@ -38,11 +38,26 @@ class CreateSmurfForm extends Component {
   render() {
     return(
       <div>
-        <form>
-          <input value={this.state.name} onChange={this.smurfNameHandler} />
-          <input value ={this.state.age} onChange={this.smurfAgeHandler} type="number" />
-          <input value ={this.state.height} onChange={this.smurfHeightHandler} />
-          <button onClick={() => {this.createSmurfHandler()}} type="button">
+        <form className="Smurf-Form">
+          <input
+            value={this.state.name}
+            onChange={this.smurfNameHandler}
+            placeholder="Name"
+          />
+          <input 
+            value ={this.state.age}
+            onChange={this.smurfAgeHandler}
+            type="number"
+            placeholder="Age"
+          />
+          <input
+            value ={this.state.height}
+            onChange={this.smurfHeightHandler}
+            placeholder="Height"
+          />
+          <button 
+            onClick={() => {this.createSmurfHandler()}} 
+            type="button">
             Create Smurf!
           </button>
         </form>
