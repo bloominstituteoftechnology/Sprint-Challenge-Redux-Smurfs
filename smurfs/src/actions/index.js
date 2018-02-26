@@ -37,6 +37,7 @@ export const createSmurf = (smurf) => {
     dispatch({ type: CREATING_SMURF });
     newSmurf
       .then((response) => {
+        console.log(response.data);
         dispatch({ type: CREATE_SMURF, payload: response.data });
       })
       .catch((error) => {

@@ -22,13 +22,11 @@ class CreateSmurfForm extends Component {
   }
 
   createSmurfHandler = (event) => {
-    // event.preventDefault();
     let newSmurf = {
       name: this.state.name,
       age: Number(this.state.age),
       height: this.state.height,
     }
-    console.log(newSmurf);
     this.props.createSmurf(newSmurf);
     this.setState({
       name: '',

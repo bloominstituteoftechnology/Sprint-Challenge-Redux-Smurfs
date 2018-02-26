@@ -14,6 +14,7 @@ import CreateSmurfForm from './createSmurfForm';
 class App extends Component {
   componentDidMount() {
     this.props.getSmurfs();
+    console.log(this.props);
   }
 
   render() {
@@ -22,25 +23,21 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
         <CreateSmurfForm />
-
-        <div>
-          {/* {this.props.gettingSmurfs ? (
-            <p>Loading Smurfs...</p>
-          ) : (
-          )} */}
-            <Smurfs smurfs={this.props.smurfs}/>
-        </div>
+        <Smurfs 
+          smurfs={this.props.smurfs}
+          gettingSmurfs={this.props.gettingSmurfs}/>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
+  const { smurfsReducer } = state;
   return {
-    smurfs: state.smurfsReducer.smurfs,
-    error: state.smurfsReducer.error,
-    gettingSmurfs: state.smurfsReducer.gettingSmurfs,
-  }
-}
+    smurfs: smurfsReducer.smurfs,
+    error: smurfsReducer.error,
+    gettingSmurfs: smurfsReducer.gettingSmurfs,
+  };
+};
 
 export default connect(mapStateToProps, { getSmurfs })(App)
