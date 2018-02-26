@@ -1,0 +1,219 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 62.5%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.App {
+  background: #88CCFF;
+  height: 1000px;
+  display: flex;
+  flex-flow: column wrap;
+  min-height: 100%;
+  position: relative;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.App .header {
+  background: white;
+  padding: 15px 0px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  text-shadow: 2px 2px #ddd;
+  color: #88CCFF;
+  width: 100%;
+}
+.App .SmurfForm {
+  margin: 30px;
+  display: flex;
+  flex-flow: column;
+  width: 150px;
+  position: absolute;
+  top: 100px;
+  left: 30px;
+  border: solid white 30px;
+  border-radius: 5px;
+  background: white;
+}
+.App .SmurfForm .input {
+  border-radius: 5px;
+  margin-bottom: 15px;
+  background: white;
+}
+.App .SmurfForm .SmurfForm__Button {
+  background: #88CCFF;
+  padding: 3px;
+  color: white;
+  border: solid #ddd 1px;
+  border-radius: 5px;
+  font-size: 1.8rem;
+}
+.App .SmurfForm .SmurfForm__Button:hover {
+  cursor: pointer;
+}
+.App .smurfs {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 8px;
+  justify-content: center;
+  max-width: 690px;
+  width: 65%;
+  position: absolute;
+  top: 100px;
+  right: 30px;
+}
+.App .smurfs .smurf {
+  display: flex;
+  flex-flow: column;
+  padding: 3px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px #ddd;
+  margin: 30px;
+  position: relative;
+}
+.App .smurfs .smurf .smurf__name {
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 17px;
+}
+.App .smurfs .smurf .delete-button {
+  display: none;
+}
+.App .smurfs .smurf:hover {
+  cursor: default;
+}
+.App .smurfs .smurf:hover .delete-button {
+  display: flex;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: black;
+  font-weight: 900;
+}
+.App .smurfs .smurf:hover .delete-button:hover {
+  cursor: pointer;
+}
