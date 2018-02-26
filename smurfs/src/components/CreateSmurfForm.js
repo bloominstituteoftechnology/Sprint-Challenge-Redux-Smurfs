@@ -1,17 +1,34 @@
 import React, {Component} from 'react';
 import {FormGroup, ControlLabel, FormControl, Row, Col, Grid} from 'react-bootstrap';
 import styled from 'styled-components';
+import {connect} from 'react-redux';
+import {addSmurf, showCreateForm} from '../actions';
 
 class CreateSmurfForm extends Component {
     state = {
         showButtonHideForm:  this.props.showButtonHideForm,
-        
+        name: '',
+        age: '',
+        height: '',
     };
 
-    showCreateNewForm = () =>{
+    showCreateNewForm = () => this.setState({showButtonHideForm: false });
 
-        console.log('this is the clisk to show smurf change state');
-        this.setState({showButtonHideForm: false });
+    submitCreate = (e) => {
+        e.preventDefault();
+        this.props.showCreateForm(false);
+        this.props.addSmurf(this.state);
+    };
+
+    cancelCreate = (e) => {
+        e.preventDefault();
+        this.props.showCreateForm(false);
+    };
+
+    updateField = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     };
 
     render(){
@@ -40,7 +57,7 @@ class CreateSmurfForm extends Component {
                                                     type="text"
                                                     value={this.state.name}
                                                     placeholder="Name"
-                                                    onChange={this.updateName}
+                                                    onChange={this.updateField}
                                                     name={"name"}
                                                 />
                                                 <br/>
@@ -49,20 +66,22 @@ class CreateSmurfForm extends Component {
                                                     type="age"
                                                     value={this.state.age}
                                                     placeholder="Age"
-                                                    onChange={this.updateAge}
+                                                    onChange={this.updateField}
                                                     name={"age"}
                                                 />
                                                 <br/>
-                                                <ControlLabel><strong>Email:</strong></ControlLabel>
+                                                <ControlLabel><strong>Height:</strong></ControlLabel>
                                                 <FormControl
-                                                    type="email"
-                                                    value={this.state.email}
-                                                    placeholder="Email"
-                                                    onChange={this.updateEmail}
-                                                    name={"email"}
+                                                    type="text"
+                                                    value={this.state.height}
+                                                    placeholder="Height"
+                                                    onChange={this.updateField}
+                                                    name={"height"}
                                                 />
                                                 <div className={"btn-update"}>
-                                                    <button onClick={(e) => {this.submitCreate(e, this.state.id)}} className={"btn btn-primary btn-md"}> Create New Smurf </button>
+                                                    <button onClick={(e) => {this.submitCreate(e)}} className={"btn btn-primary btn-md"}> Create New Smurf </button>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <button onClick={(e) => {this.cancelCreate(e)}} className={"btn btn-danger btn-md"}> Cancel </button>
                                                 </div>
                                             </FormGroup>
                                         </form>
@@ -78,7 +97,11 @@ class CreateSmurfForm extends Component {
 
 }
 
-export default CreateSmurfForm;
+const mapStateToProps = state => {
+    return {}
+};
+
+export default connect(mapStateToProps, {addSmurf, showCreateForm})(CreateSmurfForm);
 
 const CreateFormFriendContainer = styled.div`
     border:0px solid black;
