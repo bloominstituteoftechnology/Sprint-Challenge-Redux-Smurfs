@@ -12,6 +12,7 @@ class App extends Component {
   }
   render() {
     const { smurfs } = this.props;
+    console.log(this.props)
     return (
       <div>
         {this.props.fetchingSmurfs ? <h1>Loading Smurfs</h1> : <h1>'Smurf Village'</h1>}
@@ -24,7 +25,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    friends: state.smurfs,
+    smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
   };
 };
