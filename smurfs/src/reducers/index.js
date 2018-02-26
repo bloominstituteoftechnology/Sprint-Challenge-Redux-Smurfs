@@ -6,6 +6,8 @@ const initialState = {
   fetchedSmurfs: false,
   addingSmurfs: false,
   addedSmurfs: false,
+  deletingSmurfs: false,
+  deletedSmurfs: false,
   error: false,
 };
 
@@ -23,13 +25,16 @@ const rootReducer = (state = initialState, action) => {
     case actions.ADDING_SMURFS:
       return { ...state, addingSmurfs: true };
     case actions.ADDED_SMURFS:
-      console.log('Added_smurfs payload: ', action.payload);
       return {
         ...state,
         addingSmurfs: false,
         addedSmurfs: true,
         smurfs: action.payload,
       };
+    case actions.DELETING_SMURFS:
+      return { ...state, deletingSmurfs: true };
+    case actions.DELETED_SMURFS:
+      return { ...state, deletingSmurfs: false, deletedSmurfs: true, smurfs: action.payload };
     case actions.ERROR:
       return { ...state, fetchingSmurfs: false, addingSmurfs: false, error: action.payload };
     default:
