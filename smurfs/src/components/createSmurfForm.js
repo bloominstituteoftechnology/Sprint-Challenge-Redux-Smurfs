@@ -21,19 +21,32 @@ class CreateSmurfForm extends Component {
     this.setState({ height: event.target.value })
   }
 
-  onSubmitHandler = (event) => {
-    event.preventDefault();
-    this.props.createSmurf(event.target.value);
+  createSmurfHandler = (event) => {
+    // event.preventDefault();
+    let newSmurf = {
+      name: this.state.name,
+      age: Number(this.state.age),
+      height: this.state.height,
+    }
+    console.log(newSmurf);
+    this.props.createSmurf(newSmurf);
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    })
   }
 
   render() {
     return(
       <div>
-        <form action="">
+        <form>
           <input value={this.state.name} onChange={this.smurfNameHandler} />
           <input value ={this.state.age} onChange={this.smurfAgeHandler} type="number" />
           <input value ={this.state.height} onChange={this.smurfHeightHandler} />
-          <button>Create Smurf!</button>
+          <button onClick={() => {this.createSmurfHandler()}} type="button">
+            Create Smurf!
+          </button>
         </form>
       </div>
     )

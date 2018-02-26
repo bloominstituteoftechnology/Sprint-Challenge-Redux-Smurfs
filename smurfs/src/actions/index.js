@@ -1,8 +1,3 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
-
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -37,7 +32,7 @@ export const getSmurfs = () => {
 }
 
 export const createSmurf = (smurf) => {
-  const newSmurf = axios.post('http://localhost:3333/smurfs');
+  const newSmurf = axios.post('http://localhost:3333/smurfs', smurf);
   return dispatch => {
     dispatch({ type: CREATING_SMURF });
     newSmurf

@@ -24,11 +24,11 @@ class App extends Component {
         <CreateSmurfForm />
 
         <div>
-          {this.props.gettingSmurfs ? (
+          {/* {this.props.gettingSmurfs ? (
             <p>Loading Smurfs...</p>
           ) : (
+          )} */}
             <Smurfs smurfs={this.props.smurfs}/>
-          )}
         </div>
       </div>
     );

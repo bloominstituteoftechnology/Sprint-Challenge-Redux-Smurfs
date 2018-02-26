@@ -15,11 +15,25 @@ export const smurfsReducer = (state = initialState, action) => {
         gettingSmurfs: true 
       };
 
+    case actionTypes.GET_SMURFS:
+      return {
+        ...state,
+        gettingSmurfs: false,
+        smurfs: action.payload
+      }
+
     case actionTypes.CREATING_SMURF:
       return { 
         ...state, 
         smurfs: action.payload, 
         creatingSmurf: true 
+      };
+
+    case actionTypes.CREATE_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload,
+        creatingSmurf: false
       };
     
     case actionTypes.ERROR:
@@ -28,7 +42,7 @@ export const smurfsReducer = (state = initialState, action) => {
         gettingSmurfs: false,
         creatingSmurf: false,
         error: action.payload,
-      }
+      };
 
     default:
       return state;
