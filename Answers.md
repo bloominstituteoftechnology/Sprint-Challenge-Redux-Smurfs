@@ -20,7 +20,7 @@
       Redux allows multiple actions to operate on the store simultaneously.  However, two actions cannot modify the same object at the same time.  The mechanism for making simultaneous multiple modifications to the store is the Reducer.
 
       REDUCERS
-      Reducers are container functions for creating single or collections of Actions bundled with the previous state.  An easy formula is Reducer = {(Previous State) + Action} => Next State.  Multiple actions can be assembled into a single payload within the Reducer (similar to a multi-warhead nuke) and dispatched to a NEW instance of the state as a single entity.  It is then unwrapped and the Actions modify/manipulate the state.  Says Valeri Karpov: "Reducers artie pure functions: they don't rely on or modify any global state, so they're easy to test, reason about, and refactor."(https://www.codementor.io/vkarpov) 
+      Reducers are container functions for executing single or collections of Actions bundled with the previous state.  An easy formula is Reducer = {(Previous State) + Action} => Next State.  Multiple actions can be assembled into a single payload and dispatched to the reducer.  The reducer takes these actions and the current state, internally applies the actions to modify/manipulate the state then outputs a NEW instance of the modified state as a single entity.  Says Valeri Karpov: "Reducers are pure functions: they don't rely on or modify any global state, so they're easy to test, reason about, and refactor."(https://www.codementor.io/vkarpov)
 
 [x]  3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
 
