@@ -13,7 +13,7 @@ class SmurfList extends Component {
     return (
       <div className="smurfs__list">
         {this.props.smurfs.map((smurf, i) => {
-          return <Smurf className="smurf" key={i} smurf={smurf} i={i} />;
+          return <Smurf className="smurf" key={i} smurf={smurf} i={i} />; //don't need i={i}
         })}
       </div>
     );
@@ -26,6 +26,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {
-  getSmurfs,
-})(SmurfList);
+export default connect(mapStateToProps, { getSmurfs })(SmurfList);
