@@ -109,6 +109,7 @@ class Smurf extends Component {
   };
 }
 
+// Don't need this either /////////
 const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
