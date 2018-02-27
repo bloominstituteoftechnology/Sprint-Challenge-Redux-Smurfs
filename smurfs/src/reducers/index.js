@@ -6,7 +6,7 @@ import * as actionTypes from '../actions';
    /* addingSmurf: false
    updatingSmurf: false
    deletingSmurfs: false */
-   error: true
+   error: null
  };
 
 
@@ -25,7 +25,7 @@ export const rootReducer = (state = initialState, action) => {
       case actionTypes.SMURFS_FETCHED:
         return {
           ...state,
-          friends: action.payload,
+          smurfs: action.payload,
           fetchingSmurfs: false
         };
       case actionTypes.ERROR:
