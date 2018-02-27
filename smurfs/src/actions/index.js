@@ -16,15 +16,31 @@ export const ERROR = 'ERROR';
 */
 
 export const getSmurfs = () => {
-    const smurfs = axios.get('http://localhost:3333/smurfs');
-    return dispatch => {
-        dispatch({type: FETCHING_SMURFS});
-        smurfs
-            .then(response => {
-                dispatch({type: SMURFS_FETCHED, payload: response.data});
-            })
-            .catch(err => {
-                dispatch({type: ERROR, payload: err});
-            });
-    };
+  const smurfs = axios.get('http://localhost:3333/smurfs');
+  return dispatch => {
+    dispatch({type: FETCHING_SMURFS});
+    smurfs
+    .then(response => {
+      dispatch({type: SMURFS_FETCHED, payload: response.data});
+    })
+    .catch(err => {
+      dispatch({type: ERROR, payload: err});
+    });
+  };
+};
+
+export const addSmurf = (newSmurf) => {
+  const smurfs = axios.post('http://localhost:3333/smurfs', {
+    smurf: newSmurf
+  });
+  return dispatch => {
+    dispatch({type: FETCHING_SMURFS});
+    smurfs
+    .then(response => {
+      dispatch({type: SMURFS_FETCHED, payload: response.data});
+    })
+    .catch(err => {
+      dispatch({type: ERROR, payload: err});
+    });
+  };
 };
