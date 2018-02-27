@@ -51,13 +51,6 @@ class Smurfs extends Component {
         </div>
     </Col>
 </Grid>
-
-
-
-
-
-
-
     )
   }
 }

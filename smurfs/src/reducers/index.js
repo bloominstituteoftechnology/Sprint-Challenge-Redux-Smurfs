@@ -3,9 +3,10 @@ import * as actionTypes from '../actions';
  const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
-   /* addingSmurf: false
-   updatingSmurf: false
-   deletingSmurfs: false */
+   addingSmurf: false,
+   newSmurf: [],
+   /*updatingSmurf: false
+   deletingSmurfs: false*/
    error: null
  };
 
@@ -21,15 +22,23 @@ export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
       case actionTypes.FETCHING_SMURFS:
           console.log('Fetching smurfs...');
-          return {...state, fetchingSmurfs: true};
+          return {
+            ...state,
+            fetchingSmurfs: true};
       case actionTypes.SMURFS_FETCHED:
         return {
           ...state,
           smurfs: action.payload,
-          fetchingSmurfs: false
+          fetchingSmurfs: false,
+        };
+      case actionTypes.ADDING_SMURF:
+        return {
+          ...state,
+          newSmurf: action.payload,
+          addingSmurf: action.addingSmurf
         };
       case actionTypes.ERROR:
-        return {...state, fetchingSmurfs: false, error: action.payload};
+        return {...state, fetchingSmurfs: false, addingSmurf: false, error: action.payload};
       default:
         return state;
     }

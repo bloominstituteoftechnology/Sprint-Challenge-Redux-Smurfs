@@ -40,6 +40,8 @@ newSmurfsHeight = (e) => {
          <input type="text" name="name" placeholder="name" onChange={this.newSmurfsName} />
          <input type="text" name="age" placeholder="age" onChange={this.newSmurfsAge} />
          <input type="text" name="height" placeholder="height" onChange={this.newSmurfsHeight} />
+         <button onClick={(e) => {this.submitNewSmurf(e)}}> Add </button>
+
         </form>
       </div>
     );
@@ -50,6 +52,7 @@ const mapStateToProps = state => {
     const {rootReducer} = state;
     return {
         error: state.error,
+        newSmurf: state.newSmurf
     }
 };
 

@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const SMURFS_FETCHED = 'SMURFS_FETCHED';
+export const ADDING_SMURF = 'ADDING_SMURF';
 export const ERROR = 'ERROR';
 
 /*
@@ -29,13 +30,14 @@ export const getSmurfs = () => {
   };
 };
 
-export const addSmurf = (newSmurf) => {
-  const smurfs = axios.post('http://localhost:3333/smurfs', {
-    smurf: newSmurf
+export const addSmurf = (newSmurfData) => {
+  const newSmurf = axios.post('http://localhost:3333/smurfs', {
+    smurf: newSmurfData
   });
+
   return dispatch => {
-    dispatch({type: FETCHING_SMURFS});
-    smurfs
+    dispatch({type: ADDING_SMURF, payload: newSmurfData});
+    newSmurf
     .then(response => {
       dispatch({type: SMURFS_FETCHED, payload: response.data});
     })
