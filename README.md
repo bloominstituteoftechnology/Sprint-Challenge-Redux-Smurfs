@@ -37,8 +37,8 @@ src
 ```
 
 * **Open** `src/index.js` to make sure that your app is ready to roll with the proper middleware.
-* **cd** into `smurfs` and run `npm install` to retrieve the client side dependencies.
-* **RUN** `npm start` to fire up your React application. There ought to be a pretty little message awaiting you welcoming you to the app. `Follow` the prompting.
+* **cd** into `smurfs` and run `yarn` or `npm install` to retrieve the client side dependencies.
+* **RUN** `yarn start` or `npm start` to fire up your React application. There ought to be a pretty little message awaiting you welcoming you to the app. `Follow` the prompting.
 
 ## Project Description
 
