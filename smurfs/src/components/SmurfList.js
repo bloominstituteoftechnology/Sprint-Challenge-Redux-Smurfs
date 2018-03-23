@@ -8,13 +8,14 @@ import './SmurfList.css';
 const SmurfList = (props) =>{ 
     return (
             <div >
+                
                 <ul>
-                {props.friends.map((friend,index) => {
+                {props.smurfs.map((smurf,index) => {
                    return ( 
                    <div className="divList" key={index}>    
-                        <li>{friend.name}</li>
-                        <li>{friend.age}</li>  
-                        <li>{`${friend.height} cm`}</li>
+                        <li>{smurf.name}</li>
+                        <li>{smurf.age}</li>  
+                        <li>{`${smurf.height} cm`}</li>
                         {/* <button onClick={() => props.deleteFriend(friend.id)}>X</button> */}
                         <button>X</button>
                     </div> 
@@ -27,8 +28,8 @@ const SmurfList = (props) =>{
 
 const mapStateToProps = state => {
   return {
-    fetching: state.fetching,
-    friends: state.friends,
+    fetchingSmurfs: state.fetching,
+    smurfs: state.smurfs,
     error: state.errorMessage,
   };
 };

@@ -22,50 +22,55 @@
 */
 
 import {
-  FETCHED_FRIEND,
-  FETCHING_FRIEND,
-  ERROR_FETCHING_FRIEND,
-  // CREATING_FRIEND,
-  // ERROR_CREATING_FRIEND,
-  // FRIEND_CREATED,
-  // DELETING_FRIEND,
-  // FRIEND_DELETED,
+  FETCHED_SMURF,
+  FETCHING_SMURF,
+  ERROR_FETCHING_SMURF,
+  CREATING_SMURF,
+  ERROR_CREATING_SMURF,
+  SMURF_CREATED,
+  // DELETING_SMURF,
+  // SMURF_DELETED,
 } from "../actions";
 
 const initialState = {
-  fetchingFriends: false,
-  friendsFetched: false,
-  friendsSaved: false,
-  // savingFriends: false,
+  fetchingSmurfs: false,
+  smurfsFetched: false,
+  addingSmurf: false,
+  smurfAdded: false,
   // deletingFriend: false,
   // friendDeleted: false,
-  friends: [],
+  smurfs: [],
   error: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCHING_FRIEND:
-      return { ...state, fetching: true };
-    case ERROR_FETCHING_FRIEND:
+    case FETCHING_SMURF:
+      return { ...state, fetchingSmurfs: true };
+    case ERROR_FETCHING_SMURF:
       return { ...state, error: action.errorMessage };
-    case FETCHED_FRIEND:
+    case FETCHED_SMURF:
       return {
         ...state,
-        friends: action.friends,
-        fetching: false,
+        smurfs: action.smurfs,
+        fetchingSmurfs: false,
         error: null
       };
-    // case CREATING_FRIEND:
-    //   return { ...state, savingFriends: true };
-    // case ERROR_CREATING_FRIEND:
-    //   return { ...state, error: action.error };
-    // case FRIEND_CREATED:
-    //   return { ...state, friends: action.friends, savingFriends: false };
-    // case DELETING_FRIEND:
+      
+    case CREATING_SMURF:
+      return { ...state, addingSmurf: true };
+    case ERROR_CREATING_SMURF:
+      return { ...state, error: action.error };
+    case SMURF_CREATED:
+      return { ...state, 
+        smurfs: action.smurfs, 
+        addingSmurf: false,
+        error: null
+      };
+    // case DELETING_SMURF:
     //   return {...state, deletingFriend: true};
-    // case FRIEND_DELETED:
-    //   return {...state, friends: action.friends, deletingFriend: false, error: null};
+    // case SMURF_DELETED:
+    //   return {...state, smurfs: action.smurfs, deletingFriend: false, error: null};
     default:
       return state;
   }

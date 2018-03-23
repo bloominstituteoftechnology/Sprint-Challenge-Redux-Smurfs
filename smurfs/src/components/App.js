@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import SmurfList from './SmurfList';
-// import SmurfForm from './SmurfForm';
+import SmurfForm from './SmurfForm';
 
-import { getFriends } from '../actions';
+import { getSmurfs } from '../actions';
 class App extends Component {
   
   componentDidMount() {
-    this.props.getFriends();
+    this.props.getSmurfs();
   }
 
   render() {
     return (
       <div className="App">
         <SmurfList />
-        {/* <SmurfForm /> */}
+        <SmurfForm />
       </div>
     );
   }
 }
 
-export default connect(null, { getFriends })(App);
+export default connect(null, { getSmurfs })(App);

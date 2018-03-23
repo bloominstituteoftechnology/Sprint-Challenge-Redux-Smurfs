@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { postFriend } from '../actions'
+import { addSmurf } from '../actions'
 
 import './SmurfForm.css'
 class SmurfForm extends Component {
@@ -10,7 +10,6 @@ class SmurfForm extends Component {
             name: '',
             age: '',
             height: '',
-            id: Number(''),
         }
     }
 
@@ -18,23 +17,25 @@ class SmurfForm extends Component {
       this.setState({ [event.target.name]: event.target.value});
     }
 
-    submitFriend = event => {
+    submitSmurf = event => {
       event.preventDefault();
-      this.props.postFriend({
+      this.props.addSmurf({
         name: this.state.name,
         age: this.state.age,
-        height: this.state.height
+        height: this.state.height,
       });
+
       this.setState({
         name: '',
         age: '',
         height: '',
+        
       });
     };
 
         render(){
             return (
-              <form className="divInputs" onSubmit={this.submitFriend}>    
+              <form className="divInputs" onSubmit={this.submitSmurf}>    
                   <input 
                   required 
                   name="name"
@@ -65,9 +66,9 @@ class SmurfForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    savingFriends: state.savingFriends,
+    addingSmurf: state.addingSmurf,
     error: state.error
   };
 };
 
-export default connect(mapStateToProps, { postFriend })(SmurfForm);
+export default connect(mapStateToProps, { addSmurf })(SmurfForm);
