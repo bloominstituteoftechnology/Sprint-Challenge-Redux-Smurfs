@@ -2,9 +2,9 @@ import axios from 'axios';
 export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
 
-const addSmurfAction = newSmurf => dispatch => {
+const deleteSmurfAction = smurf => dispatch => {
   axios
-    .post('http://localhost:3333/smurfs', newSmurf)
+    .delete('http://localhost:3333/smurfs/:id', smurf)
     .then(response => {
       dispatch({ type: FETCHED, smurfs: response.data });
     })
@@ -13,4 +13,4 @@ const addSmurfAction = newSmurf => dispatch => {
     });
 };
 
-export default addSmurfAction;
+export default deleteSmurfAction;

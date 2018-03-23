@@ -1,11 +1,7 @@
-import { FETCHED, ERROR } from '../actions/getSmurfsAction';
+import { FETCHED, ERROR } from '../actions/addSmurfAction';
 
 const initialState = {
   smurfs: [],
-  fetchingSmurfs: false,
-  addSmurf: false,
-  //updatingSmurf: false,
-  deleteSmurf: false,
   error: null
 };
 
