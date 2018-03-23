@@ -16,7 +16,7 @@
 1.  What is middleware?
 1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 1.  Which `react-redux` method links up our `components` with our `redux store`?
-1. (Stretch goal question for if you get the DELETE endpoint working) The server's DELETE endpoint functionality is not optimal, since it requires you to either make a second `getSmurfs` request to fetch the updated list of Smurfs after deletion, or you need to keep two sources of truth synchronized, one in the client and one in the server. What would change would you propose to make the server DELETE functionality more optimal such that either of these two issues are not encountered?
+1. (Stretch goal question for if you get the DELETE endpoint working) The server's DELETE endpoint functionality is not optimal, since it requires you to either make a second `getSmurfs` request to fetch the updated list of Smurfs after deletion, or you need to keep two sources of truth synchronized, one in the client and one in the server. What change would you propose to make the server DELETE functionality more optimal such that either of these two issues are not encountered?
 
 ## Initializing Project - READ THIS CAREFULLY, you have two apps here. A server, and a client.
 
