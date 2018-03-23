@@ -9,13 +9,12 @@ class SmurfsList extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>Still rendering..</h1>
                 {this.props.smurfs.map(smurf => {
                     return (
                         <div>
                             <div>{smurf.name}</div>
                             <div>{smurf.age}</div>
-                            <div>{smurf.height}</div>
+                            <div>{smurf.height}cm</div>
                         </div>
                     )
                 })}

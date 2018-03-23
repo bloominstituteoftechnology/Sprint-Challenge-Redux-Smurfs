@@ -27,7 +27,7 @@ export const fetch_smurfs = () => dispatch => {
     });
 };
 
-export const post_smurf = () => dispatch => {
+export const post_smurf = (newSmurf) => dispatch => {
   dispatch({ type: POSTING_SMURF });
 
   axios
