@@ -26,7 +26,7 @@ class SmurfForm extends Component {
     
       render() {
         return (
-          <div className="col-one-half friend-form">
+          <div>
             <form>
               <input
                 onChange={this.handleEvent}
