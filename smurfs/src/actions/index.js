@@ -41,13 +41,13 @@ export const getSmurfs = () => dispatch => {
     });
 };
 
-export const addFriend = (newSmurf) => dispatch => {
+export const addSmurf = newSmurf => dispatch => {
   dispatch({ type: ADDING});
-
+  
   axios  
-    .post(ROOT_URL, newSmurf)
+    .post(ROOT_URL, newSmurf )
     .then(response => {
-        dispatch({ type: ADDED, friends: response.data})
+        dispatch({ type: ADDED, smurfs: response.data})
     })
     .catch(err => {
         dispatch({ type: ERROR, errorMessage: 'Smurf Not Added' })
