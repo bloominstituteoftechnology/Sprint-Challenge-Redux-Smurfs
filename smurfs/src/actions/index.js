@@ -21,5 +21,5 @@ export const addSmurf = smurf => dispatch => {
         dispatch({
           type: ADD_SMURF,
         })
-      }).catch(error => dispatch({type: ERROR, errorMessage: error.response.data}))
+      }).catch(error => console.log(smurf))
 }

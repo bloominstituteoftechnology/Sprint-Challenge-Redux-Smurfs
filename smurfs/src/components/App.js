@@ -20,8 +20,9 @@ class App extends Component {
   }
 
   handleChange(event) {
-    this.setState({ 
-      [event.target.name]: event.target.value })
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   }
 
   handleSubmit() {
@@ -41,9 +42,9 @@ class App extends Component {
           return <div key={smurf.id}>{smurf.name}</div>
         })}
         <form onSubmit={() => this.handleSubmit()}>
-          <input name="name" placeholder="Name"/>
-          <input name="age" placeholder="Age"/>
-          <input name="height" placeholder="Height"/>
+          <input name="name" placeholder="Name" onChange={this.handleChange.bind(this)}/>
+          <input name="age" placeholder="Age" onChange={this.handleChange.bind(this)}/>
+          <input name="height" placeholder="Height" onChange={this.handleChange.bind(this)}/>
           <input type="submit"></input>
         </form>
       </div>
