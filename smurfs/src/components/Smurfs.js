@@ -13,7 +13,7 @@ class Smurfs extends Component {
   removeSmurf = id => {
     this.props.deleteSmurf(id);
     setTimeout(() => {
-      this.props.fetchFriends();
+      this.props.getSmurfs();
     }, 2000);
   };
 

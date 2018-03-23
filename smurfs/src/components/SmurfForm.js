@@ -26,7 +26,7 @@ class SmurfForm extends Component {
     setTimeout(() => {
       this.props.getSmurfs();
     }, 20);
-  }
+  };
 
   // updateName = event => {
   //   this.setState({
@@ -54,7 +54,7 @@ class SmurfForm extends Component {
   render() {
     return (
       <div className="SmurfForm">
-        <form onSubmit={this.addSmurf}>
+        <form onSubmit={this.createSmurf}>
           <input
             onChange={this.handleInput}
             placeholder="name"
@@ -93,4 +93,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { addSmurf, updateSmurf })(SmurfForm);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, updateSmurf })(SmurfForm);
