@@ -21,7 +21,6 @@ const initialState = {
    error: null
  }
 */
-
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
@@ -34,13 +33,14 @@ export default (state = initialState, action) => {
     case SMURFGETTING:
       return {...state, gettingSmurfs: true};
     case SMURFGOT:
+    console.log(action)
       return {...state, smurfs: action.smurfs, gettingSmurfs: false};
 
     case SMURFPOST:
       return {...state, smurfs: action.smurfs, gettingSmurfs: true};
       
      case SMURFDELETE:
-      return {...state, smurfs: action.smurfs, error: null, getFriends: false}; 
+      return {...state, smurfs: state.smurfs.filter( smurf => smurf.id !== action.id ), error: null, gettingSmurfs: false}; 
 
     case ERROR:
       return {...state, error: action.errorMessage};

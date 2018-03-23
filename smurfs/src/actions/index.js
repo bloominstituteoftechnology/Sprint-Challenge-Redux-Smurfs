@@ -55,6 +55,10 @@ export const deleteSmurf = (id) => dispatch => {
   dispatch({type: SMURFGETTING});
   axios.delete(`http://localhost:3333/smurfs/${id}`) 
   .then(response => {
-    dispatch({type: SMURFDELETE, smurfs: response.data})
+    dispatch({type: SMURFDELETE, id})
   })
+}
+
+export const putSmurf = (id) => dispatch => {
+  dispatch({type: SMURFGETTING});
 }

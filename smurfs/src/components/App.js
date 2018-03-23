@@ -38,7 +38,11 @@ constructor(props) {
           return(
             <div className="card" key={smurf.id}>
             <div>
-              <h4>{smurf.name}</h4> <button onClick={() => this.props.deleteSmurf(smurf.id)} type="button">Delete Me</button>
+              <h4>{smurf.name}</h4> <button onClick={(event) => {
+                event.preventDefault() 
+                this.props.deleteSmurf(smurf.id)
+              }} 
+                type="button">Delete Me</button>
             </div>
           </div>
           )
