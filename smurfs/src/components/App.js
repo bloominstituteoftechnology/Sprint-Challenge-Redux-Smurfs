@@ -14,6 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1 className="App-header">Smurf Village</h1>
         <AddSmurf />
         <SmurfsList />
       </div>

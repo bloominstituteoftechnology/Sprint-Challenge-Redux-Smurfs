@@ -6,6 +6,8 @@ const initialState = {
   smurfsFetched: false,
   smurfSaved: false,
   savingSmurf: false,
+  deletingSmurf: false,
+  smurfDeleted: false,
   error: null
 };
 
@@ -40,6 +42,17 @@ export default (state = initialState, action) => {
         savingSmurf: false,
         error: null
       };
+    // case actionTypes.DELETING_SMURF:
+    //   return { ...state, deletingFriend: true };
+    // case actionTypes.ERROR_DELETING_SMURF:
+    //   return { ...state, error: action.error };
+    // case actionTypes.DELETED_SMURF:
+    //   return {
+    //     ...state,
+    //     smurfs: action.smurfs,
+    //     deletingSmurf: false,
+    //     error: null
+    //   };
     default:
       return state;
   }
