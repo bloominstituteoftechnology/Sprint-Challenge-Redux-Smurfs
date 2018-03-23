@@ -32,16 +32,17 @@ const noSmurfs = {
 
 const redSmurf = ( state = noSmurfs, action) => {
   switch (action.type) {
+    case SMURFINGANEWONE:
+    return { ...state, addingSmurf: true }
+  case ANEWONESMURFED:
+    return { ...state, smurfs: action.smurfs, addingSmurf: false}
     case SMURFING:
       return{ ...state, smurfing: true};
     case SMURFED:
       return{ ...state, smurfs: action.smurfs, smurfing: false, error: null };
     case ERROR:
       return{ ...state, error: action.errorMessage }
-    case SMURFINGANEWONE:
-      return { ...state, addingSmurf: true }
-    case ANEWONESMURFED:
-      return { ...state, smurfs: action.smurfs, addingSmurf: false}
+
 
     default:
     return state

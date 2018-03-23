@@ -35,9 +35,6 @@ class App extends Component {
     const { name, age, height } = this.state;
     this.props.smurfs.push({name, age, height});
     this.setState({name: '', age: '', height: ''})
-    setTimeout(() => {
-      this.props.initSmurf();
-    }, 20);
   }
   render() {
     return (
@@ -46,18 +43,7 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-        <div className = "Smurfs_Section">
-        {this.props.smurfs.map(smurf => {
-          return(
-          <div className='Smurfs__List' key={smurf.id}>
-            <div>{smurf.name}</div>
-            <div>{smurf.age}</div>
-            <div>{smurf.height}</div>
-            <div>{smurf.id}</div>
-          </div>
-          )
-        })}
-        </div>
+        <div>
         <form>
           <input 
           value={this.state.name}
@@ -83,6 +69,20 @@ class App extends Component {
           </form>
           <button onClick={this.handleAddSmurf}>Smurf!</button>
       </div>
+        <div className = "Smurfs_Section">
+        {this.props.smurfs.map(smurf => {
+          return(
+          <div className='Smurfs__List' key={smurf.id}>
+            <div>{smurf.name}</div>
+            <div>{smurf.age}</div>
+            <div>{smurf.height}</div>
+            <div>{smurf.id}</div>
+          </div>
+          )
+        })}
+        </div>
+        </div>
+
     );
   }
 }
@@ -91,8 +91,9 @@ const mapStateToProps = state => {
   return{
     smurfing: state.smurfing,
     smurfs: state.smurfs,
+    addingSmurf: state.addingSmurf,
     error: state.errorMessage
   }
 }
 
-export default connect(mapStateToProps, { initSmurf })(App);
+export default connect(mapStateToProps, { initSmurf, addSmurf })(App);
