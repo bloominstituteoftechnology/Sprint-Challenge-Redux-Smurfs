@@ -17,7 +17,11 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.postSmurf(this.state)
+    this.props.postSmurf({
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height,
+    })
     e.target.parentNode.reset();
     this.setState({
       name: '',
@@ -29,7 +33,11 @@ class App extends Component {
   handleUpdate = (e) => {
     e.preventDefault();
     const id = document.getElementById(`${this.state.name}`).parentNode.id
-    this.props.putSmurf(id, this.state)
+    this.props.putSmurf(id, {
+        name: this.state.name,
+        age: this.state.age,
+        height: this.state.height,
+      })
     e.target.parentNode.reset();
     this.setState({
       name: '',
@@ -53,7 +61,7 @@ class App extends Component {
           <h1>SMURFS! 2.0 W/ Redux</h1>
           <div>Welcome to your Redux version of Smurfs!</div>
         </div>
-        { !(!this.props.fetchingSmurfs && !this.props.addingSmurf && !this.props.updatingSmurf && !this.props.deletingSmurf) ? (
+        { (this.props.smurfs.length === 0) ? (
                 <h1> All the smurfs are gone! </h1>
                 ) : (
         <div>{this.props.smurfs.map(((smurf) => {

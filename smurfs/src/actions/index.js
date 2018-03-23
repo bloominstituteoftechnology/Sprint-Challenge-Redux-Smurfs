@@ -6,8 +6,6 @@ export const DELETE_SMURFS = 'DELETE_SMURFS';
 export const ERROR = 'ERROR';
 
 export const getSmurf = () => dispatch => {
-  dispatch({ type: GET_SMURFS });
-
   axios.get(`http://localhost:3333/smurfs`).then(
     response => { dispatch({ type: GET_SMURFS, smurfs: response.data })}
   ).catch(
@@ -16,8 +14,6 @@ export const getSmurf = () => dispatch => {
 }
 
 export const postSmurf = (smurf) => dispatch => {
-  dispatch({ type: POST_SMURFS, smurfs: []});
-
   axios.post(`http://localhost:3333/smurfs`, smurf).then(
     response => { dispatch({ type: POST_SMURFS, smurfs: response.data })}
   ).catch(
@@ -26,9 +22,7 @@ export const postSmurf = (smurf) => dispatch => {
 }
 
 export const putSmurf = (id, smurf) => dispatch => {
-  dispatch({ type: PUT_SMURFS });
-
-  axios.put(`http://localhost:3333/${id}`, smurf).then(
+  axios.put(`http://localhost:3333/smurfs/${id}`, smurf).then(
     response => { dispatch({ type: PUT_SMURFS, smurfs: response.data })}
   ).catch(
     error => { dispatch( {type: ERROR, errorMessage: error})}
@@ -36,11 +30,8 @@ export const putSmurf = (id, smurf) => dispatch => {
 }
 
 export const deleteSmurf = (id) => dispatch => {
-  dispatch({ type: DELETE_SMURFS });
-
-  axios.delete(`http://localhost:3333/${id}`).then(
-    response => { console.log(response); 
-      dispatch({ type: DELETE_SMURFS, smurfs: response.data })}
+  axios.delete(`http://localhost:3333/smurfs/${id}`).then(
+    response => { dispatch({ type: DELETE_SMURFS, id: response.data.SmurfRemoved.id })}
   ).catch(
     error => { dispatch( {type: ERROR, errorMessage: error})}
   )
