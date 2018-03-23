@@ -16,7 +16,7 @@ class SmurfForm extends Component {
     this.setState({
       name:'',
       age: '',
-      height: '',
+      height: ''
     })
   }
 
@@ -28,11 +28,40 @@ class SmurfForm extends Component {
 
   render() {
     return (
-      <Form>
+      <Form onSubmit={ this.addSmurf }>
         <FormGroup>
-          <
+          <Label>Name</Label>
+          <Input
+            onChange={ this.handleChange }
+            type='text'
+            placeholder='Enter name'/>
         </FormGroup>
+        <FormGroup>
+          <Label>Age</Label>
+          <Input
+            onChange={ this.handleChange }
+            type='number'
+            placeholder='Enter age'/>
+        </FormGroup>
+        <FormGroup>
+          <Label>Height</Label>
+          <Input
+            onChange={ this.handleChange }
+            type='number'
+            placeholder='Enter height'/>
+        </FormGroup>
+        <Button>Add Smurf</Button>
       </Form>
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    addingSmurf: state.addingSmurf,
+    smurfs: state.smurfs,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, { addSmurf })(SmurfForm)
