@@ -8,9 +8,9 @@ export const CREATING_SMURF = 'CREATING_SMURF';
 export const SMURF_CREATED = 'SMURF_CREATED';
 export const ERROR_CREATING_SMURF = 'ERROR_CREATING_SMURF';
 
-// export const DELETING_SMURF = 'DELETING_SMURF'
-// export const SMURF_DELETED = 'SMURF_DELETED'
-// export const ERROR_DELETING_SMURF = 'ERROR_DELETING_SMURF'
+export const DELETING_SMURF = 'DELETING_SMURF'
+export const SMURF_DELETED = 'SMURF_DELETED'
+export const ERROR_DELETING_SMURF = 'ERROR_DELETING_SMURF'
 
 export const getSmurfs = () => dispatch => {
     dispatch({ type: FETCHING_SMURF });
@@ -39,15 +39,15 @@ export const addSmurf = smurf => dispatch => {
     });
 };
 
-// export const deleteFriend = (id) => dispatch => {
-//   dispatch({ type: DELETING_SMURF});
+export const deleteSmurf = (id) => dispatch => {
+  dispatch({ type: DELETING_SMURF});
 
-//   axios
-//       .delete(`http://localhost:3333/smurfs/${id}`)
-//       .then(response => {
-//           dispatch({ type: SMURF_DELETED, smurfs: response.data})
-//       })
-//       .catch(err => {
-//           dispatch({ type: ERROR_DELETING_SMURF, errorMessage: 'Error deleting friend' })
-//       });
-// };
+  axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(response => {
+          dispatch({ type: SMURF_DELETED, smurfs: response.data})
+      })
+      .catch(err => {
+          dispatch({ type: ERROR_DELETING_SMURF, errorMessage: 'Error deleting friend' })
+      });
+};
