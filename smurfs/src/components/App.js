@@ -13,6 +13,7 @@ import { Container } from "reactstrap";
  */
 class App extends Component {
   render() {
+    document.body.style.background = "#88CCFF";
     return (
       <Container className="my-5">
         <h1>SMURF VILLAGE</h1>
