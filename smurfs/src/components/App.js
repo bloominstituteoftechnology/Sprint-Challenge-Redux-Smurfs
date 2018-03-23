@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions';
+import { getSmurfs, addSmurf } from '../actions';
 
 import './App.css';
 /*
@@ -10,9 +10,32 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  state = {
+    name: '',
+    age: '',
+    height: '',
+    id: ''
+  };
+
   componentDidMount() {
     this.props.getSmurfs();
   }
+
+  change = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    this.props.addSmurf(this.state);
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    });
+  };
 
   render() {
     return (
@@ -29,17 +52,47 @@ class App extends Component {
             );
           })}
         </ul>
+        <div className="Form">
+          <form>
+            <h4>Add A Smurf!</h4>
+            <input
+              name="name"
+              placeholder="Name"
+              value={this.state.name}
+              onChange={e => this.change(e)}
+            />
+            <br />
+            <input
+              name="age"
+              placeholder="Age"
+              value={this.state.age}
+              onChange={e => this.change(e)}
+            />
+            <br />
+            <input
+              name="height"
+              placeholder="Height"
+              value={this.state.height}
+              onChange={e => this.change(e)}
+            />
+            <br />
+            <button className="add-btn" onClick={e => this.onSubmit(e)}>
+              Add
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = store => {
   return {
-    fetching: state.fetching,
-    smurfs: state.smurfs,
-    error: state.errorMessage
+    fetching: store.fetching,
+    creating: store.creating,
+    smurfs: store.smurfs,
+    error: store.errorMessage
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
