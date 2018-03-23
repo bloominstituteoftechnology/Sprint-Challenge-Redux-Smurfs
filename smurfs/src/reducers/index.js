@@ -1,7 +1,7 @@
 /* REDUCERS
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING, FETCHED, ERROR } from '../actions';
+import { FETCHING, FETCHED, ERROR, DELETING } from '../actions';
 
 //initialize state with default smurf
 const initialState = {
@@ -30,8 +30,11 @@ export default (state = initialState, action) => {
         smurfs: action.smurfs,
         fetching: false,
         smurfsFetched: true,
+        deletingSmurfs: false,
         error: null
       };
+    case DELETING:
+      return { ...state, fetching: false, deletingSmurfs: true };
     case ERROR:
       return { ...state, error: action.errorMessage };
     default:

@@ -2,20 +2,29 @@
   text-align: center;
 }
 
-
 .deleteSmurf {
   color:red;
   margin-left: 10px;
   border:none;
   background:none;
+  padding-bottom:3px;
 }
 
 .deleteSmurf :hover {
   font-style:italic;
   font-weight:bold;
-  
-  
 }
 .deleteSmurf:hover::before {
   content: "delete?"
+}
+
+.card-body {
+  padding: 5px;
+}
+.card-header {
+  padding: 5px;
+  
+}
+.card-footer {
+  background-color: rgba(0,0,0,.08)
 }

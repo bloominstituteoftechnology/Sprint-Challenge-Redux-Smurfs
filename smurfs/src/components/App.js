@@ -38,33 +38,33 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1 className="card-title appTitle">Smurfs</h1>
         <div className="smurfList">
-          <h2 className="card-title">Smurfs</h2>
-
           <ul className="list-group list-group-flush ">
-            {this.props.smurfs.map((smurf, index) => {
-              return (
-                <li className="card" key={index}>
-                  <h4 className="card-header"> {smurf.name} </h4>
-                  <div className="card-body">
-                    <div className=""> Age: {smurf.age} </div>
-                    <div className=""> Height: {smurf.height} </div>
-                  </div>
+            {this.props.smurfs
+              ? this.props.smurfs.map((smurf, index) => {
+                  return (
+                    <li className="card" key={index}>
+                      <h4 className="card-header"> {smurf.name} </h4>
+                      <div className="card-body">
+                        <div className=""> Age: {smurf.age} </div>
+                        <div className=""> Height: {smurf.height} </div>
+                      </div>
 
-                  <button
-                    className="deleteSmurf"
-                    onClick={() => this.props.deleteSmurf(smurf.id)}
-                  >
-                    {' '}
-                    <span> X </span>
-                  </button>
-                </li>
-              );
-            })}
+                      <button
+                        className="deleteSmurf"
+                        onClick={() => this.props.deleteSmurf(smurf.id)}
+                      >
+                        <span> X </span>
+                      </button>
+                    </li>
+                  );
+                })
+              : null}
           </ul>
         </div>
         <div className="card addSmurf">
-          <div className="card-header">
+          <div className="card-footer">
             <input type="text" ref="newName" placeholder="Name" />
             <input type="text" ref="newAge" placeholder="Age" />
             <input type="text" ref="newHeight" placeholder="Height" />
