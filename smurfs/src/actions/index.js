@@ -4,23 +4,38 @@
 */
 
 //export const LOADING = 'LOADING';
-export const GET_SMURF = 'GET_SMURF';
-export const ADD_SMURF = 'ADD_SMURF';
+export const SHOW_LOADING = 'SHOW_LOADING';
+export const HIDE_LOADING = 'HIDE_LOADING';
+export const GOT_SMURFS = 'GOT_SMURFS';
+export const UPD_SMURF = 'UPD_SMURF';
 export const DEL_SMURF = 'DEL_SMURF';
+export const ERROR = 'ERROR';
+
 
 export const showSmurfAction = () => dispatch => {
+  dispatch({ type: SHOW_LOADING  });
+  
   axios.
   get('http://localhost:3333/smurfs')
   .then(response = {
-    dispatch({ type: GET_SMURF, smurts: response.data })
+    dispatch({ type: GOT_SMURFS, payload: response.data })
   })
   .catch(error => {
-    console.log(error);
+    dispatch({ type: ERROR })
   });
 }
 
-export const addSmurfAction = () => dispatch => {
+export const addSmurfAction = (smurf) => dispatch => {
+  dispatch({ type: SHOW_LOADING  });
   
+  axios.
+  post('http://localhost:3333/smurfs', smurf)
+  .then(response = {
+    dispatch({ type: UPD_SMURF, payload: response.data })
+  })
+  .catch(error => {
+    dispatch({ type: ERROR })
+  });
 }
 
 

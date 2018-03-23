@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { showSmurfAction } from '../actions';
+import { addwSmurfAction } from '../actions';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -20,9 +21,13 @@ class App extends Component {
     }
   }
   
+  componentDidMount() {
+    this.props.showSmurfAction();
+  }
+  
   addSmurf = (event) => {
     event.preventDefault();
-    this.props.addSmurfAction(newSmurf);
+    this.props.addSmurfAction(this.state.newSmurf);
     
     this.setState({
       name: '',
@@ -82,4 +87,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+  }
+}
+
+const actions = {
+  showSmurfAction,
+  addSmurfAction
+};
+
+export default connect(mapStateToProps, actions)(App);
