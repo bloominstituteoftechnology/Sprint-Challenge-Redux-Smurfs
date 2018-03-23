@@ -26,8 +26,7 @@ const initialState = {
  }
 */
 
-export default ((state = initialState),
-action => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURF:
       return { ...state, fetchingSmurf: true };
@@ -41,7 +40,7 @@ action => {
         error: null
       };
   }
-});
+};
 
 /*
   You'll only need one smurf reducer for this project.
