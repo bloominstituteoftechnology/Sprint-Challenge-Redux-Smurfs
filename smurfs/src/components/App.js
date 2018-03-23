@@ -82,9 +82,9 @@ class App extends Component {
             <Button
               onClick={() => {
                 this.props.deleteSmurf(smurf.id);
-                setTimeout(() => {
-                  this.props.getSmurfs();
-                }, 100);
+                // setTimeout(() => {
+                //   this.props.getSmurfs();
+                // }, 100);
               }}
             >
               Exile Smurf
