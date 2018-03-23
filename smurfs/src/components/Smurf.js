@@ -12,6 +12,8 @@ class Smurf extends Component {
       <Card>
         <CardBody>
           <CardTitle>{this.props.smurf.name}</CardTitle>
+          <CardText>{this.props.smurf.age}</CardText>
+          <CardText>{this.props.smurf.height}</CardText>
         </CardBody>
       </Card>
     );

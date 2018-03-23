@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import SmurfList from "./SmurfList";
+import SmurfForm from "./SmurfForm";
 import { connect } from "react-redux";
 import { getSmurfs } from "../actions";
+import { Container } from "reactstrap";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -11,7 +13,12 @@ import { getSmurfs } from "../actions";
  */
 class App extends Component {
   render() {
-    return <SmurfList />;
+    return (
+      <Container className="my-5">
+        <SmurfList />
+        <SmurfForm />
+      </Container>
+    );
   }
 
   componentDidMount() {

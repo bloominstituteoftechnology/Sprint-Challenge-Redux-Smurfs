@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Form, FormGroup, Input, Label } from "reactstrap";
-
+import { Form, FormGroup, Input, Label, Button } from "reactstrap";
+import { addSmurfs } from "../actions";
 function mapStateToProps(state) {
   return {};
 }
 
-class Form extends Component {
+class SmurfForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -17,7 +17,8 @@ class Form extends Component {
   }
   handleOnSubmit(event) {
     let id = this.props.id || 0;
-    this.props.submit(this.state.newSmurf, id);
+    // this.props.submit(this.state.newSmurf, id);
+    this.props.addSmurfs(this.state.newSmurf);
     this.setState({ newSmurf: { name: "", age: "", email: "" } });
   }
   handleOnChange(event) {
@@ -33,7 +34,7 @@ class Form extends Component {
   }
   render() {
     return (
-      <Form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+      <Form onSubmit={this.handleOnSubmit} onChange={this.handleOnChange}>
         <FormGroup>
           <Label for="SmurfName">Name</Label>
           <Input
@@ -53,12 +54,12 @@ class Form extends Component {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="SmurfEmail">E-mail</Label>
+          <Label for="SmurfHeight">Height</Label>
           <Input
-            type="email"
-            name="email"
-            id="SmurfEmail"
-            value={this.state.newSmurf.email}
+            type="height"
+            name="height"
+            id="SmurfHeight"
+            value={this.state.newSmurf.height}
           />
         </FormGroup>
         <Button type="submit">Submit</Button>
@@ -67,4 +68,4 @@ class Form extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Form);
+export default connect(mapStateToProps, { addSmurfs })(SmurfForm);
