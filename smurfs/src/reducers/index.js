@@ -15,7 +15,20 @@ import {
 } from "../actions";
 
 const initState = {
-  smurfs: [],
+  smurfs: [
+    {
+      id: -2,
+      name: "Grandpa",
+      height: 4,
+      age: 18
+    },
+    {
+      id: -1,
+      name: "Blondie",
+      height: 3,
+      age: 21
+    }
+  ],
   fetchingSmurfs: false,
   addingSmurf: false,
   updatingSmurf: false,

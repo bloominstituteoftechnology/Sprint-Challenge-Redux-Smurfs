@@ -37,3 +37,7 @@ export const getSmurfs = () => dispatch => {
       dispatch({ type: ERROR, error: err });
     });
 };
+
+export const addSmurf = newSmurf => dispatch => {
+  dispatch({ type: ADDING_SMURF });
+};
