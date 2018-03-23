@@ -7,7 +7,7 @@ import axios from 'axios';
 const URL = 'http://localhost:3333/api/smurfs';
 
 export const getSmurfs = () => {
-  const smurfs = axios.get(`${URL}/get`);
+  const smurfs = axios.get(`${URL}`);
   return dispatch => {
     dispatch({ type: GETTING_SMURFS });
     smurfs
@@ -20,7 +20,7 @@ export const getSmurfs = () => {
   };
 };
 export const createSmurf = smurf => {
-  const newSmurf = axios.post(`${URL}/create`, smurf);
+  const newSmurf = axios.post(`${URL}`, smurf);
   return dispatch => {
     dispatch({ type: CREATING_SMURF });
     newSmurf
@@ -34,7 +34,7 @@ export const createSmurf = smurf => {
 };
 
 export const deleteSmurf = id => {
-  const deletedSmurf = axios.delete(`${URL}/delete`, {
+  const deletedSmurf = axios.delete(`${URL}`, {
     data: { id }
   });
   return dispatch => {
