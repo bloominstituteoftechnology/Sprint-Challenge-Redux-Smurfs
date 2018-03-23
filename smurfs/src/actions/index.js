@@ -27,7 +27,18 @@ export const fetch_smurfs = () => dispatch => {
     });
 };
 
-// export const post_smurf
+export const post_smurf = () => dispatch => {
+  dispatch({ type: POSTING_SMURF });
+
+  axios
+    .post('http://localhost:3333/smurfs', newSmurf)
+    .then(response => {
+      dispatch({ type: POSTED_SMURF, newSmurf });
+    })
+    .catch(ERR => {
+      dispatch({ type: POSTING_SMURF_ERROR, errorMessage: 'Error posting new Smurf' });
+    });
+};
 
 // export const delete_smurf
 
