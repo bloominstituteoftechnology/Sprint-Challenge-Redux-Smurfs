@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { createSmurf } from '../actions';
-import './SmurfForm.css';
 
 class SmurfForm extends Component {
   constructor(props) {
@@ -11,7 +10,7 @@ class SmurfForm extends Component {
   }
   
   handleFormSubmit({ name, age, height }) {
-    this.props.createSmurf(name, age, height);
+    this.props.createSmurf({ name, age, height });
   }
 
   render() {
@@ -20,18 +19,18 @@ class SmurfForm extends Component {
       <div>
         <h2>Create new smurf:</h2>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-          <fieldset>
-            <label>Name:</label>
-            <Field name="name" component="input" type="text" />
-          </fieldset>
-          <fieldset>
-            <label>Age:</label>
-            <Field name="age" component="input" type="number" />
-          </fieldset>
-          <fieldset>
-            <label>Height:</label>
-            <Field name="height" component="input" type="number" />
-          </fieldset>
+          <label>Name: </label>
+          <Field name="name" component="input" type="text" />
+          <br />
+          <br />
+          <label>Age: </label>
+          <Field name="age" component="input" type="number" />
+          <br />
+          <br />
+          <label>Height: </label>
+          <Field name="height" component="input" type="number" />
+          <br />
+          <br />
           <button action="submit">Submit</button>
         </form>
       </div>

@@ -1,4 +1,7 @@
+import { combineReducers } from 'redux';
+import { reducer as FormReducer } from 'redux-form';
 import { GET_SMURFS, GETTING_SMURFS, CREATE_SMURF, CREATING_SMURF, ERROR } from '../actions';
+
 
 const initialState = {
   smurfs: [],
@@ -7,7 +10,7 @@ const initialState = {
   error: null,
 };
 
-export const smurfsReducer = (state = initialState, action) => {
+const SmurfsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_SMURFS:
       return { ...state, smurfs: action.payload, gettingSmurfs: false };
@@ -23,3 +26,10 @@ export const smurfsReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+const rootReducer = combineReducers({
+  smurfs: SmurfsReducer,
+  form: FormReducer,
+})
+
+export default rootReducer;

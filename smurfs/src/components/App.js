@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <h2>{this.props.error ? 'Error fetching smurfs' : null}</h2>
+        <h3>{this.props.error ? 'Server error' : null}</h3>
         <h2>{(this.props.gettingSmurfs || this.props.creatingSmurf) ? 'Please wait...' : null}</h2>
         <SmurfList smurfs={this.props.smurfs} />
         <SmurfForm />
@@ -30,10 +30,10 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    smurfs: state.smurfsReducer.smurfs,
-    gettingSmurfs: state.smurfsReducer.gettingSmurfs,
-    creatingSmurf: state.smurfsReducer.creatingSmurf,
-    error: state.smurfsReducer.error,
+    smurfs: state.smurfs.smurfs,
+    gettingSmurfs: state.smurfs.gettingSmurfs,
+    creatingSmurf: state.smurfs.creatingSmurf,
+    error: state.smurfs.error,
   };
 }
 
