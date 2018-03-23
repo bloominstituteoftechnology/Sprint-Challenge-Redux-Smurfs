@@ -1,22 +1,94 @@
 import React, { Component } from 'react';
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I connect my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import { connect } from "react-redux";
+import { getSmurf, postSmurf, putSmurf, deleteSmurf } from '../actions'
+
 class App extends Component {
+
+  state = {
+    name: '',
+    age: 0,
+    height: '',
+  }
+
+  componentDidMount() {
+    this.props.getSmurf();
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.postSmurf(this.state)
+    e.target.parentNode.reset();
+    this.setState({
+      name: '',
+      age: 0,
+      height: '',
+    })
+  }
+
+  handleUpdate = (e) => {
+    e.preventDefault();
+    this.props.postSmurf(this.state)
+    e.target.parentNode.reset();
+    this.setState({
+      name: '',
+      age: 0,
+      height: '',
+    })
+  }
+
+  handleDelete = (e) => {
+    this.props.deleteSmurf(e.target.parentNode.id)
+  }
+
+  handleChange = (e) => {
+    this.setState({ [e.target.placeholder]: e.target.value });
+  }
+
   render() {
+    console.log(this.props.fetchingSmurfs && this.props.addingSmurf && this.props.updatingSmurf && this.props.deletingSmurf)
+
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <div className="App__header">
+          <h1>SMURFS! 2.0 W/ Redux</h1>
+          <div>Welcome to your Redux version of Smurfs!</div>
+        </div>
+        { !(this.props.fetchingSmurfs && this.props.addingSmurf && this.props.updatingSmurf && this.props.deletingSmurf) ? (
+                <h1> FETCHING </h1>
+                ) : (
+        <div>{this.props.smurfs.map(((smurf) => {
+          return (
+            <div key={smurf.id} id={smurf.id}>
+              <h1 id={smurf.name}>{smurf.name}</h1>
+              <h3>{smurf.age}</h3>
+              <h3>{smurf.height}</h3>
+              <button onClick={this.handleDelete}>Squish</button>
+            </div>
+          )
+        }))}
+        </div>)}
+        <form>
+          <input onChange={this.handleChange} placeholder="name"/>
+          <input onChange={this.handleChange} placeholder="age"/>
+          <input onChange={this.handleChange} placeholder="height"/>
+          <button onClick={this.handleSubmit} type="submit">Smurf!</button>
+          <button onClick={this.handleUpdate} type="submit">Update</button>
+        </form>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs,
+    addingSmurf: state.addingSmurf,
+    updatingSmurf: state.updatingSmurf,
+    deletingSmurf: state.deletingSmurf,
+    error: state.error,
+  };
+};
+
+export default connect( mapStateToProps,{ getSmurf, postSmurf, putSmurf, deleteSmurf })(App);
