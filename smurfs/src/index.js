@@ -6,14 +6,10 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import index from './reducers';
+import rootReducer from './reducers/rootReducer';
 
-const store = createStore(
-  () => {
-    index;
-  }, // this is the most basic reducer. Replace it.
-  applyMiddleware(thunk)
-);
+const middleware = applyMiddleware(thunk);
+const store = createStore(rootReducer, middleware); // this is the most basic reducer. Replace it.
 
 ReactDOM.render(
   <Provider store={store}>
