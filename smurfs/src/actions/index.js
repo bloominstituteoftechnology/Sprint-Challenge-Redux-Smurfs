@@ -1,3 +1,7 @@
+import axios from 'axios';
+export const FETCHED = 'FETCHED';
+export const ERROR = 'ERROR';
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
@@ -13,3 +17,7 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+const getSmurf = () => dispatch => {
+  axios.get('http://)
+}
