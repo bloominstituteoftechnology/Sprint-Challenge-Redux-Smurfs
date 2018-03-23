@@ -7,7 +7,7 @@ class App extends Component {
 
   state = {
     name: '',
-    age: 0,
+    age: '',
     height: '',
   }
 
@@ -19,32 +19,29 @@ class App extends Component {
     e.preventDefault();
     this.props.postSmurf({
       name: this.state.name,
-      age: this.state.age,
+      age: Number(this.state.age),
       height: this.state.height,
     })
     this.setState({
       name: '',
-      age: 0,
+      age: '',
       height: '',
     })
-    e.target.parentNode.reset();
+    
   }
 
   handleUpdate = (e) => {
     e.preventDefault();
-    console.log(this.state)
     let smurfId = this.props.smurfs.findIndex(smurf => smurf.name === this.state.name);
     if (smurfId > -1) smurfId = this.props.smurfs[smurfId].id;
-    console.log(smurfId);
     this.props.putSmurf(smurfId, {
         name: this.state.name,
-        age: this.state.age,
+        age: Number(this.state.age),
         height: this.state.height,
       })
-    e.target.parentNode.reset();
     this.setState({
       name: '',
-      age: 0,
+      age: '',
       height: '',
     })
   }
@@ -54,10 +51,7 @@ class App extends Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.placeholder)
-    console.log(e.target.value)
-
-    this.setState({ [e.target.placeholder]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
@@ -82,9 +76,9 @@ class App extends Component {
         }))}
         </div>)}
         <form>
-          <input onChange={this.handleChange} placeholder="name"/>
-          <input onChange={this.handleChange} placeholder="age"/>
-          <input onChange={this.handleChange} placeholder="height"/>
+          <input name="name" onChange={this.handleChange} placeholder="name" value={this.state.name}/>
+          <input name="age" onChange={this.handleChange} placeholder="age" value={this.state.age}/>
+          <input name="height" onChange={this.handleChange} placeholder="height"value={this.state.height}/>
           <button onClick={this.handleSubmit} type="submit">Smurf!</button>
           <button onClick={this.handleUpdate} type="submit">Update</button>
         </form>
