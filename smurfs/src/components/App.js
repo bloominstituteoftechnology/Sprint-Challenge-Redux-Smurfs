@@ -28,7 +28,8 @@ class App extends Component {
 
   handleUpdate = (e) => {
     e.preventDefault();
-    this.props.postSmurf(this.state)
+    const id = document.getElementById(`${this.state.name}`).parentNode.id
+    this.props.putSmurf(id, this.state)
     e.target.parentNode.reset();
     this.setState({
       name: '',
@@ -46,16 +47,14 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.fetchingSmurfs && this.props.addingSmurf && this.props.updatingSmurf && this.props.deletingSmurf)
-
     return (
       <div className="App">
         <div className="App__header">
           <h1>SMURFS! 2.0 W/ Redux</h1>
           <div>Welcome to your Redux version of Smurfs!</div>
         </div>
-        { !(this.props.fetchingSmurfs && this.props.addingSmurf && this.props.updatingSmurf && this.props.deletingSmurf) ? (
-                <h1> FETCHING </h1>
+        { !(!this.props.fetchingSmurfs && !this.props.addingSmurf && !this.props.updatingSmurf && !this.props.deletingSmurf) ? (
+                <h1> All the smurfs are gone! </h1>
                 ) : (
         <div>{this.props.smurfs.map(((smurf) => {
           return (
