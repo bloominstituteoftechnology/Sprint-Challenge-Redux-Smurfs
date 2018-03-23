@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getSmurfs, addSmurf, updateSmurf } from "../actions/index";
+import { getSmurfs, addSmurf } from "../actions/index";
 import { connect } from "react-redux";
 
 class SmurfForm extends Component {
@@ -28,28 +28,6 @@ class SmurfForm extends Component {
     }, 20);
   };
 
-  // updateName = event => {
-  //   this.setState({
-  //     name: event.target.value
-  //   });
-  // }
-
-  // updateAge = event => {
-  //   this.setState({
-  //     age: event.target.value
-  //   });
-  // }
-
-  // updateHeight = event => {
-  //   this.setState({
-  //     height: event.target.value
-  //   });
-  // }
-
-  editSmurf = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
 
   render() {
     return (
@@ -78,9 +56,6 @@ class SmurfForm extends Component {
           />
           <button type="submit">Add to the village</button>
         </form>
-        <div>
-        <button onClick={this.editSmurf}> Update Smurf </button>
-        </div>
       </div>
     );
   }
@@ -93,4 +68,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf, updateSmurf })(SmurfForm);
+export default connect(mapStateToProps, { getSmurfs, addSmurf })(SmurfForm);

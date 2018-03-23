@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { getSmurfs, deleteSmurf } from "../actions";
+import { getSmurfs, deleteSmurf, updateSmurf } from "../actions";
 
 // import SmurfUpdate from "./SmurfUpdate";
 
 class Smurfs extends Component {
+  state = { ...this.state };
+
   componentDidMount() {
     this.props.getSmurfs();
   }
@@ -15,6 +17,48 @@ class Smurfs extends Component {
     setTimeout(() => {
       this.props.getSmurfs();
     }, 2000);
+  };
+
+
+  // updateName = event => {
+  //   this.setState({
+  //     name: event.target.value
+  //   });
+  // }
+
+  // updateAge = event => {
+  //   this.setState({
+  //     age: event.target.value
+  //   });
+  // }
+
+  // updateHeight = event => {
+  //   this.setState({
+  //     height: event.target.value
+  //   });
+  // }
+
+  editSmurf = event => id => {
+    this.props.updateSmurf(id);
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  updateHandler = _ => {
+    if (this.checkSmurf()) {
+      const updatedSmurf = {};
+
+      for (let property in this.state) {
+        if (this.state[property] !== this.props.smurf[property])
+          updatedSmurf[property] = this.state[property];
+      }
+
+      this.props.updateSmurf(updatedSmurf);
+    }
+  };
+
+  checkSmurf = _ => {
+    return !Object.values(this.state).every(inp => inp === '');
   };
 
   render() {
@@ -35,6 +79,9 @@ class Smurfs extends Component {
                       Delete Smurf
                     </button>
                   </div>
+                  <div>
+                    <button onClick={() => this.editSmurf(smurf.id)}> Update Smurf </button>
+                  </div>
                 </li>
               );
             })}
@@ -53,4 +100,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs, deleteSmurf })(Smurfs);
+export default connect(mapStateToProps, { getSmurfs, deleteSmurf, updateSmurf })(Smurfs);
