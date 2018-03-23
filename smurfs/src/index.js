@@ -10,7 +10,7 @@ import /* You need some sore of reducer */ './reducers';
 
 const store = createStore(
   () => {}, // this is the most basic reducer. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+  applyMiddleware( logger, thunk/* be sure to throw in the proper middlewares here*/)
 );
 
 ReactDOM.render(
