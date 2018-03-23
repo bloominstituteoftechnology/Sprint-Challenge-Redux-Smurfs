@@ -1,21 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import /* You need some sore of reducer */ './reducers';
+import React from "react";
+import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+import App from "./components/App";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./reducers";
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
-  () => {}, // this is the most basic reducer. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+  rootReducer,
+  composeEnhancers(applyMiddleware(logger, thunk))
 );
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
