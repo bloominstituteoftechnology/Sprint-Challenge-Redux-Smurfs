@@ -11,8 +11,7 @@ class SmurfsForm extends Component {
     };
     
 
-    handleSubmit = e => {
-        e.preventDefault();
+    handleSubmit = () => {
         this.props.addFriends(this.state);
         this.setState({
             name: '',
