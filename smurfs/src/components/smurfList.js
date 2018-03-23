@@ -30,7 +30,7 @@ class Smurfs extends Component {
 const mapStateToProps = state => {
     return { 
         smurfs: state.smurfs,
-        fetching: state.fetching,
+        fetchingSmurfs: state.fetching,
         error: state.error,
     }
 }

@@ -57,10 +57,10 @@ class SmurfForm extends Component {
 
 const mapStateToProps = state => {
     return { 
-        addingSmurf:state.addingSmurf,
-        smurfs: state.smurfs,
-        fetching: state.fetching,
-        error: state.error,
+      smurfs: state.smurfs,  
+      addingSmurf:state.addingSmurf,
+      fetchingSmurf: state.fetching,
+      error: state.error,
     }
 }
 
