@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Form, FormGroup, Input, Label, Button } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+  Button
+} from "reactstrap";
 import { addSmurfs } from "../actions";
 function mapStateToProps(state) {
   return {};
@@ -34,36 +42,40 @@ class SmurfForm extends Component {
   }
   render() {
     return (
-      <Form onSubmit={this.handleOnSubmit} onChange={this.handleOnChange}>
-        <FormGroup>
-          <Label for="SmurfName">Name</Label>
-          <Input
-            type="text"
-            name="name"
-            id="SmurfName"
-            value={this.state.newSmurf.name}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="SmurfAge">Age</Label>
-          <Input
-            type="text"
-            name="age"
-            id="SmurfAge"
-            value={this.state.newSmurf.age}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="SmurfHeight">Height</Label>
-          <Input
-            type="height"
-            name="height"
-            id="SmurfHeight"
-            value={this.state.newSmurf.height}
-          />
-        </FormGroup>
-        <Button type="submit">Submit</Button>
-      </Form>
+      <Card className="my-5">
+        <CardBody>
+          <Form onSubmit={this.handleOnSubmit} onChange={this.handleOnChange}>
+            <FormGroup>
+              <Label for="SmurfName">Name</Label>
+              <Input
+                type="text"
+                name="name"
+                id="SmurfName"
+                value={this.state.newSmurf.name}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="SmurfAge">Age</Label>
+              <Input
+                type="text"
+                name="age"
+                id="SmurfAge"
+                value={this.state.newSmurf.age}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="SmurfHeight">Height</Label>
+              <Input
+                type="height"
+                name="height"
+                id="SmurfHeight"
+                value={this.state.newSmurf.height}
+              />
+            </FormGroup>
+            <Button type="submit">Submit</Button>
+          </Form>
+        </CardBody>
+      </Card>
     );
   }
 }

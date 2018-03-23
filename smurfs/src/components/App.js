@@ -15,8 +15,8 @@ class App extends Component {
   render() {
     document.body.style.background = "#88CCFF";
     return (
-      <Container className="my-5">
-        <h1>SMURF VILLAGE</h1>
+      <Container className="my-5 p-5">
+        <h1 className="header">SMURF VILLAGE</h1>
         <SmurfList />
         <SmurfForm />
       </Container>

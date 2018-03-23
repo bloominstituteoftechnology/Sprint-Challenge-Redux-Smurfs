@@ -33,4 +33,22 @@
 
 .container {
   background-color: lightgreen;
+  border-radius: 3rem;
+  box-shadow: 1rem 1rem 1rem darkblue;
+}
+
+div.card {
+  background: yellow;
+  color: darkblue;
+}
+
+div.smurf {
+  border-radius: 4rem;
+  text-align: center;
+}
+
+.header {
+  font-family: "Abril Fatface", cursive;
+  color: darkblue;
+  font-size: 4rem;
 }

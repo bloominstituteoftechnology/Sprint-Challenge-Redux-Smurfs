@@ -11,7 +11,7 @@ class Smurf extends Component {
   render() {
     console.log(this.props.smurf.id);
     return (
-      <Card>
+      <Card className="smurf">
         <CardBody>
           <CardTitle>{this.props.smurf.name}</CardTitle>
           <CardText>{this.props.smurf.age}</CardText>
