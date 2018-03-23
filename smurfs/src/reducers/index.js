@@ -1,3 +1,20 @@
+import { ADD_SMURF } from '../Actions';
+
+const initState = [
+  { name: 'bill', age: 5, height: 1 },
+  { name: 'jill', age: 4, height: 2 }
+];
+
+export default (smurfs = initState, action) => {
+  switch (action.type) {
+    case ADD_SMURF:
+      return [...smurfs,
+        newSmurf];
+    default:
+      return smurfs;
+  }
+};
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
