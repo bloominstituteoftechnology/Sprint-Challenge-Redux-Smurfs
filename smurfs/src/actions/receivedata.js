@@ -25,17 +25,26 @@ function receiveData (smurfs) {
   }
 }
 
+// export function handleInitialData () {
+//   return (dispatch) => {
+//     return Promise.all([
+//       axios
+//       .get('http://localhost:3333/api/smurfs')
+//     ]).then((data) => {
+//         dispatch(receiveData(data))
+//       })
+//   }
+// }
+
 export function handleInitialData () {
   return (dispatch) => {
-    return Promise.all([
-      axios
-      .get('http://localhost:3333/api/smurfs')
-    ]).then((data) => {
-        dispatch(receiveData(data))
-      })
-  }
+  axios
+  .get('http://localhost:3333/api/smurfs')
+  .then((data) => {
+  dispatch(receiveData(data))
+  })
 }
-
+}
 
 // export default () => dispatch => {
 //   dispatch({ type: SHOW_LOADING });

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import List from './List';
 import { handleAddSmurf } from '../actions/smurfs';
 
-class Smurfs extends React.component {
+class Smurfs extends React.Component {
   addItem = (e) => {
     e.preventDefault();
 
@@ -33,4 +33,4 @@ class Smurfs extends React.component {
 
 export default connect((state) => ({
   smurfs: state.smurfs
-}))(smurfs);
+}))(Smurfs);
