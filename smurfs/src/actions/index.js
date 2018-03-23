@@ -36,11 +36,12 @@ export const addSmurf = data => dispatch => {
         });
 };
 
-export const updateSmurf = () => dispatch => {
+export const updateSmurf = ({ id, name, age, height }) => dispatch => {
     dispatch({ type: UPDATE_SMURF });
     axios
-        .put(`http://localhost:3333/smurfs`)
+        .put(`http://localhost:3333/smurfs/${id}`, { name, age, height } )
         .then(({ data }) => {
+            console.log(data);
             dispatch({ type: SMURF_UPDATED, payload: data });
         })
         .catch(error => {
@@ -52,7 +53,7 @@ export const deleteSmurf = (id) => dispatch => {
     dispatch({ type: DELETE_SMURF });
     axios
         .delete(`http://localhost:3333/smurfs/${id}`)
-        .then(({ data }) => dispatch({ type: SMURF_DELETED, payload: data.id }))
+        .then(() => dispatch({ type: SMURF_DELETED, id }))
         .catch(error => {
             dispatch({ type: DELETE_ERROR, errorMessage: 'Error deleting smurf' });
         });

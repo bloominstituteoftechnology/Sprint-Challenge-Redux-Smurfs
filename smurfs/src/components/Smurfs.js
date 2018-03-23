@@ -6,14 +6,20 @@ import { getSmurfs, deleteSmurf, updateSmurf } from "../actions";
 // import SmurfUpdate from "./SmurfUpdate";
 
 class Smurfs extends Component {
-  state = { ...this.state };
+    state = { 
+    name: '',
+    age: '',
+    height: '' 
+  };
 
   componentDidMount() {
     this.props.getSmurfs();
   }
 
   removeSmurf = id => {
-    this.props.deleteSmurf(id);
+    this.props.deleteSmurf({
+      id: id
+    });
     setTimeout(() => {
       this.props.getSmurfs();
     }, 2000);
@@ -38,13 +44,13 @@ class Smurfs extends Component {
   //   });
   // }
 
-  editSmurf = event => id => {
-    this.props.updateSmurf(id);
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
+  // editSmurf = event => id => {
+  //   this.props.updateSmurf(id);
+  //   const { name, value } = event.target;
+  //   this.setState({ [name]: value });
+  // };
 
-  updateHandler = _ => {
+  updateHandler = id => {
     if (this.checkSmurf()) {
       const updatedSmurf = {};
 
@@ -71,17 +77,10 @@ class Smurfs extends Component {
             {this.props.smurfs.map(smurf => {
               return (
                 <li className="smurf" key={smurf.id}>
-                  <p>{smurf.name}</p>
-                  <p>{smurf.age}</p>
-                  <p>{smurf.height}</p>
-                  <div>
-                    <button onClick={() => this.removeSmurf(smurf.id)}>
-                      Delete Smurf
-                    </button>
-                  </div>
-                  <div>
-                    <button onClick={() => this.editSmurf(smurf.id)}> Update Smurf </button>
-                  </div>
+                  <p name="name">{smurf.name}</p>
+                  <p name="age">{smurf.age}</p>
+                  <p name="height">{smurf.height}</p>
+                  <p> id {smurf.id} </p>
                 </li>
               );
             })}

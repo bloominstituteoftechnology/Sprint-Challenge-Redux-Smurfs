@@ -52,20 +52,18 @@ const rootReducer = (state = initialState, action) => {
     case actionTypes.DELETE_SMURF:
       return {
         ...state,
-        smurfs: action.payload,
         deletingSmurfs: true,
         error: null
       };
     case actionTypes.SMURF_DELETED:
-      console.log(action);
       return {
         ...state,
-        smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload.id),
+        smurfs: state.smurfs.filter(smurf => smurf.id !== action.id),
         deletingSmurfs: false,
         error: null
       };
     case actionTypes.DELETE_ERROR:
-      return console.log(action.errorMessage);
+      console.log(action.errorMessage);
        return {
         ...state,
         deletingSmurf: false,
@@ -74,7 +72,6 @@ const rootReducer = (state = initialState, action) => {
     case actionTypes.UPDATE_SMURF:
       return { ...state, updatingSmurf: true };     
     case actionTypes.SMURF_UPDATED:
-      console.log(action);
       return {
         ...state,
         smurfs: state.smurfs.map(smurf => {
