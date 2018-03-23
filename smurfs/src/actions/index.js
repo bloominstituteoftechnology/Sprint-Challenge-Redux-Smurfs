@@ -3,6 +3,7 @@ import axios from 'axios';
 export const FETCH_SMURFS_SUCCESS = 'FETCH_SMURFS_SUCCESS';
 export const FETCH_SMURFS_ERROR = 'FETCH_SMURFS_ERROR';
 export const ADD_SMURF = 'ADD_SMURF';
+export const ADD_SMURF_ERR = 'ADD_SMURF_ERR';
 
 export const getSmurfs = () => dispatch => {
   axios
@@ -11,19 +12,18 @@ export const getSmurfs = () => dispatch => {
       dispatch({ type: FETCH_SMURFS_SUCCESS, smurfs: data })
     })
     .catch(error => {
-      dipatch({ type: FETCH_SMURFS_ERROR })
+      dispatch({ type: FETCH_SMURFS_ERROR, fetchSmurfsErrMsg: "Unable to retrieve smurfs." })
     })
 }
 
-export const addSmurfs = () => dispatch => {
+export const addSmurfs = (smurf) => dispatch => {
   axios
-    .post('http://localhost:3333/smurfs', {
-      name: this.state.name,
-      age: this.state.age,
-      height: this.state.height
-    })
+    .post('http://localhost:3333/smurfs', smurf)
     .then(({data}) => {
       dispatch({ type: ADD_SMURF, smurfs: data })
+    })
+    .catch(error => {
+      dispatch({ type: ADD_SMURF_ERR, addSmurfErrMsg: "Unable to add new smurf." })
     })
 }
 
