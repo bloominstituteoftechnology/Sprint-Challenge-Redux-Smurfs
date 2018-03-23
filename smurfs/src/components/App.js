@@ -11,11 +11,9 @@ import { getSm, addSm } from "../actions";
  */
 class App extends Component {
   render() {
-    let nameInput, ageInput, heightInput, delInput;
+    let nameInput, ageInput, heightInput, del;
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-
+      <div>
         {this.props.smurfs.map(smurf => {
           return (
             <ul>
@@ -50,27 +48,11 @@ class App extends Component {
             id="nameField"
             autoFocus
           />
-          <input ref={age => (ageInput = age)} placeholder="Age" />
+          <input ref={age => (ageInput = age)} placeholder="age" />
           <input ref={height => (heightInput = height)} placeholder="height" />
-          <button>Add Smurf</button>
+          <button>This button adds a smurf</button>
         </form>
         <br />
-        <form
-          onSubmit={event => {
-            //event.preventDefault();
-            let smurf = this.props.smurfs.filter(
-              smurf => smurf.name === delInput.value
-            );
-            this.props.deleteSmurf(...smurf);
-            delInput.value = "";
-          }}
-        >
-          <input
-            ref={del => (delInput = del)}
-            placeholer="Enter the name of the smurf you'd like to delete."
-          />
-          <button>DELETE SMURF</button>
-        </form>
       </div>
     );
   }
