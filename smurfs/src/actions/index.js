@@ -5,7 +5,7 @@
 import axios from "axios";
 
 export const GET_SMURFS = "GET_SMURFS";
-export const ADD_SMURFS = "ADD_SMURFS";
+export const ADD_SMURF = "ADD_SMURF";
 export const UPDATE_SMURF = "UPDATE_SMURF";
 export const DELETE_SMURF = "DELETE_SMURF";
 export const FETCHING_SMURF = "SFETCHING_SMURFS";
@@ -40,4 +40,13 @@ export const getSmurfs = () => dispatch => {
 
 export const addSmurf = newSmurf => dispatch => {
   dispatch({ type: ADDING_SMURF });
+
+  axios
+    .get("http://localhost:3333/smurfs", newSmurf)
+    .then(response => {
+      dispatch({ type: ADD_SMURF, payload: response.data });
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, error: err });
+    });
 };

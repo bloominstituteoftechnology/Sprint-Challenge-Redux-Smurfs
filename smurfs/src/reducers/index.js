@@ -4,7 +4,7 @@
 
 import {
   GET_SMURFS,
-  ADD_SMURFS,
+  ADD_SMURF,
   UPDATE_SMURF,
   DELETE_SMURF,
   FETCHING_SMURF,
@@ -40,7 +40,7 @@ export default (state = initState, action) => {
   switch (action.type) {
     case GET_SMURFS:
       return state;
-    case ADD_SMURFS:
+    case ADD_SMURF:
       return state;
     case UPDATE_SMURF:
       return state;
