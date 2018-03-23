@@ -8,7 +8,6 @@ import './SmurfList.css';
 const SmurfList = (props) =>{ 
     return (
             <div >
-                
                 <ul>
                 {props.smurfs.map((smurf,index) => {
                    return ( 

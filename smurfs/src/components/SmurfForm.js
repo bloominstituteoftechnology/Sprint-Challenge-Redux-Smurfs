@@ -24,12 +24,11 @@ class SmurfForm extends Component {
         age: this.state.age,
         height: this.state.height,
       });
-
       this.setState({
         name: '',
         age: '',
         height: '',
-        
+
       });
     };
 
@@ -43,6 +42,7 @@ class SmurfForm extends Component {
                   placeholder="Enter name"
                   autoComplete="name"
                   onChange={this.handleInput} 
+                  value={this.state.name}
                   />
                   <input 
                   required 
@@ -50,6 +50,7 @@ class SmurfForm extends Component {
                   type="number" 
                   placeholder="Enter age" 
                   onChange={this.handleInput}
+                  value={this.state.age}
                   />
                   <input
                   required 
@@ -57,6 +58,7 @@ class SmurfForm extends Component {
                   type="text" 
                   placeholder="Enter height"
                   onChange={this.handleInput}
+                  value={this.state.height}
                   />
                   <button type="submit">Add Friend</button>
               </form>    
