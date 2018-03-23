@@ -28,7 +28,9 @@ let smurfs = [
 ];
 
 server.get('/smurfs', (req, res) => {
-  res.json(smurfs);
+  setTimeout(() => {
+    res.json(smurfs);
+  }, 4000);
 });
 
 let smurfId = 2;

@@ -13,7 +13,7 @@ export const SMURF_DELETED = 'SMURF_DELETED'
 export const ERROR_DELETING_SMURF = 'ERROR_DELETING_SMURF'
 
 export const getSmurfs = () => dispatch => {
-    dispatch({ type: FETCHING_SMURF });
+    dispatch({ type: FETCHING_SMURF, });
 
     axios
         .get('http://localhost:3333/smurfs')
