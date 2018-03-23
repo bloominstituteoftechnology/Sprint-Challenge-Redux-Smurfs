@@ -1,7 +1,11 @@
+
+
 .App {
   text-align: center;
 background-color: #223D94;
 color:white;
+font-family: 'Bubblegum Sans', cursive;
+font-size:1.5rem;
 }
 .appTitle {
   padding-top: 7px;
@@ -11,11 +15,14 @@ color:white;
 .smurfList {
   
 }
+.updateForm {
+  background: rgba(95, 115, 180, .4);
+}
 .deleteSmurf {
   color:red;
-  margin-left: 10px;
+  padding-left: 10px;
   border:none;
-  background:none;
+  background: rgba(95, 115, 180, .4);
   padding-bottom:3px;
 }
 .deleteSmurf :hover {
@@ -27,15 +34,23 @@ color:white;
   font-style:italic;
   font-weight:bold;
 }
-.updateSmurf {
+.updateButton {
   color:blue;
-  margin-left: 10px;
   border:none;
-  background:none;
+  background: rgba(95, 115, 180, .4);
   padding-bottom:3px;
 }
-
-.updateSmurf :hover {
+.updateButton :hover {
+  font-style:italic;
+  font-weight:bold;
+}
+.submitUpdateButton {
+  color:blue;
+  border:none;
+  background: rgba(95, 115, 180, .2);
+  padding-bottom:3px;
+}
+.submitUpdateButton :hover {
   font-style:italic;
   font-weight:bold;
 }
@@ -52,5 +67,13 @@ color:white;
   background-color: #162C75;
 }
 .card-footer {
-  background-color: rgba(0,0,0,.08)
+  background-color: rgba(9, 28, 91, .90)
+}
+
+.grid-sizer, .grid-item {
+  float: left;
+  width: 320px;
+}
+.grid-item--width2 {
+  width: 100%;
 }
