@@ -22,7 +22,7 @@ class App extends Component {
       <div>
         <AddSmurf />
         <ul>
-          {this.props.smurfs.map((smurf, index) => {
+          {this.props.smurfs.map((smurf, index, id) => {
             return (
               <div>
                 <li key={smurf.id}>
