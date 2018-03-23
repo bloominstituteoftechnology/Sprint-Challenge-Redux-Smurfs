@@ -4,10 +4,11 @@ import { getSmurfs } from '../actions';
 
 class SmurfList extends Component {
   componentDidMount() {
-    this.props.getSmurfs()
-  }
+    this.props.getSmurfs();
+  };
 
   render() {
+    console.log('smurfs list ', this.props)
     return (
       <div className='container'>
         <h1 className='list-title'>sMuRf village</h1>
@@ -28,11 +29,7 @@ class SmurfList extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    fetchingSmurfs: state.fetchingSmurfs,
-    smurfs: state.smurfs,
-    error: state.error
-  }
+  return state;
 }
 
 export default connect(mapStateToProps, { getSmurfs })(SmurfList)
