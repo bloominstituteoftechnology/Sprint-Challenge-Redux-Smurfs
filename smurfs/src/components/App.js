@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+
+import SmurfList from './SmurfList';
+import SmurfForm from './SmurfForm';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -13,6 +16,8 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
+          <SmurfList/>
+          <SmurfForm/>
         <div>Have fun!</div>
       </div>
     );
