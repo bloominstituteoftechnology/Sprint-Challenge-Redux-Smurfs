@@ -45,7 +45,7 @@ export default (state = initState, action) => {
     case UPDATE_SMURF:
       return { ...state };
     case DELETE_SMURF:
-      return { ...state };
+      return { ...state, deletingSmurf: false };
     case FETCHING_SMURF:
       return { ...state, fetchingSmurfs: true };
     case ADDING_SMURF:

@@ -79,7 +79,14 @@ class App extends Component {
                 {smurf.name} is {smurf.age} years old.
               </CardText>
             </Card>
-            <Button id onClick={() => this.props.deleteSmurf(smurf.id)}>
+            <Button
+              onClick={() => {
+                this.props.deleteSmurf(smurf.id);
+                setTimeout(() => {
+                  this.props.getSmurfs();
+                }, 100);
+              }}
+            >
               Exile Smurf
             </Button>
           </Fragment>
