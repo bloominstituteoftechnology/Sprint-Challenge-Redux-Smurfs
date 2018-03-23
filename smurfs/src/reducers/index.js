@@ -6,7 +6,9 @@ import {
   GETTING_SMURFS,
   ERROR,
   ADD_SMURFS,
-  ADDING_SMURFS
+  ADDING_SMURFS,
+  DELETING_SMURFS,
+  DELETE_SMURFS
 } from "../actions/index";
 
 /*
@@ -50,6 +52,19 @@ export default (state = initialState, action) => {
         ...state,
         smurfs: action.smurfs,
         addingSmurf: false,
+        error: null
+      };
+    case DELETING_SMURFS:
+      return {
+        ...state,
+        deletingSmurfs: true
+      };
+    case DELETE_SMURFS:
+      let newSmurfs = state.smurfs.filter(smurf => action.id !== smurf.id);
+      return {
+        ...state,
+        smurfs: newSmurfs,
+        deletingSmurfs: false,
         error: null
       };
     default:
