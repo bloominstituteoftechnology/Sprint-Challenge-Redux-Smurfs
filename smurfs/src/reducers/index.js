@@ -60,10 +60,8 @@ export default (state = initialState, action) => {
         deletingSmurfs: true
       };
     case DELETE_SMURFS:
-      let newSmurfs = state.smurfs.filter(smurf => action.id !== smurf.id);
       return {
         ...state,
-        smurfs: newSmurfs,
         deletingSmurfs: false,
         error: null
       };

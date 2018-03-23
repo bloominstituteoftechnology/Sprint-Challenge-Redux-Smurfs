@@ -27,14 +27,7 @@ export const ERROR = "ERROR";
 
 export const getSmurfs = () => dispatch => {
   dispatch({ type: GETTING_SMURFS });
-  axios
-    .get("http://localhost:3333/smurfs")
-    .then(response => {
-      dispatch({ type: GET_SMURFS, smurfs: response.data });
-    })
-    .catch(err => {
-      dispatch({ type: ERROR, errorMessage: "Error getting smurfs" });
-    });
+  fetchSmurfs()(dispatch);
 };
 
 export const addSmurfs = smurf => dispatch => {
@@ -71,8 +64,20 @@ export const deleteSmurf = id => dispatch => {
     .then(response => {
       console.log("Delete data", response.data);
       dispatch({ type: DELETE_SMURFS, id: id });
+      fetchSmurfs()(dispatch);
     })
     .catch(err => {
       dispatch({ type: ERROR, errorMessage: "Error deleting the data" });
+    });
+};
+
+const fetchSmurfs = () => dispatch => {
+  axios
+    .get("http://localhost:3333/smurfs")
+    .then(response => {
+      dispatch({ type: GET_SMURFS, smurfs: response.data });
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, errorMessage: "Error getting smurfs" });
     });
 };

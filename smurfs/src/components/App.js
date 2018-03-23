@@ -15,6 +15,7 @@ class App extends Component {
   render() {
     return (
       <Container className="my-5">
+        <h1>SMURF VILLAGE</h1>
         <SmurfList />
         <SmurfForm />
       </Container>
