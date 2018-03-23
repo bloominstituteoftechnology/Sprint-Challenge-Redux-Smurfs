@@ -1,7 +1,8 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { GET_SMURFS, GET_ERROR } from '../actions/getActions';
+import { FETCH_SMURFS, FETCHED_SMURFS, GET_ERROR } from '../actions/getActions';
+import { ADD_SMURF, ADDED_SMURFS, ADD_ERROR } from '../actions/addActions';
 
 //Your initial/default state for this project could look a lot like this
 initialState = {
@@ -13,9 +14,9 @@ initialState = {
   //error: null
 };
 
-export default (smurfs = [], action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_SMURFS:
+    case FETCH_SMURFS:
       return action.smurfs;
     default:
       return smurfs;
