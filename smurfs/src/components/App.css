@@ -1,7 +1,16 @@
 .App {
   text-align: center;
+background-color: #223D94;
+color:white;
 }
-
+.appTitle {
+  padding-top: 7px;
+  color:white;
+  background-color: #162C75;
+}
+.smurfList {
+  
+}
 .deleteSmurf {
   color:red;
   margin-left: 10px;
@@ -9,21 +18,38 @@
   background:none;
   padding-bottom:3px;
 }
-
 .deleteSmurf :hover {
   font-style:italic;
   font-weight:bold;
 }
 .deleteSmurf:hover::before {
-  content: "delete?"
+  content: "delete?";
+  font-style:italic;
+  font-weight:bold;
+}
+.updateSmurf {
+  color:blue;
+  margin-left: 10px;
+  border:none;
+  background:none;
+  padding-bottom:3px;
+}
+
+.updateSmurf :hover {
+  font-style:italic;
+  font-weight:bold;
+}
+.card {
+
 }
 
 .card-body {
   padding: 5px;
+  background-color:#223D94;
 }
 .card-header {
   padding: 5px;
-  
+  background-color: #162C75;
 }
 .card-footer {
   background-color: rgba(0,0,0,.08)

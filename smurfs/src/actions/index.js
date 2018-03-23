@@ -8,6 +8,7 @@ export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
 export const DELETING = 'DELETING';
+export const UPDATING = 'UPDATING';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -36,6 +37,7 @@ export const getSmurfs = () => dispatch => {
 
 //addFriend from server
 export const addSmurf = newSmurf => dispatch => {
+  console.log(newSmurf);
   dispatch({ type: FETCHING });
   axios
     .post('http://localhost:3333/smurfs', newSmurf)
@@ -64,3 +66,19 @@ export const deleteSmurf = index => dispatch => {
 };
 
 //updateSmurfs from server
+export const updateSmurf = smurf => dispatch => {
+  dispatch({ type: FETCHING });
+  console.log(smurf);
+
+  axios
+    .put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+    .then(response => {
+      console.log(response);
+      dispatch({ type: UPDATING });
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, errorMesage: 'Error fetching the data' });
+    });
+
+  window.location.reload();
+};

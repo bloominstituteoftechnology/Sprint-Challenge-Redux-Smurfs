@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './App.css';
 
-import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
+import { getSmurfs, addSmurf, deleteSmurf, updateSmurf } from '../actions';
 /* APP
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -35,6 +35,18 @@ class App extends Component {
 
   handleSelected(id) {}
 
+  displayUpdateForm(id) {
+    let form = document.getElementById(`updateSmurf${id}`);
+    form.style.display === 'none'
+      ? (form.style.display = 'inline-block')
+      : (form.style.display = 'none');
+  }
+
+  submitUpdate(id, name, age, height) {
+    console.log(id, name, age, height);
+    this.props.updateSmurf({ id, name, age, height });
+    this.displayUpdateForm(id);
+  }
   render() {
     return (
       <div className="App">
@@ -49,6 +61,65 @@ class App extends Component {
                       <div className="card-body">
                         <div className=""> Age: {smurf.age} </div>
                         <div className=""> Height: {smurf.height} </div>
+                      </div>
+                      <button
+                        className="updateSmurf"
+                        onClick={() => this.displayUpdateForm(smurf.id)}
+                      >
+                        <span> Update </span>
+                      </button>
+
+                      <div
+                        id={`updateSmurf${smurf.id}`}
+                        className={`updateSmurf `}
+                        style={{ display: 'none' }}
+                      >
+                        <div className="">
+                          <div>
+                            <input
+                              id={`updateName${smurf.id}`}
+                              type="text"
+                              ref={`updateName${smurf.id}`}
+                              placeholder={smurf.name}
+                            />
+                          </div>
+                          <div>
+                            <input
+                              id={`updateAge${smurf.id}`}
+                              type="text"
+                              ref={`updateAge${smurf.id}`}
+                              placeholder={smurf.age}
+                            />
+                          </div>
+                          <div>
+                            <input
+                              id={`updateHeight${smurf.id}`}
+                              type="text"
+                              ref={`updateHeight${smurf.id}`}
+                              placeholder={smurf.height}
+                            />
+                          </div>
+                          <div>
+                            <button
+                              onClick={() =>
+                                this.submitUpdate(
+                                  smurf.id,
+                                  document.getElementById(
+                                    `updateName${smurf.id}`
+                                  ).value,
+                                  document.getElementById(
+                                    `updateAge${smurf.id}`
+                                  ).value,
+                                  document.getElementById(
+                                    `updateHeight${smurf.id}`
+                                  ).value
+                                )
+                              }
+                            >
+                              <span>submit update</span>
+                            </button>
+                          </div>
+                        </div>
                       </div>
 
                       <button
@@ -65,9 +136,16 @@ class App extends Component {
         </div>
         <div className="card addSmurf">
           <div className="card-footer">
-            <input type="text" ref="newName" placeholder="Name" />
-            <input type="text" ref="newAge" placeholder="Age" />
-            <input type="text" ref="newHeight" placeholder="Height" />
+            <div>
+              <input type="text" ref="newName" placeholder="Name" />
+            </div>
+
+            <div>
+              <input type="text" ref="newAge" placeholder="Age" />
+            </div>
+            <div>
+              <input type="text" ref="newHeight" placeholder="Height" />
+            </div>
             <div>
               <button onClick={this.handleNewSmurf}>
                 <span>Add Smurf </span>
@@ -91,5 +169,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   getSmurfs,
   addSmurf,
-  deleteSmurf
+  deleteSmurf,
+  updateSmurf
 })(App);
