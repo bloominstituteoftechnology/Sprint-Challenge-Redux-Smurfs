@@ -6,7 +6,13 @@ import { getSmurfs, deleteSmurf }  from '../actions';
 class Smurfs extends Component {
 
 
+    hundleDelete = (id) => {
+        this.props.deleteSmurf(id);
+        this.props.getSmurfs();
+    }
+
     render() {
+        console.log(this.props.smurfs);
         return (
             <div className = 'smurfs'>
                 <ul>
@@ -17,7 +23,7 @@ class Smurfs extends Component {
                                 <li>{smurf.age}</li>
                                 <li>{smurf.height}</li>
                                 <li>{smurf.id}</li>
-                                <button onClick = {() => this.props.deleteSmurf(smurf.id)}>delete</button>
+                                <button onClick = {() => this.hundleDelete(smurf.id)}>delete</button>
                             </div>
                         )
                     })}
@@ -25,7 +31,6 @@ class Smurfs extends Component {
             </div>
         )
     }
-
 
     componentDidMount() {
         this.props.getSmurfs();

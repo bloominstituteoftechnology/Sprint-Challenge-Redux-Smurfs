@@ -35,7 +35,7 @@ import { FETCHING, FETCHED, ADDING, ADDED, DELETING, DELETED, ERROR } from '../a
         return {...state, deletingSmurfs: true}
 
       case DELETED:
-        return { ...state, smurfs:action.smurfs, deletingSmurfs: false }
+        return { ...state, deletingSmurfs: false }
 
       /* case ADDED:
         return {...state, smurfs: action.smurfs, addingSmurf: false}
