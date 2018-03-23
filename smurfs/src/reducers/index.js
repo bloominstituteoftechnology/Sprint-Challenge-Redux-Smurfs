@@ -28,7 +28,7 @@ export default (state = initialState, action = {type: 'DELETING', smurfs:[]} ) =
     case DELETING:
       return { ...state, deleting: true };
     case DELETED:
-      return { ...state, smurfs: action.smurfs, deleting: false, error: null };
+      return { ...state, smurfs: state.smurfs.filter(obj => obj.id !== action.id), deleting: false, error: null };
     case ERROR:
       return { ...state, error: action.errorMessage };
     default:

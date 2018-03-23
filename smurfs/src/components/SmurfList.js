@@ -17,7 +17,6 @@ class SmurfList extends Component {
   }
 
   handleInput = (event) => {
-    event.preventDefault();
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
@@ -35,9 +34,8 @@ class SmurfList extends Component {
     });
   };
 
-  handleSelect = (event) => {
+  handleSelect = (event, id) => {
     event.preventDefault();
-    this.props.getSmurf(this.state.id);
     setTimeout(() => {
       this.setState({
         name: this.props.smurf.name,
@@ -69,11 +67,12 @@ class SmurfList extends Component {
             {this.props.smurfs.map((smurf, i) => {
               return (
                 <Fragment  key={i}>
-                  <li className='smurfCard' key={smurf.id}>
+                  <li className='smurfCard' key={smurf.id} onClick={(e)=>this.handleSelect(e, smurf.id)}>
+                    <p>ID: {smurf.id}</p>
                     <p>Name: {smurf.name}</p>
                     <p>Age: {smurf.age}</p>
                     <p>Height: {smurf.height} ft</p>
-                    <button onClick={()=>{this.state.deleteSmurf(smurf.id)}}>
+                    <button onClick={()=>{this.props.deleteSmurf(smurf.id)}}>
                       Delete
                     </button>
                   </li>

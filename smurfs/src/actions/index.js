@@ -49,11 +49,11 @@ export const updateSmurf = (id) => (dispatch) => {
 export const deleteSmurf = (id) => (dispatch) => {
   dispatch({ type: DELETING });
 
-  axios.put(`http://localhost:3333/smurfs/${id}`)
+  axios.delete(`http://localhost:3333/smurfs/${id}`)
     .then((response) => {
-      dispatch({ type: DELETED, smurfs: response.data })
+      dispatch({ type: DELETED, id: response.data.SmurfRemoved.id })
     })
     .catch((error) => {
-      dispatch({ type: ERROR, errorMessage: error.message})
+      dispatch({ type: ERROR, errorMessage: 'Error deleting the data'})
     });
 };
