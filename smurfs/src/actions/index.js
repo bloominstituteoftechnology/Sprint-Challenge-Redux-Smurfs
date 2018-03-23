@@ -3,6 +3,7 @@ export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
 export const ADD_SMURF = 'ADD_SMURF';
+export const DELETE_SMURF = 'DELETE_SMURF';
 
 export const getSmurfs = () => {
   return dispatch => {
@@ -22,4 +23,15 @@ export const addSmurf = smurf => dispatch => {
           type: ADD_SMURF,
         })
       }).catch(error => console.log(smurf))
+}
+
+export const deleteSmurf = id => dispatch => {
+  axios
+    .delete(`http://localhost:3333/smurfs/${id}`, {
+      id
+    }).then(response => {
+      dispatch({
+        type: DELETE_SMURF,
+      })
+    }).catch(error => console.log(id))
 }

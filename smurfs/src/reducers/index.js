@@ -2,7 +2,8 @@ import {
   FETCHED, 
   ERROR,
   FETCHING,
-  ADD_SMURF
+  ADD_SMURF,
+  DELETE_SMURF
    } from "../actions";
 
 /*
@@ -14,7 +15,7 @@ const initialState = {
    fetchingSmurfs: false,
    addingSmurf: false,
    updatingSmurf: false,
-   deletingSmurfs: false,
+   deletingSmurf: false,
    error: null
  }
 
@@ -35,6 +36,12 @@ export default (state=initialState, action) => {
     case ADD_SMURF:
       return Object.assign({}, state, {
         addingSmurf: true,
+        smurfs: []
+      })
+    case DELETE_SMURF:
+      return Object.assign({}, state, {
+        deletingSmurf: true,
+        smurfs:[]
       })
       default:
         return state;
