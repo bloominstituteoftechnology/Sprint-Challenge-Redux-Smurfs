@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from  'react-redux'
-import { deleteFriend } from '../actions';
+// import { deleteFriend } from '../actions';
 
 import './SmurfList.css';
 
@@ -15,7 +15,8 @@ const SmurfList = (props) =>{
                         <li>{friend.name}</li>
                         <li>{friend.age}</li>  
                         <li>{`${friend.height} cm`}</li>
-                        <button onClick={() => props.deleteFriend(friend.id)}>X</button>
+                        {/* <button onClick={() => props.deleteFriend(friend.id)}>X</button> */}
+                        <button>X</button>
                     </div> 
                    );
                 })}
@@ -32,4 +33,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { deleteFriend })(SmurfList);
+export default connect(mapStateToProps, null )(SmurfList);

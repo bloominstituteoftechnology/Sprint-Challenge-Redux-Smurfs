@@ -10,6 +10,7 @@ class SmurfForm extends Component {
             name: '',
             age: '',
             height: '',
+            id: Number(''),
         }
     }
 
