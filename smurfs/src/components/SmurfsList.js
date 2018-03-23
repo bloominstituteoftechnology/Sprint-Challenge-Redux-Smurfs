@@ -11,7 +11,7 @@ class SmurfsList extends Component {
     return (
       <div className="App">
         <div className="addSmurfForm" />
-        {this.props.fetching ? (
+        {this.props.fetchingSmurfs ? (
           <h1>Loading...</h1>
         ) : (
           <ul>
