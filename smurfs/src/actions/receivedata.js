@@ -25,41 +25,12 @@ function receiveData (smurfs) {
   }
 }
 
-// export function handleInitialData () {
-//   return (dispatch) => {
-//     return Promise.all([
-//       axios
-//       .get('http://localhost:3333/api/smurfs')
-//     ]).then((data) => {
-//         dispatch(receiveData(data))
-//       })
-//   }
-// }
-
 export function handleInitialData () {
   return (dispatch) => {
   axios
-  .get('http://localhost:3333/api/smurfs')
+  .get('http://localhost:3333/smurfs')
   .then((data) => {
   dispatch(receiveData(data))
   })
 }
 }
-
-// export default () => dispatch => {
-//   dispatch({ type: SHOW_LOADING });
-//   axios
-//     .get('http://localhost:5000/api/friends')
-//     .then(({ data }) => {
-//       dispatch({ type: HIDE_LOADING });
-//       dispatch({
-//         type: FETCH_FRIENDS_SUCCESS,
-//         friends: data,
-//       });
-//     })
-//     .catch(err => {
-//       // update the store setting the error
-//       dispatch({ type: HIDE_LOADING });
-//       dispatch({ type: FETCH_FRIENDS_ERROR });
-//     });
-// };

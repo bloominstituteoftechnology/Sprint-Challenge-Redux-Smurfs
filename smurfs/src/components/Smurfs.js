@@ -24,7 +24,7 @@ class Smurfs extends React.Component {
         <button onClick={this.addItem}>Add Smurf</button>
 
         <List
-          items={this.props.smurfs}
+          items={[this.props.smurfs]}
         />
       </div>
     )

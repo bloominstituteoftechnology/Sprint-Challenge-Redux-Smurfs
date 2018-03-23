@@ -19,3 +19,6 @@ export function handleAddSmurf (name, cb) {
       .catch(() => alert('Error.'))
   }
 }
+
+// post is failing because we need to pass it the smurf object in proper format
+// currently we don't have that set up
