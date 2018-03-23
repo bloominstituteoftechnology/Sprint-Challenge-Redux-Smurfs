@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING, FETCHED, ADDING, ADDED, ERROR } from '../actions/index';
+import { FETCHING, FETCHED, ADDING, ADDED, DELETING, DELETED, ERROR } from '../actions/index';
 
 
 
@@ -17,7 +17,7 @@ import { FETCHING, FETCHED, ADDING, ADDED, ERROR } from '../actions/index';
 
  
  const rootReducer = (state = initialState, action) => {
-   
+
     switch (action.type) {
       case FETCHING: 
         return { ...state, fetchingSmurfs: true}
@@ -31,6 +31,12 @@ import { FETCHING, FETCHED, ADDING, ADDED, ERROR } from '../actions/index';
       case ADDED:
         return {...state, smurfs: action.smurfs, addingSmurf: false}
 
+      case DELETING:
+        return {...state, deletingSmurfs: true}
+
+      case DELETED:
+        return { ...state, smurfs:action.smurfs, deletingSmurfs: false }
+
       /* case ADDED:
         return {...state, smurfs: action.smurfs, addingSmurf: false}
         break;
@@ -40,12 +46,12 @@ import { FETCHING, FETCHED, ADDING, ADDED, ERROR } from '../actions/index';
         break; */
 
       case ERROR:
-      return {
-        ...state, 
-        fetchingSmurfs: false,
-        addingSmurf: false,
-        error: action.errorMessage
-      }
+        return {
+          ...state, 
+          fetchingSmurfs: false,
+          addingSmurf: false,
+          error: action.errorMessage
+        }
 
       default:
         return state;
