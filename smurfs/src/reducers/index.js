@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING, CREATING, ERROR } from '../actions';
+import { FETCHING, FETCHED, CREATING, CREATED, ERROR } from '../actions';
 
 /*
  Your initial/default state for this project could look a lot like this
@@ -18,7 +18,9 @@ import { FETCHING, CREATING, ERROR } from '../actions';
 const initialState = {
   smurfs: [],
   fetching: false,
+  fetched: false,
   creating: false,
+  created: false,
   error: null
 };
 
@@ -33,10 +35,14 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case FETCHING:
       return { ...state, fetching: true };
+    case FETCHED:
+      return { ...state, smurfs: action.smurfs, fetched: true };
     case ERROR:
       return { ...state, error: null };
     case CREATING:
-      return { ...state, smurfs: action.smurfs, creating: true, error: null };
+      return { ...state, creating: true, error: null };
+    case CREATED:
+      return { ...state, smurfs: action.smurfs, created: true };
     default:
       return state;
   }

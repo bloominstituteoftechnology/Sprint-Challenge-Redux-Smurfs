@@ -16,7 +16,9 @@ import axios from 'axios';
 */
 
 export const FETCHING = 'FETCHING';
+export const FETCHED = 'FETCHED';
 export const CREATING = 'CREATING';
+export const CREATED = 'CREATED';
 export const ERROR = 'ERROR';
 
 export const getSmurfs = () => dispatch => {
@@ -25,7 +27,7 @@ export const getSmurfs = () => dispatch => {
   axios
     .get('http://localhost:3333/smurfs')
     .then(response => {
-      dispatch({ type: FETCHING, smurfs: response.data });
+      dispatch({ type: FETCHED, smurfs: response.data });
     })
     .catch(err => {
       dispatch({ type: ERROR, errorMessage: 'Error fetching smurfs' });
@@ -33,14 +35,15 @@ export const getSmurfs = () => dispatch => {
 };
 
 export const addSmurf = addSmurf => dispatch => {
-  dispatch({ type: CREATING });
+  ({ type: CREATING });
+  console.log(addSmurf);
 
   axios
     .post('http://localhost:3333/smurfs', addSmurf)
     .then(response => {
-      dispatch({ type: CREATING, smurfs: response.data });
+      dispatch({ type: CREATED, smurfs: response.data });
     })
     .catch(error => {
-      console.log(`There was an error adding a new smurf: ${error}`);
+      dispatch({ type: ERROR, errorMessage: 'Error creating smurf' });
     });
 };

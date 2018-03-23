@@ -86,12 +86,13 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = store => {
+const mapStateToProps = state => {
   return {
-    fetching: store.fetching,
-    creating: store.creating,
-    smurfs: store.smurfs,
-    error: store.errorMessage
+    fetching: state.fetching,
+    fetched: state.fetched,
+    creating: state.creating,
+    smurfs: state.smurfs,
+    error: state.error
   };
 };
 

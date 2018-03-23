@@ -20,6 +20,7 @@ let smurfs = [
     id: 0
   }
 ];
+
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
