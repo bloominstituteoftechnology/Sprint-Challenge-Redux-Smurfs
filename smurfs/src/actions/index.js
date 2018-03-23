@@ -8,7 +8,7 @@ export const GET_SMURFS = "GET_SMURFS";
 export const ADD_SMURF = "ADD_SMURF";
 export const UPDATE_SMURF = "UPDATE_SMURF";
 export const DELETE_SMURF = "DELETE_SMURF";
-export const FETCHING_SMURF = "SFETCHING_SMURFS";
+export const FETCHING_SMURF = "FETCHING_SMURFS";
 export const ADDING_SMURF = "ADDING_SMURF";
 export const UPDATING_SMURF = "UPDATING_SMURF";
 export const DELETING_SMURF = "DELETING_SMURF";
@@ -42,7 +42,7 @@ export const addSmurf = newSmurf => dispatch => {
   dispatch({ type: ADDING_SMURF });
 
   axios
-    .get("http://localhost:3333/smurfs", newSmurf)
+    .post("http://localhost:3333/smurfs", newSmurf)
     .then(response => {
       dispatch({ type: ADD_SMURF, payload: response.data });
     })
@@ -50,3 +50,5 @@ export const addSmurf = newSmurf => dispatch => {
       dispatch({ type: ERROR, error: err });
     });
 };
+
+export const deleteSmurf = id => dispatch => {};

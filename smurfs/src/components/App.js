@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { getSmurfs } from "../actions";
+import { getSmurfs, addSmurf, deleteSmurf } from "../actions";
 import {
   Card,
   CardTitle,
@@ -25,22 +25,9 @@ class App extends Component {
     height: ""
   };
 
-  handleAgeChange = event => {
-    this.setState({ age: event.target.value });
-  };
-
-  handleNameChange = event => {
-    this.setState({ name: event.target.value });
-  };
-
-  handleHeightChange = event => {
-    this.setState({ height: event.target.value });
-  };
-
   render() {
     return (
       <div className="App">
-        {console.log(this.props.smurfs)}
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
@@ -48,7 +35,7 @@ class App extends Component {
         <Form
           onSubmit={event => {
             event.preventDefault();
-            // this.props.addSmurf(this.state);
+            this.props.addSmurf(this.state);
             this.setState({
               name: "",
               age: "",
@@ -82,11 +69,20 @@ class App extends Component {
           <Button>Add Smurf</Button>
         </Form>
         {this.props.smurfs.map(smurf => (
-          <Card>
-            <CardTitle>{smurf.name}</CardTitle>
-            <CardText>{smurf.height}</CardText>
-            <CardText>{smurf.age}</CardText>
-          </Card>
+          <Fragment>
+            <Card key={smurf.id}>
+              <CardTitle>{smurf.name}:</CardTitle>
+              <CardText>
+                {smurf.name} is {smurf.height} cm tall.
+              </CardText>
+              <CardText>
+                {smurf.name} is {smurf.age} years old.
+              </CardText>
+            </Card>
+            <Button id onClick={() => this.props.deleteSmurf(smurf.id)}>
+              Exile Smurf
+            </Button>
+          </Fragment>
         ))}
       </div>
     );
@@ -95,6 +91,18 @@ class App extends Component {
   componentDidMount() {
     this.props.getSmurfs();
   }
+
+  handleAgeChange = event => {
+    this.setState({ age: event.target.value });
+  };
+
+  handleNameChange = event => {
+    this.setState({ name: event.target.value });
+  };
+
+  handleHeightChange = event => {
+    this.setState({ height: event.target.value });
+  };
 }
 
 const mapStateToProps = state => {
@@ -103,4 +111,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf })(
+  App
+);
