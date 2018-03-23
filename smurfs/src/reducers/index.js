@@ -42,10 +42,10 @@ export default (state = initialState, action) => {
         savingSmurf: false,
         error: null
       };
-    // case actionTypes.DELETING_SMURF:
-    //   return { ...state, deletingFriend: true };
-    // case actionTypes.ERROR_DELETING_SMURF:
-    //   return { ...state, error: action.error };
+    case actionTypes.DELETING_SMURF:
+      return { ...state, deletingFriend: true };
+    case actionTypes.ERROR_DELETING_SMURF:
+      return { ...state, error: action.error };
     // case actionTypes.DELETED_SMURF:
     //   return {
     //     ...state,
