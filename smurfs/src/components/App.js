@@ -22,18 +22,21 @@ class App extends Component {
       age: this.state.age,
       height: this.state.height,
     })
-    e.target.parentNode.reset();
     this.setState({
       name: '',
       age: 0,
       height: '',
     })
+    e.target.parentNode.reset();
   }
 
   handleUpdate = (e) => {
     e.preventDefault();
-    const id = document.getElementById(`${this.state.name}`).parentNode.id
-    this.props.putSmurf(id, {
+    console.log(this.state)
+    let smurfId = this.props.smurfs.findIndex(smurf => smurf.name === this.state.name);
+    if (smurfId > -1) smurfId = this.props.smurfs[smurfId].id;
+    console.log(smurfId);
+    this.props.putSmurf(smurfId, {
         name: this.state.name,
         age: this.state.age,
         height: this.state.height,
@@ -51,6 +54,9 @@ class App extends Component {
   }
 
   handleChange = (e) => {
+    console.log(e.target.placeholder)
+    console.log(e.target.value)
+
     this.setState({ [e.target.placeholder]: e.target.value });
   }
 
@@ -82,6 +88,7 @@ class App extends Component {
           <button onClick={this.handleSubmit} type="submit">Smurf!</button>
           <button onClick={this.handleUpdate} type="submit">Update</button>
         </form>
+        {this.props.error ? (<h3 style={{color: 'red'}}>{this.props.error}</h3>) : (<div></div>)}
       </div>
     );
   }
@@ -90,10 +97,6 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs,
-    addingSmurf: state.addingSmurf,
-    updatingSmurf: state.updatingSmurf,
-    deletingSmurf: state.deletingSmurf,
     error: state.error,
   };
 };
