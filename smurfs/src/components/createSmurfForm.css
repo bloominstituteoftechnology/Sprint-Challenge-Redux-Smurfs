@@ -1,0 +1,16 @@
+.Container {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    margin: 5% 0;
+    padding: 2%
+}
+
+
+button {
+    background: #2f4f4f;
+    color: white;
+    font-size: 20px;
+}
