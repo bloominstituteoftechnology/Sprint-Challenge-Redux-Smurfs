@@ -11,7 +11,7 @@ const initialState = {
   error: null,
 };
 
-export default (state = initialState, action) => {
+export default (state = initialState, action = {type: 'DELETING', smurfs:[]} ) => {
   switch(action.type) {
     case GETTING:
       return { ...state, getting: true };

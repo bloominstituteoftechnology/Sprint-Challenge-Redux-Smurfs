@@ -30,7 +30,7 @@ export const addSmurf = (name, age, height) => (dispatch) => {
       dispatch({ type: ADDED, smurfs: response.data })
     })
     .catch((error) => {
-      dispatch({ type: ERROR, errorMessage: 'Error adding the data'})
+      dispatch({ type: ERROR, errorMessage: error})
     });
 };
 
@@ -54,6 +54,6 @@ export const deleteSmurf = (id) => (dispatch) => {
       dispatch({ type: DELETED, smurfs: response.data })
     })
     .catch((error) => {
-      dispatch({ type: ERROR, errorMessage: 'Error deleting the data'})
+      dispatch({ type: ERROR, errorMessage: error.message})
     });
 };

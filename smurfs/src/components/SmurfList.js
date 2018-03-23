@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Fragment } from 'react';
 import { getSmurfs, addSmurf, updateSmurf, deleteSmurf } from '../actions';
+import './SmurfList.css';
 
 
 class SmurfList extends Component {
@@ -16,6 +17,7 @@ class SmurfList extends Component {
   }
 
   handleInput = (event) => {
+    event.preventDefault();
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
@@ -63,20 +65,19 @@ class SmurfList extends Component {
     return (
       <Fragment>
         <Fragment>
-          <ul>
-            {console.log(this.props)}
+          <ul className='smurfContainer'>
             {this.props.smurfs.map((smurf, i) => {
               return (
-                <div key={i}>
-                  <li key={smurf.id}>
-                    <p>{smurf.name}</p>
-                    <p>{smurf.age}</p>
-                    <p>{smurf.height}</p>
+                <Fragment  key={i}>
+                  <li className='smurfCard' key={smurf.id}>
+                    <p>Name: {smurf.name}</p>
+                    <p>Age: {smurf.age}</p>
+                    <p>Height: {smurf.height} ft</p>
                     <button onClick={()=>{this.state.deleteSmurf(smurf.id)}}>
                       Delete
                     </button>
                   </li>
-                </div>
+                </Fragment>
               );
             })}
           </ul>
