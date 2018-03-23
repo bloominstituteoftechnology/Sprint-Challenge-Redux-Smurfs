@@ -1,24 +1,49 @@
-import  { FETCH_SMURFS_SUCCESS, FETCH_SMURFS_ERROR, ADD_SMURF, ADD_SMURF_ERR } from '../actions';
+import { FETCH_SMURFS_SUCCESS, FETCH_SMURFS_ERROR, ADD_SMURF } from '../actions';
+import { UPDATE_SMURFS, DELETE_SMURF } from '../actions';
+import { GETTING_SMURFS, ADDING_SMURFS, UPDATING_SMURFS, DELETING_SMURF } from '../actions';
+
 
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
-  addingSmurfs: false, 
+  addingSmurf: false, 
+  updatingSmurf: false,
+  deletingSmurfs: false,
   error: null
 }
 
-export default (smurfs = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_SMURFS_SUCCESS:
-      return action.smurfs;
+
+    case GETTING_SMURFS:
+      return { ...state, fetchingSmurfs: true }
+
     case FETCH_SMURFS_ERROR:
-      return action.fetchSmurfsErrMsg;
+      return { ...state, error: action.fetchSmurfsErrMsg}
+
+    case FETCH_SMURFS_SUCCESS:
+      return { ...state, smurfs: action.smurfs, fetchingSmurfs: false, error: null };
+
+    case ADDING_SMURFS:
+      return { ...state, addingSmurf: true }
+
     case ADD_SMURF:
-      return action.smufs;
-    case ADD_SMURF_ERR:
-      return action.addSmurfErrMsg;
+      return { ...state, smurfs: action.smurfs, addingSmurf: false, error: null };
+
+    case UPDATING_SMURFS:
+      return { ...state, updatingSmurf: true } 
+
+    case UPDATE_SMURFS:
+      return { ...state, smurfs: [action.smurfs], updatingSmurf: false, error: null };
+
+    case DELETING_SMURF:
+      return { ...state, deletingSmurfs: true }
+
+    case DELETE_SMURF:
+      return { ...state, smurfs: action.smurfs, deletingSmurfs: false, error: null };
+      
     default:
-      return smurfs;
+      return state;
   }
 }
 

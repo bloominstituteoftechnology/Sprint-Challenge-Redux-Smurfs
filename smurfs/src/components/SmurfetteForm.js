@@ -3,57 +3,67 @@ import { connect } from 'react-redux';
 import { addSmurfs } from '../actions';
 
 
-class SmurfetteForm extends Component {
+export class SmurfetteForm extends Component {
 
     constructor(props) {
       super(props);
       this.state = {
-        name: '',
-        age: '',
-        height: ''
+        
+            name: '',
+            age: '',
+            height: ''
+            
       };
-      this.addSmurf = this.addSmurf.bind(this);
-      this.updateName = this.updateName.bind(this);
-      this.updateAge = this.updateAge.bind(this);
-      this.updateHeight = this.updateHeight.bind(this);
+      this.handleOnSubmit = this.handleOnSubmit.bind(this);
+      this.handleOnChange = this.handleOnChange.bind(this);
     }
-  
-    updateName(event) {
-      this.setState({
-        name: event.target.value
-      });
+    
+    handleOnSubmit(event) {
+        event.preventDefault();
+        const newSmurfette = {
+          name: this.state.name,
+          age: this.state.age,
+          height: this.state.height
+        }
+        this.props.addSmurfs(newSmurfette);
+        
+        this.setState({ 
+            name: '',
+            age: '',
+            height: ''
+        })
     }
-  
-    updateAge(event) {
-      this.setState({
-        age: event.target.value
-      });
+
+    handleOnChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        //let newMember = this.state.newSmurfette;
+        //newMember[name] = value;
+        this.setState({
+            [name]: value
+        })
     }
-  
-    updateHeight(event) {
-      this.setState({
-        height: event.target.value
-      });
-    }
+   
   
     render() {
       return (
         <div className="SmurfForm">
-          <form onSubmit={this.addSmurf}>
+          <form onSubmit={this.handleOnSubmit} onChange={this.handleOnChange}>
             <input
-              onChange={this.updateName}
               placeholder="name"
               value={this.state.name}
+              name='name'
             />
             <input
-              onChange={this.updateAge}
               placeholder="age"
               value={this.state.age}
+              name='age'
             />
             <input
-              onChange={this.updateHeight}
               placeholder="height"
               value={this.state.height}
+              name='height'
             />
             <button type="submit">Add to the village</button>
           </form>

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 
-class Smurf extends Component {
-    render() {
+class Smurfette extends Component {
+    render(props) {
         return (
-            <div className="Smurf">
-                <h3>Name: {props.name}</h3>
-                <strong>{props.name} is {props.height} tall</strong>
-                <p>{props.name} is {props.age} years old</p>
+            <div className="Smurfette">
+                <h3>Name: {this.props.smurfette.name}</h3>
+                <strong>{this.props.smurfette.name} is {this.props.smurfette.height} tall</strong>
+                <p>{this.props.smurfette.name} is {this.props.smurfette.age} years old</p>
             </div>
         )
     }
@@ -18,4 +18,4 @@ function mapStateToProps(state) {
     return {};
 }
 
-export default connect(mapStateToProps)(Smurf);
+export default connect(mapStateToProps)(Smurfette);

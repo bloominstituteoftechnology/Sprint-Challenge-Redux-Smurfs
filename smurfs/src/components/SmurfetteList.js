@@ -3,20 +3,13 @@ import { connect } from 'react-redux';
 import Smurfette from './Smurfette';
 
 class SmurfetteList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      smurfs: []
-    }
-  }
-
   render() {
     return (
       <div className="Smurfs">
-        <h1>Smurf Village</h1>
+        <h1>Smurfette Village</h1>
         <ul>
-          { this.state.smurfs.map((smurf) => {
-            return <Smurf name={smurf.name} age={smurf.age} height={smurf.height} key={smurf.id} />;
+          { this.props.smurfs.map((smurfette, index) => {
+            return <Smurfette smurfette={smurfette} key={index}/>;
           })}
         </ul>
       </div>
