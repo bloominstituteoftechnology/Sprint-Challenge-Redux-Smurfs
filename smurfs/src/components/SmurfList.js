@@ -14,7 +14,7 @@ const SmurfList = (props) =>{
                    <div className="divList" key={index}>    
                         <li>{friend.name}</li>
                         <li>{friend.age}</li>  
-                        <li>{friend.email}</li>
+                        <li>{`${friend.height} cm`}</li>
                         <button onClick={() => props.deleteFriend(friend.id)}>X</button>
                     </div> 
                    );

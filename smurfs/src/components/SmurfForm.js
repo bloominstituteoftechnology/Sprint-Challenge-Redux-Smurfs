@@ -9,7 +9,7 @@ class SmurfForm extends Component {
         this.state = {
             name: '',
             age: '',
-            email: '',
+            height: '',
         }
     }
 
@@ -22,12 +22,12 @@ class SmurfForm extends Component {
       this.props.postFriend({
         name: this.state.name,
         age: this.state.age,
-        email: this.state.email
+        height: this.state.height
       });
       this.setState({
         name: '',
         age: '',
-        email: '',
+        height: '',
       });
     };
 
@@ -51,10 +51,9 @@ class SmurfForm extends Component {
                   />
                   <input
                   required 
-                  name="email"
+                  name="height"
                   type="text" 
-                  placeholder="Enter email"
-                  autoComplete="email"
+                  placeholder="Enter height"
                   onChange={this.handleInput}
                   />
                   <button type="submit">Add Friend</button>
