@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { SMURFGETTING, SMURFGOT, ERROR, SMURFPOST } from '../actions/';
+import { SMURFGETTING, SMURFGOT, ERROR, SMURFPOST, SMURFDELETE } from '../actions/';
 
 const initialState = {
   smurfs: [],
@@ -32,15 +32,18 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SMURFGETTING:
-      return {...state, gettingSmurfs: true}
+      return {...state, gettingSmurfs: true};
     case SMURFGOT:
-      return {...state, smurfs: action.smurfs, gettingSmurfs: false}
+      return {...state, smurfs: action.smurfs, gettingSmurfs: false};
 
     case SMURFPOST:
       return {...state, smurfs: action.smurfs, gettingSmurfs: true};
       
+     case SMURFDELETE:
+      return {...state, smurfs: action.smurfs, error: null, getFriends: false}; 
+
     case ERROR:
-      return {...state, error: action.errorMessage}
+      return {...state, error: action.errorMessage};
     default:
       return state
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import {getSmurfs, postSmurfs} from '../actions/index'
+import {getSmurfs, postSmurfs, deleteSmurf} from '../actions/index'
 
 /*
  to wire this component up you're going to need a few things.
@@ -38,7 +38,7 @@ constructor(props) {
           return(
             <div className="card" key={smurf.id}>
             <div>
-              {smurf.name}
+              <h4>{smurf.name}</h4> <button onClick={() => this.props.deleteSmurf(smurf.id)} type="button">Delete Me</button>
             </div>
           </div>
           )
@@ -69,4 +69,4 @@ const mapStateToProps = ({smurfs, gettingSmurfs, error}) => {
   }
 }
 console.log(this.props);
-export default connect(mapStateToProps, {getSmurfs, postSmurfs})(App);
+export default connect(mapStateToProps, {getSmurfs, postSmurfs, deleteSmurf})(App);

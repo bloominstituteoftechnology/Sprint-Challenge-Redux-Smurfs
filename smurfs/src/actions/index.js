@@ -21,6 +21,7 @@ import axios from 'axios';
 export const SMURFGETTING = 'SMURFGETTING';
 export const SMURFGOT = 'SMURFGOT';
 export const SMURFPOST = 'SMURFPOST';
+export const SMURFDELETE = 'SMURFDELETE';
 export const ERROR = 'ERROR';
 
 
@@ -47,5 +48,13 @@ export const postSmurfs = ({name, age, height}) => dispatch => {
   })
   .then(response => {
     dispatch({type: SMURFPOST, smurfs: response.data})
+  })
+}
+
+export const deleteSmurf = (id) => dispatch => {
+  dispatch({type: SMURFGETTING});
+  axios.delete(`http://localhost:3333/smurfs/${id}`) 
+  .then(response => {
+    dispatch({type: SMURFDELETE, smurfs: response.data})
   })
 }
