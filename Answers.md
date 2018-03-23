@@ -26,3 +26,4 @@ Middleware is software that connects and helps two programs communicate.
 `redux-thunk` is middle ware for redux that allows you create action creators that return a function, rather than an action, that receives the store methods dispatch and getState as params.
 
 6.  Which `react-redux` method links up our `components` with our `redux store`?
+mapStateToProps
