@@ -20,3 +20,12 @@
   This will guard your namespacing issues.
   Components can read your store as, `state` and not `state.fooReducer`.
 */
+
+import { combineReducers } from 'redux';
+import smurfs from './smurfs';
+import loading from './loading';
+
+export default combineReducers({
+  smurfs,
+  loading,
+})

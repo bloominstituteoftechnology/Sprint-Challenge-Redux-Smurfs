@@ -13,3 +13,24 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+import axios from 'axios';
+
+export const RECEIVE_DATA = 'RECEIVE_DATA'
+
+function receiveData (smurfs) {
+  return {
+    type: RECEIVE_DATA,
+    smurfs,
+  }
+}
+
+export function handleInitialData () {
+  return (dispatch) => {
+  axios
+  .get('http://localhost:3333/smurfs')
+  .then((data) => {
+  dispatch(receiveData(data))
+  })
+}
+}
