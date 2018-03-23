@@ -10,7 +10,7 @@ class SmurfList extends Component {
     this.state = {
       name: '',
       age: '',
-      email: '',
+      height: '',
       id: 1,
     }
   }
@@ -44,7 +44,7 @@ class SmurfList extends Component {
       });
     }, 100);
   };
-  
+
   handleUpdate = (event) => {
     event.preventDefault();
     let { name, age, height, id} = this.state;
@@ -64,9 +64,10 @@ class SmurfList extends Component {
       <Fragment>
         <Fragment>
           <ul>
+            {console.log(this.props)}
             {this.props.smurfs.map((smurf, i) => {
               return (
-                <Fragment key={i}>
+                <div key={i}>
                   <li key={smurf.id}>
                     <p>{smurf.name}</p>
                     <p>{smurf.age}</p>
@@ -75,7 +76,7 @@ class SmurfList extends Component {
                       Delete
                     </button>
                   </li>
-                </Fragment>
+                </div>
               );
             })}
           </ul>
@@ -87,11 +88,11 @@ class SmurfList extends Component {
               <input onChange={this.handleInput} type='text' name='height' value={this.state.height} placeholder="Enter a smurfy size" /> <br />
               <input onChange={this.handleInput} type='number' name='id' value={this.state.id} placeholder="Enter the smurf's ID" />
               <br />
-              <Fragment className="buttonContainer">
+              <div className="buttonContainer">
                 <button onClick={this.handleAdd}>Add Smurf</button>
                 <button onClick={this.handleSelect}>Select Smurf</button>
                 <button onClick={this.handleUpdate}>Update Smurf</button>
-              </Fragment>
+              </div>
           </form>
         </Fragment>
       </Fragment>

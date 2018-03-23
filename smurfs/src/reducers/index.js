@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
     case ADDING:
       return { ...state, adding: true };
     case ADDED:
-      return { ...state, smurf: action.smurfs, adding: false, error: null };
+      return { ...state, smurfs: action.smurfs, adding: false, error: null };
     case UPDATING:
       return { ...state, updating: true };
     case UPDATED:
