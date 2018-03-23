@@ -9,7 +9,7 @@ const SmurfList = state => {
     return (
             <div>
                 <ul>
-                    {props.state.smurfs.map((smurf, i) => {
+                    {state.smurfs.map((smurf, i) => {
                         return (
                             <Fragment key={i}>
                                 <li>
