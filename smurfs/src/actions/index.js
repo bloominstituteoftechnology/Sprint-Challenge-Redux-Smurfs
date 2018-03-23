@@ -1,3 +1,10 @@
+import axios from 'axios';
+
+export const  FETCHING  = 'FETCHING';
+export const  FETCHED  = 'FETCHED';
+export const  ADDING  = 'ADDING';
+export const  ADDED  = 'ADDED';
+export const ERROR  = 'ERROR';
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
@@ -13,3 +20,24 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const getSmurfs = () => dispatch => {
+  dispatch(
+    { type: FETCHING }
+  );
+  axios.get(`http://localhost:3333/api/smurfs`)
+
+  .then(response => {
+    dispatch({
+      type: FETCHED, smurfs: response.data
+    })
+  })
+  .catch(error => {
+    dispatch({
+      type: ERROR, errorMessage: 'There was an error fetching the data'
+    })
+  })
+}
+
+
+
