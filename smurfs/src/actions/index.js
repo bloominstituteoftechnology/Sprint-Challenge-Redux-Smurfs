@@ -1,11 +1,25 @@
 import axios from 'axios';
 export const FETCHINGSMURF = 'FETCHINGSMURF';
 export const FETCHSMURF = 'FETCHSMURF';
+
 export const ERROR = 'ERROR';
+
 export const ADDSMURF = 'ADDSMURF';
 export const ADDINGSMURF = 'ADDINGSMURF';
 
 
+export const addSmurfs  = smurf => (dispatch) =>{
+  dispatch({type:ADDINGSMURF});
+
+  axios 
+  .post('http://localhost:3333/smurfs', smurf)
+  .then (request => {
+    dispatch({type:ADDSMURF, smurfs:request.data})
+  })
+  .catch(err=> {
+    dispatch({type:ERROR, errorMessage:'Error adding data'})
+  });
+}
 export const getSmurfs = () => (dispatch) => {
   dispatch({type:FETCHINGSMURF})
   
@@ -19,18 +33,7 @@ export const getSmurfs = () => (dispatch) => {
   });
 }
 
-export const addSmurfs = (smurf) = (dispatch) =>{
-  dispatch({type:ADDINGSMURF});
 
-  axios 
-  .post(`http://localhost:3333/smurfs`, smurf)
-  .then (request => {
-    dispatch({type:ADDSMURF, smurfs:request.data})
-  })
-  .catch(err=> {
-    dispatch({type:ERROR, errorMessage:'Error adding data'})
-  });
-}
 
 /*
   For this project you'll need at least 2 action creators for the main portion,

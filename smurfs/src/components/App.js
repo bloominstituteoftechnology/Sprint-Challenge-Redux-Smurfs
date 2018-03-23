@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {connect } from 'react-redux';
 import { getSmurfs, addSmurfs} from '../actions';
-import axios from 'axios';
+
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -22,27 +22,7 @@ class App extends Component {
   componentDidMount(){
     this.props.getSmurfs();
   }
-  addSmurf = this.addSmurf.bind(this);
 
-  addSmurf(event) {
-    event.preventDefault();
-    // add code to create the smurf using the api
-    const name = this.state.name;
-    const age = this.state.age;
-    const height = this.state.height;
-    axios.post('http://localhost:3333/smurfs', {name, age, height}) //Note to selfthis.state have all the information needed 
-    .then (Response=> {
-      this.setState(() => ({sumrfs:Response.data}));
-    })
-    .catch(error => {
-      console.error('Server Error', error);
-    });
-     this.setState({
-      name: '',
-      age: '',
-      height: ''
-    });
-  }
   updateName = event => {
     event.preventDefault();
     this.setState({name:event.target.value});
