@@ -14,7 +14,7 @@ class AddSmurf extends Component {
 
     render() {
         return (
-            <form type='submit'>
+            <form type='submit' onSubmit={this.submitSmurf}>
 
               <label>name</label>
                 <input
@@ -41,7 +41,7 @@ class AddSmurf extends Component {
                   onChange={this.handleNewInput}
                 />
 
-              <button type='submit' onClick={this.submitSmurf}>Submit New Smurf</button>
+              <button type='submit'>Submit New Smurf</button>
         </form>
         )
     } // end render()
@@ -52,6 +52,7 @@ class AddSmurf extends Component {
     }
 
     submitSmurf = event => {
+        event.preventDefault();
         const { name, age, height } = this.state;
         const newSmurf = { name, age, height };
         this.props.post_smurf(newSmurf);

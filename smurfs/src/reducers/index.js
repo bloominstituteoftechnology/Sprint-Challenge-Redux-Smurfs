@@ -26,14 +26,15 @@ export default (state = initialState, action) => {
     case POSTING_SMURF_ERROR:
       return { ...state, error: action.errorMessage };
     case POSTED_SMURF:
-      return { ...state, postingSmurf: false, error: null };
+      return { ...state, smurfs: action.smurfs, postingSmurf: false, error: null };
     
     case DELETING_SMURF:
       return { ...state, deletingSmurf: true };
     case DELETING_SMURF_ERROR:
       return { ...state, error: action.errorMessage };
     case DELETED_SMURF:
-      return { ...state, smurfs: action.smurfs, deletingSmurf: false, error: null };
+    // console.log(action);
+      return { ...state, smurfs: state.smurfs.filter(obj => obj.id !== action.id), deletingSmurf: false, error: null };
     
     case PUTTING_SMURF:
       return { ...state, puttingSmurf: true };
