@@ -1,22 +1,95 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import './App.css';
+
+import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
 /* APP
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
  Just remember, `how do I connect my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
+
 class App extends Component {
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
+
+  handleNewSmurf = event => {
+    event.preventDefault();
+
+    if (this.refs.newName.value !== '') {
+      let newSmurf = {
+        height: this.refs.newHeight.value,
+        age: this.refs.newAge.value,
+        name: this.refs.newName.value
+      };
+
+      this.props.addSmurf(newSmurf);
+    }
+    this.refs.newHeight.value = '';
+    this.refs.newAge.value = '';
+    this.refs.newName.value = '';
+  };
+
+  handleSelected(id) {}
+
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <div className="smurfList">
+          <h2 className="card-title">Smurfs</h2>
+
+          <ul className="list-group list-group-flush ">
+            {this.props.smurfs.map((smurf, index) => {
+              return (
+                <li className="card" key={index}>
+                  <h4 className="card-header"> {smurf.name} </h4>
+                  <div className="card-body">
+                    <div className=""> Age: {smurf.age} </div>
+                    <div className=""> Height: {smurf.height} </div>
+                  </div>
+
+                  <button
+                    className="deleteSmurf"
+                    onClick={() => this.props.deleteSmurf(smurf.id)}
+                  >
+                    {' '}
+                    <span> X </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="card addSmurf">
+          <div className="card-header">
+            <input type="text" ref="newName" placeholder="Name" />
+            <input type="text" ref="newAge" placeholder="Age" />
+            <input type="text" ref="newHeight" placeholder="Height" />
+            <div>
+              <button onClick={this.handleNewSmurf}>
+                <span>Add Smurf </span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    fetching: state.fetching,
+    smurfs: state.smurfs,
+    error: state.errorMessage
+  };
+};
+
+export default connect(mapStateToProps, {
+  getSmurfs,
+  addSmurf,
+  deleteSmurf
+})(App);
