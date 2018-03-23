@@ -39,6 +39,8 @@ export default (state = initialState, action) => {
         smurfs: action.smurfs,
         error: null
       };
+    default:
+      return state;
   }
 };
 

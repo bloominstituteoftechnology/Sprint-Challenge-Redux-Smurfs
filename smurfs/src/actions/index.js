@@ -19,7 +19,7 @@ export const getSmurfs = () => dispatch => {
     .catch(err => {
       dispatch({
         type: ERROR_FETCHING_SMURF,
-        errorMessage: "Unable to catch any smurfs"
+        errorMessage: "Unable to catch smurfs"
       });
     });
 };
