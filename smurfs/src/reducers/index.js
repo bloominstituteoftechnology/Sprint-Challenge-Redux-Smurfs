@@ -1,8 +1,9 @@
 import {
   GET_SMURFS, 
   GETTING_SMURFS, 
-  CREATE_SMURFS, 
+  CREATE_SMURF, 
   CREATING_SMURFS, 
+  SMURF_CREATED,
   UPDATE_SMURF,
   UPDATING_SMURFS,  
   DELETE_SMURF,
@@ -13,30 +14,43 @@ import {
 const initialState = {
   smurfs: [], 
   fetchingSmurfs: false,
+  smurfsFetched: false,
   addingSmurf: false,
   updatingSmurf: false,
   deletingSmurfs: false,
-  error: null
+  error: null,
 };
 
 export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
       case GETTING_SMURFS:
-          return {...state, fetchingSmurfs: true };
+          return {...state, fetchingSmurfs: true, error: false };
+      
       case GET_SMURFS:
-          return {...state, addingSmurf: false };
+          return {...state, addingSmurf: false, smurfs: action.smurfs };
+      case CREATE_SMURF:
+          return {...state, 
+                  addingSmurf: true, 
+                };
+      case SMURF_CREATED:
+          return {...state,
+                  smurfs: action.smurf,
+                  addingSmurf: false,
+                  };
       case ERROR:
           return {...state,
                   fetchingSmurfs: false,
                   addingSmurf: false, 
                   deletingSmurfs: false,
                   updatingSmurf: false,
-                  error: action.payload,
+                  error: action.errMsg,
                 };
             default:
                 return state;
     }
 };
+
+export default rootReducer;
 
 /*
   Be sure to import in all of the action types from `../actions`
