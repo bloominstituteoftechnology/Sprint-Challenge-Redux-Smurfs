@@ -34,9 +34,8 @@ export default (state=defaultState,action)=>{
         error:action.data
       });
     case ADD:
-    console.log('testing');
       return Object.assign({},state,{
-        smurfs:modifySmurfs(state.friends,action)
+        smurfs:modifySmurfs(state.smurfs,action)
       });
      case ADDING:
        return Object.assign({},state,{

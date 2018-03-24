@@ -43,6 +43,7 @@ export default class Post extends Component{
   }
   handleSubmit(event){
     this.props.smurfs.addSmurf(this.state.name,this.state.age,this.state.height);
+    this.setState({name:'name',age:'age',height:'height'});
     event.preventDefault();
   }
   render(){
