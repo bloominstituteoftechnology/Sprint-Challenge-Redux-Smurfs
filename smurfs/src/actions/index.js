@@ -19,7 +19,7 @@ export const getSmurfs = () => (dispatch) => {
       dispatch({ type: GOT, smurfs: response.data })
     })
     .catch((error) => {
-      dispatch({ type: ERROR, errorMessage: 'Error getting the data'})
+      dispatch({ type: ERROR, errorMessage: error.response.data.Error })
     });
 };
 
@@ -31,7 +31,8 @@ export const addSmurf = (name, age, height) => (dispatch) => {
       dispatch({ type: ADDED, smurfs: response.data })
     })
     .catch((error) => {
-      dispatch({ type: ERROR, errorMessage: error})
+      console.log(error)
+      dispatch({ type: ERROR, errorMessage: error.response.data.Error })
     });
 };
 
@@ -40,10 +41,10 @@ export const updateSmurf = (name, age, height, id) => (dispatch) => {
 
   axios.put(`http://localhost:3333/smurfs/${id}`, {name, age, height})
     .then((response) => {
-      dispatch({ type: UPDATED, smurf: response.data.foundSmurf })
+      dispatch({ type: UPDATED, smurf: response.data, id: id })
     })
     .catch((error) => {
-      dispatch({ type: ERROR, errorMessage: 'Error updating the data'})
+      dispatch({ type: ERROR, errorMessage: error.response.data.Error })
     });
 };
 
@@ -52,10 +53,10 @@ export const deleteSmurf = (id) => (dispatch) => {
 
   axios.delete(`http://localhost:3333/smurfs/${id}`)
     .then((response) => {
-      dispatch({ type: DELETED, id: response.data.SmurfRemoved.id })
+      dispatch({ type: DELETED, id: id })
     })
     .catch((error) => {
-      dispatch({ type: ERROR, errorMessage: 'Error deleting the data'})
+      dispatch({ type: ERROR, errorMessage: error.response.data.Error })
     });
 };
 

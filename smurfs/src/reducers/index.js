@@ -11,7 +11,7 @@ const initialState = {
   error: null,
 };
 
-export default (state = initialState, action = {type: 'DELETING', smurfs:[]} ) => {
+export default (state = initialState, action) => {
   switch(action.type) {
     case GETTING:
       return { ...state, getting: true };
@@ -24,7 +24,7 @@ export default (state = initialState, action = {type: 'DELETING', smurfs:[]} ) =
     case UPDATING:
       return { ...state, updating: true };
     case UPDATED:
-      return { ...state, smurfs: state.smurfs.push(action.smurf), updating: false, error: null };
+      return { ...state, smurfs: state.smurfs.map(obj => obj.id === action.id ? obj = action.smurf : obj), updating: false, error: null };
     case DELETING:
       return { ...state, deleting: true };
     case DELETED:
