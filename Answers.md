@@ -1,0 +1,6 @@
+1. Object.assign and spread operator used to make object. Filter, slice, map makes a new array.
+2. Actions objects which we dispatched and causes a change on state. Reducers will do the action of modifying the state or store. Store is where you save the application state inside of redux. Application state is on the store so any component connected to the store will notify all the changes that happened to the store and rerender. The UI reflects of what happens to the components
+3. App is available to the all components and shared but component state is onl availble to the children. Anything that needs to be shared across multiple candients should be in store or if something only within compononet and children can be passed down as props and not be shared by siblings.
+4. Middleware piece of software that recieves all actions that gets dispatched before they reach reducer. They can stop it or fire it. Sits in between reducer and action.
+Redux thunk is a piece of middleware and all reducers want to be sync and don't wait but redux thunk has action creator return functions that is called by redux thunk gives action creator the ability to perform async operators.
+6. Can return callback functions instead. 
