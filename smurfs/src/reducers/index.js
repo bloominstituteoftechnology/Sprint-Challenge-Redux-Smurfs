@@ -1,4 +1,4 @@
-import { GETTING, GOT, ADDING, ADDED, UPDATING, UPDATED, DELETING, DELETED, ERROR } from '../actions';
+import { GETTING, GOT, ADDING, ADDED, UPDATING, UPDATED, DELETING, DELETED, SELECT, ERROR } from '../actions';
 
 
 const initialState = {
@@ -24,11 +24,15 @@ export default (state = initialState, action = {type: 'DELETING', smurfs:[]} ) =
     case UPDATING:
       return { ...state, updating: true };
     case UPDATED:
-      return { ...state, smurfs: action.smurfs, updating: false, error: null };
+      return { ...state, smurfs: state.smurfs.push(action.smurf), updating: false, error: null };
     case DELETING:
       return { ...state, deleting: true };
     case DELETED:
       return { ...state, smurfs: state.smurfs.filter(obj => obj.id !== action.id), deleting: false, error: null };
+    case SELECT:
+      return {
+        ...state, smurf: (state.smurfs.filter(obj => obj.id === action.id))[0],
+      };
     case ERROR:
       return { ...state, error: action.errorMessage };
     default:

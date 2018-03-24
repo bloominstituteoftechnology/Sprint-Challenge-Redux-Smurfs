@@ -7,6 +7,7 @@ export const UPDATING = 'UPDATING';
 export const UPDATED = 'UPDATED';
 export const DELETING = 'DELETING';
 export const DELETED = 'DELETED';
+export const SELECT = 'SELECT';
 export const ERROR = 'ERROR';
 
 
@@ -34,12 +35,12 @@ export const addSmurf = (name, age, height) => (dispatch) => {
     });
 };
 
-export const updateSmurf = (id) => (dispatch) => {
+export const updateSmurf = (name, age, height, id) => (dispatch) => {
   dispatch({ type: UPDATING });
 
-  axios.put(`http://localhost:3333/smurfs/${id}`)
+  axios.put(`http://localhost:3333/smurfs/${id}`, {name, age, height})
     .then((response) => {
-      dispatch({ type: ADDED, smurfs: response.data })
+      dispatch({ type: UPDATED, smurf: response.data.foundSmurf })
     })
     .catch((error) => {
       dispatch({ type: ERROR, errorMessage: 'Error updating the data'})
@@ -56,4 +57,8 @@ export const deleteSmurf = (id) => (dispatch) => {
     .catch((error) => {
       dispatch({ type: ERROR, errorMessage: 'Error deleting the data'})
     });
+};
+
+export const selectSmurf = (id) => (dispatch) => {
+  dispatch({ type: SELECT, id: id });
 };

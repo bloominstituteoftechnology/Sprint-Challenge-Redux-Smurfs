@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Fragment } from 'react';
-import { getSmurfs, addSmurf, updateSmurf, deleteSmurf } from '../actions';
+import { getSmurfs, addSmurf, updateSmurf, deleteSmurf, selectSmurf } from '../actions';
 import './SmurfList.css';
 
 
@@ -34,13 +34,15 @@ class SmurfList extends Component {
     });
   };
 
-  handleSelect = (event, id) => {
-    event.preventDefault();
+  handleSelect = (id) => {
+    this.props.selectSmurf(id);
     setTimeout(() => {
+    let { name, age, height } = this.props.smurf;
       this.setState({
-        name: this.props.smurf.name,
-        age: this.props.smurf.age,
-        height: this.props.smurf.height,
+        name: name,
+        age: age,
+        height: height,
+        id: id,
       });
     }, 100);
   };
@@ -67,7 +69,8 @@ class SmurfList extends Component {
             {this.props.smurfs.map((smurf, i) => {
               return (
                 <Fragment  key={i}>
-                  <li className='smurfCard' key={smurf.id} onClick={(e)=>this.handleSelect(e, smurf.id)}>
+                  <li className='smurfCard' key={smurf.id} onClick={()=>{this.handleSelect(smurf.id)}
+                    }>
                     <p>ID: {smurf.id}</p>
                     <p>Name: {smurf.name}</p>
                     <p>Age: {smurf.age}</p>
@@ -90,8 +93,9 @@ class SmurfList extends Component {
               <br />
               <div className="buttonContainer">
                 <button onClick={this.handleAdd}>Add Smurf</button>
-                <button onClick={this.handleSelect}>Select Smurf</button>
                 <button onClick={this.handleUpdate}>Update Smurf</button>
+                <br />
+                <p>Click on a smurf to update their information.</p>
               </div>
           </form>
         </Fragment>
@@ -108,4 +112,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf, updateSmurf, deleteSmurf })(SmurfList);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, updateSmurf, deleteSmurf, selectSmurf, })(SmurfList);
