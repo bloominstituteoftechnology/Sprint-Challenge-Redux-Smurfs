@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+import {connect} from 'react-redux';
+import {getSmurfs,add,addSmurf} from '../actions';
+import Post from './Post';
+import Get from './Get';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -10,13 +14,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <Post smurfs={this.props}/>
+        <Get smurfs={this.props}/>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state)=>{
+  return {
+    info:state
+  }
+}
+
+export default connect(mapStateToProps,{getSmurfs,add,addSmurf})(App);

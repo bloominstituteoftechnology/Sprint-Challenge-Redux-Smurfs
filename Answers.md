@@ -9,8 +9,9 @@ We use Object.assign() to create a new object while extending the properties of 
 
 4. Middleware is software that is called prior to a reducer being called. Middleware is used to ensure that a reducer is called with an action that has actually occurred, this is often used for asynchronous Actions.
 
-5. Redux-thunk 
+5. Redux-thunk  redux thunk allows us to make action creators that call fetch and multiple dispatches within them. Using thunk we can send an action at the moment of the api request, allowing the client to know that we're requesting data. Once we receive an error or response from the server we then can update the client to know that the call from the api is finished. Depending upon the success of the call we can then update the state of our application accordingly.
 
-6.
+6. the connect() function maps our components with the redux store.
+
 
 
