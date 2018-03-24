@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getSmurfs, addSmurf } from "../actions";
+import { getSmurfs, addSmurf, deleteSmurf } from "../actions";
 
 class SmurfForm extends Component {
 	constructor(props) {
@@ -41,6 +41,7 @@ class SmurfForm extends Component {
 								<div>{smurf.name}</div>
 								<div>{smurf.age}</div>
 								<div>{smurf.height}</div>
+								<button onClick={() => this.props.deleteSmurf(smurf.id)}>Delete Smurf</button>
 							</li>
 						);
 					})}
@@ -64,4 +65,4 @@ const mapStateToProps = (state) => {
 		error: state.errorMessage
 	};
 };
-export default connect(mapStateToProps, { addSmurf, getSmurfs })(SmurfForm);
+export default connect(mapStateToProps, { addSmurf, getSmurfs, deleteSmurf })(SmurfForm);

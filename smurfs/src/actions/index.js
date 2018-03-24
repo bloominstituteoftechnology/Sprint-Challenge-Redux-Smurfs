@@ -9,6 +9,8 @@ export const FETCHED = 'FETCHED';
 export const ADD_SMURF = 'ADD_SMURF';
 export const ADDED_SMURF = 'ADDED_SMURF';
 export const ERROR = 'ERROR';
+export const DELETE_SMURF = 'DELETE_SMURF';
+export const DELETING = 'DELETING';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -41,10 +43,23 @@ export const addSmurf = (smurf) => (dispatch) => {
   axios
     .post(`http://localhost:3333/smurfs`, smurf)
     .then((response)=> {
-      dispatch({ type: ADDED_SMURF, smurfs: response.data});
+      dispatch({ type: ADDED_SMURF, smurfs: response.data });
     })
     .catch((err) => {
 			dispatch({ type: ERROR, errorMessage: "You didnt add any Smurfies" });
 		});
 
+}
+
+export const deleteSmurf = (id) => (dispatch) => {
+  dispatch({ type: DELETING });
+  axios
+    .delete(`http://localhost:3333/smurfs/${id}`)
+    .then((response)=> {
+      console.log(response)
+        dispatch({ type: DELETE_SMURF, id });
+    })
+    .catch((err) => {
+        dispatch({ type: ERROR, errorMessage: "You didn't delete any Smurfs" });
+    });
 }
