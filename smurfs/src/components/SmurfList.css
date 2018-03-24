@@ -4,7 +4,8 @@
 
 .smurfCard {
   width: 200px;
-  height: 200px;
+  height: 170px;
   list-style-type: none;
   border: thin solid black;
+  margin-right: 15px;
 }

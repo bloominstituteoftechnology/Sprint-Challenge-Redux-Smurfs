@@ -12,7 +12,7 @@ class SmurfList extends Component {
       name: '',
       age: '',
       height: '',
-      id: 1,
+      id: 0,
     }
   }
 
@@ -31,6 +31,7 @@ class SmurfList extends Component {
       name: '',
       age: '',
       height: '',
+      id: 0,
     });
   };
 
@@ -53,13 +54,18 @@ class SmurfList extends Component {
     age = parseInt(age, 10);
     height = parseInt(height, 10);
     this.props.updateSmurf(name, age, height, id);
+  };
+
+  handleDelete = (event) => {
+    event.preventDefault();
+    this.props.deleteSmurf(this.state.id);
     this.setState({
       name: '',
       age: '',
       height: '',
-      id: 1
+      id: 0,
     });
-  };
+  }
 
   render() {
     return (
@@ -75,9 +81,6 @@ class SmurfList extends Component {
                     <p>Name: {smurf.name}</p>
                     <p>Age: {smurf.age}</p>
                     <p>Height: {smurf.height} ft</p>
-                    <button onClick={()=>{this.props.deleteSmurf(smurf.id)}}>
-                      Delete
-                    </button>
                   </li>
                 </Fragment>
               );
@@ -94,6 +97,7 @@ class SmurfList extends Component {
               <div className="buttonContainer">
                 <button onClick={this.handleAdd}>Add Smurf</button>
                 <button onClick={this.handleUpdate}>Update Smurf</button>
+                <button onClick={this.handleDelete}>Delete Smurf</button>
                 <br />
                 <p>Click on a smurf to update their information.</p>
               </div>
