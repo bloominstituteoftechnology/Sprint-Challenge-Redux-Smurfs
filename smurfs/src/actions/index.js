@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
@@ -15,10 +17,10 @@ export const ERROR = 'ERROR';
 export const showSmurfAction = () => dispatch => {
   dispatch({ type: SHOW_LOADING  });
   
-  axios.
-  get('http://localhost:3333/smurfs')
-  .then(response = {
-    dispatch({ type: GOT_SMURFS, payload: response.data })
+  axios
+  .get('http://localhost:3333/smurfs')
+  .then(({ data }) => {
+    dispatch({ type: GOT_SMURFS, payload: data })
   })
   .catch(error => {
     dispatch({ type: ERROR })
@@ -28,10 +30,10 @@ export const showSmurfAction = () => dispatch => {
 export const addSmurfAction = (smurf) => dispatch => {
   dispatch({ type: SHOW_LOADING  });
   
-  axios.
-  post('http://localhost:3333/smurfs', smurf)
-  .then(response = {
-    dispatch({ type: UPD_SMURF, payload: response.data })
+  axios
+  .post('http://localhost:3333/smurfs', smurf)
+  .then(({ data }) => {
+    dispatch({ type: UPD_SMURF, payload: data })
   })
   .catch(error => {
     dispatch({ type: ERROR })

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { showSmurfAction } from '../actions';
-import { addwSmurfAction } from '../actions';
+import { addSmurfAction } from '../actions';
+
+import Smurfslist from './Smurfslist';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -13,11 +15,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      newSmurf: {
-        name: '',
-        age: '',
-        height: '',
-      }
+      name: '',
+      age: '',
+      height: '',
     }
   }
   
@@ -27,7 +27,7 @@ class App extends Component {
   
   addSmurf = (event) => {
     event.preventDefault();
-    this.props.addSmurfAction(this.state.newSmurf);
+    this.props.addSmurfAction(this.state);
     
     this.setState({
       name: '',
@@ -78,7 +78,7 @@ class App extends Component {
 
         <div>
           {this.props.smurfs.map(smurf => {
-            return <Smurflist smurf={smurf} key={smurf.id} />
+            return <Smurfslist smurf={smurf} key={smurf.id} />
           })}
         </div>
 

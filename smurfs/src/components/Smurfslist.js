@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Smurflist(props) {
+function Smurfslist(props) {
   return (
     <div className="smurf">
       <h3>{props.smurf.name}</h3>
@@ -10,4 +10,4 @@ function Smurflist(props) {
   );
 }
 
-export default Friends;
+export default Smurfslist;

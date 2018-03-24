@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux';
 
 import { SHOW_LOADING, HIDE_LOADING, 
-  GOT_SMURFS, UPD_SMURF, DEL_SMURF, ERROR  } from '../actions;'  
-
-
+  GOT_SMURFS, UPD_SMURF, DEL_SMURF, ERROR  } from '../actions';
 /*
  Your initial/default state for this project could look a lot like this
  {
@@ -14,13 +12,6 @@ import { SHOW_LOADING, HIDE_LOADING,
    deletingSmurfs: false
    error: null
  }
-*/
-
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
-  Components can read your store as, `state` and not `state.fooReducer`.
 */
 
 const smurfReducer = (smurfs = [], action) => {
