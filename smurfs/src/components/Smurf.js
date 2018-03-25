@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateSmurf } from '../actions';
 import './Smurf.css';
 
 export class Smurf extends Component {
@@ -15,10 +14,7 @@ export class Smurf extends Component {
         this.setState({
             [event.target.name]: event.target.value,
         });
-    }
-
-    handleUpdate() {
-        this.props.updateSmurf(this.state);
+        console.log(this.state);
     }
 
     componentDidMount() {
@@ -32,22 +28,18 @@ export class Smurf extends Component {
             <div className="SmurfContainer">
                 <h1>{this.props.smurf.name}</h1>
                 <h4>{this.props.smurf.age} years | {this.props.smurf.height}cm</h4>
-                <form className="Update" onSubmit={() => this.handleUpdate()}>
+                <form className="Update" onSubmit={() => this.props.updateSmurf(this.state)}>
                     <h4>Update {this.props.smurf.name}</h4>
-                    <input placeholder="Name"/>
-                    <input placeholder="Age"/>
-                    <input placeholder="Height"/>
+                    <input name="name" placeholder="Name" onChange={this.handleChange.bind(this)}/>
+                    <input name="age" placeholder="Age" onChange={this.handleChange.bind(this)}/>
+                    <input name="height" placeholder="Height" onChange={this.handleChange.bind(this)}/>
                     <button value="submit">Update</button>
+                    <button onClick={() => this.props.deleteSmurf(this.state.id)}>Delete</button>
                 </form>
             </div>
         );
     }
 } 
 
-const mapDispatchToProps = (dispatch) => {
-    return ({
-        updateSmurf: updateSmurf()
-    })
-}
   
-export default connect(null, mapDispatchToProps)(Smurf);
+export default connect()(Smurf);

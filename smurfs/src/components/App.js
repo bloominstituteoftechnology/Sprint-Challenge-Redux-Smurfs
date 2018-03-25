@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
+import { getSmurfs, addSmurf, updateSmurf, deleteSmurf } from '../actions';
 import { Smurf } from './Smurf';
 
 /*
@@ -41,7 +41,7 @@ class App extends Component {
       <div className="App">
         <h1 className="App-intro">Smurf's Up!</h1>
         {this.props.smurfs.map(smurf => {
-          return <Smurf key={smurf.id} smurf={smurf}/>
+          return <Smurf key={smurf.id} smurf={smurf} updateSmurf={this.props.updateSmurf} deleteSmurf={this.props.deleteSmurf}/>
         })}
         <form className="AddSmurf" onSubmit={() => this.handleSubmit()}>
           <input name="name" placeholder="Name" onChange={this.handleChange.bind(this)}/>
@@ -61,4 +61,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, updateSmurf, deleteSmurf })(App);

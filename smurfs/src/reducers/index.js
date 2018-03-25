@@ -37,22 +37,17 @@ export default (state=initialState, action) => {
     case ADD_SMURF:
       return Object.assign({}, state, {
         addingSmurf: true,
-        smurfs: state.smurfs.concat({
-          id: action.id,
-          name: action.name,
-          age: action.age,
-          height: action.height
-        })
+        smurfs: []
       })
     case DELETE_SMURF:
       return Object.assign({}, state, {
         deletingSmurf: true,
-        smurfs: state.smurfs.filter(smurf => smurf.id !== action.id),
+        smurfs: []
       })
     case UPDATE_SMURF:
     return Object.assign({}, state, {
       updatingSmurf: true,
-      smurfs:[]
+      smurfs: []
     })
       default:
         return state;

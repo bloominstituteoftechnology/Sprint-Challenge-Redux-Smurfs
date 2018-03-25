@@ -38,10 +38,12 @@ export const deleteSmurf = id => dispatch => {
 }
 
 export const updateSmurf = smurf => dispatch => {
+  console.log(smurf);
   axios
   .put(`http://localhost:3333/smurfs/${smurf.id}`, smurf).then(response => {
     dispatch({
       type: UPDATE_SMURF,
+      smurf: smurf
     })
   }).catch(error => console.log(smurf));
 }
