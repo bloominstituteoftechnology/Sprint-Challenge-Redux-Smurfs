@@ -3,7 +3,8 @@ import {
   ERROR,
   FETCHING,
   ADD_SMURF,
-  DELETE_SMURF
+  DELETE_SMURF,
+  UPDATE_SMURF
    } from "../actions";
 
 /*
@@ -36,13 +37,23 @@ export default (state=initialState, action) => {
     case ADD_SMURF:
       return Object.assign({}, state, {
         addingSmurf: true,
-        smurfs: []
+        smurfs: state.smurfs.concat({
+          id: action.id,
+          name: action.name,
+          age: action.age,
+          height: action.height
+        })
       })
     case DELETE_SMURF:
       return Object.assign({}, state, {
         deletingSmurf: true,
-        smurfs:[]
+        smurfs: state.smurfs.filter(smurf => smurf.id !== action.id),
       })
+    case UPDATE_SMURF:
+    return Object.assign({}, state, {
+      updatingSmurf: true,
+      smurfs:[]
+    })
       default:
         return state;
   }

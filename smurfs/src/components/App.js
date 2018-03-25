@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
+import { Smurf } from './Smurf';
+
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -37,21 +39,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Smurfs All Up In Here</h1>
+        <h1 className="App-intro">Smurf's Up!</h1>
         {this.props.smurfs.map(smurf => {
-          return (
-          <div key={smurf.id}>
-            <h4>{smurf.name}</h4>
-            <p>Age: {smurf.age} years | Height: {smurf.height}cm</p>
-            <button onClick={() => this.props.deleteSmurf(smurf.id)}>Delete</button>
-          </div>
-          )
+          return <Smurf key={smurf.id} smurf={smurf}/>
         })}
-        <form onSubmit={() => this.handleSubmit()}>
+        <form className="AddSmurf" onSubmit={() => this.handleSubmit()}>
           <input name="name" placeholder="Name" onChange={this.handleChange.bind(this)}/>
           <input name="age" placeholder="Age" onChange={this.handleChange.bind(this)}/>
           <input name="height" placeholder="Height" onChange={this.handleChange.bind(this)}/>
-          <input type="submit"></input>
+          <button value="Submit">Add Smurf</button>
         </form>
       </div>
     );
@@ -60,8 +56,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    smurfs: state.smurfs,
-    isFetching: state.isFetching
+    smurfs: state.smurfs
   }
 }
 
