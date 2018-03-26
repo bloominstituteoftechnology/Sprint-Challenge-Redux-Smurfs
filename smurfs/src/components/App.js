@@ -6,19 +6,17 @@ import './App.css';
  Just remember, `how do I connect my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
-import SmurfForm from './components/SmurfForm';
-import Smurfs from './components/Smurfs';
-
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfForm />
-        <Smurfs />
+        <h1>SMURFS! 2.0 W/ Redux</h1>
+        <div>Welcome to your Redux version of Smurfs!</div>
+        <div>Start inside of your `src/index.js` file!</div>
+        <div>Have fun!</div>
       </div>
     );
   }
 }
 
 export default App;
-
