@@ -1,0 +1,16 @@
+.SmurfContainer {
+    display: flex;
+    width: 80%;
+    flex-flow: column;
+    align-items: center;
+    border-bottom: 1px solid black; 
+    padding: 0 0 30px 0;
+}
+
+.Update {
+    width: 80%;
+}
+
+button {
+    margin: 10px 1% 10px 1%;
+}
