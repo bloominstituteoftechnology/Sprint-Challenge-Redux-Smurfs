@@ -3,6 +3,7 @@ import './App.css';
 
 import SmurfList from './SmurfList';
 import SmurfForm from './SmurfForm';
+import { Col, Row, Container } from 'reactstrap';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -12,12 +13,18 @@ import SmurfForm from './SmurfForm';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-          <SmurfList/>
-          <SmurfForm/>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <div className="App">
+              <h1>SMURFS! 2.0 W/ Redux</h1>
+              <div>Welcome to your Redux version of Smurfs!</div>
+                <SmurfList/>
+                <SmurfForm/>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
