@@ -39,13 +39,23 @@ const initState = {
 export default (state = initState, action) => {
   switch (action.type) {
     case GET_SMURFS:
-      return { ...state, smurfs: action.payload, fetchingSmurfs: false };
+      return {
+        ...state,
+        smurfs: action.payload,
+        fetchingSmurfs: false,
+        error: null
+      };
     case ADD_SMURF:
-      return { ...state, smurfs: action.payload, addingSmurf: false };
+      return {
+        ...state,
+        smurfs: action.payload,
+        addingSmurf: false,
+        error: null
+      };
     case UPDATE_SMURF:
-      return { ...state };
+      return { ...state, updatingSmurf: false, error: null };
     case DELETE_SMURF:
-      return { ...state, deletingSmurf: false };
+      return { ...state, deletingSmurf: false, error: null };
     case FETCHING_SMURF:
       return { ...state, fetchingSmurfs: true };
     case ADDING_SMURF:
@@ -54,6 +64,8 @@ export default (state = initState, action) => {
       return { ...state, updatingSmurf: true };
     case DELETING_SMURF:
       return { ...state, deletingSmurf: true };
+    case ERROR:
+      return { ...state, error: action.error };
     default:
       return state;
   }

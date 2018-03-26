@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { getSmurfs, addSmurf, deleteSmurf } from "../actions";
+import { getSmurfs, addSmurf, deleteSmurf, updateSmurf } from "../actions";
 import {
   Card,
   CardTitle,
@@ -32,17 +32,7 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-        <Form
-          onSubmit={event => {
-            event.preventDefault();
-            this.props.addSmurf(this.state);
-            this.setState({
-              name: "",
-              age: "",
-              height: ""
-            });
-          }}
-        >
+        <Form onSubmit={this.submitForm}>
           <InputGroup>
             <Input
               required
@@ -66,7 +56,7 @@ class App extends Component {
               value={this.state.height}
             />
           </InputGroup>
-          <Button>Add Smurf</Button>
+          <Button id="submitButton">Add Smurf</Button>
         </Form>
         {this.props.smurfs.map(smurf => (
           <Fragment>
@@ -80,6 +70,14 @@ class App extends Component {
               </CardText>
             </Card>
             <Button
+              color="warning"
+              onClick={this.updateSmurfSetup}
+              id={smurf.id}
+            >
+              Update Smurf
+            </Button>
+            <Button
+              color="danger"
               onClick={() => {
                 this.props.deleteSmurf(smurf.id);
                 // setTimeout(() => {
@@ -98,6 +96,41 @@ class App extends Component {
   componentDidMount() {
     this.props.getSmurfs();
   }
+
+  submitForm = event => {
+    event.preventDefault();
+    const buttonState = document.getElementById("submitButton").innerHTML;
+    if (buttonState === "Add Smurf") {
+      this.props.addSmurf(this.state);
+      this.setState({
+        name: "",
+        age: "",
+        height: ""
+      });
+    } else if (buttonState === "Update Smurf") {
+      this.props.updateSmurf(this.state);
+      this.setState({
+        name: "",
+        age: "",
+        height: ""
+      });
+      document.getElementById("submitButton").innerHTML = "Add Smurf";
+    }
+  };
+
+  updateSmurfSetup = event => {
+    let updateThisSmurf = this.props.smurfs.filter(
+      smurf => smurf.id === Number(event.target.id)
+    );
+    updateThisSmurf = updateThisSmurf[0];
+    console.log(updateThisSmurf, event.target.id);
+    this.setState({
+      name: updateThisSmurf.name,
+      age: updateThisSmurf.age,
+      height: updateThisSmurf.height
+    });
+    document.getElementById("submitButton").innerHTML = "Update Smurf";
+  };
 
   handleAgeChange = event => {
     this.setState({ age: event.target.value });
@@ -118,6 +151,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf })(
-  App
-);
+export default connect(mapStateToProps, {
+  getSmurfs,
+  addSmurf,
+  deleteSmurf,
+  updateSmurf
+})(App);
