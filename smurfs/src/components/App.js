@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import { getSmurfs, addSmurf } from '../actions';
-
+;
 
 /*
  to wire this component up you're going to need a few things.
@@ -40,7 +40,7 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to Smurfdux!</div>
-
+        <style>{'body { background-color: #88CCFF; }'}</style>
         {this.props.smurfs.map(smurf => {
           return (
             <div key={smurf.id}>
@@ -51,7 +51,7 @@ class App extends Component {
             </div>
           );
         })}
-         <form onSubmit={() => this.handleSubmit()}>
+        <form onSubmit={() => this.handleSubmit()}>
           <input
             name="name"
             placeholder="Name"
@@ -70,7 +70,7 @@ class App extends Component {
           <input type="submit" />
         </form>
       </div>
-      
+
     );
   }
 }
