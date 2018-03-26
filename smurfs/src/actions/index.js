@@ -64,3 +64,17 @@ export const deleteSmurf = id => dispatch => {
       dispatch({ type: ERROR, error: err });
     });
 };
+
+export const updateSmurf = updatedSmurf => dispatch => {
+  dispatch({ type: UPDATING_SMURF });
+
+  axios
+    .put(`http://localhost:3333/smurfs/${updatedSmurf.id}`, updatedSmurf)
+    .then(response => {
+      dispatch({ type: UPDATE_SMURF, payload: response.data });
+      getSmurfs()(dispatch);
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, error: err });
+    });
+};

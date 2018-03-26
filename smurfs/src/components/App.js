@@ -108,7 +108,7 @@ class App extends Component {
         height: ""
       });
     } else if (buttonState === "Update Smurf") {
-      this.props.updateSmurf(this.state);
+      this.props.updateSmurf({ ...this.state, id: Number(event.target.id) });
       this.setState({
         name: "",
         age: "",
