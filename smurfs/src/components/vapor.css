@@ -1,0 +1,92 @@
+.vapor {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    min-height: 600px;
+    background-image: url(https://media.giphy.com/media/gSxj0I2b2EMCc/giphy.gif);
+    animation: animatedBackground 20s linear infinite,
+               colorShift 5s linear infinite;
+  }
+  
+  .vapor:before {
+    position: relative;
+    opacity: 0.7;
+    background-image: url(https://media.giphy.com/media/gSxj0I2b2EMCc/giphy.gif);
+    animation: animatedBackground 20s linear infinite;
+  }
+  
+  .vapor .content {
+    margin: 0px auto;
+    max-width: 1000px;
+    position: relative;
+  }
+  
+  .vapor p {
+    position: absolute;
+    margin-left: 200px;
+    color: #6EFCBB;
+    font-weight: bold;
+    font-size: 42pt;
+    font-family: sans-serif;
+    text-shadow: 4px 4px 0px #4AB18E;
+    line-height: 120px;
+  }
+  
+  img.spooky {
+    position: absolute;
+    left: -300px;
+    top: 82px;
+  }
+  
+  img.statue {
+    position: absolute;
+    left: 1000px;
+    top: 100px;
+    width: 250px;
+  }
+  
+  img.checker {
+    position: absolute;
+    left: 200px;
+    top: 0px;
+    width: 600px;
+  }
+  
+  img.palm {
+    width: 400px;
+    position: absolute;
+    left: -100px;
+    top: -55px;
+    animation: hueRotate 5s linear infinite;
+  }
+  
+  img.palmrev {
+    width: 400px;
+    transform: scaleX(-1);
+    position: absolute;
+    right: -100px;
+    top: -55px;
+    animation: hueRotate 5s linear infinite;
+  }
+  
+  @keyframes animatedBackground {
+      from { background-position: 0 0; }
+      to { background-position: 100% 0; }
+  }
+  
+  @keyframes colorShift {
+    0% { background-color: #FF8099; }
+    50% { background-color: #5DBCD2; }
+    100% { background-color: #FF8099; }
+  }
+  
+  @keyframes hueRotate {
+    0% { filter: hue-rotate(0deg);
+    ; }
+    50% { filter: hue-rotate(180deg); }
+    100% { filter: hue-rotate(359deg); }
+  }
+  
+  
