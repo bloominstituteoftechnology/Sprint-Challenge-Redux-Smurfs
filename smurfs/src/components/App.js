@@ -6,6 +6,7 @@ import './App.css';
  Just remember, `how do I connect my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
+
 class App extends Component {
   render() {
     return (
