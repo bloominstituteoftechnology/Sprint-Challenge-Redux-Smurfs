@@ -9,9 +9,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div style={{ zIndex: 10 }}> <Smurfs /> </div>
+        <div style={{ position: 'absolute', zIndex: '10'}}> <Smurfs /> </div>
         <Vapor />
-        <Window />
+        <Window /> 
       </div>
     );
   }
