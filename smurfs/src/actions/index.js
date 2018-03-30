@@ -1,57 +1,66 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
-
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
 import axios from 'axios';
+export const GETTING = 'GETTING';
+export const GOT = 'GOT';
+export const ADDING = 'ADDING';
+export const ADDED = 'ADDED';
+export const UPDATING = 'UPDATING';
+export const UPDATED = 'UPDATED';
+export const DELETING = 'DELTING';
+export const DELETED = 'DELETED';
 
-export const FETCHING_SMURFS = 'FETCHING_SMURFS';
-export const FETCHED_SMURFS = 'FETCHED_SMURFS';
-export const ERROR_FETCHING_SMURFS = 'ERROR_FETCHING_SMURFS';
+export const SELECT = 'SELECT';
+export const ERROR = 'ERROR';
 
-export const CREATING_SMURF = 'CREATING_SMURF';
-export const CREATED_SMURF = 'CREATED_SMURF';
-export const ERROR_CREATING_SMURF = 'ERROR_CREATING_SMURF';
 
-export const DELETING_SMURF = 'DELETING_SMURF';
-export const DELETED_SMURF = 'DELETED_SMURF';
-export const ERROR_DELETING_SMURF = 'ERROR_DELETING_SMURF';
-
-export const getSmurfs = () => dispatch => {
-  dispatch({ type: FETCHING_SMURFS });
-
-  axios
-      .get('http://localhost:3333/smurfs')
-      .then(response => {
-        dispatch({ type: FETCHED_SMURFS, smurfs: response.data });
+export const getSmurfs = () => (dispatch) => {
+    dispatch({ type: GETTING });
+  
+    axios.get('http://localhost:3333/smurfs')
+      .then((response) => {
+        dispatch({ type: GOT, smurfs: response.data })
       })
-      .catch(error => {
-        dispatch({
-          type: ERROR_FETCHING_SMURFS,
-          error: 'Error fetching smurfs'
-        });
+      .catch((error) => {
+        dispatch({ type: ERROR, errorMessage: error.response.data.Error })
       });
-};
-
-export const postSmurf = datat => dispatch => {
-  dispatch({ type: CREATING_SMURF });
-
-  axios
-      .post('http://localhost:3333/smurfs'.data)
-      .then(response => {
-        dispatch({ type: CREATED_SMURF, smurfs: response.data });
+  };
+  
+  export const addSmurf = (name, age, height) => (dispatch) => {
+    dispatch({ type: ADDING });
+  
+    axios.post('http://localhost:3333/smurfs', {name, age, height})
+      .then((response) => {
+        dispatch({ type: ADDED, smurfs: response.data })
       })
-      .catch(error => {
-        dispatch({ type: ERROR_DELETING_SMURF, error: 'Error deleting smurf' });
+      .catch((error) => {
+        console.log(error)
+        dispatch({ type: ERROR, errorMessage: error.response.data.Error })
       });
-};
+  };
+  
+  export const updateSmurf = (name, age, height, id) => (dispatch) => {
+    dispatch({ type: UPDATING });
+  
+    axios.put(`http://localhost:3333/smurfs/${id}`, {name, age, height})
+      .then((response) => {
+        dispatch({ type: UPDATED, smurf: response.data, id: id })
+      })
+      .catch((error) => {
+        dispatch({ type: ERROR, errorMessage: error.response.data.Error })
+      });
+  };
+  
+  export const deleteSmurf = (id) => (dispatch) => {
+    dispatch({ type: DELETING });
+  
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
+      .then((response) => {
+        dispatch({ type: DELETED, id: id })
+      })
+      .catch((error) => {
+        dispatch({ type: ERROR, errorMessage: error.response.data.Error })
+      });
+  };
+  
+  export const selectSmurf = (id) => (dispatch) => {
+    dispatch({ type: SELECT, id: id });
+  };
