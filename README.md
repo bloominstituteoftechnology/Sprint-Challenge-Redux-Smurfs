@@ -54,7 +54,7 @@ src
 
 ```
 return (dispatch) => {
-  dipsatch({type: FOO_ACTION_TYPE});
+  dispatch({type: FOO_ACTION_TYPE});
   promise.then(({data}) => {
     dispatch({type: ANOTHER_ACTION_TYPE, payload: data});
   });
