@@ -5,11 +5,32 @@ import "./App.css";
 import CreateSmurfForm from "./CreateSmurfForm";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      age: "",
+      height: ""
+    };
+  }
   // fetch data when App mounts
   componentDidMount() {
     this.props.getSmurfs();
   }
-
+  // update state with new smurf data
+  handleNewInput = event => {
+    this.setState({ [event.target.name]: [event.target.value] });
+  };
+  // create new smurf
+  handleCreateSmurf = () => {
+    const smurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    };
+    this.props.createSmurfs(smurf);
+    this.setState({ name: "", age: "", height: "" });
+  };
   render() {
     // console.log("PROPS: ", this.props);
     return [
