@@ -9,7 +9,13 @@ import "./App.css";
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  // fetch data when App mounts
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
+
   render() {
+    // console.log("PROPS: ", this.props);
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -22,7 +28,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("state: ", state);
+  // console.log("state: ", state);
   return {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,

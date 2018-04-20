@@ -24,8 +24,8 @@ export const getSmurfs = () => {
     dispatch({ type: FETCHING_SMURFS });
     smurfs
       .then(response => {
-        console.log(response);
-        // dispatch({ type: FETCHED_SMURFS, payload: response.data.data });
+        // console.log("Response: ", response);
+        dispatch({ type: FETCHED_SMURFS, payload: response.data });
       })
       .catch(error => {
         console.error(error);
@@ -36,7 +36,7 @@ export const getSmurfs = () => {
 
 export const createSmurfs = smurf => {
   // a smurf has the form {name: "", age: "", height: "", id: num }
-  const smurfs = axios.post(`http://localhost:3333/smurfs/${id}`, smurf);
+  const smurfs = axios.post(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
   return dispatch => {
     smurfs
       .then(response => {
