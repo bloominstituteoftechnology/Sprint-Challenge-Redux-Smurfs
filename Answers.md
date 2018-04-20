@@ -27,3 +27,5 @@ redux-thunk is a middleware that extends redux capablilities making it possible 
 the connect method
 
 1. (Stretch goal question for if you get the DELETE endpoint working) The server's DELETE endpoint functionality is not optimal, since it requires you to either make a second `getSmurfs` request to fetch the updated list of Smurfs after deletion, or you need to keep two sources of truth synchronized, one in the client and one in the server. What change would you propose to make the server DELETE functionality more optimal such that either of these two issues are not encountered?
+
+I would not use the filter method as that does not actually delete the item. I would write a function to remove the item without affecting the other items in terms of id.
