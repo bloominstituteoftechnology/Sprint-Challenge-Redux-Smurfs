@@ -1,6 +1,13 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
+import { 
+  FETCH_SMURF, 
+  SUCCESS_FETCH, 
+  CREATING_SMURF, 
+  SUCCESS_CREATING, 
+  REJECTED }
+  from '../reducers';
 
 /*
  Your initial/default state for this project could look a lot like this
@@ -23,7 +30,5 @@ const initialState = {
 */
 
 export default (state, action) => {
-  return {
-
-  };
+  return state;
 };
