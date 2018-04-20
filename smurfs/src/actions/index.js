@@ -1,8 +1,34 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from "axios"
+export const POSTING = "POSTING"
+export const FETCHING = "FETCHING"
+export const ERROR = "ERROR"
 
+
+export function fetch_smurf() {
+  return(dispatch) => {
+    dispatch({type: FETCHING})
+    axios.get('http://localhost:3333/smurfs')
+      .then((response) => {
+        console.log('response', response.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+}
+
+export function post_smurf() {
+  return(dispatch) => {
+    dispatch({type: POSTING })
+    axios.post('http://localhost:3333/smurfs')
+      .then((response) => {
+        dispatch(fetch_smurf());
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+}
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
