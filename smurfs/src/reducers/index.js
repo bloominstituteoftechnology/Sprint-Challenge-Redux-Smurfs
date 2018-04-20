@@ -4,12 +4,11 @@ import {
   ERROR,
   DELETING,
   DELETED,
-  ADDING,
-  ADDED
+  ADDING
 } from "../actions";
 
 const initialState = {
-  smurfs: [{ name: "Burky", age: "22", height: "4" }],
+  smurfs: [],
   fetchingSmurfs: false,
   addingSmurf: false,
   updatingSmurf: false,
@@ -22,14 +21,22 @@ export default (state = initialState, action) => {
     case FETCHING:
       return { ...state, fetchingSmurfs: true };
     case FETCHED:
-      return Object.assign(
-        {},
-        state,
-        { smurfs: action.payload },
-        {
-          fetchingSmurfs: false
-        }
-      );
+      // return Object.assign(
+      //   {},
+      //   state,
+      //   { smurfs: [...state.smurfs, ...action.payload] },
+      //   {
+      //     fetchingSmurfs: false,
+      //     addingSmurf: false
+      //   }
+      // );
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        smurfs: action.payload,
+        error: null
+      };
     case ERROR:
       return { ...state, error: action.payload };
     case DELETING:
@@ -38,13 +45,6 @@ export default (state = initialState, action) => {
       return { ...state, deletingSmurfs: false };
     case ADDING:
       return { ...state, addingSmurf: true };
-    case ADDED:
-      return Object.assign(
-        {},
-        state,
-        { smurfs: action.payload },
-        { addingSmurf: false }
-      );
     default:
       return state;
   }

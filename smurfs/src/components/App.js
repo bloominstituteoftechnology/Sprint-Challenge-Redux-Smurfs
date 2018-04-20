@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { fetchSmurfs, addSmurfs } from "../actions";
+import { fetchSmurfs, addSmurfs, removeSmurfs } from "../actions";
 import { logo } from "../logo.svg";
 
 class App extends Component {
@@ -29,6 +29,10 @@ class App extends Component {
                   <li>{smurf.name}</li>
                   <li>{smurf.age}</li>
                   <li>{smurf.height}</li>
+                  <button onClick={() => this.props.removeSmurfs(smurf.id)}>
+                    Remove Smurf{" "}
+                  </button>
+                  <hr />
                 </React.Fragment>
               );
             })}
@@ -42,7 +46,7 @@ class App extends Component {
               age: this.state.age,
               height: this.state.height
             });
-            this.setState({ name: "", age: "", height: "" });
+            this.setState({ name: "", height: "", age: "" });
           }}
         >
           <input
@@ -51,12 +55,13 @@ class App extends Component {
             name="name"
             value={this.state.name}
             onChange={this.changeHandler}
+            autoFocus
           />
           <input
-            type="number"
+            type="text"
             placeholder="age"
             name="age"
-            vale={this.state.age}
+            value={this.state.age}
             onChange={this.changeHandler}
           />
           <input
@@ -82,4 +87,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchSmurfs, addSmurfs })(App);
+export default connect(mapStateToProps, {
+  fetchSmurfs,
+  addSmurfs,
+  removeSmurfs
+})(App);

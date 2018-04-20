@@ -6,7 +6,6 @@ export const ERROR = "ERROR";
 export const DELETING = "DELETING";
 export const DELETED = "DELETED";
 export const ADDING = "ADDING";
-export const ADDED = "ADDED";
 
 export const fetchSmurfs = () => {
   const promise = axios.get("http://localhost:3333/smurfs");
@@ -30,13 +29,27 @@ export const addSmurfs = smurf => {
 
     promise
       .then(response => {
-        dispatch({ type: ADDED, payload: response.data });
+        dispatch(fetchSmurfs());
       })
       .catch(err => {
         dispatch({
           type: ERROR,
           payload: "Error occured while adding new smurf"
         });
+      });
+  };
+};
+
+export const removeSmurfs = smurf => {
+  const promise = axios.delete(`http://localhost:3333/smurfs/${smurf}`);
+  return dispatch => {
+    dispatch({ type: DELETING });
+    promise
+      .then(reponse => {
+        dispatch(fetchSmurfs());
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
       });
   };
 };
