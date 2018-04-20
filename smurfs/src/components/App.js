@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import InputField from "./InputField";
 
 import { fetchSmurf, addSmurf, deleteSmurf, updateSmurf } from "../actions";
 import { connect } from "react-redux";
@@ -17,24 +18,83 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchSmurf();
+    this.props.fetchSmurf(); // returning normal fetch ✓
   }
 
+  // save it for nesting later
+  // onChangeFunc = e => {
+  //   this.setState({ [e.target.name]: e.target.value })
+  // }
+
   render() {
-    console.log(this.props.smurfs); // returning all the functions ✓
+    console.log("this.props.whatever:", this.props.addSmurf); // returning normal ✓
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <header>
+          <h1>SMURFS! 2.0 W/ Redux</h1>
+          <div>Welcome to your Redux version of Smurfs!</div>
+          <div>Start inside of your `src/index.js` file!</div>
+          <div>Have fun!</div>
+        </header>
+
+        <div className="MainContainer">
+          <div>
+            {this.props.fetchSmurf ? (<h1>Loading Smurfs</h1>) : null}
+            {/* <InputField inputState={this.state} onChangeFunc={this.onChangeFunc()} /> */}
+          </div>
+
+          <div className="InputField">
+            <input
+              type="text"
+              name="name"
+              placeholder="name"
+              value={this.state.name}
+              onChange={e => this.setState({ [e.target.name]: e.target.value })}
+            />
+
+            <input
+              type="number"
+              name="age"
+              placeholder="age"
+              value={this.state.age}
+              onChange={e => this.setState({ [e.target.name]: e.target.value })}
+            />
+
+            <input
+              type="text"
+              name="height"
+              placeholder="height"
+              value={this.state.height}
+              onChange={e => this.setState({ [e.target.name]: e.target.value })}
+            />
+
+            <button onClick={() => {
+              this.props.addSmurf({
+                name: this.state.name,
+                age: this.state.age,
+                height: this.state.height
+              });
+              this.setState({ friend: "", age: "", height: "" });
+            }}>
+            Add smurf
+            </button>
+
+            {/*end of 'InputField' */}
+          </div>
+
+          <div className="List">something random</div>
+
+          {/*end of 'MainContainer' */}
+        </div>
+
+        {/*end of 'App' */}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  console.log("Chk state", state); // state is loading
   return {
     smurfs: state.smurfs,
     error: state.error,
