@@ -11,9 +11,10 @@ import './index.css';
 import App from './components/App';
 import { smurfsReducer } from './reducers';
 
+// Set up store with middleware
 const store = createStore(
-  () => {}, // this is the most basic reducer. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+  smurfsReducer,
+  applyMiddleware(thunk, logger)
 );
 
 ReactDOM.render(
@@ -22,4 +23,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
 
