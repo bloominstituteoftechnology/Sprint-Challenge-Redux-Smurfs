@@ -2,7 +2,7 @@
   Be sure to import in all of the action types from `../actions`
 */
 
-import { FETCHING, FETCHING, FETCHING_ERROR } from '../actions/index.js';
+import { FETCHING, FETCHED, FETCHING_ERROR } from '../actions/index.js';
 
 /*
  Your initial/default state for this project could look a lot like this
@@ -15,6 +15,12 @@ import { FETCHING, FETCHING, FETCHING_ERROR } from '../actions/index.js';
    error: null
  }
 */
+
+const initalState = {
+  fetching: false,
+  fetched: false,
+  error: null
+};
 
 /*
   You'll only need one smurf reducer for this project.
