@@ -15,6 +15,7 @@ export default class smurfs extends React.Component {
                                 name={smurf.name}
                                 age={smurf.age}
                                 height={smurf.height}
+                                deleteSmurf={this.props.deleteSmurf}
                             />
                         </div>)
                 })}

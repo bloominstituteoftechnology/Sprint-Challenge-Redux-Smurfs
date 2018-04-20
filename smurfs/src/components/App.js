@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurf, addSmurf } from '../actions'
+import { getSmurf, addSmurf, deleteSmurf } from '../actions'
 import NewSmurf from './newSmurf'
 import SmurfList from './smurfs'
 import './App.css';
@@ -57,6 +57,7 @@ class App extends Component {
         <div className="list" >
           <SmurfList
             smurfs={this.props.smurfs}
+            deleteSmurf={this.props.deleteSmurf}
           />
         </div>
       </div>
@@ -65,7 +66,6 @@ class App extends Component {
 }
 
 const stateProps = state => {
-  console.log('state', state)
   return {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
@@ -74,4 +74,4 @@ const stateProps = state => {
   }
 }
 
-export default connect(stateProps, { getSmurf, addSmurf })(App);
+export default connect(stateProps, { getSmurf, addSmurf, deleteSmurf })(App);

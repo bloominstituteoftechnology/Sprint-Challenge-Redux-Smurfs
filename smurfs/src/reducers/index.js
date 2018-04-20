@@ -1,11 +1,12 @@
-import { FETCHING_SMURFS, UPDATING_SMURFS, DELETING_SMURFS, SUCCESS, ERROR } from '../actions';
+import { FETCHING_SMURFS, ADDING_SMURF, UPDATING_SMURFS, DELETING_SMURF, SUCCESS, ERROR } from '../actions';
 
 
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
+  addingSmurf: false,
   updatingSmurf: false,
-  deletingSmurfs: false,
+  deletingSmurf: false,
   smurfsReady: false,
   error: null,
 }
@@ -18,17 +19,23 @@ export default (state = initialState, action) => {
         state,
         { fetchingSmurfs: true }
       )
+    case ADDING_SMURF:
+      return Object.assign(
+        {},
+        state,
+        { addingSmurf: true }
+      )
     case UPDATING_SMURFS:
       return Object.assign(
         {},
         state,
         { updatingSmurf: true }
       )
-    case DELETING_SMURFS:
+    case DELETING_SMURF:
       return Object.assign(
         {},
         state,
-        { deletingSmurfs: true }
+        { deletingSmurf: true }
       )
     case SUCCESS:
       return Object.assign(
@@ -37,6 +44,7 @@ export default (state = initialState, action) => {
         {
           smurfs: [...action.payload],
           fetchingSmurfs: false,
+          addingSmurf: false,
           updatingSmurf: false,
           deletingSmurfs: false,
           smurfsReady: true,
@@ -44,7 +52,7 @@ export default (state = initialState, action) => {
         }
       )
     case ERROR:
-    console.error(action.payload)
+      console.error(action.payload)
       return Object.assign(
         {},
         state,
