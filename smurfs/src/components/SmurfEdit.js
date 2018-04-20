@@ -7,9 +7,9 @@ class SmurfdEdit extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			Name: '',
-			Height: '',
-			Age: ''
+			// Name: '',
+			// Height: '',
+			// Age: ''
 			// showUpdateNote: false
 		};
 	}

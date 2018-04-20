@@ -70,9 +70,11 @@ export const fetchSmurf = () => {
       promise
         .then(response => {
           console.log('UPDATE RESPONSE:',response);
-         // dispatch({type: SMURF_UPDATED, payload: fetchSmurf()});
+         
           
          dispatch({ type: SMURF_UPDATED, payload: response.data }); // 2nd state of success is dispatched IF the promise resolves
+         dispatch(fetchSmurf());
+
         })
         .catch(err => {
           console.log(err);

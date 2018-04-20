@@ -47,15 +47,15 @@ class App extends Component {
     this.props.fetchSmurf();
 
     // this.getAJAX()
-    this.setState({ lists: this.props.smurfs });
+    this.setState({ lists: {...this.props.smurfs} });
   }
   getAJAX = () => {
     this.props.fetchSmurf();
   }
 
-  showUpdateForm = () => {
-		this.setState({ showUpdateForm: !this.state.showUpdateForm });
-	};
+  // showUpdateForm = () => {
+	// 	this.setState({ showUpdateForm: !this.state.showUpdateForm });
+	// };
 
 
   addSmurf = event => {
@@ -77,7 +77,7 @@ class App extends Component {
 
   render() {
     return (
-      <div >
+      <div className="App" >
         {/* <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>

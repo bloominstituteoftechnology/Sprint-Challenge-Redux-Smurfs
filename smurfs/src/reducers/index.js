@@ -58,7 +58,7 @@ export const smurfsReducer = (state = initialState, action) => {
 			return Object.assign({}, state, {
         //smurfs: [...action.payload, ...action.payload ],
         // smurfs: [...state.smurfs.concat(...action.payload)],
-        smurfs: [ ...action.payload, ...state.smurfs],
+       smurfs: [ ...action.payload],
 				smurfUpdated: true,
 				updatingSmurf: false,
 				error: null
