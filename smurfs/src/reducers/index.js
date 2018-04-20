@@ -5,7 +5,8 @@ import {
   FETCH_SMURF, 
   SUCCESS_FETCH, 
   CREATING_SMURF, 
-  SUCCESS_CREATING, 
+  SUCCESS_CREATING,
+  DELETING_SMURF,
   REJECTED 
 }  from '../actions';
 
@@ -51,7 +52,10 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { 
         error: action.payload, 
         fetchingSmurfs: false, 
-        addingSmurf: false })
+        addingSmurf: false 
+      });
+    case DELETING_SMURF:
+      return Object.assign({}, state, { deletingSmurf: true });
     default:
     return state;
   }

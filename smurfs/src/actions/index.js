@@ -5,7 +5,6 @@ export const SUCCESS_FETCH = 'SUCCESS_FETCH';
 export const CREATING_SMURF = 'CREATING_SMURF';
 export const SUCCESS_CREATING = 'SUCCESS_CREATING';
 export const DELETING_SMURF = 'DELETING_SMURF';
-export const SUCCESS_DELETING = 'SUCCESS_DELETING';
 export const REJECTED = 'REJECTED';
 
 /*
@@ -43,6 +42,20 @@ export const addSmurf = smurf => {
       })
       .catch(err => {
         dispatch({ type: REJECTED, payload: 'Error creating blue peep...'});
+      });
+  };
+};
+
+export const deleteSmurf = smurfId => {
+  const smurfDat = axios.delete(`${'http://localhost:3333/smurfs'}/${smurfId}`);
+  return dispatch => {
+    dispatch({ type: DELETING_SMURF });
+    smurfDat
+      .then(response => {
+        dispatch(fetchSmurfs());
+      })
+      .catch(err => {
+        dispatch({ type: REJECTED, payload: 'Error deleting blue peep...' });
       });
   };
 };
