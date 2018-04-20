@@ -32,6 +32,14 @@ export const smurfsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         deletingSmurfs: true,
       });
+    case SMURFS_SUCCESS:
+      return Object.assign({}, state, {
+        smurfs: [...action.payload],
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        updatingSmurf: false,
+        deletingSmurfs: false,
+      });
     default:
       return state;
   }
