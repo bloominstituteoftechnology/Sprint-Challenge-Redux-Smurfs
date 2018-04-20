@@ -35,7 +35,7 @@ export const addSmurf = (smurf) => {
         dispatch({type:ADDING_SMURF});
         smurfs
             .then(({data}) =>{
-                dispatch({type: ADDING_SMURF, payload:data})
+                dispatch({type: ADD_SMURF, payload:data})
             })
             .catch((error) => {
                 dispatch({type:ERROR, payload:error})
