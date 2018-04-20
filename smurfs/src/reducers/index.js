@@ -1,22 +1,44 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import { combineReducers } from 'redux'
+import { reducer } from 'redux-form'
+import { LOADING, HIDE_LOADING, ERROR, HIDE_ERROR, REQ_SUCCESS, DEL_SUCCESS, UPDATE_SUCCESS } from '../actions'
 
-/*
- Your initial/default state for this project could look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurfs: false
-   error: null
- }
-*/
+const initState = {
+  data: [],
+}
 
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
-  Components can read your store as, `state` and not `state.fooReducer`.
-*/
+const main = (state = initState, action) => {
+  switch(action.type) {
+    case REQ_SUCCESS:
+      return {...state, data: action.data }
+    case DEL_SUCCESS:
+      return {...state, data: state.data.filter(obj => obj.id !== action.id) }
+    case UPDATE_SUCCESS:
+      return {...state, data: state.data.map(obj => obj.id === action.id ? obj = action.data : obj)}
+    default:
+      return state
+  }
+}
+
+const loading = (isLoading = false, action) => {
+  switch (action.type) {
+    case LOADING:
+      return true
+    case HIDE_LOADING:
+      return false
+    default:
+      return isLoading
+  }
+}
+
+const errors = (error = null, action) => {
+  switch (action.type) {
+    case ERROR:
+      return action.error
+    case HIDE_ERROR:
+      return error = null
+    default:
+      return error
+  }
+}
+
+export default combineReducers({ main, loading, errors, form: reducer })

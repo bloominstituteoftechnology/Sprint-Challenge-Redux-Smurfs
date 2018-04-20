@@ -12,11 +12,16 @@ const sendUserError = (msg, res) => {
   return;
 };
 
-let smurfs = [];
+let smurfs = [
+  {name: "Sophia", age: "16", height: "56", id: 0},
+  {name: "Sumayyah", age: "15", height: "57", id: 1},
+  {name: "Leela", age: "18", height: "58", id: 2},
+  {name: "Marceline", age: "19", height: "59", id: 3}
+];
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
-let smurfId = 0;
+let smurfId = smurfs.length;
 
 server.post('/smurfs', (req, res) => {
   const { name, age, height } = req.body;
