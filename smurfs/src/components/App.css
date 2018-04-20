@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 
 .App-header {
   background-color: #222;
@@ -20,6 +16,51 @@
 
 .App-intro {
   font-size: large;
+}
+
+.flex {
+  display: flex;
+}
+button {
+  background-color: none;
+  border: none;
+  width: 8rem;
+  font-size: 1.4rem;
+  background-color: white;
+  margin-bottom: 2.2rem;
+}
+
+.button-delete {
+  background-color: none;
+  border: none;
+  width: 8rem;
+  font-size: 1.2rem;
+  background-color: rgb(247, 242, 242);
+  margin-bottom: 2.2rem;
+}
+.addForm {
+  background-color: rgb(179, 206, 231);
+  width: 80%;
+  margin: 0 auto;
+  color: rgb(177, 144, 144);
+}
+
+.input {
+  margin: 3%;
+  font-size: 1.3rem;
+}
+
+.card {
+  background-color: rgb(245, 212, 212);
+  width: 77%;
+  margin: 0 auto;
+  margin-top: 3%;
+}
+
+.list {
+  list-style: none;
+  padding-top: 3%;
+  font-size: 1.4rem;
 }
 
 @keyframes App-logo-spin {

@@ -21,25 +21,25 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>
-                <div>
+                <div className="addForm">
                     <h2>Add a new friend</h2>
-                    <input type="text" onChange={this.handleInputChange} placeholder="Name" name="name"/>
-                    <input type="text" onChange={this.handleInputChange} placeholder="Age" name="age"/>
-                    <input type="text" onChange={this.handleInputChange} placeholder="Height" name="height"/>
-                </div>
-                <button className="button-Add" onClick={() =>
+                    <input className="input" type="text" onChange={this.handleInputChange} placeholder="Name" name="name"/>
+                    <input className="input" type="text" onChange={this.handleInputChange} placeholder="Age" name="age"/>
+                    <input className="input" type="text" onChange={this.handleInputChange} placeholder="Height" name="height"/>
+                <button className="button" onClick={() =>
                 this.props.post_smurf({ name: this.state.name, age: this.state.age, height: this.state.height}) }>Add</button>
+                </div>
                 <div>
                   {this.props.fetching ? (
                     <h1>FETCHING</h1>
                   ) : (
                     <div>
-                      <ul>
+                      <ul className = "card">
                         {this.props.smurfs.map(smurf => {
                           return (
                             <div key={smurf.name}>
-                              <li>{smurf.name}</li >
-                              <button onClick={() =>
+                              <li className="list">{smurf.name}</li >
+                              <button className="button-delete" onClick={() =>
                               this.props.delete_smurf(smurf.id)}>Delete Me</button>
                             </div>
                           )
