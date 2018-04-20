@@ -2,22 +2,18 @@ import {
   FETCHING,
   FETCHED,
   ERROR,
-  DELETING,
-  DELETED,
   ADDING,
   ADDED
 } from "../actions";
 
 const initialState = {
-  smurfs: [{ name: "Burky", age: "22", height: "4" }],
+  smurfs: [{ name: "Any", age: "22", height: "4" }],
   fetchingSmurfs: false,
   addingSmurf: false,
-  updatingSmurf: false,
-  deletingSmurfs: false,
   error: null
 };
 
-export default (state = initialState, action) => {
+export default  (state = initialState, action) => {
   switch (action.type) {
     case FETCHING:
       return { ...state, fetchingSmurfs: true };
@@ -30,12 +26,6 @@ export default (state = initialState, action) => {
           fetchingSmurfs: false
         }
       );
-    case ERROR:
-      return { ...state, error: action.payload };
-    case DELETING:
-      return { ...state, deletingSmurfs: true };
-    case DELETED:
-      return { ...state, deletingSmurfs: false };
     case ADDING:
       return { ...state, addingSmurf: true };
     case ADDED:
@@ -45,6 +35,9 @@ export default (state = initialState, action) => {
         { smurfs: action.payload },
         { addingSmurf: false }
       );
+
+    case ERROR:
+      return { ...state, error: action.payload };
     default:
       return state;
   }

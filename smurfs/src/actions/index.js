@@ -2,11 +2,9 @@ import axios from "axios";
 
 export const FETCHING = "FETCHING ";
 export const FETCHED = "FETCHED ";
-export const ERROR = "ERROR";
-export const DELETING = "DELETING";
-export const DELETED = "DELETED";
 export const ADDING = "ADDING";
 export const ADDED = "ADDED";
+export const ERROR = "ERROR";
 
 export const fetchSmurfs = () => {
   const promise = axios.get("http://localhost:3333/smurfs");
@@ -15,6 +13,7 @@ export const fetchSmurfs = () => {
 
     promise
       .then(response => {
+        console.log('from action promise --> response', response)
         dispatch({ type: FETCHED, payload: response.data });
       })
       .catch(err => {

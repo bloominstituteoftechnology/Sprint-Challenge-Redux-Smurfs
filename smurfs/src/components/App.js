@@ -19,16 +19,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.fetching ? (
-          <h1>Fetching</h1>
-        ) : (
+        {this.props.fetching ? (<h1>Fetching</h1>) : (
           <ul className="smurfs">
-            {this.props.smurfs.map(smurf => {
+            {this.props.smurfs.map((smurf,i) => {
               return (
-              <div>
-                  <li>{smurf.name}</li>
-                  <li>{smurf.age}</li>
-                  <li>{smurf.height}</li>
+              <div key={smurf.id + i}>
+                  <li>{`Name: ${smurf.name}
+                        Age: ${smurf.age}
+                        Height: ${smurf.height} `}
+                  </li>
+
             </div>
               );
             })}
@@ -74,7 +74,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // initial state from reducer
+  console.log('from mapStateToProps...',state);
   return {
     smurfs: state.smurfs,
     fetching: state.fetchingSmurfs,
