@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCH_SMURFS, FETCHED_SMURFS, ERROR_FETCHING, ADD_SMURF, ERROR_ADDING } from '../actions';
+import { FETCH_SMURFS, FETCHED_SMURFS, ERROR_FETCHING, ADD_SMURF, ERROR_ADDING, DELETE_SMURF, ERROR_DELETING } from '../actions';
 
 /*
  Your initial/default state for this project could look a lot like this */
@@ -11,7 +11,7 @@ import { FETCH_SMURFS, FETCHED_SMURFS, ERROR_FETCHING, ADD_SMURF, ERROR_ADDING }
    fetchingSmurfs: false,
    addingSmurf: false,
   //  updatingSmurf: false,
-  //  deletingSmurfs: false,
+   deletingSmurfs: false,
    error: null
  }
 
@@ -48,6 +48,17 @@ export const rootReducer = (state = initialState, action) => {
     });
 
     case ERROR_ADDING:
+      return Object.assign({}, state, {
+        error: action.payload,
+    });
+
+    case DELETE_SMURF:
+    return Object.assign({}, state, {
+      smurfs: [...state],
+      deletingSmurfs: true
+    });
+
+    case ERROR_DELETING:
       return Object.assign({}, state, {
         error: action.payload,
     });

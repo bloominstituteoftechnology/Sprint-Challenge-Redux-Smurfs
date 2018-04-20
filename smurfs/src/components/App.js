@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getSmurfs, addSmurf } from '../actions';
+import { getSmurfs, addSmurf, removeSmurf } from '../actions';
 import { connect } from 'react-redux';
 /*
  to wire this component up you're going to need a few things.
@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="header"><h1>A List of Smurfs</h1></div>
+        <div className="header"><img src="https://vignette.wikia.nocookie.net/smurfs/images/b/bd/Papa_Smurf123.png/revision/latest?cb=20130805130238" alt="Papa Smurf"></img><h1>A List of Smurfs</h1><img src="https://vignette.wikia.nocookie.net/smurfs/images/6/6b/Smurfette_posing.png/revision/latest?cb=20151220174958" alt="Smurfette"></img></div>
       <div className="mainForm">
       <h2>Go on, add another Smurf:</h2>
         <input
@@ -68,9 +68,9 @@ class App extends Component {
                                               <div className="smurfInfo">
                                                 <div className="age">{smurf.age}</div>
                                                 <div className="email">{smurf.height}</div>
-                                                {/* <button className="button" 
+                                                <button className="button" 
                                                   onClick={() => {
-                                                    this.props.deletesmurf(smurf.id);}}>Destroy</button> */}
+                                                    this.props.removeSmurf(smurf.id);}}>Destroy</button>
                                               </div>
                                               </div>
                                             </li>)}
@@ -89,4 +89,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, removeSmurf })(App);

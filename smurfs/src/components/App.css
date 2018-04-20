@@ -113,6 +113,9 @@ input:focus {
   color: white;
   padding: 15px;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 @keyframes App-logo-spin {
