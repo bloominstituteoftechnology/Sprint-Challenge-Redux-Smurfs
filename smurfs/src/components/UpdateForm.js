@@ -22,14 +22,10 @@ class UpdateForm extends React.Component {
 			height: this.state.height,
 			id: this.state.id
 		};
-		// console.log("smurf: ", smurf);
 		this.props.update(smurf);
 		this.setState({ name: "", age: "", height: "" });
 	};
 	render() {
-		// console.log("name: ", this.state.name);
-		// console.log("age: ", this.state.age);
-		// console.log("height: ", this.state.height);
 		return (
 			<form>
 				<input

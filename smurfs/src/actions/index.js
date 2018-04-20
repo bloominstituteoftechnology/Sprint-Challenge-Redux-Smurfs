@@ -60,8 +60,6 @@ export const deleteSmurfs = id => {
 };
 
 export const updateSmurfs = smurf => {
-  // console.log("smurf udpate: ", smurf);
-  // console.log("made it!");
   const smurfs = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
   return dispatch => {
     dispatch({ type: UPDATING_SMURFS });

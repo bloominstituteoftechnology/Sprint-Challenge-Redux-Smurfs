@@ -3,11 +3,6 @@ import { connect } from "react-redux";
 import { deleteSmurfs, updateSmurfs } from "../actions/";
 import UpdateForm from "./UpdateForm";
 
-// convert to class component
-// change props to this.props
-// destructure values from this.props
-// create a showUpdateForm: false boolean
-
 class Smurf extends React.Component {
 	constructor(props) {
 		super(props);

@@ -62,7 +62,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log("state: ", state);
   return {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
