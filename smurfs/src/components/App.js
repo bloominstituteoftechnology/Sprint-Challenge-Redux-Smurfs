@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
 import { getSmurfs, addSmurf } from "../actions";
+import Smurf from './Smurf';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -59,7 +60,7 @@ class App extends Component {
           />
           <button type="submit">Add Smurf</button>
         </form>
-        <ul>{this.props.smurfs.map(smurf => <li>{smurf.name}</li>)}</ul>
+        <ul>{this.props.smurfs.map(smurf => <Smurf key={`smurf${smurf.id}`} smurf={smurf}/>)}</ul>
       </div>
     );
   }
