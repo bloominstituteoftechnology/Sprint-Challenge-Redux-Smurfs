@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './SmurfCard.css';
+
 export const SmurfCard = props => {
   return ( // Take data from props to display smurf
     <div className="smurfCard">
