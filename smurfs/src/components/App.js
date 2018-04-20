@@ -19,6 +19,16 @@ class App extends Component {
     this.props.fetchSmurfs();
   }
 
+  handleInput = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleAddSmurf = event => {
+    const {name, age, height} = this.state;
+    this.props.smurfs.push({name, age, height});
+    this.setState({name: '', age: '', height: ''})
+  }
+
   render() {
     return (
       <div className="App">
@@ -26,6 +36,33 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+
+        <div>
+          <form>
+            <input
+              type="text"
+              placeholder="Smurf"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleInput}
+            />
+            <input
+              type="text"
+              placeholder="Smurf age"
+              name="age"
+              value={this.state.age}
+              onChange={this.handleInput}
+            />
+            <input
+              type="text"
+              placeholder="Smurf height"
+              name="height"
+              value={this.state.height}
+              onChange={this.handleInput}
+            />
+          </form>
+          <button onClick = {this.handleAddSmurf}>Add Smurf!</button>
+        </div>
       </div>
     );
   }
