@@ -1,0 +1,11 @@
+.Smurfs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 450px;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 1px #999;
+    margin: 10px;
+    padding: 10px;
+}
