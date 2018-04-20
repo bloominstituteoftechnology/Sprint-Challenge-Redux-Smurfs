@@ -8,7 +8,7 @@ export const SmurfCard = props => {
       <div className="smurfCard_info">
         <div>{props.smurf.name} is</div>
         <div>{props.smurf.age} smurf years old</div>
-        <div>and {props.smurf.height} inches tall!</div>
+        <div>and {props.smurf.height} tall!</div>
       </div>
       <div className="smurfCard_buttons">
         <button onClick={() => 
