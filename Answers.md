@@ -22,4 +22,6 @@ Middleware is 3rd party code that extends the functionality of Redux and gives d
 
 Thunk is middleware that allows devs to write asynchronous operations such as HTTP requests with dispatch() which is a native Redux function. Data from these requests can then be used to update store with reducers. Thunk changes our action-creators to become asynchronous functions that can interact with servers.
 
-5.
+6.  Which react-redux method links up our components with our redux store?
+
+Connect() links up our components with store.
