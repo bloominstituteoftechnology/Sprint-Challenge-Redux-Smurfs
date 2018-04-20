@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { deleteSmurfs } from "../actions/";
 
 const Smurf = props => {
 	return [
@@ -8,7 +10,7 @@ const Smurf = props => {
 		// WORK IN PROGRESS: DELETE not fully functional yet.
 		<button
 			onClick={() => {
-				props.delete();
+				props.deleteSmurfs(props.smurf.id);
 			}}
 		>
 			Delete Smurf
@@ -16,4 +18,12 @@ const Smurf = props => {
 	];
 };
 
-export default Smurf;
+const mapStateToProps = state => {
+	return {
+		deletingSmurfs: state.deletingSmurfs
+	};
+};
+
+export default connect(mapStateToProps, {
+	deleteSmurfs
+})(Smurf);
