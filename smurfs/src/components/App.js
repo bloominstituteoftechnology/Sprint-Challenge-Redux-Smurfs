@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getSmurfs, addSmurf } from '../actions';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -7,16 +9,47 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      age: '',
+      height: ''
+    };
+  }
+
+    componentDidMount() {
+      this.props.getSmurfs();
+    }
+
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <h1> Redux Smurf Village </h1>
+        {this.props.smurfs.map((smurf) => {
+          return (
+            <div key={smurf.id}>
+              <h4>{smurf.name}</h4>
+              <p>Age: {smurf.age} smurf years old.</p>
+              <p>Height: {smurf.height} cm tall</p>
+            </div>
+          );
+        })}
+        <form onSubmit={() => this.handleSubmit()}>
+          <input name="name" placeholder="Enter a name..." onChange={this.handleChange.bind(this)} />
+          <input name="age" placeholder="Enter an age..." onChange={this.handleChange.bind(this)} />
+          <input type="submit" />
+        </form>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    isFetching: state.isFetching
+  };
+};
+
+export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
