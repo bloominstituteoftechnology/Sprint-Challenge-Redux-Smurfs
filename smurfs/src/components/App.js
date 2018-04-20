@@ -14,6 +14,10 @@ import { SmurfForm } from './SmurfForm';
  */
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+  
   render() {
     return (
       <div className="App">
@@ -29,4 +33,3 @@ class App extends Component {
 
 // Set all state derived from redux onto props of our App componenet
 export default connect(mapStateToProps, mapDispatchToProps())(App);
-
