@@ -7,6 +7,7 @@ export const SmurfForm = props => {
     // Set up input fields that control
     // the state of our App component  
     <div className="smurfForm">
+      <div>Input Smurf Info Here</div>
       <form className="smurfForm_inputFields">
         <input
           type="text"
