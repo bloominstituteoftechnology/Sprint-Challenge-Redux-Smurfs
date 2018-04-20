@@ -1,4 +1,64 @@
-import { PENDING, SUCCESS, ERROR } from '../actions';
+import { FETCHING_SMURFS, UPDATING_SMURFS, DELETING_SMURFS, SUCCESS, ERROR } from '../actions';
+
+
+const initialState = {
+  smurfs: [],
+  fetchingSmurfs: false,
+  updatingSmurf: false,
+  deletingSmurfs: false,
+  smurfsReady: false,
+  error: null,
+}
+
+export const smurfReducers = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCHING_SMURFS:
+      return Object.assign(
+        {},
+        state,
+        { fetchingSmurfs: true }
+      )
+    case UPDATING_SMURFS:
+      return Object.assign(
+        {},
+        state,
+        { updatingSmurf: true }
+      )
+    case DELETING_SMURFS:
+      return Object.assign(
+        {},
+        state,
+        { deletingSmurfs: true }
+      )
+    case SUCCESS:
+      return Object.assign(
+        {},
+        state,
+        {
+          smurfs: [...action.payload],
+          fetchingSmurfs: false,
+          updatingSmurf: false,
+          deletingSmurfs: false,
+          smurfsReady: true,
+          error: null
+        }
+      )
+    case ERROR:
+      return Object.assign(
+        {},
+        state,
+        {
+          fetchingSmurfs: false,
+          updatingSmurf: false,
+          deletingSmurfs: false,
+          smurfsReady: false,
+          error: 'Error, Smurf running away!',
+        }
+      )
+    default:
+      return state;
+  }
+}
 
 /*
  Your initial/default state for this project could look a lot like this
