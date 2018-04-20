@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import './App.css';
+import SmurfForm from './components/SmurForm';
+import Smurfs from './components/Smurfs';
+
+
+
+
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
