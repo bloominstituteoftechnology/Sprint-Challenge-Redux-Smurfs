@@ -19,3 +19,29 @@ export const ERROR = 'ERROR';
    U - updateSmurf
    D - deleteSmurf
 */
+
+
+export const getSmurfs = () => (dispatch) => {
+    dispatch({ type: GETTING });
+
+    axios.get('http://localhost:3333/smurfs')
+      .then((response) => {
+        dispatch({ type: GOT, smurfs: response.data })
+      })
+      .catch((error) => {
+        dispatch({ type: ERROR, errorMessage: error.response.data.Error })
+      });
+  };
+
+  export const addSmurf = (name, age, height) => (dispatch) => {
+    dispatch({ type: ADDING });
+  
+    axios.post('http://localhost:3333/smurfs', {name, age, height})
+      .then((response) => {
+        dispatch({ type: ADDED, smurfs: response.data })
+      })
+      .catch((error) => {
+        console.log(error)
+        dispatch({ type: ERROR, errorMessage: error.response.data.Error })
+      });
+  };
