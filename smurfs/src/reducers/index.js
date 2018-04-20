@@ -2,6 +2,8 @@
   Be sure to import in all of the action types from `../actions`
 */
 
+import { FETCHING, FETCHING, FETCHING_ERROR } from '../actions/index.js';
+
 /*
  Your initial/default state for this project could look a lot like this
  {
