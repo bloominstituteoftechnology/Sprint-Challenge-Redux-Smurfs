@@ -20,3 +20,7 @@
   This will guard your namespacing issues.
   Components can read your store as, `state` and not `state.fooReducer`.
 */
+
+export default (store, action) => {
+
+};
