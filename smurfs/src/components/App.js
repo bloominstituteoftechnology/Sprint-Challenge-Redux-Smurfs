@@ -46,6 +46,9 @@ class App extends Component {
             updateSmurf={this.props.updateSmurf}
           />
         ))}
+        {/* Create form that can see App state and handle add functionality */}
+        <SmurfForm 
+        />
       </div>
     );
   }
