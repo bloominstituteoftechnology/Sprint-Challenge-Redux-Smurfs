@@ -9,7 +9,7 @@ export const FETCHING_FRIENDS_SUCCESS = 'FETCHING_SMURFS_SUCCESS';
 export const FETCHING_FRIENDS_ERROR = 'FETCHING_SMURFS_ERROR';
 
 export const fetchSmurfs = () => {
-  const friends = axios.get('http://localhost:3000/api/smurfs');
+  const friends = axios.get('http://localhost:3333/api/smurfs');
   return dispatch => {
     dispatch({ type: FETCHING_SMURFS });
     smurfs
@@ -30,7 +30,7 @@ export const fetchSmurfs = () => {
 
 
     export const addSmurf = data => {
-      const smurfs = axios.post('http://localhost:3000/api/smurfs', data);
+      const smurfs = axios.post('http://localhost:3333/api/smurfs', data);
       return dispatch => {
         smurfs
           .then(response => {
