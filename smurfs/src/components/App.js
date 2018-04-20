@@ -26,22 +26,26 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1>Smurf Village</h1>
         {this.props.fetching ? (
           <img src={logo} />
         ) : (
-          <ul className="smurfs">
+          <ul className="Smurfs">
             {this.props.smurfs.map(smurf => {
               return (
                 <React.Fragment>
-                  <li>{smurf.name}</li>
-                  <li>{smurf.age}</li>
-                  <li>{smurf.height}</li>
+                  <div className="Smurf">
+                    <li>{smurf.name}</li>
+                    <li>{smurf.age}</li>
+                    <li>{smurf.height}</li>
+                  </div>
                   <button onClick={() => this.props.removeSmurfs(smurf.id)}>
                     Remove Smurf{" "}
                   </button>
                   <button onClick={this.toggleHandler}>Edit Smurf</button>
                   {this.state.toggleForm ? (
                     <form
+                      className="innerInput"
                       onSubmit={event => {
                         event.preventDefault();
                         this.props.updateSmurfs(smurf.id, {
@@ -73,7 +77,7 @@ class App extends Component {
                         value={this.state.editHeight}
                         onChange={this.changeHandler}
                       />
-                      <button type="submit">Ok</button>
+                      <button type="submit">Update</button>
                     </form>
                   ) : null}
                   <hr />
