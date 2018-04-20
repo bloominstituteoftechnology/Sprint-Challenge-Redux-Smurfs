@@ -26,3 +26,20 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.App{
+
+ background: rgba(255, 20, 20, 0.835);
+
+}
+.containgDiv-styles{
+  width:200px;
+ margin: 0 auto;
+ background: cornflowerblue;
+  color:white;
+  border:1px solid black;
+  margin-bottom: 10px;
+  
+}
+.name-styles{
+  font-size: 40px;
+}

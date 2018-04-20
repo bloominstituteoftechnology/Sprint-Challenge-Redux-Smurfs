@@ -1,0 +1,14 @@
+1: Object.assign, filter, map
+
+2: actions are used to send types and payloads to the reducer, the payloads can be whatever you want really,
+you can even send in objects. Reducers are used to take actions, checking their types and deciding what to do with that,
+you can just use an if to check this but a switch is nicer to look at, store is where we keep the inital state, and where the reducer puts data, it's very importent.
+
+3:  application state is the store right? it's like a globe state, where component state is on the component,
+and the state that you set on the component class is more used for stylistic things and the app state is more for bassing around important data you want everything in your app to have access to.
+
+4: middlewear is used to add additional functionality to redux, and i only currently know thunk and logger.
+
+5: thunk is used to make aysnch actions combined with axios to dispatch directly to the store based on resolved state.
+
+6: the connect!
