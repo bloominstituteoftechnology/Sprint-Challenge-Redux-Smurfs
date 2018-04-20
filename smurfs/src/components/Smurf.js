@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deleteSmurfs } from "../actions/";
+import { deleteSmurfs, updateSmurfs } from "../actions/";
+import UpdateForm from "./UpdateForm";
 
 // convert to class component
 // change props to this.props
@@ -39,6 +40,9 @@ class Smurf extends React.Component {
 					Update smurf
 				</button>
 				{/* Show update form if boolean is true */}
+				{this.state.showUpdateForm ? (
+					<UpdateForm id={id} update={this.props.updateSmurfs} />
+				) : null}
 			</div>
 		);
 	}
@@ -51,5 +55,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-	deleteSmurfs
+	deleteSmurfs,
+	updateSmurfs
 })(Smurf);
