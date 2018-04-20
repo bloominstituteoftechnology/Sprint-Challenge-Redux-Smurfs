@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { fetchSmurfs, addSmurfs } from "../actions";
+import { fetchSmurfs, addSmurfs, removeSmurfs } from "../actions";
 
 
 class App extends Component {
@@ -29,7 +29,11 @@ class App extends Component {
                         Height: ${smurf.height} `}
                   </li>
 
+                  <button onClick={() => this.props.removeSmurfs(smurf.id)}>Remove Smurf</button>
             </div>
+
+
+
               );
             })}
           </ul>
@@ -56,7 +60,7 @@ class App extends Component {
             type="number"
             placeholder="age"
             name="age"
-            vale={this.state.age}
+            value={this.state.age}
             onChange={this.changeHandler}
           />
           <input
@@ -83,4 +87,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchSmurfs, addSmurfs })(App);
+export default connect(mapStateToProps, { fetchSmurfs, addSmurfs, removeSmurfs })(App);
