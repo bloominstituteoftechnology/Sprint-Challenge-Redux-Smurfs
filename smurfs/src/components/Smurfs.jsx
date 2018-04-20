@@ -11,13 +11,15 @@ const Smurf = props => (
 
 Smurf.propTypes = {
   name: PropTypes.string,
-  age: PropTypes.number,
+  age: PropTypes.string,
   height: PropTypes.string,
   id: PropTypes.number
 }
 
 const Smurfs = ({ smurfs }) => (
-  <div className='Smurfs'>{smurfs.map(smurf => <Smurf {...smurf} />)}</div>
+  <div className='Smurfs'>
+    {smurfs.map(smurf => <Smurf key={smurf.id} {...smurf} />)}
+  </div>
 )
 
 Smurfs.propTypes = {

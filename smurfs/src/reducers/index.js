@@ -1,4 +1,10 @@
-import { FETCHING_SMURFS, SMURFS_FETCHED, ERROR } from '../actions'
+import {
+  FETCHING_SMURFS,
+  SMURFS_FETCHED,
+  ADDING_SMURF,
+  SMURF_ADDED,
+  ERROR
+} from '../actions'
 
 const initialState = {
   smurfs: [],
@@ -20,6 +26,15 @@ const smurfsReducer = (state = initialState, { type, payload }) => {
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         smurfs: [...payload]
+      })
+
+    case ADDING_SMURF:
+      return Object.assign({}, state, { addingSmurf: true })
+
+    case SMURF_ADDED:
+      return Object.assign({}, state, {
+        addingSmurf: false,
+        smurfs: [...state, ...payload]
       })
 
     case ERROR:
