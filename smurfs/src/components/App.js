@@ -42,22 +42,20 @@ class App extends Component {
         {this.props.fetchingSmurfs ? (
           <h3>Please wait we are fetching your data</h3>
         ) : null}
-        [
         <div className="App">
           <h1>SMURFS! 2.0 W/ Redux</h1>
           <div>Welcome to your Redux version of Smurfs!</div>
           <div>Start inside of your `src/index.js` file!</div>
           <div>Have fun!</div>
-        </div>,
-        <CreateSmurfForm
-          handleNewInput={this.handleNewInput}
-          handleCreateSmurf={this.handleCreateSmurf}
-        />,
-        <Smurfs
-          smurfs={this.props.smurfs}
-          delete={this.props.handleDeleteSmurf}
-        />
-        ]
+          <CreateSmurfForm
+            handleNewInput={this.handleNewInput}
+            handleCreateSmurf={this.handleCreateSmurf}
+          />
+          <Smurfs
+            smurfs={this.props.smurfs}
+            delete={this.props.handleDeleteSmurf}
+          />
+        </div>
       </div>
     );
   }

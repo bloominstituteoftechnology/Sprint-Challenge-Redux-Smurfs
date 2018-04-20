@@ -6,8 +6,8 @@ const Smurfs = props => {
 			{props.smurfs.map((smurf, index) => {
 				return [
 					<li>{`Name: ${smurf.name}`}</li>,
-					<li>{smurf.age}</li>,
-					<li>{smurf.height}</li>,
+					<li>{`Age: ${smurf.age}`}</li>,
+					<li>{`Height: ${smurf.height}`}</li>,
 					// WORK IN PROGRESS: DELETE not fully functional yet.
 					<button
 					// onClick={() => {
