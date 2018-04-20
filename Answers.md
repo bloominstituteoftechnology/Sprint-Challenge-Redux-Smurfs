@@ -16,6 +16,10 @@ Application state is global and immutable. It is responsible for holding major p
 
 4.  What is middleware?
 
-Middleware is 3rd party code that extends the functionality of Redux and gives developers better tools to work with Redux. It is usually in a package form and interacts with actions before they reach a reducer. For example, thunk is middleware that allows users to write asynchronous HTTP requests with dispatch(), a native Redux function. Data from these requests can then be used to update store with reducers.
+Middleware is 3rd party code that extends the functionality of Redux and gives developers better tools to work with Redux. It is usually in a package form and interacts with actions before they reach a reducer.
+
+5.  Describe redux-thunk, what does it allow us to do? How does it change our action-creators?
+
+Thunk is middleware that allows devs to write asynchronous operations such as HTTP requests with dispatch() which is a native Redux function. Data from these requests can then be used to update store with reducers. Thunk changes our action-creators to become asynchronous functions that can interact with servers.
 
 5.
