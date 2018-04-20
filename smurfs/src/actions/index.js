@@ -19,11 +19,20 @@ export const ERROR = 'ERROR';
 
 const URL = 'http://localhost:3333/smurfs';
 
-export const getSmurf = () => {
-    dispatch({type: FETCHING});
-    axios.get(URL)
-        .then((response) => {
-            console.log(response);
-            
-        })
+export const getSmurfs = () => {
+
+   ;
+    const smurfs = axios.get(URL);
+
+    return dispatch => {
+        dispatch({type:FETCHING});
+        smurfs
+            .then((response) => {
+                console.log(response);
+                dispatch({type: FETCHED, payload: response.data});
+            })
+            .catch((error) => {
+                dispatch({type: ERROR, payload: error});
+            })
+    }
 };

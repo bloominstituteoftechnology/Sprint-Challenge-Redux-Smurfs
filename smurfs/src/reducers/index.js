@@ -16,7 +16,7 @@ export const smurfReducer = (state = initialState, action) => {
         case actionType.FETCHING:
             return {...state, fetchingSmurfs:true};
         case actionType.FETCHED:
-            return {...state, smurfs: action.payload, fetchingSmurfs: false}
+            return {...state, fetchingSmurfs: false};
         case actionType.ADD_SMURF:
             return state;
         case actionType.DELETE_SMURF:
