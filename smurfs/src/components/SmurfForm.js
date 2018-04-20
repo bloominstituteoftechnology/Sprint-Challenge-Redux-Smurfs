@@ -1,42 +1,30 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { addSmurf } from '../actions';
+import { connect } from 'react-redux';
 
 class SmurfForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+    state = {
       name: '',
       age: '',
       height: '',
     };
-  }
-
-  addSmurf = event => {
-    event.preventDefault();
-    const smurf = {
-      name: this.state.name,
-      age: this.state.age,
-      height: this.state.height,
+    handleInput = e => {
+      this.setState({ [e.target.name]: e.target.value });
     };
 
-    axios
-      .post('http://localhost:3333/smurfs', smurf)
-      .then(smurf => {
-        this.props.updateSmurfs();
-      })
-      .catch(error => {
-        console.log(error);
+    addSmurf = e => {
+      e.preventDefault();
+      this.props.addSmurf({
+        name: this.state.name,
+        age: this.state.age,
+        height: this.state.height,
       });
-
       this.setState({
         name: '',
         age: '',
-        height: ''
-      });
-  };
-
-  handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+        height: '',
+      }); 
   };
 
   render() {

@@ -6,7 +6,7 @@ import SmurfForm from './SmurfForm';
 import Smurfs from './Smurfs';
 
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions';
+import { getSmurfs, addSmurfs, deleteSmurfs } from '../actions';
 
 
 
@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div className="container">Welcome to your Redux version of Smurfs!
+        <div className="container">
           <Smurfs />
           <SmurfForm />
         </div>
