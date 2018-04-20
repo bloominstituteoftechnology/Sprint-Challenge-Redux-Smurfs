@@ -23,7 +23,8 @@ export const getSmurfs = () => { // Grab all smurfs from server
   }
 }
 
-export const addSmurf = smurf => { // Add smurf to server
+// Add smurf to server using data from input fields
+export const addSmurf = smurf => {
   const promise = axios.post('http://localhost:3333/smurfs', smurf);
   return dispatch => {
     promise
@@ -37,6 +38,26 @@ export const addSmurf = smurf => { // Add smurf to server
         dispatch({
           type: SMURFS_ERROR,
           payload: 'ERROR Adding Smurfs'
+        });
+      });
+  }
+}
+
+// Update smurf that already exists on the server
+export const updateSmurf = ( id, smurf ) => {
+  const promise = axios.put(`http://localhost:3333/smurfs/${id}`, smurf);
+  return dispatch => {
+    promise
+      .then(response => {
+        dispatch({ type: UPDATING_SMURF });
+      })
+      .then(response => {
+        dispatch(getSmurfs());
+      })
+      .catch(error => {
+        dispatch({
+          type: SMURFS_ERROR,
+          payload: 'ERROR Deleting Smurfs'
         });
       });
   }
