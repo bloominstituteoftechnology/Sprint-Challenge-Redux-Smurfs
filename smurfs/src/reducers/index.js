@@ -24,6 +24,10 @@ export const smurfsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         addingSmurf: true,
       });
+    case UPDATING_SMURF:
+      return Object.assign({}, state, {
+        updatingSmurf: true,
+      });
     default:
       return state;
   }
