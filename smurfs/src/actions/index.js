@@ -1,11 +1,13 @@
 import { fetchSmurfs } from './getSmurfs';
 import { addSmurf } from './addSmurf';
 import { deleteSmurf } from './deleteSmurf';
+import { updateSmurf } from './updateSmurf';
 
 export {
   fetchSmurfs,
   addSmurf,
-  deleteSmurf
+  deleteSmurf,
+  updateSmurf
 }
 
 /*
