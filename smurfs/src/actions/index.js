@@ -19,10 +19,10 @@ export function fetch_smurf() {
   }
 }
 
-export function post_smurf() {
+export const post_smurf = smurf => {
   return(dispatch) => {
     dispatch({type: POSTING })
-    axios.post('http://localhost:3333/smurfs')
+    axios.post('http://localhost:3333/smurfs', smurf)
       .then((response) => {
         dispatch(fetch_smurf());
       })

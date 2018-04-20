@@ -4,7 +4,7 @@ import {FETCHING, POSTING, ERROR, FETCHED} from "../actions"
 const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
-   addingSmurf: false,
+  //  addingSmurf: false,
   //  updatingSmurf: false,
   //  deletingSmurfs: false,
    error: null,
