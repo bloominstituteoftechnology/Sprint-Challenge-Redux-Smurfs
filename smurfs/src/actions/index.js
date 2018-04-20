@@ -27,13 +27,13 @@ export const ERROR = 'ERROR';
 const URL = 'http://localhost:3333/smurfs'
 
 export const getSmurfs = () => {
-  const smurfs = axios.get(`${URL}`);
+  const smurfs = axios.get(URL);
   return dispatch => {
     dispatch({ type: FETCHING_SMURFS });
     smurfs
       .then(response => {
-        console.log('getSmurfs response', response);
-        dispatch({ type: SMURFS_FETCHED , payload: response.data});
+        // console.log('getSmurfs response', response);
+        dispatch({ type: SMURFS_FETCHED , payload: response.data });
       })
       .catch(error => {
         dispatch({ type: ERROR, payload: error });
@@ -41,14 +41,14 @@ export const getSmurfs = () => {
   }
 }
 
-export const addSmurfs = (smurfData) => {
-  const smurfs = axios.post(`${URL}`, smurfData);
+export const addSmurfs = smurfData => {
+  const smurfs = axios.post(URL, smurfData);
   return dispatch => {
     dispatch({ type: ADDING_SMURF });
     smurfs
       .then(response => {
         console.log('addSmurfs response', response);
-        dispatch({ type: SMURF_ADDED, payload: response.data })
+        dispatch({ type: SMURF_ADDED, payload: response.data });
       })
       .catch(error => {
         dispatch({ type: ERROR, payload: error });

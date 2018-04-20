@@ -34,7 +34,8 @@ import './App.css';
 const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
-  }
-}
+    fetchingSmurfs: state.fetchingSmurfs
+  };
+};
 
 export default connect(mapStateToProps, { getSmurfs })(App);

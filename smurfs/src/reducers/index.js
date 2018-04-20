@@ -24,17 +24,17 @@
 import * as actionTypes from '../actions';
 
 const initialState = {
+  smurfs: [],
   fetchingSmurfs: false,
   smurfsFetched: false,
   addingSmurf: false,
   smurfAdded: false,
   updatingSmurf: false,
   // deletingSmurf: false,
-  smurfs: [],
-  error: null,
+  error: null
 }
 
-export default ( state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.types) {
     case actionTypes.FETCHING_SMURFS:
       return {
@@ -57,6 +57,7 @@ export default ( state = initialState, action) => {
       return {
         ...state,
         addingSmurf: false,
+        error: null,
         smurfadded: true,
         smurfs: action.payload
       };

@@ -8,14 +8,18 @@ class SmurfForm extends Component {
     age: '',
     height: '',
   };
+
   handleInputChange = (event) => {
     this.setState({ [event.target.name]: event.target.value});
   };
+
   handleSubmit = (event) => {
     event.preventDefault();
     const { name, age, height } = this.state;
+    // const smurfData = { name, age, height };
+    // console.log('SMURF', smurfData);
     this.props.addSmurfs({ name, age, height });
-    this.setState({ name: '', age: '', height: ''});
+    this.setState({ name: '', age: '', height: '' });
   };
 
   render(){
@@ -55,7 +59,7 @@ class SmurfForm extends Component {
 const mapStateToProps = state => {
   return {
     error: state.error,
-    savingSmurfs: state.savingSmurfs,
+    addingSmurf: state.addingSmurf,
   }
 }
 
