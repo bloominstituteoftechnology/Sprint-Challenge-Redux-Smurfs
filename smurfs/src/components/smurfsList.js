@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Smurf} from './Smurf';
+import Ssmurf from '../component/Smurf';
 ​
 const SmurfsList = ({ smurf, onClick }) => (
   <ul>
@@ -10,8 +10,8 @@ const SmurfsList = ({ smurf, onClick }) => (
   </ul>
 )
 ​
-TodoList.propTypes = {
-  todos: PropTypes.arrayOf(
+SmurfsList.propTypes = {
+  smurfs: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       completed: PropTypes.bool.isRequired,
