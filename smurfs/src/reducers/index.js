@@ -39,7 +39,7 @@ export default (state = initialState, action) => {
         fetchingSmurfs: false,
         error: null,
         smurfs: action.payload
-    });
+      });
 
     case CREATING_SMURF:
       return Object.assign({}, state, { addingSmurf: true });
@@ -58,13 +58,13 @@ export default (state = initialState, action) => {
       });
 
     case DELETING_SMURF:
-     return Object.assign({}, state, {deletingSmurf: true })
+      return Object.assign({}, state, { deletingSmurf: true })
     case SUCCESS_DELETING:
-     return Object.assign({}, state, {
-      deletingSmurf: false,
-      error: null,
-      smurfs:action.payload
-     });  
+      return Object.assign({}, state, {
+        deletingSmurf: false,
+        error: null,
+        smurfs: action.payload
+      });
     default:
       return state;
   }

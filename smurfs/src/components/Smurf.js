@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {deleteSmurf} from '../actions';
+import { deleteSmurf } from '../actions';
 
 const Smurf = props => {
     return (
@@ -19,4 +19,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {deleteSmurf})(Smurf);
+export default connect(mapStateToProps, { deleteSmurf })(Smurf);
