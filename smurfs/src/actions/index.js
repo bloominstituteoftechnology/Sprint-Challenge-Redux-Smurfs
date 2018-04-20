@@ -25,12 +25,11 @@ export const fetchSmurfs = () => {
     dispatch({type: PENDING});
     promise
       .then(response => {
-        console.log(response);
         dispatch({type: SUCCESS, payload: response.data})
       })
       .catch(err => console.log(err));
   }
-}
+};
 
 export const addSmurf = (smurf) => {
   const promise = axios.post('http://localhost:3333/smurfs', smurf)
@@ -38,9 +37,20 @@ export const addSmurf = (smurf) => {
     dispatch({type: PENDING});
     promise
       .then(response => {
-        console.log(response);
         dispatch({type: SUCCESS, payload: response.data})
       })
       .catch(err => console.log(err));
   }
-}
+};
+
+export const deleteSmurf = (id) => {
+  const promise = axios.delete(`http://localhost:3333/smurfs/${id}`)
+  return dispatch => {
+    dispatch({type: PENDING});
+    promise
+      .then(response => {
+        dispatch(fetchSmurfs());
+      })
+      .catch(err => console.log(err));
+  }
+};
