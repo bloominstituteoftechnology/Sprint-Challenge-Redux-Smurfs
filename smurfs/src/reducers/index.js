@@ -2,7 +2,7 @@
   Be sure to import in all of the action types from `../actions`
 */
 
-import {} from '../actions/index';
+import { FETCHING_SMURFS, SUCCESS_FETCHING_SMURFS, ERROR_FETCHING_SMURFS } from '../actions/index';
 
 /*
  Your initial/default state for this project could look a lot like this
@@ -32,6 +32,15 @@ const initialState = {
   Components can read your store as, `state` and not `state.fooReducer`.
 */
 
-export default (state = initialState, action) ({
-
-});
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case FETCHING_SMURFS:
+      return state;
+    case SUCCESS_FETCHING_SMURFS:
+      return state;
+    case ERROR_FETCHING_SMURFS:
+      return state;
+    default:
+      return state
+  }
+};
