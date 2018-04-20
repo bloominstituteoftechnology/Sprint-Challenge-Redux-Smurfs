@@ -1,0 +1,3 @@
+export const PENDING_SMURFS = "PENDING_SMURFS";
+export const SUCCESS_SMURFS = "SUCCESS_SMURFS";
+export const ERROR_SMURFS = "ERROR_SMURFS";
