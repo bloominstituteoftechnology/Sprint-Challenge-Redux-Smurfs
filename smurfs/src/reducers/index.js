@@ -2,19 +2,15 @@
 import { PENDING_SMURFS, SUCCESS_SMURFS, ERROR_SMURFS } from '../actions' 
 
 // Set InitialState
-const initialState =
- {
-   smurfs: [],
-   pendingSmurfs: false,
-   addingSmurf: false,
-   updatingSmurf: false,
-   deletingSmurfs: false,
-   error: null
- }
+const initialState = {
+  pending: false,
+  smurfs: [],
+  error: null
+};
 
 // Set up Reducer
 const smurfsReducer = (state = initialState, action) => {
-  switch (action.type) {
+  switch (action.payload) {
     case PENDING_SMURFS:
       return Object.assign({}, state, { pending: true });
     case SUCCESS_SMURFS:
