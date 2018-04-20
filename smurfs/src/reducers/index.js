@@ -1,6 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
+import { SMURFS_FETCHING, SMURF_ADDED, SMURF_ERROR} from '../actions'
 
 const initialSmurfs = {
   smurfs: [],
