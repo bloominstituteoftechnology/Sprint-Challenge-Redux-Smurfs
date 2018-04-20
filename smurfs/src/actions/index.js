@@ -11,7 +11,7 @@ export const getSmurfs = () => {
   return dispatch => {
     dispatch({ type: FETCHING });
     axios //promise statements
-      .get('http://localhost:3333/smurfs')
+      .get('http://localhost:3333/api/smurfs/')
       .then(result => dispatch({ type: FETCHED, smurfs: result.data }))
       .catch(err =>
         dispatch({ type: ERROR, errorMessage: 'Get Smurf Opps!' })

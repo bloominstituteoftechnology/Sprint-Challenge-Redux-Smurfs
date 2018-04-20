@@ -33,6 +33,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Smurf Village</h1>
+        <img className='smurf__pic' src='https://www.smurf.com/images/homepage/houses/house--blue-roof.png' height= '100px'/>
         {this.props.smurfs.map(smurf => {
           return (
             <div key={smurf.id}>
