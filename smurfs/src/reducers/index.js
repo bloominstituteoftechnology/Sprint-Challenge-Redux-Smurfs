@@ -21,6 +21,25 @@
   Components can read your store as, `state` and not `state.fooReducer`.
 */
 
-export default (store, action) => {
+import { PENDING, SUCCESS, ERROR} from '../actions';
 
+const intialState = {
+  smurfs: [],
+  pending: false,
+  success: false,
+  error: null
+}
+
+export default (state = intialState, action) => {
+  switch(action.type) {
+    case PENDING:
+      return { ...state, pending: true };
+    case SUCCESS:
+      return { ...state, smurfs: action.payload };
+    case ERROR:
+      return state;
+
+    default:
+      return state;
+  }
 };

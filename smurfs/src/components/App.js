@@ -20,17 +20,29 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.fetchSmurfs();
+  }
+
   handleAddInputFieldChange = e => {
     const newSmurfData = { [e.target.name]: e.target.value };  
     this.setState({ newSmurf: {...this.state.newSmurf, ...newSmurfData} });
   }
 
+  handleAddSmurfSubmit = () => {
+    this.props.addSmurf(this.state.newSmurf);
+  }
+
   render() {
     return (
       <div className="App">
+        <ul>
+          { this.props.smurfs.map(smurf => <li>{smurf.name}</li>) }
+        </ul>
         <input name='name' onChange={this.handleAddInputFieldChange} value={this.state.newSmurf.name} />
         <input name='age' onChange={this.handleAddInputFieldChange} value={this.state.newSmurf.age} />
         <input name='height' onChange={this.handleAddInputFieldChange} value={this.state.newSmurf.height} />
+        <button onClick={this.handleAddSmurfSubmit}>Add A Smurf!</button>
       </div>
     );
   }
@@ -38,7 +50,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    smurfs: state
+    smurfs: state.smurfs
   }
 }
 
