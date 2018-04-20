@@ -4,9 +4,9 @@ import { deleteSmurf } from '../actions';
 const Smurf = props => {
     return (
         <div>
-        <p> Smurf Name: {props.name}</p>
-        <p> Smurf Age: {props.age}</p>
-        <p> Smurf Height: {props.height}</p>
+        <p> Name: {props.smurf.name}</p>
+        <p> Age: {props.smurf.age}</p>
+        <p> Height: {props.smurf.height}</p>
         <button onClick={() => props.deleteSmurf(props.smurf.id)}>Delete Smurf</button>
         </div>
     )
