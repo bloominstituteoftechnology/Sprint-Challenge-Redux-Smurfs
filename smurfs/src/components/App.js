@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import {fetch_smurf, post_smurf} from '../actions'
+import {fetch_smurf, post_smurf, delete_smurf} from '../actions'
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -38,8 +38,9 @@ class App extends Component {
                         {this.props.smurfs.map(smurf => {
                           return (
                             <div key={smurf.name}>
-                              <li>{smurf.name} {smurf.id}</li >
-                              <button>Delete Me</button>
+                              <li>{smurf.name}</li >
+                              <button onClick={() =>
+                              this.props.delete_smurf(smurf.id)}>Delete Me</button>
                             </div>
                           )
                         })}
@@ -64,5 +65,5 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {
-  fetch_smurf, post_smurf,
+  fetch_smurf, post_smurf, delete_smurf
 })(App);
