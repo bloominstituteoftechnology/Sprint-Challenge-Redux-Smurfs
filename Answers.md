@@ -1,0 +1,16 @@
+## Questions - Self Study - You can exercise your Google-Fu for this and any other _Sprint Challenge_ in the future.
+
+1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
+1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
+1.  What is middleware?
+1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+1.  Which `react-redux` method links up our `components` with our `redux store`?
+1. (Stretch goal question for if you get the DELETE endpoint working) The server's DELETE endpoint functionality is not optimal, since it requires you to either make a second `getSmurfs` request to fetch the updated list of Smurfs after deletion, or you need to keep two sources of truth synchronized, one in the client and one in the server. What change would you propose to make the server DELETE functionality more optimal such that either of these two issues are not encountered?
+#1 .filter .map and Object.assign
+#2 Actions are the functions doing an action, such as getting data from an api (fetch), and the reducers decide how to hand that action, the reducers get the result from the actions and change the state based on the results, and the store is what holds those states that were resolved from the reducer. So, the action functions do something such as fetching data, the results are passed into reducers, and reducers manipulate the state based on the results that it received, and in the end the store gets the state from the reducers. The store is then passed to the component that needs access to the state (it's a global state for all components).
+#3. Application state is a global state, that allows many components to access a state through the store. Component state is only a state for a single component, not for any other components. When components need access to the same state, than Application state is neccessary, but if a component needs to know only about its own state, than Application state is not necessary.
+#4. Middleware are functions that do something and deliver a result, like action functions, but they are executed after the action functions and before the reducers. Because they're situated between actions and reducers, they're called middleware. Middleware are able to see the results from the actions, and can manipulate the data, but don't have to, and they're helpful to see if your actions were executed correctly as Middleware allows you to log your actions such as through redux-logger.
+#5. Redux-thunk allows for asynchronous functionality such as through axios. It allows for the application to keep running while the asynchronous functions execute, and allows for separate conditions to execute if for example the data fetch is successful, unsuccessful or fetching state.
+#6. The connect react-redux method
+#7. The delete method is not working because I'm adding and deleting from a different url, which makes it complicated (no data is available until a refresh.)
