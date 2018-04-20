@@ -30,7 +30,7 @@ class SmurfForm extends Component {
 
   render() {
     return (
-        <Form inline onSubmit={this.addSmurf}>
+        <Form inline onSubmit={this.addSmurf} className="smurfForm">
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                 <Label for="name" className="mr-sm-2 friendLabel">Name:</Label>
                 <Input 

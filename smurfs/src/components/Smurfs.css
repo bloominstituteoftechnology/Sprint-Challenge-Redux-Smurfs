@@ -14,3 +14,13 @@
 .editSmurfButton {
     margin-right: 10px;
 }
+
+.smurfCard {
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+.smurfForm {
+    margin: 25px auto;
+    justify-content: center;
+}
