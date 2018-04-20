@@ -40,6 +40,10 @@ export const smurfsReducer = (state = initialState, action) => {
         updatingSmurf: false,
         deletingSmurfs: false,
       });
+    case SMURFS_ERROR:
+      return Object.assign({}, state, {
+        error: action.payload
+      });
     default:
       return state;
   }
