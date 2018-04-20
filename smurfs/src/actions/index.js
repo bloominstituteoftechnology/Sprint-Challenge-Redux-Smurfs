@@ -1,7 +1,19 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import { fetchSmurfs } from './crud/getSmurfs';
+import { addSmurf } from './crud/addSmurf';
+import { deleteSmurf } from './crud/deleteSmurf';
+import { updateSmurf } from './crud/updateSmurf';
+import { updateName, updateAge, updateHeight, resetInput } from './formInput';
+
+export {
+  fetchSmurfs,
+  addSmurf,
+  deleteSmurf,
+  updateSmurf,
+  updateName,
+  updateAge,
+  updateHeight,
+  resetInput
+}
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
