@@ -20,3 +20,18 @@
   This will guard your namespacing issues.
   Components can read your store as, `state` and not `state.fooReducer`.
 */
+
+import * as actionTypes from '../actions';
+
+const initialState = {
+  fetchingSmurfs: false,
+  smurfsFetched: false,
+  addingSmurf: false,
+  smurfAdded: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
+  smurfs: [],
+  error: null,
+}
+
+export default ()
