@@ -24,7 +24,7 @@ export const fetchSmurfs = () => {
     dispatch({ type: FETCH_SMURF });
     smurfDat
       .then(response => {
-        dispatch({ type: SUCCESS_FETCH, payload: [] });
+        dispatch({ type: SUCCESS_FETCH, payload: response.data });
       })
       .catch(err => {
         dispatch({ type: REJECTED, payload: 'Error fetching blue peeps...' });
@@ -38,7 +38,7 @@ export const addSmurf = smurf => {
     dispatch({ type: CREATING_SMURF });
     smurfDat
       .then(response => {
-        dispatch({ type: SUCCESS_CREATING, payload: [] });
+        dispatch({ type: SUCCESS_CREATING, payload: response.data });
       })
       .catch(err => {
         dispatch({ type: REJECTED, payload: 'Error creating blue peep...'});
