@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions';
+import SmurfList from './SmurfList';
+import SmurfForm from './SmurfForm';
 import './App.css';
 
 /*
@@ -22,6 +24,8 @@ import './App.css';
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        <SmurfForm />
+        <SmurfList smurfs={this.props.smurfs}/>
       </div>
     );
   }
