@@ -6,18 +6,27 @@ import './App.css';
 import { SmurfCard } from './SmurfCard';
 import { SmurfForm } from './SmurfForm';
 
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I connect my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
-
 class App extends Component {
   constructor(props) {
     super(props);
+    // Set form state here to be shared amongst components
+    this.state = { 
+      name: '', age: '', height: '' 
+    }
   }
-  
+  // Initial retrieval from server
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
+  // Handle update of user input and translate to state
+  updateInputState = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+  // Reset form upon submission
+  resetInputForm = () => {
+    this.setState({ name: '', age: '', height: '' });
+  }
+
   render() {
     return (
       <div className="App">
@@ -25,6 +34,12 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        {/* Map over smurfs data and create a card for each smurf */}
+        {/* Connect with state and pass down necessary functions */}
+        {this.props.smurfs.map(smurf => (
+          <SmurfCard 
+          />
+        ))}
       </div>
     );
   }
@@ -52,4 +67,3 @@ const mapDispatchToProps = () => {
 
 // Set all state derived from redux onto props of our App componenet
 export default connect(mapStateToProps, mapDispatchToProps())(App);
-
