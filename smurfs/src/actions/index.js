@@ -17,11 +17,11 @@
 import axios from 'axios';
 
 export const FETCHINGSMURFS = 'FETCHING_SMURFS';
-export const SMURFSFETCHED = 'SMURFSFETCHED';
-export const ADDINGSMURF = 'ADDINGSMURF';
-export const SMURFADDED = 'SMURFADDED';
-export const UPDATINGSMURF = 'UPDATINGSMURF';
-export const DELETINGSMURF = 'DELETINGSMURF';
+export const SMURFSFETCHED = 'SMURFS_FETCHED';
+export const ADDINGSMURF = 'ADDING_SMURF';
+export const SMURFADDED = 'SMURF_ADDED';
+export const UPDATINGSMURF = 'UPDATING_SMURF';
+export const DELETINGSMURF = 'DELETING_SMURF';
 export const ERROR = 'ERROR';
 
 const URL = 'http://localhost:3333/smurfs'

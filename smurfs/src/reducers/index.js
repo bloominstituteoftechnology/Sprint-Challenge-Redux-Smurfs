@@ -34,4 +34,57 @@ const initialState = {
   error: null,
 }
 
-export default ()
+export default ( state = initialState, action) => {
+  switch (action.types) {
+    case actionTypes.FETCHING_SMURFS:
+      return {
+        ...state,
+        fetchingSmurfs: true
+      };
+    case actionTypes.SMURFS_FETCHED:
+      return {
+        ...state,
+        smurfs: action.payload,
+        fetchingSmurfs: false,
+        smurfsFetched: true
+      };
+    case actionTypes.ADDING_SMURF:
+      return {
+        ...state,
+        addingSmurf: true
+      };
+    case actionTypes.SMURF_ADDED:
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfadded: true,
+        smurfs: action.payload
+      };
+    case actionTypes.UPDATING_SMURF:
+      return {
+        ...state,
+        updatingSmurfs: true
+      };
+    case actionTypes.DELETING_SMURF:
+      const index = state.smurfs.findIndex(smurf => smurf.id === action.id);
+      const filtered = [...state.smurfs.slice(0, index), ...state.smurfs.slice(index + 1)];
+      return {
+        ...state,
+        smurfs: filtered,
+        error: null
+      };
+    case actionTypes.ERROR:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        smurfsFetched: false,
+        addingSmurf: false,
+        smurfAdded: false,
+        updatingSmurf: false,
+        deletingSmurfs: false,
+        error: action.payload
+      }
+    default:
+      return state;
+  }
+}
