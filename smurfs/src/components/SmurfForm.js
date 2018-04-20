@@ -29,6 +29,8 @@ export const SmurfForm = props => {
         />
       </form>
       <button class="smurfForm_button" onClick={(e) => {
+        props.addSmurf(props.formInput);
+        props.resetInputForm();
       }}>Add Smurf</button>
     </div>
   )
