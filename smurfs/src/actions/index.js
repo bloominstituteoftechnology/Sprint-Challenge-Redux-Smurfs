@@ -52,6 +52,7 @@ export const fetchSmurf = () => {
         .then(response => {
           console.log('DELETE RESPONSE:',response);
           dispatch({ type: SMURF_DELETED, payload: response.data }); // 2nd state of success is dispatched IF the promise resolves
+          dispatch(fetchSmurf());
         })
         .catch(err => {
           console.log(err);
