@@ -26,3 +26,33 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+h1 {
+  font-family: 'Black Han Sans', sans-serif;
+  color: rgb(30, 47, 49);
+}
+
+body {
+  background: rgb(16,210,209);
+  background: linear-gradient(90deg, rgba(16,210,209,1) 0%, rgba(5,131,147,1) 46%, rgba(3,116,135,1) 77%);
+}
+
+input {
+  border: 2px solid black;
+}
+
+input {
+  margin-right: 10px;
+}
+
+.submit {
+  height: 30px;
+  width: 80px;
+  border-radius: 8px;
+}
+
+img {
+  margin-right: 400px;
+  height: 200px;
+  width: 200px;
+}
