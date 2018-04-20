@@ -73,8 +73,8 @@ class App extends Component {
         <div>{this.props.smurfs.map(((smurf) => {
           return (
             <div key={smurf.id} id={smurf.id}>
-            <img className="Smurfers" src="smurf.jpg" />
-              <h1 id={smurf.name}> My name is {smurf.name}</h1>
+            <img className="Smurfers" alt= "Smurfers" src="smurf.jpg" />
+              <h1 style={{color: 'blue', textDecoration: 'underline'}} id={smurf.name}> My name is {smurf.name}</h1>
               <h2>{smurf.age} years old</h2>
               <h3>{smurf.height} cm</h3>
               <button onClick={this.handleDelete}>NO NOT SMURFETTE</button>

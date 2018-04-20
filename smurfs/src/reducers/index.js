@@ -13,21 +13,16 @@ export default (state = initialState, action) => {
   switch(action.type) {
     case GET_SMURF:
       return { ...state, smurfs: action.smurfs, error: null};
-      break;
     case POST_SMURF:
       return { ...state, smurfs: action.smurfs, error: null};;
-      break;
     case PUT_SMURF:
       return { ...state, smurfs: [action.smurfs], error: null};;
-      break;
     case DELETE_SMURF:
       const index = state.smurfs.findIndex(smurf => smurf.id === action.id);
       const filtered = [...state.smurfs.slice(0, index), ...state.smurfs.slice(index + 1)];
       return { ...state,  smurfs: filtered, error: null};;
-      break;
     case ERROR:
       return { ...state, error: action.errorMessage};;
-      break;
     default:
       return state;
   }
