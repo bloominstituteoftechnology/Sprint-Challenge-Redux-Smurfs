@@ -64,7 +64,7 @@ class App extends Component {
             onChange={this.changeHandler}
           />
           <input
-            type="text"
+            type="number"
             placeholder="height"
             name="height"
             value={this.state.height}
@@ -76,14 +76,12 @@ class App extends Component {
     );
   }
 }
-
+// how are we getting this state form reducer--> initial state
 const mapStateToProps = state => {
   // initial state from reducer
   console.log('from mapStateToProps...',state);
   return {
     smurfs: state.smurfs,
-    fetching: state.fetchingSmurfs,
-    error: state.error
   };
 };
 

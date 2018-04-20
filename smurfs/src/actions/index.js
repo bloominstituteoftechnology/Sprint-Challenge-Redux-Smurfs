@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "http://localhost:3333/smurfs";
+const URL = "http://localhost:3333/smurfs/";
 
 export const FETCHING = "FETCHING ";
 export const FETCHED = "FETCHED ";
@@ -45,7 +45,7 @@ export const addSmurfs = smurf => {
 
 
 export const removeSmurfs = smurf => {
-  const promise = axios.delete(`http://localhost:3333/smurfs/${smurf}`);
+  const promise = axios.delete(`${URL + smurf}`);
   return dispatch => {
     dispatch({ type: DELETING });
     promise
