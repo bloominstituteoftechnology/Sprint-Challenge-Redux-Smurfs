@@ -1,3 +1,8 @@
+import { GET_SMURFS,
+         GETTING_SMURFS,
+         ERROR,
+         ADD_SMURF } from '../actions';
+
 /*
   Be sure to import in all of the action types from `../actions`
 */

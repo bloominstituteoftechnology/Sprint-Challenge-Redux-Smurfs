@@ -15,10 +15,25 @@ export const getSmurfs = () => {
   axios
     .get(URL);
     return (dispatch) => {
-    dispatch({ type: GETTING_SMURFS})
-  }
-}
+    dispatch({ type: GETTING_SMURFS});
+    smurfs
+      .then((response) => {
+        dispatch({ type: GET_SMURFS, payload: response.data });
+      })
+      .catch((err) => {
+        dispatch({ type: ERROR, errorMessage: "Cannot retrieve Smurf data" });
+      });
+  };
+};
 
+export const addSmurf = (smurf) => {
+  axios
+    .post(URL, smurf)
+    .then(response => { 
+      dispatch({ type: ADD_SMURF });
+  }).catch(err => { 
+      dispatch({ type: ERROR, errorMessage: 'Cannot add new Smurf'})});
+};
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
