@@ -9,6 +9,10 @@ export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const SUCCESS_FETCHING_SMURFS = 'SUCCESS_FETCHING_SMURFS';
 export const ERROR_FETCHING_SMURFS = 'ERROR_FETCHING_SMURFS';
 
+export const POSTING_SMURFS = 'POSTING_SMURFS';
+export const SUCCESS_POSTING_SMURFS = 'SUCCESS_POSTING_SMURFS';
+export const ERROR_POSTING_SMURFS = 'ERROR_POSTING_SMURFS';
+
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -28,10 +32,25 @@ export const fetchSmurfs = () => {
     promise
     .then((response) => {
       console.log(response);
-      dispatch( {type: SUCCESS_FETCHING_SMURFS, payload: 'Error'});
+      dispatch( {type: SUCCESS_FETCHING_SMURFS, payload: ''});
     })
     .catch(err => {
       dispatch( {type: ERROR_FETCHING_SMURFS, payload: 'Error Fetching Data' });
+    })
+  }
+}
+
+export const postSmurfs = () => {
+  const promise = axios.get('http://localhost:3333/smurfs')
+  return (dispatch) => {
+    dispatch( { type: POSTING_SMURFS });
+    promise
+    .then((response) => {
+      console.log(response);
+      dispatch( {type: SUCCESS_POSTING_SMURFS);
+    })
+    .catch(err => {
+      dispatch( {type: ERROR_POSTING_SMURFS, payload: 'Error Posting Data' });
     })
   }
 }
