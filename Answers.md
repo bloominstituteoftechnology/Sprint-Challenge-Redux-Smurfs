@@ -13,3 +13,9 @@ The store is a JS object that represents the state of a web app. It's only respo
 3.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
 
 Application state is global and immutable. It is responsible for holding major pieces of data that can be injected into other components. Component state is data that is stored within a component and is mutable. It's better to use component state for trivial data that does not have global impact on the app such as toggling or handling new input. Application state should be used for data that is affects more than one component and is global.
+
+4.  What is middleware?
+
+Middleware is 3rd party code that extends the functionality of Redux and gives developers better tools to work with Redux. It is usually in a package form and interacts with actions before they reach a reducer. For example, thunk is middleware that allows users to write asynchronous HTTP requests with dispatch(), a native Redux function. Data from these requests can then be used to update store with reducers.
+
+5.
