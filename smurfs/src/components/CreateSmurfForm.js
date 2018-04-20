@@ -8,21 +8,23 @@ const CreateSmurfForm = props => {
 				type="text"
 				name="name"
 				placeholder="Enter smurf name"
-				onChange={}
+				onChange={props.handleNewInput}
 			/>
 			<input
 				type="text"
 				name="age"
 				placeholder="Enter smurf age"
-				onChange={}
+				onChange={props.handleNewInput}
 			/>
 			<input
 				type="text"
 				name="height"
 				placeholder="Enter smurf height"
-				onChange={}
+				onChange={props.handleNewInput}
 			/>
-			<button type="button" onClick={}></button>
+			<button type="button" onClick={props.handleCreateSmurf}>
+				Create Smurf
+			</button>
 		</form>
 	);
 };
