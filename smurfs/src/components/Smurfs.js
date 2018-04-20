@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { Container, Row, Card, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 
-import { fetchSmurfs } from '../actions';
+import { fetchSmurfs, deleteSmurf } from '../actions';
 // import Smurf from './Smurf';
 
 class Smurfs extends Component {
   componentDidMount() {
     this.props.fetchSmurfs();
+  }
+
+  deleteSmurf = smurfId => {
+      this.props.deleteSmurf(smurfId);
   }
 
   render() {
@@ -18,26 +22,31 @@ class Smurfs extends Component {
           <Row>
             {this.props.smurfs.map(smurf => {
               return (
-                <Card body inverse key={smurf.id}style={{ backgroundColor: '#333', borderColor: '#333'}}>
-                <h3>{smurf.name}</h3>
-                <strong>{smurf.height} tall</strong>
-                <p>{smurf.age} smurf years old</p>
-                <div className="editSmurf">
+                <Card
+                  body
+                  inverse
+                  key={smurf.id}
+                  style={{ backgroundColor: '#333', borderColor: '#333' }}
+                >
+                  <h3>{smurf.name}</h3>
+                  <strong>{smurf.height} tall</strong>
+                  <p>{smurf.age} smurf years old</p>
+                  <div className="editSmurf">
                     <Button
-                    color="warning"
-                    className="editSmurfButton"
-                    onClick={this.showUpdateSmurfForm}
+                      color="warning"
+                      className="editSmurfButton"
+                      onClick={this.showUpdateSmurfForm}
                     >
-                    Update
+                      Update
                     </Button>
                     <Button
-                    color="danger"
-                    className="editSmurfButton"
-                    onClick={() => this.deleteSmurf(smurf.id)}
+                      color="danger"
+                      className="editSmurfButton"
+                      onClick={() => this.deleteSmurf(smurf.id)}
                     >
-                    Delete
+                      Delete
                     </Button>
-                </div>
+                  </div>
                 </Card>
               );
             })}
@@ -54,4 +63,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchSmurfs })(Smurfs);
+export default connect(mapStateToProps, { fetchSmurfs, deleteSmurf })(Smurfs);

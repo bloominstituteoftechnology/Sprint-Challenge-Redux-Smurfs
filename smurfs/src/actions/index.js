@@ -43,3 +43,16 @@ export const addSmurf = data => {
       });
   };
 };
+
+export const deleteSmurf = id => {
+  const smurf = axios.delete(`http://localhost:3333/smurfs/${id}`);
+  return dispatch => {
+    smurf
+      .then(res => {
+        dispatch(fetchSmurfs());
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
