@@ -9,3 +9,7 @@ Actions are JS objects that contain a type and payload(data). They are created b
 Reducers are JS pure functions that take in state and an action as arguments. They are responsible for altering pieces of state with the data from actioins. Reducers represent different pieces of an app's state and are completely independent of each other.
 
 The store is a JS object that represents the state of a web app. It's only responsibility is to hold data for the application and it's known as a 'single source of truth' because store is immutable and redux allows devs to inject specific data into components. Redux copies new versions of store to allow for time travel debugging and more efficient ways to debug an app.
+
+3.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is global and immutable. It is responsible for holding major pieces of data that can be injected into other components. Component state is data that is stored within a component and is mutable. It's better to use component state for trivial data that does not have global impact on the app such as toggling or handling new input. Application state should be used for data that is affects more than one component and is global.
