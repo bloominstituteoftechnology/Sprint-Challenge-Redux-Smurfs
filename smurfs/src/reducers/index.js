@@ -36,7 +36,7 @@ const smurfsReducer = (state = initialState, action) => {
         updatingSmurf: false,
         deletingSmurfs: false,
         error: null,
-        friends: [...action.payload]
+        smurfs: [...action.payload]
       });
 
     case ActType.ERROR_SMURFS:

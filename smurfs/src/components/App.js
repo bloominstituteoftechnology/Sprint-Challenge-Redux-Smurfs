@@ -73,7 +73,7 @@ class App extends Component {
                   age: this.state.age,
                   height: this.state.height
                 });
-                this.setState({ friend: "", age: "", height: "" });
+                this.setState({ name: "", age: "", height: "" });
               }}
             >
               Add smurf
@@ -84,9 +84,10 @@ class App extends Component {
 
           <div className="SmurfList">
             <h1>SmurfList</h1>
+            {console.log("this.props.smurfs", this.props.smurfs)}
             {this.props.smurfs.map(eachSmurf => (
               <div key={eachSmurf.id}>
-                {console.log("eachFriend console", eachSmurf)}
+                {console.log("eachSmurf console", eachSmurf)}
                 <div>Name: {eachSmurf.name}</div>
                 <div>Age: {eachSmurf.age}</div>
                 <div>height: {eachSmurf.height}</div>
