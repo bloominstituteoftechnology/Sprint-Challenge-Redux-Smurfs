@@ -1,7 +1,9 @@
-import fetchSmurfs from './getSmurfs';
+import { fetchSmurfs } from './getSmurfs';
+import { addSmurf } from './addSmurf';
 
 export {
-  fetchSmurfs
+  fetchSmurfs,
+  addSmurf
 }
 
 /*

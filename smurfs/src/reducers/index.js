@@ -1,4 +1,4 @@
-
+import { FETCHING_SMURFS, FETCH_SUCCESS, FETCHING_ERROR } from '../actions/getSmurfs';
 
 /*
   You'll only need one smurf reducer for this project.
@@ -16,8 +16,28 @@
    error: null
  };
 
-export default (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
   switch(action.type) {
+    case FETCHING_SMURFS:
+      return {
+        ...state,
+        fetchingSmurfs: true
+      }
+
+    case FETCH_SUCCESS:
+      return {
+        ...state,
+        smurfs: [...state.smurfs, ...action.payload],
+        fetchingSmurfs: false
+      }
+    
+    case FETCHING_ERROR:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        error: "We ran into a problem fetching your data!"
+      }
+
     default: return state;
   }
 }
