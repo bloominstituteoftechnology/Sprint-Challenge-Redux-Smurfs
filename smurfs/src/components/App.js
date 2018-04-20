@@ -81,9 +81,9 @@ class App extends Component {
         }))}
         </div>)}
         <form>
-          <input name="name" onChange={this.handleChange} placeholder="name" value={this.state.name}/>
-          <input name="age" onChange={this.handleChange} placeholder="age" value={this.state.age}/>
-          <input name="height" onChange={this.handleChange} placeholder="height"value={this.state.height}/>
+          <input name="name" onChange={this.handleChange} placeholder="Name" value={this.state.name}/>
+          <input name="age" onChange={this.handleChange} placeholder="Age" value={this.state.age}/>
+          <input name="height" onChange={this.handleChange} placeholder="Height"value={this.state.height}/>
           <button onClick={this.handleSubmit} type="submit">Give a Smurf Life</button>
           <button onClick={this.handleUpdate} type="submit">Update</button>
         </form>
