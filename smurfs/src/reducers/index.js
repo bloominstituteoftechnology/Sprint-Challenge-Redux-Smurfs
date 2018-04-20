@@ -19,6 +19,7 @@ import { FETCHING, FETCHED, FETCHING_ERROR } from '../actions/index.js';
 const initalState = {
   fetching: false,
   fetched: false,
+  smurfs: [],
   error: null
 };
 
@@ -28,3 +29,23 @@ const initalState = {
   This will guard your namespacing issues.
   Components can read your store as, `state` and not `state.fooReducer`.
 */
+
+export const rootReducer = ( state = initalState, action ) => {
+  switch (action.type) { 
+    case FETCHING: 
+    return Object.assign({}, state, { fetching: true });
+    case FETCHED:
+    return Object.assign({}, state, {
+      fetched: true,
+      error: null,
+      smurfs: [...action.payload]
+    });
+    case FETCHING_ERROR:
+    return Object.assign({}, state, {
+      fetching: false,
+      error: action.payload
+    });
+    default:
+    return state;
+  }
+};
