@@ -18,7 +18,7 @@ export const REJECTED = 'REJECTED';
 */
 
 export const fetchSmurfs = () => {
-  const smurfDat = axios.get(URL);
+  const smurfDat = axios.get('http://localhost:3333/smurfs');
   return dispatch => {
     dispatch({ type: FETCH_SMURF });
     smurfDat
@@ -32,7 +32,7 @@ export const fetchSmurfs = () => {
 };
 
 export const addSmurf = smurf => {
-  const smurfDat = axios.post(url, smurf);
+  const smurfDat = axios.post('http://localhost:3333/smurfs', smurf);
   return dispatch => {
     dispatch({ type: CREATING_SMURF });
     smurfDat
