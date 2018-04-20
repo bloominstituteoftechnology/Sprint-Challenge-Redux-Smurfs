@@ -19,4 +19,10 @@ class App extends Component {
   }
 }
 
-export default App;
+  const mapStateToProps = (state) => {
+    return {
+      smurf: state
+    };
+  }
+
+export default connect(mapStateToProps, { addSmurf})(App);
