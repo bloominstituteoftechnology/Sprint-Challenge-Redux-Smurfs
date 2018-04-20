@@ -2,6 +2,37 @@
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+import axios from 'axios';
+
+export const FETCHING_SMURF = 'FETCHING_ SMURF';
+export const ADDING_SMURF = 'ADDING_SMURF';
+export const UPDATING_SMURF = 'UPDATING_SMURF';
+export const DELETING_SMURF = 'DELETING_SMURF';
+
+export const fetchSmurf = () => {
+  const smurfChars = axios.get('http://localhost:3333/smurfs');
+  return dispatch => {
+      dispatch({ type: FETCHING_SMURF });
+      smurfChars.then(response => {
+              console.log(response);
+              dispatch({ type: CHARS_FETCHED, payload: [response.data.results] });
+          })
+          .catch(err => {
+              dispatch({ type: ERROR_FETCHING_CHARS, payload: 'Error Fetching Chars'});
+          });
+  };
+};
+
+{
+  smurfs: [],
+  fetchingSmurfs: false
+  addingSmurf: false
+  updatingSmurf: false
+  deletingSmurfs: false
+  error: null
+}
+
+
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
