@@ -46,7 +46,8 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { deletingSmurf: true });
     case DELETED:
       return Object.assign({}, state, {
-        smurfs: [...action.payload],
+        smurfs: [...state.smurfs.filter(smurf => smurf !== action.payload)],
+        // smurfs: [...action.payload],
         deletingSmurf: false
       });
     case ERROR:
