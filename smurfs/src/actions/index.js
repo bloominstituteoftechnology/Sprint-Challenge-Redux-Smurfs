@@ -47,7 +47,7 @@ export const postSmurfs = () => {
     promise
     .then((response) => {
       console.log(response);
-      dispatch( {type: SUCCESS_POSTING_SMURFS);
+      dispatch({ type: SUCCESS_POSTING_SMURFS });
     })
     .catch(err => {
       dispatch( {type: ERROR_POSTING_SMURFS, payload: 'Error Posting Data' });
