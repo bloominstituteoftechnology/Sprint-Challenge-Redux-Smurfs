@@ -1,5 +1,6 @@
 import { FETCHING_SMURFS, FETCH_SUCCESS, FETCHING_ERROR } from '../actions/getSmurfs';
 import { FETCH_NEW_SMURF, ADD_SMURF_ERROR } from '../actions/addSmurf';
+import { DELETE_SMURF, DELETE_ERROR } from '../actions/deleteSmurf';
 
 /*
   You'll only need one smurf reducer for this project.
@@ -49,6 +50,16 @@ export const reducer = (state = initialState, action) => {
 
     case ADD_SMURF_ERROR:
       return { ...state, error: "We're having some trouble adding this smurf." }
+    
+    case DELETE_SMURF:
+      debugger
+      return {
+        ...state,
+        smurfs: [...action.payload]
+      }
+
+    case DELETE_ERROR:
+      return { ...state, error: "We're experiencing a problem deleting this smurf." }
 
     default: return state;
   }
