@@ -9,7 +9,7 @@ export const SMURFS_SUCCESS = 'SMURFS_SUCCESS';
 export const SMURFS_ERROR = 'SMURFS_ERROR';
 
 // Set up actions to be exported into App components props
-export const getSmurfs = () => {
+export const getSmurfs = () => { // Grab all smurfs from server
   const promise = axios('http://localhost:3333/smurfs');
   return dispatch => {
     dispatch({ type: FETCHING_SMURFS });
@@ -20,6 +20,25 @@ export const getSmurfs = () => {
       .catch(error => {
         dispatch({ type: SMURFS_ERROR });
       })
+  }
+}
+
+export const addSmurf = smurf => { // Add smurf to server
+  const promise = axios.post('http://localhost:3333/smurfs', smurf);
+  return dispatch => {
+    promise
+      .then(response => {
+        dispatch({ type: ADDING_SMURF });
+      })
+      .then(response => {
+        dispatch(getSmurfs());
+      })
+      .catch(error => {
+        dispatch({
+          type: SMURFS_ERROR,
+          payload: 'ERROR Adding Smurfs'
+        });
+      });
   }
 }
 
