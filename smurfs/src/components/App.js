@@ -53,6 +53,9 @@ class App extends Component {
           updateInputState={this.updateInputState}
           addSmurf={this.props.addSmurf} 
         />
+        <p className="updateInfo">To update a smurf you must input data 
+        <br/>into the form field and then hit update on
+        <br/>the smurf that you would like to update</p>
       </div>
     );
   }
