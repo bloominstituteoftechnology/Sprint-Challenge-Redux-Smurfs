@@ -4,6 +4,7 @@ import axios from "axios";
   Be sure to export each action type so you can pull it into your reducer
 */
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
+export const ADDING_SMURFS = "ADDING_SMURFS";
 export const FETCHED_SMURFS = "FETCHED_SMURFS";
 export const ERROR = "ERROR";
 /*
@@ -40,6 +41,7 @@ export const createSmurfs = smurf => {
     smurfs
       .then(response => {
         // getSmurfs after posting a new smurf
+        dispatch({ type: ADDING_SMURFS });
         dispatch(getSmurfs());
       })
       .catch(error => {
