@@ -1,0 +1,18 @@
+.Smurfs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.Smurfs__Smurf {
+    width: 15%;
+    padding: 3%;
+    margin: 3% 0 3% 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    
+    border: 2px outset #B4B7BA;
+    background: #484848;
+}
