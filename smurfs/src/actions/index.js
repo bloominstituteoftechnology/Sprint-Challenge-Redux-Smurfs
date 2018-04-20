@@ -63,6 +63,26 @@ export const updateSmurf = ( id, smurf ) => {
   }
 }
 
+// Delete smurf that lives on the sevrer by referencing id
+export const deleteSmurf = id => {
+  const promise = axios.delete(`http://localhost:3333/smurfs/${id}`);
+  return dispatch => {
+    promise
+      .then(response => {
+        dispatch({ type: DELETING_SMURFS });
+      })
+      .then(response => {
+        dispatch(getSmurfs());
+      })
+      .catch(error => {
+        dispatch({
+          type: SMURFS_ERROR,
+          payload: 'ERROR Updating Smurfs'
+        });
+      });
+  }
+}
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
