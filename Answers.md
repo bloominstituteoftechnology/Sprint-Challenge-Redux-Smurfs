@@ -9,22 +9,30 @@
 
 2. Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 
-Actions - These are used to have the application interact with the store and the only way information is sent to the store. They are defined as something happening but not what actually happens. 
+    1. Actions - These are used to have the application interact with the store and the only way information is sent to the store. They are defined as something happening but not what actually happens. 
 
-Reducers - Specifies what actions are doing to the application's state.
+    2. Reducers - Specifies what actions are doing to the application's state.
 
-Store - The store is an object that holds the application's state and allows the state to be updated through functions like getState() and dispatch(action).
+    3. Store - The store is an object that holds the application's state and allows the state to be updated through functions like getState() and dispatch(action).
 
 3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+The difference between Application and Component state is the Application state is referring to the global state, while the Component state refers to the local state. Component state is used to change things that won't change the overall function of the application, like editing a name in an input field (using this.state). Stores hold the Application state and can only be accessed by accessing the store.
 
 
 4. What is middleware?
 
+Middleware is code that is put between the a framework that recieves request and frameworks that generate a response. Specifically, in Redux, Middleware is used for asynchronous API actions. That is it will help debug if there are any issues between dispatching an action and it reaching the reducer.
+
 
 5. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 
+Redux-thunk allows us to perform async or conditional dispatch, it will be used to return functions instead of actions so that an action can be delayed or done only under specific conditions. It changes action-creators based on changing its actions into functions. 
+
 
 6. Which `react-redux` method links up our `components` with our `redux store`?
+
+The react-redux method that links up our components with our redux store is createStore().
 
 
 
