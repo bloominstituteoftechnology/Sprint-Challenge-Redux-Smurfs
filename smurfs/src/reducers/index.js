@@ -1,31 +1,45 @@
 import { 
   FETCHING_SMURFS, 
-  ADDING_SMURFS, 
-  UPDATE_SMURFS,
-  DELETING_SMURFS, 
+  SUCCESS_FETCHING, 
+  CREATING_SMURFS,
+  SUCCESS_CREATING,
+  REJECTED
 } from '../actions';
 
 const initialState = {
-  smurfs: [],
+  smurfs: [], 
   fetchingSmurfs: false,
   addingSmurfs: false,
   updateSmurfs: false,
   deletingSmurfs: false,
-  error: null,
+  error: null
 };
 
-export const smurfsReducer = (state = initialState, action) => {
-  switch (action.type) {
+export default (state = initialState, action) => {
+  switch(action.type) {
     case FETCHING_SMURFS:
-      return { ...state, fetching: false };
-    case ADDING_SMURFS:
-      return { ...state, adding: false };
-    case UPDATE_SMURFS:
-      return { ...state, adding: false };
-    case DELETING_SMURFS:
-      return { ...state, deleting: false };
-    default: 
+      return Object.assign({}, state, { fetchingSmurfs: true });
+    case SUCCESS_FETCHING:
+      return Object.assign({}, state, { 
+        fetchingSmurfs: false, 
+        error: null, 
+        smurfs: action.payload
+      });
+    case CREATING_SMURFS:
+      return Object.assign({}, state, { addingSmurfs: true });
+    case SUCCESS_CREATING:
+      return Object.assign({}, state, { 
+        addingSmurfs: false, 
+        error: null, smurfs: 
+        action.payload 
+      });
+    case REJECTED:
+      return Object.assign({}, state, { 
+        error: action.payload, 
+        fetchingSmurfs: false, 
+        addingSmurfs: false 
+      });
+    default:
       return state;
-  };
-
+  }
 };

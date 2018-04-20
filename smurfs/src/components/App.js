@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import './App.css';
-import SmurfForm from './SmurfForm';
-import Smurfs from './Smurfs';
+import SmurfsList from './SmurfsList';
 
 import { connect } from 'react-redux';
-import { getSmurfs, addSmurfs, deleteSmurfs } from '../actions';
 
 
 
@@ -23,11 +21,11 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div>
+       
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div className="container">
-          <Smurfs />
-          <SmurfForm />
+          <SmurfsList />
         </div>
       </div>
     );
