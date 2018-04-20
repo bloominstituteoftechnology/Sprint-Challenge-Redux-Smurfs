@@ -1,0 +1,16 @@
+.smurfCard {
+  border: 1px solid grey;
+  border-radius: 15px;
+  box-shadow: 5px 10px 18px #888888;
+  margin: 20px auto;
+  padding: 5px 0 10px;
+  max-width: 300px;
+}
+
+.smurfCard_info {
+  margin: 5px 0;
+}
+
+.smurfCard_buttons button {
+  border: 1px solid grey;
+}
