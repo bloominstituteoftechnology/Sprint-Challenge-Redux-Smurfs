@@ -6,7 +6,7 @@ import {
 } from "../actions/index.js";
 
 const initialState = {
-  smurfs: [],
+  smurfs: [{ name: "spongebob", age: "123", height: "4ft" }],
   fetchingSmurfs: false,
   addingSmurf: false,
   updatingSmurf: false,
@@ -24,7 +24,7 @@ const smurfsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: false,
-        smurfs: [...action.payload]
+        smurfs: [...state.smurfs, ...action.payload]
       });
     case ERROR:
       return Object.assign({}, state, {
