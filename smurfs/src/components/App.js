@@ -7,16 +7,22 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  componentDidMount() {
+    this.props.getSmurfs()
+  }
+
   render() {
+    const { addSmurf, state: { main: { data }}} = this.props
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+      <div>
+        <Form onSubmit={addSmurf} />
+        <List data={data} />
       </div>
     );
   }
 }
 
-export default App;
+const mapState = state => ({ state });
+const actions = { addSmurf, getSmurfs };
+
+export default connect(mapState, actions)(App);
