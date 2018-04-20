@@ -4,6 +4,8 @@ export const FETCH_SMURF = 'FETCH_SMURF';
 export const SUCCESS_FETCH = 'SUCCESS_FETCH';
 export const CREATING_SMURF = 'CREATING_SMURF';
 export const SUCCESS_CREATING = 'SUCCESS_CREATING';
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const SUCCESS_DELETING = 'SUCCESS_DELETING';
 export const REJECTED = 'REJECTED';
 
 /*
