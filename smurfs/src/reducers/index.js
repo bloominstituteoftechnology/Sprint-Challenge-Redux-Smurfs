@@ -38,14 +38,14 @@ export default (state = initialState, action) => {
     case FETCHING_SMURFS:
       return Object.assign({}, state, { fetchingSmurfs: true });
     case SUCCESS_FETCHING_SMURFS:
-      return Object.assign({}, state, { smurfs: [state.smurfs, ...action.payload]});
+      return Object.assign({}, state, { fetchingSmurfs: false, smurfs: [state.smurfs, ...action.payload]});
     case ERROR_FETCHING_SMURFS:
       return Object.assign({}, state, { error: action.payload });
-      
+
     case POSTING_SMURFS:
-      return Object.assign({}, state, { fetchingSmurfs: true });
+      return Object.assign({}, state, { addingSmurf: true });
     case SUCCESS_POSTING_SMURFS:
-      return Object.assign({}, state, { smurfs: [state.smurfs, ...action.payload]});
+      return Object.assign({}, state, { addingSmurf: false, updatingSmurf: true, smurfs: [state.smurfs, ...action.payload]});
     case ERROR_POSTING_SMURFS:
       return Object.assign({}, state, { error: action.payload });
     default:
