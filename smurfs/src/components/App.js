@@ -15,11 +15,9 @@ class App extends Component {
 
   componentDidMount() { this.props.fetchSmurfs() }
 
-  handleInputChange = event => { this.setState({ [event.target.name]: event.target.value }) }
-
-  addSmurf = () => {
-    const smurf = { name: this.state.name };
-    this.props.addSmurf(smurf);
+  handleAddSmurf = () => {
+    const newSmurf = { name: this.state.name, age: this.state.age, height: this.state.height };
+    this.props.addSmurf(newSmurf);
     this.setState({ name: "", age: "", height: "" });
   }
 
@@ -31,9 +29,23 @@ class App extends Component {
           placeholder="name"
           name="name"
           value={this.state.name}
-          onChange={this.handleInputChange}
+          onChange={event => this.setState({ [event.target.name]: event.target.value })}
         />
-        <button onClick={() => this.addSmurf()}>add</button>
+        <input 
+          type="text"
+          placeholder="age"
+          name="age"
+          value={this.state.age}
+          onChange={event => this.setState({ [event.target.name]: event.target.value })}
+        />
+        <input 
+          type="text"
+          placeholder="height"
+          name="height"
+          value={this.state.height}
+          onChange={event => this.setState({ [event.target.name]: event.target.value })}
+        />
+        <button onClick={() => this.handleAddSmurf()}>add</button>
       </div>
     )
   }
@@ -42,6 +54,13 @@ class App extends Component {
     return (
       <div className="App">
         {this.newSmurfForm()}
+        {this.props.smurfs.map((smurf, index) => (
+          <ul key={smurf+index}>
+            <div>{smurf.name}</div>
+            <div>age: {smurf.age}</div>
+            <div>height: {smurf.height}</div>
+          </ul>
+        ))}
       </div>
     );
   }
