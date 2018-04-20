@@ -32,7 +32,7 @@ Redux-thunk allows us to perform async or conditional dispatch, it will be used 
 
 6. Which `react-redux` method links up our `components` with our `redux store`?
 
-The react-redux method that links up our components with our redux store is createStore().
+The react-redux method that links up our components with our redux store is connect().
 
 
 
