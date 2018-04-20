@@ -20,3 +20,26 @@
   This will guard your namespacing issues.
   Components can read your store as, `state` and not `state.fooReducer`.
 */
+
+import { PENDING, SUCCESS, ERROR} from '../actions';
+
+const intialState = {
+  smurfs: [],
+  pending: false,
+  success: false,
+  error: null
+}
+
+export default (state = intialState, action) => {
+  switch(action.type) {
+    case PENDING:
+      return { ...state, pending: true };
+    case SUCCESS:
+      return { ...state, smurfs: action.payload };
+    case ERROR:
+      return state;
+
+    default:
+      return state;
+  }
+};
