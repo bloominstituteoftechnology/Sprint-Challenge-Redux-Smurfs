@@ -29,13 +29,6 @@ App.propTypes = {
   smurfs: PropTypes.array
 }
 
-const mapStateToProps = state => ({
-  smurfs: state.smurfs,
-  fetchingSmurfs: false,
-  addingSmurf: false,
-  updatingSmurf: false,
-  deletingSmurfs: false,
-  error: null
-})
+const mapStateToProps = state => ({ ...state })
 
 export default connect(mapStateToProps, { fetchSmurfs, addSmurf })(App)

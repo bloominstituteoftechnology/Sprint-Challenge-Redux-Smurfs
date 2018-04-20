@@ -13,12 +13,11 @@ export const fetchSmurfs = () => async dispatch => {
   try {
     const { data } = await get(ApiUrl)
     await dispatch({ type: SMURFS_FETCHED, payload: data })
-  } catch (error) {
+  } catch (e) {
     await dispatch({
       type: ERROR,
-      payload: 'Can not fetch smurfs from their village'
+      payload: e.response.data.Error
     })
-    await console.log('error', error)
   }
 }
 
