@@ -1,7 +1,10 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
+import React, { Component } from "react";
+
 import * as ActType from "../actions/actionTypes";
+import { connect } from "react-redux";
 
 const initialState = {
   smurfs: [],

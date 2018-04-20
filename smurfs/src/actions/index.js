@@ -2,7 +2,7 @@ import axios from "axios";
 
 import * as Actions from "./actionTypes";
 
-export { fetchSmurf, addSmurf, deleteSmurf, updateSmurf}
+
 
 // FETCHING
 const fetchSmurf = () => {
@@ -99,3 +99,5 @@ const updateSmurf = smurfId => {
    U - updateSmurf
    D - deleteSmurf
 */
+
+export { fetchSmurf, addSmurf, deleteSmurf, updateSmurf}
