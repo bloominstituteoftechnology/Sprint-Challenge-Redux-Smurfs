@@ -2,6 +2,7 @@ import {
   FETCHING_SMURFS,
   ADDING_SMURFS,
   DELETING_SMURFS,
+  UPDATING_SMURFS,
   FETCHED_SMURFS,
   ERROR
 } from "../actions/index.js";
@@ -23,11 +24,14 @@ const smurfsReducer = (state = initialState, action) => {
       return Object.assign({}, state, { addingSmurf: true });
     case DELETING_SMURFS:
       return Object.assign({}, state, { deletingSmurfs: true });
+    case UPDATING_SMURFS:
+      return Object.assign({}, state, { updatingSmurf: true });
     case FETCHED_SMURFS:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: false,
         deletingSmurfs: false,
+        updatingSmurf: false,
         smurfs: action.payload
       });
     case ERROR:
@@ -35,6 +39,7 @@ const smurfsReducer = (state = initialState, action) => {
         fetchingSmurfs: false,
         addingSmurf: false,
         deletingsmurf: false,
+        updatingSmurf: false,
         error: action.payload
       });
     default:
