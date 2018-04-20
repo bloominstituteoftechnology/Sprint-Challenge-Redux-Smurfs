@@ -28,11 +28,13 @@ const smurfsReducer = (state = initialState, action) => {
         fetchingSmurfs: false,
         addingSmurf: false,
         deletingSmurfs: false,
-        smurfs: [...action.payload]
+        smurfs: action.payload
       });
     case ERROR:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
+        addingSmurf: false,
+        deletingsmurf: false,
         error: action.payload
       });
     default:

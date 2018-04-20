@@ -25,16 +25,16 @@ export const createSmurfs = smurf => {
   // a smurf has the form {name: "", age: "", height: "", id: num }
   const smurfs = axios.post(`http://localhost:3333/smurfs`, smurf);
   return dispatch => {
+    dispatch({ type: ADDING_SMURFS });
     smurfs
       .then(response => {
-        dispatch({ type: ADDING_SMURFS });
         dispatch(getSmurfs());
       })
       .catch(error => {
         console.error(error);
         dispatch({
           type: ERROR,
-          payload: "Error fetching smurfs after posting"
+          payload: "Error posting smurfs"
         });
       });
   };
@@ -43,16 +43,16 @@ export const createSmurfs = smurf => {
 export const deleteSmurfs = id => {
   const smurfs = axios.delete(`http://localhost:3333/smurfs/${id}`);
   return dispatch => {
+    dispatch({ type: DELETING_SMURFS });
     smurfs
       .then(response => {
-        dispatch({ type: DELETING_SMURFS });
         dispatch(getSmurfs());
       })
       .catch(error => {
         console.error(error);
         dispatch({
           type: ERROR,
-          payload: "Error fetching smurfs after posting"
+          payload: "Error deleting smurfs"
         });
       });
   };
