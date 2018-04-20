@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import rootreducer from './reducers'; /* You need some sore of reducer */
 
 const store = createStore(
-  () => {rootreducer}, // this is the most basic reducer. Replace it.
+  rootreducer, // this is the most basic reducer. Replace it.
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk, logger) /* be sure to throw in the proper middlewares here*/
 );
