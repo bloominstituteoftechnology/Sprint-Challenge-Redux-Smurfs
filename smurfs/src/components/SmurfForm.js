@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './SmurfForm.css';
+
 export const SmurfForm = props => {
   return ( 
     // Set up input fields that control
