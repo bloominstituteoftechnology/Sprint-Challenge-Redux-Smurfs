@@ -3,19 +3,20 @@ import { connect } from "react-redux";
 import { deleteSmurfs } from "../actions/";
 
 const Smurf = props => {
-	return [
-		<li>{`Name: ${props.smurf.name}`}</li>,
-		<li>{`Age: ${props.smurf.age}`}</li>,
-		<li>{`Height: ${props.smurf.height}`}</li>,
-		// WORK IN PROGRESS: DELETE not fully functional yet.
-		<button
-			onClick={() => {
-				props.deleteSmurfs(props.smurf.id);
-			}}
-		>
-			Delete Smurf
-		</button>
-	];
+	return (
+		<div>
+			<p>{`Name: ${props.smurf.name}`}</p>
+			<p>{`Age: ${props.smurf.age}`}</p>
+			<p>{`Height: ${props.smurf.height}`}</p>
+			<button
+				onClick={() => {
+					props.deleteSmurfs(props.smurf.id);
+				}}
+			>
+				Delete Smurf
+			</button>
+		</div>
+	);
 };
 
 const mapStateToProps = state => {
