@@ -1,28 +1,79 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I connect my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
+
 class App extends Component {
+  state = {
+    name: '',
+    age: '',
+    height: ''
+  };
+
   componentDidMount() {
-    this.props.getSmurfs()
+    this.props.getSmurfs();
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
+  handleSubmit() {
+    this.props.addSmurf(this.state);
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    });
   }
 
   render() {
-    const { addSmurf, state: { main: { data }}} = this.props
     return (
-      <div>
-        <Form onSubmit={addSmurf} />
-        <List data={data} />
+      <div className="App">
+        <h1>Smurf Village</h1>
+        {this.props.smurfs.map(smurf => {
+          return (
+            <div key={smurf.id}>
+              <h4>{smurf.name}</h4>
+              <p>
+                Age: {smurf.age} years | Height: {smurf.height}cm
+              </p>
+              <button onClick={() => this.props.deleteSmurf(smurf.id)}>
+                Delete
+              </button>
+            </div>
+          );
+        })}
+        <form onSubmit={() => this.handleSubmit()}>
+          <input
+            name="name"
+            placeholder="Name"
+            onChange={this.handleChange.bind(this)}
+          />
+          <input
+            name="age"
+            placeholder="Age"
+            onChange={this.handleChange.bind(this)}
+          />
+          <input
+            name="height"
+            placeholder="Height"
+            onChange={this.handleChange.bind(this)}
+          />
+          <input type="submit" />
+        </form>
       </div>
     );
   }
 }
 
-const mapState = state => ({ state });
-const actions = { addSmurf, getSmurfs };
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    isFetching: state.isFetching
+  };
+};
 
-export default connect(mapState, actions)(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf })(App);
