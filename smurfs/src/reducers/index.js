@@ -11,11 +11,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  // starting smurphs to confirm .map is working before adding a way to create new smurphs
-  smurfs: [
-    // { id: 0, name: "Eddie Smurphy", age: 50, height: "short" },
-    // { id: 1, name: "Eduardo Smurphificius", age: 42, height: "shortish" }
-  ],
+  smurfs: [],
   fetchingSmurfs: false,
   creatingSmurf: false,
   updatingSmurf: false,

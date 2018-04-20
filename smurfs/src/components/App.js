@@ -5,8 +5,18 @@ import "./App.css";
 import { fetchSmurfs, createSmurf, updateSmurf, deleteSmurf } from "../actions";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      age: "",
+      height: ""
+    };
+  }
+
   componentDidMount() {
     this.props.fetchSmurfs();
+    this.setState({ name: "", age: "", height: "" });
   }
 
   defaultSmurfs = () => {
@@ -26,6 +36,23 @@ class App extends Component {
     this.props.createSmurf(eduardoSmurficius);
   };
 
+  handleInput = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  createSmurf = smurf => {
+    smurf.id = this.props.smurfs.length;
+    this.props.createSmurf(smurf);
+  };
+
+  updateSmurf = () => {
+    this.props.updateSmurf();
+  };
+
+  deleteSmurf = () => {
+    this.props.deleteSmurf();
+  };
+
   render() {
     return (
       <div className="App">
@@ -34,8 +61,32 @@ class App extends Component {
           Create default smurfs
         </button>
         {this.props.smurfs.map(smurf => {
-          return <div key={smurf.id}>{smurf.name}</div>;
+          return <div key={smurf.name}>{smurf.name}</div>;
         })}
+        <div>
+          <input
+            name="name"
+            type="text"
+            placeholder="Name..."
+            value={this.state.name}
+            onChange={this.handleInput}
+          />
+          <input
+            name="age"
+            type="text"
+            placeholder="Age..."
+            value={this.state.age}
+            onChange={this.handleInput}
+          />
+          <input
+            name="height"
+            type="text"
+            placeholder="Height..."
+            value={this.state.height}
+            onChange={this.handleInput}
+          />
+          <button onClick={() => this.createSmurf(this.state)}>Submit</button>
+        </div>
       </div>
     );
   }
