@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { getSmurfs, addSmurf } from "../actions";
+import { getSmurfs, addSmurf, deleteSmurf } from "../actions";
 import Smurf from './Smurf';
 /*
  to wire this component up you're going to need a few things.
@@ -29,13 +29,14 @@ class App extends Component {
     this.setState({name: '', age: '', height: ''});
   }
 
+  onDelete = id => {
+    this.props.deleteSmurf(id);
+  }
+
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
         <form onSubmit={this.onFormSubmit}>
           <input
             type="text"
@@ -60,7 +61,7 @@ class App extends Component {
           />
           <button type="submit">Add Smurf</button>
         </form>
-        <ul>{this.props.smurfs.map(smurf => <Smurf key={`smurf${smurf.id}`} smurf={smurf}/>)}</ul>
+        <ul>{this.props.smurfs.map(smurf => <Smurf key={`smurf${smurf.id}`} smurf={smurf} delete={this.onDelete}/>)}</ul>
       </div>
     );
   }
@@ -72,4 +73,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf })(App);

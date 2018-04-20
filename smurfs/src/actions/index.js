@@ -60,3 +60,21 @@ export const addSmurf = data => {
     );
   };
 };
+
+export const deleteSmurf = id => {
+  const deleteRequest = axios.delete(`http://localhost:3333/smurfs/${id}`);
+  return dispatch => {
+    deleteRequest.then(
+      response => {
+        dispatch(getSmurfs());
+      }
+    ).catch(
+      err => {
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
+      }
+    );
+  };
+}
