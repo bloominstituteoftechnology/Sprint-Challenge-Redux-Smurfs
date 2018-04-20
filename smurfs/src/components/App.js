@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {getSmurfs, addSmurf} from "../actions";
+import SmurfList from '../components/Smurfs/SmurfList';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -66,11 +67,12 @@ class App extends Component {
               </button>
           </form>
 
-          <ul>
-              {this.props.smurfs.map((smurf) => {
-                  return <li id={smurf.id} key={smurf.id}>{smurf.name}</li>
-              })}
-          </ul>
+          <SmurfList/>
+          {/*<ul>*/}
+              {/*{this.props.smurfs.map((smurf) => {*/}
+                  {/*return <li id={smurf.id} key={smurf.id}>{smurf.name}</li>*/}
+              {/*})}*/}
+          {/*</ul>*/}
       </div>
     );
   }
@@ -81,7 +83,6 @@ const mapStateToProps  = state =>{
     return {
       smurfs: state.smurfs,
         addingSmurf: state.addingSmurf,
-      fetchingSmurfs: state.fetchingSmurfs
 
     };
 };
