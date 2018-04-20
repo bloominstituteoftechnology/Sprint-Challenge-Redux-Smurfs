@@ -67,15 +67,15 @@ class App extends Component {
           <div>Have fun!</div>
         </div>
         { (this.props.smurfs.length === 0) ? (
-                <h1> Smurfs in Redux </h1>
+                <h1> Smurfs In Redux </h1>
                 ) : (
         <div>{this.props.smurfs.map(((smurf) => {
           return (
             <div key={smurf.id} id={smurf.id}>
             <img src="smurf.jpg" />
-              <h1 id={smurf.name}>{smurf.name}</h1>
-              <h2>{smurf.age}</h2>
-              <h3>{smurf.height}</h3>
+              <h1 id={smurf.name}> My name is {smurf.name}</h1>
+              <h2>{smurf.age} years old</h2>
+              <h3>{smurf.height} cm</h3>
               <button onClick={this.handleDelete}>NO NOT SMURFETTE</button>
             </div>
           )
