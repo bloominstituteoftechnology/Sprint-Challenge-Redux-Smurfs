@@ -24,10 +24,10 @@ class App extends Component {
   };
 
   handleAddSmurf = event => {
-    const {name, age, height} = this.state;
-    this.props.smurfs.push({name, age, height});
-    this.setState({name: '', age: '', height: ''})
-  }
+    const { name, age, height } = this.state;
+    this.props.smurfs.push({ name, age, height });
+    this.setState({ name: "", age: "", height: "" });
+  };
 
   render() {
     return (
@@ -37,7 +37,7 @@ class App extends Component {
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
 
-        <div>
+        <div className="smurfForm">
           <form>
             <input
               type="text"
@@ -61,7 +61,19 @@ class App extends Component {
               onChange={this.handleInput}
             />
           </form>
-          <button onClick = {this.handleAddSmurf}>Add Smurf!</button>
+          <button onClick={this.handleAddSmurf}>Add Smurf!</button>
+        </div>
+
+        <div className="smurfList">
+          {this.props.smurfs.map(smurf => {
+            return (
+              <div key={smurf.id}>
+                <div>{smurf.name}</div>
+                <div>{smurf.age}</div>
+                <div>{smurf.height}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
     );
