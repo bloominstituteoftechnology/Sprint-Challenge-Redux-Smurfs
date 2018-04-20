@@ -3,6 +3,7 @@ import { Button } from 'reactstrap';
 import { deleteSmurf } from '../actions';
 import { connect } from 'react-redux';
 
+
 class Smurf extends Component{
 
   handleDelete = (id) => {
@@ -17,7 +18,10 @@ class Smurf extends Component{
         <td>{name}</td>
         <td>{age}</td>
         <td>{height}</td>
-        <td>
+        <td style={{ width: '1px' }}>
+          <Button color='primary' onClick={() => this.props.toggleModal(this.props.smurf)}>Update </Button>
+        </td>
+        <td style={{ width: '1px' }}>
           <Button color='danger' onClick={ () => this.handleDelete(id) }>Delete</Button>
         </td>
       </tr>

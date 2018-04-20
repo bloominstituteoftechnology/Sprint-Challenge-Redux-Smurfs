@@ -43,6 +43,18 @@ export const addSmurf = (smurf) => {
   }
 };
 
+export const updateSmurf = (smurf) => {
+  const promise = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+  return dispatch => {
+    dispatch({type: PENDING});
+    promise
+      .then(response => {
+        dispatch(fetchSmurfs());
+      })
+      .catch(err => console.log(err));
+  }
+};
+
 export const deleteSmurf = (id) => {
   const promise = axios.delete(`http://localhost:3333/smurfs/${id}`)
   return dispatch => {

@@ -22,7 +22,8 @@ class App extends Component {
     };
 
     this.state = {
-      newSmurf: this.blankSmurf
+      newSmurf: this.blankSmurf,
+      showUpdateModal: false
     };
   }
 
@@ -49,6 +50,9 @@ class App extends Component {
         <input name='age' onChange={this.handleAddInputFieldChange} value={this.state.newSmurf.age} />
         <input name='height' onChange={this.handleAddInputFieldChange} value={this.state.newSmurf.height} />
         <Button color='primary' onClick={this.handleAddSmurfSubmit}>Add A Smurf!</Button>
+
+
+
       </div>
     );
   }
