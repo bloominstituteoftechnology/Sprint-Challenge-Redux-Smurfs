@@ -38,6 +38,12 @@ class App extends Component {
         {/* Connect with state and pass down necessary functions */}
         {this.props.smurfs.map(smurf => (
           <SmurfCard 
+            key={smurf.id}
+            smurf={smurf}
+            formInput={this.state}
+            resetInputForm={this.resetInputForm}          
+            deleteSmurf={this.props.deleteSmurf}
+            updateSmurf={this.props.updateSmurf}
           />
         ))}
       </div>
