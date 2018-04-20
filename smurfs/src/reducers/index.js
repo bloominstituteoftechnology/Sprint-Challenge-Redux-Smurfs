@@ -21,7 +21,7 @@ const initialState = {
   Components can read your store as, `state` and not `state.fooReducer`.
 */
 
-const rootReducer = (state, action) => {
+const rootReducer = (state = initialState, action) => {
   switch(action.type) {
     case Type.GET_PENDING:
       return {...state, fetchingSmurfs: true, error: null};
@@ -29,6 +29,8 @@ const rootReducer = (state, action) => {
       return {...state, fetchingSmurfs: false, error: null, smurfs: action.payload};
     case Type.ERROR:
       return {...state, error: action.payload};
+    default:
+      return state;
   }
 };
 
