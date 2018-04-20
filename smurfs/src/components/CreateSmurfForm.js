@@ -23,7 +23,10 @@ const CreateSmurfForm = props => {
             />           
             <button
                type='button'
-              onClick={() => props.createSmurf(props.smurf)} >
+              onClick={() => {
+                props.createSmurf(props.smurf);
+              
+              }} >
               CrEaTe SmUrF </button>
           </form>
             );

@@ -6,10 +6,10 @@ const Smurfs = props => {
     <div>
       {props.smurfList.map(smurf => {
         return [
-          <div key={smurf.id} className="Smurfs">
+          <div key={smurf.id}>
                 <h3> {`Name: ${smurf.name}`} </h3>
                 <div> {`Age: ${smurf.age}`} </div>
-                <div> {`height: ${smurf.height}`} </div>
+                <div> {`Height: ${smurf.height}`} </div>
           </div>
         ];
       })}

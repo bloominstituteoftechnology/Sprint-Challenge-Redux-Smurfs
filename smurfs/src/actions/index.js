@@ -12,11 +12,11 @@ export const fetchSmurfs = () => {
   return dispatch => {
     dispatch({ type: FETCHING_SMURFS})
     smurfs
-      .then(({ response }) => {
-        dispatch({ type: FETCHED_SMURFS, payload: response });
+      .then( response => {
+        dispatch({ type: FETCHED_SMURFS, payload: response.data });
       })
       .catch(err => {
-        console.log(`You've been smurf'd`, err);
+        console.log(`Smurf'd!`, err);
         dispatch({ type: ERROR_SMURFS, payload: "Error Fetching Smurfs :("});
       });
   };
