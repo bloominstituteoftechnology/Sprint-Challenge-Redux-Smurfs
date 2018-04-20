@@ -8,9 +8,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import smurfReducer from './reducers';
 
-const store = createStore(
-  (smurfReducer) => {}, // this is the most basic reducer. Replace it.
-  applyMiddleware(thunk)
+const store = createStore(smurfReducer, applyMiddleware(thunk)
 );
 
 ReactDOM.render(
