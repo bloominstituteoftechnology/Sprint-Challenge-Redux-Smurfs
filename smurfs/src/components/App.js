@@ -48,6 +48,10 @@ class App extends Component {
         ))}
         {/* Create form that can see App state and handle add functionality */}
         <SmurfForm 
+          formInput={this.state}
+          resetInputForm={this.resetInputForm} 
+          updateInputState={this.updateInputState}
+          addSmurf={this.props.addSmurf} 
         />
       </div>
     );
