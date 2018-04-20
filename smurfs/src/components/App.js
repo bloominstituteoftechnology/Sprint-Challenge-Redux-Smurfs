@@ -16,7 +16,6 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchSmurfs();
-    this.setState({ name: "", age: "", height: "" });
   }
 
   defaultSmurfs = () => {
@@ -43,14 +42,17 @@ class App extends Component {
   createSmurf = smurf => {
     smurf.id = this.props.smurfs.length;
     this.props.createSmurf(smurf);
+    this.setState({ name: "", age: "", height: "", smurfs: this.props.smurfs });
   };
 
-  updateSmurf = () => {
-    this.props.updateSmurf();
+  updateSmurf = smurf => {
+    this.props.updateSmurf(smurf);
+    this.setState({ name: "", age: "", height: "", smurfs: this.props.smurfs });
   };
 
-  deleteSmurf = () => {
-    this.props.deleteSmurf();
+  deleteSmurf = smurf => {
+    this.props.deleteSmurf(smurf);
+    this.setState({ smurfs: this.props.smurfs });
   };
 
   render() {
@@ -61,9 +63,17 @@ class App extends Component {
           Create default smurfs
         </button>
         {this.props.smurfs.map(smurf => {
-          return <div key={smurf.name}>{smurf.name}</div>;
+          return (
+            <div key={smurf.name}>
+              {smurf.name}
+              {` `}
+              <button onClick={() => this.updateSmurf(this.state)}>Edit</button>
+              <button onClick={() => this.deleteSmurf(smurf)}>Delete</button>
+            </div>
+          );
         })}
         <div>
+          <br />
           <input
             name="name"
             type="text"
@@ -71,6 +81,7 @@ class App extends Component {
             value={this.state.name}
             onChange={this.handleInput}
           />
+          <br />
           <input
             name="age"
             type="text"
@@ -78,6 +89,7 @@ class App extends Component {
             value={this.state.age}
             onChange={this.handleInput}
           />
+          <br />
           <input
             name="height"
             type="text"
@@ -85,6 +97,7 @@ class App extends Component {
             value={this.state.height}
             onChange={this.handleInput}
           />
+          <br />
           <button onClick={() => this.createSmurf(this.state)}>Submit</button>
         </div>
       </div>
