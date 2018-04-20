@@ -3,6 +3,7 @@ import axios from "axios";
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const ADDING_SMURFS = "ADDING_SMURFS";
 export const DELETING_SMURFS = "DELETING_SMURFS";
+export const UPDATING_SMURFS = "UPDATING_SMURFS";
 export const FETCHED_SMURFS = "FETCHED_SMURFS";
 export const ERROR = "ERROR";
 
@@ -53,6 +54,26 @@ export const deleteSmurfs = id => {
         dispatch({
           type: ERROR,
           payload: "Error deleting smurfs"
+        });
+      });
+  };
+};
+
+export const updatingSmurfs = smurf => {
+  console.log("smurf: ", smurf);
+  const smurfs = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
+  return dispatch => {
+    dispatch({ type: UPDATING_SMURFS });
+    smurfs
+      .then(response => {
+        console.log("UPDATING RESPONSE: ", response);
+        dispatch(getSmurfs());
+      })
+      .catch(error => {
+        console.error(error);
+        dispatch({
+          type: ERROR,
+          payload: "Error updating smurfs"
         });
       });
   };
