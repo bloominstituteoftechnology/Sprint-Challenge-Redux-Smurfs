@@ -3,6 +3,15 @@ import { // Import action types
   UPDATING_SMURF, DELETING_SMURFS,
   SMURFS_SUCCESS, SMURFS_ERROR } from '../actions';
 
+// Set initial state
+const initialState = {
+  smurfs: [],
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurfs: false,
+  error: null
+}
 /*
  Your initial/default state for this project could look a lot like this
  {
