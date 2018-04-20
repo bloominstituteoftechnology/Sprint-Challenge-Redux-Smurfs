@@ -21,27 +21,38 @@ export const ERROR = 'ERROR';
 */
 
 
-export const getSmurfs = () => (dispatch) => {
-    dispatch({ type: GETTING });
-
-    axios.get('http://localhost:3333/smurfs')
-      .then((response) => {
-        dispatch({ type: GOT, smurfs: response.data })
-      })
-      .catch((error) => {
-        dispatch({ type: ERROR, errorMessage: error.response.data.Error })
-      });
+export const getSmurfs = () => {
+  const getRequest = axios.get('http://localhost:3333/smurfs');
+  return dispatch => {
+    dispatch({type: GETTING});
+    getRequest
+    .then(response => {
+        dispatch({
+          type: GOT,
+          payload: response.data
+        });
+      }
+    ).catch(err => {
+        dispatch({ type: ERROR, payload: err});
+      }
+    );
   };
+};
 
-  export const addSmurf = (name, age, height) => (dispatch) => {
-    dispatch({ type: ADDING });
-
-    axios.post('http://localhost:3333/smurfs', {name, age, height})
-      .then((response) => {
-        dispatch({ type: ADDED, smurfs: response.data })
-      })
-      .catch((error) => {
-        console.log(error)
-        dispatch({ type: ERROR, errorMessage: error.response.data.Error })
-      });
+export const addSmurf = data => {
+  const postRequest = axios.post('http://localhost:3333/smurfs', data);
+  return dispatch => {
+    dispatch({type: ADDING});
+    postRequest
+    .then(response => {
+        dispatch({
+          type: ADDED,
+          payload: response.data
+        });
+      }
+    ).catch(err => {
+      dispatch({ type: ERROR, payload: err });
+      }
+    );
   };
+};

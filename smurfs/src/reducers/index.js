@@ -17,7 +17,6 @@ import { GETTING, GOT, ADDING, ADDED, ERROR } from '../actions';
 */
 const initialState = {
   smurfs: [],
-  smurf: {},
   getting: false,
   adding: false,
   error: null,
