@@ -4,15 +4,15 @@ import * as Actions from "./actionTypes";
 
 export { fetchSmurf, addSmurf, deleteSmurf, updateSmurf}
 
+// FETCHING
 const fetchSmurf = () => {
   const smurfs = axios.get(`http://localhost:3333/smurfs`);
   return dispatch => {
     dispatch({ type: Actions.FETCHING_SMURF });
-
     smurfs
       .then(response => {
         dispatch({
-          type: Actions.SUCCESS_FRIENDS,
+          type: Actions.SUCCESS_SMURFS,
           payload: response.data
         });
       })
@@ -26,6 +26,7 @@ const fetchSmurf = () => {
   };
 };
 
+// CREATING
 const addSmurf = data => {
   const smurfs = axios.post(`http://localhost:3333/smurfs`, data);
   return dispatch => {
@@ -43,11 +44,12 @@ const addSmurf = data => {
   };
 };
 
+
+// DELETING
 const deleteSmurf = smurfId => {
   const smurfs = axios.delete(`http://localhost:3333/smurfs/${smurfId}`, smurfId);
   return dispatch => {
     dispatch({ type: Actions.DELETING_SMURF });
-
     smurfs
       .then(response => {
         dispatch(fetchSmurf());
@@ -61,15 +63,15 @@ const deleteSmurf = smurfId => {
   };
 };
 
-const updateSmurf = data => {
-  const smurfs = axios.post(`http://localhost:3333/smurfs`, data);
+// UPDATING
+const updateSmurf = smurfId => {
+  const smurfs = axios.put(`http://localhost:3333/smurfs/${smurfId}`, smurfId);
   return dispatch => {
     dispatch({ type: Actions.UPDATING_SMURF });
-
     smurfs
       .then(response => {
         dispatch({
-          type: Actions.SUCCESS_FRIENDS,
+          type: Actions.SUCCESS_SMURFS,
           payload: response.data
         });
       })
