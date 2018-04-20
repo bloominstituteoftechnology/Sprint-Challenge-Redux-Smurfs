@@ -3,22 +3,24 @@
   border-radius: 15px;
   box-shadow: 5px 10px 18px #888888;
   margin: 20px auto;
-  padding: 10px 0;
   max-width: 300px;
+  padding: 10px 0;
 }
 
 .smurfForm_inputFields {
+  border-top: 2px solid grey;
   display: flex;
   flex-flow: column;
+  margin: 0 auto 5px;
   max-width: 200px;
-  margin: 0 auto 3px;
+  padding-top: 5px;
 }
 
 .smurfForm_inputFields input {
   border: 1px solid grey;
   border-radius: 3px;
-  text-align: center;
   margin: 2px;
+  text-align: center;
 }
 
 .smurfForm_inputFields input:nth-child(2) {
