@@ -7,10 +7,13 @@ import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import /* You need some sore of reducer */ './reducers';
+import { append } from './C:/Users/Juarin/AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/vary';
+
+const middleware = applyMiddleware(thunk, logger);
 
 const store = createStore(
   () => {}, // this is the most basic reducer. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+  middleware
 );
 
 ReactDOM.render(

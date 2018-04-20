@@ -1,6 +1,4 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import { PENDING, SUCCESS, ERROR } from '../actions';
 
 /*
  Your initial/default state for this project could look a lot like this
