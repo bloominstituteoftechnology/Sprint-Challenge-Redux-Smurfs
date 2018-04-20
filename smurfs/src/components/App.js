@@ -73,7 +73,7 @@ class App extends Component {
             <div>age: {smurf.age}</div>
             <div>height: {smurf.height}</div>
             <div>
-              <button onClick={() => console.log(smurf.id)}>delete</button>
+              <button onClick={() => this.props.deleteSmurf(smurf.id)}>delete</button>
               <button onClick={() => this.setState({ update: true, updateID: smurf.id })}>update</button>
             </div>
             {this.state.update && this.state.updateID === smurf.id ? (
