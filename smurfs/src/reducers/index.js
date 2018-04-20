@@ -1,7 +1,13 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { SMURFS_FETCHING, SMURF_ADDED, SMURF_ERROR} from '../actions'
+import {
+  SMURFS_FETCHING,
+  SMURFS_FETCHED,
+  SMURF_ADDING,
+  SMURF_ADDED,
+  SMURF_ERROR
+} from "../actions";
 
 const initialSmurfs = {
   smurfs: [],
@@ -26,17 +32,27 @@ const rootReducer = (state = initialSmurfs, action) => {
         ...state,
         fetchingSmurfs: true
       };
-    case SMURF_ADDED:
+    case SMURFS_FETCHED:
       return {
         ...state,
         fetchingSmurfs: false,
-        addingSmurf: true,
+        smurfs: action.payload
+      };
+    case SMURF_ADDING:
+      return {
+        ...state,
+        addingSmurf: true
+      };
+    case SMURF_ADDED:
+      return {
+        ...state,
+        addingSmurf: false,
         smurfs: action.payload
       };
     case SMURF_ERROR:
       return {
         ...state,
-        error: "Smurf Error!"
+        error: action.payload
       };
     default:
       return state;
