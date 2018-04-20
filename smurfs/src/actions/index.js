@@ -19,22 +19,22 @@ export const ERROR = 'ERROR';
 */
 export const getSmurfs = () => {
   const getRequest = axios.get('http://localhost:3333/smurfs');
-  return (
+  return dispatch => {
     getRequest.then(
       response => {
         console.log(response);
-        return {
+        dispatch({
           type: GET_SUCCESS,
           payload: response.data
-        }
+        });
       }
     ).catch(
       err => {
-        return {
+        dispatch({
           type: ERROR,
           payload: err
-        }
+        });
       }
     );
-  );
+  };
 };
