@@ -65,6 +65,7 @@ class App extends Component {
           <h1>SMURFS! 2.0 W/ Redux</h1>
           <div>Welcome to your Redux version of Smurfs!</div>
           <div>Have fun!</div>
+          <br/>
         </div>
         { (this.props.smurfs.length === 0) ? (
                 <h1> Smurfs In Redux </h1>
@@ -72,7 +73,7 @@ class App extends Component {
         <div>{this.props.smurfs.map(((smurf) => {
           return (
             <div key={smurf.id} id={smurf.id}>
-            <img src="smurf.jpg" />
+            <img className="Smurfers" src="smurf.jpg" />
               <h1 id={smurf.name}> My name is {smurf.name}</h1>
               <h2>{smurf.age} years old</h2>
               <h3>{smurf.height} cm</h3>
