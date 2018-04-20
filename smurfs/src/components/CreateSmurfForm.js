@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
 const CreateSmurfForm = props => {
-	// a smurf has the form {name: "", age: "", height: "", id: num }
 	return (
 		<form>
 			<input

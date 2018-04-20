@@ -37,11 +37,6 @@ class App extends Component {
     this.props.deleteSmurfs(id);
   };
   render() {
-    // console.log("PROPS: ", this.props);
-    // console.log("State: ", this.state);
-    // console.log(this.state.name);
-    // console.log(this.state.age);
-    // console.log(this.state.height);
     return [
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>

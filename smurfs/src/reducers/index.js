@@ -14,7 +14,7 @@ const initialState = {
   deletingSmurfs: false,
   error: null
 };
-// root reducer
+
 const smurfsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
