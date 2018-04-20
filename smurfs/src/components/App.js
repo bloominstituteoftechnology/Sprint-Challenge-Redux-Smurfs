@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getSmurfs, createSmurfs } from "../actions/";
 import "./App.css";
 import CreateSmurfForm from "./CreateSmurfForm";
+import Smurfs from "./Smurfs";
 
 class App extends Component {
   constructor(props) {
@@ -29,10 +30,11 @@ class App extends Component {
       height: this.state.height
     };
     this.props.createSmurfs(smurf);
-    // this.setState({ name: "", age: "", height: "" });
+    this.setState({ name: "", age: "", height: "" });
   };
   render() {
-    console.log("PROPS: ", this.props);
+    // console.log("PROPS: ", this.props);
+    // console.log("State: ", this.state);
     // console.log(this.state.name);
     // console.log(this.state.age);
     // console.log(this.state.height);
@@ -46,7 +48,8 @@ class App extends Component {
       <CreateSmurfForm
         handleNewInput={this.handleNewInput}
         handleCreateSmurf={this.handleCreateSmurf}
-      />
+      />,
+      <Smurfs smurfs={this.props.smurfs} />
     ];
   }
 }
