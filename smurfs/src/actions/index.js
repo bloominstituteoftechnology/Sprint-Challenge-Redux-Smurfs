@@ -6,6 +6,7 @@ export const ERROR = "ERROR";
 export const DELETING = "DELETING";
 export const DELETED = "DELETED";
 export const ADDING = "ADDING";
+export const ADDED = "ADDED";
 
 export const fetchSmurfs = () => {
   const promise = axios.get("http://localhost:3333/smurfs");
@@ -29,7 +30,7 @@ export const addSmurfs = smurf => {
 
     promise
       .then(response => {
-        dispatch({ type: FETCHED, payload: response.data });
+        dispatch({ type: ADDED, payload: response.data });
       })
       .catch(err => {
         dispatch({
