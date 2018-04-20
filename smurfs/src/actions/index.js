@@ -45,6 +45,25 @@ export const addSmurf = smurf => {
   }
 }
 
+export const updateSmurf = smurf => {
+  const promise = axios.put(`http://localhost:5000/smurfs/${smurf.id}`, smurf)
+  return dispatch => {
+    dispatch({ type: UPDATING_SMURFS })
+    promise.then(response => {
+      dispatch({
+        type: SUCCESS,
+        payload: response.data
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err
+      })
+    })
+  }
+}
+
 export const deleteSmurf = smurfID => {
   const promise = axios.delete(`http://localhost:5000/smurfs/${smurfID}`)
   return dispatch => {
