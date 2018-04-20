@@ -30,3 +30,16 @@ export const fetchSmurfs = () => {
       });
   };
 };
+
+export const addSmurf = data => {
+  const smurf = axios.post(`http://localhost:3333/smurfs`, data);
+  return dispatch => {
+    smurf
+      .then(res => {
+        dispatch(fetchSmurfs());
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
