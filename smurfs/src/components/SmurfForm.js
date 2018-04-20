@@ -13,6 +13,13 @@ export const SmurfForm = props => {
           value={props.formInput.name}
           onChange={props.updateInputState}
         />
+        <input
+          type="number"
+          name="age"
+          placeholder="age"
+          value={props.formInput.age}
+          onChange={props.updateInputState}
+        />
       </form>
     </div>
   )
