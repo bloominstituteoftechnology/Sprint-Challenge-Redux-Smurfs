@@ -28,7 +28,26 @@ export const getSmurfs = () => {
       })
       .catch(error => {
         console.error(error);
-        dispatch({type: ERROR, payload "Error fetching smurfs"})
+        dispatch({ type: ERROR, payload: "Error fetching smurfs" });
+      });
+  };
+};
+
+export const createSmurfs = smurf => {
+  // a smurf has the form {name: "", age: "", height: "", id: num }
+  const smurfs = axios.post(`http://localhost:3333/smurfs/${id}`, smurf);
+  return dispatch => {
+    smurfs
+      .then(response => {
+        // getSmurfs after posting a new smurf
+        dispatch(getSmurfs());
+      })
+      .catch(error => {
+        console.error(error);
+        dispatch({
+          type: ERROR,
+          payload: "Error fetching smurfs after posting"
+        });
       });
   };
 };
