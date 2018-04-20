@@ -8,10 +8,11 @@ const Smurfs = props => {
 				return [
 					<li>{`Name: ${smurf.name}`}</li>,
 					<li>{smurf.age}</li>,
-					<li>{smurf.height}</li>
-					<button onClick={()=> {
-						props.handleDeleteSmurf(smurf.id);
-					}}
+					<li>{smurf.height}</li>,
+					<button
+						onClick={() => {
+							props.handleDeleteSmurf(smurf.id);
+						}}
 					>
 						Delete Smurf
 					</button>

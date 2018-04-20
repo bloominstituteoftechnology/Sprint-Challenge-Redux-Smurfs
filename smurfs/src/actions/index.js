@@ -5,6 +5,7 @@ import axios from "axios";
 */
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const ADDING_SMURFS = "ADDING_SMURFS";
+export const DELETING_SMURFS = "DELETING_SMURFS";
 export const FETCHED_SMURFS = "FETCHED_SMURFS";
 export const ERROR = "ERROR";
 /*
@@ -42,6 +43,25 @@ export const createSmurfs = smurf => {
       .then(response => {
         // getSmurfs after posting a new smurf
         dispatch({ type: ADDING_SMURFS });
+        dispatch(getSmurfs());
+      })
+      .catch(error => {
+        console.error(error);
+        dispatch({
+          type: ERROR,
+          payload: "Error fetching smurfs after posting"
+        });
+      });
+  };
+};
+
+export const deleteSmurfs = id => {
+  const smurfs = axios.delete(`http://localhost:3333/smurfs/${id}`);
+  return dispatch => {
+    smurfs
+      .then(response => {
+        // getSmurfs after posting a new smurf
+        dispatch({ type: DELETING_SMURFS });
         dispatch(getSmurfs());
       })
       .catch(error => {
