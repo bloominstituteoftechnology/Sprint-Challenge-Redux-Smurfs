@@ -45,7 +45,7 @@ export const addSmurf = data => {
 };
 
 export const updateSmurf = (id, data) => {
-  const smurf = axios.put(`http://localhost:333/smurfs/${id}`, data);
+  const smurf = axios.put(`http://localhost:3333/smurfs/${id}`, data);
   return dispatch => {
     smurf
       .then(res => {
