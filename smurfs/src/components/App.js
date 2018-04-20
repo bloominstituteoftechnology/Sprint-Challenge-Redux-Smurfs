@@ -27,7 +27,7 @@ class App extends Component {
   // }
 
   render() {
-    console.log("this.props.whatever:", this.props.addSmurf); // returning normal ✓
+    console.log("this.props.whatever:", this.props.smurfs); // returning normal ✓
     return (
       <div className="App">
         <header>
@@ -38,10 +38,8 @@ class App extends Component {
         </header>
 
         <div className="MainContainer">
-          <div>
-            {this.props.fetchSmurf ? (<h1>Loading Smurfs</h1>) : null}
-            {/* <InputField inputState={this.state} onChangeFunc={this.onChangeFunc()} /> */}
-          </div>
+          {/* {this.props.fetchSmurf ? <h1>Loading Smurfs</h1> : null} */}
+          {/* <InputField inputState={this.state} onChangeFunc={this.onChangeFunc()} /> */}
 
           <div className="InputField">
             <input
@@ -68,21 +66,33 @@ class App extends Component {
               onChange={e => this.setState({ [e.target.name]: e.target.value })}
             />
 
-            <button onClick={() => {
-              this.props.addSmurf({
-                name: this.state.name,
-                age: this.state.age,
-                height: this.state.height
-              });
-              this.setState({ friend: "", age: "", height: "" });
-            }}>
-            Add smurf
+            <button
+              onClick={() => {
+                this.props.addSmurf({
+                  name: this.state.name,
+                  age: this.state.age,
+                  height: this.state.height
+                });
+                this.setState({ friend: "", age: "", height: "" });
+              }}
+            >
+              Add smurf
             </button>
 
             {/*end of 'InputField' */}
           </div>
 
-          <div className="List">something random</div>
+          <div className="SmurfList">
+            <h1>SmurfList</h1>
+            {this.props.smurfs.map(eachSmurf => (
+              <div key={eachSmurf.id}>
+                {console.log("eachFriend console", eachSmurf)}
+                <div>Name: {eachSmurf.name}</div>
+                <div>Age: {eachSmurf.age}</div>
+                <div>height: {eachSmurf.height}</div>
+              </div>
+            ))}
+          </div>
 
           {/*end of 'MainContainer' */}
         </div>
@@ -94,7 +104,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("Chk state", state); // state is loading
   return {
     smurfs: state.smurfs,
     error: state.error,
