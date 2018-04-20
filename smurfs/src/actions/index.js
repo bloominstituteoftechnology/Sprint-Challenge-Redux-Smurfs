@@ -3,6 +3,10 @@
   Be sure to export each action type so you can pull it into your reducer
 */
 
+export const FETCHING = 'FETCHING';
+export const FETCHED = 'FETCHED';
+export const FETCHING_ERROR = 'FETCHING_ERROR';
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
