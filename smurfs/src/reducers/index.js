@@ -23,9 +23,9 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch(action.type) {
-    case Type.GET_PENDING:
+    case Type.CR_PENDING:
       return {...state, fetchingSmurfs: true, error: null};
-    case Type.GET_SUCCESS:
+    case Type.CR_SUCCESS:
       return {...state, fetchingSmurfs: false, error: null, smurfs: action.payload};
     case Type.ERROR:
       return {...state, error: action.payload};
