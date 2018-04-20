@@ -1,7 +1,11 @@
+import axios from 'axios';
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+export const GET_PENDING = 'GET_PENDING';
+export const GET_SUCCESS = 'GET_SUCCESS';
+export const ERROR = 'ERROR';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -13,3 +17,24 @@
    U - updateSmurf
    D - deleteSmurf
 */
+export const getSmurfs = () => {
+  const getRequest = axios.get('http://localhost:3333/smurfs');
+  return (
+    getRequest.then(
+      response => {
+        console.log(response);
+        return {
+          type: GET_SUCCESS,
+          payload: response.data
+        }
+      }
+    ).catch(
+      err => {
+        return {
+          type: ERROR,
+          payload: err
+        }
+      }
+    );
+  );
+};
