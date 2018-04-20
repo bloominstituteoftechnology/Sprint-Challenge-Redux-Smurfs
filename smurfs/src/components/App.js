@@ -41,13 +41,7 @@ class App extends Component {
 
         <Smurfs smurfList={this.props.smurfs} />
 
-        {/* <div>
-            {this.props.smurfs.map((smurf, index) => {
-              return [
-                <div key={'My' + index}> { smurf } </div>
-              ];
-            })}
-        </div> */}
+
       </div>
     );
   }
