@@ -10,7 +10,7 @@ const initialState = {
   error: null,
 }
 
-export const smurfReducers = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
       return Object.assign(
@@ -44,6 +44,7 @@ export const smurfReducers = (state = initialState, action) => {
         }
       )
     case ERROR:
+    console.error(action.payload)
       return Object.assign(
         {},
         state,
@@ -52,7 +53,7 @@ export const smurfReducers = (state = initialState, action) => {
           updatingSmurf: false,
           deletingSmurfs: false,
           smurfsReady: false,
-          error: 'Error, Smurf running away!',
+          error: 'Error, Smurf running away...',
         }
       )
     default:

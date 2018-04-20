@@ -6,15 +6,21 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import /* You need some sore of reducer */ './reducers';
-import { append } from './C:/Users/Juarin/AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/vary';
+import rootReducer from './reducers';
+import { localState, saveState } from './persistence'
 
+const load = localState();
 const middleware = applyMiddleware(thunk, logger);
 
 const store = createStore(
-  () => {}, // this is the most basic reducer. Replace it.
+  rootReducer,
+  load,
   middleware
 );
+
+store.subscribe(() => {
+  saveState(store.getState());
+})
 
 ReactDOM.render(
   <Provider store={store}>
