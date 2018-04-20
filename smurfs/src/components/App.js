@@ -29,10 +29,13 @@ class App extends Component {
       height: this.state.height
     };
     this.props.createSmurfs(smurf);
-    this.setState({ name: "", age: "", height: "" });
+    // this.setState({ name: "", age: "", height: "" });
   };
   render() {
-    // console.log("PROPS: ", this.props);
+    console.log("PROPS: ", this.props);
+    // console.log(this.state.name);
+    // console.log(this.state.age);
+    // console.log(this.state.height);
     return [
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
