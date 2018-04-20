@@ -12,6 +12,12 @@ const sendUserError = (msg, res) => {
   return;
 };
 
+server.get('/smurfs', (req, res) => {
+  setTimeout(() => {
+    res.send(smurfs);
+  }, 1000);
+});
+
 let smurfs = [];
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
