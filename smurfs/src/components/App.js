@@ -26,6 +26,7 @@ class App extends Component {
   }
 }
 
-export default App;
 
+// Set all state derived from redux onto props of our App componenet
+export default connect(mapStateToProps, mapDispatchToProps())(App);
 
