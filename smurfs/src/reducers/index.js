@@ -17,9 +17,10 @@ import { GETTING, GOT, ADDING, ADDED, ERROR } from '../actions';
 */
 const initialState = {
   smurfs: [],
-  fetchingSmurfs: false,
-  addingSmurf: false,
-  error: null
+  smurf: {},
+  getting: false,
+  adding: false,
+  error: null,
 }
 
 /*
@@ -28,3 +29,19 @@ const initialState = {
   This will guard your namespacing issues.
   Components can read your store as, `state` and not `state.fooReducer`.
 */
+export default (state = initialState, action) => {
+  switch(action.type) {
+    case GETTING:
+    return { ...state, getting: true };
+    case GOT:
+    return { ...state, smurfs: action.smurfs, getting: false, error: null };
+    case ADDING:
+    return { ...state, adding: true };
+    case ADDED:
+    return { ...state, smurfs: action.smurfs, adding: false, error: null };
+    case ERROR:
+    return { ...state, error: action.errorMessage };
+    default:
+    return state;
+  }
+}

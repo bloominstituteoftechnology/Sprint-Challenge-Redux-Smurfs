@@ -35,7 +35,7 @@ export const getSmurfs = () => (dispatch) => {
 
   export const addSmurf = (name, age, height) => (dispatch) => {
     dispatch({ type: ADDING });
-  
+
     axios.post('http://localhost:3333/smurfs', {name, age, height})
       .then((response) => {
         dispatch({ type: ADDED, smurfs: response.data })
