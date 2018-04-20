@@ -1,0 +1,3 @@
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const ERROR_SMURFS = 'ERROR_SMURFS';
+export const SUCCESS_SMURFS = 'SUCCESS_SMURFS';
