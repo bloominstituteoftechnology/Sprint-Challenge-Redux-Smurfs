@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSmurfs, addSmurf } from '../actions';
+import { Button } from 'reactstrap';
 import './App.css';
+
+import { fetchSmurfs, addSmurf } from '../actions';
+import SmurfList from './SmurfList';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -11,12 +14,15 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
+
+    this.blankSmurf = {
+      name: '',
+      age: '',
+      height: ''
+    };
+
     this.state = {
-      newSmurf: {
-        name: '',
-        age: null,
-        height: null
-      }
+      newSmurf: this.blankSmurf
     };
   }
 
@@ -31,18 +37,18 @@ class App extends Component {
 
   handleAddSmurfSubmit = () => {
     this.props.addSmurf(this.state.newSmurf);
+    this.setState({ newSmurf: this.blankSmurf });
   }
 
   render() {
     return (
       <div className="App">
-        <ul>
-          { this.props.smurfs.map(smurf => <li>{smurf.name}</li>) }
-        </ul>
+        <SmurfList smurfs={this.props.smurfs} />
+
         <input name='name' onChange={this.handleAddInputFieldChange} value={this.state.newSmurf.name} />
         <input name='age' onChange={this.handleAddInputFieldChange} value={this.state.newSmurf.age} />
         <input name='height' onChange={this.handleAddInputFieldChange} value={this.state.newSmurf.height} />
-        <button onClick={this.handleAddSmurfSubmit}>Add A Smurf!</button>
+        <Button color='primary' onClick={this.handleAddSmurfSubmit}>Add A Smurf!</Button>
       </div>
     );
   }
