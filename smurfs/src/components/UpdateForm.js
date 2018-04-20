@@ -12,15 +12,17 @@ class UpdateForm extends React.Component {
 	}
 	// update state with new smurf data
 	handleNewInput = event => {
-		this.setState({ [event.target.name]: [event.target.value] });
+		this.setState({ [event.target.name]: event.target.value });
 	};
 	// trigger updateForm() action creator
 	handleUpdateForm = () => {
 		const smurf = {
 			name: this.state.name,
 			age: this.state.age,
-			height: this.state.height
+			height: this.state.height,
+			id: this.state.id
 		};
+		// console.log("smurf: ", smurf);
 		this.props.update(smurf);
 		this.setState({ name: "", age: "", height: "" });
 	};

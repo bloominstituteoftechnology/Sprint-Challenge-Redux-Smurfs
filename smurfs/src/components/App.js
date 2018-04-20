@@ -20,7 +20,7 @@ class App extends Component {
   }
   // update state with new smurf data
   handleNewInput = event => {
-    this.setState({ [event.target.name]: [event.target.value] });
+    this.setState({ [event.target.name]: event.target.value });
   };
   // create new smurf
   handleCreateSmurf = () => {
