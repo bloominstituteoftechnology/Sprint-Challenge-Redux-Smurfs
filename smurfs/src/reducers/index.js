@@ -21,7 +21,7 @@
   Components can read your store as, `state` and not `state.fooReducer`.
 */
 
-import * as actionTypes from '../actions';
+import * as actionType from '../actions';
 
 const initialState = {
   smurfs: [],
@@ -35,25 +35,25 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  switch (action.types) {
-    case actionTypes.FETCHING_SMURFS:
+  switch (action.type) {
+    case actionType.FETCHING_SMURFS:
       return {
         ...state,
         fetchingSmurfs: true
       };
-    case actionTypes.SMURFS_FETCHED:
+    case actionType.SMURFS_FETCHED:
       return {
         ...state,
         smurfs: action.payload,
         fetchingSmurfs: false,
         smurfsFetched: true
       };
-    case actionTypes.ADDING_SMURF:
+    case actionType.ADDING_SMURF:
       return {
         ...state,
         addingSmurf: true
       };
-    case actionTypes.SMURF_ADDED:
+    case actionType.SMURF_ADDED:
       return {
         ...state,
         addingSmurf: false,
@@ -61,12 +61,12 @@ export default (state = initialState, action) => {
         smurfadded: true,
         smurfs: action.payload
       };
-    case actionTypes.UPDATING_SMURF:
+    case actionType.UPDATING_SMURF:
       return {
         ...state,
         updatingSmurfs: true
       };
-    // case actionTypes.DELETING_SMURF:
+    // case actionType.DELETING_SMURF:
     //   const index = state.smurfs.findIndex(smurf => smurf.id === action.id);
     //   const filtered = [...state.smurfs.slice(0, index), ...state.smurfs.slice(index + 1)];
     //   return {
@@ -74,7 +74,7 @@ export default (state = initialState, action) => {
     //     smurfs: filtered,
     //     error: null
     //   };
-    case actionTypes.ERROR:
+    case actionType.ERROR:
       return {
         ...state,
         fetchingSmurfs: false,
