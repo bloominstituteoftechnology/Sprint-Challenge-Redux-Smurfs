@@ -26,7 +26,7 @@ export const ERROR_POSTING_SMURFS = 'ERROR_POSTING_SMURFS';
 */
 
 export const fetchSmurfs = () => {
-  const promise = axios.get('http://localhost:3333/smurfs')
+  const promise = axios.get(`http://localhost:3333/smurfs`)
   return (dispatch) => {
     dispatch( { type: FETCHING_SMURFS });
     promise
@@ -40,8 +40,8 @@ export const fetchSmurfs = () => {
   }
 }
 
-export const postSmurfs = () => {
-  const promise = axios.get('http://localhost:3333/smurfs')
+export const postSmurfs = data => {
+  const promise = axios.post('http://localhost:3333/smurfs', data)
   return (dispatch) => {
     dispatch( { type: POSTING_SMURFS });
     promise
