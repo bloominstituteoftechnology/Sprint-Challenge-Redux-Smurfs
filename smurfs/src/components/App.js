@@ -16,7 +16,7 @@ class App extends Component {
     return e.target.value;
   }
   render() {
-    console.log(this.props)
+    console.log('redner', this.props)
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -38,7 +38,7 @@ class App extends Component {
                         {this.props.smurfs.map(smurf => {
                           return (
                             <div key={smurf.name}>
-                              <li>{smurf.name}</li >
+                              <li>{smurf.name} {smurf.id}</li >
                               <button>Delete Me</button>
                             </div>
                           )

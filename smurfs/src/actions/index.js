@@ -13,7 +13,7 @@ export function fetch_smurf() {
     axios.get('http://localhost:3333/smurfs')
       .then((response) => {
         console.log('response', response)
-        dispatch({type:FETCHED, payload: response.data})
+        dispatch({type:FETCHED, payload: response.data })
       })
       .catch((err) => {
         dispatch({type: ERROR, payload: "ERROR FETCHING FRIEND"})

@@ -1,12 +1,11 @@
-import {FETCHING, POSTING, ERROR, FETCHED} from "../actions"
+import {FETCHING, POSTING, ERROR, FETCHED, DELETING} from "../actions"
 
 //  Your initial/default state for this project could look a lot like this
 const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
-  //  addingSmurf: false,
   //  updatingSmurf: false,
-  //  deletingSmurfs: false,
+   deleting: false,
    error: null,
    posting: false,
    fetched: false
@@ -15,6 +14,7 @@ const initialState = {
  const smurfReducer = (state = initialState, action) => {
    switch (action.type) {
      case FETCHING: {
+       console.log(...state)
        return {...state, fetchingSmurfs: true}
      }
      case FETCHED: {
@@ -25,6 +25,9 @@ const initialState = {
     }
     case ERROR: {
       return {...state, fetching: false, error: action.payload}
+    }
+    case DELETING: {
+      return{...state, deleting: true}
     }
     default: return state;
    }
