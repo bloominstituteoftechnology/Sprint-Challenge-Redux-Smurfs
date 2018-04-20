@@ -10,6 +10,7 @@ class Smurf extends Component {
       height: this.props.smurf.height,
       id: this.props.smurf.id,
       delete: this.props.delete,
+      edit: this.props.edit,
       editing: false
     };
   }
@@ -19,6 +20,10 @@ class Smurf extends Component {
   };
 
   onEditButton = () => {
+    if (this.state.editing) {
+      const smurf = {name: this.state.name, age: this.state.age, height: this.state.height, id: this.state.id};
+      this.state.edit(smurf);
+    }
     this.setState({ editing: !this.state.editing });
   };
 

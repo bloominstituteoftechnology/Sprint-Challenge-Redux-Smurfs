@@ -78,3 +78,21 @@ export const deleteSmurf = id => {
     );
   };
 }
+
+export const editSmurf = smurf => {
+  const updateRequest = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
+  return dispatch => {
+    updateRequest.then(
+      response => {
+        dispatch(getSmurfs());
+      }
+    ).catch(
+      err => {
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
+      }
+    );
+  };
+}

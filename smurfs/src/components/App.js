@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { getSmurfs, addSmurf, deleteSmurf } from "../actions";
+import { getSmurfs, addSmurf, deleteSmurf, editSmurf } from "../actions";
 import Smurf from './Smurf';
 /*
  to wire this component up you're going to need a few things.
@@ -33,6 +33,10 @@ class App extends Component {
     this.props.deleteSmurf(id);
   }
 
+  onEdit = smurf => {
+    this.props.editSmurf(smurf);
+  }
+
   render() {
     return (
       <div className="App">
@@ -61,7 +65,7 @@ class App extends Component {
           />
           <button type="submit">Add Smurf</button>
         </form>
-        <ul>{this.props.smurfs.map(smurf => <Smurf key={`smurf${smurf.id}`} smurf={smurf} delete={this.onDelete}/>)}</ul>
+        <ul>{this.props.smurfs.map(smurf => <Smurf key={`smurf${smurf.id}`} smurf={smurf} delete={this.onDelete} edit={this.onEdit}/>)}</ul>
       </div>
     );
   }
@@ -73,4 +77,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf, editSmurf })(App);
