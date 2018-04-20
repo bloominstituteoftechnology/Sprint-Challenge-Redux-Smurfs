@@ -1,15 +1,58 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+const URL = 'http://localhost:3333/smurfs';
+
+export const ERROR_FETCHING_SMURF = 'ERROR_FETCHING_SMURF';
+export const GET_SMURF = 'GET_SMURF';
+export const FETCHING_SMURF = 'FETCHING_SMURF';
+export const CREATING_SMURF = 'CREATING_SMURF';
+export const PENDING_SMURF = 'PENDING_SMURF';
+export const SUCCESS_SMURF = 'SUCCESS_SMURF';
+export const ERROR = 'ERROR';
+export const CREATE_SMURF = 'CREATE_SMURF';
+export const ERROR_SMURF = 'ERROR_SMURF';
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const SUCCESS_DELETING = 'SUCCESS_DELETING';
+
+export const getSmurf = () => {
+    const promise = axios.get('http://localhost:3333/smurfs');
+    return dispatch => {
+      dispatch({ type: FETCHING_SMURF });
+      promise
+        .then(response => {
+          dispatch({ type: SUCCESS_SMURF, payload: response.data });
+        })
+        .catch(err => {
+          dispatch({ type: ERROR, payload: 'Error Getting Your Smurf' });
+        });
+    };
+  };
+
+  export const createSmurf = smurf => {
+    const newSmurf = axios.post('http://localhost:3333/smurfs', smurf);
+    return dispatch => {
+      dispatch({ type: CREATING_SMURF });
+      newSmurf
+        .then(response => {
+          dispatch({ type: SUCCESS_SMURF, payload: response.data });
+        })
+        .catch(err => {
+          dispatch({ type: ERROR, payload: 'error creating smurf' });
+        });
+    };
+  };
+
+  export const deleteSmurf = smurfId => {
+    const promise = axios.delete(`${URL}/${smurfId}`);
+    return dispatch => {
+      dispatch({ type: DELETING_SMURF });
+      promise
+        .then(response => {
+          dispatch(getSmurf());
+        })
+        .catch(err => {
+          dispatch({ type: ERROR, payload: 'error deleting smurf' });
+        });
+    };
+  };
+
