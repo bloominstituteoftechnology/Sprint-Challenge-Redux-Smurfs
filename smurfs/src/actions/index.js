@@ -16,13 +16,42 @@
 
 import axios from 'axios';
 
-export const FETCHINGSMURFS = 'FETCHING_SMURFS';
-export const SMURFSFETCHED = 'SMURFS_FETCHED';
-export const ADDINGSMURF = 'ADDING_SMURF';
-export const SMURFADDED = 'SMURF_ADDED';
-export const UPDATINGSMURF = 'UPDATING_SMURF';
-export const DELETINGSMURF = 'DELETING_SMURF';
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const SMURFS_FETCHED = 'SMURFS_FETCHED';
+export const ADDING_SMURF = 'ADDING_SMURF';
+export const SMURF_ADDED = 'SMURF_ADDED';
+export const UPDATING_SMURF = 'UPDATING_SMURF';
+export const DELETING_SMURF = 'DELETING_SMURF';
 export const ERROR = 'ERROR';
 
 const URL = 'http://localhost:3333/smurfs'
 
+export const getSmurfs = () => {
+  const smurfs = axios.get(`${URL}`);
+  return dispatch => {
+    dispatch({ type: FETCHING_SMURFS });
+    smurfs
+      .then(response => {
+        console.log('getSmurfs response', response);
+        dispatch({ type: SMURFS_FETCHED , payload: response.data});
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error });
+      })
+  }
+}
+
+export const addSmurfs = (smurfData) => {
+  const smurfs = axios.post(`${URL}`, smurfData);
+  return dispatch => {
+    dispatch({ type: ADDING_SMURF });
+    smurfs
+      .then(response => {
+        console.log('addSmurfs response', response);
+        dispatch({ type: SMURF_ADDED, payload: response.data })
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error });
+      })
+  }
+}

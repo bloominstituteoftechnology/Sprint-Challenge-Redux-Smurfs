@@ -29,7 +29,7 @@ const initialState = {
   addingSmurf: false,
   smurfAdded: false,
   updatingSmurf: false,
-  deletingSmurf: false,
+  // deletingSmurf: false,
   smurfs: [],
   error: null,
 }
@@ -65,14 +65,14 @@ export default ( state = initialState, action) => {
         ...state,
         updatingSmurfs: true
       };
-    case actionTypes.DELETING_SMURF:
-      const index = state.smurfs.findIndex(smurf => smurf.id === action.id);
-      const filtered = [...state.smurfs.slice(0, index), ...state.smurfs.slice(index + 1)];
-      return {
-        ...state,
-        smurfs: filtered,
-        error: null
-      };
+    // case actionTypes.DELETING_SMURF:
+    //   const index = state.smurfs.findIndex(smurf => smurf.id === action.id);
+    //   const filtered = [...state.smurfs.slice(0, index), ...state.smurfs.slice(index + 1)];
+    //   return {
+    //     ...state,
+    //     smurfs: filtered,
+    //     error: null
+    //   };
     case actionTypes.ERROR:
       return {
         ...state,
@@ -81,7 +81,7 @@ export default ( state = initialState, action) => {
         addingSmurf: false,
         smurfAdded: false,
         updatingSmurf: false,
-        deletingSmurfs: false,
+        // deletingSmurfs: false,
         error: action.payload
       }
     default:
