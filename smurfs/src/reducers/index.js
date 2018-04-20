@@ -28,6 +28,10 @@ export const smurfsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         updatingSmurf: true,
       });
+    case DELETING_SMURFS:
+      return Object.assign({}, state, {
+        deletingSmurfs: true,
+      });
     default:
       return state;
   }
