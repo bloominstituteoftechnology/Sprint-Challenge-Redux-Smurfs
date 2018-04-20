@@ -1,7 +1,7 @@
 import * as actionType from '../actions';
 
 const initialState = {
-   smurfs: [{name: 'Harry', age:21, height:"51cm"}, {name: 'Larry', age:210, height:"90cm"}],
+   smurfs: [],
    fetchingSmurfs: false,
    addingSmurf: false,
    updatingSmurf: false,
@@ -16,9 +16,11 @@ export const smurfReducer = (state = initialState, action) => {
         case actionType.FETCHING:
             return {...state, fetchingSmurfs:true};
         case actionType.FETCHED:
-            return {...state, fetchingSmurfs: false};
+            return {...state, fetchingSmurfs: false, smurfs: action.payload};
+        case actionType.ADDING_SMURF:
+            return {...state, addingSmurf: true}
         case actionType.ADD_SMURF:
-            return state;
+            return {...state, addingSmurf: false, smurfs: action.payload};
         case actionType.DELETE_SMURF:
             return state;
         case actionType.ERROR:

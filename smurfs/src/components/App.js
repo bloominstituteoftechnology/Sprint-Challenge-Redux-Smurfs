@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {getSmurfs} from "../actions";
+import {getSmurfs, addSmurf} from "../actions";
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -12,13 +12,29 @@ class App extends Component {
 
     state = {
         name: '',
-        age: 0,
-        heigh: ''
+        age: '',
+        height: '',
+        id: '',
     };
 
     componentDidMount() {
         this.props.getSmurfs();
     }
+
+    inputHandler = (event) => {
+        this.setState({[event.target.name]: event.target.value});
+    };
+
+    addSmurf = (event) => {
+        event.preventDefault();
+        this.props.addSmurf(this.state);
+        this.setState({
+            name: '',
+            age: '',
+            height: '',
+        });
+    };
+
   render() {
     return (
       <div className="App">
@@ -26,11 +42,35 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-          <ui>
+          <form>
+              <input
+                  onChange={this.inputHandler}
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+              />
+              <input
+                  onChange={this.inputHandler}
+                  type="number"
+                  name="age"
+                  placeholder="Age"
+              />
+              <input
+                  onChange={this.inputHandler}
+                  type="text"
+                  name="height"
+                  placeholder="height"
+              />
+              <button type="submit" onClick={this.addSmurf}>
+                  Add Smurf
+              </button>
+          </form>
+
+          <ul>
               {this.props.smurfs.map((smurf) => {
-                  return <li>{smurf.name}</li>
+                  return <li id={smurf.id} key={smurf.id}>{smurf.name}</li>
               })}
-          </ui>
+          </ul>
       </div>
     );
   }
@@ -40,7 +80,9 @@ const mapStateToProps  = state =>{
 
     return {
       smurfs: state.smurfs,
+        addingSmurf: state.addingSmurf,
       fetchingSmurfs: state.fetchingSmurfs
+
     };
 };
-export default connect(mapStateToProps, {getSmurfs})(App);
+export default connect(mapStateToProps, {getSmurfs, addSmurf})(App);
