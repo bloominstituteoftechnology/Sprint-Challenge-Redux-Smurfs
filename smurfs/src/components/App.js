@@ -30,6 +30,26 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs,
+    addingSmurf: state.addingSmurf,
+    updatingSmurf: state.updatingSmurf,
+    deletingSmurfs: state.deletingSmurfs,
+    error: state.error
+  }
+}
+
+const mapDispatchToProps = () => {
+  return {
+    getSmurfs,
+    addSmurf,
+    updateSmurf,
+    deleteSmurf
+  };
+};
 
 // Set all state derived from redux onto props of our App componenet
 export default connect(mapStateToProps, mapDispatchToProps())(App);
+
