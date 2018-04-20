@@ -21,7 +21,7 @@
 ## Initializing Project - READ THIS CAREFULLY, you have two apps here. A server, and a client.
 
 * `cd` into the forked copy of this repo.
-* **RUN** `yarn` or `npm install` to retrieve all `server-side` the dependencies.
+* **RUN** `yarn` or `npm install` to retrieve all the `server-side` dependencies.
 * **LOOK** at all the files you've been given for this project. One important file to note is `server.js`. This file contains an **API** that you are going to be interfacing with. Below is documentation on how to interact with the **API**.
 * **RUN** `yarn start` or `npm start` to get your API up and running on `http://localhost:3333`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data.
 * After your API is up and running, you can open chrome and type in `http://localhost:3333/smurfs`. You should see an empty Array `[]` returned to you. This is an array that your **API** will be using to store our Smurf Data.
@@ -74,7 +74,7 @@ return (dispatch) => {
 }
 ```
 
-* If a smurf is created correctly, you should see a response that is an array of smurfs with uniqe id's assigned to each smurf.
+* If a smurf is created correctly, you should see a response that is an array of smurfs with unique id's assigned to each smurf.
 * **HINT** if you are going to be working on Stretch Problem, you'll need to use that unique `id`.
 * Example of object created in Smurf DB:
 
