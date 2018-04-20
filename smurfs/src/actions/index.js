@@ -39,3 +39,26 @@ export const fetchSmurfs = () => {
       });
   };
 };
+
+export const addSmurf = () => {
+  const smurf = axios.post("http://localhost:3333/smurfs", smurf);
+  return dispatch => {
+    dispatch({ type: SMURF_ADDING });
+    smurf
+      .then(response => {
+        dispatch(fetchSmurfs());
+      })
+      .then(response => {
+        dispatch({
+          type: SMURF_ADDED,
+          smurfs: response.data
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: SMURF_ERROR,
+          payload: "Error adding smurf friend!"
+        });
+      });
+  };
+};
