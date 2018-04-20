@@ -6,7 +6,7 @@ import './App.css';
  Just remember, `how do I connect my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
-class CreateSmurfForm extends Component {
+class App extends Component {
   state = {
       name: "",
       age: "",
@@ -55,8 +55,8 @@ class CreateSmurfForm extends Component {
         />
         <button type='submit'>Add Smurf</button>
         </form>
-        // {this.props.smurfs.map(smurf => { 
-        //    <Smurf key={smurf.name}>{smurf.name}/>
+         //{this.props.smurfs.map(smurf => { 
+          // <Smurf key={smurf.name}>{smurf.name}/>
     )}
   }
 

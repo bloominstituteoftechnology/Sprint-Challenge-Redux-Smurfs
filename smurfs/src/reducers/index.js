@@ -11,7 +11,7 @@ const initialState = {
  };
 
 
-export const smurfsReducer = ( state = initialState, action ) => {
+ export const smurfsReducer = ( state = initialState, action ) => {
   switch ( action.type ) {
     case FETCHING_SMURFS: 
       return Object.assign({}, state, { fetchingSmurfs: true });

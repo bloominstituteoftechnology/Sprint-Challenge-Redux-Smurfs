@@ -39,7 +39,7 @@ export const fetchSmurfs = () => {
           .catch(error => {
             dispatch({
               type: FETCHING_SMURFS_ERROR,
-              payload: 'No SMURFS found!'
+              payload: 'No smurfs found!'
             });
           });
       };
