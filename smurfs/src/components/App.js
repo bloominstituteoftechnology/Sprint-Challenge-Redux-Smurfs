@@ -22,11 +22,31 @@ class App extends Component {
       this.props.getSmurfs();
     }
 
+    handleChange(event) {
+      this.setState({
+        [event.target.name]: event.target.value
+      })
+    }
+
+    handleSubmit() {
+      this.props.addSmurf(this.state);
+      this.setState({
+        name: '',
+        age: '',
+        height: ''
+      });
+    }
+
   render() {
     return (
       <div className="App">
         <h1> Redux Smurf Village </h1>
-        {this.props.smurfs.map((smurf) => {
+        <form onSubmit={() => this.handleSubmit()}>
+          <input name="name" placeholder="Enter a name..." onChange={this.handleChange.bind(this)} />
+          <input name="age" placeholder="Enter an age..." onChange={this.handleChange.bind(this)} />
+          <input name="height" placeholder="Enter a height..." onChange={this.handleChange.bind(this)} />
+          <input className="submit" type="submit" />
+          {this.props.smurfs.map((smurf) => {
           return (
             <div key={smurf.id}>
               <h4>{smurf.name}</h4>
@@ -35,10 +55,7 @@ class App extends Component {
             </div>
           );
         })}
-        <form onSubmit={() => this.handleSubmit()}>
-          <input name="name" placeholder="Enter a name..." onChange={this.handleChange.bind(this)} />
-          <input name="age" placeholder="Enter an age..." onChange={this.handleChange.bind(this)} />
-          <input type="submit" />
+        <img src="https://i.pinimg.com/originals/70/32/85/70328534e1f4f4916a6bd70e898ecbef.png" alt="smurf-house"></img>
         </form>
       </div>
     );
