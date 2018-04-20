@@ -1,17 +1,24 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { fetchSmurfs, addSmurfs, removeSmurfs } from "../actions";
+import { fetchSmurfs, addSmurfs, removeSmurfs, updateSmurfs } from "../actions";
 import { logo } from "../logo.svg";
 
 class App extends Component {
   state = {
     name: "",
     age: "",
-    height: ""
+    height: "",
+    editName: "",
+    editAge: "",
+    editHeight: "",
+    toggleForm: false
   };
   changeHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+  toggleHandler = () => {
+    this.setState({ toggleForm: !this.state.toggleForm });
   };
   componentDidMount() {
     this.props.fetchSmurfs();
@@ -32,6 +39,43 @@ class App extends Component {
                   <button onClick={() => this.props.removeSmurfs(smurf.id)}>
                     Remove Smurf{" "}
                   </button>
+                  <button onClick={this.toggleHandler}>Edit Smurf</button>
+                  {this.state.toggleForm ? (
+                    <form
+                      onSubmit={event => {
+                        event.preventDefault();
+                        this.props.updateSmurfs(smurf.id, {
+                          name: this.state.editName,
+                          age: this.state.editAge,
+                          height: this.state.editHeight
+                        });
+                        this.setState({ name: "" });
+                      }}
+                    >
+                      <input
+                        type="text"
+                        placeholder="name"
+                        name="editName"
+                        value={this.state.editName}
+                        onChange={this.changeHandler}
+                      />
+                      <input
+                        type="text"
+                        placeholder="age"
+                        name="editAge"
+                        value={this.state.editAge}
+                        onChange={this.changeHandler}
+                      />
+                      <input
+                        type="text"
+                        placeholder="height"
+                        name="editHeight"
+                        value={this.state.editHeight}
+                        onChange={this.changeHandler}
+                      />
+                      <button type="submit">Ok</button>
+                    </form>
+                  ) : null}
                   <hr />
                 </React.Fragment>
               );
@@ -55,7 +99,6 @@ class App extends Component {
             name="name"
             value={this.state.name}
             onChange={this.changeHandler}
-            autoFocus
           />
           <input
             type="text"
@@ -90,5 +133,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   fetchSmurfs,
   addSmurfs,
-  removeSmurfs
+  removeSmurfs,
+  updateSmurfs
 })(App);
