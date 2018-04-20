@@ -8,10 +8,20 @@ export const DELETING_SMURFS = 'DELETING_SMURFS'
 export const SMURFS_SUCCESS = 'SMURFS_SUCCESS';
 export const SMURFS_ERROR = 'SMURFS_ERROR';
 
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+// Set up actions to be exported into App components props
+export const getSmurfs = () => {
+  const promise = axios('http://localhost:3333/smurfs');
+  return dispatch => {
+    dispatch({ type: FETCHING_SMURFS });
+    promise
+      .then(response => {
+        dispatch({ type: SMURFS_SUCCESS, payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: SMURFS_ERROR });
+      })
+  }
+}
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
