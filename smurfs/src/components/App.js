@@ -36,17 +36,16 @@ handleAddSmurf = _ => {
       <div className="App">
       {this.props.smurfs.map(smurfs =>
        <div key={smurfs.id} className="containgDiv-styles">
-
-       <div className="styles">
+      
         <div className="name-styles">{smurfs.name}</div>
-        <div>
+        <div className="age-styles">
         {smurfs.age}
         </div>
         <div>
         {smurfs.height}
+       
         </div>
-        </div>
-        </div>
+      </div>
       )}
          <input
           className="input"
@@ -76,6 +75,7 @@ handleAddSmurf = _ => {
          add homies
         </button>
       </div>
+
     );
   }
 }
