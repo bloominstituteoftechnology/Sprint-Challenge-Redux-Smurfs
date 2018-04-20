@@ -22,7 +22,12 @@ const CreateSmurfForm = props => {
 				placeholder="Enter smurf height"
 				onChange={props.handleNewInput}
 			/>
-			<button type="button" onClick={props.handleCreateSmurf}>
+			<button
+				type="button"
+				onClick={() => {
+					props.handleCreateSmurf();
+				}}
+			>
 				Create Smurf
 			</button>
 		</form>
