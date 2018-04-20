@@ -13,8 +13,8 @@ import {
 const initialState = {
   // starting smurphs to confirm .map is working before adding a way to create new smurphs
   smurfs: [
-    { id: 0, name: "Eddie Smurphy", age: 50, height: "short" },
-    { id: 1, name: "Eduardo Smurphificius", age: 42, height: "shortish" }
+    // { id: 0, name: "Eddie Smurphy", age: 50, height: "short" },
+    // { id: 1, name: "Eduardo Smurphificius", age: 42, height: "shortish" }
   ],
   fetchingSmurfs: false,
   creatingSmurf: false,
@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { fetchingSmurfs: true });
     case FETCHED:
       return Object.assign({}, state, {
-        smurfs: [...state.friends, ...action.payload],
+        smurfs: [...state.smurfs, ...action.payload],
         fetchingSmurfs: false
       });
     case CREATING:
