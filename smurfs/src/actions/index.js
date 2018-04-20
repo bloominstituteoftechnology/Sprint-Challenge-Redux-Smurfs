@@ -7,17 +7,16 @@ export const DELETE_SMURF = 'DELETE_SMURF';
 
 // Re: CRUD-CRD only. Post/Get/Delete. No update/push. 
 
-export const getSmurfs = () => {
-  return dispatch => {
-    dispatch({ type: FETCHING });
-    axios //promise statements
-      .get('http://localhost:3333/api/smurfs/')
-      .then(result => dispatch({ type: FETCHED, smurfs: result.data }))
+export const getSmurfs = () => dispatch => {
+  axios.get(`http://localhost:3333/smurfs`)
+  .then(
+    response => { dispatch({ type: FETCHED, smurfs: response.data })}
+  )
       .catch(err =>
         dispatch({ type: ERROR, errorMessage: 'Get Smurf Opps!' })
       );
   };
-};
+
 
 export const addSmurf = smurf => dispatch => {
   console.log(smurf);
