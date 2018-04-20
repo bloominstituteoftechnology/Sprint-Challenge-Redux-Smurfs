@@ -44,6 +44,19 @@ export const addSmurf = data => {
   };
 };
 
+export const updateSmurf = (id, data) => {
+  const smurf = axios.put(`http://localhost:333/smurfs/${id}`, data);
+  return dispatch => {
+    smurf
+      .then(res => {
+        dispatch(fetchSmurfs());
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
+
 export const deleteSmurf = id => {
   const smurf = axios.delete(`http://localhost:3333/smurfs/${id}`);
   return dispatch => {
