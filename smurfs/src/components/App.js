@@ -18,52 +18,38 @@ class App extends Component {
   };
 
   render() {
-    return (
-      <div className="App">
+    return <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <input 
-          type="text"
-          placeholder="name"
-          name="name"
-          value={this.state.name}
-          onChange={e => this.setState({ [e.target.name]: e.target.value})}
-        />
-        <input 
-          type="text"
-          placeholder="age"
-          name="age"
-          value={this.state.age}
-          onChange={e => this.setState({ [e.target.name]: e.target.value })}
-        />
-        <input 
-          type="text"
-          placeholder="height"
-          name="height"
-          value={this.state.height}
-          onChange={e => this.setState({ [e.target.name]: e.target.value })}
-        />
-        <button 
-          onClick={() => {
-            this.props.createSmurf({name: this.state.name, age: this.state.age, height: this.state.height })
-            this.setState({name: '', age: '', height: ''})
-          }}
-        >
-          Add Smurf
-        </button>
-        {this.props.error !== null ? <h4>{this.props.error}</h4> : null }
+        <div className="inputField">
+          <input type="text" placeholder="name" name="name" value={this.state.name} onChange={e => this.setState(
+                { [e.target.name]: e.target.value }
+              )} />
+          <input type="text" placeholder="age" name="age" value={this.state.age} onChange={e => this.setState(
+                { [e.target.name]: e.target.value }
+              )} />
+          <input type="text" placeholder="height" name="height" value={this.state.height} onChange={e => this.setState(
+                { [e.target.name]: e.target.value }
+              )} />
+          <button onClick={() => {
+              this.props.createSmurf({
+                name: this.state.name,
+                age: this.state.age,
+                height: this.state.height
+              });
+              this.setState({ name: "", age: "", height: "" });
+            }}>
+            Add Smurf
+          </button>
+        </div>
+        {this.props.error !== null ? <h4>{this.props.error}</h4> : null}
         <ul>
-          {this.props.smurfs.map(smurf => <li key={smurf.id}>
-          {smurf.name}
-          <div>
-            {smurf.age}
-          </div>
-          <div>
-            {smurf.height} in cm
-          </div>
-          </li>)}
+          {this.props.smurfs.map(smurf => <li className="display" key={smurf.id}>
+              <h3>{smurf.name}</h3>
+              <div><h4>{smurf.age}</h4></div>
+              <div><h4>{smurf.height}cm</h4></div>
+            </li>)}
         </ul>
-      </div>
-    );
+      </div>;
   }
 }
 
