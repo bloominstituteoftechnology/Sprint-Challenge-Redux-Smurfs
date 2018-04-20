@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { createSmurf } from '../actions';
+import '../index.css';
 
 //SMURF FORM DATA
 class SmurfForm extends Component {
@@ -33,7 +34,7 @@ class SmurfForm extends Component {
           <Field name="height" component="input" type="number" />
           <br />
           <br />
-          <button action="submit">Submit Smurf</button>
+          <button className="button" action="submit">Submit Smurf</button>
         </form>
       </div>
     );

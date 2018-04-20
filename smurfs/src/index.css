@@ -3,3 +3,15 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+button {
+  background-color: lightblue;
+  color: darkblue;
+  margin-left: 15px;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+h2 {
+  color: darkblue;
+  font-family: 'Luckiest Guy', cursive;
+}
