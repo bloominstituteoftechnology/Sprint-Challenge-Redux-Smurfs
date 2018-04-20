@@ -17,11 +17,10 @@ const store = createStore(
   applyMiddleware(thunk, logger)
 );
 
+// Wrap App in Provider and pass in store as props
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
 );
-
-
