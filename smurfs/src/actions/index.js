@@ -17,7 +17,7 @@ export const ERROR_SMURFS = 'ERROR_SMURFS';
    D - deleteSmurf
 */
 export const fetchSmurfs = () => {
-  const smurfs = axios.get('http://localhost:3333/api/smurfs');
+  const smurfs = axios.get('http://localhost:3333/smurfs');
   return dispatch => {
     dispatch({ type: PENDING_SMURFS });
     smurfs
@@ -32,7 +32,7 @@ export const fetchSmurfs = () => {
 }
 
 export const createSmurf = data => {
-  const smurfs = axios.post('http://localhost:3333/api/smurfs', data);
+  const smurfs = axios.post('http://localhost:3333/smurfs', data);
   return dispatch => {
     dispatch({ type: PENDING_SMURFS });
     smurfs
