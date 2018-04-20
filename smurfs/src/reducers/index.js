@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import {ADD_SMURF, ERROR, FETCHED_SMURFS, FETCHING_SMURFS, addSmurf} from '../actions';
+import {ADD_SMURF, ERROR, FETCHED_SMURFS, FETCHING_SMURFS} from '../actions';
 
 
 //default state
@@ -15,14 +15,15 @@ const initialState = [{text:'testy smurf', completed: false, id: 0 }]
   Components can read your store as, `state` and not `state.fooReducer`.
 */
 
-export const smurfsReducer = (statev = initialState, action) => {
+export const smurfsReducer = (state = initialState, action) => {
   switch(action) {
     case ADD_SMURF:
+    return Object.assign({}, state,{addSmurf:[...state.action.ADD_SMURF,{text: action.text, completed:false}]})
     case FETCHING_SMURFS:
+    return Object.assign({}, state,{retriveSmurf:[...state.action.FETCHING_SMURFS, {text: action.text, completed: false}]})
     case  FETCHED_SMURFS:
     default:
-    return
-
+    return state;
   }
 };
 
