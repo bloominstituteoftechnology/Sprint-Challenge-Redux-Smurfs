@@ -23,6 +23,20 @@ class App extends Component {
     this.props.fetchSmurfs();
   }
 
+  handleInputText = (e) => {
+    this.setState({ [e.target.name]: [e.target.value] })
+  }
+
+  addASmurf = () => {
+    const aSmurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    }
+    this.props.postSmurfs(aSmurf)
+    this.setState({ name: '', age: '', height: ''})
+  }
+
   render() {
     return (
       <div className="App">
@@ -32,19 +46,26 @@ class App extends Component {
         placeholder='Name'
         name='name'
         value={this.state.name}
+        onChange= {this.handleInputText}
         />
         <input 
         type='text'
         placeholder='Age'
         name='age'
         value={this.state.age}
+        onChange= {this.handleInputText}
         />
         <input 
         type='text'
         placeholder='Height'
         name='height'
         value={this.state.height}
+        onChange= {this.handleInputText}
         />
+       <button onClick={this.addASmurf}>Add a Smurf</button>
+        {this.props.smurfs.map(smurf => {
+        return <ul key={smurf.id}>{smurf.name} {smurf.age} {smurf.height} </ul>
+        })}
       </div>
     );
   }
