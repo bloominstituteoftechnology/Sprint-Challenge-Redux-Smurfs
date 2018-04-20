@@ -1,18 +1,23 @@
+// Pull in all dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import /* You need some sore of reducer */ './reducers';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
+// Grab data from file paths
+import './index.css';
+import App from './components/App';
+import { smurfsReducer } from './reducers';
+
+// Set up store with middleware
 const store = createStore(
-  () => {}, // this is the most basic reducer. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+  smurfsReducer,
+  applyMiddleware(thunk, logger)
 );
 
+// Wrap App in Provider and pass in store as props
 ReactDOM.render(
   <Provider store={store}>
     <App />
