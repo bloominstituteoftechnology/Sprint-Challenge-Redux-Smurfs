@@ -16,7 +16,7 @@ export const fetchSmurfs = () => {
     dispatch({ type: FETCHING_SMURFS})
     smurfs
       .then(({ response }) => {
-        dispatch({ type: FETCHED_SMURFS, payload: response.data });
+        dispatch({ type: FETCHED_SMURFS, payload: response });
       })
       .catch(err => {
         console.log(`You've been smurf'd`, err);
@@ -25,7 +25,7 @@ export const fetchSmurfs = () => {
   };
 };
 
-export const createSmurfs = smurf => {
+export const createSmurf = smurf => {
   const smurfs = axios.post('http://localhost:3333/smurfs', smurf);
   return dispatch => {
     smurfs

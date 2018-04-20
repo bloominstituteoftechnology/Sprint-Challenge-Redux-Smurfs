@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSmurfs, createSmurfs } from '../actions';
+import { fetchSmurfs, createSmurf } from '../actions';
+import CreateSmurfForm from '../components/CreateSmurfForm';
+import Smurfs from '../components/Smurfs';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -10,18 +12,17 @@ import './App.css';
  */
 class App extends Component {
   state = {
-    smurf: '',
-    name: '',
-    age: '',
-    height: ''
+    name: "",
+    age: "",
+    height: ""
   };
 
   componentDidMount() {
     this.props.fetchSmurfs();
   }
   
-  handleNewSmurf(e) {
-    this.setState({ [e.tartget.name]: e.target.value });
+  handleNewSmurf = e => {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
@@ -32,43 +33,21 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        <CreateSmurfForm 
+          createSmurf={this.props.createSmurf}
+          handleNewSmurf={this.handleNewSmurf}
+          smurf={this.state}
+        />
 
-          <form>
-            <input
-              type="text"
-              name='name'
-              placeholder='Smurf Name'
-              onChange={this.props.handleNewSmurf}
-            />
-             <input
-              type="text"
-              name='age'
-              placeholder='Smurf Age'
-              onChange={this.props.handleNewSmurf}
-              />
-            <input
-              type="text"
-              name='height'
-              placeholder='Smurf Height'
-              onChange={this.props.handleNewSmurf}
-            />           
-            <button
-              type='button'
-              onClick={() => {
-                this.props.createSmurfs(this.props.smurf);
-                this.setState({ smurf: '' });
-              }}
-              > CrEaTe SmUrF </button>
-          </form>
-    
+        <Smurfs smurfList={this.props.smurfs} />
 
-          <div>
+        {/* <div>
             {this.props.smurfs.map((smurf, index) => {
               return [
                 <div key={'My' + index}> { smurf } </div>
               ];
             })}
-          </div>
+        </div> */}
       </div>
     );
   }
@@ -82,4 +61,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchSmurfs, createSmurfs })(App);
+export default connect(mapStateToProps, { fetchSmurfs, createSmurf })(App);

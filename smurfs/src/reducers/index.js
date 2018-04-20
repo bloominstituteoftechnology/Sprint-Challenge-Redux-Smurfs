@@ -6,7 +6,7 @@ const initialState = {
   // addingSmurf: false,
   // updatingSmurf: false,
   // deletingSmurfs: false,
-  error: null
+  // error: null
 }
 
 const smurfReducer = (state = initialState, action) => {
