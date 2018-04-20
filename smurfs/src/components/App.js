@@ -36,7 +36,12 @@ class App extends Component {
                     <div>
                       <ul>
                         {this.props.smurfs.map(smurf => {
-                          return <li key={smurf.name}>{smurf.name}</li>
+                          return (
+                            <div key={smurf.name}>
+                              <li>{smurf.name}</li >
+                              <button>Delete Me</button>
+                            </div>
+                          )
                         })}
                       </ul>
                     </div>

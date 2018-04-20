@@ -3,6 +3,8 @@ export const POSTING = "POSTING";
 export const FETCHING = "FETCHING";
 export const ERROR = "ERROR";
 export const FETCHED = "FETCHED";
+export const DELETING = "DELETING";
+
 
 
 export function fetch_smurf() {
@@ -28,6 +30,20 @@ export const post_smurf = smurf => {
       })
       .catch((err) => {
         dispatch({type: ERROR, payload: "ERROR POSTING FRIEND"})
+      })
+  }
+}
+
+export const delete_smurf = smurfId => {
+  return(dispatch) => {
+    dispatch({type: DELETING})
+    axios.delete(`http://localhost:3333/smurfs/${smurfId}`)
+      .then((response) => {
+        dispatch(fetch_smurf());
+      })
+
+      .catch((err) => {
+        dispatch({type: ERROR, payload: "ERROR DELETING"})
       })
   }
 }
