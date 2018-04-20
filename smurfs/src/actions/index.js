@@ -59,7 +59,7 @@ export const deleteSmurfs = id => {
   };
 };
 
-export const updatingSmurfs = smurf => {
+export const updateSmurfs = smurf => {
   console.log("smurf: ", smurf);
   const smurfs = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
   return dispatch => {
