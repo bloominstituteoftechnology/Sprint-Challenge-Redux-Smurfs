@@ -50,8 +50,9 @@ class App extends Component {
     this.setState({ name: "", age: "", height: "", smurfs: this.props.smurfs });
   };
 
-  deleteSmurf = smurf => {
-    this.props.deleteSmurf(smurf);
+  deleteSmurf = smurfId => {
+    console.log(smurfId);
+    this.props.deleteSmurf(smurfId);
     this.setState({ smurfs: this.props.smurfs });
   };
 
@@ -68,7 +69,7 @@ class App extends Component {
               {smurf.name}
               {` `}
               <button onClick={() => this.updateSmurf(this.state)}>Edit</button>
-              <button onClick={() => this.deleteSmurf(smurf)}>Delete</button>
+              <button onClick={() => this.deleteSmurf(smurf.id)}>Delete</button>
             </div>
           );
         })}

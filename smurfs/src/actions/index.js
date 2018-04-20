@@ -55,10 +55,10 @@ export const updateSmurf = smurf => {
   };
 };
 
-export const deleteSmurf = smurf => {
+export const deleteSmurf = smurfId => {
   const promise = axios.delete(
-    `http://localhost:3334/smurfs/${smurf.id}`,
-    smurf
+    `http://localhost:3334/smurfs/${smurfId}`,
+    smurfId
   );
   return dispatch => {
     dispatch({ type: DELETING });
