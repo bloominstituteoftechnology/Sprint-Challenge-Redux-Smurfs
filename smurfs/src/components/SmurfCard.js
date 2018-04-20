@@ -8,6 +8,15 @@ export const SmurfCard = props => {
         <div>{props.smurf.age} years old</div>
         <div>and {props.smurf.height} inches tall!</div>
       </div>
+      <div className="smurfCard_buttons">
+        <button onClick={() => 
+          props.deleteSmurf( props.smurf.id )
+        }>Remove Smurf</button>
+        <button onClick={() => {
+          props.updateSmurf( props.smurf.id, props.formInput );
+          props.resetInputForm();
+        }}>Update Smurf</button>
+      </div>
     </div>
   )
 }
