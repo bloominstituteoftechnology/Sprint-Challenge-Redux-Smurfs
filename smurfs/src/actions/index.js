@@ -1,3 +1,13 @@
+import axios from 'axios';
+
+// Set up action types to be bassed to reducers
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const ADDING_SMURF = 'ADDING_SMURF';
+export const UPDATING_SMURF = 'UPDATING_SMURF'
+export const DELETING_SMURFS = 'DELETING_SMURFS'
+export const SMURFS_SUCCESS = 'SMURFS_SUCCESS';
+export const SMURFS_ERROR = 'SMURFS_ERROR';
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
