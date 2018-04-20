@@ -64,7 +64,7 @@ class App extends Component {
         />
        <button onClick={this.addASmurf}>Add a Smurf</button>
         {this.props.smurfs.map(smurf => {
-        return <ul key={smurf.id}> <p>{smurf.name}</p> <p> {smurf.age} </p> <p> {smurf.height} </p> </ul>
+        return <ul key={smurf.id + 1}> <p>{smurf.name}</p> <p> {smurf.age} </p> <p> {smurf.height} </p> </ul>
         })}
       </div>
     );
