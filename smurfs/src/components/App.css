@@ -50,6 +50,7 @@ html {
   display: inline-flex;
   flex-direction: column;
   background-color: #5AA1D2;
+  color: white;
 }
 
 .input {

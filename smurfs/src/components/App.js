@@ -22,7 +22,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="header"><img src="https://vignette.wikia.nocookie.net/smurfs/images/b/bd/Papa_Smurf123.png/revision/latest?cb=20130805130238" alt="Papa Smurf"></img><h1>A List of Smurfs</h1><img src="https://vignette.wikia.nocookie.net/smurfs/images/6/6b/Smurfette_posing.png/revision/latest?cb=20151220174958" alt="Smurfette"></img></div>
+        <div className="header"><img src="https://vignette.wikia.nocookie.net/smurfs/images/b/bd/Papa_Smurf123.png/revision/latest?cb=20130805130238" alt="Papa Smurf"></img>
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/The_Smurfs_logo.svg/1200px-The_Smurfs_logo.svg.png" alt="Smurf Logo"></img>
+        <img src="https://vignette.wikia.nocookie.net/smurfs/images/6/6b/Smurfette_posing.png/revision/latest?cb=20151220174958" alt="Smurfette"></img></div>
       <div className="mainForm">
       <h2>Go on, add another Smurf:</h2>
         <input
@@ -70,7 +72,7 @@ class App extends Component {
                                                 <div className="email">{smurf.height}</div>
                                                 <button className="button" 
                                                   onClick={() => {
-                                                    this.props.removeSmurf(smurf.id);}}>Destroy</button>
+                                                    this.props.removeSmurf(smurf.id);}}>Delete</button>
                                               </div>
                                               </div>
                                             </li>)}
