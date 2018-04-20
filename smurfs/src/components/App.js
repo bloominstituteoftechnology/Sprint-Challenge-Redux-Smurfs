@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <h1>Smurf Playground</h1>
+        <h1 className= 'title'>Smurf Playground</h1>
         {this.props.fetching ? (
           <div>Subliminal Message</div>
         ) : (
@@ -85,7 +85,7 @@ class App extends Component {
           <input type='text' placeholder='name'  name='name' value={this.state.name} onChange={this.updateHandler} />
           <input type='text' placeholder='age' name='age' value={this.state.age} onChange={this.updateHandler} />
           <input type='text' placeholder='height' name='height' value={this.state.height} onChange={this.updateHandler} />
-          <button type='submit'> Capture Smurf </button>
+          <p><button type='submit'> Capture Smurf </button></p>
         </form>
       </div>
     );
