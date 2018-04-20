@@ -32,7 +32,7 @@ export const fetchSmurfs = () => {
     promise
     .then((response) => {
       console.log(response);
-      dispatch( {type: SUCCESS_FETCHING_SMURFS, payload: ''});
+      dispatch( {type: SUCCESS_FETCHING_SMURFS, payload: response.data});
     })
     .catch(err => {
       dispatch( {type: ERROR_FETCHING_SMURFS, payload: 'Error Fetching Data' });
@@ -47,7 +47,7 @@ export const postSmurfs = () => {
     promise
     .then((response) => {
       console.log(response);
-      dispatch({ type: SUCCESS_POSTING_SMURFS });
+      dispatch({ type: SUCCESS_POSTING_SMURFS, payload: response.data });
     })
     .catch(err => {
       dispatch( {type: ERROR_POSTING_SMURFS, payload: 'Error Posting Data' });
