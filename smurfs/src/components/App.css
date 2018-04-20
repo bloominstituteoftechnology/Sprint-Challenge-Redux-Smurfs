@@ -1,12 +1,14 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 50s linear;
   height: 80px;
 }
-
+.Smurfers {
+  animation: App-logo-spin infinite 20s linear;
+  height: 100px;
+}
 .App-header {
   background-color: #222;
   height: 150px;
