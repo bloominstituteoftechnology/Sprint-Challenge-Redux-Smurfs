@@ -31,8 +31,8 @@ export const fetchSmurfs = () => {
   }
 }
 
-export const createSmurf = data => {
-  const smurfs = axios.post('http://localhost:3333/smurfs', data);
+export const createSmurf = smurf => dispatch => {
+  const smurfs = axios.post('http://localhost:3333/smurfs', smurf);
   return dispatch => {
     dispatch({ type: PENDING_SMURFS });
     smurfs

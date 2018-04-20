@@ -29,7 +29,7 @@ const smurfsReducer = (state = initialState, action) => {
     case PENDING_SMURFS:
       return Object.assign({}, state, { pending: true });
     case SUCCESS_SMURFS:
-      return Object.assign({}, state, { pending: false, smurfs: [...action.payload] });
+      return Object.assign({}, state, { pending: false, smurfs: [...state, ...action.payload] });
     case ERROR_SMURFS:
       return Object.assign({}, state, { pending: false, error: action.payload });
     default:
