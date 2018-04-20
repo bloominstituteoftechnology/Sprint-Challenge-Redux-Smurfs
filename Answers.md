@@ -21,9 +21,10 @@
 
 # 5.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 
-## 
+## `Redux-thunk` provides us the ability to have our action creators return functions that have direct access to the dispatch() method of the redux store. The `action-creators` can dispatch multiple actions from a single `action-creator`.
 
 # 6.  Which `react-redux` method links up our `components` with our `redux store`?
 
+## The `connect` method allows us to bring our components together into the store.
 
 # 7. (Stretch goal question for if you get the DELETE endpoint working) The server's DELETE endpoint functionality is not optimal, since it requires you to either make a second `getSmurfs` request to fetch the updated list of Smurfs after deletion, or you need to keep two sources of truth synchronized, one in the client and one in the server. What change would you propose to make the server DELETE functionality more optimal such that either of these two issues are not encountered?
