@@ -1,0 +1,26 @@
+.Smurf {
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.card-body {
+    width: 300px;
+}
+
+.container {
+    margin: 0 220px;
+}
+
+.editSmurfButton {
+    margin-right: 10px;
+}
+
+.smurfCard {
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+.smurfForm {
+    margin: 25px auto;
+    justify-content: center;
+}

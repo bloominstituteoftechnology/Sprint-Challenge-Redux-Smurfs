@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+// import { connect } from 'react-redux';
+// import { Card, CardTitle, CardText, Container, Row, Col, Button} from 'reactstrap';
+
+import SmurfForm from './SmurfForm';
+import Smurfs from './Smurfs';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -8,14 +13,10 @@ import './App.css';
  */
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
-    );
+    return <div className="App">
+        <SmurfForm />
+        <Smurfs />
+      </div>;
   }
 }
 
