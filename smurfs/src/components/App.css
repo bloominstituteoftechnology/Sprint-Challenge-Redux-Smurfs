@@ -1,28 +1,122 @@
 .App {
   text-align: center;
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 100px;
 }
 
-.App-logo {
+img {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  width: 320px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.App h1 {
+  color: #8cf;
+  font-size: 2.4rem;
+  text-shadow: 2px 2px 2px #111e6c;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px 40px;
+  box-shadow: 2px 2px 4px #111e6c;
+  border-bottom-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+}
+
+.Smurfs {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.Smurf {
+  color: #8cf;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  align-items: center;
+  margin: 15px 0;
+  border: 3px solid #ffc4;
+  border-radius: 10px;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 2px 2px 2px #8cf;
   padding: 20px;
-  color: white;
+  margin-right: 8%;
 }
 
-.App-title {
-  font-size: 1.5em;
+input {
+  width: 600px;
+  height: 50px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  border: 3px solid #ffc4;
+  border-radius: 5%;
+  background: rgba(255, 255, 255);
+  color: #111e6c;
+  box-shadow: 2px 2px 2px grey;
 }
 
-.App-intro {
-  font-size: large;
+.input::placeholder {
+  color: #1116ce;
+  font-weight: bold;
+}
+
+form {
+  text-align: center;
+}
+
+button {
+  text-align: center;
+}
+
+button {
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #111e6c;
+  border-radius: 10%;
+  border: 2px solid #fff;
+  padding: 20px 60px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 2px 2px 2px black;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  color: #111e6c;
+  background-color: #8cf;
+  border: 1px solid #8cf;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.innerInput {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-right: 50px;
+}
+
+.innerInput input {
+  font-size: 1rem;
+  width: 100%;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
