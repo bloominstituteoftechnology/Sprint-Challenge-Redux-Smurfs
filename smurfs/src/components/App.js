@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import { fetchSmurfs, addSmurf } from './src/actions/index.js';
+import { connect } from 'react-redux';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -25,7 +27,7 @@ class App extends Component {
        this.props.addSmurf({
            name: this.state.name,
            age: this.state.age,
-           email: this.state.height
+           height: this.state.height
           });
           this.setState({ name: "", age: "", height: ""});
     }

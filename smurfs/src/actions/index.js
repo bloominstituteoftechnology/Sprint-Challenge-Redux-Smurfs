@@ -4,12 +4,12 @@
 */
 import axios from 'axios';
 
-export const FETCHING_FRIENDS = 'FETCHING_SMURFS';
-export const FETCHING_FRIENDS_SUCCESS = 'FETCHING_SMURFS_SUCCESS';
-export const FETCHING_FRIENDS_ERROR = 'FETCHING_SMURFS_ERROR';
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const FETCHING_SMURFS_SUCCESS = 'FETCHING_SMURFS_SUCCESS';
+export const FETCHING_SMURFS_ERROR = 'FETCHING_SMURFS_ERROR';
 
 export const fetchSmurfs = () => {
-  const friends = axios.get('http://localhost:3333/api/smurfs');
+  const smurfs = axios.get('http://localhost:3333/api/smurfs');
   return dispatch => {
     dispatch({ type: FETCHING_SMURFS });
     smurfs
