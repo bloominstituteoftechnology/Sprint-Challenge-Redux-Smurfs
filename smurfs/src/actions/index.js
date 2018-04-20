@@ -1,7 +1,13 @@
-/* 
+import axios from 'axios';
+/*
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+export const GETTING = 'GETTING';
+export const GOT = 'GOT';
+export const ADDING = 'ADDING';
+export const ADDED = 'ADDED';
+export const ERROR = 'ERROR';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
