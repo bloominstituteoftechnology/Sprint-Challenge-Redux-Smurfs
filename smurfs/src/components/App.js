@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
-import { fetchSmurf, addSmurf, deleteSmurf, updateSmurf } from "../actions"
+import { fetchSmurf, addSmurf, deleteSmurf, updateSmurf } from "../actions";
+import { connect } from "react-redux";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -10,27 +11,43 @@ import { fetchSmurf, addSmurf, deleteSmurf, updateSmurf } from "../actions"
  */
 class App extends Component {
   state = {
-    name: '',
-    age: '',
-    height: ''
-  }
+    name: "",
+    age: "",
+    height: ""
+  };
 
   componentDidMount() {
     this.props.fetchSmurf();
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.smurfs); // returning all the functions ✓
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    smurfs: state.smurfs,
+    error: state.error,
+    fetchSmurf: state.fetchSmurf,
+    addingSmurf: state.addingSmurf,
+    deleteSmurf: state.deleteSmurf,
+    updateSmurf: state.updateSmurf
+  };
+};
+
+export default connect(mapStateToProps, {
+  fetchSmurf,
+  addSmurf,
+  deleteSmurf,
+  updateSmurf
+})(App);
