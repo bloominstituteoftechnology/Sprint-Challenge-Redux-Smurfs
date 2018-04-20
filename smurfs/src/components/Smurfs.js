@@ -9,10 +9,11 @@ const Smurfs = props => {
 					<li>{`Name: ${smurf.name}`}</li>,
 					<li>{smurf.age}</li>,
 					<li>{smurf.height}</li>,
+					// WORK IN PROGRESS: DELETE not fully functional yet.
 					<button
-						onClick={() => {
-							props.handleDeleteSmurf(smurf.id);
-						}}
+					// onClick={() => {
+					// 	props.delete();
+					// }}
 					>
 						Delete Smurf
 					</button>
