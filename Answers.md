@@ -1,0 +1,14 @@
+1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
+Some methods that do not produce side effects are map and filter, which produce new arrays instead of modifying the original. The Object.assign method can be used to create a new object while extending the properties of another.
+1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+Actions are functions that return an object with a type and a payload. Those objects are used by the reducers to modify the state based on the types and payloads supplied. The store is the global storage or application state that holds data accessible to every component that uses the connect function to wire up Redux functionality. The store is known as a 'single source of truth' because it is consistent across all components that are connected with Redux.
+1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
+Application state refers to the Redux store and is consistent across all components while component state is the object that is intrinsic to the individual component. For trivial data like input values or boolean setting, component state is a good choice while any data that is used or accessed by more than one component is best put in the application state.
+1.  What is middleware?
+Middleware is any library that extends the functionality of a piece of software and doesn't stand on it's own. In redux we commonly use thunk and logger as middleware to enable async actions and verbose console logs.
+1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+Thunk enables async method returns in actions which lets us use promise-based methods such as http protocol requests via axios.
+1.  Which `react-redux` method links up our `components` with our `redux store`?
+One of the major methods is connect which maps the state and actions to the props of the component.
+1. (Stretch goal question for if you get the DELETE endpoint working) The server's DELETE endpoint functionality is not optimal, since it requires you to either make a second `getSmurfs` request to fetch the updated list of Smurfs after deletion, or you need to keep two sources of truth synchronized, one in the client and one in the server. What change would you propose to make the server DELETE functionality more optimal such that either of these two issues are not encountered?
+It might be better to return an updated list of Smurfs as the response from the delete operation.
