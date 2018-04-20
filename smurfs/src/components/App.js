@@ -1,37 +1,27 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchSmurfs, addSmurf, deleteSmurf, updateSmurf } from '../actions';
+import { 
+  fetchSmurfs, addSmurf, deleteSmurf, updateSmurf,
+  updateName, updateAge, updateHeight, resetInput
+} from '../actions';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      age: "",
-      height: "",
       update: false,
       updateID: ""
     };
   }
 
-  componentDidMount() { this.props.fetchSmurfs() }
-
-  handleAddSmurf = () => {
-    const newSmurf = { name: this.state.name, age: this.state.age, height: this.state.height };
-    this.props.addSmurf(newSmurf);
-    this.setState({ name: "", age: "", height: "" });
+  componentDidMount() { 
+    this.props.fetchSmurfs() 
   }
 
-  handleUpdate = smurf => {
-    const updatedSmurf = {
-      name: this.state.name !== "" ? this.state.name : smurf.name,
-      age: this.state.age !== "" ? this.state.age : smurf.age,
-      height: this.state.height !== "" ? this.state.height : smurf.height,
-      id: smurf.id
-    }
-    this.props.updateSmurf(updatedSmurf, smurf.id);
-    this.setState({ name: "", age: "", height: "" });
+  handleAddSmurf = () => {
+    this.props.addSmurf(this.props.smurf);
+    this.props.resetInput();
   }
 
   newSmurfForm = () => {
@@ -41,26 +31,37 @@ class App extends Component {
           type="text"
           placeholder="name"
           name="name"
-          value={this.state.name}
-          onChange={event => this.setState({ [event.target.name]: event.target.value })}
+          value={this.props.smurf.name}
+          onChange={event => this.props.updateName(event.target.value)}
         />
         <input 
           type="text"
           placeholder="age"
           name="age"
-          value={this.state.age}
-          onChange={event => this.setState({ [event.target.name]: event.target.value })}
+          value={this.props.smurf.age}
+          onChange={event => this.props.updateAge(event.target.value)}
         />
         <input 
           type="text"
           placeholder="height"
           name="height"
-          value={this.state.height}
-          onChange={event => this.setState({ [event.target.name]: event.target.value })}
+          value={this.props.smurf.height}
+          onChange={event => this.props.updateHeight(event.target.value)}
         />
         <button onClick={() => this.handleAddSmurf()}>add</button>
       </div>
     )
+  }
+
+  handleUpdate = smurf => {
+    const updatedSmurf = {
+      name: this.props.smurf.name !== "" ? this.props.smurf.name : smurf.name,
+      age: this.props.smurf.age !== "" ? this.props.smurf.age : smurf.age,
+      height: this.props.smurf.height !== "" ? this.props.smurf.height : smurf.height,
+      id: smurf.id
+    }
+    this.props.updateSmurf(updatedSmurf, smurf.id);
+    this.props.resetInput();
   }
 
   render() {
@@ -82,22 +83,22 @@ class App extends Component {
                   type="text"
                   placeholder="name"
                   name="name"
-                  value={this.state.name}
-                  onChange={event => this.setState({ [event.target.name]: event.target.value })}
+                  value={this.props.smurf.name}
+                  onChange={event => this.props.updateName(event.target.value)}
                 />
                 <input 
                   type="text"
                   placeholder="age"
                   name="age"
-                  value={this.state.age}
-                  onChange={event => this.setState({ [event.target.name]: event.target.value })}
+                  value={this.props.smurf.age}
+                  onChange={event => this.props.updateAge(event.target.value)}
                 />
                 <input 
                   type="text"
                   placeholder="height"
                   name="height"
-                  value={this.state.height}
-                  onChange={event => this.setState({ [event.target.name]: event.target.value })}
+                  value={this.props.smurf.height}
+                  onChange={event => this.props.updateHeight(event.target.value)}
                 />
                 <button onClick={() => this.handleUpdate(smurf)}>update</button>
               </div>
@@ -111,8 +112,18 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    smurfs: state.smurfs
+    smurfs: state.crud.smurfs,
+    smurf: state.input
   }
 }
 
-export default connect(mapStateToProps, { fetchSmurfs, addSmurf, deleteSmurf, updateSmurf })(App);
+export default connect(mapStateToProps, { 
+  fetchSmurfs, 
+  addSmurf, 
+  deleteSmurf, 
+  updateSmurf,
+  updateName,
+  updateAge,
+  updateHeight,
+  resetInput
+})(App);

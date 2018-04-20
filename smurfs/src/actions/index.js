@@ -1,13 +1,18 @@
-import { fetchSmurfs } from './getSmurfs';
-import { addSmurf } from './addSmurf';
-import { deleteSmurf } from './deleteSmurf';
-import { updateSmurf } from './updateSmurf';
+import { fetchSmurfs } from './crud/getSmurfs';
+import { addSmurf } from './crud/addSmurf';
+import { deleteSmurf } from './crud/deleteSmurf';
+import { updateSmurf } from './crud/updateSmurf';
+import { updateName, updateAge, updateHeight, resetInput } from './formInput';
 
 export {
   fetchSmurfs,
   addSmurf,
   deleteSmurf,
-  updateSmurf
+  updateSmurf,
+  updateName,
+  updateAge,
+  updateHeight,
+  resetInput
 }
 
 /*
