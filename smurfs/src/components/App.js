@@ -14,7 +14,7 @@ class App extends Component {
     super(props);
     this.state = {
       name: '',
-      age: 0, 
+      age: '', 
       height: ''
     }
   }
@@ -27,6 +27,24 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
+        <input 
+        type='text'
+        placeholder='Name'
+        name='name'
+        value={this.state.name}
+        />
+        <input 
+        type='text'
+        placeholder='Age'
+        name='age'
+        value={this.state.age}
+        />
+        <input 
+        type='text'
+        placeholder='Height'
+        name='height'
+        value={this.state.height}
+        />
       </div>
     );
   }
