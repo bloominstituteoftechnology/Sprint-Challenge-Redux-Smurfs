@@ -72,6 +72,7 @@ class App extends Component {
         <div>{this.props.smurfs.map(((smurf) => {
           return (
             <div key={smurf.id} id={smurf.id}>
+            <img src="smurf.jpg" />
               <h1 id={smurf.name}>{smurf.name}</h1>
               <h2>{smurf.age}</h2>
               <h3>{smurf.height}</h3>
