@@ -28,6 +28,8 @@ export const SmurfForm = props => {
           onChange={props.updateInputState}
         />
       </form>
+      <button class="smurfForm_button" onClick={(e) => {
+      }}>Add Smurf</button>
     </div>
   )
 }
