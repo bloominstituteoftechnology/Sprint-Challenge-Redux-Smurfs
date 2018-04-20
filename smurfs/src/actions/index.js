@@ -36,7 +36,7 @@ export const getSmurfs = () => {
 
 export const createSmurfs = smurf => {
   // a smurf has the form {name: "", age: "", height: "", id: num }
-  const smurfs = axios.post(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
+  const smurfs = axios.post(`http://localhost:3333/smurfs`, smurf);
   return dispatch => {
     smurfs
       .then(response => {
