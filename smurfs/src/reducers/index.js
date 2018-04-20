@@ -25,14 +25,7 @@ switch(action.type){
     case AT.POSTING_SMURFS:
       return { ...state, addingSmurfs: true };
     case AT.POST_SMURFS:
-      return { ...state, friends: action.payload, addinfSmurfs: false };
-
-
-
-
-
-
-
+      return { ...state, smurfs: action.payload, addinfSmurfs: false };
 
   case AT.ERROR_SMURFS:
   console.log(state)
