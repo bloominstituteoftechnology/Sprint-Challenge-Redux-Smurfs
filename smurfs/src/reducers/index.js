@@ -5,32 +5,38 @@ import { FETCHING_SMURF, ADDING_SMURF, UPDATING_SMURF, DELETING_SMURF, SUCCESS_S
 
 const initialState = {
     smurfs: [],
-    fetchingSmurfs: false
-    addingSmurf: false
-    updatingSmurf: false
-    deletingSmurfs: false
+    fetchingSmurfs: false,
+    addingSmurf: false,
+    updatingSmurf: false,
+    deletingSmurfs: false,
     error: null
 }
-
+  
 const smurfsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCHING_SMURF:
-    return Object.assign((), state, {fetchingSmurfs: true})
-    case ADDING_SMURF:
-  }
 
+    case FETCHING_SMURF:
+      return Object.assign({}, state, {fetchingSmurfs: true})
+
+    case ADDING_SMURF:
+      return Object.assign({}, state, {addingSmurf: true})
+
+    case UPDATING_SMURF:
+      return Object.assign({}, state, {updatingSmurf: true})
+
+    case DELETING_SMURF:
+      return Object.assign({}, state, {deletingSmurfs: true})
+
+    case SUCCESS_SMURFS:
+      return Object.assign({}, state, {fetchingSmurfs: false, addingSmurf: false, updatingSmurf: false, deletingSmurfs: false, friends: [...action.payload] })
+
+    case ERROR_SMURFS:
+      return Object.assign({}, state, {fetchingSmurfs: false, addingSmurf: false, updatingSmurf: false, deletingSmurfs: false, error: action.payload })
+
+    default:
+    return state;
+  }
 }
-/*
- Your initial/default state for this project could look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurfs: false
-   error: null
- }
-*/
 
 /*
   You'll only need one smurf reducer for this project.
