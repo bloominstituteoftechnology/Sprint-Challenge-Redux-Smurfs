@@ -2,6 +2,12 @@
   Be sure to import in all of the action types from `../actions`
 */
 
+const initialState = {
+  smurf: [],
+  error: null, 
+  fetching: false,
+  fetched: true
+};
 /*
  Your initial/default state for this project could look a lot like this
  {
@@ -14,6 +20,7 @@
  }
 */
 
+export const smurfsReducer = ()
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
