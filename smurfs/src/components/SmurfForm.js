@@ -40,7 +40,7 @@ class SmurfForm extends Component {
   };
 
   render() {
-    return {
+    return (
       <div className="SmurfForm">
         <form onSubmit={this.addSmurf}>
           <input 
@@ -61,10 +61,10 @@ class SmurfForm extends Component {
             value={this.state.height}
             name="Height"
           />
-          <button type="submit" className=button-class>Add to the village!</button>
+          <button type="submit" className="button-class">Add to the village!</button>
         </form>
       </div>
-    };
+    );
   }
 }
 

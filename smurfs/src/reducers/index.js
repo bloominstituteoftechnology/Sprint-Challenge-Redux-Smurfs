@@ -1,10 +1,15 @@
-import { FETCHING_SMURFS, ADDING_SMURFS, UPDATING_SMURFS, DELETING_SMURFS, ERROR} from '../actions';
+import { 
+  FETCHING_SMURFS, 
+  ADDING_SMURFS, 
+  UPDATE_SMURFS,
+  DELETING_SMURFS, 
+} from '../actions';
 
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
   addingSmurfs: false,
-  updatingSmurfs: false,
+  updateSmurfs: false,
   deletingSmurfs: false,
   error: null,
 };
@@ -15,11 +20,12 @@ export const smurfsReducer = (state = initialState, action) => {
       return { ...state, fetching: false };
     case ADDING_SMURFS:
       return { ...state, adding: false };
-    case UPDATING_SMURFS:
-      return { ...state, updating: false };
+    case UPDATE_SMURFS:
+      return { ...state, adding: false };
     case DELETING_SMURFS:
       return { ...state, deleting: false };
-    case ERROR_FETCHING_SMURFS:
-      return {}
-  }
-}
+    default: 
+      return state;
+  };
+
+};
