@@ -1,85 +1,58 @@
 import axios from 'axios';
+const URL = 'http://localhost:3333/smurfs'
 
-export const FETCHING_SMURFS = "FETCHING_SMURFS";
-export const SUCCESS_FETCHING = "SUCCESS_FETCHING";
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const SUCCESS_FETCHING = 'SUCCESS_FETCHING';
 
-export const CREATING_SMURFS = "CREATING_SMURFS";
-export const SUCCESS_CREATING = "SUCCESS_CREATING";
+export const CREATING_SMURF = 'CREATING_SMURF';
+export const SUCCESS_CREATING = 'SUCCESS_CREATING';
 
-export const REJECTED = "REJECTED";
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const SUCCESS_DELETING = 'SUCCESS_DELETING';
+
+export const REJECTED = 'REJECTED';
 
 
-export const getSmurfs = () => {
-  const promise = axios.get(`http://localhost:3333/smurfs/get`)
-    return dispatch => {
+export const fetchSmurfs = () => {
+  const promise = axios.get(URL);
+  return dispatch => {
     dispatch({ type: FETCHING_SMURFS });
     promise
       .then(response => {
-        dispatch({ type: SUCCESS_FETCHING, payload: [] });
+        dispatch({ type: SUCCESS_FETCHING, payload: response.data });
       })
-      .catch(error => {
-        dispatch({ type: REJECTED, payload: 'Error fetching Smurfs.' });
+      .catch(err => {
+        dispatch({ type: REJECTED, payload: 'Error fetching smurfs...' })
       });
   };
 };
 
-export const addSmurfs = smurf => {
-  const promise = axios.post('http://localhost:3333/smurfs/create', smurf);
+export const addSmurf = smurf => {
+  const promise = axios.post(URL, smurf);
   return dispatch => {
-		dispatch({ type: CREATING_SMURFS });
-		promise
-			.then(response => {
-				dispatch({ type: SUCCESS_CREATING, payload: [] });
-			})
-			.catch(error => {
-				dispatch({ type: REJECTED, payload: 'Error creating Smurfs.' });
-			});
+    dispatch({ type: CREATING_SMURF });
+    promise
+      .then(response => {
+        console.log('RESPONSE', response);
+        dispatch({ type: SUCCESS_CREATING, payload: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: REJECTED, payload: 'Error creating smurfs...' })
+      });
   };
 };
 
-// export const deleteSmurfs = () => {
-// 	return dispatch => {
-// 		dispatch({ type: DELETING_SMURFS });
-// 		axios
-// 			.delete('http://localhost:3333/smurfs/delete')
-// 			.then(({ data }) => dispatch({ type: SMURFS_DELETED, payload: data }))
-// 			.catch(error => {
-// 				dispatch({ type: ERROR_DELETING_SMURFS, payload: error });
-// 			});
-// 	};
-// };
-
-// export const updateFriend = () => {
-// 	return dispatch => {
-// 		dispatch({ type: UPDATE_SMURFS });
-// 		axios
-// 			.delete('http://localhost:3333/smurfs/update')
-// 			.then(({ data }) => {
-// 				dispatch({ type: SMURFS_UPDATED, payload: data });
-// 			})
-// 			.catch(error => {
-// 				dispatch({ type: ERROR_UPDATING_SMURFS, payload: error });
-// 			});
-// 	};
-// };
-
-
-
-
-
-
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
-
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+export const deleteSmurf = smurfId => {
+  const promise = axios.delete(`${URL}/${smurfId}`);
+  return dispatch => {
+    dispatch({ type: DELETING_SMURF });
+    promise
+      .then(response => {
+        dispatch(fetchSmurfs());
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch({ type: REJECTED, payload: 'Error deleting smurfs...' })
+      });
+  };
+};

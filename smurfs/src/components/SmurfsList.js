@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
-import Smurf from '.Smurfs';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchSmurfs } from "../actions";
+import Smurf from "./Smurf";
 
-import {connect} from 'react-redux';
-import { fetchSmurfs } from '../actions';
-
-class SmurfsList extends Component {
-  componentDidMount() => {
+class SmurfList extends Component {
+  componentDidMount() {
     this.props.fetchSmurfs();
   }
   render() {
     return (
       <div>
-        {this.props.fetchingsmurfs ? (
-          <h3>Hang on while we get your Smurfs</h3>
+        {this.props.fetchingSmurfs ? (
+          <h3>Hold tight, we're fetching smurfs</h3>
         ) : null}
-        {this.props.smurf.map(smurf => {
+        {this.props.smurfs.map(smurf => {
           return <Smurf smurf={smurf} />;
-        })}       
+        })}
       </div>
     );
   }
@@ -24,7 +23,8 @@ class SmurfsList extends Component {
 
 const mapStateToProps = state => {
   return {
-    smurfs: state.smurfs
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs
   };
 };
-export default connect(mapStateToProps, { fetchSmurfs })(SmurfsList);
+export default connect(mapStateToProps, { fetchSmurfs })(SmurfList);
