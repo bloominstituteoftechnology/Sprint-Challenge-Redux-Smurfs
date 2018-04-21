@@ -1,7 +1,11 @@
+import axios from 'axios';
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+export const CR_PENDING = 'CR_PENDING';
+export const CR_SUCCESS = 'CR_SUCCESS';
+export const ERROR = 'ERROR';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -13,3 +17,82 @@
    U - updateSmurf
    D - deleteSmurf
 */
+export const getSmurfs = () => {
+  const getRequest = axios.get('http://localhost:3333/smurfs');
+  return dispatch => {
+    dispatch({type: CR_PENDING});
+    getRequest.then(
+      response => {
+        dispatch({
+          type: CR_SUCCESS,
+          payload: response.data
+        });
+      }
+    ).catch(
+      err => {
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
+      }
+    );
+  };
+};
+
+export const addSmurf = data => {
+  const postRequest = axios.post('http://localhost:3333/smurfs', data);
+  return dispatch => {
+    dispatch({type: CR_PENDING});
+    postRequest.then(
+      response => {
+        dispatch({
+          type: CR_SUCCESS,
+          payload: response.data
+        });
+      }
+    ).catch(
+      err => {
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
+      }
+    );
+  };
+};
+
+export const deleteSmurf = id => {
+  const deleteRequest = axios.delete(`http://localhost:3333/smurfs/${id}`);
+  return dispatch => {
+    deleteRequest.then(
+      response => {
+        dispatch(getSmurfs());
+      }
+    ).catch(
+      err => {
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
+      }
+    );
+  };
+}
+
+export const editSmurf = smurf => {
+  const updateRequest = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
+  return dispatch => {
+    updateRequest.then(
+      response => {
+        dispatch(getSmurfs());
+      }
+    ).catch(
+      err => {
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
+      }
+    );
+  };
+}
