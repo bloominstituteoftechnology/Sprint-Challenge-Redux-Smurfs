@@ -19,7 +19,8 @@ class App extends Component {
       this.state={
         smurf:"",
         age:'',
-        height:''
+        height:'',
+        update: false
       }
     }
  componentDidMount =()=>{
@@ -55,7 +56,7 @@ addSmurfHandler =(event)=>{
         <button onClick={()=>{this.props.createNewSmurfActionCreator({name: this.state.smurf,
          age:this.state.age, height: this.state.height});
           this.setState({smurf: '', age:"", height:''})}}> Add a smurf</button>
-       <ListOfSmurfs/>
+       <ListOfSmurfs />
       </div>
     );
   }

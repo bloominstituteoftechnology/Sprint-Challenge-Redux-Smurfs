@@ -4,8 +4,7 @@ import {smurfsFetchingActionCreator} from './allActions';
 
 
 const createNewSmurfActionCreator = (smurf) => {
-    console.log('p', smurf)
-    
+    console.log('p', smurf)   
 const newSmurf = axios.post('http://localhost:3333/smurfs/', smurf)
     return (dispatch) => {
         newSmurf.then(res => {

@@ -20,8 +20,6 @@ return(dispatch)=>{
         console.log('error,error')
                 dispatch({ type: ERROR_FETCHING, payload: " fetching error " })
         })
+}   
 }
-    
-}
-
 export {smurfsFetchingActionCreator};

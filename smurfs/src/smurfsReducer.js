@@ -18,7 +18,6 @@ const initialState = {
    updatingSmurf: false, deletingSmurfs: false,
    error: null 
 }
-
 const smurfsReducer = (state=initialState, action)=>{
   switch(action.type){
     case FETCHING_SMURFS:
@@ -31,7 +30,6 @@ const smurfsReducer = (state=initialState, action)=>{
     default:
     return state
   }
-
 }
 export {smurfsReducer};
 
