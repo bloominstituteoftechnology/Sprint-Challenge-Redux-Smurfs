@@ -29,4 +29,11 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    isFetching: state.isFetching
+  }
+}
+
 export default connect(mapStateToProps, { getSmurfs })(App);

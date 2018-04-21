@@ -18,6 +18,14 @@ import { GET_SMURFS,
    error: null
  }
 */
+const initialState = {
+  smurfs: [],
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  error: null
+};
+
 
 /*
   You'll only need one smurf reducer for this project.

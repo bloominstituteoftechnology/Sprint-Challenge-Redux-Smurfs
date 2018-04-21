@@ -4,35 +4,31 @@
 */
 import axios from 'axios';
 
-export const GET_SMURFS = 'GET_SMURFS';
-export const GETTING_SMURFS = 'GETTING_SMURFS';
+export const FETCHING_SMURFS = 'FETCHING';
+export const FETCHED_SMURFS = 'FETCHED';
 export const ERROR = 'ERROR';
 export const ADD_SMURF = 'ADD_SMURF';
 
 const URL = 'http://localhost:3333/smurfs';
 
-export const getSmurfs = () => {
-  axios
-    .get(URL);
-    return (dispatch) => {
-    dispatch({ type: GETTING_SMURFS});
-    smurfs
-      .then((response) => {
-        dispatch({ type: GET_SMURFS, payload: response.data });
-      })
-      .catch((err) => {
-        dispatch({ type: ERROR, errorMessage: "Cannot retrieve Smurf data" });
-      });
-  };
-};
+export const getSmurfs = () => dispatch => {
+  dispatch({ type: FETCHING_SMURFS });
+   axios
+     .get(URL)
+     .then(response => 
+        dispatch({ type: FETCHED_SMURFS, smurfs: response.data }))
+     .catch(err =>
+        dispatch({ type: ERROR, errorMessage: 'Could not retrieve data' }
+      ));
+ };
 
-export const addSmurf = (smurf) => {
+export const addSmurf = smurf => dispatch => {
   axios
-    .post(URL, smurf)
+    .post(URL, {smurf})
     .then(response => { 
       dispatch({ type: ADD_SMURF });
   }).catch(err => { 
-      dispatch({ type: ERROR, errorMessage: 'Cannot add new Smurf'})});
+      dispatch({ type: ERROR, errorMessage: 'Not able to add Smurf'})});
 };
 /*
   For this project you'll need at least 2 action creators for the main portion,
