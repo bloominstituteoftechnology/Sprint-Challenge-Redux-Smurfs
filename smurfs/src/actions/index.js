@@ -2,8 +2,6 @@ import axios from "axios";
 
 import * as Actions from "./actionTypes";
 
-
-
 // FETCHING
 const fetchSmurf = () => {
   const smurfs = axios.get(`http://localhost:3333/smurfs`);
@@ -44,10 +42,12 @@ const addSmurf = data => {
   };
 };
 
-
 // DELETING
 const deleteSmurf = smurfId => {
-  const smurfs = axios.delete(`http://localhost:3333/smurfs/${smurfId}`, smurfId);
+  const smurfs = axios.delete(
+    `http://localhost:3333/smurfs/${smurfId}`,
+    smurfId
+  );
   return dispatch => {
     dispatch({ type: Actions.DELETING_SMURF });
     smurfs
@@ -65,6 +65,7 @@ const deleteSmurf = smurfId => {
 
 // UPDATING
 const updateSmurf = smurfId => {
+
   const smurfs = axios.put(`http://localhost:3333/smurfs/${smurfId}`, smurfId);
   return dispatch => {
     dispatch({ type: Actions.UPDATING_SMURF });
@@ -100,4 +101,4 @@ const updateSmurf = smurfId => {
    D - deleteSmurf
 */
 
-export { fetchSmurf, addSmurf, deleteSmurf, updateSmurf}
+export { fetchSmurf, addSmurf, deleteSmurf, updateSmurf };

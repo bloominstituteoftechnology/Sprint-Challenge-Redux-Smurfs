@@ -1,4 +1,9 @@
 .App {
+  background-image: linear-gradient(
+    rgba(177, 68, 68, 0.555),
+    rgba(80, 181, 214, 0.8)
+  );
+  height: 100%;
   text-align: center;
 }
 
@@ -23,6 +28,101 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.SmurfList {
+  margin: 20px auto;
+  border: 5px solid black;
+  border-radius: 10px;
+  width: 40%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.SmurfList_card {
+  color: white;
+  background: linear-gradient(-70deg, #fa7c30 30%, rgba(0, 0, 0, 0) 30%),
+    url("http://www.wallpapers4u.org/wp-content/uploads/dark_spots_texture_background_50355_1920x1080.jpg");
+  
+  background-size: 100%;
+  border-radius: 20px 50px;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto 20px;
+  padding: 5% 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.SmurfList_item {
+  margin-right: 25%;
+}
+
+.DeleteSmurf {
+  margin: 20px 0 0;
+}
+
+.EditSmurf_input {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.EditSmurfBorder {
+  border: 1px solid black;
+}
+
+.BtnAdd {
+  padding: 5px;
+  background-color: rgb(42, 122, 55);
+  color: white;
+  font-weight: bold;
+  border: 2px solid rgb(42, 122, 55);
+  border-radius: 5px;
+}
+
+.BtnAdd:hover {
+  cursor: pointer;
+}
+
+.BtnDelete {
+  padding: 5px;
+  background-color: rgb(145, 47, 30);
+  color: white;
+  font-weight: bold;
+  border: 2px solid rgb(145, 47, 30);
+  border-radius: 5px;
+}
+
+.BtnDelete:hover {
+  cursor: pointer;
+}
+
+.BtnEdit {
+  padding: 5px;
+  background-color: rgb(236, 208, 45);
+  color: black;
+  font-weight: bold;
+  border: 2px solid rgb(236, 208, 45);
+  border-radius: 5px;
+}
+
+.BtnDelete:hover {
+  cursor: pointer;
+}
+
+h2 {
+  margin: 0;
+}
+
+h1 {
+  margin: auto;
+  padding: 25px;
+}
+h3 {
+  margin: 2px;
 }
