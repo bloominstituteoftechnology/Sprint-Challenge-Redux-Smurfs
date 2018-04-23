@@ -1,6 +1,10 @@
 import React from "react";
+import RaisedButton from "material-ui/RaisedButton";
 
 const CreateSmurfForm = props => {
+	const style = {
+		margin: 12
+	};
 	return (
 		<form>
 			<input
@@ -21,14 +25,16 @@ const CreateSmurfForm = props => {
 				placeholder="Enter smurf height"
 				onChange={props.handleNewInput}
 			/>
-			<button
+			<RaisedButton
+				primary={true}
+				style={style}
 				type="button"
 				onClick={() => {
 					props.handleCreateSmurf();
 				}}
 			>
-				Create Smurf
-			</button>
+				Add Smurf
+			</RaisedButton>
 		</form>
 	);
 };

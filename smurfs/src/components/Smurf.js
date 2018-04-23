@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { deleteSmurfs, updateSmurfs } from "../actions/";
+import RaisedButton from "material-ui/RaisedButton";
 import UpdateForm from "./UpdateForm";
 
 class Smurf extends React.Component {
@@ -11,29 +12,36 @@ class Smurf extends React.Component {
 		};
 	}
 	render() {
+		const style = {
+			margin: 12
+		};
 		const { name, age, height, id } = this.props.smurf;
 		return (
 			<div>
 				<p>{`Name: ${name}`}</p>
 				<p>{`Age: ${age}`}</p>
 				<p>{`Height: ${height}`}</p>
-				<button
+				<RaisedButton
+					primary={true}
+					style={style}
 					type="button"
 					onClick={() => {
 						this.props.deleteSmurfs(id);
 					}}
 				>
 					Delete Smurf
-				</button>
+				</RaisedButton>
 				{/* Button toggler for the update form*/}
-				<button
+				<RaisedButton
+					primary={true}
+					style={style}
 					type="button"
 					onClick={() => {
 						this.setState({ showUpdateForm: !this.state.showUpdateForm });
 					}}
 				>
 					Update smurf
-				</button>
+				</RaisedButton>
 				{/* Show update form if boolean is true */}
 				{this.state.showUpdateForm ? (
 					<UpdateForm id={id} update={this.props.updateSmurfs} />
