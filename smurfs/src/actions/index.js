@@ -7,7 +7,7 @@ const URL = 'http://localhost:3333/smurfs';
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const SUCCESS_FETCHING = 'SUCCESS_FETCHING';
 export const SUCCESS_CREATING = 'SUCCESS_CREATING';
-export const CREATING_SMURF = 'CREATING_SMURF';
+export const CREATING_SMURFS = 'CREATING_SMURF';
 export const REJECTED = 'REJECTED';
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -26,8 +26,7 @@ export const fetchSmurfs = () => {
     dispatch({ type: FETCHING_SMURFS});
     promise
       .then(response => {
-        console.log('RESPONSE', response);
-        dispatch({ type: SUCCESS_FETCHING, payload: []});
+        dispatch({ type: SUCCESS_FETCHING, payload: response.data});
       })
       .catch(error => {
           dispatch({type: REJECTED, payload: 'Error fetching smurfs....'})

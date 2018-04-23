@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Smurf from './Smurf';
 import { connect } from 'react-redux';
-import { fetchSmufs } from '../actions';
+import { fetchSmurfs } from '../actions';
 
 class SmurfsList extends Component {
     componentDidMount() {
@@ -10,8 +10,9 @@ class SmurfsList extends Component {
     render() {
         return (
             <div>
+        {this.props.fetchingSmurfs ? (<h3>Hold tight, we are fetching smurfs</h3>) : null}
                 {this.props.smurfs.map(smurf => {
-                    return <Smurf smurf={}/>
+                    return <Smurf/>
                 })}
             </div>
         );
@@ -20,7 +21,8 @@ class SmurfsList extends Component {
 
 const mapStateToProps = state => {
     return {
-        smurfs: state.smurfs
+        smurfs: state.smurfs,
+        fetchingSmurfs: state.fetchingSmurfs
     }
 }
 export default connect(mapStateToProps, { fetchSmurfs })(SmurfsList);

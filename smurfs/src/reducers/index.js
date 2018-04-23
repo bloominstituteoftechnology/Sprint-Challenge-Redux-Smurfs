@@ -20,7 +20,6 @@ const initialState = {
   Components can read your store as, `state` and not `state.fooReducer`.
 */
 
-FETCHING_SMURFS, SUCCESS_FETCHING, CREATING_SMURF, SUCCESS_CREATING, REJECTED
 
 export default (state = initialState, action) => {
   switch(action.type) {
@@ -43,7 +42,7 @@ export default (state = initialState, action) => {
     });
   case REJECTED:
     return Object.assign({}, state, {
-      error: actions.payload,
+      error: action.payload,
       fetchingSmurfs: false,
       addingSmurf: false
     });
