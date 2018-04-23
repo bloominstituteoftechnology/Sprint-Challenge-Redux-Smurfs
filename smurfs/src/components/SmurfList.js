@@ -7,9 +7,8 @@ class SmurfList extends Component {
     render () {
         return (
             <div>
-            {this.props.getSmurf ? (
-            <h3>Summoning Your Smurf</h3>
-            ) : null}
+            {/* {this.props.getSmurf ? (
+            ) : null} */}
             {this.props.smurf.map(smurf =>{
                 return <Smurf smurf={smurf} />
             })}
