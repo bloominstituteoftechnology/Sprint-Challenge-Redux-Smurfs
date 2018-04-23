@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSmurfs, createSmurfs, deleteSmurfs } from "../actions/";
+import RaisedButton from "material-ui/RaisedButton";
 import "./App.css";
 import CreateSmurfForm from "./CreateSmurfForm";
 import Smurfs from "./Smurfs";
@@ -55,6 +56,7 @@ class App extends Component {
             smurfs={this.props.smurfs}
             delete={this.props.handleDeleteSmurf}
           />
+          <RaisedButton label="Default" />
         </div>
       </div>
     );
