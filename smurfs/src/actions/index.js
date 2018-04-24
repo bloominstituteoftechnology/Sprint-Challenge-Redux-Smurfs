@@ -13,3 +13,9 @@
    U - updateSmurf
    D - deleteSmurf
 */
+import { getSmurfs } from "./getSmurfs";
+import { addSmurf } from "./addSmurf";
+import { updateSmurf } from "./updateSmurf";
+import { deleteSmurf } from "./deleteSmurf";
+
+export { getSmurfs, addSmurf, updateSmurf, deleteSmurf };
