@@ -16,6 +16,6 @@
 import { getSmurfs } from "./getSmurfs";
 import { addSmurf } from "./addSmurf";
 import { updateSmurf } from "./updateSmurf";
-import { delteSmurf } from "./deleteSmurf";
+import { deleteSmurf } from "./deleteSmurf";
 
-export { getsmurfs, addSmurf, updateSmurf, deleteSmurf };
+export { getSmurfs, addSmurf, updateSmurf, deleteSmurf };
