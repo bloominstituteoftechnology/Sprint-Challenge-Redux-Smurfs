@@ -1,0 +1,9 @@
+1. Three Javascript array/object methods that do not produce side-effects are the `map`, `filter`, and `concat`. Create() , creates a new object and extends the properties of the origional object. 
+
+ 2. `Actions` are information call functions that send data from your application interface to your store. They are objects, they have a type property that tell you which type of action is being performed. The types are entered as string constants. They provide a description that something happened.
+`Reducers` are used to cause your application's state change in response to actions that were sent to the store. Each time an action is executed the state property runs through the reducer functions to update state. 
+`Store` is the container object that brings the `actions`, and `reducers` together. The store holds the application state, allowing for access and updates.
+3. The difference between Application state and Component state is that application state is global and the component state is local. The component state is within a specific component compartment of the application and may never be rendered specifically to the UI; it can update within that component and pass down to the children through props.
+4. `Middleware` is a higher order function that can connect Redux functions to your app actions to allow for functional states to be rendered rather than just simple arrays. It can do this by causing a dispatch function to return a new dispatch function. Its very useful for logging actions, and routing among other things.
+5. `Redux thunk` is a middleware that lets you write action creators that will return a function instead of an array. Thunk is used to allow for a delay in the dispatch of an actions.
+6. The `react-redux` method that links up our `components` with our `redux store` is the `connect` method. 
