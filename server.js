@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const port = 3333;
+const port = 5000;
 
 const server = express();
 server.use(express.json());
@@ -55,7 +55,7 @@ server.put('/smurfs/:id', (req, res) => {
     if (name) foundSmurf.name = name;
     if (age) foundSmurf.age = age;
     if (height) foundSmurf.height = height;
-    res.json(foundSmurf);
+    res.json(smurfs);
   }
 });
 
@@ -66,7 +66,8 @@ server.delete('/smurfs/:id', (req, res) => {
   if (foundSmurf) {
     const SmurfRemoved = { ...foundSmurf };
     smurfs = smurfs.filter(smurf => smurf.id != id);
-    res.status(200).json({ SmurfRemoved });
+    res.status(200)
+    res.json(smurfs);
   } else {
     sendUserError('No smurf by that ID exists in the smurf DB', res);
   }
