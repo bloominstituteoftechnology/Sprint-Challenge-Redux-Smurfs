@@ -5,6 +5,12 @@ import { addSmurf, updateSmurf, cancelEdit } from '../actions'
 class Form extends Component {
   state = { name: '', age: '', height: '' }
 
+  componentDidUpdate = prevProps => {
+    const { editing, activeSmurf: {name, age, height} } = this.props
+    if(!editing || editing === prevProps.editing) return
+    this.setState({ name, age, height })
+  }
+
   handleInputChange = e => {
     const { value } = e.target
     this.setState({ [e.target.name]: value })
@@ -21,9 +27,15 @@ class Form extends Component {
     this.props.addSmurf(smurf)
   }
 
-  handleUpdate = () => {
+  handleUpdate = e => {
+    e.preventDefault()
     const { name, age, height } = this.state
     this.props.updateSmurf({ name, age, height })
+  }
+
+  handleCancel = _e => {
+    this.setState(() => ({ name: '', age: '', height: '' }))
+    this.props.cancelEdit()
   }
 
   render() {
@@ -56,7 +68,7 @@ class Form extends Component {
 	{editing ?
 	  <span>
 	    <input type="submit" value="Save Smurf"/>
-	      <button onClick={this.props.cancelEdit}>Cancel Edit</button>
+	      <button onClick={this.handleCancel}>Cancel Edit</button>
 	  </span>
 	  : <input type="submit" value="Add smurf"/>
 	}
