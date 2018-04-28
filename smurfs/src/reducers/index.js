@@ -7,7 +7,7 @@ const initialState = {
    updatingSmurf: false,
    deletingSmurfs: false,
    error: null,
-   smurf: {},
+   smurf: {}
 }
 
 const smurfReducer = (state = initialState, action) => {
