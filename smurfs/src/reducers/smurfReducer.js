@@ -2,6 +2,31 @@
   Be sure to import in all of the action types from `../actions`
 */
 
+import {FETCHING,ERROR,SUCCESS} from '../actions';
+
+
+let initialState = {
+    smurfs:[],
+    fetching:false,
+    error:null
+}
+
+export const smurfReducer = (smurfs = initialState,action) => {
+  switch(action.type){
+      case FETCHING:
+          return {...smurfs,fetching:true,smurfs:[]};
+      case SUCCESS:
+          return {...smurfs,smurfs:action.smurfs,fetching:false}
+      case ERROR:
+          return {...smurfs,error:action.error}
+      default: 
+          console.log(smurfs)
+          return smurfs
+  }
+}
+
+
+
 /*
  Your initial/default state for this project could look a lot like this
  {
