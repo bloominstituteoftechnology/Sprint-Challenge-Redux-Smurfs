@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getSmurfs, addSmurf } from '../actions'
+import { getSmurfs, addSmurf, deleteSmurf } from '../actions'
 import { connect } from 'react-redux';
 
 /*
@@ -35,6 +35,10 @@ class App extends Component {
     this.setState({ name: '', age: '', height: '' });
   }
 
+  delete = id => {
+    this.props.deleteSmurf(id);
+  }
+
   render() {
     return (
       <div className="App">
@@ -42,11 +46,12 @@ class App extends Component {
        
           <ul>
             {this.props.smurfs.map((smurf, index) => {
-              return <li key={ smurf.id }>{ smurf.name}</li>
+              return <li key={ smurf.id }>{ smurf.name } |   { smurf.age } years old | { smurf.height } cm tall <button onClick={() => this.delete(smurf.id)}>x</button></li>
             })}
           </ul>
         
         <form>
+          <h3>Add to the Smurf Village</h3>
           <input type='text' name='name' placeholder='name' onChange={this.updateInput} value={this.state.name} />
           <input type='number' name='age' placeholder='age' onChange={ this.updateInput } value={ this.state.age } />
           <input type='number' name='height' placeholder='height' onChange={ this.updateInput } value={ this.state.height } />
@@ -66,4 +71,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf })(App);
