@@ -3,15 +3,18 @@ import axios from 'axios';
 export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
+export const ADDING = 'ADDED';
 export const ADDED = 'ADDED';
 export const DELETED = 'DELETED';
 export const UPDATED = 'UPDATED';
 
-export const getSmurf = () => {
+export const getSmurfs = () => {
+  console.log('GETTING SMURFS');
   return dispatch => {
     dispatch({type: FETCHING})
-      axios.get('http://localhost:3333/api/smurfs')
+      axios.get('http://localhost:3333/smurfs')
         .then(response => {
+          console.log('RESPONSE.DATA', response.data);
           dispatch({type: FETCHED, smurfs: response.data})
         })
         .catch(error => {
@@ -22,14 +25,15 @@ export const getSmurf = () => {
 
 export const addSmurf = (newSmurf) => {
   return dispatch => {
-    // dispatchEvent({type: ADDED})
-      axios.post('http://localhost:3333/api/smurfs', newSmurf)
+      axios.post('http://localhost:3333/smurfs', newSmurf)
       .then(response => {
+        console.log('RESPONSE.DATA ADDSmurf', response.data);
         dispatch({type: ADDED, smurfs: response.data})
       })
       .catch(error => {
         dispatch({type: ERROR, error: error})
       })
+
   }
 }
 
