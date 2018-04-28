@@ -22,6 +22,14 @@
   font-size: large;
 }
 
+.Smurf-box {
+  width: 50%;
+  padding: 2px;
+  box-shadow: 0 2px 4px grey;
+  margin: 10px auto;
+  list-style: none;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
