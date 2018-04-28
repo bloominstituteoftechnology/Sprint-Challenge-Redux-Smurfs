@@ -23,7 +23,6 @@ class CreateSmurf extends Component {
         event.preventDefault();
         this.props.addSmurf(this.state);
         this.setState({name: '', age: '', height: '' });
-        console.log(this.state)
     }
     
     render() {

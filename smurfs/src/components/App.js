@@ -31,7 +31,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-  state: state.smurfs.data,
+  state: state.smurfs,
   }
 }
 
