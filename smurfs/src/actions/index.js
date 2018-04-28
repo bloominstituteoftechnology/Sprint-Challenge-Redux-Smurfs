@@ -12,10 +12,11 @@ export const getSmurfs = () => {
   return (dispatch) => {
       axios.get(`http://localhost:3333/smurfs`)
         .then((response) => {
-          return console.log(response)
+          dispatch({ type: FETCHING_SMURFS, payload: response })
         })
         .catch((error) => {
-          return console.log(error)
+          dispatch({ type: ERROR, error: console.log(error) })
+
         })
     }
 }

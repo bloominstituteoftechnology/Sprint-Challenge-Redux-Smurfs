@@ -12,7 +12,7 @@ const sendUserError = (msg, res) => {
   return;
 };
 
-let smurfs = [];
+let smurfs = [ 'grumpy' ];
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });

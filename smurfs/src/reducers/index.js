@@ -12,7 +12,9 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch(action.type) {
     case FETCHING_SMURFS:
-      return
+      return (
+        Object.assign({}, { smurfs: action.payload, fetchingSmurfs: false })
+      )
     case ADDING_SMURF:
       return
     case UPDATING_SMURF:
