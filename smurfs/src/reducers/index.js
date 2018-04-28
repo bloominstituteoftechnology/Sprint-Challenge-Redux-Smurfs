@@ -16,7 +16,10 @@ const rootReducer = (state = initialState, action) => {
         Object.assign({}, { smurfs: action.payload, fetchingSmurfs: false })
       )
     case ADDING_SMURF:
-      return
+    console.log('reducer',action.payload)
+      return (
+        Object.assign({}, { smurfs:action.payload, addingSmurf: false })
+      )
     case UPDATING_SMURF:
       return
     case DELETING_SMURF:

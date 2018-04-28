@@ -9,27 +9,32 @@ class CreateSmurf extends Component {
         super()
         this.state = {
             name: '',
-            age: 0,
+            age: '',
+            height: '',
         }
     }
 
-    handleOnchange = (event) => {
-        this.setState({ })
-
+    handleChange = (event) => {
+        this.setState({ [event.target.id]: event.target.value });
     }
 
 
     handleSubmit = (event) => {
-        this.props.addSmurf(this.state)
+        event.preventDefault();
+        this.props.addSmurf(this.state);
+        this.setState({name: '', age: '', height: '' });
+        console.log(this.state)
     }
     
     render() {
         return (
             <Form>
                 <Label for='name'>name</Label>
-                <Input type='text' name='name' id='name' placeholder='choose a witty name' />
-                <Label for='name'>age</Label>
-                <Input type='number' age='age' id='age' placeholder='usually equal to your IQ' />
+                <Input type='text' name='name' id='name' value={this.state.name} onChange={this.handleChange} placeholder='choose a witty name' />
+                <Label for='age'>age</Label>
+                <Input type='number' name='age' id='age' value={this.state.age} onChange={this.handleChange} placeholder='usually equal to your IQ' />
+                <Label for='height'>height</Label>
+                <Input type='number' name='height' id='height' value={this.state.height} onChange={this.handleChange} placeholder='NOT your shoe size' />
                 <Button onClick={this.handleSubmit}>Once you Submit; it's permanent, like hairloss </Button>
             </Form>
         )
