@@ -3,7 +3,9 @@
 1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
 Object.assign() is a method that creates a new object while extending the props of another object.  It makes a 'deep copy'.  Other methods that do not produce side-effects are filter(), concat(), and map().
 
-1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+2.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+Reducers define the store and give the direction on what to do with various actions.  Actions define what may happen in the app and call the different actions defined in the reducer.  The Store is the state which is available to all parts of the app connected to the store.  The store is known as a 'single source of truth' because it is (possibly) connected to the entire app.   
+
 1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
 1.  What is middleware?
 1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
