@@ -27,7 +27,6 @@ export const addSmurf = (newSmurf) => {
   return dispatch => {
       axios.post('http://localhost:3333/smurfs', newSmurf)
       .then(response => {
-        console.log('RESPONSE.DATA ADDSmurf', response.data);
         dispatch({type: ADDED, smurfs: response.data})
       })
       .catch(error => {
@@ -37,29 +36,17 @@ export const addSmurf = (newSmurf) => {
   }
 }
 
-// export const deleteSmurf = (id) => {
-//   return dispatch => {
-//       axios.delete(`http://localhost:5000/api/friends/${id}`)
-//       .then(response => {
-//         dispatch({type: DELETED, friends: response.data})
-//       })
-//       .catch(error => {
-//         dispatch({type: ERROR, error: error})
-//       })
-//   }
-// }
-
-// export const updateSmurf = (id, friendInfo) => {
-//   return dispatch => {
-//       axios.put(`http://localhost:3333/api/smurfs/${id}`, friendInfo)
-//       .then(response => {
-//         dispatch({type: UPDATED, friends: response.data})
-//       })
-//       .catch(error => {
-//         dispatch({type: ERROR, error: error})
-//       })
-//   }
-// }
+export const deleteSmurf = (id) => {
+  return dispatch => {
+      axios.delete(`http://localhost:3333/smurfs/${id}`)
+      .then(response => {
+        dispatch({type: DELETED, smurfs: response.data})
+      })
+      .catch(error => {
+        dispatch({type: ERROR, error: error})
+      })
+  }
+}
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
