@@ -1,4 +1,4 @@
-import { FETCHING, SUCCESS, ERROR } from '../actions';
+import { FETCHING, SUCCESS, ERROR, DELETING, DELETED } from '../actions';
 
 
 const initialState = {
@@ -14,10 +14,14 @@ export default (state=initialState, action) => {
   switch(action.type) {
     case FETCHING:
       return {...state, fetchingSmurfs: true}
+    case DELETING:
+      return {...state, deletingSmurfs: true}
+    case DELETED:
+      return {...state, deletingSmurfs: false, smurfs: state.smurfs.filter(smurf => smurf.id !== action.smurf.id)}
     case SUCCESS:
       return {...state, fetchingSmurfs: false, smurfs: action.smurfs}
     case ERROR:
-      return {...state, fetchingSmurfs: false, error: action.error}
+      return {...state, deleteSmurfs: false, updatingSmurfs: false, fetchingSmurfs: false, error: action.error}
     default:
       return state
   }

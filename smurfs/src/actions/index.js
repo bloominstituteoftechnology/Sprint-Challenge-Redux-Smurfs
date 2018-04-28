@@ -3,6 +3,8 @@ import axios from 'axios';
 export const FETCHING = 'FETCHING';
 export const SUCCESS = 'SUCCESS';
 export const ERROR = 'ERROR';
+export const DELETING = 'DELETING';
+export const DELETED = 'DELETED';
 
 export const getSmurfs = () => {
   return dispatch => {
@@ -19,12 +21,27 @@ export const getSmurfs = () => {
 
 export const addSmurf = smurf => {
   return dispatch => {
-    axios.post('http://localhost:3333/smurf', smurf)
+    axios.post('http://localhost:3333/smurfs', smurf)
     .then(response => {
       dispatch({ type: SUCCESS, smurfs: response.data })
     })
     .catch(err => {
       dispatch({ type: ERROR, error: 'Cannot Add New Smurf' })
+    })
+  }
+}
+
+export const deleteSmurf = id => {
+  return dispatch => {
+    dispatch({ type: DELETING })
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
+    .then(response => {
+      setTimeout(() => {
+        dispatch({ type: DELETED, smurf: response.data.SmurfRemoved})
+      }, 2000)
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, error: "Could Not Delete Smurf"})
     })
   }
 }
