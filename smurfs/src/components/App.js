@@ -26,7 +26,8 @@ class App extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  createSmurf = () => {
+  createSmurf = e => {
+    // e.preventDefault();
     const newSmurf = { name: this.state.name,
                         age: this.state.age,
                         height: this.state.height };
@@ -51,6 +52,7 @@ class App extends Component {
           <input type='number' name='height' placeholder='height' onChange={ this.updateInput } value={ this.state.height } />
           <button onClick={this.createSmurf}>New Smurf</button>
         </form>
+
       </div>
     );
   }

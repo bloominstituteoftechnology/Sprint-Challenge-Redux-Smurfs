@@ -6,16 +6,16 @@ import { PENDING, GET_SMURFS, ADD_SMURF, ERROR } from '../actions'
  Your initial/default state for this project could look a lot like this
  */
 const initialState = {
-   smurfs: [],
-   fetchingSmurfs: false,
-   addingSmurf: false,
-   updatingSmurf: false,
-   deletingSmurfs: false,
-   error: null
- }
+  smurfs: [],
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurfs: false,
+  error: null
+}
 
 const reducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case PENDING:
       return Object.assign({}, state, { fetchingSmurfs: true });
     case GET_SMURFS:
@@ -23,9 +23,9 @@ const reducer = (state = initialState, action) => {
     case ADD_SMURF:
       return Object.assign({}, state, { addingSmurf: true });
     case ERROR:
-      return Object.assign({} , state, { fetchingSmurfs: false, error: action.error});      
+      return Object.assign({}, state, { fetchingSmurfs: false, error: action.error });
     default:
-      return state;  
+      return state;
   }
 }
 
