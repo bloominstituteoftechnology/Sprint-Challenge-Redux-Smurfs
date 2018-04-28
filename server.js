@@ -12,7 +12,16 @@ const sendUserError = (msg, res) => {
   return;
 };
 
-let smurfs = [];
+//let smurfs = [
+//  {
+//    name: 'fido',
+//    age: 26,
+//    height: '100',
+//  },
+//];
+
+let smurfs = []
+
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });

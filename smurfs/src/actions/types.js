@@ -1,0 +1,6 @@
+export const FETCHING = 'FETCHING'
+export const CREATING = 'CREATING'
+export const UPDATING = 'UPDATING'
+export const DELETING = 'DELETING'
+export const SUCCESS = 'SUCCESS'
+export const ERROR = 'ERROR'
