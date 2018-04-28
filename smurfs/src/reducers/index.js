@@ -23,7 +23,7 @@ const reducer = (state = initialState, action) => {
     case ADD_SMURF:
       return Object.assign({}, state, { addingSmurf: true });
     case DELETE_SMURF:
-  return Object.assign({}, state, {deletingSmurfs: true,      /*smurfs: action.smurfs*/})  
+      return Object.assign({}, state, { deletingSmurfs: true, /*smurfs: action.smurfs*/ }) //something off here, works but needs refresh to render 
     case ERROR:
       return Object.assign({}, state, { fetchingSmurfs: false, error: action.error });
     default:
