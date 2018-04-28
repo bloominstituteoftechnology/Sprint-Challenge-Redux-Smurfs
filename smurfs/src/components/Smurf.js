@@ -1,34 +1,67 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { editSmurf, deleteSmurf } from '../actions'
+import {
+  updateSmurf,
+  deleteSmurf,
+  editSmurf,
+  cancelEdit,
+} from '../actions'
+
+const styles = { color: 'blue' }
+const activeStyles = { color: 'lightgrey' }
 
 class Smurf extends Component {
+  state = { activelyEditing: false }
   handleDelete = id => {
     this.props.deleteSmurf(id)
   }
 
+  handleEdit = id => {
+    console.log('editing this smurf')
+    this.setState(() => ({ activelyEditing: true }))
+    this.props.editSmurf(id)
+  }
+
+  cancelEdit = _event => {
+    this.setState(() => ({ activelyEditing: false }))
+    this.props.cancelEdit()
+  }
+
   render() {
-    const { smurf: {name, age, height, id} } = this.props
+    const { smurf: {name, age, height, id}, editing } = this.props
+    const { activelyEditing } = this.state
 
     return (
-      <div className="Smurf">
+      <div
+	className="Smurf"
+	style={editing && activelyEditing ? {...styles, ...activeStyles} : styles}
+	>
 	<div>Name: {name}</div>
 	<div>Age: {age}</div>
-	<div>Height: {height}</div>
+	<div>Height: {height} cm</div>
 	<div>ID: {id}</div>
-	<button onClick={_event => this.handleDelete(id)}>Delete Smurf</button>
+	<span>
+	  {editing && activelyEditing
+	    ? <button onClick={this.cancelEdit}>Cancel Edit</button>
+	    : <button onClick={_event => this.handleEdit(id)}>Edit</button>
+	  }
+	  <button onClick={this.handleDelete}>Delete</button>
+	</span>
 	<hr/>
       </div>
     )
   }
 }
 
+const mapStateToProps = ({ editing }) => ({ editing })
 const mapDispatchToProps = {
-  editSmurf,
+  updateSmurf,
   deleteSmurf,
+  editSmurf,
+  cancelEdit,
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(Smurf)

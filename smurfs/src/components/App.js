@@ -31,7 +31,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => console.log(state) || ({
+const mapStateToProps = state => console.log('mapping state:', state) || ({
   smurfs: state.smurfs,
   pending: state.pending,
   error: state.error,

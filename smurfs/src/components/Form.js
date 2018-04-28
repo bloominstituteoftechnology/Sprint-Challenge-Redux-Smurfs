@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addSmurf } from '../actions'
+import { addSmurf, updateSmurf, cancelEdit } from '../actions'
 
 class Form extends Component {
-  state = { name: '', age: '', height: '', editing: false, }
+  state = { name: '', age: '', height: '' }
 
   handleInputChange = e => {
     const { value } = e.target
@@ -17,19 +17,21 @@ class Form extends Component {
     this.setState(() => ({ name: '', age: '', height: '' }))
   }
 
-  handleEdit = e => {
-    console.log('editing')
-  }
-
   postSmurf = smurf => {
     this.props.addSmurf(smurf)
   }
 
+  handleUpdate = () => {
+    const { name, age, height } = this.state
+    this.props.updateSmurf({ name, age, height })
+  }
+
   render() {
     const { name, age, height } = this.state
+    const { editing, activeSmurf } = this.props
 
     return (
-      <form onSubmit={this.state.editing ? this.handleEdit : this.handleSubmit}>
+      <form onSubmit={editing ? this.handleUpdate : this.handleSubmit}>
 	<input
 	  onChange={this.handleInputChange}
 	  name="name"
@@ -51,8 +53,11 @@ class Form extends Component {
 	  placeholder="Height"
 	  value={height}
 	  />
-	{this.state.editing
-	  ? <input type="submit" value="Edit smurf"/>
+	{editing ?
+	  <span>
+	    <input type="submit" value="Save Smurf"/>
+	      <button onClick={this.props.cancelEdit}>Cancel Edit</button>
+	  </span>
 	  : <input type="submit" value="Add smurf"/>
 	}
       </form>
@@ -60,11 +65,14 @@ class Form extends Component {
   }
 }
 
+const mapStateToProps = ({ editing, activeSmurf }) => ({ editing, activeSmurf })
 const mapDispatchToProps = {
   addSmurf,
+  updateSmurf,
+  cancelEdit,
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(Form)

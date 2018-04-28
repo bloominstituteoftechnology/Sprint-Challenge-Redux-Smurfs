@@ -6,10 +6,13 @@ import {
   DELETING,
   SUCCESS,
   ERROR,
+  EDITING,
+  CANCEL_EDIT,
 } from './types'
 
 const ROOT_URL = 'http://localhost:3333'
 const fetchSuccess = data => ({ type: SUCCESS, payload: data })
+
 
 export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCHING })
@@ -25,7 +28,10 @@ export const addSmurf = smurf => dispatch => {
     .catch(error => dispatch({ type: ERROR, error }))
 }
 
-export const editSmurf = smurf => dispatch => {
+export const editSmurf = id => ({ type: EDITING, payload: id })
+export const cancelEdit = () => ({ type: CANCEL_EDIT })
+
+export const updateSmurf = smurf => dispatch => {
   const { id } = smurf
   dispatch({ type: UPDATING })
   axios.put(`${ROOT_URL}/smurfs/${id}`, smurf)
@@ -39,4 +45,5 @@ export const deleteSmurf = id => dispatch => {
     .then(_ => dispatch(getSmurfs()))
     .catch(error => dispatch({ type: ERROR, error }))
 }
+
 
