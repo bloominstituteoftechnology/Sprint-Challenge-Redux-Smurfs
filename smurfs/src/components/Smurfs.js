@@ -5,8 +5,8 @@ const Smurfs = props => {
     <ul className="smurfs-list">
       {props.smurfs.map((smurf, index) => {
         return (
-          <div>
-            <li className="smurf" key={index}>
+          <div key={index}>
+            <li className="smurf">
               <h2>{smurf.name} Smurf</h2>
               <p>Age: {smurf.age} years</p>
               <p>Height: {smurf.height}cm</p>            

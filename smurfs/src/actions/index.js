@@ -5,6 +5,8 @@ export const SUCCESS = 'SUCCESS';
 export const ERROR = 'ERROR';
 export const DELETING = 'DELETING';
 export const DELETED = 'DELETED';
+export const PENDING = 'PENDING';
+export const UPDATED = 'UPDATED';
 
 export const getSmurfs = () => {
   return dispatch => {
@@ -18,7 +20,6 @@ export const getSmurfs = () => {
       });
   }
 }
-
 export const addSmurf = smurf => {
   return dispatch => {
     axios.post('http://localhost:3333/smurfs', smurf)
@@ -30,7 +31,6 @@ export const addSmurf = smurf => {
     })
   }
 }
-
 export const deleteSmurf = id => {
   return dispatch => {
     dispatch({ type: DELETING })
@@ -42,6 +42,21 @@ export const deleteSmurf = id => {
     })
     .catch(err => {
       dispatch({ type: ERROR, error: "Could Not Delete Smurf"})
+    })
+  }
+}
+export const pending = () => {
+  return { type: PENDING }
+}
+export const updateSmurf = smurf => {
+  return dispatch => {
+    axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+    .then(response => {
+      console.log(response);
+      dispatch({ type: UPDATED, smurf: response.data})
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, error: 'Could Not Update Smurf'})
     })
   }
 }
