@@ -43,3 +43,15 @@ export const postSmurf = (smurfObj) => {
       .catch(error => dispatch({ type: ERROR, error: error }));
   }
 }
+
+//axios.delete
+
+export const deleteSmurf = (id) => {
+  return dispatch =>{
+    dispatch({ type: LOADING });
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(response => dispatch(getSmurfs()))
+      .catch(error=> dispatch({ type: ERROR, error: error }));
+  }
+}

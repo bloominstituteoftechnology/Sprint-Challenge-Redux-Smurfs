@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 
-import { getSmurfs, postSmurf } from '../actions';
+import { getSmurfs, postSmurf, deleteSmurf } from '../actions';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -36,6 +36,10 @@ class App extends Component {
     this.props.postSmurf({ name, age, height });
     this.setState({ name: '', age: '', height: '' })
 
+  }
+
+  handleDelete = id => {
+    this.props.deleteSmurf(id);
   }
 
   render() {
@@ -79,6 +83,7 @@ class App extends Component {
                   <div>Smurf Name: {smurf.name}</div>
                   <div>Smurf Age: {smurf.age}</div>
                   <div>Smurf Height: {smurf.height}</div>
+                  <button onClick={() => this.handleDelete(smurf.id)}>Delete a Smurf!</button>
                 </div>
               );
             })}
@@ -99,4 +104,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps, { getSmurfs, postSmurf })(App);
+export default connect(mapStateToProps, { getSmurfs, postSmurf, deleteSmurf })(App);
