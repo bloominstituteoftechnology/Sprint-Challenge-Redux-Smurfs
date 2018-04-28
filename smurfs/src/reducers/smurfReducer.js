@@ -14,7 +14,7 @@ let initialState = {
 export const smurfReducer = (smurfs = initialState,action) => {
   switch(action.type){
       case FETCHING:
-          return {...smurfs,fetching:true,smurfs:[]};
+          return {...smurfs,fetching:true,smurfs:[]};  console.log(smurfs);          
       case SUCCESS:
           return {...smurfs,smurfs:action.smurfs,fetching:false}
       case ERROR:

@@ -37,6 +37,8 @@ export const getSmurfs = () => {
 export const addSmurf = (smurf) => {
   return (dispatch) => {
       dispatch({type:FETCHING})
+      console.log(smurf)
+      //they have Ids,
       axios.post('http://localhost:3333/smurfs', smurf)
       .then((response) => {
           console.log(response);
@@ -52,7 +54,7 @@ export const addSmurf = (smurf) => {
 export const editSmurf = (smurf, id) => {
   return (dispatch) => {
       dispatch({type:FETCHING})
-      axios.put(`http://localhost:3333/sumrfs/${id}`, smurf)
+      axios.put(`http://localhost:3333/smurfs/${id}`, smurf)
       .then((response) => {
           console.log(response);
           dispatch({type:SUCCESS, smurfs: response.data})
