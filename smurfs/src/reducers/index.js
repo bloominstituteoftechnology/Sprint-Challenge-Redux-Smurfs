@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
     case PENDING:
       return Object.assign({}, state, { fetchingSmurfs: true });
     case GET_SMURFS:
-      return Object.assign({}, state, { fetchingSmurfs: false, smurfs: action.payload });
+      return Object.assign({}, state, { fetchingSmurfs: false, smurfs: state.smurfs.concat(action.smurfs) });
     case ADD_SMURF:
       return Object.assign({}, state, { addingSmurf: true });
     case ERROR:
