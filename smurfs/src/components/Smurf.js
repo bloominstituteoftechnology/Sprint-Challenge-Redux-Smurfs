@@ -1,4 +1,7 @@
 import React from 'react';
+import { deleteSmurf } from '../actions';
+import { connect } from 'react-redux';
+
 
 const Smurf = (props) => {
     const { smurf } = props;
@@ -7,6 +10,8 @@ const Smurf = (props) => {
 
     }
     const deleteSmurf = () => {
+        console.log('ID', smurf.id)
+        props.deleteSmurf(smurf.id);
 
     }
 
@@ -24,4 +29,4 @@ const Smurf = (props) => {
 }
 
 
-export default Smurf;
+export default connect(null, { deleteSmurf })(Smurf);

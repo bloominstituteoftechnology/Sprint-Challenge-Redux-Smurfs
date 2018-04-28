@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const port = 3333;
-
 const server = express();
 server.use(express.json());
 server.use(cors());
@@ -12,11 +12,30 @@ const sendUserError = (msg, res) => {
   return;
 };
 
-let smurfs = [];
+let smurfs = [
+  {
+    id: 1,
+    name: 'Phil',
+    age: 666,
+    height: 777
+  }
+];
+
+
 server.get('/smurfs', (req, res) => {
-  res.json(smurfs);
+  res.send(smurfs);
 });
-let smurfId = 0;
+let smurfId = 2;
+
+server.get('/api/smurfs/:id', (req, res) => {
+  const smurf = smurfs.find(smurf => smurf.id == req.params.id);
+
+  if (smurf) {
+    res.status(200).json(smurf);
+  } else {
+    res.status(404).send({ msg: 'Smurf not found' });
+  }
+});
 
 server.post('/smurfs', (req, res) => {
   const { name, age, height } = req.body;
@@ -65,11 +84,9 @@ server.delete('/smurfs/:id', (req, res) => {
 
   if (foundSmurf) {
     const SmurfRemoved = { ...foundSmurf };
-    smurfs = smurfs.filter(smurf => smurf.id != id);
-    res.status(200).json({ SmurfRemoved });
-  } else {
-    sendUserError('No smurf by that ID exists in the smurf DB', res);
-  }
+    smurfs = smurfs.filter(smurf => smurf.id !== Number(id));
+    res.status(smurfs);
+  } 
 });
 
 server.listen(port, err => {
