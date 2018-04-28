@@ -13,7 +13,12 @@ const defaultState = {
   smurfs: [],
   pending: false,
   editing: false,
-  activeSmurf: {},
+  activeSmurf: {
+    name: '',
+    age: '',
+    height: '',
+    id: '',
+  },
   error: null,
 }
 
@@ -35,12 +40,19 @@ export const smurfReducer = (state = defaultState, action) => {
       activeSmurf: state.smurfs.filter(s => s.id === action.payload)[0]
     }
   case CANCEL_EDIT:
-    return { ...state, editing: false, activeSmurf: {} }
+    return { ...state, editing: false, activeSmurf: defaultState.activeSmurf }
 
   case SUCCESS:
     return action.payload
-      ? { ...state, pending: false, smurfs: action.payload }
-      : { ...state, pending: false }
+      ? {
+	...state,
+	pending: false,
+	editing: false,
+	error: false,
+	activeSmurf: defaultState.activeSmurf,
+	smurfs: action.payload,
+      }
+    : { ...state, pending: false, editing: false, error: false }
   case ERROR:
     return { ...state, pending: false, error: action.error }
 

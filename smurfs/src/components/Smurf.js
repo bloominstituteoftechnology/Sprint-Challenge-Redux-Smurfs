@@ -28,13 +28,13 @@ class Smurf extends Component {
   }
 
   render() {
-    const { smurf: {name, age, height, id}, editing } = this.props
+    const { smurf: {name, age, height, id}, activeSmurf, editing } = this.props
     const { activelyEditing } = this.state
 
     return (
       <div
 	className="Smurf"
-	style={editing && activelyEditing ? {...styles, ...activeStyles} : styles}
+	style={activeSmurf.name === name ? {...styles, ...activeStyles} : styles}
 	>
 	<div>Name: {name}</div>
 	<div>Age: {age}</div>
@@ -53,7 +53,7 @@ class Smurf extends Component {
   }
 }
 
-const mapStateToProps = ({ editing }) => ({ editing })
+const mapStateToProps = ({ editing, activeSmurf }) => ({ editing, activeSmurf })
 const mapDispatchToProps = {
   updateSmurf,
   deleteSmurf,

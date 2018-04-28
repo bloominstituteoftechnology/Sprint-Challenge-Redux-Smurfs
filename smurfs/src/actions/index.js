@@ -32,9 +32,9 @@ export const editSmurf = id => ({ type: EDITING, payload: id })
 export const cancelEdit = () => ({ type: CANCEL_EDIT })
 
 export const updateSmurf = smurf => dispatch => {
-  const { id } = smurf
+  const { id, name, age, height } = smurf
   dispatch({ type: UPDATING })
-  axios.put(`${ROOT_URL}/smurfs/${id}`, smurf)
+  axios.put(`${ROOT_URL}/smurfs/${id}`, { name, age, height })
     .then(_ => dispatch(getSmurfs()))
     .catch(error => dispatch({ type: ERROR, error }))
 }

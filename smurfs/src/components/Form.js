@@ -3,13 +3,15 @@ import { connect } from 'react-redux'
 import { addSmurf, updateSmurf, cancelEdit } from '../actions'
 
 class Form extends Component {
-  state = { name: '', age: '', height: '' }
+  state = { name: '', age: '', height: '', id: '' }
 
   componentDidUpdate = prevProps => {
-    const { editing, activeSmurf: {name, age, height} } = this.props
+    const { editing, activeSmurf: {name, age, height, id} } = this.props
     if(!editing || editing === prevProps.editing) return
-    this.setState({ name, age, height })
+    this.setState({ name, age, height, id })
   }
+
+  clearSmurf = () => this.setState(() => ({name: '', age: '', height: '', id: ''}))
 
   handleInputChange = e => {
     const { value } = e.target
@@ -20,7 +22,7 @@ class Form extends Component {
     e.preventDefault()
     const { name, age, height } = this.state
     this.props.addSmurf({ name, age, height })
-    this.setState(() => ({ name: '', age: '', height: '' }))
+    this.clearSmurf()
   }
 
   postSmurf = smurf => {
@@ -29,12 +31,13 @@ class Form extends Component {
 
   handleUpdate = e => {
     e.preventDefault()
-    const { name, age, height } = this.state
-    this.props.updateSmurf({ name, age, height })
+    const { name, age, height, id } = this.state
+    this.props.updateSmurf({ name, age, height, id })
+    this.clearSmurf()
   }
 
   handleCancel = _e => {
-    this.setState(() => ({ name: '', age: '', height: '' }))
+    this.clearSmurf()
     this.props.cancelEdit()
   }
 
