@@ -32,3 +32,14 @@ export const getSmurfs = () => {
     })
   }
 }
+
+export const addSmurf = (smurf) => {
+  const request = axios.post('http://localhost:3333/smurfs', smurf)
+  return (dispatch) => {
+    request.then(() => {
+      console.log("After Adding Smurf")
+      setTimeout(dispatch(getSmurfs()), 1000)
+    })
+    .catch(error => dispatch({type: ERROR, error: 'ERROR ADDING SMURF.'}))
+  }
+}

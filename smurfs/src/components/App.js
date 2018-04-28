@@ -7,10 +7,30 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions';
+import { getSmurfs, addSmurf } from '../actions';
 
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      age: '',
+      height: ''
+    }
+  }
+
+  handleChange = (event) => {
+    event.preventDefault();
+    this.setState({[event.target.name] : event.target.value})
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.addSmurf(this.state);
+    this.setState({name: '', age: '', height: ''});
+  }
+
   componentDidMount() {
     this.props.getSmurfs();
   }
@@ -19,12 +39,21 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="name" placeholder="Smurf name..."
+                 value={this.state.name} onChange={this.handleChange} />
+          <input type="text" name="age" placeholder="Smurf age..."
+                 value={this.state.age} onChange={this.handleChange} />
+          <input type="text" name="height" placeholder="Smurf height..."
+                 value={this.state.height} onChange={this.handleChange} />
+          <button type="Submit">Add Smurf</button>
+        </form>
         <div>
           { this.props.fetchingSmurfs ?
             <h3>FETCHING SMURFS DATA...</h3> :
             <ul>
-            { this.props.smurfs.map(smurf => (
-              <li>{ smurf.name }</li>
+            { this.props.smurfs.map((smurf, index) => (
+              <li key={index}>{ smurf.name }</li>
             ))}
             </ul>
           }
@@ -41,4 +70,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
