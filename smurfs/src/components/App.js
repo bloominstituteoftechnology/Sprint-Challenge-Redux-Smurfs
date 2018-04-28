@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getSmurfs, addSmurf, updateSmurf, deleteSmurf, error } from '../actions'
 import './App.css';
 import {Smurfs} from './Smurfs'
+import CreateSmurf from './CreateSmurf'
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -22,6 +23,7 @@ class App extends Component {
     return (
       <div className="App">
       <Smurfs props={this.props.state} />
+      <CreateSmurf />
     </div>
     )}
 }
