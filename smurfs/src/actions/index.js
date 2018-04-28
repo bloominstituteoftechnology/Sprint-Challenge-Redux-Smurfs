@@ -26,8 +26,15 @@ export const addSmurf = smurf => dispatch => {
 
 export const editSmurf = smurf => dispatch => {
   const { id } = smurf
-  dispatch({ type: EDITING })
+  dispatch({ type: UPDATING })
   axios.put(`${ROOT_URL}/smurfs/${id}`, smurf)
+    .then(_ => dispatch({ type: SUCCESS }))
+    .catch(error => dispatch({ type: ERROR, error }))
+}
+
+export const deleteSmurf = id => dispatch => {
+  dispatch({ type: DELETING })
+  axios.delete(`${ROOT_URL}/smurfs/${id}`)
     .then(_ => dispatch({ type: SUCCESS }))
     .catch(error => dispatch({ type: ERROR, error }))
 }
