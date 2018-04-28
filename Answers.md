@@ -13,6 +13,7 @@
 4. What is middleware?
    Middleware provides additional functionality between the action(s) and the reducer(s). It acts as a bridge between the application and the database.
 5. Describe redux-thunk, what does it allow us to do? How does it change our action-creators?
-   
+   Redux thunk is middleware that allows us to dispatch mulitple times. 
 6. Which react-redux method links up our components with our redux store?
+   The connect method.
 7. (Stretch goal question for if you get the DELETE endpoint working) The server's DELETE endpoint functionality is not optimal, since it requires you to either make a second      getSmurfs request to fetch the updated list of Smurfs after deletion, or you need to keep two sources of truth synchronized, one in the client and one in the server. What       change would you propose to make the server DELETE functionality more optimal such that either of these two issues are not encountered?
