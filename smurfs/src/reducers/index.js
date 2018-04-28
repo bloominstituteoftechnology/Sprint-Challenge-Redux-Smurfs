@@ -19,6 +19,10 @@ export const smurfReducer = (state = defaultState, action) => {
     return { ...state, pending: true }
   case CREATING:
     return { ...state, pending: true }
+  case UPDATING:
+    return { ...state, pending: true }
+  case DELETING:
+    return { ...state, pending: true }
   case SUCCESS:
     return { ...state, pending: false, smurfs: action.payload }
   case ERROR:

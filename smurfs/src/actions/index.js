@@ -24,3 +24,11 @@ export const addSmurf = smurf => dispatch => {
     .catch(error => dispatch({ type: ERROR, error }))
 }
 
+export const editSmurf = smurf => dispatch => {
+  const { id } = smurf
+  dispatch({ type: EDITING })
+  axios.put(`${ROOT_URL}/smurfs/${id}`, smurf)
+    .then(_ => dispatch({ type: SUCCESS }))
+    .catch(error => dispatch({ type: ERROR, error }))
+}
+
