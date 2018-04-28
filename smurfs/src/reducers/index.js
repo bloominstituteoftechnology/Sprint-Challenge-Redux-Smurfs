@@ -24,10 +24,11 @@ export const smurfReducer = (state = defaultState, action) => {
   case DELETING:
     return { ...state, pending: true }
   case SUCCESS:
-    return { ...state, pending: false, smurfs: action.payload }
+    return action.payload
+      ? { ...state, pending: false, smurfs: action.payload }
+      : { ...state, pending: false }
   case ERROR:
     return { ...state, pending: false, error: action.error }
-
   default:
     return state
   }

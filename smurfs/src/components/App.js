@@ -7,7 +7,6 @@ import { getSmurfs } from '../actions'
 import './App.css'
 
 class App extends Component {
-
   componentDidMount = () => {
     this.props.getSmurfs()
   }
