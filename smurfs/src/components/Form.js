@@ -9,6 +9,7 @@ class Form extends Component {
     const { editing, activeSmurf: {name, age, height, id} } = this.props
     if(!editing || editing === prevProps.editing) return
     this.setState({ name, age, height, id })
+    this.nameInput.focus()
   }
 
   clearSmurf = () => this.setState(() => ({name: '', age: '', height: '', id: ''}))
@@ -53,6 +54,8 @@ class Form extends Component {
 	  type="text"
 	  placeholder="Smurf name"
 	  value={name}
+	  id="form-name"
+	  ref={input => this.nameInput = input}
 	  />
 	<input
 	  onChange={this.handleInputChange}
@@ -60,6 +63,7 @@ class Form extends Component {
 	  type="text"
 	  placeholder="Age"
 	  value={age}
+	  id="form-age"
 	  />
 	<input
 	  onChange={this.handleInputChange}
@@ -67,6 +71,7 @@ class Form extends Component {
 	  type="text"
 	  placeholder="Height"
 	  value={height}
+	  id="form-height"
 	  />
 	{editing ?
 	  <span>

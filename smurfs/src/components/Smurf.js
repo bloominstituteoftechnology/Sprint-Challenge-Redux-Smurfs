@@ -41,7 +41,7 @@ class Smurf extends Component {
 	<div>Height: {height} cm</div>
 	<div>ID: {id}</div>
 	<span>
-	  {editing && activelyEditing
+	  {activeSmurf.name === name
 	    ? <button onClick={this.cancelEdit}>Cancel Edit</button>
 	    : <button onClick={_event => this.handleEdit(id)}>Edit</button>
 	  }
