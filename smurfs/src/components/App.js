@@ -22,7 +22,7 @@ class App extends Component {
   }
   
   createSmurf = e => {
-    
+    e.preventDefault();
     const newSmurf = {
       name: this.state.name,
       age: this.state.age,
