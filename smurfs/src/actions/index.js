@@ -17,6 +17,19 @@ export const fetch_smurfs = () => {
   }
 }
 
+export const addSmurf = (newSmurf) => {
+  return dispatch => {
+      dispatch({  type: PENDING});
+      axios
+          .post('http://localhost:3333/smurfs', newSmurf)
+          .then( response => {
+              dispatch({ type: SUCCESS, smurfs: response.data })
+          })
+          .catch( () => {
+              dispatch( {type: ERROR, error: 'ERROR ADDING SMURF'})
+          })
+  }
+}
 
 /* 
   Action Types Go Here!

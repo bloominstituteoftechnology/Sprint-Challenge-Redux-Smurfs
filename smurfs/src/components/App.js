@@ -31,25 +31,7 @@ componentDidMount() {
         </div>
         </div>
 
-/*{         <div>
-        {this.props.pending} ? (
-          <h1>Finding Smurfs</h1>
-        ) : (
-          <div>
-          <ul className ='smurfList'>
-          {this.props.smurfs.map(smurf => {
-            return (
-              <div key={smurf.name}>
-              <li className='listing'>{smurf.name}</li>
-              </div>
-            )
-          })}
-            </ul>
-              </div>
-        )}
-          </div>
-    </div> 
-    ) }*/
+
    
     )
   }
