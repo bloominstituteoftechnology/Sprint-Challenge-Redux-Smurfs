@@ -1,3 +1,36 @@
+import axios from 'axios';
+export const PENDING = 'PENDING';
+export const SUCCESS = 'SUCCESS';
+export const ERROR = 'ERROR';
+
+export const fetch_smurfs = () => {
+  return (dispatch) => {
+    dispatch({type: PENDING});
+    axios
+    .get('http://localhost:3333/smurfs')
+    .then(response => {
+      dispatch({type:SUCCESS, smurfs: response.data})
+    })
+    .catch((error) => {
+      dispatch({type: ERROR, payload: 'ERROR FINDING SMURFS' })
+    })
+  }
+}
+
+export const addSmurf = (newSmurf) => {
+  return dispatch => {
+      dispatch({  type: PENDING});
+      axios
+          .post('http://localhost:3333/smurfs', newSmurf)
+          .then( response => {
+              dispatch({ type: SUCCESS, smurfs: response.data })
+          })
+          .catch( () => {
+              dispatch( {type: ERROR, error: 'ERROR ADDING SMURF'})
+          })
+  }
+}
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
