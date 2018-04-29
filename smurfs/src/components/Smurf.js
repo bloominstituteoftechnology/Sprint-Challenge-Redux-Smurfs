@@ -45,7 +45,7 @@ class Smurf extends Component {
 	    ? <button onClick={this.cancelEdit}>Cancel Edit</button>
 	    : <button onClick={_event => this.handleEdit(id)}>Edit</button>
 	  }
-	  <button onClick={this.handleDelete}>Delete</button>
+	  <button onClick={_e => this.handleDelete(id)}>Delete</button>
 	</span>
 	<hr/>
       </div>

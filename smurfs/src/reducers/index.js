@@ -39,20 +39,15 @@ export const smurfReducer = (state = defaultState, action) => {
       editing: true,
       activeSmurf: state.smurfs.filter(s => s.id === action.payload)[0]
     }
+    
   case CANCEL_EDIT:
     return { ...state, editing: false, activeSmurf: defaultState.activeSmurf }
 
   case SUCCESS:
     return action.payload
-      ? {
-	...state,
-	pending: false,
-	editing: false,
-	error: false,
-	activeSmurf: defaultState.activeSmurf,
-	smurfs: action.payload,
-      }
-    : { ...state, pending: false, editing: false, error: false }
+      ? { ...defaultState, smurfs: action.payload }
+      : { ...state, pending: false, editing: false, error: false }
+
   case ERROR:
     return { ...state, pending: false, error: action.error }
 
