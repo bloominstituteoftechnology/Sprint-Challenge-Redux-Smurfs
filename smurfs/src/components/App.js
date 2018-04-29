@@ -33,7 +33,7 @@ class App extends Component {
   }
   
   delete = id => {
-    this.props.deleteSmurf(if);
+    this.props.deleteSmurf(id);
   }
   
   render() {

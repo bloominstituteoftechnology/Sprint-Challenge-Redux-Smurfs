@@ -1,4 +1,4 @@
-import { PENDING, GET_SMURFS, ADD_SMURF, DELETE_SMURF, ERROR } from '.../actions';
+import { PENDING, GET_SMURFS, ADD_SMURF, DELETE_SMURF, ERROR } from '../actions';
 
 const startingState = {
   smurfs: [],
@@ -17,7 +17,7 @@ const reducer = (state = startingState, action) => {
       return Object.assign({}, state, { fetchingSmurfs: false, smurfs: state.smurfs.concat(action.smurfs) });
     case ADD_SMURF:
       return Object.assign({}, state, { addingSmurf: true });
-    case: DELETE_SMURF:
+    case DELETE_SMURF:
       return Object.assign({}, state, { deletingSmurfs: true, smurfs: action.smurfs })
     case ERROR:
       return Object.assign({}, state, { fetchingSmurfs: false, error: action.error });
