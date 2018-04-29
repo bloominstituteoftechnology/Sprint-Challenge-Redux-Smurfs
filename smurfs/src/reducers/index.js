@@ -7,6 +7,7 @@ import {
   ERROR,
   EDITING,
   CANCEL_EDIT,
+  INPUT_CHANGE,
 } from '../actions/types'
 
 const defaultState = {
@@ -38,6 +39,10 @@ export const smurfReducer = (state = defaultState, action) => {
       ...state,
       editing: true,
       activeSmurf: state.smurfs.filter(s => s.id === action.payload)[0]
+    }
+  case INPUT_CHANGE:
+    return {
+      ...state, activeSmurf: { ...state.activeSmurf, ...action.payload }
     }
     
   case CANCEL_EDIT:

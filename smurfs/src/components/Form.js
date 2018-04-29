@@ -1,29 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addSmurf, updateSmurf, cancelEdit } from '../actions'
+import { addSmurf, updateSmurf, cancelEdit, inputChange } from '../actions'
 
 class Form extends Component {
-  state = { name: '', age: '', height: '', id: '' }
 
   componentDidUpdate = prevProps => {
     const { editing, activeSmurf: {name, age, height, id} } = this.props
     if(!editing || editing === prevProps.editing) return
-    this.setState({ name, age, height, id })
     this.nameInput.focus()
   }
 
-  clearSmurf = () => this.setState(() => ({name: '', age: '', height: '', id: ''}))
-
   handleInputChange = e => {
     const { value } = e.target
-    this.setState({ [e.target.name]: value })
+    this.props.inputChange({ [e.target.name]: value })
   }
 
   handleSubmit = e => {
     e.preventDefault()
-    const { name, age, height } = this.state
+    const { name, age, height } = this.props.activeSmurf
     this.props.addSmurf({ name, age, height })
-    this.clearSmurf()
   }
 
   postSmurf = smurf => {
@@ -32,19 +27,17 @@ class Form extends Component {
 
   handleUpdate = e => {
     e.preventDefault()
-    const { name, age, height, id } = this.state
+    const { name, age, height, id } = this.props.activeSmurf
     this.props.updateSmurf({ name, age, height, id })
-    this.clearSmurf()
   }
 
   handleCancel = _e => {
-    this.clearSmurf()
     this.props.cancelEdit()
   }
 
   render() {
-    const { name, age, height } = this.state
     const { editing, activeSmurf } = this.props
+    const { name, age, height } = activeSmurf
 
     return (
       <form onSubmit={editing ? this.handleUpdate : this.handleSubmit}>
@@ -90,6 +83,7 @@ const mapDispatchToProps = {
   addSmurf,
   updateSmurf,
   cancelEdit,
+  inputChange,
 }
 
 export default connect(

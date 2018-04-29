@@ -8,11 +8,11 @@ import {
   ERROR,
   EDITING,
   CANCEL_EDIT,
+  INPUT_CHANGE,
 } from './types'
 
 const ROOT_URL = 'http://localhost:3333'
 const fetchSuccess = data => ({ type: SUCCESS, payload: data })
-
 
 export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCHING })
@@ -46,4 +46,9 @@ export const deleteSmurf = id => dispatch => {
     .catch(error => dispatch({ type: ERROR, error }))
 }
 
-
+export const inputChange = smurfProp => {
+  return {
+    type: INPUT_CHANGE,
+    payload: smurfProp,
+  }
+}
