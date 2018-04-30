@@ -1,7 +1,28 @@
+import axios from 'axios';
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+export const getSmurfs = () => {
+  return (dispatch) => {
+    dispatch({type:'FETCHING'})
+    axios.get('http://localhost:3333/smurfs')
+    .then((smurfs)=> {
+      dispatch({type:'SUCCESS',payload:smurfs.data})
+    })
+    .catch((err)=> {
+      dispatch({type:'ERROR'})
+    })
+  }
+}
+
+export const addSmurf = (smurf) => {
+  return dispatch => {
+    dispatch({type:'FETCHING'})
+    axios.post('http://localhost:3333/smurfs',smurf)
+    .then(dispatch({type:'ADD'}))
+  }
+}
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
