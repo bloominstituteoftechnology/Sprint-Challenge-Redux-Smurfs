@@ -14,6 +14,7 @@ class App extends Component {
   
   componentDidMount() {
     this.props.getSmurfs();
+    console.log(this.props);
   }
   
   updateInput = e => {
@@ -41,8 +42,8 @@ class App extends Component {
       <div className="App">
         <h1>Smurfs</h1>
         <ul>
-          { this.props.smurfs.map((smurf, index) => {
-            return <li key={ smurf.id }>{ smurf.name } | { smurf.age } years old | { smurf.height } cm tall <button onClick={ () => this.delete(smurf.id) }>x</button></li>
+        { this.props.smurfs.map((smurf, index) => {
+            return <li key={ smurf.id }>{ smurf.name } |   { smurf.age } years old | { smurf.height } cm tall <button onClick={ () => this.delete(smurf.id) }>x</button></li>
           }) }
         </ul>
         
@@ -61,7 +62,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    smurf: state.smurfs,
+    smurfs: state.smurfs,
     error: state.error,
     pending: state.pending
   };
