@@ -14,12 +14,7 @@ const defaultState = {
   smurfs: [],
   pending: false,
   editing: false,
-  activeSmurf: {
-    name: '',
-    age: '',
-    height: '',
-    id: '',
-  },
+  activeSmurf: { name: '', age: '', height: '', id: '' },
   error: null,
 }
 
