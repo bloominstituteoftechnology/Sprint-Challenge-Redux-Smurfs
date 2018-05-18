@@ -28,6 +28,7 @@ html {
 .new-smurf {
   width: 40%;
   padding: 30px 50px;
+  margin-top: 30px;
 }
 
 form {
@@ -73,6 +74,7 @@ form input {
 .show {
   background-color: rgb(228, 228, 228);
   color: gray;
+  width: 200px;
 }
 
 .delete {

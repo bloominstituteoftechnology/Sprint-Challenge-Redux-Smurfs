@@ -24,11 +24,18 @@ class App extends Component {
           <h1 className="App-title">Welcome to the REDUX version of Smurf Village!</h1>
         </header>
         {this.state.showForm ? (
-            <AddSmurf/>
+            <React.Fragment>
+              <AddSmurf/>
+              <button 
+                className="show btn"
+                onClick={() => {this.setState({showForm: false})}}>
+                Done adding Smurfs
+              </button>
+            </React.Fragment>
           ) : (
             <button 
               className="show btn"
-              onClick={() => {this.setState({showForm:true})}}>
+              onClick={() => {this.setState({showForm: true})}}>
               Add a new Smurf
             </button>
           )}
@@ -44,7 +51,8 @@ const mapStateToProps = (state) => {
   return {
     smurfs: state.smurfs,
     fetching: state.fetching,
-    fetched: state.fetched
+    fetched: state.fetched,
+    created: state.created
   }
 }
 

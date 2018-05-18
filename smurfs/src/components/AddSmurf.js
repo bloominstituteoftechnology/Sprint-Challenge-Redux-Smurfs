@@ -16,7 +16,8 @@ class AddSmurf extends Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    addSmurf = () => {
+    addSmurf = (e) => {
+        e.preventDefault();
         const smurf = {
             name: this.state.name, 
             age: this.state.age, 

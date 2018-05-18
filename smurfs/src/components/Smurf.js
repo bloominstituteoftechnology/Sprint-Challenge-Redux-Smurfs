@@ -18,7 +18,8 @@ class Smurf extends Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
         const smurf = {
             name: this.state.name, 
             age: this.state.age, 
@@ -26,6 +27,7 @@ class Smurf extends Component {
             id: this.state.smurf.id
         }
         this.props.updateSmurf(smurf);
+        this.setState({showForm: false, smurf: smurf})
     }
 
     render() { 
@@ -71,8 +73,9 @@ class Smurf extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        smurfs: state.smurfs,
         updating: state.updatingSmurf,
-        updated: state.updateSmurf,
+        updated: state.updatedSmurf,
         deleting: state.deletingSmurf,
         deleted: state.deletedSmurf
     }
