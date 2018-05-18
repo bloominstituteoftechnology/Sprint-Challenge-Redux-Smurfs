@@ -1,31 +1,28 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING_SMURFS, SMURFS_FETCHED, ADDING_SMURF, SMURF_ADDED, ERROR } from '../actions';
+import { FETCHING_SMURFS, FETCHED_SMURFS, ADDING_SMURF, ADDED_SMURF, ERROR } from '../actions';
 
 const initialState = {
    smurfs: [],
-   input: '',
    fetching: false,
-   fetched: false,
    adding: false,
-   added: false,
    error: null
  }
 
- const rootReducer = (state = initialState, action) => {
+ export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
-    return Object.assign({}, state, { smurfs: action.payload, fetching: true })
+    return Object.assign({}, state, { fetching: action.payload })
 
-    case SMURFS_FETCHED:
-    return Object.assign({}, state, { fetching: false, fetched: true })
+    case FETCHED_SMURFS:
+    return Object.assign({}, state, { fetching: false})
 
     case ADDING_SMURF:
     return Object.assign({}, state, { adding: true })
 
-    case SMURF_ADDED:
-    return Object.assign({}, state, { adding: false, added: true })
+    case ADDED_SMURF:
+    return Object.assign({}, state, { adding: false})
 
     case ERROR:
     return Object.assign({}, state, { error: action.payload })
@@ -34,7 +31,7 @@ const initialState = {
     return state;
   }
  }
- export default rootReducer
+
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
