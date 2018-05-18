@@ -6,6 +6,8 @@ import {FETCH_SMURFS} from '../actions';
 
 export default (state = [], action) => {
   switch (action.type) {
+    case FETCH_SMURFS:
+      return state.concat(action.payload);
     default:
     return state;
   }
