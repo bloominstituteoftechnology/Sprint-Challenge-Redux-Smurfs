@@ -3,6 +3,13 @@
   background-color: #00b8e6;
 }
 
+.smurf-image{
+  width: 200px;
+  height: auto;
+  border-radius: 75%;
+  margin-bottom: 20px;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
