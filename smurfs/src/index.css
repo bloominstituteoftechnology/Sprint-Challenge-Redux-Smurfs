@@ -1,5 +1,11 @@
+html {
+  height: 100%;
+}
 body {
-  margin: 0;
-  padding: 0;
+  background: #FFF url(assets/smurf-village.png) no-repeat fixed center;
+  background-size: cover;
   font-family: sans-serif;
+  margin: 0;
+  max-height: 100%;
+  padding: 0;
 }
