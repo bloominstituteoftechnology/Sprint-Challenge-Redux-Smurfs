@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { fetchSmurfs, addSmurf } from '../actions';
 import { connect } from 'react-redux';
-import { Button } from 'reactstrap';
-import SmurfList from './SmurfList';
+import { Button, Table } from 'reactstrap';
+import Smurf from './Smurf';
 
 /*
  to wire this component up you're going to need a few things.
@@ -48,7 +48,21 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-	<SmurfList smurfs={this.props.smurfs} />
+	<div>
+	  <Table>
+	    <thead>
+	      <tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Age</th>
+		<th>Height</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      {this.props.smurfs.map((smurf, index) => <Smurf key={index} smurf={smurf} />)}
+            </tbody>
+          </Table>
+	</div>
 	<input name='name' onChange={this.handleInput} value={this.state.newSmurf.name} />
 	<input name='age' onChange={this.handleInput} value={this.state.newSmurf.age} />
 	<input name='height' onChange={this.handleInput} value={this.state.newSmurf.height} />
