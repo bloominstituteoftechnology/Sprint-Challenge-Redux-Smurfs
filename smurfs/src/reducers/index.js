@@ -1,4 +1,4 @@
-import { SUCCESS_GET_SMURFS, SUCCESS_POST_SMURFS, PENDING_SMURFS, ERROR_SMURFS } from '../actions'; 
+import { SUCCESS_GET_SMURFS, SUCCESS_POST_SMURFS, SUCCESS_DELETE_SMURF, PENDING_SMURFS, ERROR_SMURFS } from '../actions'; 
 
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -29,6 +29,8 @@ const smurfsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload), fetchingSmurfs: false})
     case SUCCESS_POST_SMURFS:
       return Object.assign({}, state, {smurfs: (action.payload), addingSmurf: true })
+    case SUCCESS_DELETE_SMURF:
+      return Object.assign({}, state, {smurfs: (action.payload), deletingSmurf: true, fetchingSmurfs: false})
     case ERROR_SMURFS:
       return Object.assign({}, state, {fetchingSmurfs: false,
         addingSmurf: false,
