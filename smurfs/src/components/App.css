@@ -1,5 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+  background: rgb(136, 136, 236);
+  min-height: 100vh;
+}
+
+/* Add Smurf Form */
+
+
+.add-smurf {
+  width: 100%;
+  padding: 15px;
+  margin: 20px;
+  display: flex;
+  flex-flow: column wrap;
+  max-width: 400px;
+  background: white;
+  align-items: center;
+}
+
+.add-smurf h3 {
+  color: rgb(208, 61, 253);
+}
+
+.add-smurf form {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  align-items: center;
+}
+
+.add-smurf input, textarea {
+  width: 90%;
+  padding: 10px 7px;
+  margin: 10px 0;
+  border: 1px solid lightblue;
+  border-radius: 2px;
+}
+
+.add-smurf input:focus, textarea:focus {
+  outline: none;
+}
+
+.add-smurf button {
+  padding: 10px 7px;
+  background: white;
+  color: lightblue;
+  border: 1px solid lightblue;
+  border-radius: 2px;
+}
+
+.add-smurf button:hover {
+  background: rgb(208, 61, 253);
+  cursor: pointer;
+}
+
+/* Smurf List & Smurf Card */
+
+.smurf-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 900px;
+}
+
+.smurf-card {
+  width: 31%;
+  margin: 1%;
+  padding: 20px;
+  background: white;
+  border: 1px solid lightblue;
+  border-radius: 2px;
+}
+
+.smurf-card h3 {
+  color: lightblue;
+  text-shadow: 1px 2px blue;
+}
+
+.smurf-card button {
+  padding: 3px 7px;
+  background: white;
+  border: 1px solid lightgray;
+  color: lightblue;
+}
+
+.smurf-card .edit {
+  border: none;
+}
+
+.smurf-card .edit:hover {
+  background: white;
+  color: rgb(208, 61, 253);
+}
+
+.smurf-card button:hover {
+  cursor: pointer;
+  background: lightblue;
+  color: white;
+}
+
+.smurf-card form {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.smurf-card form input, textarea {
+  width: 90%;
+  padding: 10px 7px;
+  margin: 10px 0;
+  border: 1px solid rgb(208, 61, 253);
+  border-radius: 2px;
+}
+
+.smurf-card form input:focus, textarea:focus {
+  outline: none;
+}
+
+.smurf-card form > div {
+  display: flex;
+  flex-flow: row wrap;
+  width: 90%;
+}
+
+.smurf-card form div > button {
+  padding: 7px;
+  width: 32%;
+  margin: 4% 8% 0;
+}
+
+.smurf-card .delete:hover {
+  background: red;
+  color: white;
+  border: 1px solid red;
 }

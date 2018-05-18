@@ -41,15 +41,17 @@ class Smurf extends Component {
                         <input name="name" placeholder={name} value={name} onChange={(e) => this.handleChange(e)}/>
                         <input name="age" placeholder={age} value={age} onChange={(e) => this.handleChange(e)}/>
                         <input name="height" placeholder={height} value={height} onChange={(e) => this.handleChange(e)}/>
-                        <button onClick={() => this.handleUpdate(id, {name, age, email})}>Save</button>
-                        <button onClick={() => this.handleDelete(id)}>Delete</button>
+                        <div>
+                            <button onClick={() => this.handleUpdate(id, {name, age, email})}>Save</button>
+                            <button className="delete" onClick={() => this.handleDelete(id)}>Delete</button>
+                        </div>
                     </form>   
                 ) : (
                     <div>
                         <h3>{name}</h3>
                         <p>{age}</p>
                         <p>{height}</p>
-                        <button onClick={() => this.setState({ edit: true })}>Edit</button>
+                        <button className="edit" onClick={() => this.setState({ edit: true })}>Edit</button>
                     </div>
             )}
             </div>

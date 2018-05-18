@@ -24,12 +24,13 @@ class AddSmurf extends Component {
     render() {
         const { name, age, height } = this.state;
         return (
-            <div>
+            <div className="add-smurf">
                 <form>
+                    <h3>Add a Smurf</h3>
                     <input name="name" placeholder="name" value={name} onChange={(e) => this.handleChange(e)}/>
                     <input name="age" placeholder="age" value={age} onChange={(e) => this.handleChange(e)}/>
                     <input name="height" placeholder="height" value={height} onChange={(e) => this.handleChange(e)}/>
-                    <button onClick={() => this.handleAdd(this.state)}>Save</button>
+                    <button onClick={() => this.handleAdd(this.state)}>Add a Smurf</button>
                 </form>   
             </div>
         );
