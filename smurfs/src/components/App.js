@@ -10,6 +10,7 @@
  import { fetcher, beginEdit, cancelEdit, beginAdd, cancelAdd, deleter, adder, editor } from '../actions';
  import './App.css';
  import { Button } from 'reactstrap';
+ import Smurfs from './smurfs.js';
 
  class App extends Component {
 
@@ -28,7 +29,8 @@
       case "fetched":
         return (
           <div className="App mb-5">
-            fetched
+            <Smurfs smurfData={this.props.smurfs} deleteButton={this.props.deleter}
+            editButton={this.props.beginEdit} addButton={this.props.beginAdd} />
           </div>
         );
       case "add":
@@ -47,7 +49,7 @@
         return (
           <div className="App mb-5">
             {this.props.error.message}
-            <Button onClick={() => this.props.fetcher('http://localhost:3333/api/friends')} >Reload</Button>
+            <Button onClick={() => this.props.fetcher('http://localhost:3333/smurfs')} >Reload</Button>
           </div>
         );
       default:
