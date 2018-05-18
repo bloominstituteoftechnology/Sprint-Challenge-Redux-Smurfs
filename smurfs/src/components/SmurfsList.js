@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './SmurfsList.css';
-import { deleteSmurf, getSmurfs } from '../actions';
+import { deleteSmurf } from '../actions';
 
 
 
@@ -32,15 +32,15 @@ const SmurfsList = props => {
 
     const handleDeleteSmurf = (id) => {
         props.deleteSmurf(id);
-        // props.getSmurfs();
     }
+
     return (
         <div className="list-container">
             {props.smurfs.map(smurf => 
                 <p className="smurf" key={smurf.name + smurf.id}>
                     {smurf.name} {smurf.age} {smurf.height}
                     <button className="smurf-btn">Edit</button>
-                    <button onClick={(handleDeleteSmurf(smurf.id))} className="smurf-btn">Delete</button>
+                    <button onClick={()=>(handleDeleteSmurf(smurf.id))} className="smurf-btn">Delete</button>
                 </p>)}
         </div>
     )
@@ -53,4 +53,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { deleteSmurf, getSmurfs })(SmurfsList); 
+export default connect(mapStateToProps, { deleteSmurf })(SmurfsList); 
