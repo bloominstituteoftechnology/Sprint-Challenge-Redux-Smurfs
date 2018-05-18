@@ -1,3 +1,65 @@
+import axios from 'axios';
+export const FETCHING = 'FETCHING';
+export const FETCHED = 'FETCHED';
+export const DELETING = 'DELETING';
+export const ERROR = 'ERROR';
+
+export const fetchSmurfs = () => {
+  return(dispatch => {
+    dispatch({type: FETCHING});
+    axios.get('http://localhost:3333/smurfs')
+      .then(response => {
+	dispatch({type: FETCHED, payload: response.data });
+      })
+      .catch((error) => {
+	dispatch({type: ERROR, payload: 'Error'});
+      });
+  }
+);
+};
+
+export const addSmurf = smurf => {
+  return(dispatch => {
+    dispatch ({type: FETCHING });
+    axios.post('http://localhost:3333/smurfs', smurf)
+      .then(response => {
+	dispatch({type: FETCHED, payload: response.data});
+      })
+      .catch((error) => {
+	dispatch({type: ERROR, payload: "Error"});
+      });
+  }
+);
+};
+
+export const updateSmurf = (smurf) => {
+  return dispatch => {
+    dispatch ({type: FETCHING});
+    axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+      .then(response => {
+	dispatch(fetchSmurfs());
+      })
+     .catch((err) => {
+	dispatch({type: ERROR, payload: "Error"});
+      });
+  };
+};
+
+export const deleteSmurf = id => {
+  return(dispatch => {
+    dispatch({type: DELETING});
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
+      .then((response) => {
+	dispatch(fetchSmurfs());
+      })
+      .catch((err) => {
+	dispatch({type: ERROR, payload: "Error"});
+      });
+  }
+);
+};
+	 
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
@@ -13,3 +75,5 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+
