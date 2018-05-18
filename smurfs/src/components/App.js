@@ -15,34 +15,50 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className='App'>
-      <h1>SMURFS!</h1>
-      <AddSmurf />
-      {this.props.smurfs.map(smurf => {
-        return (
-      <div class="container mt-sm-4" key={smurf.name}>
-        <div class="row justify-content-sm-center">
-          <div class="card smurf-card mb-sm-4  col-sm-6">
-            <div class="card-header smurf-card">
-              <p class="d-sm-inline">{smurf.name}</p>
-              <button class="btn btn-danger float-right d-sm-inline">
-                Delete Smurf
-              </button>
+      return <div className="App">
+          <div className="container">
+            <h1 className="section-title h1 mt-sm-4">SMURFS!</h1>
+            <div className="row justify-content-sm-center">
+              <AddSmurf />
+              {this.props.smurfs.map(smurf => {
+                return <div class="col-sm-4 friend-card mt-sm-4">
+                    <div class="image-flip">
+                      <div class="mainflip">
+                        <div class="frontside">
+                          <div class="card">
+                            <div class="card-body text-center">
+                              <h4 class="card-title">
+                                {smurf.name}
+                              </h4>
+                              <p class="card-title">
+                                Age: {smurf.age}
+                              </p>
+                              <p class="card-title">
+                                Height: {smurf.height}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="backside">
+                          <div class="card">
+                            <div class="card-body text-center">
+                              <h4 class="card-title">
+                                Name: {smurf.name}
+                              </h4>
+                              <button class="btn btn-danger delete-button">
+                                Delete Friend
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>;
+              })}
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">{smurf.height}</li>
-              <li class="list-group-item">
-                {smurf.age} smurfs years old
-              </li>
-            </ul>
           </div>
         </div>
-      </div>
-        )
-      })}
-      </div>
-    )
     // console.log(this.props)
     // return <div className="App">
     //     <h1>SMURFS!</h1>

@@ -28,6 +28,7 @@ export const addSmurf = smurfData => {
     dispatch({ type: PENDING_SMURFS });
     smurfs
     .then(response => {
+      console.log(response)
       dispatch({ type: SUCCESS_SMURFS, payload: response.data });
       console.log(response.data);
     })
@@ -39,6 +40,12 @@ export const addSmurf = smurfData => {
     });
   };
 };
+
+export const deleteSmurf = id => {
+  const smurfs = axios.delete(`http://localhost:3333/smurfs/${id}`);
+  return dispatch => { type: PENDING_SMURFS};
+  smurfs
+}
 
 
 /* 
