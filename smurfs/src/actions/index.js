@@ -21,7 +21,7 @@ export const getSmurfs = () => {
   };
 };
 
-export const addSmurfs = SmurfData => {
+export const addSmurf = SmurfData => {
   const Smurfs = axios.get("http://localhost:3333/api/smurfs",SmurfData) ;
   return dispatch => {
     dispatch({ type: PENDING_SMURFS });
