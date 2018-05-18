@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { connect } from "react-redux";
 import { addingSmurf } from "../actions";
 
@@ -63,4 +63,4 @@ class AddNew extends React.Component {
     );
   }
 }
-export default connect(() => {}, { addingSmurf })(AddNew);
+export default connect((state) => {}, { addingSmurf })(AddNew);

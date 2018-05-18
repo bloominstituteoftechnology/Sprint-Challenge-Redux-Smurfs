@@ -45,6 +45,7 @@ const mainReducer = (state = initialState, action) => {
     case DELETINGSMURF:
       return { ...state, deletingSmurf: true, deletedSmurf: false };
     case DELETEDSMURF:
+      console.log("action.toDelete",action.toDelete);
       return { ...state, deletingSmurf: false, deletedSmurf: true, smurfs: action.toDelete };
     case ERROR:
       return {

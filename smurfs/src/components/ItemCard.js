@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {Col, Button} from 'reactstrap';
-import {fetchingSmurfs, deletingSmurf} from '../actions';
+// import {fetchingSmurfs, deletingSmurf} from '../actions';
 
 class ItemCard extends Component {
     handleDelete = (e) => {
@@ -9,6 +9,7 @@ class ItemCard extends Component {
     }
   render() {
       const {item} = this.props;
+      console.log(this.props);
     return (
       <Col xs="6" sm="4" >
         <div>{item.name}</div>
@@ -20,4 +21,5 @@ class ItemCard extends Component {
   }
 }
 
-export default connect(() => {}, {fetchingSmurfs, deletingSmurf})(ItemCard);
+export default ItemCard;
+// export default connect(() => {}, {fetchingSmurfs, deletingSmurf})(ItemCard);
