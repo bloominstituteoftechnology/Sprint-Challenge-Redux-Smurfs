@@ -6,7 +6,7 @@ import './smurfs.css';
 const Smurfs = (props) => {
   return(
     <div className="smurfs" >
-      <Button color="success" onClick={props.addButton} >Add Smurf</Button>
+      <Button color="primary" onClick={props.addButton} >Add Smurf</Button>
       {props.smurfData.map((smurf, index) => {
         return (
           <div key={smurf.id} className="mt-5 smurf">
@@ -22,8 +22,8 @@ const Smurfs = (props) => {
                 <p>height: {smurf.height}</p>
               </Media>
             </Media>
-            <Button color="warning" onClick={() => props.editButton(index)} >Edit Smurf</Button>
-            <Button color="danger" onClick={() => props.deleteButton('http://localhost:3333/smurfs/' + smurf.id)} >Delete Smurf</Button>
+            <Button color="info" onClick={() => props.editButton(index)} >Edit Smurf</Button>
+            <Button color="secondary" onClick={() => props.deleteButton('http://localhost:3333/smurfs/' + smurf.id)} >Delete Smurf</Button>
           </div>
         );
       })}
