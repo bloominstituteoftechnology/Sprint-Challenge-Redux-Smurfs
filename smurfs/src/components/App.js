@@ -23,5 +23,9 @@ class App extends Component {
     );
   }
 }
-
-export default connect(null, { fetchSmurfs }) (App);
+const mapStateToProps = state => {
+  return {
+    smurfs: state,
+  }
+}
+export default connect(mapStateToProps, { fetchSmurfs }) (App);
