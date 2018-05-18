@@ -15,7 +15,7 @@ const SmurfsList = props => {
         <div className="list-container">
             {props.smurfs.map(smurf => 
                 <p className="smurf" key={smurf.name + smurf.id}>
-                    {smurf.name} {smurf.age} {smurf.height}
+                    {smurf.name} {smurf.age} {`${smurf.height}cm`}
                     <div className="smurf-btn-container">
                     <button className="smurf-btn">Edit</button>
                     <button onClick={()=>(handleDeleteSmurf(smurf.id))} className="smurf-btn">Delete</button>
