@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { addSmurf } from '../actions';
 
 class SmurfForm extends Component {
   constructor(props) {
@@ -56,4 +57,4 @@ class SmurfForm extends Component {
   }
 }
 
-export default SmurfForm;
+export default connect(null, { addSmurf })(SmurfForm);

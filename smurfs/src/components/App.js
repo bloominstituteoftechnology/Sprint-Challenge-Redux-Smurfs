@@ -4,13 +4,8 @@ import { connect } from 'react-redux';
 import { fetchSmurfs } from "../actions";
 import logo from '../logo.svg';
 import SmurfForm from './SmurfForm';
+import Smurf from './Smurf';
 
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
 class App extends Component {
 
   componentDidMount() {
@@ -25,8 +20,11 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         ) : (
           <ul>
+            Welcome to Smurf Village
             {this.props.smurfs.map(smurf => {
-              return <li key={smurf.name}>{smurf.name}</li>;
+              return (
+                <Smurf key={smurf} smurf={smurf} />
+              );
             })}
             <SmurfForm />
           </ul>

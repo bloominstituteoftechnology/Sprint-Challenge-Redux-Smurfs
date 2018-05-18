@@ -1,19 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Smurf = props => {
-  return (
-    <div className="Smurf">
-      <h3>{props.name}</h3>
-      <strong>{props.height} tall</strong>
-      <p>{props.age} smurf years old</p>
-    </div>
-  );
-};
-
-Smurf.defaultProps = {
-  name: '',
-  height: '',
-  age: ''
-};
+class Smurf extends Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                <li>Name: {this.props.smurf.name}</li>
+                <li>Age: {this.props.smurf.age}</li>
+                <li>Height: {this.props.smurf.height}</li>
+            </div>
+        );
+    }
+}
 
 export default Smurf;
