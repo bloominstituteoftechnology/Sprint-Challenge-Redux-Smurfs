@@ -1,5 +1,7 @@
 import axios from 'axios';
-
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const SMURFS_FETCHED = 'SMURFS_FETCHED';
+export const ERROR ='ERROR';
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -11,3 +13,24 @@ import axios from 'axios';
    D - deleteSmurf
 */
 
+export const fetchSmurfs = () => {
+  const getSmurfs = axios.get('http://localhost:3333/smurfs');
+  return dispatch => {
+    dispatch({ type: FETHCING_SMURFS });
+    getSmurfs
+      .then(smurfData => {
+        console.log("Smurf Data:", smurfData)
+        dispatch({
+          type: SMURFS_FETCHED,
+          payload: smurfData.data
+        })
+      })
+      .catch(err => {
+        console.log("ERROR:", err)
+        dispatch({
+          type: ERROR,
+          payload: err
+        })
+      })
+  }
+}
