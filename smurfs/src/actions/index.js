@@ -22,13 +22,14 @@ export const getSmurfs = () => {
   };
 };
 
-export const addSmurf = SmurfData => {
-  const smurfs = axios.get("http://localhost:3333/smurfs",SmurfData) ;
+export const addSmurf = smurfData => {
+  const smurfs = axios.post("http://localhost:3333/smurfs", smurfData) ;
   return dispatch => {
     dispatch({ type: PENDING_SMURFS });
     smurfs
     .then(response => {
       dispatch({ type: SUCCESS_SMURFS, payload: response.data });
+      console.log(response.data);
     })
     .catch(err => {
       dispatch({
