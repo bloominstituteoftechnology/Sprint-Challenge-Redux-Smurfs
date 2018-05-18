@@ -158,3 +158,20 @@ output: [
   }
 ];
 ```
+## Sprint Challenge: Redux
+
+- [X] Answer the Self-Study questions
+- [X] Initialize your project, following the steps in the README to set up your overall project, your server, and your client
+
+### Main Challenge
+- [X] Decide how you will tackle the problem and create the necessary files
+- [X] Set up your Redux store and provider
+- [X] Design your React components and connect them  to your Redux store
+- [X] Create reducers to handle your GET and POST requests
+- [X] Create the corresponding actions for your reducers
+- [X] Wire everything together in `App.js`
+- [ ] Style your application
+
+### Stretch Goals
+- [ ] Add the necessary component(s), reducers, and actions to implement PUT functionality in your app
+- [ ] Add the necessary reducers, actions, and other code to implement DELETE functionality in your app

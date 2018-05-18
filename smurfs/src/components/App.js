@@ -25,7 +25,11 @@ class App extends Component {
         <div>Have fun!</div>
         <ul>
           {this.props.smurfs.map((smurf)=> {
-            return <li key = {smurf.id}> {smurf.name} </li>
+            return <li key = {smurf.id}> 
+              <div>{smurf.name}</div> 
+              <div>age: {smurf.age}</div> 
+              <div>height: {smurf.height}</div> 
+            </li>
           })}
         </ul>
         <SmurfForm />
