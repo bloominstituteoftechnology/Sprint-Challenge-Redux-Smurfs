@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Masonry from 'react-masonry-css';
 import SmurfCard from '../SmurfCard/SmurfCard';
 import { getSmurfs } from '../../actions';
+import './SmurfList.css';
 
 class SmurfList extends Component {
   componentDidMount() {
