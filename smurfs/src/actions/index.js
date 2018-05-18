@@ -1,3 +1,26 @@
+// we'll need axios
+import axios from 'axios';
+ export const FETCHING_SMURFS = "FETCHING_SMURFS";
+ export const FETCHED_SMURFS = "FETCHED_SMURFS";
+ export const ERROR_FETCHING = "ERROR_FETCHING";
+
+
+export const getSmurfs = () => {
+    const getsmurfs = axios.get(`http://localhost:3333/smurfs`);
+    return (dispatch => {
+        dispatch({type: FETCHING_SMURFS})
+        
+        getsmurfs.then((response) => {
+         //console.log(response);
+            dispatch({type: FETCHED_SMURFS, payload: response.data });
+        })
+        .catch((err) => {
+            dispatch({type: ERROR_FETCHING, payload: err})
+        });
+    });
+}
+
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
