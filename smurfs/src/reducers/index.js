@@ -13,6 +13,8 @@ import {GOT_SMURFS, GETTING_SMURFS, ADD_SMURF} from "../actions";
   switch(action.type) {
     case GOT_SMURFS:
       return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload)});
+    case ADD_SMURF:
+      return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload)});
     default:
     return state;
   }

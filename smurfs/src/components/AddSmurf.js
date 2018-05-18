@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-
+import { addSmurf } from "../actions";
 
 
 class AddSmurf extends Component {
@@ -14,27 +14,41 @@ class AddSmurf extends Component {
   }
 
   handleInputChange(e) {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({[e.target.name]: e.target.value});
+  };
+
+  handleAddSmurf = e => {
+    e.preventDefault();
+    let newSmurf = this.state;
+    this.props.addSmurf(newSmurf);
+    this.setState({name: "", age: "", height: ""});
   }
 
   render() {
     return (
       <div className="App">
-        <form>
+        <form onSubmit={this.handleAddSmurf}>
           <input
             name="name"
             placeholder="Name"
-            onChange={this.handleInputChange}
+            value={this.state.name}
+            required
+            onChange={this.handleInputChange.bind(this)}
           />
           <input
             name="age"
             placeholder="Age"
-            onChange={this.handleInputChange}
+            value={this.state.age}
+            type="number"
+            required
+            onChange={this.handleInputChange.bind(this)}
           />
           <input
             name="height"
             placeholder="Height"
-            onChange={this.handleInputChange}
+            value={this.state.height}
+            required
+            onChange={this.handleInputChange.bind(this)}
           />
           <button>Add Smurf</button>
         </form>
@@ -43,4 +57,4 @@ class AddSmurf extends Component {
   }
 }
 
-export default AddSmurf;
+export default connect(null, {addSmurf})(AddSmurf);
