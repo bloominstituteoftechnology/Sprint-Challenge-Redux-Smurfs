@@ -43,10 +43,11 @@ export const addingSmurf = newItem => {
     });
     addItem
       .then(response => {
-        console.log("response.data", response.data);
+        console.log("POST response.data", response.data);
+        console.log("newItem",newItem);
         dispatch({
           type: ADDEDSMURF,
-          newItem: newItem
+          newItem: response.data
         });
       })
       .catch(e => {

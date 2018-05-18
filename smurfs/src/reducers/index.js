@@ -37,7 +37,7 @@ const mainReducer = (state = initialState, action) => {
       return { ...state, addingSmurf: true, addedSmurf: false };
     case ADDEDSMURF:
     console.log([...state.smurfs].push(action.newItem));
-      return { ...state, addingSmurf: false, addedSmurf: true, smurfs: [...state.smurfs].push(action.newItem) };
+      return { ...state, addingSmurf: false, addedSmurf: true, smurfs: action.newItem };
     case UPDATINGSMURF:
       return { ...state, updatingSmurf: true, updatedSmurf: false };
     case UPDATEDSMURF:
