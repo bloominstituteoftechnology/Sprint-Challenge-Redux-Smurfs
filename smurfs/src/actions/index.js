@@ -1,18 +1,3 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
-
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-    and 2 more for the stretch problem.
-    Be sure to include action types for each type of action creator. Also, be sure to mind
-      the "pending" states like, fetching, creating, updating and deleting.
-    C - addSmurf
-    R - getSmurfs
-    U - updateSmurf
-    D - deleteSmurf
-*/
 import axios from "axios";
 
 export const FETCHING_SMURF = "FETCHING_SMURF";
@@ -24,7 +9,7 @@ export const EDIT_SMURF = "EDIT_SMURF";
 
 
 export const fetching_smurf = () => {
-  const getInfo = axios.get("http://localhost:5000/api/smurfs");
+  const getInfo = axios.get("http://localhost:3333/api/smurfs");
   return dispatch => {
     dispatch({ type: FETCHING_SMURF });
     getInfo
@@ -37,7 +22,7 @@ export const fetching_smurf = () => {
   };
 };
 export const newsmurf = nsmurf => {
-  const getInfo = axios.post("http://localhost:5000/api/smurfs", nsmurf);
+  const getInfo = axios.post("http://localhost:3333/api/smurfs", nsmurf);
   return dispatch => {
     dispatch({ type: FETCHING_SMURF });
     getInfo
@@ -50,7 +35,7 @@ export const newsmurf = nsmurf => {
   };
 };
 export const deleteSmurf = id => {
-  const getInfo = axios.delete(`http://localhost:5000/api/smurfs/${id}`);
+  const getInfo = axios.delete(`http://localhost:3333/api/smurfs/${id}`);
   return dispatch => {
     getInfo
       .then(({ data }) => {
@@ -68,7 +53,7 @@ export const editSmurf = (id, smurfs) => {
 export const submitSmurf = nsmurf => {
   console.log(nsmurf);
   const getInfo = axios.put(
-    `http://localhost:5000/api/smurfs/${nsmurf.id}`,
+    `http://localhost:3333/api/smurfs/${nsmurf.id}`,
     nsmurf
   );
   return dispatch => {
@@ -81,4 +66,18 @@ export const submitSmurf = nsmurf => {
       });
   };
 };
+/*
+  Action Types Go Here!
+  Be sure to export each action type so you can pull it into your reducer
+*/
 
+/*
+  For this project you'll need at least 2 action creators for the main portion,
+   and 2 more for the stretch problem.
+   Be sure to include action types for each type of action creator. Also, be sure to mind
+     the "pending" states like, fetching, creating, updating and deleting.
+   C - addSmurf
+   R - getSmurfs
+   U - updateSmurf
+   D - deleteSmurf
+*/

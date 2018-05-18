@@ -54,4 +54,4 @@ export default connect(mapStateToProps, {
   editSmurf
 })(App);
                   
-         
+      
