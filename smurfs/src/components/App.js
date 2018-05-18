@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getSmurf } from '../actions';
+import { fetchSmurfs } from '../actions';
+import Smurf from './Smurf';
 
 /*
  to wire this component up you're going to need a few things.
@@ -11,22 +12,15 @@ import { getSmurf } from '../actions';
  */
 class App extends Component {
   componentDidMount(){
-    this.props.getSmurf()
+    this.props.fetchSmurfs()
   }
-  render (){
+  render() {
     return (
-      <div>
-        {this.props.smurfs.map(smurf => {
-            return (
-              <div key={smurf.id}>
-                 <li>{smurf.name} name:</li>
-                 <li>{smurf.age} age:</li>
-                  <li>{smurf.height} height:</li>
-              </div>
-            )      
-          })}  
+        <div className="App">
+          <h1>Smurfs! 2.0 W/ Redux</h1>
+          {this.props.smurfs.map(smurf => <Smurf key={smurf.id} smurf={smurf} /> )}
        </div>
-      );
+      )
     }
   }            
 
@@ -36,9 +30,8 @@ const mapStateToProps = state => {
   console.log(state)
   return {
     smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs,
-    error: state.error
+    fetchingSmurfs: state.fetchingSmurfs
   }
 }
 
-export default connect(mapStateToProps, {getSmurf}) (App);
+export default connect(mapStateToProps, {fetchSmurfs}) (App);
