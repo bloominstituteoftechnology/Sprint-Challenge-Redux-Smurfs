@@ -13,11 +13,9 @@ class Smurf extends Component {
     return (
 
       <tr>
-	<td>{id}</td>
 	<td>{name}</td>
 	<td>{age}</td>
 	<td>{height}</td>
-	<Button onClick={() => this.props.smurf}>Update</Button>
 	<Button onClick={() => this.handleDelete(id)}>Delete</Button>
       </tr>
   );

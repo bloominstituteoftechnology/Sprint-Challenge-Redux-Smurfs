@@ -35,8 +35,7 @@ export const addSmurf = smurf => {
 export const updateSmurf = (smurf) => {
   return dispatch => {
     dispatch ({type: FETCHING});
-    axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
-      .then(response => {
+    axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)      .then(response => {
 	dispatch(fetchSmurfs());
       })
      .catch((err) => {
