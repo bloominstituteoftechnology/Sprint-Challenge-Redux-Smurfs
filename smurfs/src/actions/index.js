@@ -37,7 +37,7 @@ export const fetchSmurfs = () => {
 export const addSmurf = (smurfName, smurfAge, smurfHeight) => {
   const add = axios.post(`http://localhost:3333/smurfs`, {
     name: smurfName,
-    age: smufAge, 
+    age: smurfAge, 
     height: smurfHeight
   })
 
