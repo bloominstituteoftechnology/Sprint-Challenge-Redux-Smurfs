@@ -1,18 +1,33 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import {ADD_SMURF, GET_SMURF, UPDATE_SMURF, DELETE_SMURF} from '../actions/index';
 
-/*
- Your initial/default state for this project could *Although does not have to* look a lot like this
+
+
+const initialState = 
  {
    smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
+   fetchingSmurfs: false,
+   addingSmurf: false,
+   updatingSmurf: false,
+   deletingSmurf: false,
    error: null
- }
-*/
+ };
+
+
+ export const smurfReducer = (state = initialState, action) =>{
+   switch(action.type){
+      case ADD_SMURF:
+        return Object.assign({}, state, state.concat(action.payload));
+      case GET_SMURF:
+        return Object.assign({}, state);
+      case UPDATE_SMURF:
+        return Object.assign({}, state, state.concat.action.payload)
+      case DELETE_SMURF:
+        return Object.assign({}, state.slice(0, action.payload).concat(state.slice(action.payload)));
+     default:
+      return state;
+   }
+  }
+ 
 
 /*
   You'll only need one smurf reducer for this project.
