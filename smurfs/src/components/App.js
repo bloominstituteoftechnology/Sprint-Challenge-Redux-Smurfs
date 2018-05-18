@@ -60,7 +60,7 @@ class App extends Component {
         return (
           <div className="App error mb-5">
             <Alert color="danger">
-              {this.props.error.message}
+              {this.props.error.response.data.Error}
             </Alert>
             <div>
               <Button onClick={() => this.props.fetcher('http://localhost:3333/smurfs')} >Reload</Button>
