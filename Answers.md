@@ -1,6 +1,17 @@
 1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
-1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
-1.  What is middleware?
-1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-1.  Which `react-redux` method links up our `components` with our `redux store`?
+Array.map(), Array.concat(), Array.filter()
+
+2.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+Actions are the managers that tell the application what we need to get done. Reducers carry out those actions with the logic we build in and store holds all our state in one location and that is why it is the single source of truth.
+
+3.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
+Application state is contained within the entire application while component state only exists within its component. Ask yourself in each case if global is necessary, if not, keep it within the component. 
+
+4.  What is middleware?
+Middleware gives us access to other functionality/libraries within our apps.
+
+5.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+Thunk gives us the ability to use promises within redux.
+
+6.  Which `react-redux` method links up our `components` with our `redux store`?
+connect
