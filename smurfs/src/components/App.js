@@ -11,6 +11,7 @@
  import './App.css';
  import { Button } from 'reactstrap';
  import Smurfs from './smurfs.js';
+ import AddSmurf from './addsmurf.js';
 
  class App extends Component {
 
@@ -36,13 +37,19 @@
       case "add":
         return (
           <div className="App mb-5">
-            add
+            <AddSmurf nameText="" ageText="" heightText="" headerText="Add a smurf"
+            cancelButton={this.props.cancelAdd} submitButton={this.props.adder} />
           </div>
         );
       case "edit":
         return (
           <div className="App mb-5">
-            edit
+            <AddSmurf smurfID={this.props.smurfs[this.props.editIndex].id} nameText={this.props.smurfs[this.props.editIndex].name}
+            ageText={this.props.smurfs[this.props.editIndex].age}
+            heightText={this.props.smurfs[this.props.editIndex].height}
+            headerText={"Edit " + this.props.smurfs[this.props.editIndex].name}
+            cancelButton={this.props.cancelEdit}
+            submitButton={this.props.editor}/>
           </div>
         );
       case "error":
