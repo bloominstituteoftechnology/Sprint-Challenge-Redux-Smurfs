@@ -18,6 +18,8 @@ export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 export const ADDING = 'ADDING';
 export const ADDED = 'ADDED';
+export const DELETING = 'DELETING';
+export const DELETED = 'DELETED';
 export const ERROR = 'ERROR';
 
 export const getSmurf = () => {
@@ -60,3 +62,22 @@ export const addSmurf = newSmurf => {
   };
 };
 
+export const deleteSmurf = smurfId => {
+  const removeSmurf = axios.delete(`http://localhost:3333/smurfs/${smurfId}`);
+  return dispatch => {
+    dispatch({ type: DELETING });
+    removeSmurf
+      .then(res => {
+        dispatch({
+          type: DELETED,
+          payload: res.data
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
+      });
+  };
+};

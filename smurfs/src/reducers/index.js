@@ -20,7 +20,7 @@ const initialState = {
   updatingSmurf: false,
   deletingSmurf: false,
   error: null
-}
+};
 
 /*
   You'll only need one smurf reducer for this project.
@@ -50,6 +50,16 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         smurfs: action.payload,
         addingSmurfs: false
+      });
+
+    case DELETING:
+      return Object.assign({}, state, {
+        deletingSmurfs: true
+      });
+    case DELETED:
+      return Object.assign({}, state, {
+        smurfs: action.payload,
+        deletingSmurfs: false
       });
 
     case ERROR:
