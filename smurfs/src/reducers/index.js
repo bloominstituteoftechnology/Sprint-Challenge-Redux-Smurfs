@@ -15,10 +15,12 @@ const initialState = {
 
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    
     case FETCHING_SMURFS:
       return {...state, fetchingSmurfs: true};
     case SMURFS_FETCHED:
       return {...state, fetchingSmurfs: false, smurfsFetched: true, smurfs: action.payload};
+
     case ADDING_SMURF:
       return {...state, addingSmurf: true};
     case SMURF_ADDED:
