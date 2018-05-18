@@ -30,7 +30,7 @@ const SmurfsList = props => {
         <div className="list-container">
             {props.smurfs.map(smurf => 
                 <div className="smurf" key={smurf.name + smurf.id}>
-                    {smurf.name}
+                    {smurf.name} {smurf.age} {smurf.height}
                 </div>)}
         </div>
     )

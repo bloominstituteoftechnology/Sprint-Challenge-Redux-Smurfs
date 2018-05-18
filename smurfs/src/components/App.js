@@ -17,12 +17,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
       <header className="App-header">
         <h1>SMURFS! 2.0 W/ Redux</h1>
       </header>
-        <NewSmurfForm />
-        {this.props.fetchingSmurfs ? (<img src={logo} className="App-logo" alt="logo" />) : (<SmurfsList smurfs={this.props.smurfs} />) }
-        {/* <SmurfsList smurfs={this.props.smurfs} /> */}
+    
+      {this.props.fetchingSmurfs ? (<img src={logo} className="App-logo" alt="logo" />) : 
+        [ <NewSmurfForm />, <SmurfsList smurfs={this.props.smurfs} />] }
+      
       </div>
     );
   }
