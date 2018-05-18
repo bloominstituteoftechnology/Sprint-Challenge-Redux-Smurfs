@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import { connect } from 'react-redux'; 
+import { getSmurfs } from '../actions';
+import Smurf from '../components/Smurf.js';
 
 /*
  to wire this component up you're going to need a few things.
@@ -9,16 +11,40 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  componentDidMount() {
+    this.props.getSmurfs(); 
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
+        <header className="App-header">
+          <h1 className="App-title">Welcome to Smurf World!</h1>
+        </header>
         <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        <div className="App-intro"> 
+          {this.props.smurfs.map(smurf => {
+            return <Smurf key={smurf} smurf={smurf} />; 
+          })}
+          {this.props.fetchingSmurfs ? (
+            <img src="https://vignette.wikia.nocookie.net/smurfs/images/2/22/The-smurf-show.jpg/revision/latest?cb=20131031173244" className="App-photo" alt="The Smurfs" />
+          ) : null}
+          {this.props.error !== null ? <div>{this.props.error}</div> : null}
+          </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log(state); 
+  return {
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs,
+    error: state.error
+  };
+};
+
+
+export default connect (mapStateToProps, { getSmurfs })(App);
