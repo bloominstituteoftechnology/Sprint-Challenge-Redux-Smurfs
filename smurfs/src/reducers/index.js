@@ -10,8 +10,8 @@ import ERROR from 'ERROR';
 
 const initialState = {
   smurfs: [],
-  fetchingSmurfs: false,
-  addingSmurfs: false,
+  fetching: false,
+  adding: false,
   error: null
 };
 
@@ -32,24 +32,24 @@ export default (state = initialState, action) => {
     case SMURFS_FETCHED:
       return Object.assign({}, state, {
         smurfs: state.smurfs.concat(action.payload),
-        fetchingSmurfs: false
+        fetching: false
       });
     case FETCHING_SMURFS:
       return Object.assign({}, state, { 
-        fetchingSmurfs: true
+        fetching: true
        });
     case ERROR: 
       return Object.assign({}, state, {
-        fetchingSmurfs: false,
+        fetching: false,
         error: action.payload
       });
     case SMURFS_ADDED:
       return Object.assign({}, state, {
-        addingSmurfs: false,
+        adding: false,
       });
     case ADDING_SMURFS:
       return Object.assign({}, state, {
-        addingSmurfs: true,
+        adding: true,
       });
     default:
       return state;  
