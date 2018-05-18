@@ -35,7 +35,7 @@ export const smurfReducer = (state=initialState, action) => {
     case ADDING_SMURF:
       return {
         ...state,
-        addingSmurfs: true
+        addingSmurfs: true,
       }
     case UPDATING_SMURF:
       return {

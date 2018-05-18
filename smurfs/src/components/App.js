@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import AddForm from './AddForm';
 import { getSmurfs } from '../actions';
 
 class App extends Component {
@@ -8,8 +8,8 @@ class App extends Component {
     this.props.getSmurfs()
   }
   render() {
-    console.log(this.props)
     const { fetchingSmurfs } = this.props
+    console.log(this.props)
     return (
       <div>
         <AddForm />

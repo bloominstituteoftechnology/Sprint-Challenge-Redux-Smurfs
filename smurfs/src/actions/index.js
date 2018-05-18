@@ -17,12 +17,12 @@ export const getSmurfs = () => {
   }
 }
 
-export const addSmurf = () => {
+export const addSmurf = (smurf) => {
   return (dispatch) => {
-    const request = axios.get('http://localhost:3333/smurfs')
-    dispatch({ type: FETCHING_SMURFS})
+    const request = axios.post('http://localhost:3333/smurfs', smurf)
+    dispatch({ type: ADDING_SMURF})
     request
-    .then(({data}) => dispatch({ type: ADDING_SMURF, smurfs:data}))
+    .then(({data}) => dispatch({ type: FETCHED_SMURFS, smurfs:data}))
     .catch(error => dispatch({ type: ERROR, error}))
   }
 }
@@ -30,9 +30,9 @@ export const addSmurf = () => {
 export const deleteSmurf = () => {
   return (dispatch) => {
     const request = axios.get('http://localhost:3333/smurfs')
-    dispatch({ type: FETCHING_SMURFS})
+    dispatch({ type: DELETING_SMURF})
     request
-    .then(({data}) => dispatch({ type: DELETING_SMURF, smurfs:data}))
+    .then(({data}) => dispatch({ type: FETCHED_SMURFS, smurfs:data}))
     .catch(error => dispatch({ type: ERROR, error}))
   }
 }
@@ -40,9 +40,9 @@ export const deleteSmurf = () => {
 export const updateSmurf = () => {
   return (dispatch) => {
     const request = axios.get('http://localhost:3333/smurfs')
-    dispatch({ type: FETCHING_SMURFS})
+    dispatch({ type: UPDATING_SMURF})
     request
-    .then(({data}) => dispatch({ type: UPDATING_SMURF, smurfs:data}))
+    .then(({data}) => dispatch({ type: FETCHED_SMURFS, smurfs:data}))
     .catch(error => dispatch({ type: ERROR, error}))
   }
 }
