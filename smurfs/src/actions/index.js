@@ -33,3 +33,16 @@ export const getSmurfs = () => {
       })
   }
 }
+
+export const addSmurf = newData => {
+  let newSmurf = axios.post('http://localhost:3333/smurfs', newData )
+  return function(dispatch) {
+    newSmurf 
+      .then(response => {
+        dispatch({type: SUCCESS_POST_SMURFS, payload: response.data })
+      })
+      .catch(error => {
+        dispatch({type: ERROR_SMURFS, payload: 'UNABLE TO ADD NEW SMURF. PLEASE TRY AGAIN.'})
+      })
+  }
+}
