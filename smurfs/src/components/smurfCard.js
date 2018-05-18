@@ -19,8 +19,8 @@ class SmurfCard extends Component {
                 <p>Age: {this.state.smurf.age}</p>
                 <p>Height: {this.state.smurf.height}</p>
                 <div>
-                    <button>Edit</button>
-                    <button>Delete</button> 
+                    <button className="edit-button">Edit</button>
+                    <button className="delete-button">Delete</button> 
                 </div>
             </div>
          )

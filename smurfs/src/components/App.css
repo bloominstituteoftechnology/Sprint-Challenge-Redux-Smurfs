@@ -39,8 +39,23 @@ Light Classy Grey: #f1f0ee – Simple light grey is used to provide depth behind
 
 .SmurfCard-container {
   background-color: white;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 30px;
   margin: auto;
   width: 80%;
+}
+
+.SmurfCard-container button {
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 0px 10px;
+}
+
+.edit-button {
+  background-color: #7acfd6;
+}
+
+.delete-button {
+  background-color: #e0474c;
 }
