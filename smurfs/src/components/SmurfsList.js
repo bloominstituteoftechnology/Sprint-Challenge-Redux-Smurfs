@@ -29,9 +29,11 @@ const SmurfsList = props => {
     return (
         <div className="list-container">
             {props.smurfs.map(smurf => 
-                <div className="smurf" key={smurf.name + smurf.id}>
+                <p className="smurf" key={smurf.name + smurf.id}>
                     {smurf.name} {smurf.age} {smurf.height}
-                </div>)}
+                    <button className="smurf-btn">Edit</button>
+                    <button className="smurf-btn">Delete</button>
+                </p>)}
         </div>
     )
 }

@@ -8,3 +8,21 @@
     color: slateblue;
     font-weight: bold;
 }
+
+.smurf-btn {
+    font-size: 15px;
+    display: inline;
+    height: 30px;
+    width: 80px;
+    margin-left: 20px;
+    background-color: #808000;
+    border: 2px solid white;
+}
+
+.smurf-btn:hover {
+    cursor: pointer;
+    background-color: white;
+    color: gray;
+    text-shadow: 0px;
+    border: 1px solid black
+}

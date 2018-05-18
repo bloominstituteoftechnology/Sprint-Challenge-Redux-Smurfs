@@ -3,6 +3,7 @@
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  background-color: lightgray;
 }
 
 .App-logo {
@@ -11,10 +12,17 @@
 }
 
 .App-header {
-  background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
+  background-image: url('https://www.comicscenter.net/uploads/images/expos_les_grandes_expositions/smurfs-imps-2008-3.jpg');
+  background-size: 100% 110%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header-title {
+  margin-top: 30px;
 }
 
 .App-title {
