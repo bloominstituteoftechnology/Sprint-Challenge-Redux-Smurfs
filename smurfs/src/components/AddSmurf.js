@@ -16,8 +16,8 @@ class AddSmurf extends Component {
         this.setState({ [e.target.name] : e.target.value})
     }
 
-    handleAdd = () => {
-        this.props.addSmurf(this.state);
+    handleAdd = (smurf) => {
+        this.props.addSmurf(smurf);
         this.props.getSmurfs();
     }
 
@@ -29,7 +29,7 @@ class AddSmurf extends Component {
                     <input name="name" placeholder="name" value={name} onChange={(e) => this.handleChange(e)}/>
                     <input name="age" placeholder="age" value={age} onChange={(e) => this.handleChange(e)}/>
                     <input name="height" placeholder="height" value={height} onChange={(e) => this.handleChange(e)}/>
-                    <button onClick={() => this.handleAdd}>Save</button>
+                    <button onClick={() => this.handleAdd(this.state)}>Save</button>
                 </form>   
             </div>
         );
