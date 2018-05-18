@@ -3,7 +3,7 @@
   border: 1px sandybrown solid;
 }
 .App div {
-  border: 1px cornflowerblue solid;
+  /* border: 1px cornflowerblue solid; */
 }
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
