@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Row } from "reactstrap";
 import { fetchingSmurfs } from "../actions";
 import ItemCard from "./ItemCard";
+import AddNew from "./AddNew";
 
 class App extends Component {
   componentDidMount() {
@@ -25,14 +26,11 @@ class App extends Component {
         {smurfs.map((item, i) => {
           return (
             <Row className="" key={Date.now() + 1}>
-              <ItemCard
-              item={item}
-              id={item.id}
-              key={Date.now() + item.id}
-               />
+              <ItemCard item={item} id={item.id} key={Date.now() + item.id} />
             </Row>
           );
         })}
+        <AddNew />
       </div>
     );
   }

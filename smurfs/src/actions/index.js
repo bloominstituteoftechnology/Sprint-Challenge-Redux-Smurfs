@@ -34,7 +34,8 @@ export const fetchingSmurfs = () => {
   };
 };
 export const addingSmurf = newItem => {
-  const addItem = axios.post("http://localhost:3333/smurfs/");
+  console.log(newItem);
+  const addItem = axios.post("http://localhost:3333/smurfs", newItem);
   return dispatch => {
     dispatch({
       type: ADDINGSMURF,

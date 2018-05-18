@@ -2,9 +2,7 @@
   text-align: center;
   border: 1px sandybrown solid;
 }
-.App div {
-  /* border: 1px cornflowerblue solid; */
-}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
