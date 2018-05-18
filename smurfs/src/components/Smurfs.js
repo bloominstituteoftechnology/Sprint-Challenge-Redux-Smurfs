@@ -22,7 +22,7 @@ class Smurfs extends Component {
           {
             this.props.smurfData.smurfs.map(smurf => {
               return (
-                <ul key={ Date.now() }>
+                <ul key={ smurf.id }>
                   <li>{ smurf.name }</li>
                   <li>{ smurf.age }</li>
                   <li>{ smurf.height }</li>
