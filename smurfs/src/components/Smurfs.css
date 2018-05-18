@@ -1,0 +1,27 @@
+.cards {
+    display: flex; 
+    justify-content: space-around;
+    flex-wrap: wrap; 
+}
+
+.card {
+    border: 1px solid red; 
+    margin: 20px 0; 
+}
+
+.form {
+    border: 2px solid dodgerblue;
+    width: 20%;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.form input {
+    margin: 10px 0; 
+    width: 70%; 
+}
+
+.form button {
+    margin: 10px 0; 
+    width: 70%; 
+}
