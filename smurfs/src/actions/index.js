@@ -79,3 +79,17 @@ export const fetchSmurfs = () => {
       })
   }
 }
+
+export const createSmurf = (smurf) => {
+  const postSmurf = axios.post("http://localhost:3333/smurfs", smurf);
+  return function(dispatch) {
+    dispatch(creating()),
+    postSmurf
+      .then( res => {
+        dispatch(created(res));
+      })
+      .catch( err => {
+        dispatch(error(err));
+      })
+  }
+}
