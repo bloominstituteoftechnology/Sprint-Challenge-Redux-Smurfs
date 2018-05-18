@@ -6,7 +6,6 @@ import './addsmurf.css';
 //This component is able to be used for both adding and editing smurfs.  It gets different props depending
 //on the current app state.
 class AddSmurf extends Component {
-
   constructor(props) {
     super(props);
     this.state = {

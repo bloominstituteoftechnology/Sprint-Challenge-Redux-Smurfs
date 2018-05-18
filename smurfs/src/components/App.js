@@ -1,14 +1,13 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetcher, beginEdit, cancelEdit, beginAdd, cancelAdd, deleter, adder, editor } from '../actions';
+import './App.css';
+import { Button } from 'reactstrap';
+import Smurfs from './smurfs.js';
+import AddSmurf from './addsmurf.js';
+import Front from './front.js';
 
- import React, { Component } from 'react';
- import { connect } from 'react-redux';
- import { fetcher, beginEdit, cancelEdit, beginAdd, cancelAdd, deleter, adder, editor } from '../actions';
- import './App.css';
- import { Button } from 'reactstrap';
- import Smurfs from './smurfs.js';
- import AddSmurf from './addsmurf.js';
- import Front from './front.js';
-
- class App extends Component {
+class App extends Component {
 
   //Get initial data
   componentDidMount() {
