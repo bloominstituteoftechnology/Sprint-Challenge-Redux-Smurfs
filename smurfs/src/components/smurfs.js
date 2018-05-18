@@ -10,7 +10,9 @@ const Smurfs = (props) => {
         <h1 className="display-5">Welcome</h1>
         <h1 className="display-5">to Smurf Village!</h1>
       </div>
-      <Button color="primary" onClick={props.addButton} >Add Smurf</Button>
+      <div className="add-button">
+        <Button color="primary" onClick={props.addButton} >Add Smurf</Button>
+      </div>
       {props.smurfData.map((smurf, index) => {
         return (
           <div key={smurf.id} className="mt-5 smurf">
