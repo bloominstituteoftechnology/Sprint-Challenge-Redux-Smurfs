@@ -31,7 +31,7 @@ export const rootReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         error: null,
-        smurfs: state.friends.concat(action.payload)
+        smurfs: state.smurfs.concat(action.payload)
       });
     
     case ADDING_SMURF:

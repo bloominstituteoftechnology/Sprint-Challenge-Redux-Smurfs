@@ -26,7 +26,7 @@ class SmurfCard extends Component {
       <React.Fragment>
         <Card className="smurf" data-type="card">
           <CardBody>
-            <button className="remove" onClick={() => { this.props.removesmurf(this.props.smurf.id) }}>
+            <button className="remove" onClick={() => { this.props.deleteSmurf(this.props.smurf.id) }}>
               <i className="fas fa-trash-alt"></i>
             </button>
             <CardTitle className="smurf-name">{this.props.smurf.name}</CardTitle>
@@ -38,7 +38,7 @@ class SmurfCard extends Component {
                 <p>{this.props.smurf.height} tall</p>
               </li>
             </ul>
-            <smurfModal
+            <AddEditModal
               smurf={this.props.smurf}
               modalBtn={this.state.btnProps}
               modalTitle="Update smurf"

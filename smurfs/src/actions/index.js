@@ -53,7 +53,7 @@ export const addSmurf = smurfObj => {
 };
 
 export const updateSmurf = (smurfId, smurfObj) => {
-  const modifySmurf = axios.put(`http://localhost:3333/smurfs${smurfId}`, smurfObj);
+  const modifySmurf = axios.put(`http://localhost:3333/smurfs/${smurfId}`, smurfObj);
   return (dispatch) => {
     dispatch({ type: UPDATING_SMURF });
     modifySmurf
@@ -74,7 +74,7 @@ export const updateSmurf = (smurfId, smurfObj) => {
 };
 
 export const deleteSmurf = smurfId => {
-  const removeSmurf = axios.delete(`http://localhost:3333/smurfs${smurfId}`);
+  const removeSmurf = axios.delete(`http://localhost:3333/smurfs/${smurfId}`);
   return (dispatch) => {
     dispatch({ type: DELETING_SMURF });
     removeSmurf
