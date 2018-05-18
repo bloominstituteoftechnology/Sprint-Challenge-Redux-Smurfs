@@ -27,7 +27,7 @@ class App extends Component {
             return (
               <div className="smurf-container" key={smurf.id}>
                 <ul className="smurf-card">
-                  <li>{smurf.name}</li>
+                  <li className="smurf-list">{smurf.name}</li>
                   <li>{smurf.age} smurfs old</li>
                   <li>{smurf.height} smurfs tall</li>
                 </ul>

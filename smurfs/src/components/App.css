@@ -39,11 +39,14 @@ body {
 }
 .App .smurf-card {
   border: 2px solid white;
+  border-radius: 10%;
   height: 100px;
   max-width: 300px;
   padding-bottom: 15px;
   display: flex;
   justify-content: center;
+  color: white;
+  text-shadow: 2px black;
 }
 
 .new-villager {
