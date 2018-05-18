@@ -1,7 +1,11 @@
 import axios from 'axios';
+
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
-export const SMURFS_FETCHED = 'SMURFS_FETCHED';
+export const SUCCESS = 'SUCCESS';
 export const ERROR = 'ERROR';
+export const ADDING_SMURF = 'ADDING_SMURF';
+
+const URL = 'http://localhost:3333/smurfs';
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
@@ -19,32 +23,30 @@ export const ERROR = 'ERROR';
 */
 
 export const fetchSmurfs = () => {
-  const getSmurfs = axios.get ('http://localhost:3333/smurfs');
-  return function(dispatch) {
-    dispatch({ type: FETCHING_SMURFS });
-    // FETCHING puts in a pending state;
+  const getSmurfs = axios.get (URL);
+  return dispatch => { 
+    dispatch({type: FETCHING_SMURFS });
     getSmurfs
-      .then(someData => {
-        dispatch({ type: SMURFS_FETCHED, payload: someData.data });
-        // FETCHED puts in a resolved state;
+      .then(response => {
+        dispatch({type: SUCCESS, payload: response.data });
       })
       .catch(err => {
-        dispatch({ type: ERROR, payload: err });
-        // ERROR puts in a rejected state;
+        dispatch({ type: ERROR, payload: 'Error Fetching Smurfs' });
       });
   };
 };
 
-// export const editSmurf = smurf => {
-//   const changeSmurf = axios.put(
-//     `http://localhost:3333/smurfs/${smurf.id}`,
-//     {newSmurf: smurf.name }
-//   );
-//   return function(dispatch) {
-//     dispatch({ type: GET_SMURF });
-//     changeSmurf
-//       .then(resolve => {
-//         dispatch({ type: SMURF_U})
-//       })
-//   }
-// };
+export const createSmurf = smurf => {
+  const addSmurf = axios.post(URL, smurf);
+  return dispatch => {
+    dispatch({ type: ADDING_SMURF });
+    addSmurf
+      .then(response => {
+        console.log(response.data);
+        dispatch({type: SUCCESS, payload: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: 'Error Adding smurf' });
+      });
+  };
+};

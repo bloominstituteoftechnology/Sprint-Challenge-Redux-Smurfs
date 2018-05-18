@@ -1,18 +1,14 @@
-import {
-  SMURFS_FETCHED,
-  FETCHING_SMURFS,
-  ERROR
-} from '../actions';
+import { FETCHING_SMURFS, SUCCESS, ERROR } from '../actions';
 /*
   Be sure to import in all of the action types from `../actions`
 */
 
 const initialState = {
   smurfs: [],
-  fetching: false
-  addingSmurf: false
-  updatingSmurf: false
-  deletingSmurf: false
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
   error: null
 };
 
@@ -39,28 +35,20 @@ const initialState = {
 */
 
 export default (state = initialState, action) => {
-  switch (action.type) {
-    case SMURFS_FETCHED:
-      return Object.assign({}, state, {
-        avengers: state.smurfs.concat(action.payload),
-        fetching: false
-      });
+  switch(action.type) {
     case FETCHING_SMURFS:
-      return Object.assign({}, state, { fetching: true });
-    case ERROR:
-      return Object.assign({}, state, {
-        fetching: false,
-        editing: false,
-        error: action.payload
+      return Object.assign({}, state, { fetchingSmurfs: true });
+    case SUCCESS:
+      return Object.assign({}, state, { 
+        smurfs: action.payload,  
+        updatingSmurf: false, 
+        deletingSmurf: false, 
+        addingSmurf: false,
+        error: null
       });
-  //   case EDITING_AVENGER:
-  //     return Object.assign({}, state, { editing: true });
-  //   case AVENGER_UPDATED:
-  //     return Object.assign({}, state, {
-  //       avengers: action.payload,
-  //       editing: false
-  //     });
-  //   default:
-  //     return state;
-  // }
+    case ERROR:
+    return Object.assign({}, state, { error: action.payload });
+  default:
+      return state;
+  }
 };
