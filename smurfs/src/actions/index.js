@@ -27,7 +27,7 @@ export const fetchSmurfs = () => {
     getSmurfs
       .then(response => {
         console.log(response);
-        dispatch({ type: SMURFS_FETCHED, smurfs:data [] });
+        dispatch({ type: SMURFS_FETCHED, smurfs:data });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
