@@ -15,7 +15,7 @@ import { FETCHING_SMURFS, SMURFS_FETCHED, ADDING_SMURF, DELETING_SMURF, UPDATING
    error: null
  }
 
-export default smurfsReducer = (state = initialState, action) => {
+export const smurfsReducer = (state = initialState, action) => {
   switch(action.type) {
     case FETCHING_SMURFS:
       return Object.assign({}, state, { fetchingSmurfs: true,});
