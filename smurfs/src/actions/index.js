@@ -23,7 +23,8 @@ export const fetchingSmurfs = () => {
       .then(response => {
         console.log("response.data", response.data);
         dispatch({
-          type: FETCHEDSMURF
+          type: FETCHEDSMURF,
+          fetched: response.data
         });
       })
       .catch(e => {

@@ -31,7 +31,8 @@ const mainReducer = (state = initialState, action) => {
     case FETCHINGSMURFS:
       return { ...state, fetchingSmurfs: true, fetchedSmurf: false };
     case FETCHEDSMURF:
-      return { ...state, fetchingSmurfs: false, fetchedSmurf: true };
+    console.log(action.fetched);
+      return { ...state, fetchingSmurfs: false, fetchedSmurf: true, smurfs: action.fetched };
     case ADDINGSMURF:
       return { ...state, addingSmurf: true, addedSmurf: false };
     case ADDEDSMURF:
@@ -41,10 +42,17 @@ const mainReducer = (state = initialState, action) => {
     case UPDATEDSMURF:
       return { ...state, updatingSmurf: false, updatedSmurf: true };
     case DELETINGSMURF:
-      return { ...state };
+      return { ...state, deletingSmurf: true, deletedSmurf: false };
     case DELETEDSMURF:
-      return { ...state };
+      return { ...state, deletingSmurf: false, deletedSmurf: true };
     case ERROR:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        updatingSmurf: false,
+        deletingSmurf: false
+      };
     default:
       return state;
   }
