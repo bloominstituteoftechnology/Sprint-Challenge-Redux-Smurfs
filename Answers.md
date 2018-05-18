@@ -1,6 +1,6 @@
-1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
-1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
-1.  What is middleware?
-1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-1.  Which `react-redux` method links up our `components` with our `redux store`?
+1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object? 3 JavaScript Array/Object methods that do not  produce side effects are .forEach, .map, and .filter.  .objectAssign() is used to extends properties from one object to another.
+2.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application? Actions are descriptions of what changes need to be made to the state of the application. Reducers are the internal interpretation and execution of the actions that change the state of an application. The store is the data management container that holds all of the data and data manipulations that occurr within/to an application.
+3.  What is the difference between Application state and Component state? When would be a good time to use one over the other? Application state is global meaning that it can be accessed by any component within an app as long as it imported into the component. Component state is local meaning that its data is only housed and accessible within that component, and the properties of that component can only be passed on to its children via props.
+4.  What is middleware? Middleware is a software bridge between a operating system/database and an application.
+5.  Describe `redux-thunk`, what does it allow us to do? redux-thunk is a middleware software that allows a developer to handle asynchronous actions in redux.   How does it change our `action-creators`? Redux-thunk allows our actions to be returned as functions versus actions.
+6.  Which `react-redux` method links up our `components` with our `redux store`? the `connect` method allows us to link our components with our store.
