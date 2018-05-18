@@ -1,8 +1,12 @@
-import FETCHING_SMURFS from 'FETCHING_SMURFS';
-import SMURFS_FETCHED from 'SMURFS_FETCHED';
-import ADDING_SMURFS from 'ADDING_SMURFS';
-import SMURFS_ADDED from 'SMURFS_ADDED';
-import ERROR from 'ERROR';
+import { 
+  FETCHING_SMURFS, 
+  SMURFS_FETCHED,
+  ADDING_SMURFS,
+  SMURFS_ADDED,
+  EDITING_SMURFS,
+  SMURFS_UPDATED,
+  ERROR
+ } from '../actions/index.js';
 
 /*
   Be sure to import in all of the action types from `../actions`
@@ -12,6 +16,7 @@ const initialState = {
   smurfs: [],
   fetching: false,
   adding: false,
+  updating: false,
   error: null
 };
 
@@ -45,11 +50,19 @@ export default (state = initialState, action) => {
       });
     case SMURFS_ADDED:
       return Object.assign({}, state, {
-        adding: false,
+        adding: false
       });
     case ADDING_SMURFS:
       return Object.assign({}, state, {
-        adding: true,
+        adding: true
+      });
+    case SMURFS_UPDATED:
+      return Object.assign({}, state, {
+        updating: false 
+      });
+    case EDITING_SMURFS:
+      return Object.assign({}, state, {
+        updating: true
       });
     default:
       return state;  

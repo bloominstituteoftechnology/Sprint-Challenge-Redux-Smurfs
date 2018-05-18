@@ -4,6 +4,8 @@ export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const SMURFS_FETCHED = 'SMURFS_FETCHED';
 export const ADDING_SMURFS = 'ADDING_SMURFS';
 export const SMURFS_ADDED = 'SMURFS_ADDED';
+export const EDITING_SMURFS = 'EDITING_SMURFS';
+export const SMURFS_UPDATED = 'SMURFS_UPDATED';
 export const ERROR = 'ERROR';
 /* 
   Action Types Go Here!
@@ -20,7 +22,7 @@ export const fetchSmurfs = () => {
         dispatch({ type: SMURFS_FETCHED, payload: someData.data });
       })
       .catch(err => {
-        dispatch({ ERROR, payload: err });
+        dispatch({ type: ERROR, payload: err });
       });
   };
 };
@@ -36,6 +38,24 @@ export const addSmurfs = smurf => {
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
       })
+  };
+};
+
+export const editSmurfs = smurf => {
+  const changeSmurfs = axios.put(
+    `http://localhost:3333/smurfs/${smurf.id}`,
+    { newSmurf: smurf.name }
+  );
+
+  return function(dispatch) {
+    dispatch({ type: EDITING_SMURFS });
+    changeSmurfs
+      .then(resolve => {
+        dispatch({ type: SMURFS_UPDATED, payload: resolve.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
   };
 };
 
