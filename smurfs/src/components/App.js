@@ -15,11 +15,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
+        <h1>SMURFS! Village!</h1>
+        <div>Welcome Friends!</div>
         <div>Have fun!</div>
+        <h2>Current Residents</h2>
         {this.props.smurfs.map(smurfs => {
-          return <div key={smurfs}>{smurfs.name}</div>;
+          return <div key={smurfs}>{smurfs.name} Smurf {smurfs.age} years old!
+          and {smurfs.height} cm tall!</div>
         })}
       </div>
     );
