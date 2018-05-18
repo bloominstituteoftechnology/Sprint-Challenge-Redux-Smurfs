@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { fetchSmurfs } from '../actions';
+import Smurf from './Smurf'
 import './App.css';
+
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -7,6 +11,9 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchSmurfs();
+  }
   render() {
     return (
       <div className="App">
@@ -14,9 +21,17 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        {this.props.smurfs.map(smurf => <Smurf key={smurf.id} smurf={smurf}/>)}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    fetchSmurfs: state.fetchingSmurfs,
+    smurfs: state.smurfs
+  }
+}
+
+export default connect(mapStateToProps, { fetchSmurfs })(App);
