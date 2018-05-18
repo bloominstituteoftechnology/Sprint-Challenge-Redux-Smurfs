@@ -86,7 +86,7 @@ class SmurfDisplay extends React.Component {
         <span>I'm {this.state.edit ? inputField(`name`) : `${name} `} 
           and I'm {this.state.edit ? inputField(`age`) : `${age} `} 
           years old. I am{` `} 
-          {this.state.edit ? inputField(`height`) : ` ${height}!`} tall!</span>
+          {this.state.edit ? inputField(`height`) : ` ${height} `} tall!</span>
         <div className="button-div">
           <i onClick={() => this.editFields(id)} className="fas fa-pencil-alt mh2"></i>
           <i onClick={() => this.props.delete(id)} className="fas fa-eraser mh2"></i>
