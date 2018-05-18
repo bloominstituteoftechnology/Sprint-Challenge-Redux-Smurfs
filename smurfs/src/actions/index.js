@@ -16,11 +16,15 @@ export const ERROR = "ERROR";
 export const fetchingSmurfs = () => {
   const fetch = axios.get("http://localhost:3333/smurfs/");
   return dispatch => {
-    dispatch(FETCHINGSMURFS);
+    dispatch({
+      type: FETCHINGSMURFS
+    });
     fetch
       .then(response => {
         console.log("response.data", response.data);
-        dispatch(FETCHEDSMURF);
+        dispatch({
+          type: FETCHEDSMURF
+        });
       })
       .catch(e => {
         console.log("error", e);
@@ -31,11 +35,17 @@ export const fetchingSmurfs = () => {
 export const addingSmurf = () => {
   const addItem = axios.post("http://localhost:3333/smurfs/");
   return dispatch => {
-    dispatch(ADDINGSMURF);
+    dispatch({
+      type: ADDINGSMURF,
+      newItem: action.new
+    });
     addItem
       .then(response => {
         console.log("response.data", response.data);
-        dispatch(ADDEDSMURF);
+        dispatch({
+          type: ADDEDSMURF,
+          newItem: action.new
+        });
       })
       .catch(e => {
         console.log("error", e);
@@ -46,11 +56,17 @@ export const addingSmurf = () => {
 export const updatingSmurf = () => {
   const updateItem = axios.put("http://localhost:3333/smurfs/");
   return dispatch => {
-    dispatch(UPDATINGSMURF);
+    dispatch({
+      type: UPDATINGSMURF,
+      toUpdate: action.toUpdate
+    });
     updateItem
       .then(response => {
         console.log("response.data", response.data);
-        dispatch(UPDATEDSMURF);
+        dispatch({
+          type: UPDATEDSMURF,
+          toUpdate: action.toUpdate
+        });
       })
       .catch(e => {
         console.log("error", e);
@@ -61,11 +77,17 @@ export const updatingSmurf = () => {
 export const deletingSmurf = () => {
   const deleteItem = axios.delete("http://localhost:3333/smurfs/");
   return dispatch => {
-    dispatch(DELETINGSMURF);
+    dispatch({
+      type: DELETINGSMURF,
+      toDelete: action.toDelete
+    });
     deleteItem
       .then(response => {
         console.log("response.data", response.data);
-        dispatch(DELETEDSMURF);
+        dispatch({
+          type: DELETEDSMURF,
+          toDelete: action.toDelete
+        });
       })
       .catch(e => {
         console.log("error", e);
