@@ -1,3 +1,12 @@
+/* Blue Red
+Deep Red: #b11a21 – In an overlay, juxtaposed against flat blue, the photographic background gives depth.
+
+Lighter Red: #e0474c – The smiling face coming through the red, makes it feel striking.
+
+Blue Beans: #7acfd6 – The flat blue provides contrast to the photo behind the red. 
+
+Light Classy Grey: #f1f0ee – Simple light grey is used to provide depth behind a later photographic section, with white below. */
+
 .App {
   text-align: center;
 }
@@ -25,4 +34,13 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+
+.SmurfCard-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
+  margin: auto;
+  width: 80%;
 }
