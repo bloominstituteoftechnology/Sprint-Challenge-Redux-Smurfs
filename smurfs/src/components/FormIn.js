@@ -44,13 +44,13 @@ class FormIn extends React.Component {
         <Container>
             <Row>
                 <Col xs="3">
-                    <Form >
+                    <Form onSubmit = {this.handleRequest} >
                     <FormGroup>
                         <Input name="name" id="nameID" placeholder="name" onChange={this.handleTaskChange} value= {this.state.name} />
                         <Input name="age" placeholder="age" onChange={this.handleTaskChange} value= {this.state.age} />
                         <Input type="height" name="height" id="height"  onChange={this.handleTaskChange} placeholder="height" value= {this.state.height} />
                     </FormGroup>
-                    <Button onClick= {this.handleRequest} >Submit</Button>
+                    <Button >Submit</Button>
                     </Form>
                 </Col>
             </Row>
