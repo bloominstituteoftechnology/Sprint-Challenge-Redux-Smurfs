@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 const Smurfs = (props) => {
   console.log("props on Smurfs", props)
   return(
-    <div>
+    <div className="row">
       {props.smurfs.map(smurf => {
         return(
-          <div key={smurf.id}>
+          <div key={smurf.id} className="col-4">
             <ul>
-              <li>{smurf.name}</li>
-              <li>{smurf.age}</li>
-              <li>{smurf.height}</li>
+              <li>Name: {smurf.name}</li>
+              <li>Age: {smurf.age}</li>
+              <li>Height: {smurf.height}</li>
             </ul>
           </div>
         )

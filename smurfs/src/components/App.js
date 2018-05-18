@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'; 
 
 import { fetchSmurfs } from '../actions/index';
-import Smurfs from './Smurfs';
+import Smurfs from './Smurfs'; 
+import AddSmurf from './AddSmurf';
 
 /*
  to wire this component up you're going to need a few things.
@@ -25,6 +26,7 @@ class App extends Component {
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
         <Smurfs />
+        <AddSmurf />
       </div>
     );
   }

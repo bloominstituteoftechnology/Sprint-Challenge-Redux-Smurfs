@@ -27,8 +27,8 @@ export const fetchSmurfs = () => {
   }
 }
 
-export const newSmurf = () => {
-  const postSmurf = axios.post('http://localhost:3333/smurfs')
+export const newSmurf = (smurf) => {
+  const postSmurf = axios.post('http://localhost:3333/smurfs', smurf)
   return function(dispatch) {
     dispatch({ type: SAVING_SMURF });
     postSmurf
