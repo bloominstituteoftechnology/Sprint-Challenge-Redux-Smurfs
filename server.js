@@ -15,7 +15,8 @@ const sendUserError = (msg, res) => {
 let smurfs = [
   {
     id: 0,
-    name: 'Brainey',
+    image: 'https://vignette.wikia.nocookie.net/smurfs/images/a/a7/Brainy_Cartoon.jpg/revision/latest?cb=20110913225420',
+    name: 'Brainey Smurf',
     age: 200,
     height: '5cm'
   }
