@@ -20,15 +20,17 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          <h1>Welcome to Smurf Village!</h1>
-          <p>Behold, our Smurfs:</p>
+          <h1 style={{color: 'white', textShadow: '2px 2px 4px #000000'}}>Welcome to Smurf Village!</h1>
+          <p style={{color: 'white', textShadow: '2px 2px 4px #000000'}}>Behold, our Smurfs:</p>
           <AddSmurf />
           {this.props.smurfs.map(smurf => {
             return (
-              <div className="smurf-card" key={smurf.id}>
-                <li>{smurf.name}</li>
-                <li>{smurf.age} smurfs old</li>
-                <li>{smurf.height} smurf tall</li>
+              <div className="smurf-container" key={smurf.id}>
+                <ul className="smurf-card">
+                  <li>{smurf.name}</li>
+                  <li>{smurf.age} smurfs old</li>
+                  <li>{smurf.height} smurfs tall</li>
+                </ul>
               </div>
             )
           })}

@@ -32,13 +32,18 @@ body {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
+.smurf-container {
+  /* border: 3px solid white; */
+  display:flex;
+  justify-content: center;
+}
 .App .smurf-card {
-  border: 1px solid black;
+  border: 2px solid white;
   height: 100px;
   max-width: 300px;
   padding-bottom: 15px;
-
+  display: flex;
+  justify-content: center;
 }
 
 .new-villager {
