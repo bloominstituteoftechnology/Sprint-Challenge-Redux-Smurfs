@@ -19,10 +19,9 @@ class App extends Component {
 
       <header className="App-header"></header>
       <h1 className="header-title">Welcome To Smurfs Village!</h1>
-    
+      {this.props.error !== null ? <div className="error">{this.props.error}</div> : null}
       {this.props.fetchingSmurfs ? (<img src={logo} className="App-logo" alt="logo" />) : 
         [ <NewSmurfForm />, <SmurfsList smurfs={this.props.smurfs} />] }
-      
       </div>
     );
   }

@@ -24,7 +24,7 @@ const smurfsReducer = (state = initialState, action) => {
     case SUCCESS_GET_SMURFS:
       return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload), fetchingSmurfs: false})
     case SUCCESS_POST_SMURFS:
-      return Object.assign({}, state, {smurfs: (action.payload), addingSmurf: true })
+      return Object.assign({}, state, {smurfs: (action.payload), addingSmurf: true, error: null })
     case SUCCESS_DELETE_SMURF:
       return Object.assign({}, state, {smurfs: (action.payload), deletingSmurf: true, fetchingSmurfs: false})
     case ERROR_SMURFS:
