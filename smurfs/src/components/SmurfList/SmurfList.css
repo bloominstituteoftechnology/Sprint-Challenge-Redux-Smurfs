@@ -1,3 +1,19 @@
 .smurfs-list {
   margin: 20px;
 }
+
+.smurfs-masonry-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: -20px;
+  width: auto;
+}
+.smurfs-masonry-grid_column {
+  padding-left: 20px;
+  background-clip: padding-box;
+}
+
+.smurfs-masonry-grid_column > .smurf {
+  margin-bottom: 20px;
+}
