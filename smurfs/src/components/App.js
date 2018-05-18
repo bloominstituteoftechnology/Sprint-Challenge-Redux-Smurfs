@@ -7,6 +7,7 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  componen
   render() {
     return (
       <div className="App">
