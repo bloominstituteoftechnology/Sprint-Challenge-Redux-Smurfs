@@ -26,3 +26,15 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.smurfForm {
+  margin: 2rem 0;
+  height: 6rem;
+  padding-top: 1.5rem;
+  padding-left: 15rem;
+  border: 1px solid lightgrey;
+}
+
+.delete-button {
+  margin-bottom: 2rem;
+}

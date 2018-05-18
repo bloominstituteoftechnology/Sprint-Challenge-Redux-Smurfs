@@ -24,10 +24,10 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
         { this.propsfetchingSmurfs ? <h4>Smurfs COMING</h4> : null }
+        <SmurfsForm />
         { this.props.smurfs.map(smurf => {
           return <Smurf key={smurf} smurf={smurf} />
-        })}
-        <SmurfsForm />
+        })}        
       </div>
     );
   }

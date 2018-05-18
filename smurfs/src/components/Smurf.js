@@ -1,14 +1,14 @@
-import React from "react";
-import { connect } from "react-redux";
-import { deleteSmurf } from "../actions";
+import React from 'react';
+import { connect } from 'react-redux';
+import { deleteSmurf } from '../actions';
 
 const Smurf = props => {
   return (
-    <div className="Smurf">
+    <div className='Smurf'>
       <h3>{props.smurf.name}</h3>
       <p>{props.smurf.age} smurf years old</p>
       <p>{props.smurf.height} cm tall</p>
-      <button onClick={() => props.deleteSmurf(props.smurf.id)}>
+      <button className='delete-button' onClick={() => props.deleteSmurf(props.smurf.id)}>
         Byebye {props.smurf.name}
       </button>
     </div>
