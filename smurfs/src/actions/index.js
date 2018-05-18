@@ -3,11 +3,6 @@ import { ECONNREFUSED } from "constants";
 
 import axios from "axios";
 
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
-
 export const FETCHINGSMURFS = "FETCHINGSMURFS";
 export const FETCHEDSMURF = "FETCHEDSMURF";
 export const ADDINGSMURF = "ADDINGSMURF";
@@ -17,18 +12,9 @@ export const UPDATEDSMURF = "UPDATEDSMURF";
 export const DELETINGSMURF = "DELETINGSMURF";
 export const DELETEDSMURF = "DELETEDSMURF";
 export const ERROR = "ERROR";
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+
 export const fetchingSmurfs = () => {
-  const fetch = axios.$2("http://localhost:3333/smurfs/");
+  const fetch = axios.GET("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch(FETCHINGSMURFS);
     fetch
@@ -43,10 +29,10 @@ export const fetchingSmurfs = () => {
   };
 };
 export const addingSmurf = () => {
-  const $2 = axios.$3("http://localhost:3333/smurfs/");
+  const addItem = axios.POST("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch(ADDINGSMURF);
-    $2
+    addItem
       .then(response => {
         console.log("response.data", response.data);
         dispatch(ADDEDSMURF);
@@ -58,10 +44,10 @@ export const addingSmurf = () => {
   };
 };
 export const updatingSmurf = () => {
-  const $1 = axios.$2("http://localhost:3333/smurfs/");
+  const updateItem = axios.PUT("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch(UPDATINGSMURF);
-    $1
+    updateItem
       .then(response => {
         console.log("response.data", response.data);
         dispatch(UPDATEDSMURF);
@@ -73,10 +59,10 @@ export const updatingSmurf = () => {
   };
 };
 export const deletingSmurf = () => {
-  const $1 = axios.$2("http://localhost:3333/smurfs/");
+  const deleteItem = axios.DELETE("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch(DELETINGSMURF);
-    $1
+    deleteItem
       .then(response => {
         console.log("response.data", response.data);
         dispatch(DELETEDSMURF);
