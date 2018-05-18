@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 import './App.css';
 import logo from './logo.svg';
 import SmurfsList from './SmurfsList';
