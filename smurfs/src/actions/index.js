@@ -5,6 +5,7 @@ export const GETTING_SMURFS = "GETTING_SMURFS";
 export const ADD_SMURF = "ADD_SMURF";
 export const ERROR = "ERROR";
 export const DELETE_SMURF = "DELETE_SMURF";
+export const EDIT_SMURF = "EDIT_SMURF";
 
 export const getSmurfs = () => {
   const getSmurfs = axios.get("http://localhost:3333/smurfs");
@@ -36,6 +37,20 @@ export const addSmurf = smurf => {
   }
 }
 
+export const editSmurf = smurf => {
+  const editSmurf = axios.put("http://localhost:3333/smurfs/" + smurf.id, smurf);
+  return function(dispatch) {
+    editSmurf
+      .then(res => {
+        console.log(res);
+        dispatch({type: EDIT_SMURF, payload: res.data});
+      })
+      .catch(err => {
+        dispatch({type: ERROR, payload: "Oh snap some went wrong"});
+      })
+  }
+}
+
 export const deleteSmurf = smurf => {
   const deleteSmurf = axios.delete("http://localhost:3333/smurfs/" + smurf.id);
   return function(dispatch) {
@@ -43,6 +58,9 @@ export const deleteSmurf = smurf => {
       .then(res => {
         console.log(res);
         dispatch({type: DELETE_SMURF, payload: res.data})
+      })
+      .catch(err => {
+        dispatch({type: ERROR, payload: "Oh snap some went wrong"});
       })
   }
 }
