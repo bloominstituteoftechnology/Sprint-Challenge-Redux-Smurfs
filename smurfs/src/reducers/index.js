@@ -2,7 +2,7 @@ import {
   SMURF_FETCHED,
   FETCHING_SMURF,
   ERROR 
-} from '../actions/index';
+} from '../actions';
 
 const initialState = {
    smurfs: [],
@@ -18,11 +18,7 @@ export const smurfReducer = (state = initialState, action) => {
     case FETCHING_SMURF:
       return Object.assign({}, state, { fetchingSmurfs: true });
     case SMURF_FETCHED:
-      return Object.assign({}, state, {
-        smurfs: state.smurfs.concat(action.payload),
-        fetchingSmurf: false,
-        addingSmurf: true
-      });
+      return Object.assign({}, state, {smurfs: action.payload});
     case ERROR:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
