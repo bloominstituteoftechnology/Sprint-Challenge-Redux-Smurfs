@@ -6,6 +6,7 @@ class AddEditModal extends Component {
     super(props);
     this.state = {
       modal: false,
+      image: (this.props.smurf !== undefined) ? this.props.smurf.image : '',
       name: (this.props.smurf !== undefined) ? this.props.smurf.name : '',
       age: (this.props.smurf !== undefined) ? this.props.smurf.age : '',
       height: (this.props.smurf !== undefined) ? this.props.smurf.height : ''
@@ -25,7 +26,7 @@ class AddEditModal extends Component {
       this.props.action(this.getStateObj(), this.props.smurf.id);
     } else {
       this.props.action(this.getStateObj());
-      this.setState({ name: '', age: '', height: '' });
+      this.setState({ image: '', name: '', age: '', height: '' });
     }
 
     this.toggle();
@@ -33,6 +34,7 @@ class AddEditModal extends Component {
   getStateObj = () => {
     return (this.state.name !== '' && this.state.age !== '' && this.state.height !== '')
       ? {
+        image: this.state.image,
         name: this.state.name,
         age: this.state.age,
         height: this.state.height
@@ -49,6 +51,13 @@ class AddEditModal extends Component {
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>{this.props.modalTitle}</ModalHeader>
           <ModalBody>
+            <input
+              name="image"
+              type="text"
+              placeholder="Image"
+              value={this.state.image}
+              onChange={this.handleChange}
+            />
             <input
               name="name"
               type="text"
