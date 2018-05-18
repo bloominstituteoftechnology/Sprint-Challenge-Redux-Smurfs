@@ -4,7 +4,7 @@ import { deleteSmurf } from '../actions';
 
 const Smurf = props => {
   return (
-    <div className='Smurf'>
+    <div className='smurf'>
       <h3>{props.smurf.name}</h3>
       <p>{props.smurf.age} smurf years old</p>
       <p>{props.smurf.height} cm tall</p>

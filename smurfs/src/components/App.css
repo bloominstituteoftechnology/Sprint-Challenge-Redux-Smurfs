@@ -35,6 +35,16 @@
   border: 1px solid lightgrey;
 }
 
-.delete-button {
+.smurf {
   margin-bottom: 2rem;
+}
+
+.delete-button {
+  border-radius: 12px;
+  box-shadow: 0 5px 10px 0;
+}
+
+.delete-button:hover {
+  background-color: #5e6570;
+  color: white;
 }
