@@ -1,19 +1,3 @@
-/*
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
-
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
-
 import axios from 'axios';
 
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
@@ -27,7 +11,8 @@ export const DELETE_SMURF = "DELETE_SMURF";
 export const ADD_SMURF = "ADD_SMURF";
 export const EDIT_SMURF = "EDIT_SMURF";
 
-
+//GET the array from the server, and send it to the reducer as FETCHED_SMURFS
+//First uses a FETCHING_SMURFS action to display a loading screen via the FSM
 export const fetcher = (url) => {
   const request = axios.get(url);
   return (dispatch) => {
@@ -41,30 +26,36 @@ export const fetcher = (url) => {
   };
 };
 
+//Change the appState back to fetched from edit
 export const cancelEdit = () => {
   return (dispatch) => {
     dispatch({type: CANCEL_EDIT});
   }
 }
 
+//Change the appState to edit from fetched
 export const beginEdit = (index) => {
   return (dispatch) => {
     dispatch({type: BEGIN_EDIT, payload: index});
   }
 }
 
+//Change the appState back to fetched from add
 export const cancelAdd = () => {
   return (dispatch) => {
     dispatch({type: CANCEL_ADD});
   }
 }
 
+//Change the appState to add from fetched
 export const beginAdd = () => {
   return (dispatch) => {
     dispatch({type: BEGIN_ADD});
   }
 }
 
+//Sends a delete request to the server, changes the appState to fetching, then
+//fetched or error when the server responds
 export const deleter = (url) => {
   const request = axios.delete(url);
   return (dispatch) => {
@@ -78,6 +69,8 @@ export const deleter = (url) => {
   };
 };
 
+//Sends a post request to the server, changes the appState to fetching, then
+//fetched or error when the server responds
 export const adder = (url, smurf) => {
   const request = axios.post(url, smurf);
   return (dispatch) => {
@@ -91,6 +84,8 @@ export const adder = (url, smurf) => {
   };
 };
 
+//Sends a put request to the server, changes the appState to fetching, then
+//fetched or error when the server responds
 export const editor = (url, smurf, id) => {
   const request = axios.put(url + id, smurf);
   return (dispatch) => {

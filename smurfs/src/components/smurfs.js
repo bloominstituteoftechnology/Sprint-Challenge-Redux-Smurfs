@@ -2,7 +2,9 @@ import React from 'react';
 import { Media, Button } from 'reactstrap';
 import './smurfs.css';
 
-
+//The main component of the app.  It loops over the smurfs array and generates cards for each smurf as well as
+//displaying a welcome message and add smurf button
+//These could have been seperate components, and if the project were to grow they would probably end up refactored.
 const Smurfs = (props) => {
   return(
     <div className="smurfs" >

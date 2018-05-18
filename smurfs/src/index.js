@@ -10,6 +10,7 @@ import smurfReducer from './reducers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//What good is a provider without quatloos?
 const quatloo = createStore(smurfReducer, composeEnhancers(
   applyMiddleware(thunk, logger)
 ));

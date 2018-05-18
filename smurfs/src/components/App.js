@@ -1,10 +1,4 @@
 
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own.
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
  import React, { Component } from 'react';
  import { connect } from 'react-redux';
  import { fetcher, beginEdit, cancelEdit, beginAdd, cancelAdd, deleter, adder, editor } from '../actions';
@@ -16,10 +10,13 @@
 
  class App extends Component {
 
-   componentDidMount() {
-     this.props.fetcher('http://localhost:3333/smurfs');
-   }
+  //Get initial data
+  componentDidMount() {
+    this.props.fetcher('http://localhost:3333/smurfs');
+  }
 
+  //My render is a finite state machine.  It looks at appState in its props to
+  //see which state it is in.
   render() {
     switch (this.props.appState) {
       case "fetching":
@@ -69,7 +66,7 @@
 }
 
 
-
+//make the store contents available as props
 const mapStateToProps = (state) => {
   return {
     smurfs: state.smurfs,
@@ -79,6 +76,7 @@ const mapStateToProps = (state) => {
   }
 }
 
- export default connect(mapStateToProps, {
-   fetcher, beginEdit, cancelEdit, beginAdd, cancelAdd, deleter, adder, editor
- })(App);
+//connect mapStateToProps and the actions with the App component
+export default connect(mapStateToProps, {
+  fetcher, beginEdit, cancelEdit, beginAdd, cancelAdd, deleter, adder, editor
+})(App);
