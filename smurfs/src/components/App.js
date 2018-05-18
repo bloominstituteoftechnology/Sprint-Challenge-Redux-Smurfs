@@ -60,6 +60,9 @@ class App extends Component {
         return (
           <div className="App error mb-5">
             <Alert color="danger">
+              {this.props.error.message}
+            </Alert>
+            <Alert color="danger">
               {this.props.error.response.data.Error}
             </Alert>
             <div>
