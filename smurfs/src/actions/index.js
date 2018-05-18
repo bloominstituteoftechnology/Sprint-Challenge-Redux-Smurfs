@@ -4,13 +4,13 @@ export const FETCHING_SMURF = 'FETCHING_SMURF';
 export const ERROR          = 'ERROR';
 
 
-export const getSmurf = () => {
-  const getSmurfs = axios.get('http://localhost:3333/api/smurfs');
-  return function(dispatch){
+export const fetchSmurfs = () => {
+  const getSmurfs = axios.get(`http://localhost:3333/api/smurfs`);
+  return dispatch => {
     dispatch({ type: FETCHING_SMURF });
     getSmurfs
-      .then( smurfData => {
-        dispatch({ type: SMURF_FETCHED, payload: smurfData.data });
+      .then( response => {
+        dispatch({ type: SMURF_FETCHED, payload: response.data });
       })
       .catch( err => {
         console.log(err)
