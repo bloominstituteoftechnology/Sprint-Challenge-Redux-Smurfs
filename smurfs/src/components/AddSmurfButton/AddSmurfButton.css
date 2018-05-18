@@ -1,0 +1,26 @@
+.add-smurf button {
+  align-items: center;
+  background-color: #25baef;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  display: flex;
+  font-family: 'Luckiest Guy', sans-serif;
+  padding: 4px 14px;
+  -webkit-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s;
+}
+
+.add-smurf button:hover {
+  opacity: 0.8;
+}
+
+.add-smurf button .icon {
+  margin-right: 6px;
+}
+
+/* Font specific styling - needed to center text */
+.add-smurf button span {
+  margin-top: 4px;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AddEditModal from '../AddEditModal/AddEditModal';
 import { addSmurf } from '../../actions';
+import './AddSmurfButton.css';
 
 class AddSmurfButton extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class AddSmurfButton extends Component {
   };
   render() {
     return ( 
-      <div className="add-smuf">
+      <div className="add-smurf">
         <AddEditModal
           modalBtn={this.state.btnProps}
           modalTitle="Add a Smurf"

@@ -43,8 +43,8 @@ class AddEditModal extends Component {
     return (
       <React.Fragment>
         <button className={this.props.modalBtn.class} onClick={this.toggle}>
-          {(this.props.modalBtn.hasIcon) ? <i className={this.props.modalBtn.icon}></i> : null}
-          {this.props.modalBtn.text}
+          {(this.props.modalBtn.hasIcon) ? <i className={`icon ${this.props.modalBtn.icon}`}></i> : null}
+          <span>{this.props.modalBtn.text}</span>
         </button>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>{this.props.modalTitle}</ModalHeader>
