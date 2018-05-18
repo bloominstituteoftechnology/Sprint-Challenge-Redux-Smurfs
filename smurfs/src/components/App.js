@@ -25,13 +25,19 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-        {/* <ul>
-          {this.props.smurfsdata.smurfs.map((smurf, index) => {
-            return <li key={index}>{smurf}</li>
-          })}
+        <div>
+          <ul>
+            {this.props.smurfsdata.map((smurf, index) => {
+              return <li key={index}>
+              {smurf.name}
+              {smurf.age}
+              {smurf.height}
+              </li>
+            })}
 
 
-        </ul> */}
+          </ul>
+        </div>
 
       </div>
     );
@@ -46,7 +52,7 @@ class App extends Component {
 const mapStateToProps = state => {
   console.log("current state", state);
   return {
-  smurfsdata: state,
+  smurfsdata: state.smurfs,
   
   }
   
