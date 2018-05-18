@@ -14,9 +14,11 @@ const initialState = {
 }
 
 
-export default smurfReducer = (state = initialState, action) => {
+const smurfReducer = (state = initialState, action) => {
   switch(action.type) {
     default:
       return state;
   }
 }
+
+export default smurfReducer;
