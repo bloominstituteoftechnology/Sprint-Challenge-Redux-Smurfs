@@ -31,7 +31,7 @@ export const addSmurf = (smurf) => {
       })
       .catch(err => dispatch({
         type: ERROR,
-        payload: err,
+        payload: `ACTION--addSmurf-error: ${err}`,
       }));
   }
 }
@@ -50,8 +50,45 @@ export const getSmurfs = () => {
       })
       .catch(err => dispatch({
         type: ERROR,
-        payload: err,
+        payload: `ACTION--getSmurfs-error: ${err}`,
       }));
   }
 }
-
+/* U - updateSmurf */
+export const updateSmurf = (id, smurf) => {
+  const request = axios.put(`http://localhost:3333/smurfs/${id}`, smurf);
+  return (dispatch) => {
+    dispatch({ type: LOADING });
+    request
+      .then(res => {
+        console.log("ACTION--getSmurfs-response:",res);
+        dispatch({
+          type: FETCHED,
+          payload: res.data,
+        })
+      })
+      .catch(err => dispatch({
+        type: ERROR,
+        payload: `ACTION--updateSmurf-error: ${err}`,
+      }));
+  }
+}
+/* D - deleteSmurf */
+export const deleteSmurf = (id) => {
+  const request = axios.delete(`http://localhost:3333/smurfs/${id}`);
+  return (dispatch) => {
+    dispatch({ type: LOADING });
+    request
+      .then(res => {
+        console.log("ACTION--getSmurfs-response:",res);
+        dispatch({
+          type: FETCHED,
+          payload: res.data,
+        })
+      })
+      .catch(err => dispatch({
+        type: ERROR,
+        payload: `ACTION--deleteSmurf-error: ${err}`,
+      }));
+  }
+}

@@ -66,7 +66,7 @@ class CreateSmurfForm extends React.Component {
           <span>Wanna add a new <del>friend</del> SMURF?! Click on the pencil.</span>
         }
         <div className="button-div">
-          <i type="submit" onClick={this.goPostFriend} className="fas fa-pencil-alt mh2"></i>
+          <i onClick={this.goPostFriend} className="fas fa-pencil-alt mh2"></i>
         </div>
       </form>
     );

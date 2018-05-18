@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // Components
 import CreateSmurfForm from './CreateSmurfForm';
+import Smurfs from './Smurfs';
 // Redux
 import { connect } from 'react-redux';
 // Redux--ACTIONS
@@ -31,8 +32,9 @@ class App extends Component {
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
         <hr />
+        <Smurfs />
         <CreateSmurfForm />
-        { this.displaySmurfs() }
+        {/* { this.displaySmurfs() } */}
       </div>
     );
   }
