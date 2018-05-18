@@ -4,16 +4,33 @@ import { getSmurfs, addSmurf } from "../actions";
 import { connect } from "react-redux";
 
 class App extends Component {
+
+  state = {
+    smurf: ''
+  }
+
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
+
   render() {
-    return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
-    );
+    // console.log(this.props)
+    return <div className="App">
+        <h1>SMURFS!</h1>
+        <ul>
+          {this.props.smurfs.map(smurf => {
+            return <div key={smurf.name}>{smurf.name}</div>;
+          })}
+        </ul>
+      </div>;
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    error: state.error,
+    pending: state.pending
+  };
+};
+export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);

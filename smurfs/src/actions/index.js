@@ -5,11 +5,12 @@ export const SUCCESS_SMURFS = "SUCCESS_SMURFS";
 export const ERROR_SMURFS = "ERROR_SMURFS";
 
 export const getSmurfs = () => {
-  const Smurfs = axios.get("http://localhost:3333/api/smurfs");
+  const smurfs = axios.get("http://localhost:3333/smurfs");
   return dispatch => {
     dispatch({ type: PENDING_SMURFS });
-    Smurfs
+    smurfs
     .then(response => {
+      console.log(response)
       dispatch({ type: SUCCESS_SMURFS, payload: response.data });
     })
     .catch(err => {
@@ -22,10 +23,10 @@ export const getSmurfs = () => {
 };
 
 export const addSmurf = SmurfData => {
-  const Smurfs = axios.get("http://localhost:3333/api/smurfs",SmurfData) ;
+  const smurfs = axios.get("http://localhost:3333/smurfs",SmurfData) ;
   return dispatch => {
     dispatch({ type: PENDING_SMURFS });
-    Smurfs
+    smurfs
     .then(response => {
       dispatch({ type: SUCCESS_SMURFS, payload: response.data });
     })
