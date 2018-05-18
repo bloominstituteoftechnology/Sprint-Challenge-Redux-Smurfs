@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-class Modal extends Component {
+class AddEditModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,7 +43,8 @@ class Modal extends Component {
     return (
       <React.Fragment>
         <button className={this.props.modalBtn.class} onClick={this.toggle}>
-          {(this.props.modalBtn.isIcon) ? <i className={this.props.modalBtn.icon}></i> : this.props.modalBtn.innerHTML}
+          {(this.props.modalBtn.hasIcon) ? <i className={this.props.modalBtn.icon}></i> : null}
+          {this.props.modalBtn.text}
         </button>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>{this.props.modalTitle}</ModalHeader>
@@ -80,4 +81,4 @@ class Modal extends Component {
   };
 }
 
-export default Modal;
+export default AddEditModal;
