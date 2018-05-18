@@ -32,19 +32,19 @@ export const fetchingSmurfs = () => {
       });
   };
 };
-export const addingSmurf = () => {
+export const addingSmurf = (newItem) => {
   const addItem = axios.post("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch({
       type: ADDINGSMURF,
-      newItem: action.new
+      newItem: newItem
     });
     addItem
       .then(response => {
         console.log("response.data", response.data);
         dispatch({
           type: ADDEDSMURF,
-          newItem: action.new
+          newItem: newItem
         });
       })
       .catch(e => {
@@ -53,19 +53,19 @@ export const addingSmurf = () => {
       });
   };
 };
-export const updatingSmurf = () => {
+export const updatingSmurf = (toUpdate) => {
   const updateItem = axios.put("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch({
       type: UPDATINGSMURF,
-      toUpdate: action.toUpdate
+      toUpdate: toUpdate
     });
     updateItem
       .then(response => {
         console.log("response.data", response.data);
         dispatch({
           type: UPDATEDSMURF,
-          toUpdate: action.toUpdate
+          toUpdate: toUpdate
         });
       })
       .catch(e => {
@@ -74,19 +74,19 @@ export const updatingSmurf = () => {
       });
   };
 };
-export const deletingSmurf = () => {
+export const deletingSmurf = (toDelete) => {
   const deleteItem = axios.delete("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch({
       type: DELETINGSMURF,
-      toDelete: action.toDelete
+      toDelete: toDelete
     });
     deleteItem
       .then(response => {
         console.log("response.data", response.data);
         dispatch({
           type: DELETEDSMURF,
-          toDelete: action.toDelete
+          toDelete: toDelete
         });
       })
       .catch(e => {
