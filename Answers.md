@@ -7,7 +7,7 @@
     * The store holds your application state and it's where a reducer handles the action.
     * The reducer passes the action to a component and returns a new state.
 3.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
-    * 
+    * Application state can be accessed anywhere within the application. Component state is confined to only be accessible by a particlur component. 
 4.  What is middleware?
     * Middleware is a powerful extension point for Redux. We can use middleware to add new functionality to Redux.
 5.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
