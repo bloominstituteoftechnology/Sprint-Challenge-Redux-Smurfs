@@ -1,40 +1,61 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addSmurfs } from '../actions';
+import { addSmurf } from '../actions';
 
 class CreateSmurf extends Component {
+    constructor(){
+        super();
+        this.state = {
+            name: '',
+            height: '',
+            age: ''
+        }
+    }
 
-    componentDidMount() {
-        this.props.addSmurfs();
+    handleInput = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    saveNewSmurf = () => {
+        this.props.addSmurf({ 
+            name: this.state.name, 
+            age: this.state.age,
+            height: this.state.height
+        })
+        this.setState({
+            name: '',
+            age: '',
+            height: this.state.height
+        })
     }
 
     render() { 
-        console.log("PROPS:", this.props)
+        console.log("this.state:", this.state)
         return ( 
             <div>
                  <form className='smurf-form'>
                     <input 
                         type="text" 
-                        onChange={this.handleFriendInput} 
+                        onChange={this.handleInput} 
                         name='name' 
-                        value={this.props.name} 
+                        value={this.state.name} 
                         placeholder="Name" 
                     />
                     <input 
                         type="number" 
-                        onChange={this.handleFriendInput} 
+                        onChange={this.handleInput} 
                         name='age' 
-                        value={this.props.age} 
+                        value={this.state.age} 
                         placeholder="Age" 
                     />
                     <input 
                         type="text" 
-                        onChange={this.handleFriendInput} 
-                        name='email' 
-                        value={this.props.height} 
+                        onChange={this.handleInput} 
+                        name='height' 
+                        value={this.state.height} 
                         placeholder="Height" 
                     />
-                    <button onClick={this.saveNewFriend} >Save Friend</button>
+                    <button onClick={this.saveNewSmurf} >Save Smurf</button>
                 </form>
             </div>
          )
@@ -48,4 +69,4 @@ const mapStateToProps = state => {
     }
 }
  
-export default connect(mapStateToProps, { addSmurfs }) (CreateSmurf);
+export default connect(mapStateToProps, { addSmurf }) (CreateSmurf);

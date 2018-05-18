@@ -26,11 +26,11 @@ export const fetchSmurfs = () => {
   }
 }
 
-export const addSmurfs = data => {
-  const postSmurfs = axios.post(`http://localhost:3333/smurfs`, data);
+export const addSmurf = data => {
+  const postSmurf = axios.post(`http://localhost:3333/smurfs`, data);
   return function(dispatch) {
     dispatch({ type: PENDING });
-    postSmurfs
+    postSmurf
       .then( response => {
         console.log('POST repsonse', response)
         dispatch({ type: SUCCESS, payload: response.data });
