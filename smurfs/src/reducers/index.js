@@ -16,13 +16,13 @@ const initialState = {
     return Object.assign({}, state, { fetching: action.payload })
 
     case FETCHED_SMURFS:
-    return Object.assign({}, state, { fetching: false})
+    return Object.assign({}, state, { smurfs: state.smurfs.concat(action.payload), fetching: false})
 
     case ADDING_SMURF:
-    return Object.assign({}, state, { adding: true })
+    return Object.assign({}, state, { adding: action.payload })
 
     case ADDED_SMURF:
-    return Object.assign({}, state, { adding: false})
+    return Object.assign({}, state, { smurfs: state.smurfs.concat(action.payload), adding: false})
 
     case ERROR:
     return Object.assign({}, state, { error: action.payload })
