@@ -17,6 +17,7 @@
 import axios from 'axios';
 
 export const GET_SMURFS = 'GET_SMURFS';
+export const ADD_SMURF = 'ADD_SMURF';
 export const ERROR = 'ERROR';
 
 export const getSmurfs = () => {
@@ -35,5 +36,27 @@ export const getSmurfs = () => {
           payload: err,
         });
       });
-  }
+  };
+};
+
+export const addSmurf = smurf => {
+  return dispatch => {
+    axios.post('http://localhost:3333/smurfs', {
+      name: smurf.name,
+      age: smurf.age,
+      height: smurf.height
+    })
+      .then(({ data }) => {
+        dispatch({
+          type: ADD_SMURF,
+          payload: data
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
+      });
+  };
 };
