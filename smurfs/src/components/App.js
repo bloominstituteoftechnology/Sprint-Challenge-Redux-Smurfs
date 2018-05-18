@@ -1,4 +1,4 @@
-export default App;
+
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
@@ -17,9 +17,11 @@ class App extends Component {
           <h1 className="App-title">Welcome Smurf Friends</h1>
         </header>
         <div className="App-intro">
-          {this.props.friends.map(friend => {
-            return <Smurf key={friend} friend={friend} />;
-          })}
+        <ul>
+            {this.props.chars.map(smurf => {
+              return <li key={smurf.name}>{smurf.name}</li>;
+            })}
+          </ul>
         </div>
       </div>
     );
@@ -29,7 +31,7 @@ class App extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    friends: state.friends,
+    friends: state.smurfs,
     fetching: state.fetching,
     error: state.error
   };
