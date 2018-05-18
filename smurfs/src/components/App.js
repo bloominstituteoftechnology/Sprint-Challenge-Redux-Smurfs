@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { fetchSmurfs } from "../actions";
 import logo from '../logo.svg';
+import SmurfForm from './SmurfForm';
 
 /*
  to wire this component up you're going to need a few things.
@@ -27,6 +28,7 @@ class App extends Component {
             {this.props.smurfs.map(smurf => {
               return <li key={smurf.name}>{smurf.name}</li>;
             })}
+            <SmurfForm />
           </ul>
         )}
       </div>
@@ -39,7 +41,9 @@ const mapStateToProps = state => {
     smurfs: state.smurfs,
     error: state.error,
     fetching: state.fetchingSmurfs,
-    fetched: state.fetchedSmurfs
+    fetched: state.fetchedSmurfs,
+    adding: state.addingSmurf,
+    added: state.addedSmurf,
   };
 };
 

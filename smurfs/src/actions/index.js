@@ -15,11 +15,12 @@
 */
 
 import axios from 'axios';
+
 export const FETCHING_SMURFS = 'FETCHING_CHARS';
 export const FETCHED_SMURFS = 'CHARS_FETCHED';
-export const ERROR = 'ERROR_FETCHING_CHARS';
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const ADDED_SMURF = 'ADDED_SMURF';
+export const ERROR = 'ERROR';
 
 export const fetchSmurfs = () => {
   const getSmurfs = axios.get('http://localhost:3333/smurfs');
@@ -38,9 +39,23 @@ export const fetchSmurfs = () => {
   };
 };
 
-export const addSmurf = () => {
-  const postSmurf = axios.post('http://localhost:3333/smurfs');
+export const addSmurf = smurf => {
+  const postSmurf = axios.post('http://localhost:3333/smurfs', { 
+    name: smurf.name,
+    age: smurf.age,
+    height: smurf.height
+  });
   return dispatch => {
-    dispatch({ type: ADDING_SMURFS }); 
+    dispatch({ type: ADDING_SMURF }); 
     postSmurf
-}
+      .then(resolve => {
+          dispatch({ type: ADDED_SMURF, payload: resolve.data });
+      })
+      .catch(err => {
+        dispatch({
+            type: ERROR,
+            payload: 'Error Adding Smurfs'
+        });
+    });
+  };
+};
