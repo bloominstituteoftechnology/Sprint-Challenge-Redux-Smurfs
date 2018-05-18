@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './App.css';
 import Smurf from '../components/Smurf.js';
-// import logo from './logo.svg';
+import logo from '../images/logo.svg';
 import { fetchSmurfs } from '../actions/index.js';
 import { addSmurfs } from '../actions/index.js';
 
