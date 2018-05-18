@@ -17,9 +17,27 @@ export const ERROR = 'ERROR';
    D - deleteSmurf
 */
 
+/* C - addSmurf */
+export const addSmurf = (smurf) => {
+  const request = axios.post('http://localhost:3333/smurfs/', smurf);
+  return (dispatch) => {
+    request
+      .then(res => {
+        console.log("ACTION--addSmurf-response",res);
+        dispatch({
+          type: FETCHED,
+          payload: res.data,
+        })
+      })
+      .catch(err => dispatch({
+        type: ERROR,
+        payload: err,
+      }));
+  }
+}
 /* R - getSmurfs */
 export const getSmurfs = () => {
-  const request = axios.get('http://localhost:3333/smurfs');
+  const request = axios.get('http://localhost:3333/smurfs/');
   return (dispatch) => {
     dispatch({ type: LOADING });
     request
