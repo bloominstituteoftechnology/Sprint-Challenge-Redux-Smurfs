@@ -9,7 +9,7 @@ export const EDIT_SMURF = "EDIT_SMURF";
 
 
 export const fetching_smurf = () => {
-  const getInfo = axios.get("http://localhost:5000/api/smurfs");
+  const getInfo = axios.get("http://localhost:3333/api/smurfs");
   return dispatch => {
     dispatch({ type: FETCHING_SMURF });
     getInfo
@@ -22,7 +22,7 @@ export const fetching_smurf = () => {
   };
 };
 export const newsmurf = nsmurf => {
-  const getInfo = axios.post("http://localhost:5000/api/smurfs", nsmurf);
+  const getInfo = axios.post("http://localhost:3333/api/smurfs", nsmurf);
   return dispatch => {
     dispatch({ type: FETCHING_SMURF });
     getInfo
@@ -35,7 +35,7 @@ export const newsmurf = nsmurf => {
   };
 };
 export const deleteSmurf = id => {
-  const getInfo = axios.delete(`http://localhost:5000/api/smurfs/${id}`);
+  const getInfo = axios.delete(`http://localhost:3333/api/smurfs/${id}`);
   return dispatch => {
     getInfo
       .then(({ data }) => {
@@ -53,7 +53,7 @@ export const editSmurf = (id, smurfs) => {
 export const submitSmurf = nsmurf => {
   console.log(nsmurf);
   const getInfo = axios.put(
-    `http://localhost:5000/api/smurfs/${nsmurf.id}`,
+    `http://localhost:3333/api/smurfs/${nsmurf.id}`,
     nsmurf
   );
   return dispatch => {

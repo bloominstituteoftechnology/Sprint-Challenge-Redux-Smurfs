@@ -57,7 +57,7 @@ class EditSmurfForm extends Component {
 }
 
 const mapStateToProps = state => {
-    const { smurfs } = state.smurfsReducer;
+    const { smurfs } = state.SmurfsReducer;
     return smurfs.filter(smurf => smurf.Editing)[0];
 };
 
