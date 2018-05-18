@@ -12,6 +12,7 @@
  import { Button } from 'reactstrap';
  import Smurfs from './smurfs.js';
  import AddSmurf from './addsmurf.js';
+ import Front from './front.js';
 
  class App extends Component {
 
@@ -24,7 +25,7 @@
       case "fetching":
         return (
           <div className="App mb-5">
-              fetching
+              <Front />
           </div>
         );
       case "fetched":
