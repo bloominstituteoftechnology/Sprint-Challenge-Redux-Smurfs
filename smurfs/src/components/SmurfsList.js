@@ -14,7 +14,7 @@ class SmurfsList extends React.Component {
         {this.props.gettingSmurfs ? <div>{this.props.gettingSmurfs}</div> : null}
         {this.props.smurfs.map(smurf => {
           return (
-            <div key={smurf.name}>
+            <div key={smurf.id}>
               <p>Name: {smurf.name}</p>
               <p>Age: {smurf.age}</p>
               <p>Height: {smurf.height}</p>
