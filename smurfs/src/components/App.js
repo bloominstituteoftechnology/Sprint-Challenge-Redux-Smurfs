@@ -21,17 +21,15 @@ class App extends Component {
       <div className="App">
         <div>
           <h1 style={{color: 'white', textShadow: '2px 2px 4px #000000'}}>Welcome to Smurf Village!</h1>
-          <p style={{color: 'white', textShadow: '2px 2px 4px #000000'}}>Behold, our Smurfs:</p>
+          <p style={{color: 'white', textShadow: '2px 2px 4px #000000'}}>Join the Village:</p>
           <AddSmurf />
           {this.props.smurfs.map(smurf => {
             return (
-              <div className="smurf-container" key={smurf.id}>
-                <ul className="smurf-card">
+                <ul className="smurf-card"key={smurf.id}>
                   <li className="smurf-list">{smurf.name}</li>
                   <li>{smurf.age} smurfs old</li>
                   <li>{smurf.height} smurfs tall</li>
                 </ul>
-              </div>
             )
           })}
         </div>

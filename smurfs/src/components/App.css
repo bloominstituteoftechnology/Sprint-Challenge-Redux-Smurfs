@@ -32,21 +32,22 @@ body {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-.smurf-container {
-  /* border: 3px solid white; */
+/* .smurf-container {
+  border: 3px solid white;
   display:flex;
   justify-content: center;
-}
+} */
 .App .smurf-card {
   border: 2px solid white;
   border-radius: 10%;
   height: 100px;
-  max-width: 300px;
+  min-width: 300px;
   padding-bottom: 15px;
   display: flex;
   justify-content: center;
   color: white;
   text-shadow: 2px black;
+  flex-direction: column;
 }
 
 .new-villager {
