@@ -15,7 +15,7 @@ import {
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case FETCHING_FRIENDS:
+    case FETCHING_SMURFS:
       return Object.assign({}, state, { fetchingSmurfs: true });
     case SMURFS_FETCHED:
       return Object.assign({}, state, {

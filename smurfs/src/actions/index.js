@@ -16,7 +16,7 @@ export const ERROR ='ERROR';
 export const fetchSmurfs = () => {
   const getSmurfs = axios.get('http://localhost:3333/smurfs');
   return dispatch => {
-    dispatch({ type: FETHCING_SMURFS });
+    dispatch({ type: FETCHING_SMURFS });
     getSmurfs
       .then(smurfData => {
         console.log("Smurf Data:", smurfData)
