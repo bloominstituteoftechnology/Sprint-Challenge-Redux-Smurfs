@@ -16,7 +16,7 @@
 1.  What is middleware?
 1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 1.  Which `react-redux` method links up our `components` with our `redux store`?
-1. (Stretch goal question for if you get the DELETE endpoint working) The server's DELETE endpoint functionality is not optimal, since it requires you to either make a second `getSmurfs` request to fetch the updated list of Smurfs after deletion, or you need to keep two sources of truth synchronized, one in the client and one in the server. What change would you propose to make the server DELETE functionality more optimal such that either of these two issues are not encountered?
+1.  (Stretch goal question for if you get the DELETE endpoint working) The server's DELETE endpoint functionality is not optimal, since it requires you to either make a second `getSmurfs` request to fetch the updated list of Smurfs after deletion, or you need to keep two sources of truth synchronized, one in the client and one in the server. What change would you propose to make the server DELETE functionality more optimal such that either of these two issues are not encountered?
 
 ## Initializing Project - READ THIS CAREFULLY, you have two apps here. A server, and a client.
 
@@ -52,21 +52,34 @@ src
 * To retrieve an array all the smurfs in the Smurf DB simply write a get to the endpoint `'/smurfs'`.
 * Because `Redux-Thunk` is wired up as a middleware for this project. Be sure to utilize thunks when appropriate:
 
-```
-return (dispatch) => {
-  dispatch({type: FOO_ACTION_TYPE});
-  promise.then(({data}) => {
-    dispatch({type: ANOTHER_ACTION_TYPE, payload: data});
+```js
+return dispatch => {
+  dispatch({ type: FOO_ACTION_TYPE });
+  promise.then(({ data }) => {
+    dispatch({ type: ANOTHER_ACTION_TYPE, payload: data });
   });
 };
 ```
 
+* Your response from the server should be an array of smurfs.
+
+```js
+[
+  {
+    name: 'Brainey',
+    age: 200,
+    height: '5cm',
+    id: 0
+  }
+];
+```
+
 ### POST '/smurfs'
 
-* To add a smurf to the Smurf DB you'll need all three fields.
+* To add a smurf to the Smurf DB you'll need all three fields. `name`, `age`, and `height`.
 * Example:
 
-```
+```js
 {
   name: 'Brainey',
   age: 200,
@@ -75,24 +88,25 @@ return (dispatch) => {
 ```
 
 * If a smurf is created correctly, you should see a response that is an array of smurfs with uniqe id's assigned to each smurf.
+* Initially Brainey will be in the array, but it takes more than one smurf to make the village. Be sure to add a few smurfs to populate our smurf village.
 * **HINT** if you are going to be working on Stretch Problem, you'll need to use that unique `id`.
 * Example of object created in Smurf DB:
 
-```
+```js
 [
-    {
-        "name": "Brainey",
-        "age": 200,
-        "height": "5cm",
-        "id": 0
-    },
-    {
-        "name": "Sleepy",
-        "age": 200,
-        "height": "5cm",
-        "id": 1
-    }
-]
+  {
+    name: 'Brainey',
+    age: 200,
+    height: '5cm',
+    id: 0
+  },
+  {
+    name: 'Sleepy',
+    age: 200,
+    height: '5cm',
+    id: 1
+  }
+];
 ```
 
 ## STRETCH PROBLEM
@@ -104,15 +118,15 @@ return (dispatch) => {
 * For this endpoint to work, you'll need an `id` added to the URL, and at least one field to update on the Smurf object. `name` `age` `height`.
 * Example:
 
-```
+```js
 input:
 {
   id: 1,
-  name: Sleepy
+  name: 'Grumpy'
 }
 output:
 {
-  name: 'Sleepy',
+  name: 'Grumpy',
   age: 30,
   height: '3cm,
   id: 1
@@ -123,17 +137,17 @@ output:
 
 * For this endpoint to work, all you need is an id sent up as part of the request url.
 
-* If your delete worked, you'll get a success object back.
+* If your delete worked, you'll get a an array back with all of the smurfs but with your requested smurf removed.
+* You don't need any input beyond the url parameter of the smurf, so if we send up a delete request to `/smurfs/123` then you'll remove the smurf by that id.
 * Example:
 
-```
-output:
-{
-    "SmurfRemoved": {
-        "name": "Sleepy",
-        "age": 200,
-        "height": "5cm",
-        "id": 1
-    }
-}
+```js
+output: [
+  {
+    name: 'Sleepy',
+    age: 200,
+    height: '5cm',
+    id: 1
+  }
+];
 ```
