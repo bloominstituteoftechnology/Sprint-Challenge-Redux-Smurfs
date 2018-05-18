@@ -29,13 +29,21 @@ const initialState = {
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHINGSMURFS:
+      return { ...state, fetchingSmurfs: true, fetchedSmurf: false };
     case FETCHEDSMURF:
+      return { ...state, fetchingSmurfs: false, fetchedSmurf: true };
     case ADDINGSMURF:
+      return { ...state, addingSmurf: true, addedSmurf: false };
     case ADDEDSMURF:
+      return { ...state, addingSmurf: false, addedSmurf: true };
     case UPDATINGSMURF:
+      return { ...state, updatingSmurf: true, updatedSmurf: false };
     case UPDATEDSMURF:
+      return { ...state, updatingSmurf: false, updatedSmurf: true };
     case DELETINGSMURF:
+      return { ...state };
     case DELETEDSMURF:
+      return { ...state };
     case ERROR:
     default:
       return state;
