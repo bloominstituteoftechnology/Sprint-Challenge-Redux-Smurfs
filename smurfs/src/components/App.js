@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Smurfs from './Smurfs';
 
 
 class App extends Component {
@@ -10,6 +11,8 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        {/* <CreateSmurf /> */}
+        <Smurfs />
       </div>
     );
   }
