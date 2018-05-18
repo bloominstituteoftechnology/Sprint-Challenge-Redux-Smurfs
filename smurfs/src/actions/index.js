@@ -15,23 +15,24 @@ export const gettingSmurf = () => {
     dispatch({type: GET_SMURF});
     getSmurf
     .then(response => {
-      console.log(response);
+      dispatch({type: YAY_SUCCESS, payload: response.data})
     })
     .catch(err =>{
-      console.log(err);
+      dispatch({type: ERROR_THROWN, payload: "Error getting smurf"})
     })
   }
 
-export const addingSmurf = () => {
-  const addSmurf = axios.post(URL);
+export const addingSmurf = (smurf) => {
+  const addSmurf = axios.post(URL, smurf);
   return dispatch => 
     dispatch({type: ADD_SMURF});
     addSmurf
     .then(response => {
       console.log(response);
+      dispatch({type: YAY_SUCCESS, payload: response.data})
     })
     .catch(err =>{
-      console.log(err);
+      dispatch({type: ERROR_THROWN, payload: "Error adding smurf"})
     })
 
 export const updatingSmurf = () => {
@@ -43,7 +44,7 @@ export const updatingSmurf = () => {
       console.log(response);
     })
     .catch(err => {
-      console.log(err);
+      dispatch({type: ERROR_THROWN, payload: "Error updating smurf"})
     })
   }
 export const deletingSmurf = () => {
@@ -54,7 +55,7 @@ export const deletingSmurf = () => {
       console.log(response)
     })
     .catch(response => {
-      console.log(err);
+      dispatch({type: ERROR_THROWN, payload: "Error deleting smurf"})
     })
 
   }

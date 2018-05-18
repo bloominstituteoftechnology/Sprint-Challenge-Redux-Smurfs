@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getSmurfs} from '../actions/index';
+import { gettingSmurf } from '../actions/index';
 import SmurfList from './SmurfList';
 import Smurf from './Smurf';
 import axios from 'axios';
@@ -20,9 +20,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    const getSmurfs = axios.get('http://localhost:3333/smurfs'); 
-    //this resolves into a Promise
-    getSmurfs
+    this.props.getSmurf();
         .then(response =>{
           this.setState({smurfs:response.data});
         })
@@ -33,23 +31,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Switch>
-        <Route path = '/smurfs' component ={SmurfList}/>
-        <Route path = '/smurfs/list/:id' component = {Smurf}/>
-        </Switch>
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        <Form />
+        {this.props.smurfs.map(smurf => {
+          return(
+            <Smurf key = {smurf.id} smurf = {smurf} />
+          )
+        })}
       </div>
     );
   }
 }
 const mapStateToProps = (state) => {
   return{
-    getSmurfs: state.getSmurf,
+    getSmurf: state.gettingSmurf,
     smurfs: state.smurfs,
   }
 
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { gettingSmurf })(App);
