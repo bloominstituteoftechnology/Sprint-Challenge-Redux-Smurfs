@@ -30,8 +30,8 @@ export const addSmurfs = smurf => {
   return function(dispatch) {
     dispatch({ type: ADDING_SMURFS });
     newSmurf
-      .then(({ data }) => {
-        dispatch({ type: SMURFS_ADDED, payload: data });
+      .then(someData => {
+        dispatch({ type: SMURFS_ADDED, payload: someData.data });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
