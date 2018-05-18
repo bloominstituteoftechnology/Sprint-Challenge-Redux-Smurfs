@@ -29,11 +29,11 @@ export const fetchingSmurfs = () => {
       })
       .catch(e => {
         console.log("error", e);
-        dispatch(ERROR);
+        dispatch({ type: ERROR });
       });
   };
 };
-export const addingSmurf = (newItem) => {
+export const addingSmurf = newItem => {
   const addItem = axios.post("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch({
@@ -50,11 +50,11 @@ export const addingSmurf = (newItem) => {
       })
       .catch(e => {
         console.log("error", e);
-        dispatch(ERROR);
+        dispatch({ type: ERROR });
       });
   };
 };
-export const updatingSmurf = (toUpdate) => {
+export const updatingSmurf = toUpdate => {
   const updateItem = axios.put("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch({
@@ -71,12 +71,12 @@ export const updatingSmurf = (toUpdate) => {
       })
       .catch(e => {
         console.log("error", e);
-        dispatch(ERROR);
+        dispatch({ type: ERROR });
       });
   };
 };
-export const deletingSmurf = (toDelete) => {
-  const deleteItem = axios.delete("http://localhost:3333/smurfs/");
+export const deletingSmurf = toDelete => {
+  const deleteItem = axios.delete(`http://localhost:3333/smurfs/${toDelete}`);
   return dispatch => {
     dispatch({
       type: DELETINGSMURF,
@@ -89,10 +89,11 @@ export const deletingSmurf = (toDelete) => {
           type: DELETEDSMURF,
           toDelete: toDelete
         });
+        fetchingSmurfs();
       })
       .catch(e => {
         console.log("error", e);
-        dispatch(ERROR);
+        dispatch({ type: ERROR });
       });
   };
 };

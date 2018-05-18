@@ -44,7 +44,7 @@ const mainReducer = (state = initialState, action) => {
     case DELETINGSMURF:
       return { ...state, deletingSmurf: true, deletedSmurf: false };
     case DELETEDSMURF:
-      return { ...state, deletingSmurf: false, deletedSmurf: true };
+      return { ...state, deletingSmurf: false, deletedSmurf: true, smurfs: [...state.smurfs.splice(0, action.toDelete), ...state.smurfs.splice(action.toDelete +  1) ] };
     case ERROR:
       return {
         ...state,
