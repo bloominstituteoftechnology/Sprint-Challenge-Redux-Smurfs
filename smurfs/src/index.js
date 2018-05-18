@@ -8,11 +8,11 @@ import { Provider } from 'react-redux';
 
 import './index.css';
 import App from './components/App';
-import MainReducer from './reducers';
+import rootReducer from './reducers';
 
-const store = createStore(MainReducer, applyMiddleware(thunk, logger));
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 //   () => {}, // this is the most basic reducer. A function that returns an object. Replace it.
-//   applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+// //   applyMiddleware(/* be sure to throw in the proper middlewares here*/)
 // );
 
 ReactDOM.render(
@@ -21,3 +21,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
