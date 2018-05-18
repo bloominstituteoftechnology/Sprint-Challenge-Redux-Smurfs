@@ -1,4 +1,4 @@
-import { FETCHING, FETCHED, ERROR } from '../actions';
+import { PENDING, SUCCESS, ERROR } from '../actions';
 
 /*
   Be sure to import in all of the action types from `../actions`
@@ -9,6 +9,7 @@ const initialState = {
   fetchingSmurfs: false,
   fetchedSmurfs: false,
   addingSmurf: false,
+  addedSmurf: false,
   updatingSmurf: false,
   deletingSmurf: false,
   error: null
@@ -17,11 +18,11 @@ const initialState = {
 
 const smurfReducer = (state = initialState, action) => {
   switch(action.type) {
-    case FETCHING:
+    case PENDING:
       return Object.assign({}, state, {
         fetchingSmurfs: true
       });
-    case FETCHED:
+    case SUCCESS:
       return Object.assign({}, state, {
         smurfs: state.smurfs.concat(action.payload),
         fetchedSmurfs: true,

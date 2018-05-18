@@ -1,7 +1,8 @@
 import axios from 'axios';
-export const FETCHED = 'FETCHED';
-export const FETCHING = 'FETCHING';
+export const PENDING = 'PENDING';
+export const SUCCESS = 'SUCCESS';
 export const ERROR = 'ERROR';
+
 
 /* 
   Action Types Go Here!
@@ -11,11 +12,26 @@ export const ERROR = 'ERROR';
 export const fetchSmurfs = () => {
   const getSmurfs = axios.get(`http://localhost:3333/smurfs`);
   return function(dispatch) {
-    dispatch({ type: FETCHING });
+    dispatch({ type: PENDING });
     getSmurfs
       .then( response => {
-        console.log('repsonse', response)
-        dispatch({ type: FETCHED, payload: response.data });
+        console.log('GET repsonse', response)
+        dispatch({ type: SUCCESS, payload: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  }
+}
+
+export const addSmurfs = data => {
+  const postSmurfs = axios.post(`http://localhost:3333/smurfs`, data);
+  return function(dispatch) {
+    dispatch({ type: PENDING });
+    postSmurfs
+      .then( response => {
+        console.log('POST repsonse', response)
+        dispatch({ type: SUCCESS, payload: response.data });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
