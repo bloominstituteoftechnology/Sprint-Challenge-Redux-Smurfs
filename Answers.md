@@ -14,4 +14,4 @@
 5.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
     -redux-thunk is a type of middleware that allows us to write creators that return a function instead of an action.
 6.  Which `react-redux` method links up our `components` with our `redux store`?
-    -applyMiddleware(thunk)
+    -connect

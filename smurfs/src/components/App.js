@@ -24,8 +24,9 @@ class App extends Component {
           <p style={{color: 'white', textShadow: '2px 2px 4px #000000'}}>Join the Village:</p>
           <AddSmurf />
           {this.props.smurfs.map(smurf => {
+            let i = 0;
             return (
-                <ul className="smurf-card"key={smurf.id}>
+                <ul className="smurf-card"key={`${smurf.name}_${i++}`}>
                   <li className="smurf-list">{smurf.name}</li>
                   <li>{smurf.age} smurfs old</li>
                   <li>{smurf.height} smurfs tall</li>

@@ -39,7 +39,7 @@ body {
 } */
 .App .smurf-card {
   border: 2px solid white;
-  border-radius: 10%;
+  border-radius: 33%;
   height: 100px;
   min-width: 300px;
   padding-bottom: 15px;
