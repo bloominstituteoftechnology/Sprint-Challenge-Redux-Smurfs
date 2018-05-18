@@ -1,12 +1,28 @@
 .list-container {
     margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .smurf {
+    box-sizing: border-box;
     margin-top: 15px;
     font-size: 18px;
     color: slateblue;
     font-weight: bold;
+    border: 4px solid black;
+    border-radius: 20px;
+    width: 250px;
+    padding: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color:white;
+    box-shadow: 10px 10px 10px gray;
+}
+.smurf:hover {
+    cursor: pointer;
+    background-color: #d7dbe0;
 }
 
 .smurf-btn {
@@ -14,7 +30,7 @@
     display: inline;
     height: 30px;
     width: 80px;
-    margin-left: 20px;
+    margin-left: 10px;
     background-color: #808000;
     border: 2px solid white;
 }
