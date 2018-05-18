@@ -37,12 +37,17 @@ export const deleteSmurf = (id) => {
   }
 }
 
-export const updateSmurf = (id) => {
+export const updateSmurf = (smurf) => {
+  return { type: UPDATING_SMURF, smurf}
+}
+
+export const saveSmurf = (id, smurf) => {
   return (dispatch) => {
-    const request = axios.get(`http://localhost:3333/smurfs/${id}`)
-    dispatch({ type: UPDATING_SMURF})
+    const request = axios.put(`http://localhost:3333/smurfs/${id}`, smurf)
     request
     .then(({data}) => dispatch({ type: FETCHED_SMURFS, smurfs:data}))
     .catch(error => dispatch({ type: ERROR, error}))
   }
 }
+
+

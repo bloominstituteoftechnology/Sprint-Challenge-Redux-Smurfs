@@ -35,17 +35,27 @@ export const smurfReducer = (state=initialState, action) => {
     case ADDING_SMURF:
       return {
         ...state,
-        addingSmurfs: true,
+        addingSmurf: true,
       }
     case UPDATING_SMURF:
+      const index = state.smurfs.findIndex(smurf => smurf.id === action.smurf.id)
+      console.log(action)
       return {
         ...state,
-        updatingSmurfs: true
+        updatingSmurf: true,
+        smurfs: [
+          ...state.smurfs.slice(0,index),
+          state.smurfs[index] = {
+            ...state.smurfs[index],
+            isUpdating: true,
+          },
+          ...state.smurfs.slice(index+1),
+        ]
       }
     case DELETING_SMURF:
       return {
         ...state,
-        deletingSmurfs: true
+        deletingSmurf: true
       }
     case ERROR:
       return {
