@@ -26,7 +26,7 @@ const initialState = {
   error: null
 };
 
-const mainReducer = (state, action) => {
+const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHINGSMURFS:
     case FETCHEDSMURF:
