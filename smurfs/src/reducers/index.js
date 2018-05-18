@@ -1,4 +1,4 @@
-import {GOT_SMURFS, GETTING_SMURFS, ADD_SMURF, ERROR} from "../actions";
+import {GOT_SMURFS, GETTING_SMURFS, ADD_SMURF, ERROR, DELETE_SMURF} from "../actions";
 
  const initialState = {
    smurfs: [],
@@ -18,7 +18,9 @@ import {GOT_SMURFS, GETTING_SMURFS, ADD_SMURF, ERROR} from "../actions";
     case ADD_SMURF:
       return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload)});
     case ERROR:
-      return Object.assign({}, state, {error: action.payload, fetchingSmurfs: false})
+      return Object.assign({}, state, {error: action.payload, fetchingSmurfs: false});
+    case DELETE_SMURF:
+      return Object.assign({}, state, {smurfs: action.payload});
     default:
     return state;
   }
