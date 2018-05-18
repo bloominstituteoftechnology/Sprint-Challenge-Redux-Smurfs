@@ -10,10 +10,10 @@ import * as actionTypes from '../actions';
 
 const initialState = {
   smurfs: [],
-  fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
+  fetchingSmurfs: false,
+   addingSmurf: false,
+   updatingSmurf: false,
+   deletingSmurf: false,
    error: null
 };
 

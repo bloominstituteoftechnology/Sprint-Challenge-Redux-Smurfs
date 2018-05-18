@@ -12,7 +12,7 @@ export const DELETE_SMURF = 'DELETE_SMURF';
 
 const URL = 'http://localhost:3333/smurfs';
 
-export const addSmurf = () => {
+export const addSmurfs = () => {
   const smurfs = axios.get(`${URL}/get`);
   return dispatch => {
     dispatch({ type: ADD_SMURF });
@@ -58,7 +58,8 @@ export const addSmurf = () => {
 export const deleteSmurf = id => {
   const deletedSmurf = axios.delete(`${URL}/delete`, {
     data: { id }
-  });
+  })
+};
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
