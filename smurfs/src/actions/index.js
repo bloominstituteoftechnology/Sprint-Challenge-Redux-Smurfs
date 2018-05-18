@@ -43,6 +43,21 @@ export const newSmurf = (smurf) => {
   }
 }
 
+export const deleteSmurf = smurf => {
+  const deleteSmurf = axios.delete(`http://localhost:3333/smurfs/${smurf.id}`)
+  return function(dispatch) {
+    deleteSmurf
+      .then(data => {
+        dispatch({ type: SMURF_FETCHED , payload: data.data })
+
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err})
+        
+      })
+  }
+}
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
