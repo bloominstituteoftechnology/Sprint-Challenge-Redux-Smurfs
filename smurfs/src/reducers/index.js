@@ -35,7 +35,7 @@ export default (state=initialState, action) => {
       return Object.assign({}, state, {
         creatingSmurf: false,
         createdSmurf: true,
-        smurfs: state.smurfs.concat(action.payload)
+        smurfs: action.payload
       })
     case UPDATING:
       return Object.assign({}, state, {
@@ -46,10 +46,19 @@ export default (state=initialState, action) => {
       return Object.assign({}, state, {
         updatingSmurf: false,
         updatedSmurf: true,
-        
+        smurfs: action.payload
       })
-    // case DELETING:
-    // case DELETED:
+    case DELETING:
+      return Object.assign({}, state, {
+        deletingSmurf: true,
+        deletedSmurf: false
+      })
+    case DELETED:
+      return Object.assign({}, state, {
+        deletingSmurf: false,
+        deletedSmurf: true,
+        smurfs: action.payload
+      })
     case ERROR:
       return Object.assign({}, state, {
         fetchingSmurf: false,

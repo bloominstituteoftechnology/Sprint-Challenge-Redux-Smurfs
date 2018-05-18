@@ -54,9 +54,10 @@ const deleting = () => {
   }
 }
 
-const deleted = () => {
+const deleted = (data) => {
   return {
-      type: DELETED
+      type: DELETED,
+      payload: data
   }
 }
 
@@ -88,7 +89,7 @@ export const createSmurf = (smurf) => {
     postSmurf
       .then( res => {
         console.log(res);
-        dispatch(created(res));
+        dispatch(created(res.data));
       })
       .catch( err => {
         dispatch(error(err));
@@ -97,12 +98,26 @@ export const createSmurf = (smurf) => {
 }
 
 export const updateSmurf = (smurf) => {
-  const putSmurf = axios.put(`http://localhost:3333/smurfs${smurf.id}`, smurf);
+  const putSmurf = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
   return function(dispatch) {
     dispatch(updating());
     putSmurf
       .then( res => {
         dispatch(updated(res.data));
+      })
+      .catch( err => {
+        dispatch(error(err));
+      })
+  }
+}
+
+export const deleteSmurf = (smurf) => {
+  const removeSmurf = axios.delete(`http://localhost:3333/smurfs/${smurf.id}`);
+  return function(dispatch) {
+    dispatch(deleting());
+    removeSmurf
+      .then( res => {
+        dispatch(deleted(res.data));
       })
       .catch( err => {
         dispatch(error(err));
