@@ -14,7 +14,7 @@ export const DELETEDSMURF = "DELETEDSMURF";
 export const ERROR = "ERROR";
 
 export const fetchingSmurfs = () => {
-  const fetch = axios.GET("http://localhost:3333/smurfs/");
+  const fetch = axios.get("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch(FETCHINGSMURFS);
     fetch
@@ -29,7 +29,7 @@ export const fetchingSmurfs = () => {
   };
 };
 export const addingSmurf = () => {
-  const addItem = axios.POST("http://localhost:3333/smurfs/");
+  const addItem = axios.post("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch(ADDINGSMURF);
     addItem
@@ -44,7 +44,7 @@ export const addingSmurf = () => {
   };
 };
 export const updatingSmurf = () => {
-  const updateItem = axios.PUT("http://localhost:3333/smurfs/");
+  const updateItem = axios.put("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch(UPDATINGSMURF);
     updateItem
@@ -59,7 +59,7 @@ export const updatingSmurf = () => {
   };
 };
 export const deletingSmurf = () => {
-  const deleteItem = axios.DELETE("http://localhost:3333/smurfs/");
+  const deleteItem = axios.delete("http://localhost:3333/smurfs/");
   return dispatch => {
     dispatch(DELETINGSMURF);
     deleteItem
