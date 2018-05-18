@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import './addsmurf.css';
 
 
 
@@ -20,7 +21,7 @@ class AddSmurf extends Component {
 
   render() {
     return(
-      <div>
+      <div className="form">
         <h1>{this.props.headerText}</h1>
         <Form>
           <FormGroup>
