@@ -1,5 +1,11 @@
+body {
+  background-color: rgb(47, 98, 175);
+}
+
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .App-logo {
@@ -25,4 +31,16 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.App .smurf-card {
+  border: 1px solid black;
+  height: 100px;
+  max-width: 300px;
+  padding-bottom: 15px;
+
+}
+
+.new-villager {
+  padding-bottom: 10px;
 }
