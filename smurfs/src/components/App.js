@@ -18,10 +18,12 @@ class App extends Component {
   }
   
   render() {
-    console.log(this.props);
+    console.log("this.props" ,this.props);
     return (
       <div className="App">
-        {/* {this.props.fetchingSmurfs ? : [<NewSmurfForm />, <SmurfList smurfs={this.props.smurfs} />]} */}
+        {/* {!this.props.fetchingSmurfs ? <NewSmurfForm /> : <SmurfList smurfs={this.props.smurfs} />} */}
+        <NewSmurfForm />
+        <SmurfList smurfs={this.props.smurfs} />
         
       </div>
     );
@@ -29,7 +31,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
+  console.log("state", state)
   return {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,

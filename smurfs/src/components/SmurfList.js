@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 
 
 
-const SmurfList = props => {
-    return (
-        <div>
-            {props.smurfs.map(smurf => 
-                <p key={smurf.name + smurf.id}>
-                    {smurf.name} {smurf.age} {smurf.height}
+class SmurfList extends Component {
+    render () {
+        return (
+            <div>
+                {this.props.smurfs.map(smurf => 
+                    <p key={smurf.name + smurf.id}>
+                        {smurf.name} {smurf.age} {smurf.height}
+    
+                    </p>
+                )}
+            </div>
+        )
+    }
 
-                </p>
-            )}
-        </div>
-    )
+    
 }
 export default SmurfList;
