@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchSmurfs } from './actions/index';
+import { fetchSmurfs } from '../actions/index';
 
 
 class App extends Component {
@@ -18,8 +18,23 @@ class App extends Component {
         </header>
         <div className="App-intro">
         <ul>
-            {this.props.chars.map(smurf => {
+            {this.props.smurfs.map(smurf => {
               return <li key={smurf.name}>{smurf.name}</li>;
+            })}
+          </ul>
+          <ul>
+            {this.props.smurfs.map(smurf => {
+              return <li key={smurf.age}>{smurf.age}</li>;
+            })}
+          </ul>
+          <ul>
+            {this.props.smurfs.map(smurf => {
+              return <li key={smurf.height}>{smurf.height}</li>;
+            })}
+          </ul>
+          <ul>
+            {this.props.smurfs.map(smurf => {
+              return <li key={smurf.id}>{smurf.id}</li>;
             })}
           </ul>
         </div>
@@ -31,7 +46,7 @@ class App extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    friends: state.smurfs,
+    smurfs: state.smurfs,
     fetching: state.fetching,
     error: state.error
   };

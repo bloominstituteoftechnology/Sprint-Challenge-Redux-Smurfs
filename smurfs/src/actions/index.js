@@ -22,12 +22,12 @@ export const SMURF_CREATED = 'SMURF_CREATED';
 
 export const fetchSmurfs = () => {
   const getSmurfs = axios.get('http://localhost:3333/smurfs');
-  return dispatch {
+  return function(dispatch) {
     dispatch({ type: FETCHING_SMURFS });
     getSmurfs
       .then(response => {
         console.log(response);
-        dispatch({ type: SMURFS_FETCHED, smurfs:data });
+        dispatch({ type: SMURFS_FETCHED, payload: response.data });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
@@ -44,7 +44,7 @@ export const addSmurf = smurf => {
     dispatch({ type: CREATING_SMURF });
     createSmurf
       .then(response => {
-        dispatch({ type: SMURF_CREATED, smurfs:data });
+        dispatch({ type: SMURF_CREATED, payload: response.data });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });

@@ -7,7 +7,7 @@ import {
  ERROR,
  CREATING_SMURF,
  SMURF_CREATED
-} from '.actions/index.js';
+} from '../actions/index.js';
 /*Your initial/default state for this project could *Although does not have to* look a lot like this*/
 const initialState = {
    smurfs: [],
