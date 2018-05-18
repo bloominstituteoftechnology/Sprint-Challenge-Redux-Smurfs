@@ -39,7 +39,7 @@ export const addSmurf = newData => {
         dispatch({type: SUCCESS_POST_SMURFS, payload: response.data })
       })
       .catch(error => {
-        dispatch({type: ERROR_SMURFS, payload: 'UNABLE TO ADD NEW SMURF. PLEASE PROVIDE ALL REQUIRED FIELDS AND TRY AGAIN.'})
+        dispatch({type: ERROR_SMURFS, payload: 'UNABLE TO ADD NEW SMURF. PLEASE PROVIDE UNIQUE VALUES & PROVIDE ALL REQUIRED FIELDS.'})
       })
   }
 }
