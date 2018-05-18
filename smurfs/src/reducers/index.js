@@ -22,31 +22,65 @@ const initialState = {
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
-      return state;
+      return Object.assign({}, state, {
+        fetchingSmurfs: true,
+        error: null
+      });
     
     case SMURFS_FETCHED:
-      return state;
+      return Object.assign({}, state, {
+        fetchingSmurfs: false,
+        error: null,
+        smurfs: state.friends.concat(action.payload)
+      });
     
     case ADDING_SMURF:
-      return state;
+      return Object.assign({}, state, {
+        addingSmurf: true,
+        error: null
+      });
     
     case SMURF_ADDED:
-      return state;
+      return Object.assign({}, state, {
+        addingSmurf: false,
+        error: null,
+        smurfs: action.payload
+      });
 
     case UPDATING_SMURF:
-      return state;
+      return Object.assign({}, state, {
+        updatingSmurf: true,
+        error: null
+      });
 
     case SMURF_UPDATED:
-      return state;
+      return Object.assign({}, state, {
+        updatingSmurf: false,
+        error: null,
+        smurfs: action.payload
+      });
 
     case DELETING_SMURF:
-      return state;
+      return Object.assign({}, state, {
+        deletingSmurf: true,
+        error: null
+      });
 
     case SMURF_DELETED:
-      return state;
+      return Object.assign({}, state, {
+        deletingSmurf: false,
+        error: null,
+        smurfs: action.payload
+      });
 
     case ERROR:
-      return state;
+      return Object.assign({}, state, {
+        error: action.payload,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        updatingSmurf: false,
+        deletingSmurf: false
+      });
 
     default:
       return state;
