@@ -19,7 +19,7 @@ export const fetchSmurfs = () => {
     dispatch({ type: FETCHING_SMURFS });
     getSmurfs
       .then(smurfData => {
-        console.log("Smurf Data:", smurfData)
+        console.log("../actions .then Smurf Data:", smurfData)
         dispatch({
           type: SMURFS_FETCHED,
           payload: smurfData.data
