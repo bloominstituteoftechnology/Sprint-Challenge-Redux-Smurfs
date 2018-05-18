@@ -1,3 +1,16 @@
+import { PENDING_SMURFS, SUCCESS_SMURFS, ERROR_SMURFS } from "../actions";
+
+const initialState = {
+  pending: false,
+  error: null,
+  smurfs: []
+};
+
+
+
+
+
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
