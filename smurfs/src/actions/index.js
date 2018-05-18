@@ -42,3 +42,7 @@ export const addSmurf = newData => {
       })
   }
 }
+
+export const deleteSmurf = () => {
+  let removedSmurf = axios.delete('')
+}
