@@ -125,12 +125,20 @@ input:
   name: 'Grumpy'
 }
 output:
-{
-  name: 'Grumpy',
-  age: 30,
-  height: '3cm',
-  id: 1
-}
+[
+  {
+    name: 'Grumpy',
+    age: 30,
+    height: '3cm',
+    id: 1
+  },
+  {
+    name: 'Sleepy',
+    age: 211,
+    height: '2cm',
+    id: 0
+  }
+]
 ```
 
 ### DELETE '/smurfs/123', where 123 is the Id of the smurf you want to remove
