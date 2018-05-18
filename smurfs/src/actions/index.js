@@ -4,11 +4,6 @@ export const SUCCESS_POST_SMURFS = 'SUCCESS_POST_SMURFS';
 export const PENDING_SMURFS = 'PENDING_SMURFS';
 export const ERROR_SMURFS = 'ERROR_SMURFS';
 
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
-
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -27,7 +22,7 @@ export const getSmurfs = () => {
     smurfs
       .then(response => {
         setTimeout(() => {
-          dispatch({type: SUCCESS_GET_SMURFS, payload: response.data })}, 3000)
+          dispatch({type: SUCCESS_GET_SMURFS, payload: response.data })}, 4000)
       })
       .catch(error => {
         dispatch({type: ERROR_SMURFS, payload: 'ERROR PROCESSING SMURFS'})

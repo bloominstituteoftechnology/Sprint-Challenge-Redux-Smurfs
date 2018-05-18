@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './SmurfsList.css';
+
 
 // class SmurfsList extends Component {
 //     constructor(props) {
@@ -25,9 +27,9 @@ import React, { Component } from 'react';
 
 const SmurfsList = props => {
     return (
-        <div>
+        <div className="list-container">
             {props.smurfs.map(smurf => 
-                <div key={smurf.name + smurf.id}>
+                <div className="smurf" key={smurf.name + smurf.id}>
                     {smurf.name}
                 </div>)}
         </div>
