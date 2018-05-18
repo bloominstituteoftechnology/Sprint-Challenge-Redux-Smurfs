@@ -19,24 +19,35 @@ class App extends Component {
     }
   }
   componentDidMount(){
-  this.props.getSmurfs();
-  this.props.addSmurf();
+    this.props.getSmurfs();    
   }
+  handleSubmit = (event) => {
+    this.setState({[event.target.name]: event.target.value});
+  }  
+  handleAddSmurf = () => {
+  const { name, age, height } = this.state;
+  const newSmurf = { name, age, height };
+  this.props.addSmurf(newSmurf);
+  this.setState({name:'', age:'', height:''})
+   }
   render() {
     return (
       <div className="App">
       <ul>
         <h1>SMURFS! 2.0 W/ Redux</h1>
         {this.props.Smurfs.map((smurf, index) =>{
-          return ( <div>
-            <li key={index}>{smurf.name}</li>
+          return ( <div key={index}>
+            <li>{smurf.name}</li>
             <li>{smurf.age}</li>
             <li>{smurf.height}</li>
             </div>
-            )
-          
-        })}
+            )          
+          })}
         </ul>
+        <input  name="name" value={this.state.name} placeholder ="name" onChange={this.handleSubmit} />
+        <input  name="age" value={this.state.age} placeholder ="age" onChange={this.handleSubmit} />
+        <input  name="height" value={this.state.height} placeholder ="height" onChange={this.handleSubmit} />
+        <button type="submit" onClick={this.handleAddSmurf}>Add Smurfs</button>
       </div>
     );
   }
@@ -45,7 +56,7 @@ const mapStateToProps = state => {
  
   return {
     Smurfs: state.smurfs,
-    // fetchingSmurfs: state.fetchingSmurfs
+     fetchingSmurfs: state.fetchingSmurfs
   }
 }
 export default connect(mapStateToProps, {getSmurfs, addSmurf})(App);

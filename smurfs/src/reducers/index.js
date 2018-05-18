@@ -19,7 +19,7 @@
      case FETCHED_SMURFS:     
      return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload), fetchingSmurfs: false})
      case CREATED_SMURF:
-     return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload), fetchingSmurfs: false})    
+     return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload), fetchingSmurfs: false, addingSmurf: true})    
      default:
      return state;
    }
