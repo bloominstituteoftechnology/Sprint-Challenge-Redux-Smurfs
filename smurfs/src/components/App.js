@@ -18,7 +18,7 @@ class App extends Component {
       <div className="App">
 
       <header className="App-header"></header>
-      <h1 className=""header-title>SMURFS! 2.0 W/ Redux</h1>
+      <h1 className="header-title">Welcome To Smurfs Village!</h1>
     
       {this.props.fetchingSmurfs ? (<img src={logo} className="App-logo" alt="logo" />) : 
         [ <NewSmurfForm />, <SmurfsList smurfs={this.props.smurfs} />] }
