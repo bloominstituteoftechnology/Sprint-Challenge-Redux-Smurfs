@@ -24,12 +24,12 @@ class SmurfsForm extends Component {
 
     createSmurf = () => {
         console.log('This Props Length', this.props.smurfs.length + 1);
-        this.props.addSmurf({ name: this.state.name, age: this.state.age, height: this.state.height, id: this.props.smurfs.length });
+        this.props.addSmurf({ name: this.state.name, age: Number(this.state.age), height: this.state.height });
         this.setState({ name: '', age: 0, height: '' });
     }
 
     render() {
-        console.log(this.props.smurfs.length)
+        console.log('This Props Length Render', this.props.smurfs.length)
         return (
             <div className='form'>
                 <h3>{this.state.title}</h3>
