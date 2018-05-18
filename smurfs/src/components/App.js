@@ -4,9 +4,14 @@ import { connect } from 'react-redux';
 
 import './App.css';
 import SmurfsList from './SmurfsList';
+import { getSmurfs } from '../actions'
 
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
   render() {
     return (
       <div className="App">
@@ -26,4 +31,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {/*actions*/} )(App);
+export default connect(mapStateToProps, { getSmurfs } )(App);
