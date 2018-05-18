@@ -86,10 +86,10 @@ export const deletingSmurf = toDelete => {
     });
     deleteItem
       .then(response => {
-        console.log("response.data", response.data);
+        console.log("DELETE response.data", response.data);
         dispatch({
           type: DELETEDSMURF,
-          toDelete: toDelete
+          toDelete: response.data
         });
         fetchingSmurfs();
       })
