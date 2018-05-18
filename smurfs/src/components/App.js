@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { fetchSmurfs } from '../actions';
 import AddSmurf from './AddSmurf';
+import Smurf from './Smurf';
 
 class App extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class App extends Component {
             </button>
           )}
         {this.props.smurfs.map(smurf => {
-          return <div key={smurf.id}>{smurf.name}</div>
+          return <Smurf key={smurf.id} smurf={smurf}/>
         })}
       </div>
     );

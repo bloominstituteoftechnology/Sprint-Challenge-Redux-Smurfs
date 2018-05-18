@@ -37,8 +37,17 @@ export default (state=initialState, action) => {
         createdSmurf: true,
         smurfs: state.smurfs.concat(action.payload)
       })
-    // case UPDATING:
-    // case UPDATED:
+    case UPDATING:
+      return Object.assign({}, state, {
+        updatingSmurf: true,
+        updatedSmurf: false
+      })
+    case UPDATED:
+      return Object.assign({}, state, {
+        updatingSmurf: false,
+        updatedSmurf: true,
+        
+      })
     // case DELETING:
     // case DELETED:
     case ERROR:
