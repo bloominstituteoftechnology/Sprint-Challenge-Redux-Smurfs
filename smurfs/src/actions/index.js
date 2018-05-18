@@ -26,7 +26,8 @@ export const getSmurfs = () => {
     dispatch({type: PENDING_SMURFS})
     smurfs
       .then(response => {
-        dispatch({type: SUCCESS_GET_SMURFS, payload: response.data })
+        setTimeout(() => {
+          dispatch({type: SUCCESS_GET_SMURFS, payload: response.data })}, 3000)
       })
       .catch(error => {
         dispatch({type: ERROR_SMURFS, payload: 'ERROR PROCESSING SMURFS'})
