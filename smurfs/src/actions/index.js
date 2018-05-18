@@ -13,7 +13,7 @@ export const fetchSmurfs = () => {
   return function(dispatch) {
     dispatch({ type: FETCHING });
     getSmurfs
-      .then( repsonse => {
+      .then( response => {
         console.log('repsonse', response)
         dispatch({ type: FETCHED, payload: response.data });
       })
