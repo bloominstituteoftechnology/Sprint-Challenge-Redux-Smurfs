@@ -1,3 +1,4 @@
+import axios from 'axios';
 export const SUCCESS_GET_SMURFS = 'SUCCESS_GET_SMURFS';
 export const SUCCESS_POST_SMURFS = 'SUCCESS_POST_SMURFS';
 export const PENDING_SMURFS = 'PENDING_SMURFS';
@@ -19,7 +20,7 @@ export const ERROR_SMURFS = 'ERROR_SMURFS';
    D - deleteSmurf
 */
 
-const getSmurf = () => {
+export const getSmurfs = () => {
   let smurfs = axios.get('http://localhost:3333/smurfs')
   return function(dispatch) {
     dispatch({type: PENDING_SMURFS})
