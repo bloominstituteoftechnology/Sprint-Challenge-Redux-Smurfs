@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { fetchSmurfs, addSmurf } from '../actions';
 import { connect } from 'react-redux';
-import { Button, Table } from 'reactstrap';
+import { Button, Table, Form, FormGroup, Input, Label } from 'reactstrap';
 import Smurf from './Smurf';
 
 /*
@@ -59,11 +59,23 @@ class App extends Component {
             </tbody>
           </Table>
 	</div>
-	<input name='name' onChange={this.handleInput} value={this.state.newSmurf.name} />
-	<input name='age' onChange={this.handleInput} value={this.state.newSmurf.age} />
-	<input name='height' onChange={this.handleInput} value={this.state.newSmurf.height} />
-	<Button onClick={this.handleSubmit}>add</Button>
-		
+	<div>
+	<Form>
+	<FormGroup>
+	<Label className="myLabel">Name</Label>
+	<Input className="myInput" name='name' onChange={this.handleInput} value={this.state.newSmurf.name} />
+	</FormGroup>
+	<FormGroup>
+	<Label className="myLabel">Age</Label>
+	<Input className="myInput" name='age' onChange={this.handleInput} value={this.state.newSmurf.age} />
+	</FormGroup>
+	<FormGroup>
+	<Label className="myLabel">Height</Label>
+	<Input className="myInput" name='height' onChange={this.handleInput} value={this.state.newSmurf.height} />
+	</FormGroup>
+	<Button className="myButton" onClick={this.handleSubmit}>add</Button>
+	</Form>
+      </div>	
       </div>
     );
   }
