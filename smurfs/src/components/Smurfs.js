@@ -13,7 +13,7 @@ class Smurfs extends Component {
 
     if (this.props.smurfData.fetchingSmurf) {
       return (
-        <h1>HELLO</h1>
+        <h1>Loading smurf data</h1>
       )
     }
     else {
