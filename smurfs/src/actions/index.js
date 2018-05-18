@@ -1,5 +1,7 @@
 import axios from 'axios';
   
+export const POSTING = 'POSTING';
+export const POSTED = 'POSTED';
 export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
@@ -22,9 +24,9 @@ export const post_smurfs = (smurf) => {
   const post = axios.post('http://localhost:3333/smurfs', smurf);
   return dispatch => {
     dispatch({ type: POSTING });
-    request
-      .then(fetchData => {
-        dispatch({ type: FETCHED, payload: fetchData.data })
+    post
+      .then(postData => {
+        dispatch({ type: POSTED, payload: postData.data })
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err })

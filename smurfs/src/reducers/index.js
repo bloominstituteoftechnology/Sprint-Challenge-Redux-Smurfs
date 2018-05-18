@@ -1,5 +1,5 @@
 
-  import {FETCHED, FETCHING, ERROR} from  '../actions';
+  import {FETCHED, FETCHING, POSTING, POSTED, ERROR} from  '../actions';
 
 
  const initalState = {
@@ -17,6 +17,10 @@ export default (state = initalState, action) => {
       return Object.assign({}, state, {fetching: true})
     case FETCHED:
       return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload), fetching: false })
+    case POSTING:
+      return Object.assign({}, state, { fetching: true })
+    case POSTED:
+      return Object.assign({}, state, { smurfs: action.payload, fetching: false, addingSmurf: true })
     case ERROR:
       return Object.assign({}, state,{error: action.payload})
     default:
