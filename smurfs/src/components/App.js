@@ -27,7 +27,7 @@ class App extends Component {
             <AddSmurf/>
           ) : (
             <button 
-              className="show"
+              className="show btn"
               onClick={() => {this.setState({showForm:true})}}>
               Add a new Smurf
             </button>

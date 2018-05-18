@@ -35,7 +35,7 @@ class Smurf extends Component {
                 <span>{`Age: ${this.state.smurf.age} years old`}</span>
                 <span>{`Height: ${this.state.smurf.height}`}</span>
                 {this.state.showForm ? (
-                    <form className="new-smurf" onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit}>
                         <input 
                             name="name" 
                             value={this.state.name}

@@ -1,10 +1,12 @@
-.App {
-  text-align: center;
+html {
+  background-color: rgb(228, 228, 228)
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-header {
@@ -12,6 +14,7 @@
   height: 150px;
   padding: 20px;
   color: white;
+  width: 100%;
 }
 
 .App-title {
@@ -22,7 +25,60 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.new-smurf {
+  width: 40%;
+  padding: 30px 50px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+form input {
+  width: 100%;
+  height: 30px;
+  font-size: 1em;
+  padding-left: 10px;
+  margin: 10px 0px;
+}
+
+.smurf-card {
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  margin: 20px;
+  width: 30%;
+}
+
+.btn {
+  border: none;
+  height: 40px;
+  width: 150px;
+  font-size: 1em;
+  margin: 5px;
+  color: white;
+  background-color: #222;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.show {
+  background-color: rgb(228, 228, 228);
+  color: gray;
+}
+
+.delete {
+  background-color: tomato;
+}
+
+.buttons {
+  margin-top: 15px;
 }

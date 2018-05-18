@@ -29,17 +29,14 @@ class AddSmurf extends Component {
         return (
             <form className="new-smurf" onSubmit={this.addSmurf}>
                 <input 
-                    label="Name: " 
                     name="name" 
                     placeholder="John"
                     onChange={this.handleChange}/>
                 <input 
-                    label="Age: " 
                     name="age" 
                     placeholder="100"
                     onChange={this.handleChange}/>
-                <input 
-                    label="Height: " 
+                <input  
                     name="height" 
                     placeholder="5cm"
                     onChange={this.handleChange}/>
