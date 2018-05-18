@@ -6,19 +6,10 @@ import axios from "axios";
 
 export const FETCHINGSMURFS = "FETCHINGSMURFS";
 export const FETCHEDSMURFS = "FETCHEDSMURFS";
+export const ADDINGSMURFS = "ADDINGSMURFS";
 export const UPDATINGSMURFS = "UPDATINGSMURFS";
 export const DELETINGSMURFS = "DELETINGSMURFS";
 export const ERROR = "ERROR";
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
 
 export const getSmurf = () => {
   const request = axios.get("http://localhost:3333/api/smurfs");
@@ -37,7 +28,7 @@ export const getSmurf = () => {
 export const addSmurf = smurf => {
   const request = axios.post("http://localhost:3333/api/smurfs", smurf);
   return dispatch => {
-    dispatch({ type: FETCHINGSMURFS });
+    dispatch({ type: ADDINGSMURFS });
     request
       .then(({ data }) => {
         dispatch({ type: FETCHEDSMURFS, smurfs: data });
@@ -49,7 +40,7 @@ export const addSmurf = smurf => {
 };
 
 export const deleteSmurf = id => {
-  const request = axios.delete("http://localhost:3333/api/smurfs/${id}");
+  const request = axios.delete(`http://localhost:3333/api/smurfs/${id}`);
   return dispatch => {
     request
       .then(({ data }) => {
@@ -62,16 +53,14 @@ export const deleteSmurf = id => {
 };
 
 export const updateSmurf = smurf => {
-  const request = axios.put(
-    "http://localhost:3333/api/smurfs/${smurf.id}",
-    smurf
-  );
+  return { type: UPDATINGSMURFS, smurf };
+};
 
+export const saveSmurf = (id, smurf) => {
   return dispatch => {
+    const request = axios.put(`http://localhost:3333/smurfs/${id}`, smurf);
     request
-      .then(({ data }) => {
-        dispatch({ type: UPDATINGSMURFS, smurfs: data });
-      })
+      .then(({ data }) => dispatch({ type: FETCHEDSMURFS, smurfs: data }))
       .catch(err => {
         console.log(err);
       });
