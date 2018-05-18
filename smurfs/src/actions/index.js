@@ -2,11 +2,13 @@
 import axios from 'axios';
  export const FETCHING_SMURFS = "FETCHING_SMURFS";
  export const FETCHED_SMURFS = "FETCHED_SMURFS";
+ export const CREATED_SMURF = "CREATE_SMURF";
  export const ERROR_FETCHING = "ERROR_FETCHING";
+ export const CREATING_SMURF = "CREATING_SMURF";
 
 
 export const getSmurfs = () => {
-    const getsmurfs = axios.get(`http://localhost:3333/smurfs`);
+    const getsmurfs = axios.get("http://localhost:3333/smurfs");
     return (dispatch => {
         dispatch({type: FETCHING_SMURFS})
         
@@ -18,6 +20,22 @@ export const getSmurfs = () => {
             dispatch({type: ERROR_FETCHING, payload: err})
         });
     });
+}
+
+export const addSmurf = smurf => {
+  const createSmurfs = axios.post("http://localhost:3333/smurfs/", smurf);
+    return (dispatch => {
+        dispatch({type: CREATING_SMURF})
+        
+        createSmurfs.then((response) => {
+         //console.log(response);
+            dispatch({type: CREATED_SMURF, payload: smurf });
+        })
+        .catch((err) => {
+            dispatch({type: ERROR_FETCHING, payload: err})
+        });
+    });
+
 }
 
 

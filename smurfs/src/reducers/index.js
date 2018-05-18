@@ -1,4 +1,4 @@
- import { FETCHING_SMURFS,  FETCHED_SMURFS, ERROR_FETCHING } from  '../actions';
+ import { FETCHING_SMURFS,  FETCHED_SMURFS, ERROR_FETCHING, CREATED_SMURF } from  '../actions';
  
 
 /*
@@ -18,6 +18,8 @@
      return Object.assign({}, state, {fetchingSmurfs: true})
      case FETCHED_SMURFS:     
      return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload), fetchingSmurfs: false})
+     case CREATED_SMURF:
+     return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload), fetchingSmurfs: false})    
      default:
      return state;
    }
