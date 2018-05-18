@@ -23,7 +23,7 @@ export const getSmurfs = () => {
     smurfs
       .then(response => {
         setTimeout(() => {
-          dispatch({type: SUCCESS_GET_SMURFS, payload: response.data })}, 0)
+          dispatch({type: SUCCESS_GET_SMURFS, payload: response.data })}, 3000)
       })
       .catch(error => {
         dispatch({type: ERROR_SMURFS, payload: 'ERROR PROCESSING SMURFS'})
@@ -56,3 +56,11 @@ export const deleteSmurf = (id) => {
       })
   }
 }
+
+// export const updateSmurf = (id, updates) => {
+//   let updatedSmurf = axios.put(`http://localhost:3333/smurfs/${id}`, updates);
+//   return function(dispatch) {
+//     updatedSmurf
+//       .then(response)
+//   }
+// }
