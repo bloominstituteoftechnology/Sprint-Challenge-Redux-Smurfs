@@ -6,22 +6,22 @@ class SmurfForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      age: '',
-      height: ''
+        name: '',
+        age: '',
+        height: ''
     };
   }
 
-  addSmurf = event => {
-    event.preventDefault();
-    const { name, age, height } = this.state;
-    const smurfData = { name, age, height };
-    this.props.addSmurf(smurfData)
-    this.setState({
-      name: '',
-      age: '',
-      height: ''
-    });
+  addSmurf = () => {
+    const newSmurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    };
+    this.props.addSmurf(newSmurf);
+    this.setState({ name: '',
+                    age: '',
+                    height: '' });
   }
 
   handleInputChange = e => {
