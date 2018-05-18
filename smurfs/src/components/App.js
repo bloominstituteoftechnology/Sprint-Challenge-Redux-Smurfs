@@ -30,7 +30,7 @@ class App extends Component {
               <ul>
                 <li><span style={{ color: 'coral' }}>Name:</span> {smurf.name}</li>
                 <li><span style={{ color: 'coral' }}>Age:</span> {smurf.age}</li>
-                <li><span style={{ color: 'coral' }}>Email:</span> {smurf.height}</li>
+                <li><span style={{ color: 'coral' }}>Height:</span> {smurf.height}</li>
               </ul>
             </div>
           )
