@@ -1,11 +1,11 @@
-import {ADD_SMURF, GET_SMURF, UPDATE_SMURF, DELETE_SMURF} from '../actions/index';
+import {ADD_SMURF, GET_SMURF, UPDATE_SMURF, DELETE_SMURF, ERROR_THROWN} from '../actions/index';
+import { thunk, dispatch } from 'react-thunk';
+import axios from 'axios';
 
 
-
-const initialState = 
- {
+const initialState = {
    smurfs: [],
-   fetchingSmurfs: false,
+   getSmurf: false,
    addingSmurf: false,
    updatingSmurf: false,
    deletingSmurf: false,
@@ -16,16 +16,20 @@ const initialState =
  export const smurfReducer = (state = initialState, action) =>{
    switch(action.type){
       case ADD_SMURF:
-        return Object.assign({}, state, state.concat(action.payload));
+        return Object.assign({}, state, {addingSmurf: true});
       case GET_SMURF:
-        return Object.assign({}, state);
+        return 
+          Object.assign({}, state, {getSmurf: true});
       case UPDATE_SMURF:
-        return Object.assign({}, state, state.concat.action.payload)
+        return Object.assign({}, state, {updatingSmurf: true})
       case DELETE_SMURF:
-        return Object.assign({}, state.slice(0, action.payload).concat(state.slice(action.payload)));
+        return Object.assign({}, state, {deletingSmurf: true});
+      case YAY_SUCCESS:
+        return Object.assign({}, state, {smurfs: action.payload});
+
      default:
       return state;
-   }
+   };
   }
  
 
