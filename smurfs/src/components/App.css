@@ -26,3 +26,46 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+ul li {
+  list-style-type: none;
+  margin: 20px;
+}
+
+ul {
+  padding: 0;
+}
+
+.smurf-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.smurf-card {
+  font-size: 20px;
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 4px 4px 6px gray;
+  width: 350px;
+  background-color: rgb(209, 209, 209);
+}
+
+.smurf-card:hover {
+  box-shadow: 4px 4px 6px coral;
+  background-color: white;
+}
+
+.form input{
+  font-size: 20px;
+}
+
+.form button {
+  font-size: 20px;
+}
+
+.form button:hover {
+  color: coral;
+  box-shadow: 4px 4px 6px gray;
+}
