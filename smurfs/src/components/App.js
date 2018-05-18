@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
+import {Row} from 'reactstrap';
 import { fetchingSmurfs } from "../actions";
+import ItemCard from './ItemCard';
 
 class App extends Component {
   componentDidMount() {
@@ -22,11 +24,9 @@ class App extends Component {
         <br />
         {smurfs.map((item, i) => {
           return (
-            <div>
-              <div>{item.name}</div>
-              <div>{item.age}</div>
-              <div>{item.height}</div>
-            </div>
+            <Row className="" >
+              <ItemCard item={item} id={item.id} key={i} />
+            </Row>
           );
         })}
       </div>
