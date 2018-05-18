@@ -14,11 +14,12 @@ const Smurfs = (props) => {
         <Button color="primary" onClick={props.addButton} >Add Smurf</Button>
       </div>
       {props.smurfData.map((smurf, index) => {
+        const picString = "https://picsum.photos/64/64/?" + smurf.id;
         return (
           <div key={smurf.id} className="mt-5 smurf">
             <Media>
               <Media left>
-                <img src="https://picsum.photos/64/64/?random" alt="Random placeholder" className="mr-1" />
+                <img src={picString} alt="Random placeholder" className="mr-1" />
               </Media>
               <Media body>
                 <Media heading>
