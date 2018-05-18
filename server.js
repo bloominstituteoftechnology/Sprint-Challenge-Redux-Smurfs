@@ -12,13 +12,8 @@ const sendUserError = (msg, res) => {
   return;
 };
 
-let smurfs = [
-  {
-    name: 'Brainey',
-    age: 200,
-    height: '5cm'
-  }
-];
+let smurfs = []
+
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
@@ -61,7 +56,7 @@ server.put('/smurfs/:id', (req, res) => {
     if (name) foundSmurf.name = name;
     if (age) foundSmurf.age = age;
     if (height) foundSmurf.height = height;
-    res.json(smurfs);
+    res.json(foundSmurf);
   }
 });
 
@@ -72,7 +67,7 @@ server.delete('/smurfs/:id', (req, res) => {
   if (foundSmurf) {
     const SmurfRemoved = { ...foundSmurf };
     smurfs = smurfs.filter(smurf => smurf.id != id);
-    res.status(200).json(smurfs);
+    res.status(200).json({ SmurfRemoved });
   } else {
     sendUserError('No smurf by that ID exists in the smurf DB', res);
   }
