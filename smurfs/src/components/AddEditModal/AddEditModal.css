@@ -1,0 +1,92 @@
+.modal-content {
+  border: none;
+  overflow: hidden;
+}
+
+.add-edit-header.modal-header {
+  background-color: #febb00;
+  border: none;
+  border-radius: 0;
+  color: white;
+  font-family: 'Luckiest Guy', sans-serif;
+  justify-content: center;
+  margin: 0;
+  padding: 4px 0;
+}
+
+/* Offset because of font */
+.add-edit-header h5 {
+  margin-top: 5px;
+}
+
+.add-edit-fields .input-container {
+  margin: 10px 0 30px 0;
+  position: relative;
+}
+
+.add-edit-fields input {
+  border: none;
+  border-bottom: 1px solid #f7f7f7;
+  color: #666;
+  display: block;
+  margin: 0;
+  width: 100%;
+  -webkit-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s;
+}
+
+.add-edit-fields label {
+  position: absolute;
+  top: 0;
+  -webkit-transition: .2s ease-out;
+  -o-transition: .2s ease-out;
+  transition: .2s ease-out;
+}
+
+.add-edit-fields label.active {
+  color: #666;
+  font-size: 0.65em;
+  margin: 0;
+  -webkit-transform: translateY(-120%);
+  -ms-transform: translateY(-120%);
+  transform: translateY(-120%)
+}
+
+.add-edit-fields input:focus {
+  border-bottom: 2px solid #666;
+  outline: 0;
+}
+
+.add-edit-actions.modal-footer {
+  border: none;
+}
+
+.add-edit-actions button {
+  background: transparent;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  font-family: 'Luckiest Guy', sans-serif;
+  -webkit-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s;
+}
+
+.add-edit-actions button:hover {
+  opacity: 0.8; 
+}
+
+/* Offset because of font */
+.add-edit-actions button span {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.add-edit-actions .primary {
+  background-color: #3d67ae;
+}
+
+.add-edit-actions .secondary {
+  background-color: #da4141;
+}
