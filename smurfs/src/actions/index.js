@@ -28,7 +28,7 @@ export const fetchSmurfs = () => {
 };
 
 export const addSmurfs = smurf => {
-  const newSmurf = axios.post(`${URL}/add`, smurf);
+  const newSmurf = axios.post(`${URL}/smurfs`);
   return function(dispatch) {
     dispatch({ type: ADDING_SMURFS });
     newSmurf
