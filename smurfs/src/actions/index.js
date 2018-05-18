@@ -27,9 +27,9 @@ export const addSmurf = (smurf) => {
   }
 }
 
-export const deleteSmurf = () => {
+export const deleteSmurf = (id) => {
   return (dispatch) => {
-    const request = axios.get('http://localhost:3333/smurfs')
+    const request = axios.delete(`http://localhost:3333/smurfs/${id}`)
     dispatch({ type: DELETING_SMURF})
     request
     .then(({data}) => dispatch({ type: FETCHED_SMURFS, smurfs:data}))
@@ -37,9 +37,9 @@ export const deleteSmurf = () => {
   }
 }
 
-export const updateSmurf = () => {
+export const updateSmurf = (id) => {
   return (dispatch) => {
-    const request = axios.get('http://localhost:3333/smurfs')
+    const request = axios.get(`http://localhost:3333/smurfs/${id}`)
     dispatch({ type: UPDATING_SMURF})
     request
     .then(({data}) => dispatch({ type: FETCHED_SMURFS, smurfs:data}))

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AddForm from './AddForm';
-import { getSmurfs } from '../actions';
+import { getSmurfs, deleteSmurf } from '../actions';
 
 class App extends Component {
   componentDidMount = () => {
     this.props.getSmurfs()
   }
   render() {
-    const { fetchingSmurfs } = this.props
+    const { fetchingSmurfs, deleteSmurf } = this.props
     console.log(this.props)
     return (
       <div>
@@ -18,6 +18,7 @@ class App extends Component {
             <div>{smurf.name}</div>
             <div>{smurf.age}</div>
             <div>{smurf.height}</div>
+            <button onClick={() => deleteSmurf(smurf.id)}>Delete</button>
           </div>
         )}
       </div>
@@ -29,4 +30,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs, deleteSmurf })(App);
