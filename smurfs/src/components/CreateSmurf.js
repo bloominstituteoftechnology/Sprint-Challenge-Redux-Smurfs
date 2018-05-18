@@ -12,6 +12,30 @@ class CreateSmurf extends Component {
         console.log("PROPS:", this.props)
         return ( 
             <div>
+                 <form className='smurf-form'>
+                    <input 
+                        type="text" 
+                        onChange={this.handleFriendInput} 
+                        name='name' 
+                        value={this.props.name} 
+                        placeholder="Name" 
+                    />
+                    <input 
+                        type="number" 
+                        onChange={this.handleFriendInput} 
+                        name='age' 
+                        value={this.props.age} 
+                        placeholder="Age" 
+                    />
+                    <input 
+                        type="text" 
+                        onChange={this.handleFriendInput} 
+                        name='email' 
+                        value={this.props.height} 
+                        placeholder="Height" 
+                    />
+                    <button onClick={this.saveNewFriend} >Save Friend</button>
+                </form>
             </div>
          )
     }

@@ -1,6 +1,8 @@
 import axios from 'axios';
 export const PENDING = 'PENDING';
+export const FETCHING = 'FETCHING';
 export const SUCCESS = 'SUCCESS';
+export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
 
 
@@ -12,11 +14,11 @@ export const ERROR = 'ERROR';
 export const fetchSmurfs = () => {
   const getSmurfs = axios.get(`http://localhost:3333/smurfs`);
   return function(dispatch) {
-    dispatch({ type: PENDING });
+    dispatch({ type: FETCHING });
     getSmurfs
       .then( response => {
         console.log('GET repsonse', response)
-        dispatch({ type: SUCCESS, payload: response.data });
+        dispatch({ type: FETCHED, payload: response.data });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });

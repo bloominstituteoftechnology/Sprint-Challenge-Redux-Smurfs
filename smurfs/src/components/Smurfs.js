@@ -11,6 +11,7 @@ class Smurfs extends Component {
     }
 
     render() { 
+        console.log("SMURF PROPS:", this.props)
         return ( 
             <div className="smurf-container">
                 {this.props.fetchingSmurfs ? (
