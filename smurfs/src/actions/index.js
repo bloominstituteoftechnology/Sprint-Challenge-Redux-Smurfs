@@ -1,24 +1,21 @@
-/*
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
 import axios from "axios";
 
 export const GOT_SMURFS = "GOT_SMURFS";
 export const GETTING_SMURFS = "GETTING_SMURFS";
 export const ADD_SMURF = "ADD_SMURF";
+export const ERROR = "ERROR";
 
 export const getSmurfs = () => {
   const getSmurfs = axios.get("http://localhost:3333/smurfs");
   return function(dispatch) {
-    dispatch({type: GETTING_SMURFS, payload: true});
+    dispatch({type: GETTING_SMURFS, payload: "Getting Smurfs...."});
     getSmurfs
       .then(data => {
         console.log(data);
         dispatch({type: GOT_SMURFS, payload: data.data})
       })
       .catch(err => {
-        console.log(err);
+        dispatch({type: ERROR, payload: "Oh snap some went wrong"});
       })
   }
 }
@@ -31,6 +28,9 @@ export const addSmurf = smurf => {
       .then(data => {
         console.log(data);
         dispatch({type: ADD_SMURF, payload: data.data.pop()})
+      })
+      .catch(err => {
+        dispatch({type: ERROR, payload: "Oh snap some went wrong"});
       })
   }
 }

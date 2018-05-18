@@ -1,4 +1,4 @@
-import {GOT_SMURFS, GETTING_SMURFS, ADD_SMURF} from "../actions";
+import {GOT_SMURFS, GETTING_SMURFS, ADD_SMURF, ERROR} from "../actions";
 
  const initialState = {
    smurfs: [],
@@ -11,10 +11,14 @@ import {GOT_SMURFS, GETTING_SMURFS, ADD_SMURF} from "../actions";
 
  export default (state = initialState, action) => {
   switch(action.type) {
+    case GETTING_SMURFS:
+      return Object.assign({}, state, {fetchingSmurfs: action.payload})
     case GOT_SMURFS:
-      return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload)});
+      return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload), fetchingSmurfs: false});
     case ADD_SMURF:
       return Object.assign({}, state, {smurfs: state.smurfs.concat(action.payload)});
+    case ERROR:
+      return Object.assign({}, state, {error: action.payload, fetchingSmurfs: false})
     default:
     return state;
   }
