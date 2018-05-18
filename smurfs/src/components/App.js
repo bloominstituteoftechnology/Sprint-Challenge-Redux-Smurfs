@@ -66,7 +66,7 @@ class App extends Component {
 	<input name='name' onChange={this.handleInput} value={this.state.newSmurf.name} />
 	<input name='age' onChange={this.handleInput} value={this.state.newSmurf.age} />
 	<input name='height' onChange={this.handleInput} value={this.state.newSmurf.height} />
-	<Button onClick={this.handleSumbit}>add</Button>
+	<Button onClick={this.handleSubmit}>add</Button>
 		
       </div>
     );
