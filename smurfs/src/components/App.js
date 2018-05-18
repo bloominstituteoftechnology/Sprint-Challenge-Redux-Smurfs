@@ -9,6 +9,7 @@
  import { connect } from 'react-redux';
  import { fetcher, beginEdit, cancelEdit, beginAdd, cancelAdd, deleter, adder, editor } from '../actions';
  import './App.css';
+ import { Button } from 'reactstrap';
 
  class App extends Component {
 
@@ -17,9 +18,43 @@
    }
 
   render() {
-    return (
-    <div />
-    )
+    switch (this.props.appState) {
+      case "fetching":
+        return (
+          <div className="App mb-5">
+              fetching
+          </div>
+        );
+      case "fetched":
+        return (
+          <div className="App mb-5">
+            fetched
+          </div>
+        );
+      case "add":
+        return (
+          <div className="App mb-5">
+            add
+          </div>
+        );
+      case "edit":
+        return (
+          <div className="App mb-5">
+            edit
+          </div>
+        );
+      case "error":
+        return (
+          <div className="App mb-5">
+            {this.props.error.message}
+            <Button onClick={() => this.props.fetcher('http://localhost:3333/api/friends')} >Reload</Button>
+          </div>
+        );
+      default:
+        return (
+          <div />
+        )
+    }
   }
 }
 
