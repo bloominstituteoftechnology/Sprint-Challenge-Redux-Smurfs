@@ -27,21 +27,28 @@ class App extends Component {
       case "fetched":
         return (
           <div className="App mb-5">
-            <Smurfs smurfData={this.props.smurfs} deleteButton={this.props.deleter}
-            editButton={this.props.beginEdit} addButton={this.props.beginAdd} />
+            <Smurfs smurfData={this.props.smurfs}
+            deleteButton={this.props.deleter}
+            editButton={this.props.beginEdit}
+            addButton={this.props.beginAdd} />
           </div>
         );
       case "add":
         return (
           <div className="App mb-5">
-            <AddSmurf nameText="" ageText="" heightText="" headerText="Add a smurf"
-            cancelButton={this.props.cancelAdd} submitButton={this.props.adder} />
+            <AddSmurf nameText=""
+            ageText=""
+            heightText=""
+            headerText="Add a smurf"
+            cancelButton={this.props.cancelAdd}
+            submitButton={this.props.adder} />
           </div>
         );
       case "edit":
         return (
           <div className="App mb-5">
-            <AddSmurf smurfID={this.props.smurfs[this.props.editIndex].id} nameText={this.props.smurfs[this.props.editIndex].name}
+            <AddSmurf smurfID={this.props.smurfs[this.props.editIndex].id}
+            nameText={this.props.smurfs[this.props.editIndex].name}
             ageText={this.props.smurfs[this.props.editIndex].age}
             heightText={this.props.smurfs[this.props.editIndex].height}
             headerText={"Edit " + this.props.smurfs[this.props.editIndex].name}
