@@ -9,7 +9,7 @@ const Smurfs = (props) => {
       <Button color="success" onClick={props.addButton} >Add Smurf</Button>
       {props.smurfData.map((smurf, index) => {
         return (
-          <div key={Date.now()} className="mt-5 smurf">
+          <div key={smurf.id} className="mt-5 smurf">
             <Media>
               <Media left>
                 <img src="https://picsum.photos/64/64/?random" alt="Random placeholder" className="mr-1" />
