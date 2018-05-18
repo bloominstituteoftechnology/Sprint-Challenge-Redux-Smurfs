@@ -2,3 +2,10 @@
   max-width: 400px;
   margin: auto;
 }
+
+.error {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  align-items: center;
+}

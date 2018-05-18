@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetcher, beginEdit, cancelEdit, beginAdd, cancelAdd, deleter, adder, editor } from '../actions';
 import './App.css';
-import { Button } from 'reactstrap';
+import { Button, Alert } from 'reactstrap';
 import Smurfs from './smurfs.js';
 import AddSmurf from './addsmurf.js';
 import Front from './front.js';
@@ -58,9 +58,13 @@ class App extends Component {
         );
       case "error":
         return (
-          <div className="App mb-5">
-            {this.props.error.message}
-            <Button onClick={() => this.props.fetcher('http://localhost:3333/smurfs')} >Reload</Button>
+          <div className="App error mb-5">
+            <Alert color="danger">
+              {this.props.error.message}
+            </Alert>
+            <div>
+              <Button onClick={() => this.props.fetcher('http://localhost:3333/smurfs')} >Reload</Button>
+            </div>
           </div>
         );
       default:
