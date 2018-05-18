@@ -29,7 +29,7 @@ const smurfReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
     return Object.assign({}, state, {
-      fetching: true,
+      fetchingSmurfs: true,
     });
     case FETCH_SMURFS:
     return Object.assign({}, state, {
@@ -42,7 +42,7 @@ const smurfReducer = (state = initialState, action) => {
     });
     case ADD_SMURF:
     return Object.assign({}, state, {
-      smurfs: state.smurfs.concat(action.payload),
+      smurfs: action.payload,
       addingSmurf: false,
     });
     case UPDATING_SMURF:
