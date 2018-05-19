@@ -29,7 +29,9 @@ const initialState = {
   fetching: false,
   fetched: false,
   error:null
-}
+};
+
+// The comments that were already in this document were very helpful :)
 
 export const myReducer = (state = initialState, action) => {
   switch(action.type) {
@@ -45,3 +47,5 @@ export const myReducer = (state = initialState, action) => {
 
   }
 };
+
+//I created a reducer for each action here.

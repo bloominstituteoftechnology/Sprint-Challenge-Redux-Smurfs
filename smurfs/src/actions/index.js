@@ -35,7 +35,8 @@ export const addSmurf = smurf => {
 export const updateSmurf = (smurf) => {
   return dispatch => {
     dispatch ({type: FETCHING});
-    axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)      .then(response => {
+    axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+      .then(response => {
 	dispatch(fetchSmurfs());
       })
      .catch((err) => {
@@ -57,7 +58,8 @@ export const deleteSmurf = id => {
   }
 );
 };
-	 
+
+//In this file I followed what I did in swapi and then tried to do all the states listed in the comments below. These are the actions that are going to go through dispatch and then get sent to the reducer. I might have done the update and delete incorrectly but I only used the fetch(get) and add(post) anyway, and this works for those purposes.
 
 /* 
   Action Types Go Here!
