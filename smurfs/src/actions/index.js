@@ -6,7 +6,7 @@ export const ADDING_SMURF = "ADDING_SMURF";
 export const ADD_SMURF = "ADD_SMURF";
 export const UPDATING_SMURF = "UPDATING_SMURF";
 export const UPDATE_SMURF = "UPDATE_SMURF";
-export const DELETING_SMURF = "DELETE_SMURF";
+export const DELETING_SMURF = "DELETING_SMURF";
 export const DELETE_SMURF = "DELETE_SMURF";
 export const ERROR = "ERROR";
 /* 
@@ -80,12 +80,12 @@ export const updateSmurfs = (smurf, id) => {
 }
 
 export const deleteSmurf = id => {
-  const deletingSmurf = axios.delete(`http://localhost:3333/smurfs/${id}`)
+  const deleteYoSmurf = axios.delete(`http://localhost:3333/smurfs/${id}`);
   return function(dispatch) {
     dispatch({
       type: DELETING_SMURF
     });
-    deletingSmurf
+    deleteYoSmurf
       .then(response => {
         dispatch({
           type: DELETE_SMURF,

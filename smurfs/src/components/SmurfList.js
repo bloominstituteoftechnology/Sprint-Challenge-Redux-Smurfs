@@ -17,7 +17,7 @@ const SmurfList = props => {
                             <CardText> {smurf.age} </CardText>
                             <CardText> {smurf.height} </CardText>
                         <NavLink to={`/smurfs/${smurf.id}`}> <button type="submit" value={smurf.id}> Update {smurf.name}'s information </button></NavLink>
-                            <button type="submit" value={smurf.id} onClick={(event) => { props.deleteSmurf(event.target.value)}}> Cast {smurf.name} out of Smurf Village</button>
+                            <button type="submit" value={smurf.id} onClick={()=>props.deleteSmurf(smurf.id)}> Cast {smurf.name} out of Smurf Village</button>
                         </CardBody>
                     </Card>
                 )
