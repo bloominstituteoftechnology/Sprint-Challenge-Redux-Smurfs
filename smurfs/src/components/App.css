@@ -2,20 +2,20 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+body {
+  background-color: rgb(161, 245, 220);
 }
 
 .App-header {
-  background-color: #222;
+  background-color: lightblue;
   height: 150px;
   padding: 20px;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 35px;
+  margin-top: 50px;
 }
 
 .App-intro {
@@ -54,7 +54,7 @@ ul {
 
 .smurf-card:hover {
   box-shadow: 4px 4px 6px coral;
-  background-color: white;
+  background-color: lightblue;
 }
 
 .smurf-card:hover .title {
