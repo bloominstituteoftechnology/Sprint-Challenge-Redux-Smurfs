@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
+import { addSmurf } from '../actions';
+
 
 class SmurfForm extends Component {
     constructor(props) {
@@ -28,7 +31,8 @@ class SmurfForm extends Component {
             age: this.state.age,
             height: this.state.height,
         };
-        console.log(newSmurf);
+        console.log("New Smurf ", newSmurf);
+        this.props.addSmurf(newSmurf);
         this.setState({
             id: '',
             name: '',
@@ -83,4 +87,16 @@ class SmurfForm extends Component {
     }
 }
  
-export default SmurfForm;
+const mapStateToProps = state => {
+    console.log("mapStateToProps form ", state);
+    return {
+        smurfs: state.smurfs,
+        fetching: state.fetching,
+        fetched: state.fetched,
+        deleting: state.deleting,
+        deleted: state.deleted,
+        error: state.error
+    };
+}
+ 
+export default connect(mapStateToProps, { addSmurf })(SmurfForm);

@@ -94,8 +94,10 @@ export const getSmurfs = () => {
         dispatch(fetching());
         promise
             .then( res => {
-                console.log("result of get request: ", res.data)
-                dispatch(fetched(res.data));
+                setTimeout(() => {
+                    console.log("result of get request: ", res.data)
+                    dispatch(fetched(res.data));
+                }, 5000);
             })
             .catch( err => {
                 dispatch(error(err));
