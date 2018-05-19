@@ -1,9 +1,11 @@
 import axios from 'axios';
 export const SUCCESS_GET_SMURFS = 'SUCCESS_GET_SMURFS';
-export const SUCCESS_POST_SMURFS = 'SUCCESS_POST_SMURFS';
+export const SUCCESS_POST_SMURF = 'SUCCESS_POST_SMURFS';
 export const SUCCESS_DELETE_SMURF = 'SUCCESS_DELETE_SMURF';
 export const PENDING_SMURFS = 'PENDING_SMURFS';
 export const ERROR_SMURFS = 'ERROR_SMURFS';
+
+//consolidate all SUCCESS into one SUCCESS
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -36,7 +38,7 @@ export const addSmurf = newData => {
   return function(dispatch) {
     newSmurf 
       .then(response => {
-        dispatch({type: SUCCESS_POST_SMURFS, payload: response.data })
+        dispatch({type: SUCCESS_POST_SMURF, payload: response.data })
       })
       .catch(error => {
         dispatch({type: ERROR_SMURFS, payload: 'UNABLE TO ADD NEW SMURF. PLEASE PROVIDE UNIQUE VALUES & PROVIDE ALL REQUIRED FIELDS.'})
@@ -52,7 +54,7 @@ export const deleteSmurf = (id) => {
         dispatch({type: SUCCESS_DELETE_SMURF, payload: response.data })
       })
       .catch(error => {
-        dispatch({type: ERROR_SMURFS, payload: 'SMURF COULD NOT BE DELETE'})
+        dispatch({type: ERROR_SMURFS, payload: 'SMURF COULD NOT BE DELETED'})
       })
   }
 }

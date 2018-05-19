@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import './SmurfsList.css';
@@ -17,19 +17,19 @@ const SmurfsList = props => {
                 <p className="smurf" key={smurf.name + smurf.id}>
                     {smurf.name} {smurf.age} {`${smurf.height}cm`}
                     <div className="smurf-btn-container">
-                    <button className="smurf-btn">Edit</button>
-                    <button onClick={()=>(handleDeleteSmurf(smurf.id))} className="smurf-btn">Delete</button>
+                        <button className="smurf-btn">Edit</button>
+                        <button onClick={()=>(handleDeleteSmurf(smurf.id))} className="smurf-btn">Delete</button>
                     </div>
                 </p>)}
         </div>
     )
 }
  
-const mapStateToProps = state => {
-    return {
-        smurfs: state.smurfs
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         smurfs: state.smurfs
+//     }
+// }
 
 
-export default connect(mapStateToProps, { deleteSmurf })(SmurfsList); 
+export default connect(null, { deleteSmurf })(SmurfsList); 
