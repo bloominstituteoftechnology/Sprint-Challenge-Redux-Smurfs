@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import SmurfCard from './SmurfCard';
 import SmurfForm from './SmurfForm';
+import SmurfsList from './SmurfsList';
+import AddSmurfButton from './AddSmurfButton';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -13,8 +15,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <SmurfCard />
+        <AddSmurfButton />
         <SmurfForm />
+        <SmurfsList />
       </div>
     );
   }

@@ -79,3 +79,31 @@ Light Classy Grey: #f1f0ee – Simple light grey is used to provide depth behind
   padding: 10px;
   width: 60%;
 }
+
+.Smurf-button {
+  width: 96px;
+  height: 96px;
+  border-radius: 4px;
+  background: url("https://www.shareicon.net/data/96x96/2015/10/27/140549_cartoon_256x256.png");
+  background-repeat: no-repeat;
+}
+
+.Smurf-button:hover {
+  cursor: pointer;
+  width: 106px;
+  height: 106px;
+  background-size: 110%;
+}
+
+
+.Smurf-button img{
+  position: relative;
+  left: -30px;
+  bottom: -60px;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
