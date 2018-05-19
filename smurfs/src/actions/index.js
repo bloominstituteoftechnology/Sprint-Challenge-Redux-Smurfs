@@ -13,9 +13,9 @@ export const ERROR = "ERROR";
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
-const URL = 'http://localhost:3333/smurfs'
+
 export const fetchSmurfs = () => {
-  const getSmurfs = axios.get(`${URL}`);
+  const getSmurfs = axios.get('http://localhost:3333/smurfs');
   return function(dispatch) {
     dispatch({
       type: FETCHING_SMURFS
@@ -36,8 +36,7 @@ export const fetchSmurfs = () => {
   }
 }
 export const addSmurfs = smurf => {
-  console.log(smurf)
-  const add = axios.post(`${URL}`, smurf);
+  const add = axios.post('http://localhost:3333/smurfs', smurf);
   return function(dispatch) {
     dispatch({
       type: ADDING_SMURF
@@ -46,6 +45,28 @@ export const addSmurfs = smurf => {
       .then(response => {
         dispatch({
           type: ADD_SMURF,
+          payload: response.data
+        })
+      })
+      .catch(error => {
+        dispatch({
+          type: ERROR,
+          payload: error
+        })
+      })
+  }
+}
+
+export const updateSmurfs = (smurf, id) => {
+  const update = axios.put(`http://localhost:3333/smurfs/${id}`, {name: smurf.name, age: smurf.age, height: smurf.height});
+  return function(dispatch) {
+    dispatch({
+      type: UPDATING_SMURF
+    });
+    update
+      .then(response => {
+        dispatch({
+          type: UPDATE_SMURF,
           payload: response.data
         })
       })
