@@ -57,6 +57,15 @@ ul {
   background-color: white;
 }
 
+.smurf-card:hover .title {
+  color: coral;
+}
+
+.smurf-card:hover button {
+  background-color: rgb(209, 209, 209);
+  color: white;
+}
+
 .form input{
   font-size: 20px;
 }
@@ -67,5 +76,29 @@ ul {
 
 .form button:hover {
   color: coral;
+  box-shadow: 4px 4px 6px gray;
+}
+
+.edit-button {
+  font-size: 20px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.edit-button:hover {
+  background-color: white !important;
+  color: coral !important;
+  box-shadow: 4px 4px 6px gray;
+}
+
+.remove-button {
+  font-size: 20px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.remove-button:hover {
+  background-color: white !important;
+  color: coral !important;
   box-shadow: 4px 4px 6px gray;
 }

@@ -28,10 +28,12 @@ class App extends Component {
           return (
             <div key={smurf.name} className="smurf-card">
               <ul>
-                <li><span style={{ color: 'coral' }}>Name:</span> {smurf.name}</li>
-                <li><span style={{ color: 'coral' }}>Age:</span> {smurf.age}</li>
-                <li><span style={{ color: 'coral' }}>Height:</span> {smurf.height}</li>
+                <li><span className="title" >Name:</span> {smurf.name}</li>
+                <li><span className="title" >Age:</span> {smurf.age}</li>
+                <li><span className="title" >Height:</span> {smurf.height}</li>
               </ul>
+              <button className="edit-button">Edit</button>
+              <button className="remove-button">Remove</button>
             </div>
           )
         })}
