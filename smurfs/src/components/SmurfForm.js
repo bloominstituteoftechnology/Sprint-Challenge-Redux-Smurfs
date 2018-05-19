@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { addSmurf } from '../actions';
+import { addSmurf, updateSmurf } from '../actions';
 
 
 class SmurfForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-                id: '',
+                id: null,
                 name: '',
                 age: '',
                 height: ''
@@ -20,25 +20,37 @@ class SmurfForm extends Component {
 
     }
 
+    componentDidMount() {
+        if(this.props.smurf){
+            console.log("did mount", this.props.smurf.name);
+            this.setState(this.props.smurf);
+        }
+    }
+
     handleInputChange(event) {
         this.setState({[event.target.name]: event.target.value})
     }
 
     handleSubmit(event) {
-        const newSmurf = {
+        const smurf = {
             id: this.state.id,
             name: this.state.name,
             age: this.state.age,
             height: this.state.height,
         };
-        console.log("New Smurf ", newSmurf);
-        this.props.addSmurf(newSmurf);
-        this.setState({
-            id: '',
-            name: '',
-            age: '',
-            height: ''
-        })
+        console.log("New Smurf ", smurf);
+        if(smurf.id === null) {
+            this.props.addSmurf(smurf);
+            this.setState({
+                id: null,
+                name: '',
+                age: '',
+                height: ''
+            })
+        } else {
+            this.props.updateSmurf(smurf);
+        }
+        
     }
 
 
@@ -99,4 +111,4 @@ const mapStateToProps = state => {
     };
 }
  
-export default connect(mapStateToProps, { addSmurf })(SmurfForm);
+export default connect(mapStateToProps, { addSmurf, updateSmurf })(SmurfForm);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SmurfCard from './SmurfCard';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions';
+import SmurfForm from './SmurfForm';
 
 
 class SmurfsList extends Component {
@@ -16,7 +17,15 @@ class SmurfsList extends Component {
     render() { 
         return (
             <div>
-                {this.props.smurfs.map((smurf) => <SmurfCard key={smurf.id} smurf={smurf} />)}
+                {this.props.smurfs.map((smurf) => {
+                    return (
+                        <div key={smurf.id}>
+                            <SmurfCard smurf={smurf} />
+                            <SmurfForm smurf={smurf}/>
+                        </div>
+                        )
+                    })
+                }
             </div>
         )
     }

@@ -62,9 +62,10 @@ const updating = () => {
     }
 }
 
-const updated = () => {
+const updated = (data) => {
     return {
-        type: UPDATED
+        type: UPDATED,
+        payload: data
     }
 }
 
@@ -97,7 +98,7 @@ export const getSmurfs = () => {
                 setTimeout(() => {
                     console.log("result of get request: ", res.data)
                     dispatch(fetched(res.data));
-                }, 5000);
+                }, 1000);
             })
             .catch( err => {
                 dispatch(error(err));
@@ -120,12 +121,12 @@ export const addSmurf = (smurf) => {
 }
 
 export const updateSmurf = (smurf) => {
-    const promise = axios.put(`http://localhost:3333/smurfs${smurf.id}`, smurf)
+    const promise = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
     return function(dispatch) {
         dispatch(updating())
         promise
             .then( res  => {
-                dispatch(updated(res));
+                dispatch(updated(res.data));
             })
             .catch( err => {
                 dispatch(error(err));
@@ -134,7 +135,7 @@ export const updateSmurf = (smurf) => {
 }
 
 export const deleteSmurf = (smurf) => {
-    const promise = axios.delete(`http://localhost:3333/smurfs${smurf.id}`)
+    const promise = axios.delete(`http://localhost:3333/smurfs/${smurf.id}`)
     return function(dispatch) {
         dispatch(deleting())
         promise 

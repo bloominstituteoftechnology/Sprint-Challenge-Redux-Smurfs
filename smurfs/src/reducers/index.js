@@ -47,7 +47,7 @@ export const reducer = (state=initialState, action) => {
         case FETCHING:
             return Object.assign({}, state, {
                 fetching: true,
-                fetched: false
+                fetched: false,
             })
         case FETCHED:
             return Object.assign({}, state, {
@@ -64,7 +64,7 @@ export const reducer = (state=initialState, action) => {
             return Object.assign({}, state, {
                 saving: false,
                 saved: true,
-                smurfs: state.smurfs.concat(action.payload)
+                smurfs: action.payload
             })
         case UPDATING:
             return Object.assign({}, state, {
@@ -74,7 +74,8 @@ export const reducer = (state=initialState, action) => {
         case UPDATED:
             return Object.assign({}, state, {
                 updated: true,
-                updating: false
+                updating: false,
+                smurfs: action.payload
             })
         case DELETING:
             return Object.assign({}, state, {
