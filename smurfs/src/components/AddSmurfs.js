@@ -22,7 +22,7 @@ class AddSmurf extends Component {
         this.setState({
             name: '',
             age: '',
-            Height: ''
+            height: ''
         });
     };
 
