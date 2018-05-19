@@ -36,47 +36,41 @@ class UpdateSmurf extends Component {
         })
     }
     render() {
-        const smurf = this.props.smurfs.map(smurf => {
-            return smurf
-        })
-        console.log('Who is this smurf?', this.props.smurfs)
-        console.log('State of Update', this.state, 'Props of Update', this.props)
-        console.log(smurf, 'who is this smurf?')
         return (
     <React.Fragment>
-            <React.Fragment key={smurf.id}>
+            <React.Fragment>
                 {this.props.updating ? (
                     <img src="https://media1.tenor.com/images/b8a59fdb680805a6a57d67901982365f/tenor.gif?itemid=9478117" alt="loading" />
                 ) : (
                         <div className="container">
-                            <div className="row">
-                                        <form onSubmit={this.updateSmurf} value={this.props.match.params.smurfid}>
-                                            <label> {this.props.smurfs.name} </label>
+                            <div className="row mw-100 d-flex">
+                                <form onSubmit={this.updateSmurf} value={this.props.match.params.smurfid}>
+                                            <label className="row"> Change Name: </label>
                                         <input
                                             className="row"
                                             onChange={this.handleInputChange}
-                                            placeholder={this.props.smurfs.name}
+                                            placeholder={this.props.name}
                                             value={this.state.name}
-                                            name="name"
-                                        />
-                                    <label> New Age: </label>
+                                            name="name">
+                                        </input>
+                                    <label className="row"> Change Age: </label>
                                         <input
                                             className="row"
                                             onChange={this.handleInputChange}
-                                            placeholder={this.props.smurfs.age}
+                                            placeholder={this.props.age}
                                             value={this.state.age}
-                                            name="age"
-                                        />
-                                    <label> New Height: </label>
+                                            name="age">
+                                        </input>
+                                    <label className="row"> Change Height: </label>
                                         <input
                                             className="row"
                                             onChange={this.handleInputChange}
                                             value={this.state.height}
-                                            placeholder= {this.props.smurfs.height}
-                                            name="height"
-                                        />
+                                            placeholder= {this.props.height}
+                                            name="height">
+                                        </input>
                                 <NavLink to="/smurfs"><button type="submit" value={this.props.match.params.smurfid} onClick={this.updateSmurf}>
-                                    Change {this.props.smurfs.name}'s information
+                                    Change {this.props.name}'s information
                         </button></NavLink>                                
                         </form>
                             </div>

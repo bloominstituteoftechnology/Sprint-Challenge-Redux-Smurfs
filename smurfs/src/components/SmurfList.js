@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardBody, CardTitle, CardText } from 'reactstrap'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { deleteSmurf, fetchSmurfs } from '../actions'
 
 
 const SmurfList = props => {
@@ -16,7 +17,7 @@ const SmurfList = props => {
                             <CardText> {smurf.age} </CardText>
                             <CardText> {smurf.height} </CardText>
                         <NavLink to={`/smurfs/${smurf.id}`}> <button type="submit" value={smurf.id}> Update {smurf.name}'s information </button></NavLink>
-                            <button type="submit" value={smurf.id} onClick={props.deleteSmurf}> Cast {smurf.name} out of Smurf Village</button>
+                            <button type="submit" value={smurf.id} onClick={(event) => { props.deleteSmurf(event.target.value)}}> Cast {smurf.name} out of Smurf Village</button>
                         </CardBody>
                     </Card>
                 )
@@ -30,4 +31,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(SmurfList)
+export default connect(mapStateToProps, { deleteSmurf, fetchSmurfs })(SmurfList)

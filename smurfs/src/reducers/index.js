@@ -60,7 +60,8 @@ const smurfReducer = (state = initialState, action) => {
     });
     case DELETE_SMURF:
     return Object.assign({}, state, {
-      smurfs: action.payload,
+      smurfs: action.payload,     
+      deletingSmurf: false,
     });
     case ERROR:
     return Object.assign({}, state, {

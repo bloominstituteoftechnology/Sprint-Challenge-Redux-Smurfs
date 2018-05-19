@@ -28,7 +28,7 @@ class App extends Component {
         {this.props.smurfs.map(smurf => {
           console.log('What smurfs live here?', this.props.smurfs)
           return (
-        <Route path="/smurfs/:smurfid" key={this.props.smurfs} render={(props) => <UpdateSmurf {...props} id={smurf.id} name={smurf.name} age={smurf.age} height={smurf.age} />}/>)})}
+        <Route path="/smurfs/:smurfid" key={this.props.smurfs} render={(props) => <UpdateSmurf {...props} name={smurf.name} age={smurf.age} height={smurf.height} />}/>)})}
         </Switch>
       </div>
       </div>
