@@ -1,30 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class SmurfCard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            smurf:  {
-                name: 'Brainey',
-                age: 200,
-                height: '5cm',
-                id: 0
-            }
-        }
-    }
-    render() { 
-        return ( 
-            <div className="SmurfCard-container">
-                <h1>{this.state.smurf.name}</h1>
-                <p>Age: {this.state.smurf.age}</p>
-                <p>Height: {this.state.smurf.height}</p>
-                <div>
-                    <button className="ok-button">Edit</button>
-                    <button className="cancel-button">Delete</button> 
-                </div>
+const SmurfCard = (props) => {
+    return ( 
+        <div className="SmurfCard-container">
+            {console.log("SmurfCard ", props.smurf)}
+            <h1>{props.smurf.name}</h1>
+            <p>Age: {props.smurf.age}</p>
+            <p>Height: {props.smurf.height}</p>
+            <div>
+                <button className="ok-button">Edit</button>
+                <button className="cancel-button">Delete</button> 
             </div>
-         )
-    }
+        </div>
+    )
 }
  
 export default SmurfCard;
