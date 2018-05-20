@@ -159,6 +159,7 @@ section .section-title {
 .frontside .card .card-title,
 .backside .card .card-title {
   color: white;
+  text-shadow: 1px 1px red;
 }
 
 
@@ -175,6 +176,8 @@ section .section-title {
   float: right;
 }
 
+.create-input {
+}
 /* .visit-p {
   color: #6495ED
 } */
