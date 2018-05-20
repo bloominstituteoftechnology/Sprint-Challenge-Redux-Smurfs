@@ -44,11 +44,8 @@ export const addSmurf = smurfData => {
 
 export const deleteSmurf = id => {
   const smurfs = axios.delete(`http://localhost:3333/smurfs/${id}`);
-  console.log('inside deleting', id)
-  console.log(smurfs);  
   return dispatch => { dispatch({type: PENDING_SMURFS});
   smurfs.then(response => {
-    console.log('response',response.data)
    dispatch({type: SUCCESS_SMURFS, payload: response.data})})
   .catch(err => dispatch({ type: ERROR_SMURFS, payload:'Something went wrong with deleting smurf.'}))
   }

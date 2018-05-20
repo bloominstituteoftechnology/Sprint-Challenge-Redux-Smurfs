@@ -129,7 +129,6 @@ section .section-title {
 
 .frontside,
 .backside {
-  background: #9fdcff;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
@@ -149,16 +148,17 @@ section .section-title {
 .frontside .card,
 .backside .card {
   min-height: 312px;
+  background: #9fdcff;  
 }
 
 .backside .card a {
   font-size: 18px;
-  color: #9fdcff !important;
+  color: white;
 }
 
 .frontside .card .card-title,
 .backside .card .card-title {
-  color: #9fdcff !important;
+  color: white;
 }
 
 
@@ -175,6 +175,6 @@ section .section-title {
   float: right;
 }
 
-.visit-p {
+/* .visit-p {
   color: #6495ED
-}
+} */
