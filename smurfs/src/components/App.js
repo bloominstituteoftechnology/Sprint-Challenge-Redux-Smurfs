@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchSmurfs, createSmurf } from '../actions';
+import { fetchSmurfs, createSmurf, terminateSmurf } from '../actions';
 import { connect } from 'react-redux';
 import AddSmurf from './AddSmurfs';
 /*
@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
     return <div className="App">
       <header className="App-header">
         <h1 className="App-title">Welcome to Smurf Village</h1>
@@ -33,7 +34,7 @@ class App extends Component {
                 <li><span className="title" >Height:</span> {smurf.height}</li>
               </ul>
               <button className="edit-button">Edit</button>
-              <button className="remove-button">Remove</button>
+              <button className="remove-button" onClick={() => this.props.terminateSmurf(smurf.id)}>Remove</button>
             </div>
           )
         })}
@@ -51,4 +52,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchSmurfs, createSmurf })(App);
+export default connect(mapStateToProps, { fetchSmurfs, createSmurf, terminateSmurf })(App);
