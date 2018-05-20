@@ -48,8 +48,8 @@ export const deleteSmurf = id => {
   console.log(smurfs);  
   return dispatch => { dispatch({type: PENDING_SMURFS});
   smurfs.then(response => {
-    console.log('response',response)
-   dispatch({type: SUCCESS_SMURFS, smurfs: response.data})})
+    console.log('response',response.data)
+   dispatch({type: SUCCESS_SMURFS, payload: response.data})})
   .catch(err => dispatch({ type: ERROR_SMURFS, payload:'Something went wrong with deleting smurf.'}))
   }
 }

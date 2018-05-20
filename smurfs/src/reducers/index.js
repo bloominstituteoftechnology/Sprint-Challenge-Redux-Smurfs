@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const smurfsReducer = (state = initialState, action) => {
-  console.log(action)
+  // console.log(action)
   switch (action.type) {
     case PENDING_SMURFS:
       return Object.assign({}, state, { pending: true });
