@@ -4,6 +4,7 @@ export const SUCCESS_POST_SMURF = 'SUCCESS_POST_SMURFS';
 export const SUCCESS_DELETE_SMURF = 'SUCCESS_DELETE_SMURF';
 export const PENDING_SMURFS = 'PENDING_SMURFS';
 export const ERROR_SMURFS = 'ERROR_SMURFS';
+export const SUCCESS_PUT_SMURF = 'SUCCESS_PUT_SMURF';
 
 //consolidate all SUCCESS into one SUCCESS
 
@@ -33,8 +34,8 @@ export const getSmurfs = () => {
   }
 }
 
-export const addSmurf = newData => {
-  let newSmurf = axios.post('http://localhost:3333/smurfs', newData )
+export const addSmurf = newSmurfData => {
+  let newSmurf = axios.post('http://localhost:3333/smurfs', newSmurfData )
   return function(dispatch) {
     newSmurf 
       .then(response => {
@@ -66,3 +67,18 @@ export const deleteSmurf = (id) => {
 //       .then(response)
 //   }
 // }
+
+export const updateSmurf = smurf => {
+  let changeSmurf = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
+  return function(dispatch) {
+
+    changeSmurf 
+      .then(response => {
+        dispatch({type: SUCCESS_PUT_SMURF, payload: response.data})
+      })
+      .catch(error => {
+        dispatch({type: ERROR_SMURFS, payload: "UNABLE TO EDIT. PLEASE TRY AGAIN."})
+      })
+  }
+
+}

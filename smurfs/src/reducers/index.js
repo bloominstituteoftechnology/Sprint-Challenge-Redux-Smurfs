@@ -1,9 +1,10 @@
 import { 
   SUCCESS_GET_SMURFS, 
   SUCCESS_POST_SMURF, 
-  SUCCESS_DELETE_SMURF, 
+  SUCCESS_DELETE_SMURF,
+  SUCCESS_PUT_SMURF,
   PENDING_SMURFS, 
-  ERROR_SMURFS 
+  ERROR_SMURFS
 } from '../actions'; 
 
  
@@ -27,6 +28,8 @@ const smurfsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {smurfs: (action.payload), addingSmurf: true, error: null })
     case SUCCESS_DELETE_SMURF:
       return Object.assign({}, state, {smurfs: (action.payload), deletingSmurf: true, fetchingSmurfs: false})
+    case SUCCESS_PUT_SMURF:
+      return Object.assign({}, state, {smurfs: action.payload})
     case ERROR_SMURFS:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
