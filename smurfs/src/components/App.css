@@ -36,16 +36,12 @@ background-size:160px 160px;
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 
-#team {
+/* #team {
   background: #eee !important;
-}
+} */
 
-.btn-primary:hover,
+/* .btn-primary:hover,
 .btn-primary:focus {
   background-color: #108d6f;
   border-color: #108d6f;
@@ -57,7 +53,7 @@ background-size:160px 160px;
   color: #fff;
   background-color: #007b5e;
   border-color: #007b5e;
-}
+} */
 
 section {
   padding: 60px 0;
@@ -70,10 +66,10 @@ section .section-title {
   text-transform: uppercase;
 }
 
-#team .card {
+/* #team .card {
   border: none;
   background: #ffffff;
-}
+} */
 
 .image-flip:hover .backside,
 .image-flip.hover .backside {
@@ -120,7 +116,7 @@ section .section-title {
   position: absolute;
   top: 0;
   left: 0;
-  background: white;
+  /* background: white; */
   -webkit-transform: rotateY(-180deg);
   -moz-transform: rotateY(-180deg);
   -o-transform: rotateY(-180deg);
@@ -133,6 +129,7 @@ section .section-title {
 
 .frontside,
 .backside {
+  background: #9fdcff;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
