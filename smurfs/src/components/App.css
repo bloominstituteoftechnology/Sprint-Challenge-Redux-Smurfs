@@ -108,7 +108,7 @@ section .section-title {
   -ms-transform: rotateY(0deg);
   z-index: 2;
   margin-bottom: 30px;
-  box-shadow: 5px 7px 9px -4px rgb(158, 158, 158)
+  box-shadow: 8px 7px 9px -4px rgb(158, 158, 158)
 }
 
 .backside {
@@ -124,7 +124,7 @@ section .section-title {
   transform: rotateY(-180deg);
   -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
   -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-  box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+  box-shadow: 8px 7px 9px -4px rgb(158, 158, 158);
 }
 
 .frontside,
@@ -177,6 +177,15 @@ section .section-title {
 }
 
 .create-input {
+  border-radius: 10%;
+  box-shadow: 0 4px 8px 0 rgba(12, 159, 218, 0.2),
+  0 6px 20px 0 rgba(13, 144, 196, 0.19);
+}
+
+.create-button {
+  border-radius: 10%;
+  box-shadow: 0 4px 8px 0 rgba(12, 159, 218, 0.2),
+  0 6px 20px 0 rgba(13, 144, 196, 0.19);
 }
 /* .visit-p {
   color: #6495ED

@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getSmurfs, addSmurf, deleteSmurf } from "../actions";
+import { getSmurfs, addSmurf, deleteSmurf, editSmurf } from "../actions";
 import { connect } from "react-redux";
 import AddSmurf from './AddSmurf';
 
 class App extends Component {
-  // state = {
-  //   smurf: "",
-  //   editSmurfData: {
-  //     name: "",
-  //     age: "",
-  //     height: ""
-  //   }
-  // };
+  state = {
+      name: "",
+      age: "",
+      height: ""
+  };
 
   componentDidMount() {
     this.props.getSmurfs();
@@ -20,7 +17,7 @@ class App extends Component {
 
   handleSmurfInput = e => {
     this.setState({
-      editSmurfData: {[e.target.name]: e.target.value}
+        [e.target.name]: e.target.value
     });
   };
 
@@ -59,12 +56,12 @@ class App extends Component {
                               Edit {smurf.name}
                             </h4>
                             <div>
-                              {/* <div className="form-group">
-                                <input onChange={this.handleSmurfInput} value={this.state.editSmurfData.name} name="name" className="form-control" placeholder={smurf.name} />
-                                <input onChange={this.handleSmurfInput} value={this.state.editSmurfData.age} name="age" className="form-control" placeholder={smurf.age} />
-                                <input onChange={this.handleSmurfInput} value={this.state.editSmurfData.height} name="height" className="form-control" placeholder={smurf.height} />
-                              </div> */}
-                              <button type="submit" className="btn btn-primary">
+                              <div className="form-group">
+                                <input onChange={this.handleSmurfInput} value={this.state.name} name="name" className="form-control" placeholder={smurf.name} />
+                                <input onChange={this.handleSmurfInput} value={this.state.age} name="age" className="form-control" placeholder={smurf.age} />
+                                <input onChange={this.handleSmurfInput} value={this.state.height} name="height" className="form-control" placeholder={smurf.height} />
+                              </div>
+                              <button onClick={() => this.props.editSmurf(smurf.id,this.state)} type="submit" className="btn btn-primary">
                                 Edit Smurf
                               </button>
                             </div>
@@ -101,4 +98,4 @@ const mapStateToProps = state => {
     pending: state.pending
   };
 };
-export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf, editSmurf })(App);

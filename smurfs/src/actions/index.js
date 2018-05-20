@@ -37,10 +37,20 @@ export const addSmurf = smurfData => {
   };
 };
 
-// export const editSmurf = smurfObject => {
-//   const smurfs = axios.put(`http://localhost:3333/smurfs/${smurfObject.id}`, smurfObject);
-
-// }
+export const editSmurf = (id, smurfObject) => {
+  const smurfs = axios.put(`http://localhost:3333/smurfs/${id}`, smurfObject);
+  return dispatch => {
+    smurfs.then(response => {
+      dispatch({ type: SUCCESS_SMURFS, payload: response.data })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR_SMURFS,
+        payload: "Something went wrong with editing Smurfs"
+      });
+    });
+  }
+}
 
 export const deleteSmurf = id => {
   const smurfs = axios.delete(`http://localhost:3333/smurfs/${id}`);
