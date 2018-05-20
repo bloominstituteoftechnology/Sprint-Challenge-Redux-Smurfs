@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHED, FETCHING, SAVING, SAVED, UPDATING, UPDATED, DELETING, DELETED, ERROR } from '../actions';
+import { ADD, EDIT, CANCEL, FETCHED, FETCHING, SAVING, SAVED, UPDATING, UPDATED, DELETING, DELETED, ERROR } from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -17,6 +17,10 @@ import { FETCHED, FETCHING, SAVING, SAVED, UPDATING, UPDATED, DELETING, DELETED,
 
 const initialState = {
   smurfs: [],
+
+  add: false,
+  edit: false,
+
 
   fetching: false,
   fetched: false,
@@ -44,6 +48,20 @@ const initialState = {
 
 export const reducer = (state=initialState, action) => {
     switch (action.type) {
+
+        case ADD:
+        return Object.assign({}, state, {
+            add: true,
+        })
+        case EDIT:
+        return Object.assign({}, state, {
+            edit: true,
+        })
+        case CANCEL:
+        return Object.assign({}, state, {
+            add: false,
+            edit: false
+        })
         case FETCHING:
             return Object.assign({}, state, {
                 fetching: true,

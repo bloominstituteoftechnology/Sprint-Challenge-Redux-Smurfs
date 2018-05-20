@@ -16,6 +16,12 @@
 
 import axios from 'axios';
 
+export const FETCH = 'FETCH';
+export const ADD = 'ADD';
+export const EDIT = 'EDIT';
+export const CANCEL = 'CANCEL';
+
+
 export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 
@@ -29,6 +35,32 @@ export const DELETING = 'DELETING';
 export const DELETED = 'DELETED';
 
 export const ERROR = 'ERROR';
+
+
+const fetch = () => {
+    return {
+        type: FETCH
+    }
+}
+
+const add = () => {
+    return {
+        type: ADD
+    }
+}
+
+const edit = () => {
+    return {
+        type: EDIT
+    }
+}
+
+const cancel = () => {
+    return {
+        type: CANCEL
+    }
+}
+
 
 const fetching = () => {
     return {
@@ -89,6 +121,30 @@ const error = (err) => {
     }
 }
 
+export const fetchSmurf = () => {
+    return function(dispatch) {
+        dispatch(fetch());
+    }
+}
+
+export const newSmurf = () => {
+    return function(dispatch) {
+        dispatch(add());
+    }
+}
+
+export const editSmurf = () => {
+    return function(dispatch) {
+        dispatch(edit());
+    }
+}
+
+export const cancelEdit = () => {
+    return function(dispatch) {
+        dispatch(cancel());
+    }
+}
+
 export const getSmurfs = () => {
     const promise = axios.get('http://localhost:3333/smurfs');
     console.log("fetching smurfs... ")
@@ -114,6 +170,7 @@ export const addSmurf = (smurf) => {
         promise
             .then( res => {
                 dispatch(saved(res.data))
+                dispatch(cancelEdit());
             })
             .catch( err => {
                 dispatch(error(err));
@@ -128,6 +185,7 @@ export const updateSmurf = (smurf) => {
         promise
             .then( res  => {
                 dispatch(updated(res.data));
+                dispatch(cancelEdit());
             })
             .catch( err => {
                 dispatch(error(err));

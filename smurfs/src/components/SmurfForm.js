@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { addSmurf, updateSmurf } from '../actions';
+import { addSmurf, updateSmurf, cancelEdit} from '../actions';
 
 
 class SmurfForm extends Component {
@@ -51,6 +51,10 @@ class SmurfForm extends Component {
             this.props.updateSmurf(smurf);
         }
         
+    }
+
+    handleCancel = () => {
+        this.props.cancelEdit();
     }
 
 
@@ -105,4 +109,4 @@ const mapStateToProps = state => {
     return props;
 } 
 
-export default connect(mapStateToProps, { addSmurf, updateSmurf })(SmurfForm);
+export default connect(mapStateToProps, { addSmurf, updateSmurf, cancelEdit })(SmurfForm);

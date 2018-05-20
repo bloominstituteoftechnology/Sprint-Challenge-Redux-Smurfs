@@ -17,12 +17,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      edit: true
     };
-  }
-
-  onClick = () => {
-    this.setState({edit:  true});
   }
 
   render() {
@@ -30,13 +25,9 @@ class App extends Component {
       <div className="App">
         {console.log("refresh app")}
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        {this.state.edit && <SmurfForm />}
-        {this.state.edit && <SmurfsList />}
-        {this.state.edit && !this.props.fetching &&
-        <div className="Smurf-button fixed" onClick={this.onClick}>
-          <img src="https://www.shareicon.net/data/24x24/2015/08/07/81652_green_48x48.png" alt="img"/>
-        </div>}
-        
+        {this.props.add && <SmurfForm />}
+        {!this.props.add && <SmurfsList />}
+        {!this.props.add && !this.props.fetching && <AddSmurfButton />}
       </div>
     );
   }
@@ -48,4 +39,4 @@ const mapStateToProps = state => {
   return props;
 }
 
-export default connect(mapStateToProps, {  })(App);
+export default connect(mapStateToProps)(App);

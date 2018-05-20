@@ -8,7 +8,8 @@ import SmurfForm from './SmurfForm';
 class SmurfsList extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {
+        }
     }
 
     componentDidMount() {
@@ -21,7 +22,7 @@ class SmurfsList extends Component {
                     return (
                         <div key={smurf.id}>
                             <SmurfCard smurf={smurf} />
-                            <SmurfForm smurf={smurf}/>
+                            {this.props.edit && <SmurfForm smurf={smurf}/>}
                         </div>
                         )
                     })

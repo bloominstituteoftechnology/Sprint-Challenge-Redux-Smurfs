@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteSmurf } from '../actions';
+import { editSmurf, deleteSmurf } from '../actions';
 
 class SmurfCard extends Component {
     constructor(props) {
@@ -11,6 +11,7 @@ class SmurfCard extends Component {
     }
     onClickEdit = () => {
         this.setState({edit: true});
+        this.props.editSmurf();
     }
 
     onClickCancel = () => {
@@ -22,18 +23,16 @@ class SmurfCard extends Component {
     }
 
     render() {
-        return ( 
+        return (
             <div className="SmurfCard-container">
                 {console.log("SmurfCard ", this.props.smurf)}
                 <h1>{this.props.smurf.name}</h1>
                 <p>Age: {this.props.smurf.age}</p>
                 <p>Height: {this.props.smurf.height}</p>
-                {!this.state.edit &&
                     <div>
                         <button className="ok-button" onClick={this.onClickEdit}>Edit</button>
                         <button className="cancel-button" onClick={this.onClickDelete}>Delete</button> 
                     </div>
-                }
             </div>
         )
     }
@@ -46,4 +45,4 @@ const mapStateToProps = state => {
     return props;
 } 
 
-export default connect(mapStateToProps, { deleteSmurf })(SmurfCard);
+export default connect(mapStateToProps, { editSmurf, deleteSmurf })(SmurfCard);
