@@ -75,9 +75,10 @@ const deleting = () => {
     }
 }
 
-const deleted = () => {
+const deleted = (data) => {
     return {
-        type: DELETED
+        type: DELETED,
+        payload: data
     }
 }
 
@@ -140,7 +141,8 @@ export const deleteSmurf = (smurf) => {
         dispatch(deleting())
         promise 
             .then( res => {
-                dispatch(deleted(res));
+                console.log("deleted res ", res.data);
+                dispatch(deleted(res.data));
             })
             .catch( err => {
                 dispatch(error(err));

@@ -85,7 +85,8 @@ export const reducer = (state=initialState, action) => {
         case DELETED:
             return Object.assign({}, state, {
                 deleted: true,
-                deleting: false
+                deleting: false,
+                smurfs: action.payload
             })
         case ERROR:
             return Object.assign({}, state, {

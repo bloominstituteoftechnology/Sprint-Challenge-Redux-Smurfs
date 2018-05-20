@@ -100,15 +100,9 @@ class SmurfForm extends Component {
 }
  
 const mapStateToProps = state => {
-    console.log("mapStateToProps form ", state);
-    return {
-        smurfs: state.smurfs,
-        fetching: state.fetching,
-        fetched: state.fetched,
-        deleting: state.deleting,
-        deleted: state.deleted,
-        error: state.error
-    };
-}
- 
+    console.log("mapStateToProps Form", state);
+    const props = state;
+    return props;
+} 
+
 export default connect(mapStateToProps, { addSmurf, updateSmurf })(SmurfForm);
