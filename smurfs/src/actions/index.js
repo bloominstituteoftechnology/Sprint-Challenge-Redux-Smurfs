@@ -8,16 +8,6 @@ export const SUCCESS_PUT_SMURF = 'SUCCESS_PUT_SMURF';
 
 //consolidate all SUCCESS into one SUCCESS
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
 
 export const getSmurfs = () => {
   let smurfs = axios.get('http://localhost:3333/smurfs')
@@ -60,13 +50,6 @@ export const deleteSmurf = (id) => {
   }
 }
 
-// export const updateSmurf = (id, updates) => {
-//   let updatedSmurf = axios.put(`http://localhost:3333/smurfs/${id}`, updates);
-//   return function(dispatch) {
-//     updatedSmurf
-//       .then(response)
-//   }
-// }
 
 export const updateSmurf = smurf => {
   let changeSmurf = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf);

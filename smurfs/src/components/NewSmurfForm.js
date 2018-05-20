@@ -34,13 +34,28 @@ class NewSmurfForm extends Component {
         return (
             <form>
 
-                <input type="text" placeholder="name" name="newSmurfName" value={this.state.newSmurfName} onChange={this.handleNewSmurf}>
+                <input 
+                    type="text" 
+                    placeholder="name" 
+                    name="newSmurfName" 
+                    value={this.state.newSmurfName} 
+                    onChange={this.handleNewSmurf}>
                 </input>
                 
-                <input type="text" placeholder="age" name="newSmurfAge" value={this.state.newSmurfAge} onChange={this.handleNewSmurf}>
+                <input 
+                    type="text" 
+                    placeholder="age" 
+                    name="newSmurfAge" 
+                    value={this.state.newSmurfAge} 
+                    onChange={this.handleNewSmurf}>
                 </input>
 
-                <input type="text" placeholder="height" name="newSmurfHeight" value={this.state.newSmurfHeight} onChange={this.handleNewSmurf}>
+                <input 
+                    type="text" 
+                    placeholder="height" 
+                    name="newSmurfHeight" 
+                    value={this.state.newSmurfHeight} 
+                    onChange={this.handleNewSmurf}>
                 </input>
 
                 <button onClick={this.handleSubmitSmurf}>Add Smurf</button>
