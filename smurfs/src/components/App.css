@@ -48,25 +48,22 @@ ul {
   border: 1px solid rgb(170, 170, 170);
   border-radius: 20px;
   margin-top: 20px;
-  box-shadow: 4px 4px 6px gray;
   width: 350px;
   height: 200px;
-  background-color: rgb(209, 209, 209);
-}
-
-.smurf-card:hover {
   box-shadow: 4px 4px 6px coral;
   background-color: lightblue;
+  display: flex;
+  justify-content: center;
 }
 
-.smurf-card:hover .title {
+.smurf-card .title {
   color: coral;
 }
 
-.smurf-card:hover button {
+/* .smurf-card:hover button {
   background-color: rgb(209, 209, 209);
   color: white;
-}
+} */
 
 .form input{
   font-size: 20px;
@@ -156,15 +153,21 @@ ul {
 .front {
 	z-index: 2;
 	/* for firefox 31 */
-	transform: rotateY(0deg);
+  transform: rotateY(0deg);
 }
 
 /* back, initially hidden pane */
 .back {
   transform: rotateY(180deg);
+  box-shadow: 4px 4px 6px coral;
+  background-color: lightblue;
 }
 
-.back img {
-  height: 200px;
-  border-radius: 20px;
+.front li {
+  margin: 30px;
+  font-size: 25px;
+}
+
+.front ul {
+  margin: 0;
 }
