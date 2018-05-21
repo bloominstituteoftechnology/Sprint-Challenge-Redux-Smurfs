@@ -5,6 +5,7 @@ export const SMURFS_FETCHED = "SMURFS_FETCHED";
 export const ADDING_SMURF = "ADDING_SMURF";
 export const DELETING_SMURF = "DELETING_SMURF";
 export const UPDATING_SMURF = "UPDATING_SMURF";
+export const UPDATE_SMURF = 'UPDATE_SMURF';
 export const ERROR = "ERROR";
 
 /*
@@ -49,6 +50,18 @@ export const deleteSmurf = id => {
     payload: id
   };
 };
+export const updatingSmurf = () => {
+  return {
+    type: UPDATING_SMURF
+  };
+};
+
+export const updateSmurf = data => {
+  return {
+    type: UPDATE_SMURF,
+    payload: data,
+  };
+};
 
 export const error = data => {
   return {
@@ -63,7 +76,7 @@ export const getSmurfs = () => {
     dispatch(fetchingSmurfs());
     fetchDaSmurfs
       .then(response => dispatch(smurfsFetched(response.data)))
-      .catch(err => dispatch(error(error)));
+      .catch(error => dispatch(error(error)));
   };
 };
 
@@ -73,7 +86,7 @@ export const addSmurf = obj => {
     dispatch(addingSmurfs());
     postSmurf
       .then(response => dispatch(smurfsFetched(response.data)))
-      .catch(err => dispatch(error(error)));
+      .catch(error => dispatch(error(error)));
   };
 };
 
@@ -83,6 +96,16 @@ export const removeSmurf = id => {
     dispatch(deletingSmurf());
     deleteDaSmurf
       .then(response => dispatch(deleteSmurf(response.data)))
-      .catch(err => dispatch(error(error)));
+      .catch(error => dispatch(error(error)));
+  };
+};
+
+export const updateSmurfData = id => {
+  const updateDaSmurf = axios.put(`http://localhost:3333/smurfs/${id}`);
+  return function(dispatch) {
+    dispatch(updatingSmurf());
+    updateDaSmurf
+      .then(response => dispatch(updateSmurf(response.data)))
+      .catch(error => dispatch(error(error)));
   };
 };

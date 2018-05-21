@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getSmurfs, addSmurf, removeSmurf } from "../actions";
+import { getSmurfs, addSmurf, removeSmurf, updateSmurfData } from "../actions";
 import { connect } from "react-redux";
 import { Button, Col, Row, Card, CardBody } from "reactstrap";
 class Smurfs extends Component {
@@ -29,13 +29,8 @@ class Smurfs extends Component {
     this.setState({ name: "", age: "", height: "" });
   };
 
-  updateOnClick = e => {
-    this.props.updateData(e.target.name, {
-      id: Number(e.target.name),
-      name: this.state.name,
-      age: Number(this.state.age),
-      email: this.state.email
-    });
+  handleUpdate = e => {
+    this.props.updateSmurfData(this.props.smurf.id);
     this.setState({ name: "", age: "", email: "" });
   };
   render() {
@@ -69,7 +64,7 @@ class Smurfs extends Component {
           return (
             <div key={smurf.name}>
               <Row className="card">
-                <Col sm="3">
+                <Col sm="4">
                   <Card>
                     <CardBody>
                       <div className="cardBody">
@@ -83,6 +78,9 @@ class Smurfs extends Component {
                           onClick={() => this.props.removeSmurf(smurf.id)}
                         >
                           Delete
+                        </Button>
+                        <Button color="danger" onClick={this.handleUpdate}>
+                          Edit
                         </Button>
                       </div>
                     </CardBody>
@@ -104,6 +102,6 @@ const mapStateToProps = state => {
     updatingSmurfs: state.updatingSmurfs
   };
 };
-export default connect(mapStateToProps, { addSmurf, getSmurfs, removeSmurf })(
+export default connect(mapStateToProps, { addSmurf, getSmurfs, removeSmurf, updateSmurfData })(
   Smurfs
 );

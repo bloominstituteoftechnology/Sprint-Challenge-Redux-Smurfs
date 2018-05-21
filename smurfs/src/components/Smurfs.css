@@ -10,6 +10,7 @@
     flex-direction: column;
     justify-content: center;
     border: 1px solid lightblue;
-    width: 99%;
+    width: 275px;
+    padding: 20px
 }
 
