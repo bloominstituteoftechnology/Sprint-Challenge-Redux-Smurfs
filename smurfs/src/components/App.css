@@ -60,10 +60,10 @@ ul {
   color: coral;
 }
 
-/* .smurf-card:hover button {
+.smurf-card button {
   background-color: rgb(209, 209, 209);
   color: white;
-} */
+}
 
 .form input{
   font-size: 20px;
