@@ -40,7 +40,7 @@ ul {
 .smurf-container {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
 }
 
 .smurf-card {
@@ -126,7 +126,8 @@ ul {
 .flip-container {
   width: 350px;
   min-width: 220px;
-  height: 100%;
+  height: 200px;
+  margin: 20px;
 }
 
 /* flip the pane when hovered */
@@ -161,7 +162,9 @@ ul {
 /* back, initially hidden pane */
 .back {
   transform: rotateY(180deg);
+}
+
+.back img {
   height: 200px;
-  display: flex;
-  flex-flow: column wrap;
+  border-radius: 20px;
 }
