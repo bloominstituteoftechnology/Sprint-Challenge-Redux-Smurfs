@@ -66,3 +66,21 @@ export const terminateSmurf = id => {
       });
   };
 }
+
+export const editSmurf = (id, smurfObj) => {
+  const smurfs = axios.put(`http://localhost:3333/smurfs/${id}`, smurfObj);
+  return dispatch => {
+    dispatch({ type: PENDING_SMURFS });
+    smurfs
+      .then(response => {
+        console.log(response);
+        dispatch({ type: SUCCESS_SMURFS, payload: response.data });
+      })
+      .catch(err => {
+        dispatch({
+          type: ERROR_SMURFS,
+          payload: "Something went wrong with updating smurf"
+        });
+      });
+  };
+}

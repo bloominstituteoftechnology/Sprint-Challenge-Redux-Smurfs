@@ -50,6 +50,7 @@ ul {
   margin-top: 20px;
   box-shadow: 4px 4px 6px gray;
   width: 350px;
+  height: 200px;
   background-color: rgb(209, 209, 209);
 }
 
@@ -102,4 +103,65 @@ ul {
   background-color: white !important;
   color: coral !important;
   box-shadow: 4px 4px 6px gray;
+}
+
+.edit-form input{
+  margin: 10px;
+  font-size: 20px;
+}
+
+.edit-form button {
+  margin: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.edit-form button:hover {
+  color: coral;
+  background-color: white;
+  box-shadow: 4px 4px 6px gray;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+  width: 350px;
+  min-width: 220px;
+  height: 100%;
+}
+
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+	transform: rotateY(180deg);
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 2s;
+	transform-style: preserve-3d;
+  padding: 0;
+  margin: 0;
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+  height: 200px;
+  display: flex;
+  flex-flow: column wrap;
 }
