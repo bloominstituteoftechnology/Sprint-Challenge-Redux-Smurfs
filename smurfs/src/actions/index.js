@@ -23,7 +23,7 @@ export const SMURFING_ERROR = 'SMURFING_ERROR';
 export const getSmurfs = () =>
   dispatch => {
     dispatch({ type: FETCHING_SMURF });
-    axios.get('ttp://localhost:3333/smurfs')
+    axios.get('http://localhost:3333/smurfs')
       .then(smurfs => {
         console.log('Fetched smurfs');
         dispatch({ type: FETCHED_SMURF, smurfs: smurfs.data });
@@ -32,12 +32,12 @@ export const getSmurfs = () =>
       });
   };
 
-export const addSmurf = () =>
+export const addSmurf = (newSmurf) =>
   dispatch => {
     dispatch({ type: ADDING_SMURF });
-    axios.post('ttp://localhost:3333/smurfs')
+    axios.post('http://localhost:3333/smurfs', newSmurf)
       .then(smurf => {
-        dispatch({ type: ADDED_SMURF, smurf: smurf.data });
+        dispatch({ type: ADDED_SMURF, smurfs: smurf.data });
       }).catch(error => {
         dispatch({ type: SMURFING_ERROR, errorMessage: 'Error adding smurf' });
       });
