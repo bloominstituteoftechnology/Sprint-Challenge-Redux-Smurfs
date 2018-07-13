@@ -71,7 +71,7 @@ export const deleteSmurf = smurfID => {
     promise.then(response => {
       dispatch({
         type: SUCCESS,
-        payload: response.date
+        payload: response.data
       })
     })
     .catch(err => {
