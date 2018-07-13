@@ -3,6 +3,8 @@ import axios from 'axios';
 export const FETCHED = 'FETCHED';
 export const FETCHING = 'FETCHING';
 export const ERROR = 'ERROR';
+export const ADDING = 'ADDING';
+export const ADDED = 'ADDED';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -23,5 +25,7 @@ export const fetchSmurfs = () => {
       console.log(data)
       dispatch({type: FETCHED, payload: data});
     })
+      .catch(err => { dispatch({type: ERROR, payload: err})})
   }
 };
+

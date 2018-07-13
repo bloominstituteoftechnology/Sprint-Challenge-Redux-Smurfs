@@ -19,6 +19,10 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        <div> Smurfs: </div>
+        {this.props.smurfs.map(smurf => {
+              return <div key={smurf.id}>{smurf.name} Age:{smurf.age} Height:{smurf.height} </div>;
+            })}
       </div>
     );
   }
@@ -26,7 +30,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return{
-
+    smurfs: state.smurfs
   }
 }
 
