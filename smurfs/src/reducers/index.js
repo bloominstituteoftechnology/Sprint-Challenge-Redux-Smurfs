@@ -9,7 +9,7 @@ const initialState =  {
   error: null
 }
 
-export const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_DATA:
       return Object.assign({}, state, { fetchingSmurfs: true });
@@ -45,3 +45,5 @@ export const rootReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default rootReducer;
