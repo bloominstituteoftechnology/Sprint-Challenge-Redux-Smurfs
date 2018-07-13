@@ -18,6 +18,11 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    // call our action 
+    this.props.getSmurfs();
+  }
+
   handleSubmit = () => {
     this.props.addSmurf(this.state)
   }
@@ -49,7 +54,7 @@ class App extends Component {
         onChange={(e) => this.handleChange(e)} /><br />
       <button onClick={() => this.handleSubmit()}> Add </button>
 
-      {/* {this.props.smurfs.map(smurf => {
+      {this.props.smurfs.map(smurf => {
         return ( 
           <div key={smurf.id}>
             <div>
@@ -63,7 +68,7 @@ class App extends Component {
             </div><br />
           </div>
         ); 
-      })} */} 
+      })} 
     </div> 
     );
   }
