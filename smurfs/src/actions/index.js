@@ -5,6 +5,7 @@ export const POSTING = 'POSTING';
 export const ERROR = 'ERROR';
 export const POSTED = 'POSTED';
 export const DELETED = 'DELETED';
+export const DELETING = 'DELETING';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -41,12 +42,12 @@ export const addSmurfs = (smurf) => {
       .catch(err => {
         return dispatch({ type: ERROR, payload: err })
       })
-
   }
 }
 
 export const removeSmurf = (id) => {
   return (dispatch) => {
+    dispatch({type: DELETING})
     axios
       .delete(`${URL}/${id}`)
       .then((response) => {
@@ -55,7 +56,5 @@ export const removeSmurf = (id) => {
       .catch(err => {
         return dispatch({ type: ERROR, payload: err })
       })
-
-
   }
 }

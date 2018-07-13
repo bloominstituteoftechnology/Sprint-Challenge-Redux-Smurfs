@@ -14,7 +14,7 @@ class AddSmurfForm extends Component {
         e.preventDefault();
         const smurf = { name: this.state.name, age: this.state.age, height: this.state.height }
         this.props.addSmurfs(smurf);
-        this.setState({name: '', age: '', height: ''})
+        this.setState({ name: '', age: '', height: '' })
     }
     handleNameChange = e => {
         this.setState({ [e.target.name]: e.target.value });
@@ -53,5 +53,5 @@ class AddSmurfForm extends Component {
     }
 }
 
-  
-  export default connect(null, { addSmurfs })(AddSmurfForm);
+
+export default connect(null, { addSmurfs })(AddSmurfForm);
