@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+
+import axios from 'axios';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -7,6 +9,13 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  componentDidMount() {
+    axios.get('http://localhost:3333/smurfs')
+    .then(response => {
+      console.log("GET RESPONSE", response);
+      this.setState({ smurfs: response.data })
+    })
+  }
   render() {
     return (
       <div className="App">
