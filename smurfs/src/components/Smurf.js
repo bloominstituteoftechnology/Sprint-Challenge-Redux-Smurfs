@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import connect from 'react-redux';
 
 class Smurf extends Component {
   constructor(props) {

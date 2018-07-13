@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING, FETCHED, ERROR } from '../actions'
+import { FETCHING, FETCHED, ERROR } from '../actions';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -32,11 +32,11 @@ const initialState = {
 export const rootReducer = (state = initialState, action) => {
   switch(action.type) {
     case FETCHING:
-      return {...state, fetchingSmurfs: true};
+      return Object.assign({}, state, {fetchingSmurfs: true});
     case FETCHED:
-      return {...state, fetchingSmurfs: false, smurfsFetched: true, smurfs: action.payload};
+      return Object.assign({}, state, {smurfs: action.payload, fetchingSmurfs: false, addingSmurf: false});
     case ERROR:
-      return {...state, error: action.payload}
+      return Object.assign({}, state, {error: action.payload});
     default:
       return state;
   }

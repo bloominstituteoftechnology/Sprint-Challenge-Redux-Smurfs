@@ -6,21 +6,39 @@ import axios from 'axios';
 export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR'
+export const ADDING_SMURF = 'ADDING_SMURF'
+const URL = `http://localhost:3333/smurfs`;
 
 export const fetchSmurfs = () => {
-  const smurfs = `http://localhost:3333/smurfs`;
+
   return dispatch => {
     dispatch({
       type: FETCHING
     })
     axios
-      .get(smurfs)
-      .then(({ data }) => {
-        dispatch({ type: FETCHED, payload: data.results})
+      .get(URL)
+      .then(response => {
+        dispatch({ type: FETCHED, payload: response.data})
       })
       .catch(error => {
-        dispatch({type: ERROR})
+        dispatch({type: ERROR, payload: 'Error getting smurfs'})
       })
+  }
+};
+
+export const addSmurf = (smurf) => {
+  return dispatch => {
+    dispatch({
+      type: ADDING_SMURF
+    });
+    axios
+     .post(URL, smurf)
+     .then(response => {
+       dispatch({ type: FETCHED, payload: response.data})
+     })
+     .catch(error => {
+       dispatch({type: ERROR, payload: 'Error adding smurf'})
+     })
   }
 };
 
