@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions';
 import Smurfs from './Smurfs';
+import SmurfsForm from './SmurfsForm';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -21,6 +22,7 @@ class App extends Component {
           <p>Smurfs are fetching please wait...</p>
         ) : (
         <Smurfs smurfs={this.props.smurfs} />)}
+        <SmurfsForm />
       </div>
     );
   }
