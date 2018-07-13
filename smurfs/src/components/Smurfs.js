@@ -1,17 +1,20 @@
 import React from 'react';
 import connect from 'react-redux';
 import Smurf from './Smurf';
+import fetchSmurfs from '../actions';
 
-const smurfs = props => {
+const Smurfs = props => {
   return (
     <div>
-      {this.props.smurf.map(smurf => {
+      {props.smurfs.map(smurf => {
         return (
-          <div><Smurf smurf={smurf}/></div>
+          <div>
+          <Smurf smurf={smurf}/>
+          </div>
         )
       })}
     </div>
   )
 }
 
-export default smurfs;
+export default Smurfs;

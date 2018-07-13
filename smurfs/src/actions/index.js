@@ -11,7 +11,7 @@ export const fetchSmurfs = () => {
   const smurfs = `http://http://localhost:3333/smurfs`;
   return dispatch => {
     dispatch({
-      type: FETCHING,
+      type: FETCHING
     })
     axios
       .get(smurfs)
@@ -34,3 +34,4 @@ export const fetchSmurfs = () => {
    U - updateSmurf
    D - deleteSmurf
 */
+export default fetchSmurfs;
