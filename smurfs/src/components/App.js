@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchSmurfs, addSmurf } from '../actions';
+import { fetchSmurfs, addSmurf, updateSmurf } from '../actions';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -10,6 +10,7 @@ import { fetchSmurfs, addSmurf } from '../actions';
  */
 class App extends Component {
   state ={
+    showEditForm: false,
     name: '',
     age: '',
     email: ''
@@ -23,11 +24,20 @@ class App extends Component {
     this.setState({ [event.target.name]: event.target.value});
   }
 
+  editInputHandler = event => {
+    this.setState({ [event.target.name]: event.target.value});
+  }
+
   addHandler = () => {
     const {name, age, height} = this.state;
     this.props.addSmurf({name, age, height});
     this.setState({ name: '', age: '', height: ''});
   }
+
+  toggleEdit = () => {
+    this.setState({ showEditForm: !this.state.showEditForm });
+ }
+
 
   render() {
     return (
@@ -61,9 +71,37 @@ class App extends Component {
           placeholder="height"
         />
         <button onClick={() => this.addHandler()} type="button"> Add Smurf </button>
+        <button onClick={this.toggleEdit}>Edit</button>
         <div> Smurfs: </div>
         {this.props.smurfs.map(smurf => {
-              return <div key={smurf.id}>{smurf.name} Age: {smurf.age} Height: {smurf.height} </div>;
+              return <div key={smurf.id}>{smurf.name} Age: {smurf.age} Height: {smurf.height}
+              {this.state.showEditForm ? (
+                <div>
+                <input
+                    placeholder={smurf.name}
+                    type="text"
+                    onChange={this.editInputHandler}
+                    name="name"
+                    value={this.state.name}
+                />
+                <input
+                    placeholder={smurf.age}
+                    type="text"
+                    onChange={this.editInputHandler}
+                    name="age"
+                    value={this.state.age}
+                />
+                <input
+                    placeholder={smurf.height}
+                    type="text"
+                    onChange={this.editInputHandler}
+                    name="height"
+                    value={this.value.height}
+                />
+                <button onClick={this.handleSave}> Save </button>
+                </div>
+            ): null}
+            </div>
             })}
       </div>
     );
@@ -76,4 +114,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchSmurfs, addSmurf }) (App);
+export default connect(mapStateToProps, { fetchSmurfs, addSmurf, updateSmurf }) (App);
