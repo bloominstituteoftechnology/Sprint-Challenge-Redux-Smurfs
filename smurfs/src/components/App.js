@@ -40,7 +40,7 @@ render() {
     return (
       <div className="App">
 	   <div>{this.props.deleting ? (
-          <h1>Deleting Smurfs...</h1>
+          <h1>Deleting Smurf...</h1>
         ) :(null)} 
       </div> 
 
