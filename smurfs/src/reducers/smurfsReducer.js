@@ -1,8 +1,10 @@
-import {FETCHING_SMURF,FETCHED_SMURF,FETCHING_ERROR} from '../actions';
+import {FETCHING_SMURF,FETCHED_SMURF,FETCHING_ERROR, POSTING_SMURF, POSTED_SMURF, POSTING_ERROR} from '../actions';
 const initialState = {
   smurfs : {data: []},
   fetchingsmurf: false,
   fetchedsmurf: false,
+  postingsmurf: false,
+  postedsmurf: false,
   error: null
 };
 export const smurfsReducer = (state = initialState, action) => {

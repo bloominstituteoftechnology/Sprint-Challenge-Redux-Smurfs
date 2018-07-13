@@ -16,6 +16,21 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
+        <form>
+          <div>
+            Name:
+            <input type="text" name="smurfName" value="Mickey"></input>
+          </div>
+          <div>
+            Age:
+            <input type="text" name="smurfAge" value="Mouse"></input>
+        </div>
+        <div>
+            Height:
+            <input type="text" name ="smurfHeight"></input>
+        </div>
+        <input type="submit" value="Submit"></input>
+        </form>
           {this.props.fetchingsmurf ? (<div>Hello</div>) : (
             <div >
               {this.props.smurfs.map(smurf => {
