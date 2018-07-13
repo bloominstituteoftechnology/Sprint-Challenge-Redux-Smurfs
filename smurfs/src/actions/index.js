@@ -3,8 +3,8 @@
   Be sure to export each action type so you can pull it into your reducer
 */
 import axios from 'axios';
-export const FETCHING_SMURF = 'FETCHING_SMURF';
-export const SMURF_FETCHED = 'SMURF_FETCHED';
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const SMURFS_FETCHED = 'SMURFS_FETCHED';
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const SMURF_ADDED = 'SMURF_ADDED';
 

@@ -1,4 +1,4 @@
-import { FETCHING_SMURF, SMURF_FETCHED, ADDING_SMURF, SMURF_ADDED } from "../actions";
+import { FETCHING_SMURFS, SMURFS_FETCHED, ADDING_SMURF, SMURF_ADDED } from "../actions";
 
 /*
   Be sure to import in all of the action types from `../actions`
@@ -17,9 +17,9 @@ const initialState = {
 
 export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-      case FETCHING_SMURF:
+      case FETCHING_SMURFS:
       return;
-      case SMURF_FETCHED:
+      case SMURFS_FETCHED:
       return;
       case ADDING_SMURF:
       return;
