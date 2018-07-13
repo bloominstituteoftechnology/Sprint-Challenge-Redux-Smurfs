@@ -20,9 +20,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <div className="header">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to the Smurf Village!</div>
         <div>Have fun!</div>
+        </div>
         <SmurfForm />
         <Smurfs {...this.props} />
       </div>
