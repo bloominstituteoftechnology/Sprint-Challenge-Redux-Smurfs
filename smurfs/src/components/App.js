@@ -50,7 +50,7 @@ render() {
       <div>  <ul>
             {this.props.smurfs.map(smurf => {
               return <div key={smurf.id}><li>{smurf.name}, {smurf.age}, {smurf.height}</li>
-	<button onClick={()=>this.deleteSmurfHandler(smurf.id)}>delete</button></div>;
+	<button className="delete-btn" onClick={()=>this.deleteSmurfHandler(smurf.id)}>delete</button></div>;
             })}
           </ul>
 
