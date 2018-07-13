@@ -1,12 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs, killSmurf } from '../actions';
+import { getSmurfs, updateSmurf, killSmurf } from '../actions';
 
 const URL = 'http://localhost:3333/smurfs/';
 
 class SmurfList extends Component {
+    constructor() {
+        super();
+        this.state = {
+            name: '',
+            age: '',
+            height: '',
+        }
+    }
+
     componentDidMount() {
         this.props.getSmurfs(URL);
+    }
+
+    handleInputChange = event => {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        if(!this.state.name || !this.state.age || !this.state.height) {
+            return;
+        }
+        const smurf = { 
+            name: this.state.name,
+            age: Number(this.state.age),
+            height: this.state.height,
+        }
+        this.props.updateSmurf(URL, smurf);
+        this.setState({ name: '', age: '', height: ''})
     }
 
     render() {
@@ -23,6 +50,12 @@ class SmurfList extends Component {
                                 <li>Age: {smurf.age}</li>
                                 <li>Height: {smurf.height}</li>
                             </ul>
+                            <form>
+                                <input placeholder="Update Name" onChange={this.handleInputChange} name="name" value={this.state.name} />
+                                <input type="number" placeholder="Update Age" onChange={this.handleInputChange} name="age" value={this.state.age} />
+                                <input placeholder="Update Height" onChange={this.handleInputChange} name="height" value={this.state.height} />
+                                <button type="submit" onClick={() => this.handleFormSubmit(URL, smurf.id)}>Update Smurf</button>
+                            </form>
                             <button type="button" onClick={() => this.props.killSmurf(URL, smurf.id)}>Kill Smurf</button>
                         </div>
                     })}
@@ -40,4 +73,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getSmurfs, killSmurf })(SmurfList);
+export default connect(mapStateToProps, { getSmurfs, updateSmurf, killSmurf })(SmurfList);

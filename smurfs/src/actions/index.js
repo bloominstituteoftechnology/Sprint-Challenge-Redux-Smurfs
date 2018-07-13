@@ -17,6 +17,8 @@ export const ADDING_SMURF = 'ADDING_SMURF';
 export const ADDED_SMURF = 'ADDED_SMURF';
 export const KILLING_SMURF = 'KILLING_SMURF';
 export const KILLED_SMURF = 'KILLED_SMURF';
+export const UPDATING_SMURF = 'UPDATING_SMURF';
+export const UPDATED_SMURF = 'UPDATED_SMURF';
 
 export const getSmurfs = URL => {
   const promise = axios.get(URL);
@@ -42,6 +44,20 @@ export const addSmurf = (URL, smurf) => {
         })
         .catch(err => {
           dispatch({ type: ERROR_FETCHING, payload: err })
+        })
+  }
+}
+
+export const updateSmurf = (URL, id) => {
+  const update = axios.put(`${URL}${id}`);
+  return dispatch => {
+    dispatch({ type: UPDATING_SMURF });
+      update
+        .then(response => {
+          dispatch({ type: UPDATED_SMURF, payload: response.data })
+        })
+        .catch(err => {
+          dispatch({ type: ERROR_FETCHING, payload: err})
         })
   }
 }
