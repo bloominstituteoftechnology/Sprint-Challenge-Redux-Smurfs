@@ -1,5 +1,7 @@
 import React from 'react';
 import UpdateSmurfForm from './UpdateSmurfForm';
+import { connect } from 'react-redux';
+import { deleteSmurf } from '../actions';
 
 class Smurf extends React.Component {
     constructor(props) {
@@ -12,6 +14,7 @@ class Smurf extends React.Component {
                 <p>Name: {this.props.smurf.name}</p>
                 <p>Height: {this.props.smurf.height}</p>
                 <p>Age: {this.props.smurf.age}</p>
+                <button>Delete</button>
                 <UpdateSmurfForm
                     name={this.props.smurf.name}
                     height={this.props.smurf.height}
@@ -23,4 +26,10 @@ class Smurf extends React.Component {
     }
 }
 
-export default Smurf;
+const mapStateToProps = state => {
+    return {
+        smurfs: state.smurfs
+    }
+}
+
+export default connect(mapStateToProps, { deleteSmurf })(Smurf);
