@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions';
+import { getSmurfs, killSmurf } from '../actions';
+
+const URL = 'http://localhost:3333/smurfs/';
 
 class SmurfList extends Component {
     componentDidMount() {
-        this.props.getSmurfs('http://localhost:3333/smurfs/');
+        this.props.getSmurfs(URL);
     }
 
     render() {
@@ -21,6 +23,7 @@ class SmurfList extends Component {
                                 <li>Age: {smurf.age}</li>
                                 <li>Height: {smurf.height}</li>
                             </ul>
+                            <button type="button" onClick={() => this.props.killSmurf(URL, smurf.id)}>Kill Smurf</button>
                         </div>
                     })}
                 </React.Fragment>
@@ -37,4 +40,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getSmurfs })(SmurfList);
+export default connect(mapStateToProps, { getSmurfs, killSmurf })(SmurfList);
