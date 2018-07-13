@@ -4,7 +4,7 @@ import './App.css';
 const SmurfForm = props => {
     return (
         <div className="smurf-form">  
-            {/* <form onSubmit={props.handleSubmit}>
+            <form onSubmit={props.handleSubmit}>
                 <input
                     name='name'
                     placeholder="Name"
@@ -18,15 +18,15 @@ const SmurfForm = props => {
                     onChange={props.handleChange}
                 />
                 <input
-                    name='email'
-                    placeholder="Email"
-                    value={props.email}
+                    name='height'
+                    placeholder="Height"
+                    value={props.height}
                     onChange={props.handleChange}
                 />
                 <button type="submit">Submit</button>
-                {props.name !== '' || props.age !== '' || props.email !== '' ? <button onClick={() => props.handleClear()}>Clear</button> : null}
-            </form> */}
-            <p>Use form to add or edit friend</p>
+                {props.name !== '' || props.age !== '' || props.height !== '' ? <button onClick={() => props.handleClear()}>Clear</button> : null}
+            </form>
+            <p>Use form to add or edit smurf</p>
         </div>
     );
 };

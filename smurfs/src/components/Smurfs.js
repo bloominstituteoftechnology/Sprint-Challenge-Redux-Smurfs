@@ -5,17 +5,16 @@ import './App.css';
 const Smurfs = props => {
     return (
         <div className="smurfs">
-            {/* {props.friends.map((friend) => {
+            {props.smurfs.map((smurf, index) => {
                 return (
-                    <Friend
-                        key={friend.id}
-                        friend={friend}
+                    <Smurf
+                        key={index}
+                        smurf={smurf}
                         handleDelete={props.handleDelete}
                         handleUpdate={props.handleUpdate}
                     />
                 );
-            })} */}
-            <Smurf />
+            })}
         </div>
     );
 };
