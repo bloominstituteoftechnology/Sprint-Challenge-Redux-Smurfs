@@ -1,23 +1,88 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+/* prettier-ignore */
+import {FETCHING, FETCHED, ERROR, ADDING, ADDED, DELETING, DELETED, EDITING, EDITED, ADDCLICKED} from '../actions';
 
-/*
- Your initial/default state for this project could *Although does not have to* look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
-   error: null
- }
-*/
+const initialState = {
+  fetchingSmurfs: false,
+  smurfsFetched: false,
+  smurfsSaved: false,
+  savingSmurfs: false,
+  updatingSmurf: false,
+  smurfUpdated: false,
+  deletingSmurf: false,
+  smurfDeleted: false,
+  smurfs: [],
+  error: null,
+  addClicked: false,
+};
 
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
-  There is no need for 'combineReducers' in this project.
-  Components can then read your store as, `state` and not `state.fooReducer`.
-*/
+const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCHING:
+      return Object.assign({}, state, {
+        fetchingSmurfs: true,
+      });
+
+    case FETCHED:
+      return Object.assign({}, state, {
+        smurfs: action.payload,
+        fetchingSmurfs: false,
+        smurfsFetched: true,
+      });
+
+    case ERROR:
+      return Object.assign({}, state, {
+        fetchingSmurfs: false,
+        smurfsFetched: false,
+        error: action.payload.stack,
+      });
+
+    case ADDING:
+      return Object.assign({}, state, {
+        savingSmurfs: true,
+        smurfsSaved: false,
+      });
+
+    case ADDED:
+      return Object.assign({}, state, {
+        savingSmurfs: true,
+        smurfsSaved: true,
+        smurfs: action.payload,
+      });
+
+    case DELETING:
+      return Object.assign({}, state, {
+        deletingSmurf: true,
+        smurfDeleted: false,
+      });
+
+    case DELETED:
+      return Object.assign({}, state, {
+        deletingSmurf: true,
+        smurfDeleted: true,
+        smurfs: action.payload,
+      });
+
+    case EDITING:
+      return Object.assign({}, state, {
+        updatingSmurf: true,
+        smurfUpdated: false,
+      });
+
+    case EDITED:
+      return Object.assign({}, state, {
+        updatingSmurf: true,
+        smurfUpdated: true,
+        smurfs: action.payload,
+      });
+
+    case ADDCLICKED:
+      return Object.assign({}, state, {
+        addClicked: !state.addClicked,
+      });
+
+    default:
+      return state;
+  }
+};
+
+export default rootReducer;
