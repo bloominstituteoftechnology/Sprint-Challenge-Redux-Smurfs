@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getSmurfs } from '../actions';
+import Smurfs from 'Smurfs';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -7,11 +10,27 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
+
   render() {
     return (
-      <div></div>
+      <div>
+      <Smurfs smurfs={this.props.smurfs}/>
+      </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+  smurfs: state.smurfs,
+}
+
+export default connect (
+  mapStateToProps,
+  {
+    getSmurfs
+  }
+)(App);
