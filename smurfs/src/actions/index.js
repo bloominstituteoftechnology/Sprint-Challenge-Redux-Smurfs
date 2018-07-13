@@ -4,7 +4,7 @@ export const FETCHED = 'FETCHED';
 export const POSTING = 'POSTING';
 export const ERROR = 'ERROR';
 export const POSTED = 'POSTED';
-
+export const DELETED = 'DELETED';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -38,6 +38,24 @@ export const addSmurfs = (smurf) => {
       .then((response) => {
         return dispatch({ type: POSTED, payload: response.data })
       })
+      .catch(err => {
+        return dispatch({ type: ERROR, payload: err })
+      })
+
+  }
+}
+
+export const removeSmurf = (id) => {
+  return (dispatch) => {
+    axios
+      .delete(`${URL}/${id}`)
+      .then((response) => {
+        return dispatch({ type: DELETED, payload: response.data })
+      })
+      .catch(err => {
+        return dispatch({ type: ERROR, payload: err })
+      })
+
 
   }
 }

@@ -1,4 +1,4 @@
-import { FETCHING, FETCHED, POSTING, POSTED, ERROR } from '../actions'
+import { FETCHING, FETCHED, POSTING, POSTED, DELETED, ERROR } from '../actions'
 
 const initialState = {
   smurfs: [],
@@ -41,7 +41,7 @@ const dataSmurfReducer = (state = initialState, action) => {
         addingSmurf: true,
         updatingSmurf: false,
         deletingSmurf: false,
-        error: action.payload,
+        error: null,
       })
     case POSTED:
       return Object.assign({}, state, {
@@ -51,7 +51,17 @@ const dataSmurfReducer = (state = initialState, action) => {
         addingSmurf: false,
         updatingSmurf: false,
         deletingSmurf: false,
-        error: action.payload,
+        error: null,
+      })
+    case DELETED:
+      return Object.assign({}, state, {
+        smurfs: action.payload,
+        fetchingSmurfs: true,
+        fetchedSmurfs: false,
+        addingSmurf: false,
+        updatingSmurf: false,
+        deletingSmurf: false,
+        error: null,
       })
     case ERROR:
       return Object.assign({}, state, {

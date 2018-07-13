@@ -6,7 +6,7 @@ class SmurfsDisplay extends Component {
         return (
             <div>
                 {this.props.fetchingSmurfs ? <div>Loading...</div> : this.props.smurfs.map(smurf => {
-                    return <div key={smurf.name}>{`${smurf.name} ${smurf.age} ${smurf.height}`}</div>
+                    return <div key={smurf.id}>{`${smurf.id}: ${smurf.name} ${smurf.age} ${smurf.height}`}</div>
                 })}
             </div>
         );
