@@ -9,9 +9,10 @@ import { Provider } from 'react-redux';
 import  rootReducer from './reducers';
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
-console.log(thunk);
-console.log(store.dispatch)
-console.log(store)
+// console.log(applyMiddleware)
+// console.log(thunk);
+// console.log(store.dispatch)
+// console.log(store)
 ReactDOM.render(
   <Provider store={store}>
     <App />

@@ -6,6 +6,7 @@ import axios from 'axios';
 
 export const ADD_SMURF = 'ADD_SMURF';
 export const GET_SMURFS = 'GET_SMURFS';
+export const GETTING_SMURFS = 'GETTING_SMURFS';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -26,8 +27,17 @@ export const addSmurf = () => {
  }
   
  export const getSmurfs = () => {
-  console.log('get smurfs');
+  console.log('geting smurfs...');
+  const getTheSmurfs = axios.get('http://localhost:3333/smurfs')
   return function(dispatch) {
-  return dispatch({type: GET_SMURFS});
+  dispatch({type: GETTING_SMURFS})
+  getTheSmurfs
+  .then(response=> {
+    console.log('finally:', response.data)
+    dispatch({type: GET_SMURFS, payload: response.data});
+  })
+  
+
+
  }
   }
