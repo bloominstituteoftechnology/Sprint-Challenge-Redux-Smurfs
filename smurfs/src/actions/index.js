@@ -1,6 +1,8 @@
 import axios from 'axios';
 export const FETCHING = "FETCHING";
 export const FETCHED = "FETCHED";
+export const ADDING = "ADDING";
+export const ADDED = "ADDED";
 export const ERROR = "ERROR";
 
 /*
@@ -29,6 +31,18 @@ const fetched = (data) => {
     payload: data
   }
 }
+const adding = (data) => {
+  return {
+    type: ADDING,
+    payload: data
+  }
+}
+const added = (data) => {
+  return {
+    type: ADDED,
+    payload: data
+  }
+}
 const error = (err) => {
   return {
     type: ERROR,
@@ -43,6 +57,20 @@ export const fetchSmurfs = () => {
     getSmurfs
       .then(res => {
         dispatch(fetched(res.data));
+      })
+      .catch(err => {
+        dispatch(error(err));
+      })
+  }
+}
+
+export const addSmurf = (smurf) => {
+  const postSmurf = axios.post("http://localhost:3333/smurfs", smurf);
+  return function (dispatch) {
+    dispatch(adding()),
+      postSmurf
+      .then(res => {
+        dispatch(added(res));
       })
       .catch(err => {
         dispatch(error(err));

@@ -1,4 +1,4 @@
-import {FETCHING,FETCHED,ERROR} from '../actions';
+import {FETCHING,FETCHED,ADDING, ADDED, ERROR} from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -15,6 +15,8 @@ const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
   fetchedSmurfs: false,
+  addingSmurfs: false,
+  addedSmurfs:false,
   updatingSmurf: false,
   deletingSmurf: false,
   error: null
@@ -39,10 +41,23 @@ export default (state=initialState, action) => {
         fetchedSmurfs: true,
         smurfs: action.payload
       });
+    case ADDING:
+      return Object.assign({}, state, {
+        addingSmurfs: true,
+        addeddSmurfs: false
+      })
+    case ADDED:
+      return Object.assign({}, state, {
+        addingSmurfs: false,
+        addedSmurfs: true,
+        smurfs: state.smurfs.concat(action.payload)
+        })
     case ERROR:
         return Object.assign({}, state, {
           fetchingSmurfs: false,
           fetchedSmurfs: true,
+          addingSmurfs: false,
+          addedSmurf: true,
           error: action.payload
         });
     default:
