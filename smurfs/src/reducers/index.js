@@ -1,6 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
+import { FETCHING_SMURFS, GET_SMURFS, ERROR } from "../actions/index";
 
 const initialState = {
   smurfs: [],
@@ -20,6 +21,12 @@ const initialState = {
 */
 export const smurfReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FETCHING_SMURFS:
+      return Object.assign({}, state, { fetchingSmurfs: true });
+    case GET_SMURFS:
+      return Object.assign({}, state, { smurfs: action.payload });
+    case ERROR:
+      return Object.assign({}, state, { error: "ERROR, no smurfs found!" });
     default:
       return state;
   }
