@@ -18,21 +18,29 @@ const initialState = {
   switch (action.type) {
     case actionTypes.FETCHING_SMURFS:
       return { ...state, fetchingSmurfs: true };
+      case actionTypes.FETCH_SMURFS:
+      return { ...state, smurfs: action.payload, fetchingSmurfs: false };
     case actionTypes.ADDING_SMURF:
       return { ...state, addingSmurf: false };
+      case actionTypes.ADD_SMURF:
+      return { ...state, smurfs: action.payload, addingSmurf: false };
     case actionTypes.UPDATING_SMURF:
       return { ...state, updatingSmurf: true };
+      case actionTypes.UPDATE_SMURF:
+      return { ...state, smurfs: action.payload, updatingSmurf: false };
     
     case actionTypes.DELETING_SMURF:
       return { ...state, deletingSmurf: true };
+      case actionTypes.DELETE_SMURF:
+      return { ...state, smurfs: action.payload, deletingSmurf: false };
     
     case actionTypes.ERROR:
       return {
         ...state,
-        gettingFriends: false,
-        creatingFriend: false,
-        deletingFriend: false,
-        updatingFriend: false,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        updatingSmurf: false,
+        deletingSmurf: false,
         error: action.payload
       };
     default:
