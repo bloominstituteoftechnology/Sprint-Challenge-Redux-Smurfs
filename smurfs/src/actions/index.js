@@ -7,10 +7,10 @@ import axios from 'axios';
 
 
 
-export const POSTING = "POSTING"
-export const FETCHING = "FETCHING"
-export const ERROR = "ERROR"
-
+export const POSTING = "POSTING";
+export const FETCHING = "FETCHING";
+export const ERROR = "ERROR";
+export const FETCHED = "FETCHED";
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -27,10 +27,11 @@ export function fetch_smurf() {
     dispatch({type: FETCHING})
     axios.get('http://localhost:3333/smurfs')
       .then((response) => {
-        console.log('response', response.data)
+        console.log('response', response)
+        dispatch({type:FETCHED, payload:response})
       })
       .catch((error) => {
-        console.log(error)
+        dispatch({type: ERROR, payload: "ERROR FETCHING FRIEND"})
       })
   }
 }
@@ -44,7 +45,7 @@ export function post_smurf() {
         dispatch(fetch_smurf())
       })
       .catch((error) => {
-        console.log(error)
+        dispatch({type: ERROR, payload: "ERROR POSTING FRIEND"})
       })
   }
 }

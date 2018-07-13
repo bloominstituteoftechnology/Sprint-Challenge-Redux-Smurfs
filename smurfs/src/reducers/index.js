@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-
+import { FETCHING, POSTING, ERROR } from '../actions';
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
  
@@ -13,12 +13,30 @@ const initialState= {
    addingSmurf: false,
    updatingSmurf: false,
    deletingSmurf: false,
-   error: null
+   error: null,
+   posting: false,
+   fetched: false
  }
 
  const smurfReducer = (state = initialState, action) => {
-   return console.log("happy smurfin")
+   switch (action.type) {
+     case FETCHING: {
+       return {...state, fetchingSmurfs: true}
+     }
+     case FETCHED: {
+       return {...state, fetchingSmurfs: false, fetched: true, smurfs:action.payload}
+     }
+     case POSTING: {
+       return{...state, posting:true}
+     }
+     case ERROR: {
+       return {...state, fetching:false, error: action.payload}
+     }
+     default:return state;
+   }
  }
+
+ export default smurfReducer;
 
 
 /*
