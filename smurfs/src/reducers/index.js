@@ -30,6 +30,7 @@ export const rootReducer = (state = initialState, action) => {
     case SMURFS_FETCHED:
       return {
         ...state,
+        smurfs: action.payload,
         fetchingSmurfs: false,
         fetchedSmurfs: true
       };
