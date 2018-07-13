@@ -1,4 +1,4 @@
-import {FETCHING, FETCHED, ERROR} from "../actions";
+import {FETCHING, FETCHED, ERROR, SMURFS_SAVED, SAVING_SMURFS} from "../actions";
 
 
 
@@ -18,7 +18,14 @@ switch(action.type){
 
 	case FETCHED:
 	return Object.assign({}, state, {fetchingSmurfs: false, smurfs: action.smurfs});
-	
+
+	case SAVING_SMURFS:
+        return Object.assign({}, state, {fetchingSmurfs: false, addingSmurf: true, error: null});
+
+        case SMURFS_SAVED:
+        return Object.assign({}, state, {fetchingSmurfs: false, smurfs: action.smurfs, error: null});
+
+
 	case ERROR:
         return Object.assign({}, state, {error: true});
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import {fetchingSmurfsAction} from "../actions";
+import {fetchingSmurfsAction, addSmurf} from "../actions";
 
 
 class App extends Component {
@@ -16,7 +16,7 @@ constructor(props){
 }
 
 
-  componentDidMount() {
+componentDidMount() {
     this.props.fetchingSmurfsAction(); 
   }	
 	
@@ -24,6 +24,12 @@ changeHandler = event => {
         this.setState({[event.target.name]: event.target.value});
 
 };
+
+addSmurfHandler = event => {
+        this.props.addSmurf(this.state.name, this.state.age, this.state.height);
+        this.setState({name: "", age: "", height: ""});
+}
+
 
 
 	
@@ -42,7 +48,7 @@ render() {
  
 		<input onChange={this.changeHandler} type="text" name="name" placeholder="Name" value={this.state.name} />
                 <input onChange={this.changeHandler} type="number" name="age" placeholder="Age" value={this.state.age} />
-                <input onChange={this.changeHandler} type="text" name="height" placeholder="Height" value={this.state.height} />
+                <input onChange={this.changeHandler} type="number" name="height" placeholder="Height" value={this.state.height} />
 
                 <button onClick={()=> this.addSmurfHandler()}>Add New Smurf</button>
 
@@ -65,6 +71,6 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps, {fetchingSmurfsAction})(App);
+export default connect(mapStateToProps, {fetchingSmurfsAction, addSmurf})(App);
 
 
