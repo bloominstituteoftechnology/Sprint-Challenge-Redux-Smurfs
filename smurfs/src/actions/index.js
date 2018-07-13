@@ -7,7 +7,21 @@ export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const SMURFS_FETCHED = 'SMURFS_FETCHED';
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const SMURF_ADDED = 'SMURF_ADDED';
+const URL = 'http://localhost:3333/smurfs';
+export const fetchSmurfs = () => {
+  const promise = axios.get(URL);
+  return dispatch => {
+    dispatch({ type: FETCHING_SMURFS })
+    promise
+    .then(response => {
+      console.log(response.data);
+      dispatch({ type: SMURFS_FETCHED, payload: response.data });
+    })
+    .catch(err => {
 
+    })
+  }
+}
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
