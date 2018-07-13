@@ -19,6 +19,7 @@ export const KILLING_SMURF = 'KILLING_SMURF';
 export const KILLED_SMURF = 'KILLED_SMURF';
 export const UPDATING_SMURF = 'UPDATING_SMURF';
 export const UPDATED_SMURF = 'UPDATED_SMURF';
+export const EDITING_SMURF = 'EDITING_SMURF';
 
 export const getSmurfs = URL => {
   const promise = axios.get(URL);
@@ -48,8 +49,15 @@ export const addSmurf = (URL, smurf) => {
   }
 }
 
-export const updateSmurf = (URL, id) => {
-  const update = axios.put(`${URL}${id}`);
+export const editSmurf = id => {
+  return {
+    type: EDITING_SMURF,
+    payload: id,
+  }
+}
+
+export const updateSmurf = (URL, id, smurf) => {
+  const update = axios.put(`${URL}${id}`, smurf);
   return dispatch => {
     dispatch({ type: UPDATING_SMURF });
       update

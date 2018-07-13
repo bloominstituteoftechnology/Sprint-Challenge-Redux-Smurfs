@@ -1,9 +1,10 @@
-import { FETCHING_SMURFS, FETCHED_SMURFS, ERROR_FETCHING, ADDING_SMURF, ADDED_SMURF, KILLING_SMURF, KILLED_SMURF, UPDATING_SMURF, UPDATED_SMURF } from '../actions';
+import { FETCHING_SMURFS, FETCHED_SMURFS, ERROR_FETCHING, ADDING_SMURF, ADDED_SMURF, KILLING_SMURF, KILLED_SMURF, UPDATING_SMURF, UPDATED_SMURF, EDITING_SMURF } from '../actions';
 
 const initialState =  {
   smurfs: [],
   fetchingSmurfs: false,
   addingSmurf: false,
+  editingSmurf: false,
   updatingSmurf: false,
   killingSmurf: false,
   error: null,
@@ -19,8 +20,11 @@ export default (state = initialState, action) => {
       return { ...state, fetchingSmurfs: true, addingSmurf: true };
     case ADDED_SMURF:
       return { ...state, fetchingSmurfs: false, addingSmurf: false, smurfs: action.payload };
+    case EDITING_SMURF:
+      const smurfs = state.smurfs.filter(smurf => smurf.id === action.payload)
+      return { ...state, editingSmurf: true, smurfs: smurfs };
     case UPDATING_SMURF:
-      return { ...state, fetchingSmurfs: true, updatingSmurf: true };
+      return { ...state, fetchingSmurfs: true, editingSmurf: false, editSmurf: null, updatingSmurf: true };
     case UPDATED_SMURF:
       return { ...state, fetchingSmurfs: false, updatingSmurf: false, smurfs: action.payload };
     case KILLING_SMURF:
