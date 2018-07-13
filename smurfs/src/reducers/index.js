@@ -16,9 +16,9 @@ import {GET_SMURFS, GETTING_SMURFS, ADD_SMURF } from '../actions';
  export const rootReducer = (state = initialState, action) => {
  switch(action.type) {
    case GETTING_SMURFS:
-   return Object.assign({}, state, {updatingSmurf: true})
+   return Object.assign({}, state, {updatingSmurf: true});
    case GET_SMURFS:
-   return Object.assign({}, state, {smurfs: action.payload} )
+   return Object.assign({}, state, {smurfs: action.payload, updatingSmurf: false,} );
    default:
    return state;
  }

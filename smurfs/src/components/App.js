@@ -10,18 +10,19 @@ import { connect } from 'react-redux';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
-  componentWillMount() {
+  componentDidMount() {
     console.log('mounted');
     this.props.getSmurfs();
   }
   render() {
+   
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        {console.log(this.props.smurfs)}
+        
+        
         {this.props.smurfs.map(smurf=> {
-             <li>{smurf.name}</li>
-             {console.log(smurf.name)}
+            return <li>{smurf.name}</li>
           
         })}
       </div>

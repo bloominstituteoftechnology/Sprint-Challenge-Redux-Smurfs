@@ -27,13 +27,14 @@ export const addSmurf = () => {
  }
   
  export const getSmurfs = () => {
+  
   console.log('geting smurfs...');
   const getTheSmurfs = axios.get('http://localhost:3333/smurfs')
   return function(dispatch) {
-  dispatch({type: GETTING_SMURFS})
+  dispatch({type: GETTING_SMURFS});
   getTheSmurfs
   .then(response=> {
-    console.log('finally:', response.data)
+    console.log(response.data)
     dispatch({type: GET_SMURFS, payload: response.data});
   })
   
