@@ -1,10 +1,8 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
 import axios from 'axios';
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const SMURFS_FETCHED = 'SMURFS_FETCHED';
+export const ADDING_SMURF = 'SAVING_SMURF';
+export const SMURF_ADDED = 'SMURF_SAVED';
 export const ERROR = 'ERROR';
 
 /*
@@ -30,6 +28,20 @@ export const fetchingData = () => {
     })
     .catch(error => {
       dispatch({type:ERROR, payload: 'Oh no! A Smurfing error!'});
+  });
+  }
+}
+
+export const addSmurf = smurf => {
+  return (dispatch) => {
+    dispatch({type: ADDING_SMURF})
+    axios
+    .post(URL, smurf)
+    .then( ({data}) => {
+      dispatch({type: SMURF_ADDED, payload: data})
+    })
+    .catch(error => {
+      dispatch({type:ERROR, payload: 'You cannot add that Smurf!'});
   });
   }
 }
