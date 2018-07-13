@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import { fetchingData } from '../actions/index';
+import CreateSmurf from './createSmurf';
  
 /*
  to wire this component up you're going to need a few things.
@@ -21,6 +22,8 @@ class App extends Component {
           <h2> Finding the Smurfs for you</h2>
         ) : (
           <div>
+            <h2> Smurf Village!</h2>
+            <CreateSmurf />
             <ul>
               {this.props.smurfs.map(smurf => {
                 return (

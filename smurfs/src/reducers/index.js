@@ -6,7 +6,6 @@ const initialState = {
   fetchingSmurfs: false,
   smurfsFetched: false,
   addingSmurf: false,
-  smurfAdded:false,
   // updatingSmurf: false,
   // deletingSmurf: false,
   error: null
@@ -21,13 +20,13 @@ const initialState = {
 export const smurfsReducer = (state = initialState, action) => {
   switch(action.type) {
     case FETCHING_SMURFS:
-      return { ...state, fetchingSmurfs:true};
+      return { ...state, fetchingSmurfs:true, addingSmurf:false, smurfAdded:false};
     case SMURFS_FETCHED:
-      return { ...state, fetchingSmurfs:false, smurfsFetched:true, smurfs: action.payload};
+      return { ...state, fetchingSmurfs:false, smurfsFetched:true,addingSmurf:false, smurfAdded:false, smurfs: action.payload};
     case ADDING_SMURF:
       return { ...state, addingSmurf: true }
     case SMURF_ADDED:
-      return { ...state, addingSmurf: false, smurfAdded: true}
+      return { ...state, addingSmurf: false, smurfAdded: true, smurfs:action.payload}
     case ERROR:
     return { ...state, fetchingSmurfs: false, smurfsFetched: false, error: action.payload}
     default:
