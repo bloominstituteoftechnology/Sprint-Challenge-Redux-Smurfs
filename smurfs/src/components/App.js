@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSmurf, addSmurf, deleteSmurf, updateSmurf } from '../actions';
 import NewSmurf from './newSmurf';
-import SmurfList from './smurfs';
+import Smurfs from './smurfs';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -54,7 +54,7 @@ class App extends Component {
           createSmurf={this.createSmurf}
         />
         <div className="list" >
-          <SmurfList 
+          <Smurfs 
             smurfs={this.props.smurfs}
             deleteSmurf={this.props.deleteSmurf}
             updateSmurf={this.props.updateSmurf}

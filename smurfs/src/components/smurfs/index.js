@@ -1,7 +1,7 @@
 import React from 'react';
 import Smurf from './Smurf';
 
-export default class smurfs extends React.Component {
+export default class Smurfs extends React.Component {
     render() {
         return (
             <div>
