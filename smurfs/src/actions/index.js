@@ -45,13 +45,13 @@ export const addSmurf = smurf => {
   };
 };
 
-// export const updateSmurfs = () => {
-//   const smurfs = axios.put(`http://localhost:3333/smurfs`);
+// export const updateSmurfs = (id) => {
+//   const putSmurf = axios.put(`http://localhost:3333/smurfs/${id}`);
 //   return dispatch => {
-//     dispatch({ type: FETCHING_SMURFS });
-//     smurfs
+//     dispatch({ type: UPDATING_SMURF });
+//     putSmurf
 //     .then(response => {
-//     dispatch({ type: FETCH_SMURFS, payload: response.data })
+//     dispatch({ type: UPDATED_SMURF, payload: response.data })
 //     })
 //     .catch(err => {
 //       dispatch({ type: ERROR, payload: err });
@@ -59,19 +59,19 @@ export const addSmurf = smurf => {
 //   };
 // };
 
-// export const deleteSmurfs = () => {
-//   const smurfs = axios.delete(`http://localhost:3333/smurfs`);
-//   return dispatch => {
-//     dispatch({ type: FETCHING_SMURFS });
-//     smurfs
-//     .then(response => {
-//     dispatch({ type: FETCH_SMURFS, payload: response.data })
-//     })
-//     .catch(err => {
-//       dispatch({ type: ERROR, payload: err });
-//     });
-//   };
-// };
+export const deleteSmurf = (id) => {
+  const delSmurf = axios.delete(`http://localhost:3333/smurfs/${id}`);
+  return dispatch => {
+    dispatch({ type: DELETING_SMURF });
+    delSmurf
+    .then(response => {
+    dispatch({ type: DELETED_SMURF, payload: response.data })
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, payload: err });
+    });
+  };
+};
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
