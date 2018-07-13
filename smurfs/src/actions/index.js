@@ -32,7 +32,7 @@ export const fetchReq = () => {
         dispatch({type: FETCHING});
         axios.get(URL)
         .then(({data}) => {
-            console.log(data);
+            // console.log(data);
             dispatch({type: FETCHED, payload: data});
         })
         .catch((err) => {

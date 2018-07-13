@@ -18,14 +18,14 @@ import { FETCHING, FETCHED, SAVING, SAVED, UPDATING, UPDATED, DELETING, DELETED,
 
 const initialState = {
   smurfs: [],
-  fetchingSmurfs: false,
-  fetchedSmurfs: false,
-  savingSmurfs: false,
-  savedSmurfs: false,
-  updatingSmurfs: false,
-  updatedSmurfs: false,
-  deletingSmurfs: false,
-  deletedSmurf: false,
+  fetching: false,
+  fetched: false,
+  saving: false,
+  saved: false,
+  updating: false,
+  updated: false,
+  deleting: false,
+  deleted: false,
   error: null
 };
 
@@ -47,7 +47,7 @@ const smurfsReducer = (state = initialState, action) => {
           return Object.assign({}, state, {
               fetching: !state.fetching,
               fetched: !state.fetched,
-              friends: action.payload
+              smurfs: action.payload
           });
       case SAVING:
           return Object.assign({}, state, {
@@ -57,7 +57,7 @@ const smurfsReducer = (state = initialState, action) => {
           return Object.assign({}, state, {
               saving: !state.saving,
               saved: !state.saved,
-              friends: action.payload
+              smurfs: action.payload
           });
       case DELETING:
           return Object.assign({}, state, {
@@ -67,7 +67,7 @@ const smurfsReducer = (state = initialState, action) => {
           return Object.assign({}, state, {
               deleting: !state.deleting,
               deleted: !state.deleted,
-              friends: action.payload
+              smurfs: action.payload
           });
       case UPDATING:
           return Object.assign({}, state, {
@@ -77,7 +77,7 @@ const smurfsReducer = (state = initialState, action) => {
           return Object.assign({}, state, {
               updating: !state.updating,
               updated: !state.updated,
-              friends: action.payload
+              smurfs: action.payload
           });
       case ERROR:
           return Object.assign({}, state, {

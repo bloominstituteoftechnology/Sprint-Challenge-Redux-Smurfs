@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
+import { fetchReq, submitReq, deleteReq, updateReq } from '../actions';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -7,6 +9,19 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      age: '',
+      height: ''
+    };
+  }
+
+  componentDidMount() {
+    this.props.fetchReq();
+  }
+
   render() {
     return (
       <div className="App">
@@ -19,4 +34,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    
+  };
+};
+
+export default connect(mapStateToProps, { fetchReq, submitReq, deleteReq, updateReq })(App);
