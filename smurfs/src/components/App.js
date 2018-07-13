@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
+import { fetchData, addData } from '../actions';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -19,4 +21,17 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log('MSP STATE: ', state);
+  return {
+    fetchingSmurfs: state.fetchingSmurfs,
+    fetchedSmurfs: state.fetchedSmurfs,
+    addingSmurf: state.addingSmurf,
+    smurfs: state.smurfs,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, {
+  fetchData, addData
+})(App);
