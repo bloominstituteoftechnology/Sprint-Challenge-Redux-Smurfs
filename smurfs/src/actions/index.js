@@ -24,7 +24,6 @@ export const fetchData = () => {
     dispatch({ type: FETCHING });
     axios.get('http://localhost:3333/smurfs')
       .then(response => {
-        console.log('FETCH RESPONSE: ', response);
         dispatch({ type: FETCHED, payload: response.data })
       })
       .catch(error => {
@@ -34,14 +33,14 @@ export const fetchData = () => {
 }
 
 export const addData = (friend) => {
+  console.log(friend);
   return (dispatch) => {
     dispatch({ type: ADDING });
-    axios.post('http://localhost:3333/smurfs/', friend)
+    axios.post('http://localhost:3333/smurfs', friend)
       .then(() => {
         dispatch(fetchData())
       })
       .catch(error => {
-        console.log(error);
         dispatch({ type: ERROR, payload: error })
       })
   }

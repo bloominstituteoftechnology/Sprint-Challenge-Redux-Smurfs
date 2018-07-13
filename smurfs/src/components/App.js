@@ -20,24 +20,23 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
 
+        {this.props.addingSmurf ? (
+          <p>Adding Smurf, please wait...</p>
+        ) : (
+          <SmurfForm />
+        )}
+
         {this.props.fetchingSmurfs ? (
           <p>Loading, please wait...</p>
         ) : (
           <Smurfs smurfs={this.props.smurfs} />
         )}
-
-        {/* {this.props.addingSmurf ? (
-          <p>Adding Smurf, please wait...</p>
-        ) : (
-          <SmurfForm />
-        )} */}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log('MSP STATE: ', state);
   return {
     fetchingSmurfs: state.fetchingSmurfs,
     fetchedSmurfs: state.fetchedSmurfs,
