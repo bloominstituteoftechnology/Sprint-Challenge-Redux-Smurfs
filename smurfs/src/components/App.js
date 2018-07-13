@@ -29,7 +29,7 @@ class App extends Component {
       <header className = "App-header" >
       <h1 className = "App-title" > Welcome Smurf Village 2.0 Redux Version < /h1>
       </header>
-      {this.state.showForm ? ( <addSmurf / >
+      {this.state.showForm ? ( <AddSmurf / >
         ) : (
           <button className = "show" onClick = {() => {this.setState({showForm: true})}} >
           Add a new Smurf

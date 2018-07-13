@@ -29,15 +29,15 @@ class AddSmurf extends Component {
       <form className = "new-smurf" onSubmit = {this.addSmurf} >
           <input label = "Name: "
             name = "name"
-            placeholder = "John"
+            placeholder = "Add Smurf"
             onChange = {this.handleChange}/>
           <input label = "Age: "
             name = "age"
-            placeholder = "100"
+            placeholder = "age"
             onChange = {this.handleChange}/>
           <input label = "Height: "
               name = "height"
-              placeholder = "5cm"
+              placeholder = "cm"
               onChange = {this.handleChange}/>
           <button className = "btn" > Add < /button>
         </form>

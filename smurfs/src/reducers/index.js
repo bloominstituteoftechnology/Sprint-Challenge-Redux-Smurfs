@@ -1,4 +1,4 @@
-import {FETCHING,FETCHED,ADDING, ADDED, ERROR} from '../actions';
+import {FETCHING,FETCHED,ADDING,ADDED, ERROR} from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -44,7 +44,7 @@ export default (state=initialState, action) => {
     case ADDING:
       return Object.assign({}, state, {
         addingSmurfs: true,
-        addeddSmurfs: false
+        addedSmurfs: false
       })
     case ADDED:
       return Object.assign({}, state, {
