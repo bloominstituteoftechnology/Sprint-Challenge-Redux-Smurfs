@@ -20,7 +20,7 @@ export const smurfsReducer = (state = initialState, action) => {
     case FETCHING_ERROR:
       return {...state, error: action.payload};
     case UPDATE_FORM:
-      return {...state, updateform: true, }
+      return {...state, updateform: true}
     default:
       return state;
   }

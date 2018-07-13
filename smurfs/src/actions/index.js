@@ -20,9 +20,9 @@ export const getSmurfs = () => {
             })
     };
 }
-export const updateSmurfForm = () => {
+export const updateSmurfForm = (event) => {
   return function(dispatch){
-    dispatch({type: UPDATE_FORM, });
+    dispatch({type: UPDATE_FORM, payload: event});
   }
 }
 export const postSmurfs = () =>{
