@@ -1,7 +1,7 @@
 import { FETCHING_SMURFS, UPDATING_SMURFS, DELETING_SMURFS, SUCCESS, ERROR } from '../actions';
 
 const initialState = {
-  smurfs: [];
+  smurfs: [],
   fetchingSmurfs: false,
   updatingSmurfs: false,
   deletingSmurfs: false,

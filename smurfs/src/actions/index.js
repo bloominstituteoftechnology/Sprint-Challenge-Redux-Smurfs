@@ -1,19 +1,20 @@
 import axios from 'axios';
-import { error } from 'util';
 
-export const PENDING = "PENDING";
-export const SUCCESS = "SUCCESS";
-export const ERROR = "ERROR";
+export const SUCCESS = 'SUCCESS';
+export const ERROR = 'ERROR';
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const UPDATING_SMURFS = 'UPDATING_SMURFS';
+export const DELETING_SMURFS = 'DELETING_SMURFS';
 
 export const getSmurf = () => {
   const promise = axios.get('http://localhost:3333/smurfs')
   return dispatch => {
-    dispatch({ type: PENDING })
+    dispatch({ type: FETCHING_SMURFS })
     promise.then(response => {
       console.log(response)
       dispatch({
         type: SUCCESS,
-        payload: []
+        payload: response.data
       })
     })
     .catch(err => {
@@ -28,12 +29,12 @@ export const getSmurf = () => {
 export const addSmurf = smurf => {
   const promise = axios.post('http://localhost:3333/smurfs', smurf)
   return dispatch => {
-    dispatch({ type: PENDING })
+    dispatch({ type: UPDATING_SMURFS })
     promise.then(response => {
       console.log(response)
       dispatch({
         type: SUCCESS,
-        payload: []
+        payload: response.data
       })
     })
     .catch(err => {
