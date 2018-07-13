@@ -77,6 +77,7 @@ server.delete('/smurfs/:id', (req, res) => {
   } else {
     sendUserError('No smurf by that ID exists in the smurf DB', res);
   }
+  smurfId--;
 });
 
 server.listen(port, err => {
