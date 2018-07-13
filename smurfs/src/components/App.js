@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions';
+import { getSmurfs, deleteSmurf } from '../actions';
 import SmurfForm from './SmurfForm';
 /*
  to wire this component up you're going to need a few things.
@@ -25,7 +25,12 @@ class App extends Component {
           ) : (
             <ul>
               {this.props.smurfs.map(smurf => {
-                return <li key={smurf.id}>{smurf.name}</li>;
+                return (
+                  <div>
+                    <li key={smurf.id}>{smurf.name}</li>
+                    <button onClick={() => this.props.deleteSmurf(smurf.id)}>Send me to the smurf gods</button>
+                  </div>  
+                  );
               })}
             </ul>
           )}
@@ -51,4 +56,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs, deleteSmurf })(App);

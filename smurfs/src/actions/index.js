@@ -48,11 +48,25 @@ export const addSmurf = (newSmurf) => {
       type: ADDING
     })
     request.then(response => {
-      console.log(response);
       dispatch({type: ADDED, payload: response.data})
     })
     .catch(err => {
-      dispatch({ type: ERROR, payload: err})
+      dispatch({ type: ERROR, payload: err.message})
+    })
+  }
+}
+
+export const deleteSmurf = (id) => {
+  const request = axios.delete(`http://localhost:3333/smurfs/${id}`)
+
+  return (dispatch) => {
+    dispatch({type: DELETING})
+
+    request.then(response => {
+      dispatch({type: DELETED, payload: response.data})
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, payload: err.message})
     })
   }
 }
