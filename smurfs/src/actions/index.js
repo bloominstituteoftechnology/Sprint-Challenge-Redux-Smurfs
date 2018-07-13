@@ -15,7 +15,7 @@ export const DELETING = "DELETING";
    D - deleteSmurf
 */
 
-export function fetch_smurf() {
+export const fetch_smurf = () => {
   return(dispatch) => {
     dispatch({type: FETCHING})
     axios.get('http://localhost:3333/smurfs')

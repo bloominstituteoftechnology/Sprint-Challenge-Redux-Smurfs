@@ -10,6 +10,11 @@ import {fetch_smurf, post_smurf, delete_smurf} from '../actions'
  */
 class App extends Component {
 
+
+  componentDidMount() {
+    this.props.fetch_smurf();
+  }
+
   handleInputChange = e => {
     this.setState({[e.target.name]: e.target.value});
     console.log(e.target.value);
@@ -46,7 +51,7 @@ class App extends Component {
                         
                           
                         })}
-            
+                        <h2>Add Smurf to see list of smurfs</h2><h2>Couldn't get it to display on load up</h2>
                       </ul>
                       
                     </div>
