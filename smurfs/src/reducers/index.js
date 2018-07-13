@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { fetchingSmurfs: true });
 
     case SMURF_FETCHED:
-      return;
+      return Object.assign({}, state, { smurfs: action.payload, fetchingSmurfs: false, smurfFetched: true });
 
     case ADDING_SMURF:
       return;
@@ -42,7 +42,7 @@ export default (state = initialState, action) => {
       return;
 
     case ERROR:
-      return;
+      return Object.assign({}, state, { error: action.payload });
 
     default:
       return state;
