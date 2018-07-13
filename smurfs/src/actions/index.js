@@ -51,7 +51,7 @@ export function updateSmurf(id, smurf) {
     axios.put(`http://localhost:3333/smurfs/${id}`, smurf)
     .then(({data}) => {
       console.log(data);
-      dispatch({SMURF_UPDATED, payload: data})
+      dispatch({type: SMURF_UPDATED, payload: data})
     })
     .catch(err => {
       dispatch({type: UPDATE_ERROR, error: err})

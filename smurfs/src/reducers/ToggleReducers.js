@@ -7,7 +7,7 @@ const initialState = {
 export const toggleReducer = (state = initialState, {type}) => {
     switch(type) {
         case TOGGLE_FORM: 
-        return {...state, showForm: true}
+        return {...state, showForm: !state.showForm}
         default:
         return state
     }

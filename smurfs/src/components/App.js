@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchSmurfs } from './../actions';
+import { fetchSmurfs, toggleForm } from './../actions';
 import Smurf from './Smurf';
 import AddSmurf from './AddSmurf';
 /*
@@ -25,7 +25,7 @@ class App extends Component {
           <AddSmurf />
           <ul>
           {this.props.smurfs.map(smurf => {
-            return <Smurf key={smurf.name} smurf={smurf}/>
+            return <Smurf key={smurf.id} smurf={smurf}/>
           })}
           </ul>
         </div>
