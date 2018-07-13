@@ -43,3 +43,16 @@ body {
   width: 50vw;
   margin: 0 auto;
 }
+
+/* Card styles */
+
+.card-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.single-card {
+  width: 25vw;
+  margin: 20px;
+}

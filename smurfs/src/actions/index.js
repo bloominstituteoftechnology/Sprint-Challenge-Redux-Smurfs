@@ -44,13 +44,16 @@ export const fetchingSmurfs = () => {
 export const addSmurf = (smurf) => {
   return function(dispatch) {
       dispatch({type: SAVING_SMURFS})
-      axios
-          .post(`http://localhost:3333/smurfs`)
+      window.location.reload(
+        axios
+          .post(`http://localhost:3333/smurfs`, smurf)
           .then(response => {
               dispatch({type: SMURFS_SAVED, payload: response.data})
           })
           .catch(err => {
               dispatch({type: ERROR, payload: err})
           })
+      )
+      
   }
 };

@@ -3,7 +3,7 @@ import Smurf from './Smurf.js'
 
 const Smurfs = props => {
     return (
-        <div>
+        <div className="card-container">
             {props.smurfs.map(smurf => {
                 return (
                     <div><Smurf smurf={smurf} key={smurf.id} /></div>
