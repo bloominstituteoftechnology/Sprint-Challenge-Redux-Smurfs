@@ -15,6 +15,11 @@ import SmurfsList from "./SmurfsList";
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  componentDidMount() {
+    let URL = "http://localhost:3333/smurfs/";
+    this.props.fetchSmurfs(URL);
+  }
+
   render() {
     return (
       <div className="App">
