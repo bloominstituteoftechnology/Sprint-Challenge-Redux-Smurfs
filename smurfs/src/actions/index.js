@@ -33,3 +33,12 @@ export const getSmurfs = () => {
       .catch(err => dispatch({ type: ERROR, payload: err }));
   }
 }
+
+export const addSmurf = smurf => {
+  const promise = axios.post('http://localhost:3333/smurfs/', smurf);
+  return dispatch => {
+    dispatch({ type: ADDING_SMURF })
+    promise.then(response => dispatch({ type: SMURF_ADDED, payload: response.data }))
+      .catch(err => dispatch({ type: ERROR, payload: err }))
+  }
+}
