@@ -13,6 +13,8 @@ import axios from 'axios';
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const FETCHED_SMURFS = 'FETCHED_SMURFS';
 export const ERROR_FETCHING = 'ERROR_FETCHING';
+export const ADDING_SMURF = 'ADDING_SMURF';
+export const ADDED_SMURF = 'ADDED_SMURF';
 
 export const getSmurfs = URL => {
   const promise = axios.get(URL);
@@ -25,5 +27,19 @@ export const getSmurfs = URL => {
       .catch(err => {
         dispatch({ type: ERROR_FETCHING, payload: err })
       })
+  }
+}
+
+export const addSmurf = (URL, smurf) => {
+  const create = axios.post(URL, smurf);
+  return dispatch => {
+    dispatch({ type: ADDING_SMURF });
+      create
+        .then(response => {
+          dispatch({ type: ADDED_SMURF, payload: response.data })
+        })
+        .catch(err => {
+          dispatch({ type: ERROR_FETCHING, payload: err })
+        })
   }
 }
