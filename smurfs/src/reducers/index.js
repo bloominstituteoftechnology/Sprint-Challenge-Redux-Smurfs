@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING_SMURF, FETCHED_SMURF, ERROR, ADDING_SMURF,  ADD_SMURF} from '../actions';
+import { FETCHING_SMURF, FETCHED_SMURF, ERROR, ADDING_SMURF,  ADD_SMURF, DELETING, DELETED } from '../actions';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  */
@@ -14,6 +14,7 @@ import { FETCHING_SMURF, FETCHED_SMURF, ERROR, ADDING_SMURF,  ADD_SMURF} from '.
    addedSmurf: false,
    updatingSmurf: false,
    deletingSmurf: false,
+   deletedSmurf: false,
    error: null,
  }
 
@@ -38,8 +39,10 @@ export const smurfReducer = (state=initialState, action) => {
       return Object.assign({}, state, { addingSmurf: true, addedSmurf: false});
     case ADD_SMURF:
       return Object.assign({}, state, { addingSmurf: false, addedSmurf: true, smurfs: action.payload });
-   
-    
+    case DELETING:
+      return Object.assign({}, state, { deletingSmurf: true, deletedSmurf: false })
+    case DELETED:
+      return Object.assign({}, state, { deletingSmurf: false, deletedSmurf: true, smurfs: action.payload })
     
       default: 
       return state;
