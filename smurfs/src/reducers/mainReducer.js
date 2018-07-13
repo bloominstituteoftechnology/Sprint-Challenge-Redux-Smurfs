@@ -2,12 +2,20 @@
   Be sure to import in all of the action types from `../actions`
 */
 
+import { 
+  FETCHING,
+  FETCHED,
+  ERROR,
+  ADDING_SMURF
+} from '../actions/index'; 
+
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
  
 const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
+   fetchedSmurfs: false,
    addingSmurf: false,
    updatingSmurf: false,
    deletingSmurf: false,
@@ -16,7 +24,27 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    
+    case FETCHING:
+      console.log(state);
+      console.log(action.payload);
+      return Object.assign({}, state, {fetchingSmurfs: true, fetched: false, error: null });
+    case FETCHED:
+      console.log('fetched: ', action.payload)
+      return {...state,
+        smurfs: action.payload,
+        fetchedSmurfs: true,
+        fetchingSmurfs: false,
+        error: null
+      };
+    case ADDING_SMURF:
+      return Object.assign({}, state, {addingSmurf: true, fetchedSmurfs: false});
+    case ERROR:
+      return {
+        fetchingSmurfs: false,
+        fetchedSmurfs: false,
+        error: "Uh oh, looks like something went wrong." + ' ' + action.payload };
+    default:
+      return state;
   }
 };
 
