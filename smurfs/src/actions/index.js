@@ -39,7 +39,7 @@ export const fetchSmurfs = URL => {
 };
 
 export const addSmurf = (URL, newSmurf) => {
-  const promise = axios.post(URL, newFriend);
+  const promise = axios.post(URL, newSmurf);
   return function(dispatch) {
     dispatch({ type: DATA_REQUESTED });
     promise
