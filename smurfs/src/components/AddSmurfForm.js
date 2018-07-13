@@ -50,30 +50,41 @@ class AddSmurfForm extends React.Component {
 
   render() {
     return (
-      <form className="form-group" onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="name"
-          value={this.state.name}
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          name="age"
-          placeholder="age"
-          value={this.state.age}
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          name="height"
-          placeholder="height"
-          value={this.state.height}
-          onChange={this.handleChange}
-        />
-        <button type="submit">SUBMIT</button>
-      </form>
+      <div className="smurf-form">
+        <h3>Add A New Smurf</h3>
+        <form className="form-group" onSubmit={this.handleSubmit}>
+          <input
+            className="form-control"
+            type="text"
+            name="name"
+            placeholder="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+
+          <input
+            className="form-control"
+            type="text"
+            name="age"
+            placeholder="age"
+            value={this.state.age}
+            onChange={this.handleChange}
+          />
+
+          <input
+            className="form-control"
+            type="text"
+            name="height"
+            placeholder="height"
+            value={this.state.height}
+            onChange={this.handleChange}
+          />
+
+          <button type="submit" className="btn">
+            SUBMIT
+          </button>
+        </form>
+      </div>
     );
   }
 }
