@@ -41,7 +41,7 @@ handleDeleteSmurf = id => {
 
 const mapStateToProps = state => {
     return {
-        fetchSmurfs: state.rootReducer.fetchSmurfs
+        fetchingSmurfs: state.fetchingSmurfs
     }
 }
 
