@@ -5,6 +5,7 @@ export const SMURFS_FETCHED = 'DATA_FETCHED';
 export const FETCHING_ERROR = 'FETCHING_ERROR';
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const FETCH_SINGLE_SMURF = 'FETCH_SINGLE_SMURF';
+export const DELETE_SMURF = 'ADDING_SMURF';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -51,7 +52,18 @@ export const fetchSingleSmurf = id => {
         payload: res.data.filter(smurf => smurf.id === id)
       })
     })
+    .catch(error => console.log(error))};
   }
+
+export const deleteSmurf = id => {
+  const request = axios.delete(`http://localhost:3333/smurfs/${id}`);
+  return (dispatch) => {
+    request.then(res => {
+      dispatch({
+      type: DELETE_SMURF,
+      payload: res.data
+    })}
+  ).catch(error => console.log(error))};
 }
 
     // axios.post('http://localhost:3333/smurfs', {...this.state})
