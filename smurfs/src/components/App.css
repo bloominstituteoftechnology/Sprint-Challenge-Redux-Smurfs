@@ -1,3 +1,13 @@
+/* Index styles */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* App styles */
+
 .App {
   text-align: center;
 }
@@ -25,4 +35,11 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* SmurfForm styles */
+
+.form-container {
+  width: 50vw;
+  margin: 0 auto;
 }
