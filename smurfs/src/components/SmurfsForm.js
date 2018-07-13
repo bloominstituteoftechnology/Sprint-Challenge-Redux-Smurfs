@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions'
+import { 
+    getSmurfs,
+    postSmurfs
+ } from '../actions'
 
 class SmurfsForm extends Component {
     constructor(props) {
@@ -12,13 +15,14 @@ class SmurfsForm extends Component {
         }
     }
 
-    addSmurfs = e => {
-        this.setState({
-            name: '',
-            age: '',
-            height: ''
+    addSmurfs = () => {
+        this.props.postSmurfs({
+            name: this.state.name,
+            age: this.state.age,
+            height: this.state.height
         })
     }
+
 
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value })
@@ -57,5 +61,5 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {
-    getSmurfs
+    getSmurfs, postSmurfs
 })(SmurfsForm);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions';
+import { getSmurfs, postSmurfs } from '../actions';
 import Smurfs from './Smurfs';
 import SmurfsForm from './SmurfsForm';
 import './App.css';
@@ -21,7 +21,7 @@ class App extends Component {
         {this.props.fetching ? (
           <p>Smurfs are fetching please wait...</p>
         ) : (
-        <Smurfs smurfs={this.props.smurfs} />)}
+            <Smurfs smurfs={this.props.smurfs} />)}
         <SmurfsForm />
       </div>
     );
@@ -31,14 +31,15 @@ class App extends Component {
 const mapStateToProps = state => {
   console.log(state)
   return {
-  fetching: state.fetchingSmurfs,
-  smurfs: state.smurfs
-}
+    fetching: state.fetchingSmurfs,
+    smurfs: state.smurfs
+  }
 }
 
-export default connect (
+export default connect(
   mapStateToProps,
   {
-    getSmurfs
+    getSmurfs,
+    postSmurfs
   }
 )(App);

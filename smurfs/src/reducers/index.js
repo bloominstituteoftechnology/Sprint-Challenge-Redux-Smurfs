@@ -31,12 +31,15 @@ export const smurfsReducer = (state = initialState, action) => {
   switch(action.type) {
     case FETCHING_SMURF:
     return Object.assign({}, state, {
-      fetchingSmurfs: true
+      fetchingSmurfs: true,
+      fetchedSmurfs: false,
+      addingSmurf: true
     });
     case GET_SMURF:
     return Object.assign({}, state, {
       fetchingSmurfs: false,
       fetchedSmurfs: true,
+      addingSmurf: false,
       smurfs: action.payload
     });
     case ADD_SMURF:

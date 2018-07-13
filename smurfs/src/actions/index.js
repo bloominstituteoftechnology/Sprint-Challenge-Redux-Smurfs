@@ -19,24 +19,26 @@ export const ADD_SMURF = 'ADD_SMURF';
    U - updateSmurf
    D - deleteSmurf
 */
+
 export const getSmurfs = () => {
   const promise = axios.get('http://localhost:3333/smurfs');
 
   return function (dispatch) {
-    dispatch( {type: FETCHING_SMURF})
+    dispatch({ type: FETCHING_SMURF })
     promise.
       then(response => {
         console.log(response)
         dispatch({ type: GET_SMURF, payload: response.data });
-      }) 
+      })
   }
 }
 
 export const postSmurfs = (smurfs) => {
+
   return function (dispatch) {
-    dispatch( {type : ADD_SMURF });
-    axios.post('http://localhost:3333/smurfs', smurfs)
-    }.then(response => {
+    dispatch({ type: ADD_SMURF })
+    axios.post('http://localhost:3333/smurfs', smurfs).then(response => {
       dispatch(getSmurfs())
     })
+  }
 }
