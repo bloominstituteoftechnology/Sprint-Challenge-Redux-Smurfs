@@ -42,3 +42,12 @@ export const addSmurf = smurf => {
       .catch(err => dispatch({ type: ERROR, payload: err }))
   }
 }
+
+export const editSmurf = smurf => {
+  const promise = axios.post('http://localhost:3333/smurfs/', smurf);
+  return dispatch => {
+    dispatch({ type: UPDATING_SMURF })
+    promise.then(response => dispatch({ type: SMURF_UPDATED, payload: response.data }))
+      .catch(err => dispatch({ type: ERROR, payload: err }));
+  }
+}

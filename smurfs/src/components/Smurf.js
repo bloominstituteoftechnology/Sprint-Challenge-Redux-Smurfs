@@ -1,4 +1,5 @@
 import React from 'react';
+import UpdateSmurfForm from './UpdateSmurfForm';
 
 class Smurf extends React.Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class Smurf extends React.Component {
                 <p>Name: {this.props.smurf.name}</p>
                 <p>Height: {this.props.smurf.height}</p>
                 <p>Age: {this.props.smurf.age}</p>
+                <UpdateSmurfForm />
             </div>
         );
     }
