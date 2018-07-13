@@ -9,6 +9,13 @@ import { getSmurfs } from "../actions"
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.onChange = this.onChange.bind(this);
+  }
+  onChange(e){
+    this.setState({[e.target.name]: e.target.value})
+  }
   componentDidMount() {
    this.props.getSmurfs();
  }
@@ -19,15 +26,15 @@ class App extends Component {
         <form>
           <div>
             Name:
-            <input type="text" name="smurfName" value="Mickey"></input>
+            <input type="text" name="smurfName" onChange={this.onChange} value={this.props.smurfName}></input>
           </div>
           <div>
             Age:
-            <input type="text" name="smurfAge" value="Mouse"></input>
+            <input type="text" name="smurfAge" onChange={this.onChange} value={this.props.smurfAge}></input>
         </div>
         <div>
             Height:
-            <input type="text" name ="smurfHeight"></input>
+            <input type="text" name ="smurfHeight" onChange={this.onChange} value={this.props.smurfHeight}></input>
         </div>
         <input type="submit" value="Submit"></input>
         </form>
@@ -52,7 +59,10 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     smurfs: state.smurfs.data,
-    fetchingsmurf: state.fetchingsmurf
+    fetchingsmurf: state.fetchingsmurf,
+    smurfAge: state.smurfage,
+    smurfName: state.smurfname,
+    smurfHeight: state.smurfheight
   }
 }
 export default connect(mapStateToProps, { getSmurfs })(App);
