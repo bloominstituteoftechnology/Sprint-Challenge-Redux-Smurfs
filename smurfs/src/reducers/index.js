@@ -1,3 +1,64 @@
+import { FETCHING_SMURFS, UPDATING_SMURFS, DELETING_SMURFS, SUCCESS, ERROR } from '../actions';
+
+const initialState = {
+  smurfs: [];
+  fetchingSmurfs: false,
+  updatingSmurfs: false,
+  deletingSmurfs: false,
+  smurfsReady: false,
+  error: null,
+}
+
+export const smurfReducers = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCHING_SMURFS:
+      return Object.assign(
+        {},
+        state,
+        { fetchingSmurfs: true }
+      )
+    case UPDATING_SMURFS:
+      return Object.assign(
+        {},
+        state,
+        { updatingSmurfs: true }
+      )
+    case DELETING_SMURFS:
+      return Object.assign(
+        {},
+        state,
+        { deletingSmurfs: true}
+      )
+    case SUCCESS:
+      return Object.assign(
+        {},
+        state,
+        {
+          smurfs: [...action.payload],
+          fetchingSmurfs: false,
+          updatingSmurfs: false,
+          deletingSmurfs: false,
+          smurfsReady: true,
+          error: null,
+        }
+      )
+    case ERROR: 
+      return Object.assign(
+        {},
+        state,
+        {
+          fetchingSmurfs: false,
+          updatingSmurfs: false,
+          deletingSmurfs: false,
+          smurfsReady: false,
+          error: 'Error!',
+        }
+      )
+    default:
+      return state;
+  }
+}
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
