@@ -4,5 +4,5 @@ import {toggleReducer} from './ToggleReducers';
 
 export const rootReducer = combineReducers({
   smurfs: SmurfReducer,
-  toggleReducer
+  showForm: toggleReducer
 })

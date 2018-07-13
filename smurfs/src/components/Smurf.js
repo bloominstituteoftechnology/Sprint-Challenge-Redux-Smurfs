@@ -20,8 +20,7 @@ const Smurf = props => {
        <p>{props.smurf.age}</p>
        <p>{props.smurf.height}</p>
        {console.log(props.smurfs[props.smurf.id])}
-       <UpdateSingleSmurf id={props.smurfs[props.smurf.id-1].id}/>
-       {props.showForm ? <UpdateSingleSmurf /> : null}
+       {props.showForm ? <UpdateSingleSmurf id={props.smurfs[props.smurf.id-1].id}/> : null}
        <div>
            <button onClick={() => props.toggleForm()}>Edit</button>
             <button onClick={() => props.deleteSmurf(props.smurf.id)}>Delete</button>
@@ -35,7 +34,7 @@ const Smurf = props => {
 const mapStateToProps = state => {
     return {
         smurfs: state.smurfs.smurfs,
-        showForm: state.showForm
+        showForm: state.showForm.showForm
     }
 }
 
