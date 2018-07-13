@@ -33,10 +33,21 @@ export const fetchData = () => {
 }
 
 export const addData = (friend) => {
-  console.log(friend);
   return (dispatch) => {
     dispatch({ type: ADDING });
-    axios.post('http://localhost:3333/smurfs', friend)
+    axios.post(`http://localhost:3333/smurfs`, friend)
+      .then(() => {
+        dispatch(fetchData())
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error })
+      })
+  }
+}
+
+export const deleteSmurf = (id) => {
+  return (dispatch) => {
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
       .then(() => {
         dispatch(fetchData())
       })

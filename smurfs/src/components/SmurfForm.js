@@ -29,7 +29,7 @@ class SmurfForm extends React.Component {
                 <input name='name' type='text' onChange={this.handleChange} placeholder='Name' />
                 <input name='age' type='number' onChange={this.handleChange} placeholder='Age' />
                 <input name='height' type='text' onChange={this.handleChange} placeholder='Height' />
-                <button onClick={this.handleAddNew}>Add Friend</button>   
+                <button onClick={this.handleAddNew}>Add Smurf</button>   
             </div>
         );    
     }
