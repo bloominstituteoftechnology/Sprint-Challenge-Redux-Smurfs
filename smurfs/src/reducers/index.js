@@ -3,7 +3,9 @@ import { FETCHING,
          FETCHED, 
          ERROR,
          ADDING,
-         ADDED 
+         ADDED,
+         UPDATING,
+         UPDATED 
          } from '../actions';
 
 const initialState = {
@@ -27,11 +29,21 @@ const rootReducer = (state = initialState, action) => {
     };
 
     case ADDING:
-    return {...state, addingSmurfs: true};
+    return {...state, addingSmurf: true};
 
     case ADDED:
     return {...state,
-    addingSmurfs: false,
+    addingSmurf: false,
+    smurfs: action.payload
+    };
+    
+    case UPDATING:
+    return {...state,
+    updatingSmurf: true};
+
+    case UPDATED:
+    return {...state,
+    updatingSmurf: false,
     smurfs: action.payload
     };
 
