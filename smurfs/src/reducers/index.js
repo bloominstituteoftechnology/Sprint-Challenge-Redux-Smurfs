@@ -1,4 +1,4 @@
-import {FETCHING, FETCHED, ERROR, SMURFS_SAVED, SAVING_SMURFS} from "../actions";
+import {FETCHING, FETCHED, ERROR, SMURFS_SAVED, SAVING_SMURFS, DELETING_SMURF, DELETED_SMURF} from "../actions";
 
 
 
@@ -14,7 +14,7 @@ const initialState = {
 const smurfReducer = (state=initialState, action) => {
 switch(action.type){
 	case FETCHING:
-	return Object.assign({}, state, {fetchingSmurfs: true});
+	return Object.assign({}, state, {fetchingSmurfs: true, error: null});
 
 	case FETCHED:
 	return Object.assign({}, state, {fetchingSmurfs: false, smurfs: action.smurfs});
@@ -24,6 +24,15 @@ switch(action.type){
 
         case SMURFS_SAVED:
         return Object.assign({}, state, {fetchingSmurfs: false, smurfs: action.smurfs, error: null});
+
+	case DELETING_SMURF:
+        return Object.assign({}, state, {deletingSmurf: true, fetchingSmurfs: false, error: null});
+
+
+        case DELETED_SMURF:
+        return Object.assign({}, state, {deletingSmurf: false, fetchingSmurfs: false, smurfs: action.smurfs, error: null});
+
+
 
 
 	case ERROR:

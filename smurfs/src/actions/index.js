@@ -5,7 +5,8 @@ export const FETCHED = "FETCHED";
 export const ERROR = "ERROR";
 export const SAVING_SMURFS = "SAVING_SMURFS";
 export const SMURFS_SAVED = "SMURFS_SAVED";
-
+export const DELETING_SMURF = "DELETING_SMURF";
+export const DELETED_SMURF = "DELETED_SMURF";
 
 
 export const fetchingSmurfsAction = () => {
@@ -43,6 +44,36 @@ export const addSmurf = (name, age, height) => {
     });
   };
 };
+
+export const deleteSmurf = (smurfId) => {
+        const smurf = {id:smurfId};
+
+        const request = axios.delete(`http://localhost:3333/smurfs/${smurfId}`,
+        smurf)
+
+
+        return (dispatch) => {
+        dispatch({type: DELETING_SMURF});
+
+        request.then(response => {
+        dispatch({type: DELETED_SMURF, smurfs: response.data});
+    })
+
+        .catch(err => {
+        dispatch({type: ERROR, error: err});
+
+    });
+  };
+};
+
+
+
+
+
+
+
+
+
 
 /*
   For this project you'll need at least 2 action creators for the main portion,

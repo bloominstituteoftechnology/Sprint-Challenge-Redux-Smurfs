@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import {fetchingSmurfsAction, addSmurf} from "../actions";
+import {fetchingSmurfsAction, addSmurf, deleteSmurf} from "../actions";
 
 
 class App extends Component {
@@ -30,18 +30,27 @@ addSmurfHandler = event => {
         this.setState({name: "", age: "", height: ""});
 }
 
+deleteSmurfHandler = smurfId => {
+        this.props.deleteSmurf(smurfId);
+}
 
 
 	
 render() {
     return (
       <div className="App">
+	   <div>{this.props.deleting ? (
+          <h1>Deleting Smurfs...</h1>
+        ) :(null)} 
+      </div> 
+
 	  <div>{this.props.fetching ? (
-          <h1>Fetching Smurfs...</h1>
+          <h1>Fetching Smurf...</h1>
         ) :( 
       <div>  <ul>
             {this.props.smurfs.map(smurf => {
-              return <li key={smurf.id}>{smurf.name}, {smurf.age}, {smurf.height}</li>;
+              return <div key={smurf.id}><li>{smurf.name}, {smurf.age}, {smurf.height}</li>
+	<button onClick={()=>this.deleteSmurfHandler(smurf.id)}>delete</button></div>;
             })}
           </ul>
 
@@ -65,12 +74,12 @@ render() {
 const mapStateToProps = state => {
   return {
           smurfs: state.smurfs,
-          fetching: state.fetchingSmurfs
-
+          fetching: state.fetchingSmurfs,
+	  deleting: state.deletingSmurf
   };
 };
 
 
-export default connect(mapStateToProps, {fetchingSmurfsAction, addSmurf})(App);
+export default connect(mapStateToProps, {fetchingSmurfsAction, addSmurf, deleteSmurf})(App);
 
 
