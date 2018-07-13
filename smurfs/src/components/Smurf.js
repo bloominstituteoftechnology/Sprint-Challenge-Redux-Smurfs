@@ -144,7 +144,7 @@ class Smurf extends React.Component {
                     onClick={() => this.handleDelClick(this.props.smurf.id)}
                     className="btn btn-outline-danger float-right"
                   >
-                    delete
+                    banish
                   </Button>
                 </span>
               ) : (

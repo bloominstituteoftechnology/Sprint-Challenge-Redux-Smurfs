@@ -76,7 +76,6 @@ const rootReducer = (state = initialState, action) => {
       });
 
     case ADDCLICKED:
-      console.log('clcike', state.addClicked);
       return Object.assign({}, state, {
         addClicked: !state.addClicked,
       });

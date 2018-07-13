@@ -17,7 +17,6 @@ export const fetchData = url => {
     axios
       .get(url)
       .then(response => {
-        console.log('repsonse', response.data);
         dispatch({ type: FETCHED, payload: response.data });
       })
       .catch(err => dispatch({ type: ERROR, payload: err }));
