@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 //import AddSmurf from './Addsmurf';
-import Smurfs from './Smurfs';
 import fetchSmurfs from '../actions';
 import { connect } from 'react-redux';
 
@@ -24,14 +23,24 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <Smurfs {...this.props}/>
-      </div>
-    );
+          {this.props.smurfs.map(smurf => {
+            return (
+              <div>
+                <h1>{smurf.name}</h1>
+                <p>Age: {smurf.age}</p>
+                <p>Height: {smurf.height}</p>
+              </div>
+            )
+          })}
+  </div>
+)
   }
 }
 
 const mapStateToProps = state => {
-  return state;
+  return {
+    smurfs: state.smurfs
+  }
 }
 
 export default connect(mapStateToProps, { fetchSmurfs })(App);

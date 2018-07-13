@@ -3,13 +3,15 @@ import connect from 'react-redux';
 import Smurf from './Smurf';
 import fetchSmurfs from '../actions';
 
-const Smurfs = props => {
+class Smurfs = props => {
   return (
     <div>
       {props.smurfs.map(smurf => {
         return (
           <div>
-          <Smurf smurf={smurf}/>
+          <h1>{smurf.name}</h1>
+          <p>Age: {smurf.age}</p>
+          <p>Height: {smurf.height}</p>
           </div>
         )
       })}

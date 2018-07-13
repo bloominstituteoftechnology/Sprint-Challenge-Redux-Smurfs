@@ -8,7 +8,7 @@ export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR'
 
 export const fetchSmurfs = () => {
-  const smurfs = `http://http://localhost:3333/smurfs`;
+  const smurfs = `http://localhost:3333/smurfs`;
   return dispatch => {
     dispatch({
       type: FETCHING
