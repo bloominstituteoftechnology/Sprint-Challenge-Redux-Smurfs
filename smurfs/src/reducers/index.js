@@ -13,6 +13,24 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case FETCHING_SMURFS:
+      return;
+      
+    case FETCHING_SMURFS:
+      return;
+
+    case ADDING_SMURF:
+      return;
+
+    case UPDATING_SMURF:
+      return;
+
+    case DELETING_SMURF:
+      return;
+
+    case ERROR:
+      return;
+
     default:
       return state;
   }
