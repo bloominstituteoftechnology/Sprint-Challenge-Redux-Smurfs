@@ -11,14 +11,14 @@ import {
   Be sure to export each action type so you can pull it into your reducer
 */
 
-export const ADD_SMURFS = 'ADD_SMURFS'
-export const ADDING_SMURFS = 'ADDING_SMURFS'
+export const ADD_SMURF = 'ADD_SMURF'
+export const ADDING_SMURF = 'ADDING_SMURF'
 export const GET_SMURFS = 'GET_SMURFS'
 export const GETTING_SMURFS = 'GETTING_SMURFS'
-export const UPDATE_SMURFS = 'UPDATE_SMURFS'
-export const UPDATING_SMURFS = 'UPDATING_SMURFS'
-export const DELETE_SMURFS = 'DELETE_SMURFS'
-export const DELETING_SMURFS = 'DELETING_SMURFS'
+export const UPDATE_SMURF = 'UPDATE_SMURF'
+export const UPDATING_SMURF = 'UPDATING_SMURF'
+export const DELETE_SMURF = 'DELETE_SMURF'
+export const DELETING_SMURF = 'DELETING_SMURF'
 export const ERROR = 'ERROR'
 
 /*
@@ -32,7 +32,37 @@ export const ERROR = 'ERROR'
    D - deleteSmurf
 */
 
-export const addSmurf = () => dispatch => {}
+export const addSmurf = e => async dispatch => {
+
+  e.preventDefault()
+
+  const {
+    name,
+    age,
+    height
+  } = e.target.elements
+
+  dispatch({ type: ADDING_SMURF })
+
+  try {
+
+    const {
+      data: smurfs
+    } = await post('http://localhost:3333/smurfs', {
+      name: name.value, 
+      age: age.value, 
+      height: height.value
+    })
+    
+    dispatch({ type: ADD_SMURF, smurfs })
+
+  } catch(error) {
+    
+     dispatch({ type: ERROR, error }) 
+
+  }
+
+}
 export const getSmurfs = () => async dispatch => {
  
   dispatch({ type: GETTING_SMURFS })

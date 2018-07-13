@@ -4,14 +4,14 @@
 
 import {
 
-  ADD_SMURFS,
-  ADDING_SMURFS,
+  ADD_SMURF,
+  ADDING_SMURF,
   GET_SMURFS,
   GETTING_SMURFS,
-  UPDATE_SMURFS,
-  UPDATING_SMURFS,
-  DELETE_SMURFS,
-  DELETING_SMURFS,
+  UPDATE_SMURF,
+  UPDATING_SMURF,
+  DELETE_SMURF,
+  DELETING_SMURF,
   ERROR
 
 } from '../actions'
@@ -54,6 +54,14 @@ export default (state = initialState, action) => {
         ...state, 
         smurfs: action.smurfs,
         gettingSmurfs: false
+      }
+    case ADDING_SMURF:
+      return {...state, addingSmurf: true} 
+    case ADD_SMURF:
+      return {
+        ...state,
+        smurfs: action.smurfs,
+        addingSmurf: false
       }
     case ERROR:
       return {...state, error: action.error}
