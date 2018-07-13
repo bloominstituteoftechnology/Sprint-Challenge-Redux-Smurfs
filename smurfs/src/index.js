@@ -7,7 +7,7 @@ import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
-import { BrowserRouter as Router} from 'react-router-dom';
+
 
 const store = createStore(
   rootReducer,
@@ -15,10 +15,8 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <Router>
   	<Provider store={store}>
   	  <App />
-  	</Provider>
-  </Router>,
+  	</Provider>,
   document.getElementById('root')
 );

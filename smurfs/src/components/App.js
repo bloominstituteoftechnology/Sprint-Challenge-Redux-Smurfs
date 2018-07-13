@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-
 import { Route } from 'react-router-dom';
+import { BrowserRouter as Router} from 'react-router-dom';
+import styled from 'styled-components';
 
 import Header from './Header';
-import styled from 'styled-components';
+import Smurfs from './Smurfs';
 import background from '../images/background.jpg';
 
 const APP = styled.div`
@@ -26,12 +27,14 @@ const APP = styled.div`
 class App extends Component {
   render() {
     return (
-      <APP>
-        <Route exact path="/" component={Header} />
-        {/* <Route exact path="/smurfs" render={props => <Smurfs {...props} smurfs={this.state.smurfs}/>} />
-        <Route exact path="/smurfs" component={SmurfForm} />
-        <Route path="/smurfs/:id" render ={props => <Smurf {...props} updateState={this.updateState}/>} /> */}
-      </APP>
+      <Router>
+        <APP>
+          <Route exact path="/" component={Header} />
+          <Route exact path="/smurfs" component={Smurfs}/>
+          {/* <Route exact path="/smurfs" component={SmurfForm} />
+          <Route path="/smurfs/:id" render ={props => <Smurf {...props} updateState={this.updateState}/>} /> */}
+        </APP>
+      </Router>
     );
   }
 }
