@@ -21,6 +21,7 @@ class UpdateSmurfForm extends React.Component {
         const { name, height, age } = this.state;
         const smurf = { name, height, age, id: this.props.id };
 
+        this.props.setEdit();
         if (name === '' || height === '' || age === '') return;
 
         this.props.editSmurf(smurf);
@@ -33,7 +34,7 @@ class UpdateSmurfForm extends React.Component {
                 <input onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='name' />
                 <input onChange={this.handleInput} value={this.state.height} type='text' name='height' placeholder='height' />
                 <input onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='age' />
-                <button onClick={this.editSmurf}>Edit Smurf</button>
+                <button onClick={this.editSmurf}>Save</button>
             </form>
         );
     }
