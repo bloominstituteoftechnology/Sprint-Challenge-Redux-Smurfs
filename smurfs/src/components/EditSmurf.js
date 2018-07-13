@@ -21,6 +21,8 @@ class EditSmurf extends React.Component {
     const height = this.state.height;
     e.preventDefault();
     this.props.handleUpdate(name, age, height, this.props.smurfID);
+    this.setState({name: '', age:'', height:''})
+    this.props.toggleEditForm();
   }
 
   render() {

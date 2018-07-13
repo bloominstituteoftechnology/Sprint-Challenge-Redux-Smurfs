@@ -35,8 +35,10 @@ class App extends Component {
       age: this.state.age,
       height: this.state.height
     }
-    console.log(newSmurf)
     this.props.saveData(newSmurf);
+    this.setState({name: '',
+    age: '',
+    height:''})
   }
 
   handleUpdate = (name, age, height, id) => {
