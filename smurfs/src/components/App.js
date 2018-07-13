@@ -21,7 +21,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <Smurfs smurfs={this.props.smurfs}/>
+        {this.props.smurfs.map(smurf => {
+        return <Smurfs key={smurf.id} smurf={smurf} />
+        })}
         <SmurfForm />
       </div>
     );
@@ -29,7 +31,10 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return state
+  return {
+    fetchSmurfs: state.fetchingSmurfs,
+    smurfs: state.smurfs
+  };
 };
 
 export default connect(mapStateToProps, { fetchSmurfs })(App);

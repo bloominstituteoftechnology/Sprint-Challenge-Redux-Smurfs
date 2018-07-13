@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchSmurfs, addSmurf } from '../actions';
+import { addSmurf } from '../actions';
 import { connect } from 'react-redux';
 
 
@@ -52,4 +52,4 @@ handleAddSmurf = smurf => {
   }
 }
 
-export default connect({ fetchSmurfs, addSmurf })(SmurfForm);
+export default connect(null, { addSmurf })(SmurfForm);
