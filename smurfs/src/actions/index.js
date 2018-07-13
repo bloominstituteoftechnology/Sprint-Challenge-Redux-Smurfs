@@ -32,7 +32,7 @@ export const getSmurfs = () => {
   const smurfs = axios.get(`${URL}/smurfs`);
   return dispatch => {
     dispatch({ type: GETTING_SMURFS });
-    promise
+    smurfs
     .then(({ data }) => {
       dispatch({ type: GET_SMURFS, payload:data});
     })
