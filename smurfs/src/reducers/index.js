@@ -1,6 +1,12 @@
 import { FETCH_START } from '../actions/index.js';
 import { FETCH_SUCCESS } from '../actions/index.js';
 import { FETCH_ERROR } from '../actions/index.js';
+import { ADD_SMURF_START } from '../actions/index.js';
+import { ADD_SMURF_SUCCESS } from '../actions/index.js';
+import { ADD_SMURF_ERROR } from '../actions/index.js';
+import { DELETE_SMURF_START } from '../actions/index.js';
+import { DELETE_SMURF_SUCCESS } from '../actions/index.js';
+import { DELETE_SMURF_ERROR } from '../actions/index.js';
 
 import { combineReducers } from 'redux';
 
@@ -20,6 +26,10 @@ const smurfsReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_SUCCESS:
       return [...action.payload];
+      case ADD_SMURF_SUCCESS:
+      return [...action.payload];
+      case DELETE_SMURF_SUCCESS:
+      return [...action.payload];
     default:
       return state;
   }
@@ -35,6 +45,19 @@ const fetchStateReducer = (state = 'resting', action) => {
       return 'resting';
     case FETCH_ERROR:
       return 'resting';
+    case ADD_SMURF_START:
+      return 'addingSmurf';
+    case ADD_SMURF_SUCCESS:
+      return 'resting';
+    case ADD_SMURF_ERROR:
+      return 'resting';
+    case DELETE_SMURF_START:
+      return 'deletingSmurf';
+    case DELETE_SMURF_SUCCESS:
+      return 'resting';
+    case DELETE_SMURF_ERROR:
+      return 'resting';
+    
     default:
       return state;
   }
