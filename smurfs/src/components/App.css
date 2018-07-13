@@ -1,28 +1,25 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+body {
+  background: url('smurfvillage.png');
 }
-
 .App-header {
-  background-color: #222;
-  height: 150px;
   padding: 20px;
-  color: white;
+  color: red;
 }
 
+h3 {
+  font-size: 1.0em;
+  margin-top: -50px;
+}
 .App-title {
-  font-size: 1.5em;
+  font-size: 4.5em;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.smurf-list {
+  border: 1px solid black;
+  width: 300px;
+  margin: auto;
+  background: white;
 }

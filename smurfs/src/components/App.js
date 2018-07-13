@@ -27,7 +27,8 @@ class App extends Component {
     return (
     <div className = "App" >
       <header className = "App-header" >
-      <h1 className = "App-title" > Welcome Smurf Village 2.0 Redux Version < /h1>
+      <h1 className = "App-title" > Welcome Smurf Village</h1>
+      <h3> 2.0 Redux Version</h3>
       </header>
       {this.state.showForm ? ( <AddSmurf / >
         ) : (
@@ -36,9 +37,12 @@ class App extends Component {
           </button>
         )
       }
+
       {this.props.smurfs.map(smurf => {
-          return <div key = {smurf.id} > {smurf.name} < /div>
-        })}
+          return <div className= "smurf-list" key = {smurf.id} > {smurf.name} < /div>
+        })
+
+      }
       </div>
     );
   }
