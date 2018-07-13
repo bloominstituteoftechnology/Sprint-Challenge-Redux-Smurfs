@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { GOT_SMURFS, GETTING_SMURFS, ADD_SMURF, ERROR } from '../actions';
+import { GOT_SMURFS, GETTING_SMURFS, ADD_SMURF, DELETING_SMURF, ERROR } from '../actions';
 
 const initialState = {
   smurfs: [],
@@ -21,15 +21,23 @@ export default (state = initialState, action) => {
       }
     case GOT_SMURFS:
       return {
-        ...state,
         smurfs: action.smurfs,
-        fetchingSmurfs: false
+        fetchingSmurfs: false,
+        addingSmurfs: false,
+        updatingSmurf: false,
+        deletingSmurf: false,
+        error: null
       }
     case ADD_SMURF:
       return {
         ...state,
         smurfs: action.smurfs,
         addingSmurf: true
+      }
+    case DELETING_SMURF:
+      return {
+        ...state,
+        deletingSmurf: true
       }
     case ERROR:
       return Object.assign({}, state, {error: action.error})

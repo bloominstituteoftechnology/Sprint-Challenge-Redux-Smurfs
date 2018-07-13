@@ -10,7 +10,7 @@ import smurfsReducer from './reducers';
 
 const store = createStore(smurfsReducer, applyMiddleware(thunk, logger));
 
-ReactDOM.render(
+ReactDOM.render (
   <Provider store={store}>
     <App />
   </Provider>,

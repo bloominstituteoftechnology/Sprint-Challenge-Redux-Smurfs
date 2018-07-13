@@ -1,5 +1,16 @@
 .App {
   text-align: center;
+  margin: 2em auto;
+  width: 80%;
+}
+
+.form {
+  float: left;
+}
+
+.list {
+  float: left;
+  margin-left: 3em;
 }
 
 .App-logo {
