@@ -7,6 +7,7 @@ import { fetchSmurfs } from "../actions";
 // components
 import Loading from "./Loading";
 import Error from "./Error";
+import SmurfsList from "./SmurfsList";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -20,6 +21,7 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <Loading fetchingSmurfs={this.props.fetchingSmurfs} />
         <Error error={this.props.error} />
+        <SmurfsList smurfs={this.props.smurfs} />
       </div>
     );
   }
