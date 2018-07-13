@@ -14,13 +14,9 @@ class App extends Component {
     return (
       <div className="App">
         {
-          this.props.error ? <div>Error</div> : null
-        }
-        {
           this.props.fetching ? <div>FETCHING_SMURFS</div>
             :
             <React.Fragment>
-
               <AddSmurfForm />
               <Smurfs smurfs={this.props.smurfs} />
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addSmurf } from '../actions';
+import { Button, Input } from 'reactstrap';
 
 class AddSmurfForm extends React.Component {
     constructor() {
@@ -29,11 +30,11 @@ class AddSmurfForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={event => event.preventDefault()}>
-                <input onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='name' />
-                <input onChange={this.handleInput} value={this.state.height} type='text' name='height' placeholder='height' />
-                <input onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='age' />
-                <button onClick={this.addSmurf}>Add Smurf</button>
+            <form className='add-form' onSubmit={event => event.preventDefault()}>
+                <Input className='add-field' onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='Name' />
+                <Input className='add-field' onChange={this.handleInput} value={this.state.height} type='text' name='height' placeholder='Height' />
+                <Input className='add-field' onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='Age' />
+                <Button color='primary' className='add-button' type='submit' onClick={this.addSmurf}>Add Smurf</Button>
             </form>
         );
     }

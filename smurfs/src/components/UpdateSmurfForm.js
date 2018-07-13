@@ -32,9 +32,9 @@ class UpdateSmurfForm extends React.Component {
     render() {
         return (
             <form className='edit-form' onSubmit={event => event.preventDefault()}>
-                <Input className='edit-field' onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='name' />
-                <Input className='edit-field' onChange={this.handleInput} value={this.state.height} type='text' name='height' placeholder='height' />
-                <Input className='edit-field' onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='age' />
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='Name' />
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.height} type='text' name='height' placeholder='Height' />
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='Age' />
                 <Button color='primary' className='save-button' type='submit' onClick={this.editSmurf}>Save</Button>
             </form>
         );

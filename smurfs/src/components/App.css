@@ -6,7 +6,8 @@
 
 .smurfs-container { 
   display: flex;
-  justify-content: center;
+  flex-flow: wrap;
+  margin: 0 20px;
 }
 
 .smurf-container { 
@@ -44,6 +45,21 @@
 .edit-field {
   font-size: 13px;
   margin: 5px 0;
+}
+
+.add-form {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+}
+
+.add-field.form-control{
+  font-size: 13px;
+  width: 25%;
+}
+
+.add-button {
+  font-size: 13px;
 }
 
 
