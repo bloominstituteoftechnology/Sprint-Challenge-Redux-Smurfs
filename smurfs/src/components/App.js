@@ -13,8 +13,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AddSmurfForm />
-        <Smurfs smurfs={this.props.smurfs} />
+        {
+          this.props.error ? <div>Error</div> : null
+        }
+        {
+          this.props.fetching ? <div>FETCHING_SMURFS</div>
+            :
+            <React.Fragment>
+
+              <AddSmurfForm />
+              <Smurfs smurfs={this.props.smurfs} />
+
+            </React.Fragment>
+        }
+
       </div>
     );
   }
@@ -22,7 +34,9 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    smurfs: state.smurfs
+    smurfs: state.smurfs,
+    fetching: state.fetchingSmurfs,
+    error: state.error
   }
 }
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
-export const SMURF_FETCHED = 'SMURF_DELETED';
+export const SMURF_FETCHED = 'SMURF_FETCHED';
 
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const SMURF_ADDED = 'SMURF_ADDED';
