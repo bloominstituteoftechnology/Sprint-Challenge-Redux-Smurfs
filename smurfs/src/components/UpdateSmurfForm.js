@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { editSmurf } from '../actions';
 
 class UpdateSmurfForm extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
-            name: '',
-            height: '',
-            age: ''
+            name: this.props.name,
+            height: this.props.height,
+            age: this.props.age
         }
     }
 
@@ -19,7 +19,7 @@ class UpdateSmurfForm extends React.Component {
 
     editSmurf = () => {
         const { name, height, age } = this.state;
-        const smurf = { name, height, age };
+        const smurf = { name, height, age, id: this.props.id };
 
         if (name === '' || height === '' || age === '') return;
 
@@ -33,7 +33,7 @@ class UpdateSmurfForm extends React.Component {
                 <input onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='name' />
                 <input onChange={this.handleInput} value={this.state.height} type='text' name='height' placeholder='height' />
                 <input onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='age' />
-                <button onClick={this.addSmurf}>Add Smurf</button>
+                <button onClick={this.editSmurf}>Edit Smurf</button>
             </form>
         );
     }

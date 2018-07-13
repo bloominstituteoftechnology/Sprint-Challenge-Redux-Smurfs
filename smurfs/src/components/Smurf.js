@@ -12,7 +12,12 @@ class Smurf extends React.Component {
                 <p>Name: {this.props.smurf.name}</p>
                 <p>Height: {this.props.smurf.height}</p>
                 <p>Age: {this.props.smurf.age}</p>
-                <UpdateSmurfForm />
+                <UpdateSmurfForm
+                    name={this.props.smurf.name}
+                    height={this.props.smurf.height}
+                    age={this.props.smurf.age}
+                    id={this.props.smurf.id}
+                />
             </div>
         );
     }

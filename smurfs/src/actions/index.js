@@ -44,7 +44,7 @@ export const addSmurf = smurf => {
 }
 
 export const editSmurf = smurf => {
-  const promise = axios.post('http://localhost:3333/smurfs/', smurf);
+  const promise = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
   return dispatch => {
     dispatch({ type: UPDATING_SMURF })
     promise.then(response => dispatch({ type: SMURF_UPDATED, payload: response.data }))
