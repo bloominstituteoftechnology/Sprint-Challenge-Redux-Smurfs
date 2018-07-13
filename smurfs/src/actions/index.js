@@ -4,6 +4,7 @@
 */
 import axios from 'axios';
 
+export const FETCHING_SMURF = 'FETCHING_SMURF'
 export const GET_SMURF = 'GET_SMURF';
 export const ADD_SMURF = 'ADD_SMURF';
 
@@ -22,6 +23,7 @@ export const getSmurfs = () => {
   const promise = axios.get('http://localhost:3333/smurfs');
 
   return function (dispatch) {
+    dispatch( {type: FETCHING_SMURF})
     promise.
       then(response => {
         console.log(response)

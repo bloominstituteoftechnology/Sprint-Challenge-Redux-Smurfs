@@ -6,9 +6,9 @@ const Smurfs = props => {
         {props.smurfs.map(smurf => { 
         return(
         <li key={props.name}>
-        <h3>{props.name}</h3>
-        <p>{props.height}</p>
-        <p>{props.age} years old</p>
+        <h3>{smurf.name}</h3>
+        <p>{smurf.height}</p>
+        <p>{smurf.age} years old</p>
         </li>
         )
     })}

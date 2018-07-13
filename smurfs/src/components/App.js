@@ -30,7 +30,7 @@ const mapStateToProps = state => {
   console.log(state)
   return {
   fetching: state.fetchingSmurfs,
-  smurfs: state.smurfs,
+  smurfs: state.smurfs
 }
 }
 

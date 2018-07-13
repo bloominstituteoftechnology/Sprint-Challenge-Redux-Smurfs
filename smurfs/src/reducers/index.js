@@ -1,7 +1,8 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { 
+import {
+  FETCHING_SMURF, 
   GET_SMURF
 } from '../actions';
 
@@ -10,6 +11,7 @@ import {
  const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
+   fetchedSmurfs: true,
    addingSmurf: false,
    updatingSmurf: false,
    deletingSmurf: false,
@@ -26,10 +28,15 @@ import {
 
 export const smurfsReducer = (state = initialState, action) => {
   switch(action.type) {
+    case FETCHING_SMURF:
+    return Object.assign({}, state, {
+      fetchingSmurfs: true
+    });
     case GET_SMURF:
     return Object.assign({}, state, {
-      fetchingSmurfs: true,
-      addingSmurf: false
+      fetchingSmurfs: false,
+      fetchedSmurfs: true,
+      smurfs: action.payload
     });
     default:
     return state;
