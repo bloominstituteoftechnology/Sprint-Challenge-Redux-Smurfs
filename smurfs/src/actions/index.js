@@ -8,6 +8,8 @@ export const UPDATING_SMURF = 'UPDATING_SMURF';
 export const SMURF_UPDATED = 'SMURF_UPDATED';
 export const DELETING_SMURF = 'DELETING_SMURF';
 export const SMURF_DELETED = 'SMURF_DELETED';
+export const SHOW_UPDATE_FORM = 'SHOW_UPDATE_FORM';
+export const HIDE_UPDATE_FORM = 'HIDE_UPDATE_FORM';
 export const DATA_ERROR = 'DATA_ERROR';
 
 const API_URL = 'http://localhost:3333/smurfs';
@@ -53,5 +55,18 @@ export const deleteSmurf = id => {
       dispatch({ type: SMURF_DELETED, payload: response.data });
     })
     .catch(e => dispatch({ type: DATA_ERROR, payload: e }));
+  };
+};
+
+export const showUpdateForm = (smurf) => {   
+  return {
+    type: SHOW_UPDATE_FORM,
+    payload: smurf
+  };
+};
+
+export const hideUpdateForm = () => {   
+  return {
+    type: HIDE_UPDATE_FORM
   };
 };

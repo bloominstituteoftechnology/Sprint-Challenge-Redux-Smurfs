@@ -1,4 +1,4 @@
-import { FETCHING_DATA, DATA_FETCHED, ADDING_SMURF, SMURF_ADDED, UPDATING_SMURF, SMURF_UPDATED, DELETING_SMURF, SMURF_DELETED, DATA_ERROR } from '../actions';
+import { FETCHING_DATA, DATA_FETCHED, ADDING_SMURF, SMURF_ADDED, UPDATING_SMURF, SMURF_UPDATED, DELETING_SMURF, SMURF_DELETED, DATA_ERROR, SHOW_UPDATE_FORM, HIDE_UPDATE_FORM } from '../actions';
 
 const initialState =  {
   smurfs: [],
@@ -6,7 +6,9 @@ const initialState =  {
   addingSmurf: false,
   updatingSmurf: false,
   deletingSmurf: false,
-  error: null
+  error: null,
+  showingUpdateForm: false,
+  smurfToEdit: null
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -39,6 +41,13 @@ const rootReducer = (state = initialState, action) => {
         smurfs: action.payload,
         deletingSmurf: false
       });
+    case SHOW_UPDATE_FORM:
+      return Object.assign({}, state, { 
+        smurfToEdit: action.payload,
+        showingUpdateForm: true
+      });
+    case HIDE_UPDATE_FORM:
+      return Object.assign({}, state, { showingUpdateForm: false });
     case DATA_ERROR:
       return Object.assign({}, state, { error: action.payload });
     default:
