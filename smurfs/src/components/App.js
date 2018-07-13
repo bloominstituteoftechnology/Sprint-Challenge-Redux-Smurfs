@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchSmurfs, toggleForm } from './../actions';
+import { fetchSmurfs, toggleAddForm } from './../actions';
 import Smurf from './Smurf';
 import AddSmurf from './AddSmurf';
 import Styled from 'styled-components';
@@ -10,7 +10,6 @@ const Body = Styled.div`
   background: lightskyblue;
   padding: 60px;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 `;
@@ -38,6 +37,11 @@ text-shadow: 2px 2px #000000;
 margin: 20px;
 `;
 
+const SmurfList = Styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 class App extends Component {
 
   componentDidMount() {
@@ -53,12 +57,14 @@ class App extends Component {
         <Image src='https://www.comicscenter.net/uploads/images/expos_les_grandes_expositions/smurfs-imps-2008-3.jpg'/>
         </Header>
         <Body>
-          <AddSmurf />
-          <ul>
+
+          <SmurfList>
           {this.props.smurfs.map(smurf => {
             return <Smurf key={smurf.id} smurf={smurf}/>
           })}
-          </ul>
+          </SmurfList>
+          {this.props.showAddForm ? <AddSmurf /> : <button onClick={this.props.toggleAddForm}> Add Smurf</button>}
+          
       </Body>
       </div>
     );
@@ -67,12 +73,14 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    smurfs: state.smurfs.smurfs
+    smurfs: state.smurfs.smurfs,
+    showAddForm: state.showAddForm.showAddForm
 }
 }
 
 const mapActionsToProps = {
-  fetchSmurfs: fetchSmurfs
+  fetchSmurfs: fetchSmurfs,
+  toggleAddForm: toggleAddForm
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(App);

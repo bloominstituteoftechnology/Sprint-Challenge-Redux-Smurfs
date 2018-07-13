@@ -7,6 +7,30 @@ const FormContainer = Styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 30%;
+    border: 1px solid black;
+    padding: 20px;
+    background: white;
+    box-shadow: 5px 5px 5px;
+`;
+
+const InputContainer = Styled.form`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+width: 100%;
+height: 110px;
+`;
+
+const InputField = Styled.input`
+    width: 80%;
+`;
+const Title = Styled.h2`
+color: deepskyblue;
+text-shadow: 2px 2px #000000;
+font-family: 'Boogaloo', sans-serif;
+font-size: 32px;
 `;
 
 class AddSmurf extends React.Component {
@@ -39,23 +63,23 @@ class AddSmurf extends React.Component {
     render() {
         return (
             <FormContainer>
-            <h3>Add a smurf </h3>
-            <form>
-                <input 
+            <Title>Add a smurf </Title>
+            <InputContainer>
+                <InputField 
                     type='text'
                     name='name'
                     placeholder='Name'
                     defaultValue=''
                     onChange={this.updateForm}
                     />
-                    <input 
+                    <InputField 
                     type='text'
                     name='age'
                     placeholder='Age'
                     defaultValue=''
                     onChange={this.updateForm}
                     />
-                    <input 
+                    <InputField 
                     type='text'
                     name='height'
                     placeholder='Height'
@@ -63,7 +87,7 @@ class AddSmurf extends React.Component {
                     onChange={this.updateForm}
                     />
                     <button onClick={this.addNewSmurf}>Add Smurf</button>
-                </form>
+                </InputContainer>
             </FormContainer>
         )
     }

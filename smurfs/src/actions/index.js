@@ -13,6 +13,7 @@ export const DELETING_SMURF = 'DELETING_SMURF';
 export const SMURF_DELETED = 'SMURF_DELETED';
 export const DELETE_ERROR = 'DELETE_ERROR';
 export const TOGGLE_FORM = 'TOGGLE_FORM';
+export const TOGGLE_ADD_FORM = 'TOGGLE_ADD_FORM';
 
 
 export function fetchSmurfs() {
@@ -76,5 +77,11 @@ export function deleteSmurf(id) {
 export const toggleForm = () => {
   return {
     type: TOGGLE_FORM
+  }
+}
+
+export const toggleAddForm = () => {
+  return {
+    type: TOGGLE_ADD_FORM
   }
 }

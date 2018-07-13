@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 import SmurfReducer from './SmurfsReducers';
-import {toggleReducer} from './ToggleReducers';
+import {toggleReducer, toggleAddReducer} from './ToggleReducers';
 
 export const rootReducer = combineReducers({
   smurfs: SmurfReducer,
-  showForm: toggleReducer
+  showForm: toggleReducer,
+  showAddForm: toggleAddReducer
 })

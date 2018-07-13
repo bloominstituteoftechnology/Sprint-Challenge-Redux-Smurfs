@@ -9,16 +9,25 @@ const SmurfContainer = Styled.div`
     flex-direction: column;
     align-items: center;
     border: 1px solid black;
+    background: white;
     margin: 20px;
     padding: 20px;
+    box-shadow: 5px 5px 5px;
+`;
+
+const Title = Styled.h2`
+color: deepskyblue;
+text-shadow: 2px 2px #000000;
+font-family: 'Boogaloo', sans-serif;
+font-size: 32px;
 `;
 
 const Smurf = props => {
     return (
         <SmurfContainer>
-       <h2> {props.smurf.name} </h2>
-       <p>{props.smurf.age}</p>
-       <p>{props.smurf.height}</p>
+       <Title> {props.smurf.name} </Title>
+       <p>Age: {props.smurf.age}</p>
+       <p>Height: {props.smurf.height}</p>
        {console.log(props.smurfs[props.smurf.id])}
        {props.showForm ? <UpdateSingleSmurf id={props.smurfs[props.smurf.id-1].id}/> : null}
        <div>
