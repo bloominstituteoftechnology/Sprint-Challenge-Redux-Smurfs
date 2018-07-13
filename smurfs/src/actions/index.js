@@ -4,14 +4,14 @@ export const SUCCESS = 'SUCCESS';
 export const ERROR = 'ERROR';
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const UPDATING_SMURFS = 'UPDATING_SMURFS';
-export const DELETING_SMURFS = 'DELETING_SMURFS';
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const ADDING_SMURF = 'ADDING_SMURF';
 
 export const getSmurf = () => {
   const promise = axios.get('http://localhost:3333/smurfs')
   return dispatch => {
     dispatch({ type: FETCHING_SMURFS })
     promise.then(response => {
-      console.log(response)
       dispatch({
         type: SUCCESS,
         payload: response.data
@@ -29,12 +29,49 @@ export const getSmurf = () => {
 export const addSmurf = smurf => {
   const promise = axios.post('http://localhost:3333/smurfs', smurf)
   return dispatch => {
-    dispatch({ type: UPDATING_SMURFS })
+    dispatch({ type: ADDING_SMURF })
     promise.then(response => {
-      console.log(response)
       dispatch({
         type: SUCCESS,
         payload: response.data
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err
+      })
+    })
+  }
+}
+
+export const updateSmurf = smurf => {
+  const promise = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+  return dispatch => {
+    dispatch({ type: UPDATING_SMURFS })
+    promise.then(response => {
+      dispatch({
+        type: SUCCESS,
+        payload: response.data
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err
+      })
+    })
+  }
+}
+
+export const deleteSmurf = smurfID => {
+  const promise = axios.delete(`http://localhost:3333/smurfs/${smurfID}`)
+  return dispatch => {
+    dispatch({ type: DELETING_SMURF })
+    promise.then(response => {
+      dispatch({
+        type: SUCCESS,
+        payload: response.date
       })
     })
     .catch(err => {
