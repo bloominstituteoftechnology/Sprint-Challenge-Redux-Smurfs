@@ -32,10 +32,11 @@ export const getSmurfs = () => {
   }
 }
 
-export const postSmurfs = () => {
+export const postSmurfs = (smurfs) => {
   return function (dispatch) {
     dispatch( {type : ADD_SMURF });
-    axios.post('http://localhost:3333/smurfs')
-    .then()
-  }
+    axios.post('http://localhost:3333/smurfs', smurfs)
+    }.then(() => {
+      dispatch(getSmurfs())
+    })
 }
