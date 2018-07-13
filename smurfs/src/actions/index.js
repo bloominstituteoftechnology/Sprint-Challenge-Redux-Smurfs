@@ -51,7 +51,8 @@ export const addSmurf = (newSmurf) => {
       dispatch({type: ADDED, payload: response.data})
     })
     .catch(err => {
-      dispatch({ type: ERROR, payload: err.message})
+      console.log("MESSAGE!!!", );
+      dispatch({ type: ERROR, payload: err.response.data.Error})
     })
   }
 }
@@ -66,7 +67,7 @@ export const deleteSmurf = (id) => {
       dispatch({type: DELETED, payload: response.data})
     })
     .catch(err => {
-      dispatch({ type: ERROR, payload: err.message})
+      dispatch({ type: ERROR, payload: err.response.data.Error})
     })
   }
 }
