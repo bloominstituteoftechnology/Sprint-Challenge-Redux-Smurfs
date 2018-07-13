@@ -1,7 +1,12 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING_SMURFS, GET_SMURFS, ERROR } from "../actions/index";
+import {
+  FETCHING_SMURFS,
+  GET_SMURFS,
+  ERROR,
+  ADDING_SMURF
+} from "../actions/index";
 
 const initialState = {
   smurfs: [],

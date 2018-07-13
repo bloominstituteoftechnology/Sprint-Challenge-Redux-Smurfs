@@ -19,6 +19,7 @@ export const GET_SMURFS = "GET_SMURFS";
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const ERROR = "ERROR";
 export const ADDING_SMURF = "ADDING_SMURF";
+export const DELETING_SMURF = "DELETING_SMURF";
 
 export const getSmurfs = URL => {
   return function(dispatch) {
@@ -39,6 +40,33 @@ export const addSmurf = newSmurf => {
     dispatch({ type: ADDING_SMURF });
     axios
       .post("http://localhost:3333/smurfs", newSmurf)
+      .then(({ data }) => {
+        dispatch({ type: GET_SMURFS, payload: data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
+
+export const deleteSmurf = id => {
+  return function(dispatch) {
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(({ data }) => {
+        dispatch({ type: GET_SMURFS, payload: data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
+
+export const updateSmurf = (edits, id) => {
+  console.log("updateSmurf: edits, id", edits, id);
+  return function(dispatch) {
+    axios
+      .put(`http://localhost:3333/smurfs/${id}`, edits)
       .then(({ data }) => {
         dispatch({ type: GET_SMURFS, payload: data });
       })

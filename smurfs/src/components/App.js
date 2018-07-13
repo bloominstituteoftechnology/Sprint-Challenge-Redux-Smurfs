@@ -42,7 +42,7 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         {this.props.smurfs.map(smurf => {
-          return <Smurf smurf={smurf} />;
+          return <Smurf key={Math.random()} smurf={smurf} />;
         })}
         <form>
           <input
@@ -50,18 +50,21 @@ class App extends Component {
             value={this.state.name}
             name="name"
             placeholder="Add name"
+            type="text"
           />
           <input
             onChange={this.inputSmurf}
             value={this.state.age}
             name="age"
             placeholder="Add age"
+            type="number"
           />
           <input
             onChange={this.inputSmurf}
             value={this.state.height}
             name="height"
             placeholder="Add height"
+            type="number"
           />
           <button onClick={this.addSmurf}>Add Smurf</button>
         </form>
