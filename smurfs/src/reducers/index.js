@@ -44,17 +44,20 @@ const smurfReducer = (state = initialState, action) => {
         deletingSmurf: false,
         error: null }
     case ADDING:
-        return {...state, addingSmurf: true}
+        return {...state, addingSmurf: true, error: null}
     case ADDED: 
         return {...state, 
           addingSmurf: false,
+          error: null,
           smurfs: action.payload}
     case DELETING:
         return {...state, 
+        error: null,
         deletingSmurf: true}
     case DELETED: 
         return {...state,
         deletingSmurf: false,
+        error: null,
         smurfs: action.payload}
     case ERROR:
       return {...state, 
