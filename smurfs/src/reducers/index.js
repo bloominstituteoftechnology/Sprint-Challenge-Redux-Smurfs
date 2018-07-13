@@ -1,5 +1,5 @@
 /* prettier-ignore */
-import {FETCHING, FETCHED, ERROR, ADDING, ADDED, DELETING, DELETED, EDITING, EDITED} from '../actions';
+import {FETCHING, FETCHED, ERROR, ADDING, ADDED, DELETING, DELETED, EDITING, EDITED, ADDCLICKED} from '../actions';
 
 const initialState = {
   fetchingSmurfs: false,
@@ -12,6 +12,7 @@ const initialState = {
   friendDeleted: false,
   smurfs: [],
   error: null,
+  addClicked: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -72,6 +73,12 @@ const rootReducer = (state = initialState, action) => {
         updatingFriend: true,
         friendUpdated: true,
         smurfs: action.payload,
+      });
+
+    case ADDCLICKED:
+      console.log('clcike', state.addClicked);
+      return Object.assign({}, state, {
+        addClicked: !state.addClicked,
       });
 
     default:

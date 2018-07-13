@@ -9,6 +9,7 @@ export const DELETING = 'DELETING';
 export const DELETED = 'DELETED';
 export const EDITING = 'EDITING';
 export const EDITED = 'EDITED';
+export const ADDCLICKED = 'ADDCLICKED';
 
 export const fetchData = url => {
   return function(dispatch) {
@@ -16,6 +17,7 @@ export const fetchData = url => {
     axios
       .get(url)
       .then(response => {
+        console.log('repsonse', response.data);
         dispatch({ type: FETCHED, payload: response.data });
       })
       .catch(err => dispatch({ type: ERROR, payload: err }));
@@ -55,5 +57,11 @@ export const editSmurf = (url, editedSmurf) => {
         dispatch({ type: EDITED, payload: response.data });
       })
       .catch(err => dispatch({ type: ERROR, payload: err }));
+  };
+};
+
+export const addClicked = () => {
+  return {
+    type: 'ADDCLICKED',
   };
 };
