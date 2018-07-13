@@ -47,7 +47,7 @@ render() {
 	  <div>{this.props.fetching ? (
           <h1>Fetching Smurf...</h1>
         ) :( 
-      <div> <h1>Smurf List</h1> <ul>
+      <div> <ul>
             {this.props.smurfs.map(smurf => {
               return <div key={smurf.id}><li>{smurf.name}, {smurf.age}, {smurf.height}</li>
 	<button className="delete-btn" onClick={()=>this.deleteSmurfHandler(smurf.id)}>delete</button></div>;
