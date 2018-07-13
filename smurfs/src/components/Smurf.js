@@ -14,7 +14,7 @@ class Smurf extends React.Component {
                 <p>Name: {this.props.smurf.name}</p>
                 <p>Height: {this.props.smurf.height}</p>
                 <p>Age: {this.props.smurf.age}</p>
-                <button>Delete</button>
+                <button onClick={() => this.props.deleteSmurf(this.props.smurf.id)}>Delete</button>
                 <UpdateSmurfForm
                     name={this.props.smurf.name}
                     height={this.props.smurf.height}

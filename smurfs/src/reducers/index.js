@@ -36,10 +36,10 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { smurfs: action.payload, updatingSmurf: false, smurfUpdated: true });
 
     case DELETING_SMURF:
-      return;
+      return Object.assign({}, state, { deletingSmurf: true });
 
     case SMURF_DELETED:
-      return;
+      return Object.assign({}, state, { smurfs: action.payload, deletingSmurf: false, smurfDeleted: true });
 
     case ERROR:
       return Object.assign({}, state, { error: action.payload });
