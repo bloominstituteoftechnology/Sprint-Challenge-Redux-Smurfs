@@ -10,7 +10,6 @@ class DeleteSmurf extends Component {
     }
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value });
-    
     }
 
     render() {
@@ -25,7 +24,6 @@ class DeleteSmurf extends Component {
                         onChange={this.handleChange}
                         value={this.state.id}
                     />
-
                     <button className="field-btn" onClick={() => this.props.removeSmurf(this.state.id)}>Delete smurf</button>
                 </form>
             </div>);

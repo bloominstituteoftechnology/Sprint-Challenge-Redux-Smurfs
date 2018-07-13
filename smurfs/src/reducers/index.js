@@ -56,8 +56,8 @@ const dataSmurfReducer = (state = initialState, action) => {
     case DELETED:
       return Object.assign({}, state, {
         smurfs: action.payload,
-        fetchingSmurfs: true,
-        fetchedSmurfs: false,
+        fetchingSmurfs: false,
+        fetchedSmurfs: true,
         addingSmurf: false,
         updatingSmurf: false,
         deletingSmurf: false,
