@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { getSmurfs } from '../actions'
 
 /*
  to wire this component up you're going to need a few things.
@@ -26,15 +28,27 @@ const SmurfDiv = styled.div`
 `
 
 class App extends Component {
+  componentDidMount(){
+    this.props.getSmurfs();
+  }
+
   render() {
-    const arr = [{"name":"Pappa Smurf","age":200,"height":"5cm", "top":"43%", "left":"28%"}, {"name":"Vanity Smurf","age":200,"height":"5cm", "top":"27%", "left":"39.7%"}]
+    
     return (
       <div className="App">
         <h1>Smurf Redux Village</h1>
-        { arr.map(smurf => <SmurfDiv top={smurf.top} left={smurf.left}>{smurf.name}</SmurfDiv>)}
+        { this.props.smurfs.map(smurf => <SmurfDiv ket={smurf.name+Math.random()} top={smurf.top} left={smurf.left}>{smurf.name}</SmurfDiv>)}
       </div>
     );
   }
 }
 
-export default App;
+
+const MapStateToProps = (state) =>{
+  return {
+    smurfs: state.smurfs,
+    fetching:state.fetching,
+    smurf : state.smurf,
+  }
+}
+export default connect(MapStateToProps,{getSmurfs})(App);
