@@ -1,6 +1,13 @@
 import React from 'react';
 import { updateSmurf } from './../actions';
 import { connect } from 'react-redux';
+import Styled from 'styled-components';
+
+const UpdateContainer = Styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
 
 class UpdateSingleSmurf extends React.Component {
     constructor(props) {
@@ -34,7 +41,7 @@ class UpdateSingleSmurf extends React.Component {
 
     render() {
         return (
-            <div>
+            <UpdateContainer>
             <h3>Edit smurf </h3>
             <form>
                 <input 
@@ -60,7 +67,7 @@ class UpdateSingleSmurf extends React.Component {
                     />
                     <button onClick={this.editSmurf}>Submit Changes</button>
                 </form>
-            </div>
+            </UpdateContainer>
         )
     }
 }
