@@ -35,7 +35,7 @@ export const getSmurfs = () => {
       dispatch({ type: FETCHED, payload: data })
     })
     .catch(err => {
-      dispatch({ type: ERROR, payload: err })
+      dispatch({ type: ERROR, payload: err.message })
     });
   };
 };
