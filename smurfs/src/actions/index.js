@@ -11,6 +11,8 @@ export const ADDING_SMURF = 'ADDING_SMURF';
 export const ADD_SMURF = 'ADD_SMURF'; 
 export const DELETING = 'DELETING'; 
 export const DELETED = 'DELETED'; 
+export const UPDATING = 'UPDATING'; 
+export const UPDATED = 'UPDATED'; 
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -60,5 +62,17 @@ export const deleteSmurf = (id) => {
     .catch(err => {
       dispatch({ type: ERROR, payload: err });
   })
+  }
+}
+export const updateSmurf = (smurf) => {
+  const putSmurf = axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf);
+  return dispatch => {
+    dispatch({ type: UPDATING });
+    putSmurf.then( res => {
+        dispatch({ type: UPDATED, payload: res.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+    })
   }
 }
