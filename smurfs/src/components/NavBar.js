@@ -9,7 +9,7 @@ const NavBar = props => (
     color="primary"
     onClick={props.addClicked}
   >
-    Add Smurf
+    Add/Delete Smurf
   </Button>
 );
 

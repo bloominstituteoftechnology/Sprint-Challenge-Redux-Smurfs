@@ -24,7 +24,6 @@ class AddSmurfForm extends Component {
     newSmurf.height = newSmurf.height + 'cm';
     const URL = 'http://localhost:3333/smurfs';
     this.props.addSmurf(URL, newSmurf);
-    this.props.addClicked();
 
     this.setState({
       name: '',
@@ -43,7 +42,6 @@ class AddSmurfForm extends Component {
     let smurf = this.props.smurfs.find(s => s.name === selectedSmurf);
     const URL = `http://localhost:3333/smurfs/${smurf.id}`;
     this.props.deleteSmurf(URL);
-    this.props.addClicked();
   };
 
   render() {
@@ -76,12 +74,19 @@ class AddSmurfForm extends Component {
               name="height"
             />
           </FormGroup>
-          <Button type="submit">Add to the village</Button>
+          <Button type="submit" color="info">
+            Add to the village
+          </Button>
         </Form>
         <br />
         <Form inline onSubmit={this.deleteSmurf}>
           <FormGroup>
-            <Input type="select" name="select" id="selectSmurf">
+            <Input
+              type="select"
+              name="select"
+              id="selectSmurf"
+              style={{ width: '505px' }}
+            >
               {this.props.smurfs.map((s, key) => {
                 return (
                   <option key={key} value={s.name}>
@@ -91,7 +96,17 @@ class AddSmurfForm extends Component {
               })}
             </Input>
           </FormGroup>
-          <Button type="submit">Banish from village</Button>
+          <Button type="submit" color="danger">
+            Banish from village
+          </Button>
+        </Form>
+        <br />
+        <Form inline>
+          <FormGroup>
+            <Button color="success" onClick={this.props.addClicked}>
+              Return to village
+            </Button>
+          </FormGroup>
         </Form>
       </div>
     );
