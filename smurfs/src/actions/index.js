@@ -24,6 +24,9 @@ export const ADD_SMURF_ERROR = 'ADD_SMURF_ERROR';
 export const DELETE_SMURF_START = 'DELETE_SMURF_START';
 export const DELETE_SMURF_SUCCESS = 'DELETE_SMURF_SUCCESS';
 export const DELETE_SMURF_ERROR = 'DELETE_SMURF_ERROR';
+export const PUT_SMURF_START = 'PUT_SMURF_START';
+export const PUT_SMURF_SUCCESS = 'PUT_SMURF_SUCCESS';
+export const PUT_SMURF_ERROR = 'PUT_SMURF_ERROR';
 /*
 export const  = '';
 */
@@ -65,6 +68,20 @@ export const deleteSmurf = id => dispatch => {
     })
     .catch(err => {
       dispatch( {type: DELETE_SMURF_ERROR});
+      console.log(err);
+    })
+}
+
+export const putSmurf = smurf => dispatch => {
+  const { id, ...rest } = smurf;
+  dispatch({ type: PUT_SMURF_START });
+  axios
+    .put(`${url}/${id}`, rest)
+    .then(response => {
+      dispatch({ type: PUT_SMURF_SUCCESS, payload: response.data });
+    })
+    .catch(err => {
+      dispatch( {type: PUT_SMURF_ERROR});
       console.log(err);
     })
 }
