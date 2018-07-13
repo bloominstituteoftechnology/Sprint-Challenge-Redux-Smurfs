@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
-import { fetchSmurfs } from "../actions";
+import { fetchSmurfs, deleteSmurf } from "../actions";
 import SmurfsForm from "./Form";
+// import Smurfs from "./Smurf";
 
 /*
  to wire this component up you're going to need a few things.
@@ -14,6 +15,10 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchSmurfs();
   }
+
+  handleDelete = e => {
+    this.props.deleteSmurf(e.target.id);
+  };
 
   render() {
     return (
@@ -28,11 +33,16 @@ class App extends Component {
           <div>
             {this.props.smurfs.map(smurfs => {
               return (
-                <li key={smurfs.name}>
-                  Name: {smurfs.name}, <br />
-                  Age: {smurfs.age}, <br />
-                  Height: {smurfs.height} <br />
-                </li>
+                <div key={Math.random()}>
+                  <li key={smurfs.name}>
+                    Name: {smurfs.name}, <br />
+                    Age: {smurfs.age}, <br />
+                    Height: {smurfs.height} <br />
+                  </li>
+                  <button id={smurfs.id} onClick={this.handleDelete}>
+                    delete
+                  </button>
+                </div>
               );
             })}
           </div>
@@ -47,7 +57,8 @@ const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
-    // fetchedSmurfs: state.fetchedSmurfs,
+    fetchedSmurfs: state.fetchedSmurfs,
+    deleteSmurf: state.deleteSmurf,
     error: state.error
   };
 };
@@ -55,6 +66,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    fetchSmurfs
+    fetchSmurfs,
+    deleteSmurf
   }
 )(App);
