@@ -1,5 +1,5 @@
 1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
-Array.slice, Object.assign, Array.concat
+Array.slice, Object.assign, Array.concat. Object.assign is used to create a new object while extending the properties of another object.
 
 2.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 Actions are sent by the program to signal that something in the state of the application may need to change and to provide information about that change. Reducers receive the actions and convert them to a new version of the application's state based on their business logic. This new state is then saved to the store. The store is known as a single source of truth because it is a single, plain JS object that contains all significant state information, and can be accessed through the child components of the root node on which the store is defined.
