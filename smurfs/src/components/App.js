@@ -8,6 +8,7 @@ import { fetchSmurfs } from "../actions";
 import Loading from "./Loading";
 import Error from "./Error";
 import SmurfsList from "./SmurfsList";
+import AddSmurfForm from "./AddSmurfForm";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -27,6 +28,7 @@ class App extends Component {
         <Loading fetchingSmurfs={this.props.fetchingSmurfs} />
         <Error error={this.props.error} />
         <SmurfsList smurfs={this.props.smurfs} />
+        <AddSmurfForm />
       </div>
     );
   }
