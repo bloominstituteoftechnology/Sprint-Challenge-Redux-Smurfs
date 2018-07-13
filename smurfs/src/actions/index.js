@@ -1,64 +1,70 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
 import axios from "axios";
-export const SMURFS_FETCHING = "SMURFS_FETCHING";
-export const SMURFS_FETCHED = "SMURFS_FETCHED";
-export const SMURF_ADDING = "SMURF_ADDING";
-export const SMURF_ADDED = "SMURF_ADDED";
-export const SMURF_ERROR = "SMURF_ERROR";
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+export const FETCHING = "FETCHING ";
+export const FETCHED = "FETCHED ";
+export const ERROR = "ERROR";
+export const DELETING = "DELETING";
+export const DELETED = "DELETED";
+export const ADDING = "ADDING";
+export const UPDATING = "UPDATING";
 
 export const fetchSmurfs = () => {
-  const smurfs = axios.get("http://localhost:3333/smurfs");
+  const promise = axios.get("http://localhost:3333/smurfs");
   return dispatch => {
-    dispatch({ type: SMURFS_FETCHING });
-    smurfs
+    dispatch({ type: FETCHING });
+
+    promise
       .then(response => {
-        dispatch({
-          type: SMURFS_FETCHED,
-          payload: response.data
-        });
+        dispatch({ type: FETCHED, payload: response.data });
       })
-      .catch(error => {
+      .catch(err => {
+        dispatch({ type: ERROR, payload: "Error occured while fetching" });
+      });
+  };
+};
+
+export const addSmurfs = smurf => {
+  const promise = axios.post("http://localhost:3333/smurfs", smurf);
+  return dispatch => {
+    dispatch({ type: ADDING });
+
+    promise
+      .then(response => {
+        dispatch(fetchSmurfs());
+      })
+      .catch(err => {
         dispatch({
-          type: SMURF_ERROR,
-          payload: "Smurf Error!"
+          type: ERROR,
+          payload: "Error occured while adding new smurf"
         });
       });
   };
 };
 
-export const addSmurf = () => {
-  const smurf = axios.post("http://localhost:3333/smurfs", smurf);
+export const removeSmurfs = smurf => {
+  const promise = axios.delete(`http://localhost:3333/smurfs/${smurf}`);
   return dispatch => {
-    dispatch({ type: SMURF_ADDING });
-    smurf
-      .then(response => {
+    dispatch({ type: DELETING });
+    promise
+      .then(reponse => {
         dispatch(fetchSmurfs());
       })
-      .then(response => {
-        dispatch({
-          type: SMURF_ADDED,
-          payload: response.data
-        });
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
+
+export const updateSmurfs = (smurf, data) => {
+  const promise = axios.put(`http://localhost:3333/smurfs/${smurf}`, data);
+  return dispatch => {
+    dispatch({ type: UPDATING });
+    promise
+      .then(reponse => {
+        dispatch(fetchSmurfs());
       })
-      .catch(error => {
-        dispatch({
-          type: SMURF_ERROR,
-          payload: "Error adding smurf friend!"
-        });
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
       });
   };
 };

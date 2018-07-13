@@ -2,19 +2,20 @@
   Be sure to import in all of the action types from `../actions`
 */
 import {
-  SMURFS_FETCHING,
-  SMURFS_FETCHED,
-  SMURF_ADDING,
-  SMURF_ADDED,
-  SMURF_ERROR
+  FETCHING,
+  FETCHED,
+  ERROR,
+  DELETING,
+  DELETED,
+  ADDING
 } from "../actions";
 
-const initialSmurfs = {
+const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
   addingSmurf: false,
-  // updatingSmurf: false,
-  // deletingSmurfs: false,
+  updatingSmurf: false,
+  deletingSmurfs: false,
   error: null
 };
 
@@ -25,38 +26,36 @@ const initialSmurfs = {
   Components can read your store as, `state` and not `state.fooReducer`.
 */
 
-const rootReducer = (state = initialSmurfs, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
-    case SMURFS_FETCHING:
-      return {
-        ...state,
-        fetchingSmurfs: true
-      };
-    case SMURFS_FETCHED:
+    case FETCHING:
+      return { ...state, fetchingSmurfs: true };
+    case FETCHED:
+      // return Object.assign(
+      //   {},
+      //   state,
+      //   { smurfs: [...state.smurfs, ...action.payload] },
+      //   {
+      //     fetchingSmurfs: false,
+      //     addingSmurf: false
+      //   }
+      // );
       return {
         ...state,
         fetchingSmurfs: false,
-        smurfs: action.payload
-      };
-    case SMURF_ADDING:
-      return {
-        ...state,
-        addingSmurf: true
-      };
-    case SMURF_ADDED:
-      return {
-        ...state,
         addingSmurf: false,
-        smurfs: action.payload
+        smurfs: action.payload,
+        error: null
       };
-    case SMURF_ERROR:
-      return {
-        ...state,
-        error: action.payload
-      };
+    case ERROR:
+      return { ...state, error: action.payload };
+    case DELETING:
+      return { ...state, deletingSmurfs: true };
+    case DELETED:
+      return { ...state, deletingSmurfs: false };
+    case ADDING:
+      return { ...state, addingSmurf: true };
     default:
       return state;
   }
 };
-
-export default rootReducer;
