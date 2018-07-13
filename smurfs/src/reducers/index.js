@@ -3,7 +3,8 @@
 */
 import {
   FETCHING_SMURF, 
-  GET_SMURF
+  GET_SMURF,
+  ADD_SMURF
 } from '../actions';
 
 
@@ -38,6 +39,10 @@ export const smurfsReducer = (state = initialState, action) => {
       fetchedSmurfs: true,
       smurfs: action.payload
     });
+    case ADD_SMURF:
+    return Object.assign({}, state, {
+      addingSmurf: true
+    })
     default:
     return state;
   }

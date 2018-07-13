@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getSmurfs } from '../actions'
 
 class SmurfsForm extends Component {
     constructor(props) {
@@ -32,9 +34,9 @@ class SmurfsForm extends Component {
                         name="name"
                     />
                     <input onChange={this.handleChange}
-                        placeholder="name"
+                        placeholder="age"
                         value={this.state.age}
-                        name="name"
+                        name="age"
                     />
                     <input onChange={this.handleChange}
                         placeholder="height"
@@ -48,4 +50,12 @@ class SmurfsForm extends Component {
     }
 }
 
-export default SmurfsForm;
+const mapStateToProps = state => {
+    return {
+        smurfs: state.smurfs
+    }
+}
+
+export default connect(mapStateToProps, {
+    getSmurfs
+})(SmurfsForm);

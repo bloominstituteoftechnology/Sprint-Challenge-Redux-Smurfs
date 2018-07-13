@@ -28,6 +28,14 @@ export const getSmurfs = () => {
       then(response => {
         console.log(response)
         dispatch({ type: GET_SMURF, payload: response.data });
-      })
+      }) 
+  }
+}
+
+export const postSmurfs = () => {
+  return function (dispatch) {
+    dispatch( {type : ADD_SMURF });
+    axios.post('http://localhost:3333/smurfs')
+    .then()
   }
 }
