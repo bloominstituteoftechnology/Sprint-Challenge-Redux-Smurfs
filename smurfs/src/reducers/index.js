@@ -1,5 +1,10 @@
 
-import { FETCHING, FETCHED, ERROR} from '../actions';
+import { FETCHING, 
+         FETCHED, 
+         ERROR,
+         ADDING,
+         ADDED 
+         } from '../actions';
 
 const initialState = {
   smurfs: [],
@@ -19,6 +24,15 @@ const rootReducer = (state = initialState, action) => {
     return {...state,
     fetchingSmurfs: false,
     smurfs: action.payload  
+    };
+
+    case ADDING:
+    return {...state, addingSmurfs: true};
+
+    case ADDED:
+    return {...state,
+    addingSmurfs: false,
+    smurfs: action.payload
     };
 
     case ERROR:
