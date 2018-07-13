@@ -19,7 +19,7 @@ class Smurf extends React.Component {
 
     render() {
         return (
-            <div className='smurf-container'>
+            <div className='smurf-container' style={this.state.toggleEdit ? { maxHeight: '410px' } : { maxHeight: '248px'}} >
 
                 <p><strong>Name:</strong> {this.props.smurf.name}</p>
                 <p><strong>Height:</strong> {this.props.smurf.height}</p>
