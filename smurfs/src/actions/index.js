@@ -50,8 +50,8 @@ export const addSmurf = (smurf) => {
   }
 }
 
-export const deleteSmurf = (smurf) => {
-  const clearSmurf = axios.delete(`http://localhost:3333/smurfs/${smurf.id}`)
+export const deleteSmurf = (id) => {
+  const clearSmurf = axios.delete(`http://localhost:3333/smurfs/${id}`)
   return dispatch => {
     dispatch({ type: DELETING });
     clearSmurf.then(response => {
