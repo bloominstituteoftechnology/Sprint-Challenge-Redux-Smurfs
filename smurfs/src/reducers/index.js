@@ -1,6 +1,9 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
+import { 
+  GET_SMURF
+} from '../actions';
 
 
  //Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -22,5 +25,13 @@
 */
 
 export const smurfsReducer = (state = initialState, action) => {
-
+  switch(action.type) {
+    case GET_SMURF:
+    return Object.assign({}, state, {
+      fetchingSmurfs: true,
+      addingSmurf: false
+    });
+    default:
+    return state;
+  }
 }
