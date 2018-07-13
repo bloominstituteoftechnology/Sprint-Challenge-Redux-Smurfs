@@ -23,7 +23,7 @@ Alt-H2
 #### Middleware is code you place between your request and response. It allows for asynchronous calls, as well as async API calls.
 
 
-Alt-H2
+Alt-H2git push or
 ### Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 ###It allows you to return functions inside of an action.
 
