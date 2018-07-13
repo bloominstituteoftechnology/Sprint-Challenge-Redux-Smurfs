@@ -24,10 +24,10 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { smurfs: action.payload, fetchingSmurfs: false, smurfFetched: true });
 
     case ADDING_SMURF:
-      return;
+      return Object.assign({}, state, { addingSmurf: true });
 
     case SMURF_ADDED:
-      return;
+      return Object.assign({}, state, { smurfs: action.payload, addingSmurf: false, smurfAdded: true });
 
     case UPDATING_SMURF:
       return;
