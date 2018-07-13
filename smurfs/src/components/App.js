@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions';
 import Smurfs from './Smurfs';
+import AddSmurfForm from './AddSmurfForm';
 
 class App extends Component {
   componentDidMount() {
@@ -12,6 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <AddSmurfForm />
         <Smurfs smurfs={this.props.smurfs} />
       </div>
     );
@@ -19,7 +21,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     smurfs: state.smurfs
   }
