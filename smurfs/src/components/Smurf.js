@@ -42,13 +42,27 @@ class Smurf extends React.Component {
   handleEditSmurf = e => {
     e.preventDefault();
 
-    this.props.editSmurf(this.id);
+    const editedSmurf = {
+      id: this.props.smurf.id,
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.Height
+    }
+
+    this.props.editSmurf(editedSmurf);
+
+    this.setState({ isEditing: false,
+                    name: this.props.smurf.name,
+                    age: this.props.smurf.age,
+                    height: this.props.smurf.height });
   }
 
   handleDelete = e => {
     e.preventDefault();
 
     this.props.deleteSmurf(this.id);
+
+    this.props.history.push("/");
   }
 
   render() {
@@ -85,7 +99,8 @@ class Smurf extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    smurf: state.smurf
+    smurf: state.smurf,
+    smurfs: state.smurfs,
   }
 }
 

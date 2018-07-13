@@ -28,6 +28,12 @@ class App extends Component {
 
     this.props.addSmurf(newSmurf);
 
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    });
+
     this.props.history.push('/');
   }
 
@@ -43,6 +49,8 @@ class App extends Component {
       age: '',
       height: ''
     });
+
+    this.props.history.push('/');
   }
 
   render() {

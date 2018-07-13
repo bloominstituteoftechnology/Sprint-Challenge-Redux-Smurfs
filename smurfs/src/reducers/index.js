@@ -7,8 +7,10 @@ const initialState = {
    smurfFetched: false,
    addingSmurf: false,
    smurfAdded: false,
-   updatingSmurf: false,
+   editingSmurf: false,
+   smurfEdited: false,
    deletingSmurf: false,
+   smurfDeleted: false,
    error: null
  };
 
@@ -31,6 +33,19 @@ const initialState = {
 
     case 'SMURF_FETCHED':
       return Object.assign({}, state, { smurf: action.payload, smurfFetched: true, fetchingSmurf: false });
+
+    case 'EDITING_SMURF':
+      return Object.assign({}, state, { editingSmurf: true });
+
+    case 'SMURF_EDITED':
+      return Object.assign({}, state, { smurfs: action.payload, smurf: action.payload.find(smurf => smurf.id === state.smurf.id), smurfEdited: true, editingSmurf: false });
+
+    case 'DELETING_SMURF':
+      return Object.assign({}, state, { deletingSmurf: true });
+
+    case 'SMURF_DELETED':
+      return Object.assign({}, state, { smurfs: action.payload, smurf: null, smurfDeleted: true, deletingSmurf: false });
+
 
     case 'ERROR':
       return Object.assign({}, state, { error: action.payload });

@@ -42,15 +42,31 @@ export const getSmurf = (id) => {
   }
 }
 
-export const editSmurf = () => {
-  return {
-
+export const editSmurf = (editedSmurf) => {
+  return dispatch => {
+    dispatch({ type: 'EDITING_SMURF' });
+    axios
+      .put(`http://localhost:3333/smurfs/${editedSmurf.id}`, editedSmurf)
+      .then(response => {
+        dispatch({ type: 'SMURF_EDITED', payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: 'ERROR', payload: error });
+      });
   }
 }
 
-export const deleteSmurf = () => {
-  return {
-
+export const deleteSmurf = (id) => {
+  return dispatch => {
+    dispatch({ type: 'DELETING_SMURF' });
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(response => {
+        dispatch({ type: 'SMURF_DELETED', payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: 'ERROR', payload: error });
+      });
   }
 }
 
