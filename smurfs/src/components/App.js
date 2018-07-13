@@ -29,6 +29,10 @@ class App extends Component {
               })}
             </ul>
           )}
+
+          {this.props.error ? (
+            <h1>{this.props.error}</h1>
+          ) : null}
           <SmurfForm />
         </div>
       </div>

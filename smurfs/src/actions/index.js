@@ -51,6 +51,9 @@ export const addSmurf = (newSmurf) => {
       console.log(response);
       dispatch({type: ADDED, payload: response.data})
     })
+    .catch(err => {
+      dispatch({ type: ERROR, payload: err})
+    })
   }
 }
 
