@@ -22,10 +22,10 @@ export const ERROR = 'ERROR';
 export const fetchData = () => {
   return (dispatch) => {
     dispatch({ type: FETCHING });
-    axios.get('http://localhost:3333/smurfs/')
+    axios.get('http://localhost:3333/smurfs')
       .then(response => {
         console.log('FETCH RESPONSE: ', response);
-        dispatch({ type: FETCHED, payload: response })
+        dispatch({ type: FETCHED, payload: response.data })
       })
       .catch(error => {
         dispatch({ type: ERROR, payload: error })

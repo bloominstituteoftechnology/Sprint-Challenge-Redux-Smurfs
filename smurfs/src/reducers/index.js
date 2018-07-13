@@ -14,6 +14,7 @@ export const smurfsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         fetchingSmurfs: true,
         fetchedSmurfs: false,
+        addingSmurf: true,
         error: null
       });
     case FETCHED:
