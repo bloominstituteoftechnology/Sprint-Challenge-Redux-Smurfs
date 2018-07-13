@@ -9,6 +9,7 @@ import { FETCHING_SMURF, FETCHED_SMURF, ERROR} from '../actions';
  {
    smurfs: [],
    fetchingSmurfs: false,
+   fetchedSmurfs: false,
    addingSmurf: false,
    updatingSmurf: false,
    deletingSmurf: false,
@@ -24,14 +25,16 @@ import { FETCHING_SMURF, FETCHED_SMURF, ERROR} from '../actions';
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-export const smurfReducer = (state = initialState, action) => {
+export const smurfReducer = (state=initialState, action) => {
   switch(action.type) {
     case FETCHING_SMURF:
       return Object.assign({}, state, { fetchingSmurfs: true })
     case FETCHED_SMURF:
-      return Object.assign({}, state, { fetchingSmurfs: false, smurfs: action.payload})
+      return Object.assign({}, state, { fetchingSmurfs: false, fetchedSmurfs: true, smurfs: action.payload})
     case ERROR:
-      return Object.assign({}, state, { error: action.payload })
+      return Object.assign({}, state, { error: action.payload, fetchedSmurfs: false, fetchingSmurfs: false })
+    default: 
+      return state;
     }
   }
 
