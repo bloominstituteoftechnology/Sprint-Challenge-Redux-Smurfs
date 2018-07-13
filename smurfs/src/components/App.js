@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions';
-import Smurfs from 'Smurfs';
+import Smurfs from './Smurfs';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -17,15 +17,21 @@ class App extends Component {
   render() {
     return (
       <div>
-      <Smurfs smurfs={this.props.smurfs}/>
+        {this.props.fetching ? (
+          <p>Smurfs are fetching please wait...</p>
+        ) : (
+        <Smurfs smurfs={this.props.smurfs} />)}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
+  fetching: state.fetchingSmurfs,
   smurfs: state.smurfs,
+}
 }
 
 export default connect (
