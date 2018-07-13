@@ -18,6 +18,25 @@ export const fetchSmurfs = () => {
   }
 }
 
+export const addSmurf = (newSmurf) => {
+  console.log('IN ADD SMURF', newSmurf)
+  const smurf = {
+    name: newSmurf.name,
+    age: newSmurf.age,
+    height: newSmurf.height
+  }
+  const request = axios.post(url, smurf)
+  return (dispatch) => {
+    dispatch({ type: FETCHING, payload: true })
+    request
+      .then((res) => {
+        dispatch({ type: FETCHING, payload: false })
+        dispatch({ type: GET_SMURFS, payload: res.data })
+      })
+      .catch((error) => dispatch({ type: ERROR, payload: error }))
+  }
+}
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
