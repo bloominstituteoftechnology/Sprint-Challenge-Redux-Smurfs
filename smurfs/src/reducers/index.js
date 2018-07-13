@@ -9,7 +9,7 @@ const initialState = {
   error: null,
 }
 
-export const smurfReducers = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
       return Object.assign(
@@ -43,6 +43,7 @@ export const smurfReducers = (state = initialState, action) => {
         }
       )
     case ERROR: 
+    console.error(action.payload)
       return Object.assign(
         {},
         state,
