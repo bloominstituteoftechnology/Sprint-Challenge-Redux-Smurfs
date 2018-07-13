@@ -18,15 +18,15 @@ export const ERROR = 'ERROR';
    D - deleteSmurf
 */
 
-const URL = `http://http://localhost:3333/smurfs`;
+const URL = `http://localhost:3333/smurfs`;
 
 export const fetchingData = () => {
   return dispatch => {
     dispatch({type: FETCHING_SMURFS});
     axios
     .get(URL)
-    .then(response => {
-      dispatch({type: SMURFS_FETCHED, payload: response.data});
+    .then(({data}) => {
+      dispatch({type: SMURFS_FETCHED, payload: data});
     })
     .catch(error => {
       dispatch({type:ERROR, payload: 'Oh no! A Smurfing error!'});
