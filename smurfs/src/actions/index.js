@@ -10,6 +10,9 @@ export const UPDATING_SMURF = 'UPDATING_SMURF';
 export const SMURF_UPDATED = 'SMURF_UPDATED';
 export const UPDATE_ERROR = 'UPDATE_ERROR';
 export const DELETING_SMURF = 'DELETING_SMURF';
+export const SMURF_DELETED = 'SMURF_DELETED';
+export const DELETE_ERROR = 'DELETE_ERROR';
+export const TOGGLE_FORM = 'TOGGLE_FORM';
 
 
 export function fetchSmurfs() {
@@ -21,6 +24,7 @@ export function fetchSmurfs() {
       dispatch({type: SMURFS_FETCHED, payload: data})
     })
     .catch(err => {
+      console.log(err);
       dispatch({type: FETCH_ERROR, error: err})
     })
   }
@@ -41,13 +45,36 @@ export function addSmurf(smurf) {
   }
 }
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+export function updateSmurf(id, smurf) {
+  return (dispatch) => {
+    dispatch({type: UPDATING_SMURF})
+    axios.put(`http://localhost:3333/smurfs/${id}`, smurf)
+    .then(({data}) => {
+      console.log(data);
+      dispatch({SMURF_UPDATED, payload: data})
+    })
+    .catch(err => {
+      dispatch({type: UPDATE_ERROR, error: err})
+    }
+    )
+  }
+}
+
+export function deleteSmurf(id) {
+  return (dispatch) => {
+    dispatch({type: DELETING_SMURF})
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
+    .then(({data}) => {
+      dispatch({type: SMURF_DELETED, payload: data})
+    })
+    .catch(err => {
+      dispatch({type: DELETE_ERROR, error: err})
+    })
+  }
+}
+
+export const toggleForm = () => {
+  return {
+    type: TOGGLE_FORM
+  }
+}
