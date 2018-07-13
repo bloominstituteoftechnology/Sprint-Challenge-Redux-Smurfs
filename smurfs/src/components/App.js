@@ -21,4 +21,16 @@ class App extends Component {
   }
 }
 
+
+const mapStateToProps = state => {
+  console.log('app', state)
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps, {
+  fetch_smurf
+})(App);
+
 export default App;
