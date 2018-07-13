@@ -36,7 +36,7 @@ const initialState = {
   error: null
 }
 
-export default smurfReducer = (state = initialState, action) => {
+const smurfReducer = (state = initialState, action) => {
   switch(action.type) {
     case FETCHING:
       return Object.assign({}, state, {fetchingSmurfs: true})
@@ -60,3 +60,5 @@ export default smurfReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default smurfReducer;
