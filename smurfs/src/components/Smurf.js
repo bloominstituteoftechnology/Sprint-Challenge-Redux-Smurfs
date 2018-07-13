@@ -2,6 +2,7 @@ import React from 'react';
 import UpdateSmurfForm from './UpdateSmurfForm';
 import { connect } from 'react-redux';
 import { deleteSmurf } from '../actions';
+import { Button } from 'reactstrap';
 
 class Smurf extends React.Component {
     constructor(props) {
@@ -20,11 +21,11 @@ class Smurf extends React.Component {
         return (
             <div className='smurf-container'>
 
-                <p>Name: {this.props.smurf.name}</p>
-                <p>Height: {this.props.smurf.height}</p>
-                <p>Age: {this.props.smurf.age}</p>
-                <button onClick={() => this.props.deleteSmurf(this.props.smurf.id)}>Delete</button>
-                <button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })}>Edit</button>
+                <p><strong>Name:</strong> {this.props.smurf.name}</p>
+                <p><strong>Height:</strong> {this.props.smurf.height}</p>
+                <p><strong>Age:</strong> {this.props.smurf.age}</p>
+                <Button color='danger' className='delete-button' onClick={() => this.props.deleteSmurf(this.props.smurf.id)}>Delete</Button>
+                <Button color='info' className='edit-button' onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })}>Edit</Button>
                 {
                     this.state.toggleEdit ? <UpdateSmurfForm
                         name={this.props.smurf.name}

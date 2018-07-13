@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { editSmurf } from '../actions';
+import { Button, Input } from 'reactstrap';
 
 class UpdateSmurfForm extends React.Component {
     constructor(props) {
@@ -30,11 +31,11 @@ class UpdateSmurfForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={event => event.preventDefault()}>
-                <input onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='name' />
-                <input onChange={this.handleInput} value={this.state.height} type='text' name='height' placeholder='height' />
-                <input onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='age' />
-                <button onClick={this.editSmurf}>Save</button>
+            <form className='edit-form' onSubmit={event => event.preventDefault()}>
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='name' />
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.height} type='text' name='height' placeholder='height' />
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='age' />
+                <Button color='primary' className='save-button' type='submit' onClick={this.editSmurf}>Save</Button>
             </form>
         );
     }
