@@ -8,6 +8,7 @@ import './App.css';
  */
 import { connect } from 'react-redux';
 import { gettingSmurf } from '../actions';
+import SmurfForm from './SmurfForm';
 
 class App extends Component {
   componentDidMount() {
