@@ -5,6 +5,8 @@ export const FETCHING = 'FETCHING';
 export const ERROR = 'ERROR';
 export const ADDING = 'ADDING';
 export const ADDED = 'ADDED';
+export const UPDATING = 'UPDATING';
+export const UPDATED = 'UPDATED';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -37,5 +39,16 @@ export const addSmurf = newSmurf => {
       dispatch({type: ADDED, payload: data});
     })
       .catch(err => {dispatch({type : ERROR, payload: err})})
+  }
+};
+
+export const updateSmurf = smurfEdit => {
+  const smurfData = axios.put("http://localhost:3333/smurfs/:id", smurfEdit);
+  return function(dispatch) {
+    dispatch({ type: UPDATING });
+    smurfData.then(({data}) => {
+      dispatch({type: UPDATED, payload: data});
+    })
+      .catch(err => {dispatch({type: ERROR, payload: err})})
   }
 };
