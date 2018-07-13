@@ -18,31 +18,31 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
-      return Object.assign({}, state, { fetchingSmurfs: true });
+      return { ...state, fetchingSmurfs: true };
 
     case SMURF_FETCHED:
-      return Object.assign({}, state, { smurfs: action.payload, fetchingSmurfs: false, smurfFetched: true });
+      return { ...state, smurfs: action.payload, fetchingSmurfs: false, smurfFetched: true };
 
     case ADDING_SMURF:
-      return Object.assign({}, state, { addingSmurf: true });
+      return { ...state, addingSmurf: true };
 
     case SMURF_ADDED:
-      return Object.assign({}, state, { smurfs: action.payload, addingSmurf: false, smurfAdded: true });
+      return { ...state, smurfs: action.payload, addingSmurf: false, smurfAdded: true };
 
     case UPDATING_SMURF:
-      return Object.assign({}, state, { updatingSmurf: true });
+      return { ...state, updatingSmurf: true };
 
     case SMURF_UPDATED:
-      return Object.assign({}, state, { smurfs: action.payload, updatingSmurf: false, smurfUpdated: true });
+      return { ...state, smurfs: action.payload, updatingSmurf: false, smurfUpdated: true };
 
     case DELETING_SMURF:
-      return Object.assign({}, state, { deletingSmurf: true });
+      return { ...state, deletingSmurf: true };
 
     case SMURF_DELETED:
-      return Object.assign({}, state, { smurfs: action.payload, deletingSmurf: false, smurfDeleted: true });
+      return { ...state, smurfs: action.payload, deletingSmurf: false, smurfDeleted: true }
 
     case ERROR:
-      return Object.assign({}, state, { error: action.payload });
+      return { ...state, error: action.payload };
 
     default:
       return state;
