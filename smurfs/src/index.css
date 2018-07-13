@@ -3,3 +3,21 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+li{
+	color: chocolate;
+
+}
+
+.input-field{
+	border: 1px solid chocolate;
+	color: teal;
+	margin-left: 5px;
+}
+
+.add-btn{
+ 	border: 1px solid teal;
+	background: teal;
+        color: white;
+        margin-left: 5px;
+}

@@ -55,11 +55,11 @@ render() {
           </ul>
 
  
-		<input onChange={this.changeHandler} type="text" name="name" placeholder="Name" value={this.state.name} />
-                <input onChange={this.changeHandler} type="number" name="age" placeholder="Age" value={this.state.age} />
-                <input onChange={this.changeHandler} type="number" name="height" placeholder="Height" value={this.state.height} />
+		<input className="input-field" onChange={this.changeHandler} type="text" name="name" placeholder="Name" value={this.state.name} />
+                <input  className="input-field" onChange={this.changeHandler} type="number" name="age" placeholder="Age" value={this.state.age} />
+                <input className="input-field" onChange={this.changeHandler} type="number" name="height" placeholder="Height" value={this.state.height} />
 
-                <button onClick={()=> this.addSmurfHandler()}>Add New Smurf</button>
+                <button className="add-btn" onClick={()=> this.addSmurfHandler()}>Add New Smurf</button>
 
 </div>
 	)}</div>
