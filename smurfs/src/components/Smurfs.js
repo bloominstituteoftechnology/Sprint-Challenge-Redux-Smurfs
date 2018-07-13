@@ -16,7 +16,7 @@ const StyledDiv = styled.div`
 
 class Smurfs extends Component {
   componentDidMount() {
-    this.props.fetchData('http://localhost:3333/smurfs');
+    this.props.fetchData();
   }
 
   render() {

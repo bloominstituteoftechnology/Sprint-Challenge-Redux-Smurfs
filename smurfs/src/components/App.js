@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import Smurfs from './Smurfs';
 import SmurfForm from './SmurfForm';
+import Smurf from './Smurf';
 import background from '../images/background.jpg';
 
 const APP = styled.div`
@@ -33,7 +34,7 @@ class App extends Component {
           <Route exact path="/" component={Header} />
           <Route exact path="/smurfs" component={Smurfs}/>
           <Route exact path="/smurfs" component={SmurfForm} />
-          {/* <Route path="/smurfs/:id" render ={props => <Smurf {...props} updateState={this.updateState}/>} /> */}
+          <Route path="/smurfs/:id" render ={props => <Smurf {...props}/>} />
         </APP>
       </Router>
     );
