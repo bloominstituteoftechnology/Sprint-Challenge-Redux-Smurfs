@@ -11,7 +11,7 @@ const StyleButton = styled(Button)`
 
 const DeleteSmurf = props => {
     return (
-        <Link to='/smurfs'><StyleButton color="danger" onClick={props.deleteSmurf(props.id)}>Delete</StyleButton></Link>
+        <Link to='/smurfs'><StyleButton color="danger" onClick={() => props.deleteSmurf(props.id)}>Delete</StyleButton></Link>
     )
 }
 

@@ -6,6 +6,7 @@ export const FETCHING_ERROR = 'FETCHING_ERROR';
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const FETCH_SINGLE_SMURF = 'FETCH_SINGLE_SMURF';
 export const DELETE_SMURF = 'ADDING_SMURF';
+export const UPDATE_SMURF = 'UPDATE_SMURF';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -64,6 +65,18 @@ export const deleteSmurf = id => {
       payload: res.data
     })}
   ).catch(error => console.log(error))};
+}
+
+export const updateSmurf = (id, smurf) => {
+  const put = axios.put(`http://localhost:3333/smurfs/${id}`, smurf);
+  return (dispatch) => {
+    put.then(res => {
+      dispatch({
+        type:UPDATE_SMURF,
+        payload: res.data
+      })
+    })
+  }
 }
 
     // axios.post('http://localhost:3333/smurfs', {...this.state})

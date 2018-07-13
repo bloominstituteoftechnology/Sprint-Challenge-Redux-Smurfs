@@ -1,4 +1,4 @@
-import { FETCHING_SMURFS, SMURFS_FETCHED, ADDING_SMURF, FETCH_SINGLE_SMURF, DELETE_SMURF } from '../actions'
+import { FETCHING_SMURFS, SMURFS_FETCHED, ADDING_SMURF, FETCH_SINGLE_SMURF, DELETE_SMURF, UPDATE_SMURF } from '../actions'
 
 //Your initial/default state for this project could *Although does not have to* look a lot like this
 const initialState = {
@@ -31,6 +31,8 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { fetchingSmurfs: false, addingSmurf: false, smurfs: action.payload[0] });
     case (DELETE_SMURF):
       return Object.assign({}, state, { fetchingSmurfs: false, addingSmurf: false, deletingSmurf: true, smurfs: action.payload });
+    case (UPDATE_SMURF):
+      return Object.assign({}, state, { fetchingSmurfs: false, addingSmurf: false, deletingSmurf: false, updatingSmurf: true, smurfs: action.payload });
     default:
       return state;
   }

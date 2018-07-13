@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import DeleteSmurf from './DeleteSmurf';
 import SmurfCard from './SmurfCard';
 import logo from '../images/smurfenter.png';
-// import UpdateSmurf from './UpdateSmurf';
+import UpdateSmurf from './UpdateSmurf';
 import {Link} from 'react-router-dom';
 
 const DIV = styled.div`
@@ -42,7 +42,7 @@ class Smurf extends React.Component {
         <Link to='/smurfs'><img src={logo} alt="Title" style={{ 'width': '50%' }} /></Link>
         <SmurfCard {...this.state} />
         <DeleteSmurf updateState={this.props.updateState} id={this.props.match.params.id} />
-        {/* <UpdateSmurf updateState={this.props.updateState} id={this.props.match.params.id} /> */}
+        <UpdateSmurf updateState={this.props.updateState} id={this.props.match.params.id} />
       </DIV>
     );
   }
