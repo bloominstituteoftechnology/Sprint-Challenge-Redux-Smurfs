@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import { addSmurf } from "../actions";
 
 class AddSmurfForm extends React.Component {
   constructor(props) {
@@ -8,6 +11,10 @@ class AddSmurfForm extends React.Component {
       age: "",
       height: ""
     };
+  }
+
+  componentDidMount() {
+    console.log("ADD SMURF FORM PROPS ", this.props);
   }
 
   handleChange = event => {
@@ -21,15 +28,29 @@ class AddSmurfForm extends React.Component {
     });
   };
 
-  // TODO: finsh handle submit
   handleSubmit = event => {
     event.preventDefault();
-    console.log(event);
+
+    if (!this.state.name || !this.state.age || !this.state.height) {
+      alert(
+        "All form fields are required! Please check your data and try again"
+      );
+    } else {
+      let URL = "http://localhost:3333/smurfs";
+      let newSmurf = this.state;
+      console.log("HANDLE SUBMIT EVENT", event);
+      this.props.addSmurf(URL, newSmurf);
+      this.setState({
+        name: "",
+        age: "",
+        height: ""
+      });
+    }
   };
 
   render() {
     return (
-      <form className="form-group">
+      <form className="form-group" onSubmit={this.handleSubmit}>
         <input
           type="text"
           name="name"
@@ -57,4 +78,13 @@ class AddSmurfForm extends React.Component {
   }
 }
 
-export default AddSmurfForm;
+const mapStateToProps = state => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    addSmurf
+  }
+)(AddSmurfForm);

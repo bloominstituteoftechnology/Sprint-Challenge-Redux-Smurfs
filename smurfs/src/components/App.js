@@ -27,8 +27,8 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <Loading fetchingSmurfs={this.props.fetchingSmurfs} />
         <Error error={this.props.error} />
-        <SmurfsList smurfs={this.props.smurfs} />
         <AddSmurfForm />
+        <SmurfsList smurfs={this.props.smurfs} />
       </div>
     );
   }
