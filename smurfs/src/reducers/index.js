@@ -4,23 +4,25 @@
 import {GET_SMURFS, ADD_SMURF } from '../actions';
 
 
-  let initialState = {
+  const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
     addingSmurf: false,
     updatingSmurf: false,
     deletingSmurf: false,
     error: null,
-  }
+  };
 
- const rootReducer = (state = initialState, action) => {
+ export const rootReducer = (state = initialState, action) => {
  switch(action.type) {
+   case GET_SMURFS:
+   return Object.assign({}, state, {smurfs: ['johnnySmurf']} )
    default:
    return state;
  }
 }
 
-
+export default rootReducer;
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
@@ -28,4 +30,3 @@ import {GET_SMURFS, ADD_SMURF } from '../actions';
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
-export default rootReducer;

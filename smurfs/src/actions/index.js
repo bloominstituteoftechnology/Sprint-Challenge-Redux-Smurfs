@@ -17,17 +17,17 @@ export const GET_SMURFS = 'GET_SMURFS';
    U - updateSmurf
    D - deleteSmurf
 */
- export const addSmurf = () => {
+export const addSmurf = () => {
  console.log('add smurf');
  return function(dispatch) {
-   dispatch({ADD_SMURF})
+   dispatch({ADD_SMURF});
  }
 
  }
   
  export const getSmurfs = () => {
   console.log('get smurfs');
-  return function (dispatch) {
-  dispatch({type: GET_SMURFS})
+  return function(dispatch) {
+  return dispatch({type: GET_SMURFS});
  }
   }
