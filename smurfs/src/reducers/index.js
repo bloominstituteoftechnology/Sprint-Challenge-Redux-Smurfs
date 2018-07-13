@@ -37,17 +37,42 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case REQUESTING:
-      return { ...state, requesting: true };
+      return { ...state, requesting: true, error: null };
     case GET_SMURFS:
-      return { ...state, smurfs: action.payload, requesting: false };
+      return {
+        ...state,
+        smurfs: action.payload,
+        requesting: false,
+        error: null
+      };
     case ADD_SMURF:
-      return { ...state, smurfs: action.payload, requesting: false };
+      return {
+        ...state,
+        smurfs: action.payload,
+        requesting: false,
+        error: null
+      };
     case DELETE_SMURF:
-      return { ...state, smurfs: action.payload, requesting: false };
+      return {
+        ...state,
+        smurfs: action.payload,
+        requesting: false,
+        error: null
+      };
     case UPDATE_SMURF:
-      return { ...state, smurfs: action.payload, requesting: false };
+      return {
+        ...state,
+        smurfs: action.payload,
+        requesting: false,
+        error: null
+      };
     case ERROR:
-      return { ...state, errors: action.payload, requesting: false };
+      return {
+        ...state,
+        error: action.payload,
+        requesting: false,
+        error: null
+      };
     default:
       return state;
   }

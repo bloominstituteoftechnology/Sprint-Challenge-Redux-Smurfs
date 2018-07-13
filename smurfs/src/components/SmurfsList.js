@@ -19,6 +19,7 @@ class SmurfsList extends Component {
   render() {
     return (
       <div>
+        {this.props.error ? <p>{this.props.error}</p> : null}
         <button onClick={() => this.setState({ update: !this.state.update })}>
           Update Smurfs
         </button>
@@ -39,7 +40,8 @@ class SmurfsList extends Component {
 
 const mapStateToProps = state => ({
   smurfs: state.smurfs,
-  fetching: state.fetching
+  fetching: state.fetching,
+  error: state.error
 });
 
 export default connect(

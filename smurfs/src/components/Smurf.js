@@ -44,13 +44,13 @@ class Smurf extends Component {
             />
             <input
               type="text"
-              age="age"
+              name="age"
               value={this.state.age}
               onChange={this.handleInputChange}
             />
             <input
               type="text"
-              height="height"
+              name="height"
               value={this.state.height}
               onChange={this.handleInputChange}
             />

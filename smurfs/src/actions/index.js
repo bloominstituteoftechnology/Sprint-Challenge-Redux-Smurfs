@@ -40,7 +40,7 @@ export const getSmurfs = () => {
       .catch(err => {
         dispatch({
           type: ERROR,
-          payload: err.msg
+          payload: 'Uh oh. Something went wrong'
         });
       });
   };
@@ -59,9 +59,10 @@ export const addSmurf = smurf => {
         });
       })
       .catch(err => {
+        console.log(err);
         dispatch({
           type: ERROR,
-          payload: err.msg
+          payload: 'Uh oh. Something went wrong'
         });
       });
   };
@@ -82,7 +83,7 @@ export const deleteSmurf = id => {
       .catch(err =>
         dispatch({
           type: ERROR,
-          payload: err.msg
+          payload: 'Uh oh. Something went wrong'
         })
       );
   };
@@ -105,7 +106,7 @@ export const updateSmurf = (smurf, id) => {
       .catch(err => {
         dispatch({
           type: ERROR,
-          payload: err.msg
+          payload: 'Uh oh. Something went wrong'
         });
       });
   };
