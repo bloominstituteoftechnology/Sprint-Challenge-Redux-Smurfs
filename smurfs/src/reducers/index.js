@@ -42,6 +42,7 @@ export const rootReducer = (state = initialState, action) => {
     case SMURF_ADDED:
       return {
         ...state,
+        smurfs: action.payload,
         addingSmurf: false,
         addedSmurf: true,
       };

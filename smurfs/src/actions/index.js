@@ -14,12 +14,28 @@ export const fetchSmurfs = () => {
     dispatch({ type: FETCHING_SMURFS })
     promise
     .then(response => {
-      console.log(response.data);
       dispatch({ type: SMURFS_FETCHED, payload: response.data });
     })
     .catch(err => {
+      console.log(err);
 
     })
+  }
+}
+
+export const addSmurf = (smurf) => {
+  console.log(smurf);
+  const promise = axios.post(URL, smurf);
+  return dispatch => {
+    dispatch({type: ADDING_SMURF });
+    promise
+    .then(response => {
+      console.log(response.data);
+      dispatch({ type: SMURF_ADDED, payload: response.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 }
 /*
