@@ -59,6 +59,7 @@ class App extends Component {
     }
 
     const smurf = this.props.smurfs.filter((smurf) => smurf.id === id ? smurf : null);
+    // console.log(smurf);
     const updatedSmurf = {
       name: this.state.name,
       age: Number(this.state.age),
@@ -99,7 +100,7 @@ class App extends Component {
           ? <Smurfs smurfs={this.props.smurfs} handleDelete={this.handleDelete} handleUpdate={this.handleUpdate} />
           : <img src={logo} className="App-logo" alt="logo" />}
         {this.props.fetched
-          ? <SmurfForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} handleClear={this.handleClear} name={this.state.name} age={this.state.age} email={this.state.height} />
+          ? <SmurfForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} handleClear={this.handleClear} name={this.state.name} age={this.state.age} height={this.state.height} />
           : null}
       </div>
     );

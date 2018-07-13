@@ -4,7 +4,7 @@ import './App.css';
 
 const Smurfs = props => {
     return (
-        <div className="smurfs">
+        <div className="smurfs-container">
             {props.smurfs.map((smurf, index) => {
                 return (
                     <Smurf
