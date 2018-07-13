@@ -23,3 +23,15 @@
      })
    }
  };
+
+ export const saveData = smurf => {
+   const request = axios.post(URL, smurf);
+   return (dispatch) => {
+     dispatch({type: SAVING});
+     request.then(response => {
+       dispatch({type: SAVED, payload: response.data})
+     }).catch(err => {
+       dispatch({type: ERROR, payload: err})
+     })
+   }
+ }
