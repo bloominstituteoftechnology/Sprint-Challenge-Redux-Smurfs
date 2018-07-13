@@ -26,7 +26,7 @@ class CreateSmurf extends Component {
     return (
       <div>
         <div>
-          <h2>Add Smurf to Village!</h2>
+          <h4>Want to add a Smurf?</h4>
           <input type="text" placeholder='Smurf Name' value ={this.state.name} onChange={this.handleChangeSmurf} name="name" />
           <input type="text" placeholder='Smurf Age' value ={this.state.age} onChange={this.handleChangeSmurf} name="age" />
           <input type="text"placeholder='Smurf Height' value ={this.state.height}  onChange={this.handleChangeSmurf} name="height" />
