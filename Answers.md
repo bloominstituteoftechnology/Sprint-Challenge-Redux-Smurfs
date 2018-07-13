@@ -20,5 +20,18 @@ Object.assign() is the method used for created new objects with extended propert
   state. Additionally component state is better for small changes within a single
   component  as opposed to an entire application.
 4.  What is middleware?
-1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-1.  Which `react-redux` method links up our `components` with our `redux store`?
+  Middleware is code that allows us to extend the functionality of a given application.
+  It can provide us with features that we do not have with a default application,
+  for example, logging functionality.
+5.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+  In redux reducers are synchronous by default. As we've learned actions must
+  flow through reducers in order to update our application state. As such if
+  we want asynchronous behavior, we need it to be occur in our action creators.
+  This is where thunk comes is. Redux-thunk is a middleware that allows us to
+  handle asynchronous operations inside of our action creators. It allows our
+  action creators to return functions that have direct access to the .dispatch()
+  method of the Redux store. Practically speaking, this is useful if we want to
+  use promises, for example, to query an server and run a conditional
+  action dependent on the response we get from the server.
+6.  Which `react-redux` method links up our `components` with our `redux store`?
+  connect()
