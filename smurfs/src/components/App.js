@@ -47,6 +47,10 @@ class App extends Component {
     this.props.updateData(id, newEdits);
   }
 
+  handleDelete = (id) => {
+    this.props.deleteData(id);
+  }
+
 
   render() {
     return (
@@ -54,7 +58,7 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         {this.props.fetching ? (
           <div>Loading...</div>
-        ): <div>{<Smurfs smurfs={this.props.smurfs} handleUpdate={this.handleUpdate} />}</div>}
+        ): <div>{<Smurfs smurfs={this.props.smurfs} handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} />}</div>}
         <div className="add-friend">
           <form className="af-form" onSubmit={this.handleSubmit}>
             Name: <input
