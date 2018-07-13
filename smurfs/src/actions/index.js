@@ -1,3 +1,50 @@
+import axios from 'axios';
+import { error } from 'util';
+
+export const PENDING = "PENDING";
+export const SUCCESS = "SUCCESS";
+export const ERROR = "ERROR";
+
+export const getSmurf = () => {
+  const promise = axios.get('http://localhost:3333/smurfs')
+  return dispatch => {
+    dispatch({ type: PENDING })
+    promise.then(response => {
+      console.log(response)
+      dispatch({
+        type: SUCCESS,
+        payload: []
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err
+      })
+    })
+  }
+}
+
+export const addSmurf = smurf => {
+  const promise = axios.post('http://localhost:3333/smurfs', smurf)
+  return dispatch => {
+    dispatch({ type: PENDING })
+    promise.then(response => {
+      console.log(response)
+      dispatch({
+        type: SUCCESS,
+        payload: []
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err
+      })
+    })
+  }
+}
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
