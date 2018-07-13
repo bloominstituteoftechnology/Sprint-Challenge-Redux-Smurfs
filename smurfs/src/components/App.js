@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import { fetchingData } from '../actions/index';
+import { fetchingData, deleteSmurf } from '../actions/index';
 import CreateSmurf from './createSmurf';
  
 /*
@@ -13,6 +13,11 @@ import CreateSmurf from './createSmurf';
 class App extends Component {
   componentDidMount() {
     this.props.fetchingData();
+  }
+
+  handleDeleteSmurf = (e) => {
+    console.log()
+    this.props.deleteSmurf(e.target.id);
   }
 
   render() {
@@ -31,6 +36,7 @@ class App extends Component {
                     <p>Smurf: {smurf.name}</p>
                     <p>Age: {smurf.age}</p>
                     <p>Height: {smurf.height}</p>
+                    <button id={smurf.id} onClick= {this.handleDeleteSmurf}>Remove</button>
                   </div>
                 )
               })}
@@ -53,4 +59,4 @@ const mapStateToProps = state => {
 
 
 export default connect(
-  mapStateToProps,{ fetchingData})(App);
+  mapStateToProps,{ fetchingData, deleteSmurf})(App);

@@ -3,6 +3,8 @@ export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const SMURFS_FETCHED = 'SMURFS_FETCHED';
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const SMURF_ADDED = 'SMURF_ADDED';
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const SMURF_DELETED = 'SMURF_DELETED';
 export const ERROR = 'ERROR';
 
 /*
@@ -41,7 +43,21 @@ export const addSmurf = smurf => {
       dispatch({type: SMURF_ADDED, payload: data})
     })
     .catch(error => {
-      dispatch({type:ERROR, payload: 'You cannot add that Smurf!'});
+      dispatch({type:ERROR, payload: error});
+  });
+  }
+}
+
+export const deleteSmurf = id => {
+  return (dispatch) => {
+    // dispatch({type: DELETING_SMURF})
+    axios
+    .delete(`http://localhost:3333/smurfs/${id}`)
+    .then( ({data}) => {
+      dispatch({type: SMURF_DELETED, payload: data})
+    })
+    .catch(error => {
+      dispatch({type:ERROR, payload: error});
   });
   }
 }
