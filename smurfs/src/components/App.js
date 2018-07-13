@@ -22,9 +22,8 @@ class App extends Component {
         )}
         {this.props.fetched && !this.props.addClicked ? (
           <Smurfs smurfs={this.props.smurfs} />
-        ) : (
-          <h1>Entering the Smurf village...</h1>
-        )}
+        ) : null}
+        {this.props.fetching ? <h1>Entering the Smurf village...</h1> : null}
         {this.props.error ? (
           <div style={{ color: 'red', fontSize: '30px', padding: '20px' }}>
             {this.props.error}
