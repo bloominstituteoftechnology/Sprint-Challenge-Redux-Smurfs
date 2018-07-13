@@ -19,7 +19,7 @@ class SmurfForm extends React.Component {
       const smurf = {
           ...this.state
       }
-
+      this.setState({ name: '', age: '', height: ''});
       return smurf;
   }
   render() {
@@ -41,6 +41,7 @@ class SmurfForm extends React.Component {
                     placeholder="Name"
                     id="smurf-name"
                     name = "name"
+                    value = {this.state.name} 
                     onChange = {this.changeInfo}
                   />
                 </div>
@@ -58,6 +59,7 @@ class SmurfForm extends React.Component {
                     placeholder="Age"
                     id="smurf-age"
                     name = "age"
+                    value = {this.state.age}
                     onChange = {this.changeInfo}
                   />
                 </div>
@@ -75,6 +77,7 @@ class SmurfForm extends React.Component {
                     placeholder="Height"
                     id="smurf-height"
                     name = "height"
+                    value = {this.state.height}
                     onChange = {this.changeInfo}
                   />
                 </div>
