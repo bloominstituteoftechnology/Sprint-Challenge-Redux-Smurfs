@@ -1,4 +1,4 @@
-import { FETCHING_DATA, DATA_FETCHED } from '../actions'
+import { FETCHING_SMURFS, SMURFS_FETCHED, ADDING_SMURF } from '../actions'
 
  //Your initial/default state for this project could *Although does not have to* look a lot like this
  const initialState = {
@@ -21,10 +21,12 @@ import { FETCHING_DATA, DATA_FETCHED } from '../actions'
 
 export default (state=initialState, action) => {
   switch (action.type) {
-    case (FETCHING_DATA):
+    case (FETCHING_SMURFS):
       return Object.assign({}, state, { fetchingSmurfs: true});
-    case (DATA_FETCHED):
+    case (SMURFS_FETCHED):
       return Object.assign({}, state, { fetchingSmurfs: false, smurfs: action.payload});
+    case (ADDING_SMURF) :
+      return Object.assign({}, state, {fetchingSmurfs: false, addingSmurf: true, smurfs: action.payload})
     default: 
       return state;
   }

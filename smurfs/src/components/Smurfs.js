@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import SmurfCard from './SmurfCard';
+import SmurfCard from './SmurfCard';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../images/smurfenter.png';
@@ -23,7 +23,7 @@ class Smurfs extends Component {
     return (
       <StyledDiv>
         <img src={logo} alt="Title" style={{ 'width': '50%' }} />
-        {/* <ul>
+        <ul>
           {this.props.smurfs.map(smurf => {
             return (
                 <Link key={smurf.name} to={`/smurfs/${smurf.id}`} style={{'textDecoration': 'none', 'color': 'white'}}>
@@ -37,7 +37,7 @@ class Smurfs extends Component {
                 </Link>
             );
           })}
-        </ul> */}
+        </ul>
       </StyledDiv>
     );
   }
@@ -45,7 +45,8 @@ class Smurfs extends Component {
 
 const mapStateToProps = state => {
   return {
-    smurfs: state.smurfs
+    smurfs: state.smurfs,
+    isFetching: state.fetchingSmurfs
   }
 }  
 
