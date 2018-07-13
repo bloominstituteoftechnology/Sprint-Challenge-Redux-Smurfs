@@ -82,4 +82,22 @@ export const getSmurfs = () => async dispatch => {
   }
 }
 export const updateSmurf = () => dispatch => {}
-export const deleteSmurf = () => dispatch => {}
+export const deleteSmurf = id => async dispatch => {
+
+  dispatch({ type: DELETING_SMURF })
+
+  try {
+
+    const {
+      data: smurfs
+    } = await _delete(`http://localhost:3333/smurfs/${id}`)
+
+    dispatch({ type: DELETE_SMURF, smurfs })
+  
+  } catch(error){
+
+    dispatch({ type: ERROR, error })
+
+  }
+
+}

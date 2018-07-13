@@ -63,6 +63,14 @@ export default (state = initialState, action) => {
         smurfs: action.smurfs,
         addingSmurf: false
       }
+    case DELETING_SMURF:
+      return {...state, deletingSmurf: true}
+    case DELETE_SMURF:
+      return {
+        ...state,
+        smurfs: [...action.smurfs],
+        deletingSmurf: false
+      }
     case ERROR:
       return {...state, error: action.error}
     default:
