@@ -18,7 +18,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
-      return;
+      return Object.assign({}, state, { fetchingSmurfs: true });
 
     case SMURF_FETCHED:
       return;
