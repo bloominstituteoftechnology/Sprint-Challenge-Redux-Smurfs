@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import { addSmurf } from "../actions/index";
 
 class CreateSmurf extends Component {
+    state = {
+        name: '',
+        age: '',
+        height: '',
+    }
   handleChangeSmurf = e => {
     this.setState({ [e.target.name]: e.target.value });
     return e.target.value;
@@ -14,6 +19,7 @@ class CreateSmurf extends Component {
       age: this.state.age,
       height: this.state.height
     });
+    this.setState({name: '', age: '', height: ''});
   };
 
   render() {
@@ -21,11 +27,12 @@ class CreateSmurf extends Component {
       <div>
         <div>
           <h2>Add Smurf to Village!</h2>
-          <input type="text" onChange={this.handleChangeSmurf} name="name" />
-          <input type="text" onChange={this.handleChangeSmurf} name="age" />
-          <input type="text" onChange={this.handleChangeSmurf} name="height" />
+          <input type="text" placeholder='Smurf Name' value ={this.state.name} onChange={this.handleChangeSmurf} name="name" />
+          <input type="text" placeholder='Smurf Age' value ={this.state.age} onChange={this.handleChangeSmurf} name="age" />
+          <input type="text"placeholder='Smurf Height' value ={this.state.height}  onChange={this.handleChangeSmurf} name="height" />
         </div>
-        <button onClick={this.handleSubmitSmurf}>Add Smurf</button>
+        <br/>
+        <button onClick={() => this.handleSubmitSmurf()}>Add Smurf</button>
       </div>
     );
   }
