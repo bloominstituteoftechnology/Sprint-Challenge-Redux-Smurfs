@@ -61,11 +61,12 @@ button:hover {
   color: white;
 }
 
-.smurf-form form {
-
-}
-
 .smurf-form input {
   display: flex;
   text-align: center;
+  font-family: 'Gaegu', cursive;
+}
+
+.smurf-form button {
+  margin-top: 5px;
 }
