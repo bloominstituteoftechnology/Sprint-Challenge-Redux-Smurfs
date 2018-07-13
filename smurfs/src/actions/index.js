@@ -13,7 +13,7 @@ export const DATA_ERROR = 'DATA_ERROR';
 export const fetchData = () => {
   return function(dispatch) {
     dispatch({ type: FETCHING_DATA });
-    axios.get('http://localhost:5000/smurf')
+    axios.get('http://localhost:3333/smurfs')
     .then(response => {
       dispatch({ type: DATA_FETCHED, payload: response.data });
     })
@@ -24,7 +24,7 @@ export const fetchData = () => {
 export const addSmurf = (smurf) => {
   return function(dispatch) {
     dispatch({ type: ADDING_SMURF });
-    axios.post('http://localhost:5000/smurf', smurf)
+    axios.post('http://localhost:3333/smurfs', smurf)
     .then(response => {
       dispatch({ type: SMURF_ADDED, payload: response.data });
     })
