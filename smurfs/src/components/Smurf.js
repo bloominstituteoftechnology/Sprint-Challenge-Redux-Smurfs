@@ -1,14 +1,17 @@
 import React from 'react';
 import './App.css';
+import EditSmurf from './EditSmurf';
 
 class Smurf extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      age: '',
-      email: ''
+      showEditForm: false
     }
+  }
+
+  toggleEditForm = () => {
+    this.setState({showEditForm: !this.state.showEditForm})
   }
   render() {
     return (
@@ -16,6 +19,9 @@ class Smurf extends React.Component {
         <h4>{this.props.smurf.name}</h4>
         <h4>{this.props.smurf.age}</h4>
         <h4>{this.props.smurf.height}</h4>
+        {this.state.showEditForm ? <EditSmurf handleUpdate={this.props.handleUpdate} smurfID={this.props.smurf.id} />: null}
+        <button type="button" onClick={this.toggleEditForm}>Edit Smurf</button>
+        <button type="button">Snuff Smurf</button>
       </div>
     )
   }

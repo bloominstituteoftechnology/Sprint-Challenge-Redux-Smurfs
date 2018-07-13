@@ -7,7 +7,7 @@ class Smurfs extends React.Component {
     return (
       <div>
         {this.props.smurfs.map(smurf => {
-          return <Smurf key={smurf.id} smurf={smurf} />
+          return <Smurf key={smurf.id} smurf={smurf} handleUpdate={this.props.handleUpdate} />
         })}
       </div>
     )

@@ -34,4 +34,28 @@
        dispatch({type: ERROR, payload: err})
      })
    }
- }
+ };
+
+ export const updateData = (id,smurf) => {
+   const request = axios.put(`${URL}/${id}`, smurf);
+   return (dispatch) => {
+     dispatch({type: UPDATING});
+     request.then(response => {
+       dispatch({type: UPDATED, payload: response.data})
+     }).catch(err => {
+       dispatch({type: ERROR, payload: err})
+     })
+   }
+ };
+
+export const deleteData = (id) => {
+  const request = axios.delete(`${URL}/${id}`)
+  return (dispatch) => {
+    dispatch({type: UPDATING});
+    request.then(response => {
+      dispatch({type: UPDATED, payload: response.data})
+    }).catch(err => {
+      dispatch({type: ERROR, payload: err})
+    })
+  }
+};

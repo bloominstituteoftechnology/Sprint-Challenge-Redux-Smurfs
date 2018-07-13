@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
-import {fetchData, saveData} from '../actions';
+import {fetchData, saveData, updateData, deleteData} from '../actions';
 import Smurfs from './Smurfs';
 
 /*
@@ -39,6 +39,14 @@ class App extends Component {
     this.props.saveData(newSmurf);
   }
 
+  handleUpdate = (name, age, height, id) => {
+    const newEdits = {};
+    if (name.length > 0) newEdits.name = name;
+    if (age.length > 0) newEdits.age = age;
+    if (height.length > 0) newEdits.height = height;
+    this.props.updateData(id, newEdits);
+  }
+
 
   render() {
     return (
@@ -46,7 +54,7 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         {this.props.fetching ? (
           <div>Loading...</div>
-        ): <div>{<Smurfs smurfs={this.props.smurfs} />}</div>}
+        ): <div>{<Smurfs smurfs={this.props.smurfs} handleUpdate={this.handleUpdate} />}</div>}
         <div className="add-friend">
           <form className="af-form" onSubmit={this.handleSubmit}>
             Name: <input
@@ -88,4 +96,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchData, saveData})(App);
+export default connect(mapStateToProps, {fetchData, saveData, updateData, deleteData})(App);
