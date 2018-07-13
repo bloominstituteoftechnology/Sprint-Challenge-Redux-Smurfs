@@ -16,13 +16,15 @@ class App extends Component {
     return (
       <div className="App">
         {!this.props.addClicked ? (
-          <NavBar />
+          <NavBar className="sticky" />
         ) : (
           <AddSmurfForm smurfs={this.props.smurfs} />
         )}
         {this.props.fetched && !this.props.addClicked ? (
           <Smurfs smurfs={this.props.smurfs} />
-        ) : null}
+        ) : (
+          <h1>Entering the Smurf village...</h1>
+        )}
         {this.props.error ? (
           <div style={{ color: 'red', fontSize: '30px', padding: '20px' }}>
             {this.props.error}

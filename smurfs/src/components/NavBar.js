@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 
 const NavBar = props => (
   <Button
-    style={{ marginLeft: '-65%' }}
+    style={{ marginLeft: '-40%', position: 'fixed', top: '0' }}
     color="primary"
     onClick={props.addClicked}
   >

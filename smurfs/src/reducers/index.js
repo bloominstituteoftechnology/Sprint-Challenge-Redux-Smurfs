@@ -6,10 +6,10 @@ const initialState = {
   smurfsFetched: false,
   smurfsSaved: false,
   savingSmurfs: false,
-  updatingFriend: false,
-  friendUpdated: false,
-  deletingFriend: false,
-  friendDeleted: false,
+  updatingSmurf: false,
+  smurfUpdated: false,
+  deletingSmurf: false,
+  smurfDeleted: false,
   smurfs: [],
   error: null,
   addClicked: false,
@@ -51,27 +51,27 @@ const rootReducer = (state = initialState, action) => {
 
     case DELETING:
       return Object.assign({}, state, {
-        deletingFriend: true,
-        friendDeleted: false,
+        deletingSmurf: true,
+        smurfDeleted: false,
       });
 
     case DELETED:
       return Object.assign({}, state, {
-        deletingFriend: true,
-        friendDeleted: true,
+        deletingSmurf: true,
+        smurfDeleted: true,
         smurfs: action.payload,
       });
 
     case EDITING:
       return Object.assign({}, state, {
-        updatingFriend: true,
-        friendUpdated: false,
+        updatingSmurf: true,
+        smurfUpdated: false,
       });
 
     case EDITED:
       return Object.assign({}, state, {
-        updatingFriend: true,
-        friendUpdated: true,
+        updatingSmurf: true,
+        smurfUpdated: true,
         smurfs: action.payload,
       });
 
