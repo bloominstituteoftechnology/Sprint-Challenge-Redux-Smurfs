@@ -7,7 +7,7 @@ class Smurf extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='smurf-container'>
                 <p>Name: {this.props.smurf.name}</p>
                 <p>Height: {this.props.smurf.height}</p>
                 <p>Age: {this.props.smurf.age}</p>
