@@ -18,67 +18,74 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING:
-      return Object.assign({}, state, {
-        fetchingSmurfs: true,
-      });
+      return { ...state, fetchingSmurfs: true };
 
     case FETCHED:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         smurfs: action.payload,
         fetchingSmurfs: false,
         smurfsFetched: true,
-      });
+      };
 
     case ERROR:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         fetchingSmurfs: false,
         smurfsFetched: false,
         error: action.payload.stack,
-      });
+      };
 
     case ADDING:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         savingSmurfs: true,
         smurfsSaved: false,
-      });
+      };
 
     case ADDED:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         savingSmurfs: true,
         smurfsSaved: true,
         smurfs: action.payload,
-      });
+      };
 
     case DELETING:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         deletingSmurf: true,
         smurfDeleted: false,
-      });
+      };
 
     case DELETED:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         deletingSmurf: true,
         smurfDeleted: true,
         smurfs: action.payload,
-      });
+      };
 
     case EDITING:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         updatingSmurf: true,
         smurfUpdated: false,
-      });
+      };
 
     case EDITED:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         updatingSmurf: true,
         smurfUpdated: true,
         smurfs: action.payload,
-      });
+      };
 
     case ADDCLICKED:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         addClicked: !state.addClicked,
-      });
+      };
 
     default:
       return state;

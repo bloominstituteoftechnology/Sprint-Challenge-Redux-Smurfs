@@ -6,11 +6,11 @@ class Smurfs extends Component {
     return (
       <div className="Smurfs">
         <h1>Smurf Village</h1>
-        <ul style={{ marginLeft: '35%' }}>
+        <div className="card-deck" style={{ paddingLeft: '130px' }}>
           {this.props.smurfs.map(smurf => (
             <Smurf key={smurf.id} smurf={smurf} />
           ))}
-        </ul>
+        </div>
       </div>
     );
   }

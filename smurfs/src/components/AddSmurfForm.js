@@ -30,6 +30,9 @@ class AddSmurfForm extends Component {
       age: '',
       height: '',
     });
+
+    //go back to village
+    this.props.addClicked();
   };
 
   handleInputChange = e => {
@@ -41,6 +44,9 @@ class AddSmurfForm extends Component {
     let selectedSmurf = document.getElementById('selectSmurf').value;
     let smurf = this.props.smurfs.find(s => s.name === selectedSmurf);
     const URL = `http://localhost:3333/smurfs/${smurf.id}`;
+    // change selection back the first smurf
+    let firstSmurf = document.getElementById('first');
+    firstSmurf.selected = true;
     this.props.deleteSmurf(URL);
   };
 
@@ -89,7 +95,11 @@ class AddSmurfForm extends Component {
             >
               {this.props.smurfs.map((s, key) => {
                 return (
-                  <option key={key} value={s.name}>
+                  <option
+                    key={key}
+                    value={s.name}
+                    id={key == 0 ? 'first' : null}
+                  >
                     {s.name}
                   </option>
                 );

@@ -36,7 +36,9 @@ class Smurf extends React.Component {
   };
 
   handleEditClick = () => {
-    const { name, age, height } = this.props.smurf;
+    const { name, age } = this.props.smurf;
+    let { height } = this.props.smurf;
+    height = height.slice(0, -2);
     this.setState({ edit: true, name, age, height });
     setTimeout(() => {
       document.getElementById('nameBox').select();
@@ -52,7 +54,9 @@ class Smurf extends React.Component {
   };
 
   handleSubmitEditClick = id => {
-    const { name, age, height } = this.state;
+    const { name, age } = this.state;
+    let { height } = this.state;
+    height += 'cm';
     const editedSmurf = {
       name,
       age,
@@ -121,6 +125,7 @@ class Smurf extends React.Component {
                     <Col sm={10}>
                       <Input
                         name="height"
+                        type="number"
                         value={this.state.height}
                         onChange={this.handleChange}
                       />
