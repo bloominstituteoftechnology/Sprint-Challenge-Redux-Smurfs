@@ -1,7 +1,12 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import * as actionTypes from '../actions';
+
+import { ERROR } from '../actions';
+import { SUCCESS } from '../actions';
+import { GETTING_SMURFS } from '../actions';
+
+
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -32,36 +37,17 @@ const initialState = {
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-export const smurfsReducer = (state = initialState, action) => {
+
+export default (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.GETTING_SMURFS:
-      return { ...state, fetchingSmurf: true };
-    case actionTypes.GET_SMURFS:
-      return { ...state, smurfs: action.payload, gettingSmurfs: false };
-    case actionTypes.UPDATING_SMURFS:
-      return { ...state, updatingSmurf: true };
-    case actionTypes.UPDATE_SMURFS:
-      return { ...state, smurfs: action.payload, updatingSmurf: false };
-    case actionTypes.DELETING_SMURFS:
-      return { ...state, deletingSmurf: true };
-    case actionTypes.DELETE_SMURFS:
-      return { ...state, smurfs: action.payload, deletingSmurf: false };
-    case actionTypes.ADDING_SMURFS:
-      return { ...state, addingSmurf: true };
-    case actionTypes.ADD_SMURFS:
-      return { ...state, smurfs: action.payload, addingSmurf: false};
-    case actionTypes.ERROR:
-      return {
-        ...state,
-        fetchingSmurf: false,
-        addingSmurfs: false,
-        updatingSmurf: false,
-        deletingSmurf: false,
-        error: action.payload
-      };
+    case GETTING_SMURFS:
+     return Object.assign({}, state, { fetchingSmurf: true });
+    case SUCCESS:
+     return Object.assign({}, state, { smurfs: action.payload, fetchingSmurf: false, updatingSmurf: false, deleteSmurfs: false, addingSmurf: false, error: null });
+    case ERROR:
+     return Object.assign({}, state, { error: action.payload });
     default:
       return state;
   }
-}
+};
 
-export default smurfsReducer;

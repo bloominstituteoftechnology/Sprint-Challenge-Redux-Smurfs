@@ -4,11 +4,14 @@ import { addSmurfs } from '../actions';
 
 
 class SmurfsForm extends Component {
-    state = {
-        name: '',
-        age: '',
-        height: ''
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            age: '',
+            height: ''
+    }
+};
 
     handleInputChange = event => {
         this.setState({ [event.target.name]: event.target.value});
@@ -24,26 +27,20 @@ class SmurfsForm extends Component {
         return (
             <form className="column-layout">
             <input
-                className="input"
                 value={this.state.name}
                 name="name"
-                type="text"
                 placeholder="Name"
-                coChange={this.handleInputChange}
+                onChange={this.handleInputChange}
             />
             <input
-                className="input"
                 value={this.state.age}
                 name="age"
-                type="text"
                 placeholder="Age"
                 onChange={this.handleInputChange}
             />
             <input
-                className="input"
                 value={this.state.height}
                 name="height"
-                type="text"
                 placeholder="Height"
                 onChange={this.handleInputChange}
             />
@@ -55,11 +52,11 @@ class SmurfsForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        error: state.error,
-        addingSmurf: state.addingSmurf
-    };
-};
+// const mapStateToProps = state => {
+//     return {
+//         error: state.error,
+//         addingSmurf: state.addingSmurf
+//     };
+// };
 
-export default connect(mapStateToProps, { addSmurfs })(SmurfsForm);
+export default connect(null, { addSmurfs })(SmurfsForm);

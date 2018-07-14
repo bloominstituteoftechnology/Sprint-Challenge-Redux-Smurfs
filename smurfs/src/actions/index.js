@@ -14,6 +14,7 @@ export const UPDATE_SMURFS = 'UPDATE_SMURFS';
 export const UPDATING_SMURFS = 'UPDATING_SMURFS';
 export const DELETE_SMURFS = 'DELETE_SMURFS';
 export const DELETING_SMURFS = 'DELETEING_SMURFS';
+export const SUCCESS = 'SUCCESS';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -26,32 +27,36 @@ export const DELETING_SMURFS = 'DELETEING_SMURFS';
    D - deleteSmurf
 */
 
-const URL = 'http://localhost:3333/smurfs';
+const URL = 'http://localhost:3333';
 
 export const getSmurfs = () => {
   const smurfs = axios.get(`${URL}/smurfs`);
   return dispatch => {
     dispatch({ type: GETTING_SMURFS });
     smurfs
-    .then(({ data }) => {
-      dispatch({ type: GET_SMURFS, payload:data});
+    .then(response => {
+      console.log('RESPONSE: ', response);
+      dispatch({ type: SUCCESS, payload: response.data});
     })
     .catch(err => {
-      dispatch({ type: ERROR, payload: err});
+      console.log(err);
+      dispatch({ type: ERROR, payload: 'Error fetching Smurfs'});
     });
   };
 };
+
 
 export const addSmurfs = smurf => {
   const newSmurf = axios.post(`${URL}/smurfs`, smurf);
   return dispatch => {
     dispatch({ type: ADDING_SMURFS});
     newSmurf
-    .then(({ data }) => {
-      dispatch({ type: ADD_SMURFS, payload: data });
+    .then(response => {
+      console.log('RESPONSE: ', response.data);
+      dispatch({ type: SUCCESS, payload: response.data });
     })
     .catch(err=> {
-      dispatch({ type: ERROR, payload: err });
+      dispatch({ type: ERROR, payload: "Error adding smurf" });
     })
   };
 };
