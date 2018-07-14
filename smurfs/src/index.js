@@ -7,6 +7,7 @@ import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { smurfsReducer } from './reducers';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = createStore(smurfsReducer, applyMiddleware(thunk,logger));
 
