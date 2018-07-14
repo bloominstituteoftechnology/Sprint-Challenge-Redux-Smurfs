@@ -48,7 +48,7 @@ class App extends Component {
         <input onChange={this.onChange} type="text" name='name' placeholder='name'/>
           <input onChange={this.onChange} type="number" name='age' placeholder='age' />
           <input onChange={this.onChange} type="text" name='height' placeholder='height' />
-        <button type='submit'></button>
+        <button type='submit'>Add Smurf</button>
         </form>
       </div>
     );
