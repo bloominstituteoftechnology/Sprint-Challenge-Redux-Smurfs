@@ -27,6 +27,7 @@ import {FETCHING_SMURFS, SMURFS_FETCHED, SMURFS_FETCH_ERROR} from '../actions';
 import {POSTING_SMURF, SMURF_POSTED, SMURF_POSTING_ERROR} from '../actions';
 import {DELETING_SMURF, SMURF_DELETED, SMURF_DELETING_ERROR} from '../actions';
 import {FETCHING_SMURF} from '../actions';
+import {PUTTING_SMURF, SMURF_PUT, SMURF_PUTTING_ERROR} from '../actions';
 
 const initialState = {
   smurfs: [],
@@ -47,25 +48,25 @@ const smurfsReducer = (state = initialState, action) => {
   switch (action.type) {
     //Getting smurfs
     case FETCHING_SMURFS:
-      return {...state, fetching:true, fetched:false, posting:false, posted:false, deleting:false, deleted:false}
+      return {...state, fetching:true, fetched:false, posting:false, posted:false, deleting:false, deleted:false, putting:false, put:false}
     case SMURFS_FETCHED:
-      return {...state, smurfs:action.payload, fetching:false, fetched:true, posting:false, posted:false, deleting:false, deleted:false}
+      return {...state, smurfs:action.payload, fetching:false, fetched:true, posting:false, posted:false, deleting:false, deleted:false, putting:false, put:false}
     case SMURFS_FETCH_ERROR:
       return {...state, err:action.payload}
     
     //Posting a new smurf
     case POSTING_SMURF:
-      return {...state, fetching:false, fetched:false, posting:true, posted:false, deleting:false, deleted:false}
+      return {...state, fetching:false, fetched:false, posting:true, posted:false, deleting:false, deleted:false, putting:false, put:false}
     case SMURF_POSTED:
-      return {...state, smurfs:action.payload, fetching:false, fetched:true, posting:false, posted:true, deleting:false, deleted:false}
+      return {...state, smurfs:action.payload, fetching:false, fetched:true, posting:false, posted:true, deleting:false, deleted:false, putting:false, put:false}
     case SMURF_POSTING_ERROR:
       return {...state, err:action.payload}
     
     //Deleting a smurf
     case DELETING_SMURF:
-      return {...state, fetching:false, fetched:false, posting:true, posted:false, deleting:true, deleted:false}
+      return {...state, fetching:false, fetched:false, posting:true, posted:false, deleting:true, deleted:false, putting:false, put:false}
     case SMURF_DELETED:
-      return {...state, smurfs:action.payload, fetching:false, fetched:false, posting:true, posted:false, deleting:false, deleted:true}
+      return {...state, smurfs:action.payload, fetching:false, fetched:false, posting:true, posted:false, deleting:false, deleted:true, putting:false, put:false}
     case SMURF_DELETING_ERROR:
       return {...state, err:action.payload}
 
@@ -76,6 +77,14 @@ const smurfsReducer = (state = initialState, action) => {
     //   return {...state, friend:action.payload, fetching:false, fetched:true, posting:false, posted:false, deleting:false, deleted:false}
     // case SMURF_FETCH_ERROR:
     //   return {...state, err:action.payload}
+
+    //Putting smurf
+    case PUTTING_SMURF:
+      return {...state, fetching:false, fetched:false, posting:true, posted:false, deleting:true, deleted:false, putting:false, put:false, putting:true, put:false}
+    case SMURF_PUT:
+      return {...state, smurfs:action.payload, fetching:false, fetched:false, posting:true, posted:false, deleting:false, deleted:true, putting:false, put:true}
+    case SMURF_PUTTING_ERROR:
+      return {...state, err:action.payload}
 
     default:
       return state

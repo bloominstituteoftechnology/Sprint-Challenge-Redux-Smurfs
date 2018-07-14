@@ -31,6 +31,10 @@ export const SMURF_DELETING_ERROR = 'SMURF_DELETING_ERROR'
 
 export const FETCHING_SMURF = 'FETCHING_SMURF'
 
+export const PUTTING_SMURF = 'PUTTING_SMURF'
+export const SMURF_PUT = 'SMURF_PUT'
+export const SMURF_PUTTING_ERROR = 'SMURF_PUTTING_ERROR'
+
 const baseURL = 'http://localhost:3333/smurfs/'
 
 export function getSmurfs(){
@@ -94,4 +98,18 @@ export function getSmurf(id){
   //       dispatch({ type: SMURF_FETCH_ERROR, payload:err });
   //     });
   // };
+}
+
+export function putSmurf(id, newSmurf){
+  return function(dispatch){
+    dispatch({type:PUTTING_SMURF});
+    axios
+      .put( baseURL+id, newSmurf)
+      .then(({ data }) => {
+        dispatch({ type: SMURF_PUT, payload:data });
+      })
+      .catch(err => {
+        dispatch({ type: SMURF_PUTTING_ERROR, payload:err });
+      });
+  }
 }
