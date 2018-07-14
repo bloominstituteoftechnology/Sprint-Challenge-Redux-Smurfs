@@ -13,9 +13,9 @@ class Smurf extends Component {
   render() {
     return (
     <div>
-      <h1>{this.props.smurf.name}</h1>
+      <h1>{this.props.smurf.name} Smurf</h1>
       <p>Age: {this.props.smurf.age} smurf years</p>
-      <p>Height: {this.props.smurf.height} cm tall</p>
+      <p>Height: {this.props.smurf.height} tall</p>
     </div>
   )}
 }
