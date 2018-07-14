@@ -18,7 +18,10 @@ import {GET_SMURFS, GETTING_SMURFS, ADD_SMURF } from '../actions';
    case GETTING_SMURFS:
    return Object.assign({}, state, {updatingSmurf: true});
    case GET_SMURFS:
-   return Object.assign({}, state, {smurfs: action.payload, updatingSmurf: false,} );
+   return Object.assign({}, state, {smurfs: action.payload, updatingSmurf: false, addingSmurf: false});
+   case ADD_SMURF:
+   return Object.assign({}, state, { addingSmurf: true })
+  //  return Object.assign({}, state, [...state, action.payload]);
    default:
    return state;
  }

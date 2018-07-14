@@ -18,10 +18,22 @@ export const GETTING_SMURFS = 'GETTING_SMURFS';
    U - updateSmurf
    D - deleteSmurf
 */
-export const addSmurf = () => {
- console.log('add smurf');
+export const addSmurf = (event, smurf) => {
+ event.preventDefault();
+ console.log('adding smurf');
+ console.log('new smurf', smurf);
+ const promise = axios.post(`http://localhost:3333/smurfs`, smurf)
  return function(dispatch) {
-   dispatch({ADD_SMURF});
+   promise
+   .then(response=> {
+     console.log(response);
+     dispatch({type: GET_SMURFS, payload: response.data});
+   })
+   .catch(err=>{
+     console.log(err);
+   })
+   
+   getSmurfs();
  }
 
  }
@@ -41,4 +53,13 @@ export const addSmurf = () => {
 
 
  }
+  }
+
+  export const deleteSmurf = (id) => {
+    console.log('FINISH HIM!');
+    const promise = axios.post(`http://localhost:3333/smurfs/${id}`)
+    return function(dispatch) {
+
+    }
+    
   }
