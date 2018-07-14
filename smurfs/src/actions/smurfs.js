@@ -13,10 +13,10 @@ export function handleAddSmurf (name, cb) {
   return (dispatch) => {
     return axios.post('http://localhost:3333/smurfs')
       .then((smurf) => {
-        dispatch(addSmurf(smurf))
-        cb()
+        dispatch(addSmurf(smurf));
+        cb();
       })
-      .catch(() => alert('Error.'))
+      .catch(() => alert('Error.'));
   }
 }
 
