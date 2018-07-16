@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
 import Smurf from './Smurf';
-import { getSmurf } from '../actions/index';
-import smurfReducer from '../reducers/smurfReducer';
+import { getSmurf, addSmurf } from '../actions/index';
+import SmurfForm from './SmurfForm';
+
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own.
@@ -13,6 +14,12 @@ import smurfReducer from '../reducers/smurfReducer';
 class App extends Component {
   componentDidMount() {
     this.props.getSmurf()
+  }
+  submit = values => {
+    console.log("FORMS", values)
+    console.log('PROPS IN SUBMIT',this.props)
+    this.props.addSmurf(values)
+
   }
 
   render() {
@@ -24,16 +31,18 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-        {smurfs.map( smurf => <Smurf smurf={smurf} key={smurf} />
+        <SmurfForm  onSubmit = {this.submit}/>
+        {smurfs.map( (smurf, index) => <Smurf smurf={smurf } key={index} />
         )}
       </div>
     );
   }
 }
 
+
 const mapStateToProps = state => ({
   smurfs : state,
   fetchingSmurfs : state.fetchingSmurfs
 })
 
-export default connect(mapStateToProps,{ getSmurf })(App);
+export default connect(mapStateToProps,{ getSmurf, addSmurf })(App);
