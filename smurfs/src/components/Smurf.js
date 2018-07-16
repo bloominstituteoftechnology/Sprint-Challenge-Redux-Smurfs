@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Smurf = (props) => {
     const { name, age , height } = props.smurf
     return (
@@ -12,5 +13,7 @@ const Smurf = (props) => {
         </div>
     );
 };
+
+
 
 export default Smurf;

@@ -19,12 +19,11 @@ class App extends Component {
     console.log("FORMS", values)
     console.log('PROPS IN SUBMIT',this.props)
     this.props.addSmurf(values)
-
   }
 
   render() {
     console.log(this.props.smurfs.smurfReducer)
-    const { smurfs } = this.props.smurfs.smurfReducer
+    //const { smurfs } = this.props.smurfs.smurfReducer
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -32,7 +31,7 @@ class App extends Component {
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
         <SmurfForm  onSubmit = {this.submit}/>
-        {smurfs.map( (smurf, index) => <Smurf smurf={smurf } key={index} />
+        {this.props.smurfs.map( (smurf, index) => <Smurf smurf={smurf } key={ index } />
         )}
       </div>
     );
@@ -41,7 +40,7 @@ class App extends Component {
 
 
 const mapStateToProps = state => ({
-  smurfs : state,
+  smurfs : state.smurfReducer.smurfs,
   fetchingSmurfs : state.fetchingSmurfs
 })
 
