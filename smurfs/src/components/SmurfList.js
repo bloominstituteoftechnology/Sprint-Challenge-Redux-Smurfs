@@ -1,44 +1,58 @@
-import React from 'react';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { deleteSmurf, updateSmurf } from "../actions";
 
-import { connect } from  'react-redux'
-import { deleteSmurf } from '../actions';
+import "./SmurfList.css";
+class SmurfList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: props.smurfs.name,
+            age:props.smurfs.age,
+            height: props.smurfs.height,
+            editing: false,
+        }
+    }
 
-import './SmurfList.css';
+    handleInput = event => {
+      this.setState({ [event.target.name]: event.target.value});
+    }
 
-const SmurfList = (props) =>{ 
-
+  render() {
     return (
-            <div>
-                    {props.fetchingSmurfs  ? (
-                        <h1>Wait. Fetching Smurfs...</h1>
+      <div>
+        {this.props.fetchingSmurfs ? (
+          <h1>Wait. Fetching Smurfs...</h1>
+        ) : (
+          <div>
+            <ul>
+              {this.props.smurfs.map((smurf, index) => {
+                  {!this.state.editing ? (
+                    <div className="divList" key={index}>
+                        <li>{smurf.name}</li>
+                        <li>{smurf.age}</li>
+                        <li>{`${smurf.height} cm`}</li>
+                        <button onClick={() => this.props.deleteSmurf(smurf.id)}>X</button>
+                        <button onClick={() => this.props.updateSmurf(smurf.id)}>Edit</button>
+                    </div>
                     ) : (
-                        <div>
-                            <ul>
-                        {props.smurfs.map((smurf,index) => {
-                            return ( 
-                         
-                            <div className="divList" key={index}>    
-                                 <li>{smurf.name}</li>
-                                 <li>{smurf.age}</li>  
-                                 <li>{`${smurf.height} cm`}</li>
-                                 <button onClick={() => props.deleteSmurf(smurf.id)}>X</button>
-                                 {/* <button>X</button> */}
-                             </div> 
-                            );
-                         })}
-                         </ul>
-                         </div>
-                    )}   
-            </div>
-    )
+                 <div>Yup. You are here.</div>
+                )}})}
+            </ul>
+          </div>
+        )}
+      </div>)
+  }
 }
 
 const mapStateToProps = state => {
   return {
     fetchingSmurfs: state.fetchingSmurfs,
     smurfs: state.smurfs,
-    error: state.errorMessage,
+    error: state.errorMessage
   };
 };
 
-export default connect(mapStateToProps, { deleteSmurf } )(SmurfList);
+export default connect(mapStateToProps, { deleteSmurf, updateSmurf })(
+  SmurfList
+);

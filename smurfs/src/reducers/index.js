@@ -7,6 +7,9 @@ import {
   SMURF_CREATED,
   DELETING_SMURF,
   SMURF_DELETED,
+  SMURF_UPDATED,
+  UPDATING_SMURF,
+  ERROR_UPDATING_SMURF
 } from "../actions";
 
 const initialState = {
@@ -16,6 +19,7 @@ const initialState = {
   smurfAdded: false,
   deletingSmurf: false,
   smurfDeleted: false,
+  updatingSmurf: false,
   smurfs: [],
   error: null
 };
@@ -39,15 +43,31 @@ export default (state = initialState, action) => {
     case ERROR_CREATING_SMURF:
       return { ...state, error: action.error };
     case SMURF_CREATED:
-      return { ...state, 
-        smurfs: action.smurfs, 
+      return {
+        ...state,
+        smurfs: action.smurfs,
         addingSmurf: false,
         error: null
       };
     case DELETING_SMURF:
-      return {...state, deletingSmurf: true};
+      return { ...state, deletingSmurf: true };
     case SMURF_DELETED:
-      return {...state, smurfs: action.smurfs, deletingSmurf: false, error: null};
+      return {
+        ...state,
+        smurfs: action.smurfs,
+        deletingSmurf: false,
+        error: null
+      };
+
+    case UPDATING_SMURF:
+      return { ...state, updatingSmurf: true };
+    case ERROR_UPDATING_SMURF:
+      return { ...state, error: action.error };
+    case SMURF_UPDATED:
+      return {
+        ...state,
+        error: null
+      };
     default:
       return state;
   }
