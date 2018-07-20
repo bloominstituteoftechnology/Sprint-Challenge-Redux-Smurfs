@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-import { createSmurf, fetchSmurf } from '../actions'
+import {fetchSmurf} from '../actions'
+import {createSmurf} from '../actions'
 
 /*
  to wire this component up you're going to need a few things.
@@ -42,7 +43,7 @@ class App extends Component {
         <ul>
           {console.log(this.props)}
           {this.props.smurfs.map((smurf, index) => {
-            return <li key={index}>{smurf.name} <br /> {smurf.age} <br /> {smurf.height} <br /> {smurf.id}</li>;
+            return <li key={index}>{smurf.name} <br /> {smurf.age} <br /> {smurf.height} <br /> <hr /></li>;
           })}
         </ul>
 
