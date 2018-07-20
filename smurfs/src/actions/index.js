@@ -38,11 +38,11 @@ export const addSmurf = (smurf) => {
   return (dispatch) => {
     dispatch({ type: ADDING_SMURF });
     axios
-      .post('http://localhost:5000/api/smurfs/', smurf)
-      .then(({ data }) =>
+      .post('http://localhost:3333/smurfs/', smurf)
+      .then((response) =>
         dispatch({
           type: ADDED_SMURF,
-          payload: { name: smurf.name, age: smurf.age, height: smurf.height }
+          payload: response.data
         })
       )
       .catch((error) => {
