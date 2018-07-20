@@ -12,7 +12,7 @@ export const fetchSmurfs = () => {
   return dispatch => {
     dispatch({ type: FETCHING_SMURFS });
     axios
-      .get('http://localhost:3333')
+      .get('http://localhost:3333/smurfs')
       .then(response => {
         dispatch({ type: FETCHED_SMURFS, payload: response.data.results });
       })

@@ -17,11 +17,15 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <SmurfForm />
-        <div>
-          {this.props.smurfs.map(smurf => {
-            <Smurf smurf={smurf}/>
-          })}
-        </div>
+        {this.props.error ? <h3>Error retrieving Smurf Data</h3> : null}
+        {this.props.fetching ? <h3>Retrieving Smurfs...</h3> : null}
+        {this.props.fetched ? (
+          <div>
+            {this.props.smurfs.map(smurf => {
+              <Smurf smurf={smurf}/>
+            })}
+          </div>
+        ) : null}
       </div>
     );
   }
