@@ -16,10 +16,10 @@ let smurfs = [
   {
     name: 'Brainey',
     age: 200,
-    height: '5cm'
+    height: '5'
   }
 ];
-server.get(, (req, res) => {
+server.get( (req, res) => {
   res.json(smurfs);
 });
 let smurfId = 0;

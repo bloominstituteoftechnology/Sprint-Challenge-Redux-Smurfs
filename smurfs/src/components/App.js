@@ -30,7 +30,6 @@ class App extends Component {
   };
 
   handleAddSmurf = e => {
-    e.preventDefault()
     const { name, age, height } = this.state;
     this.props.createSmurf({ name, age, height })
     this.setState({ name: '', age: '', height: '' });
@@ -43,7 +42,7 @@ class App extends Component {
         <ul>
           {console.log(this.props)}
           {this.props.smurfs.map((smurf, index) => {
-            return <li key={index}>{smurf.name} <br /> {smurf.age} <br /> {smurf.height} <br /> <hr /></li>;
+            return <li key={index}>{smurf.name} <br /> {smurf.age} <br /> {smurf.height}cm <br /> <hr /></li>;
           })}
         </ul>
 
