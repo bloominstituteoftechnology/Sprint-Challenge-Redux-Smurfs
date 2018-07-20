@@ -6,6 +6,7 @@ export const ERROR = 'ERROR';
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const ADD_SMURF = 'ADD_SMURF';
 export const DELETING_SMURF = 'DELETING_SMURF';
+export const DELETED = 'DELETED';
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -29,7 +30,7 @@ export const getSmurfs = () => {
 }
 
 export const addSmurf = smurf => {
-  const promise = axios.post(`http://localhost:3333/smurfs`, smurf);
+  const promise = axios.post(`http://localhost:3333/smurfs`, smurf)
   return dispatch => {
     dispatch({ type: ADDING_SMURF });
     promise
@@ -48,5 +49,12 @@ export const deleteSmurf = id => {
   })
   return dispatch => {
     dispatch({ type: DELETING_SMURF })
+    promise
+    .then(({ data }) => {
+      dispatch ({ type: DELETED, payload: data })
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, payload: 'Error Deleting' });
+  })
   }
 }

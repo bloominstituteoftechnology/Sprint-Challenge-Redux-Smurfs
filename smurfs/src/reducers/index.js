@@ -1,4 +1,4 @@
-import { FETCHING_SMURFS, FETCHED, ERROR } from '../actions';
+import { FETCHING_SMURFS, FETCHED, ERROR, ADDING_SMURF, DELETING_SMURF } from '../actions';
 
 const initialState = {
    smurfs: [],
@@ -6,7 +6,7 @@ const initialState = {
    addingSmurf: false,
    updatingSmurf: false,
    deletingSmurf: false,
-   error: null
+   error: null,
  };
 
 export default (state = initialState, action) => {
@@ -22,6 +22,14 @@ export default (state = initialState, action) => {
        smurfs: action.payload }
   case ERROR:
     return { ...state, error: action.payload }
+  case ADDING_SMURF:
+      return { ...state, fetchingSmurfs: false,
+      deletingSmurf: false,
+      updatingSmurf: false,
+      error: null,
+      addingSmurf: true}
+  case DELETING_SMURF:
+      return { ...state, deletingSmurf: true }
   default: 
     return state;
   }

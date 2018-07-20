@@ -8,7 +8,8 @@ class SmurfForm extends Component {
     this.state = {
         name: '',
         age: '',
-        height: ''
+        height: '',
+        id: Date.now()
     };
 }
     handleAddSmurf = () => {
