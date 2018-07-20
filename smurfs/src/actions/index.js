@@ -34,7 +34,7 @@ export const getSmurfs = () => {
   };
 };
 
-export const addsmurf = (smurf) => {
+export const addSmurf = (smurf) => {
   return (dispatch) => {
     dispatch({ type: ADDING_SMURF });
     axios
