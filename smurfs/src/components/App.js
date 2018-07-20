@@ -18,6 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Smurf Project #91305930138</h1>
+        <img className="header-image" src={require('../smurf-header.jpg')} alt="smurfs"/>
         <SmurfForm />
         {this.props.smurfs.map(smurf =>
           <Smurf key={smurf.id} smurf={smurf}/>
