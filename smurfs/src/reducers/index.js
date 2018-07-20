@@ -1,7 +1,11 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-
+import { 
+  FETCHING_SMURFS, 
+  SMURFS_FETCHED, 
+  SMURF_ERROR 
+} from '../actions'
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this*/
  const initialState = {
@@ -24,6 +28,8 @@
 
 export default ( state = initialState, action) => {
   switch (action.type) {
+    case FETCHING_SMURFS:
+      return Object.assign({}, state, { fetchingSmurfs: true });
     default:
       return state;
   }
