@@ -30,10 +30,10 @@ const initialState = {
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-export const smurfReducer = (state = initialState, action => {
+const smurfReducer = (state = initialState, action) => {
   switch(action.type) {
     case FETCHING_SMURF:
-      returnObject.assign({}, state, {
+      return Object.assign({}, state, {
         fetchingSmurfs: true,
         addingSmurf: false,
         updatingSmurf: false,
@@ -41,7 +41,7 @@ export const smurfReducer = (state = initialState, action => {
         error: null
       })
       case ADDING_SMURF:
-      returnObject.assign({}, state, {
+      return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: true,
         updatingSmurf: false,
@@ -50,7 +50,7 @@ export const smurfReducer = (state = initialState, action => {
         smurfs: action.payload
       })
       case UPDATING_SMURF:
-      returnObject.assign({}, state, {
+      return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: false,
         updatingSmurf: true,
@@ -58,7 +58,7 @@ export const smurfReducer = (state = initialState, action => {
         error: null
       })
       case DELETING_SMURF:
-      returnObject.assign({}, state, {
+      return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: false,
         updatingSmurf: false,
@@ -66,7 +66,7 @@ export const smurfReducer = (state = initialState, action => {
         error: null
       })
       case ERROR:
-      returnObject.assign({}, state, {
+      return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: false,
         updatingSmurf: false,
@@ -76,4 +76,6 @@ export const smurfReducer = (state = initialState, action => {
     default:
       return state
   }
-})
+}
+
+export default smurfReducer

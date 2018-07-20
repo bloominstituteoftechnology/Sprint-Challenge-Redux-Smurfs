@@ -14,23 +14,26 @@ import axios from 'axios'
    D - deleteSmurf
 */
 
-export const FETCHING_SMURF = FETCHING_SMURF;
-export const ADDING_SMURF = ADDING_SMURF
-export const UPDATING_SMURF = UPDATING_SMURF;
-export const DELETING_SMURF = DELETING_SMURF;
-export const ERROR = ERROR;
+export const FETCHING_SMURF = 'FETCHING_SMURF';
+export const ADDING_SMURF = 'ADDING_SMURF'
+export const UPDATING_SMURF = 'UPDATING_SMURF';
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const ERROR = 'ERROR';
 
-export const fetchSmurf = () => {
-  const promise = axios.get('http://localhost:3333');
-
+const fetchSmurf = () => {
+  const promise = axios.get('http://localhost:3333/smurfs');
   return function(dispatch) {
     dispatch({type: FETCHING_SMURF});
+
     promise.then((response) => {
-      console.log(response);
-      dispatch({type: ADDING_SMURF, payload: response.data.results})
+      console.log(response.data)
+      dispatch({type: ADDING_SMURF, payload: response.data})
     })
     .catch(err => {
-      dispatch({ype: ERROR, msg: "Error fetching smurf"})
-    })
-  }
-}
+        dispatch({type: ERROR, payload: 'Error fetching smurf'})
+    });
+};
+
+};
+
+export default fetchSmurf

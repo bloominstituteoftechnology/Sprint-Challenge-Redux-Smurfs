@@ -19,7 +19,7 @@ let smurfs = [
     height: '5cm'
   }
 ];
-server.get('/smurfs', (req, res) => {
+server.get(, (req, res) => {
   res.json(smurfs);
 });
 let smurfId = 0;
