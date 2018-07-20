@@ -17,6 +17,7 @@ import axios from 'axios'
 export const FETCHING_SMURF = 'FETCHING_SMURF';
 export const ADDING_SMURF = 'ADDING_SMURF'
 export const UPDATING_SMURF = 'UPDATING_SMURF';
+export const CREATE_SMURF = 'CREATE_SMURF';
 export const DELETING_SMURF = 'DELETING_SMURF';
 export const ERROR = 'ERROR';
 
@@ -36,4 +37,18 @@ const fetchSmurf = () => {
 
 };
 
-export default fetchSmurf
+const createSmurf = smurf => {
+  const promise = axios.post('http://localhost:3333/smurfs/create', smurf);
+
+  return dispatch => {
+    dispatch({type: UPDATING_SMURF});
+    promise.then((response) => {
+      dispatch({type: CREATE_SMURF, payload: data})
+    })
+    .catch(err => {
+      dispatch({type: ERROR, payload: err})
+    })
+  }
+}
+
+export default {fetchSmurf, createSmurf}

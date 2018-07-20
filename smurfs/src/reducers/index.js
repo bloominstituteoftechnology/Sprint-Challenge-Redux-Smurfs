@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import {FETCHING_SMURF, ADDING_SMURF, UPDATING_SMURF, DELETING_SMURF, ERROR} from '../actions'
+import {FETCHING_SMURF, ADDING_SMURF, UPDATING_SMURF, DELETING_SMURF, ERROR, CREATE_SMURF} from '../actions'
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -17,6 +17,7 @@ const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
   addingSmurf: false,
+  createSmurf: false,
   updatingSmurf: false,
   deletingSmurf: false,
   error: null
@@ -36,6 +37,7 @@ const smurfReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         fetchingSmurfs: true,
         addingSmurf: false,
+        createSmurf: false,
         updatingSmurf: false,
         deletingSmurf: false,
         error: null
@@ -45,6 +47,7 @@ const smurfReducer = (state = initialState, action) => {
         fetchingSmurfs: false,
         addingSmurf: true,
         updatingSmurf: false,
+        createSmurf: false,
         deletingSmurf: false,
         error: null,
         smurfs: action.payload
@@ -53,15 +56,27 @@ const smurfReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: false,
+        createSmurf: false,
         updatingSmurf: true,
         deletingSmurf: false,
         error: null
+      })
+      case CREATE_SMURF:
+      return Object.assign({}, state, {
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        createSmurf: true,
+        updatingSmurf: true,
+        deletingSmurf: false,
+        error: null,
+        smurfs: action.payload
       })
       case DELETING_SMURF:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: false,
         updatingSmurf: false,
+        createSmurf: false,
         deletingSmurf: true,
         error: null
       })
@@ -69,6 +84,7 @@ const smurfReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: false,
+        createSmurf: false,
         updatingSmurf: false,
         deletingSmurf: false,
         error: action.payload

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux'
 import fetchSmurf from '../actions'
+import createSmurf from '../actions'
 
 /*
  to wire this component up you're going to need a few things.
