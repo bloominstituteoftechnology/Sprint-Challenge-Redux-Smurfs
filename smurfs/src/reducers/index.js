@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import {FETCHING_SMURF, ADDING_SMURF, UPDATING_SMURF, DELETING_SMURF, ERROR, CREATE_SMURF} from '../actions'
+import { FETCHING_SMURF, ADDING_SMURF, UPDATING_SMURF, DELETING_SMURF, ERROR, CREATE_SMURF } from '../actions'
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -32,7 +32,7 @@ const initialState = {
 */
 
 const smurfReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case FETCHING_SMURF:
       return Object.assign({}, state, {
         fetchingSmurfs: true,
@@ -42,7 +42,7 @@ const smurfReducer = (state = initialState, action) => {
         deletingSmurf: false,
         error: null
       })
-      case ADDING_SMURF:
+    case ADDING_SMURF:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: true,
@@ -52,7 +52,7 @@ const smurfReducer = (state = initialState, action) => {
         error: null,
         smurfs: action.payload
       })
-      case UPDATING_SMURF:
+    case UPDATING_SMURF:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: false,
@@ -61,7 +61,7 @@ const smurfReducer = (state = initialState, action) => {
         deletingSmurf: false,
         error: null
       })
-      case CREATE_SMURF:
+    case CREATE_SMURF:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: false,
@@ -71,7 +71,7 @@ const smurfReducer = (state = initialState, action) => {
         error: null,
         smurfs: action.payload
       })
-      case DELETING_SMURF:
+    case DELETING_SMURF:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: false,
@@ -80,7 +80,7 @@ const smurfReducer = (state = initialState, action) => {
         deletingSmurf: true,
         error: null
       })
-      case ERROR:
+    case ERROR:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         addingSmurf: false,
