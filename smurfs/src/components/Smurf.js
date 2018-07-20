@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 
 class Smurf extends Component {
     render() {
+    const { name, age, height } = this.props.smurf;
       return (
         <div className="smurf-attr">
-            Name: {this.props.name}
-            Age: {this.props.age}
-            Height: {this.props.height}
+            Name: {name}{'  '}
+            Age: {age}{'  '}
+            Height: {height}{' '}
             </div>
     )
 };

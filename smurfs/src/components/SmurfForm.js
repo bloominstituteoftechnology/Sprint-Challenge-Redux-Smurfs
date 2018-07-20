@@ -50,4 +50,11 @@ class SmurfForm extends Component {
 };
 };
 
-export default connect(null, { addSmurf })(SmurfForm);
+const mapStateToProps = state => {
+    return {
+      error: state.error,
+      addingSmurf: state.addSmurf
+    };
+  };
+
+export default connect(mapStateToProps, { addSmurf })(SmurfForm);
