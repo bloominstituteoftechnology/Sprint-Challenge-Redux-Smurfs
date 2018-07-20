@@ -11,6 +11,7 @@ import {
  const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
+   smurfsFetched: false,
    addingSmurf: false,
    updatingSmurf: false,
    deletingSmurf: false,
@@ -26,10 +27,26 @@ import {
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-export default ( state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
-      return Object.assign({}, state, { fetchingSmurfs: true });
+      return Object.assign({}, state, {
+        fetchingSmurfs: true,
+        smurfsFetched: false,
+        error: null
+      });
+    case SMURFS_FETCHED:
+      return Object.assign({}, state, {
+        fetchingSmurfs: false,
+        smurfsFetched: true,
+        smurfs: action.payload
+      });
+    case SMURF_ERROR:
+      return Object.assign({}, state, {
+        fetchingSmurfs: false,
+        smurfsFetched: false,
+        error: action.payload
+      });
     default:
       return state;
   }

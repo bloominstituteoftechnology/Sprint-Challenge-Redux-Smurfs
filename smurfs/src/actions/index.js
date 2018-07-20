@@ -24,8 +24,8 @@ export const fetchSmurfs = () => {
   return function(dispatch) {
     dispatch({ type: FETCHING_SMURFS });
     promise.then(response => {
-      console.loge(response);
-      dispatch({ type: SMURFS_FETCHED, payload: response.data })
+      console.log(response);
+      dispatch({ type: SMURFS_FETCHED, payload: response.smurfs.data })
     })
     .catch(err => {
       dispatch({ type: SMURF_ERROR, payload: 'Error fetching smurfs' });
