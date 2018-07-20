@@ -28,21 +28,18 @@ class SmurfForm extends Component {
             onChange={this.handleInputChange} 
             value={this.state.name}
             name="name"
-            type="text"
             placeholder="Name"
             />
             <input 
             onChange={this.handleInputChange} 
             value={this.state.age}
             name="age"
-            type="text"
             placeholder="Age"
             />
             <input 
             onChange={this.handleInputChange} 
             value={this.state.height}
             name="height"
-            type="text"
             placeholder="Height"
             />
             <button onClick={this.handleAddSmurf}>Add Smurf</button>
