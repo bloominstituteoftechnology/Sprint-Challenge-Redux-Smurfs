@@ -16,7 +16,7 @@ import axios from 'axios'
 
 export const FETCHING_SMURF = FETCHING_SMURF;
 export const ADDING_SMURF = ADDING_SMURF
-export const UPDAING_SMURF = UPDAING_SMURF;
+export const UPDATING_SMURF = UPDATING_SMURF;
 export const DELETING_SMURF = DELETING_SMURF;
 export const ERROR = ERROR;
 
