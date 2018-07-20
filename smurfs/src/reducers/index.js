@@ -1,6 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
+import { FETCHING_SMURFS } from '../actions';
 
  const initialState = {
    smurfs: [],
@@ -12,7 +13,14 @@
  }
 
 export default (state = initialState, action) => {
-  return state;
+  switch(action.type) {
+  case FETCHING_SMURFS:
+      return Object.assign({}, state, { fetchingSmurfs: true });
+    case SUCCESS:
+      return Object.assign({}, state, { smurfs: action.payload});
+    default:
+      return state;
+  }
 };
 
 /*
