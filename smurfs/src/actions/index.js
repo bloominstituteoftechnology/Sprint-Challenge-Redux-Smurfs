@@ -5,28 +5,46 @@
 import axios from 'axios';
 
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
-export const FETCHED_SMURFS = 'FETCHED_SMURFS';
-export const FETCHING_SMURFS_ERROR = 'FETCHING_SMURFS_ERROR';
+export const SUCCESS = 'SUCCESS';
+export const ERROR = 'ERROR';
+export const ADD_SMURF = 'ADD_SMURF';
+
+const URL = 'http://localhost:3333/api/smurfs'; 
 
 export const fetchSmurfs = () => {
-  const smurfs = axios.get('http://localhost:3333/api/smurfs');
+  const getSmurfs = axios.get(URL);
   return dispatch => {
     dispatch({ type: FETCHING_SMURFS });
-    smurfs
+    getSmurfs
     .then(response => {
       dispatch({
-        type: FETCHED_SMURFS,
+        type: SUCCESS,
         payload: response.data
       });
     })
     .catch(error => {
       dispatch({
-        type: FETCHING_SMURFS_ERROR,
+        type: ERROR,
         payload: "Your Smurfs are Hiding!"
       });
     });
   };
 };
+
+export const createSmurf = smurf => {
+  const addSmurf = axios.post(URL, smurf);
+  return  dispatch => {
+    dispatch({ type: ADD_SMURF})
+    addSmurf
+    .then(response => {
+      console.log(response.data);
+      dispatch({ type: SUCCESS, payload: response.data })
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, payload: 'No Smurf Added' })
+    })
+  }
+} 
 
 
 
