@@ -26,3 +26,18 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+.myLabel {
+    float: left;
+    width: 10%;
+}
+
+.myInput {
+    max-width: 33%;
+    }
+
+.myButton {
+    float: left;
+    margin-left: 25%;
+}
