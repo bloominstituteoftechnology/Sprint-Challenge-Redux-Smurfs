@@ -31,3 +31,50 @@ const initialState = {
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+export default (state = initialState, action) => {
+  switch(action.type) {
+    case FETCHING:
+      return Object.assign({}, state, {
+        fetching:true, 
+        fetched: false,
+        adding: false,
+        added: false,
+        error: null
+      })
+    case FETCHED:
+      return Object.assign({}, state, {
+        fetching:false, 
+        fetched: action.payload,
+        adding: false,
+        added: false,
+        error: null
+      })
+    case ADDING:
+      return Object.assign({}, state, {
+        fetching:false, 
+        fetched: false,
+        adding: true,
+        added: false,
+        error: null
+      })
+    case ADDED:
+      return Object.assign({}, state, {
+        fetching:false, 
+        fetched: false,
+        adding: false,
+        added: action.payload,
+        error: null
+      })
+    case ERROR:
+      return Object.assign({}, state, {
+        fetching:false, 
+        fetched: false,
+        adding: false,
+        added: true,
+        error: action.payload
+      })
+    default: 
+      return state;
+  }
+}
