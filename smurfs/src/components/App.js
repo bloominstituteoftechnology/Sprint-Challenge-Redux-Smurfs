@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
 import {getSmurfs} from '../actions';
+import AddSmurfForm from './AddSmurfForm';
 
 
 /*
@@ -21,6 +22,11 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+
+
+        <div>
+          <AddSmurfForm />
+        </div>
 
         <div>
           {this.props.fetching ? (<span> getting smurfs </span>) : (
