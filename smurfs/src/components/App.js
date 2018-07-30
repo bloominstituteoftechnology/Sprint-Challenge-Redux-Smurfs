@@ -23,7 +23,13 @@ class App extends Component {
         <div>Have fun!</div>
 
         <div>
-          SMURGS
+          {this.props.fetching ? (<span> getting smurfs </span>) : (
+            <ul> 
+              {this.props.smurfs.map(smurf => {
+                return <li key = {smurf.name}> {smurf.name} </li>;
+              })}
+            </ul>
+          )}
         </div>
       </div>
     );
@@ -31,11 +37,16 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("State: ", state);
+  console.log("STATE: ", state);
   return {
-    smurfs: state
-  }
-}
+    smurfs: state.smurfs,
+    fetching:state.fetching, 
+    fetched:state.fetched,
+    adding: state.adding,
+    added: state.added,
+    error: state.error
+  };
+};
 
 export default connect (mapStateToProps, {
   getSmurfs

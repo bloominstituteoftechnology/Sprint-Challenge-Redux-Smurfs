@@ -44,8 +44,9 @@ export default (state = initialState, action) => {
       })
     case FETCHED:
       return Object.assign({}, state, {
+        smurfs:action.payload,
         fetching:false, 
-        fetched: action.payload,
+        fetched: true,
         adding: false,
         added: false,
         error: null
