@@ -61,6 +61,7 @@ export default (state = initialState, action) => {
       })
     case ADDED:
       return Object.assign({}, state, {
+        smurfs:action.payload,
         fetching:false, 
         fetched: false,
         adding: false,
