@@ -1,3 +1,12 @@
+/* Blue Red
+Deep Red: #b11a21 – In an overlay, juxtaposed against flat blue, the photographic background gives depth.
+
+Lighter Red: #e0474c – The smiling face coming through the red, makes it feel striking.
+
+Blue Beans: #7acfd6 – The flat blue provides contrast to the photo behind the red. 
+
+Light Classy Grey: #f1f0ee – Simple light grey is used to provide depth behind a later photographic section, with white below. */
+
 .App {
   text-align: center;
 }
@@ -25,4 +34,76 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+
+.SmurfCard-container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.SmurfCard-container button {
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 10px;
+}
+
+.ok-button {
+  background-color: #7acfd6;
+}
+
+.cancel-button {
+  background-color: #e0474c;
+}
+
+.SmurfCard-form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.SmurfCard-form label{
+  margin: 20px auto;
+  width: 60%;
+}
+
+.SmurfCard-form input{
+  margin: auto;
+  padding: 10px;
+  width: 60%;
+}
+
+.Smurf-button {
+  width: 96px;
+  height: 96px;
+  border-radius: 4px;
+  background: url("https://www.shareicon.net/data/96x96/2015/10/27/140549_cartoon_256x256.png");
+  background-repeat: no-repeat;
+}
+
+.Smurf-button:hover {
+  cursor: pointer;
+  width: 106px;
+  height: 106px;
+  background-size: 110%;
+}
+
+
+.Smurf-button img{
+  position: relative;
+  left: -30px;
+  bottom: -60px;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
 }
