@@ -1,17 +1,22 @@
 import axios from "axios";
 
 export const FETCHING_SMURF = "FETCHING_SMURF";
-export const FETCHED_SMURF = "FETCHED_SMURF";
+export const FETCHED_SMURF = "FETCH_SMURF";
+export const ADDING_SMURF = "ADDING_SMURFS";
+export const ADD_SMURF = "ADD_SMURF";
+export const UPDATING_SMURF ="UPDATING_SMURF";
+export const UPDATE_SMURF = "UPDATE_SMURF";
 export const DELETE_SMURF = "DELETE_SMURF";
+export const DELETING_SMURF = "DELETING_SMURF"
 export const SUBMIT_SMURF = "SUBMIT_SMURF";
 export const EDIT_SMURF = "EDIT_SMURF";
 
 // Action Types Go Here!
 // Be sure to export each action type so you can pull it into your reducer
 
-const URl = 'http://localhost:3000/smurfs'
-export const fetching_smurfs = () => {
-  const getSmurfs = axios.get(`{$URL}`);
+
+export const fetch_smurfs = () => {
+  const getSmurfs = axios.get('http://localhost:3000/smurfs');
   return function( dispatch) {
     dispatch({
        type: FETCHING_SMURFS
@@ -20,7 +25,7 @@ export const fetching_smurfs = () => {
     getSmurfs
       .then(response => {
         dispatch({
-           type: FETCHING_SMURFS,
+           type: FETCH_SMURFS,
            payload: response.data
            })
           })
@@ -35,15 +40,25 @@ export const fetching_smurfs = () => {
   
 export const addSmurfs = smurf => {
   console.log(smurf)
-  const add = axios.post(`${URL}`, smurf);
-  return  => {
-    dispatch({ type: FETCHING_SMURF });
-    getInfo
-      .then(({ data }) => {
-        dispatch({ type: FETCHED_SMURF, smurfs: data });
+  const add = axios.get('http://localhost:3000/smurfs');
+  return function (dispatch) {
+    dispatch({
+       type: ADDING_SMURF ,
+       
+      });
+    add
+      .then( response  => {
+        dispatch({ 
+          type: ADD_SMURF,
+          payload:response.data
       })
-      .catch(err => {
-        console.log(err);
+    })
+      .catch(error => {
+        dispatch({
+          type:ERROR,
+          payload:error
+        })
+        
       });
   };
 };
@@ -56,9 +71,9 @@ export const deleteSmurf = id => {
       })
       .catch(err => {
         console.log(err);
-      });
-  };
-};
+      })
+  }
+}
 
 export const editSmurf = (id, smurfs) => {
   return { type: EDIT_SMURF, smurfs, id };
