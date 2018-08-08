@@ -16,7 +16,7 @@ middleware is a bridge between databases and applications
 5.  Describe `redux-thunk`, what does it allow us to do? How 
 does it change our `action-creators`? 
 
-redux-thunk middleware allows us to invert control of the action creators by dispatching functions whic can be called at a later time or asynchronously.
+redux-thunk middleware allows us to invert control of the action creators by dispatching functions which can be called at a later time or asynchronously.
 
 6.  Which `react-redux` method links up our `components` with our `redux store`?
 
