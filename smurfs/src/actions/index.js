@@ -14,7 +14,7 @@ export const EDIT_SMURF = "EDIT_SMURF";
 // Action Types Go Here!
 // Be sure to export each action type so you can pull it into your reducer
 
-
+//THIS IS TO GET THE SMURFS
 export const fetch_smurfs = () => {
   const getSmurfs = axios.get('http://localhost:3000/smurfs');
   return function( dispatch) {
@@ -37,7 +37,7 @@ export const fetch_smurfs = () => {
           })
         }
       }
-  
+  //THIS IS TO ADD SMURFS
 export const addSmurfs = smurf => {
   console.log(smurf)
   const add = axios.get('http://localhost:3000/smurfs');
@@ -62,6 +62,8 @@ export const addSmurfs = smurf => {
       })
   }
 }
+
+//THIS IS TO ADD SMURF
 export const updateSmurfs = (smurfs, id ) => {
   const update = axios.delete(`http://localhost:3000/smurfs/${id}`,  {name: smurf.name, age: smurf.age, heigt:smurf.height});
   return function(dispatch) {
@@ -84,6 +86,7 @@ export const updateSmurfs = (smurfs, id ) => {
   }
 }
 
+//THIS IS TOO DELETE SMURF
 export const deleteSmurf = id => {
   const deleteSmurf = axios.delete(`http://localhost:3000/smurfs/${id}`);
   return function(dispatch) {
@@ -107,7 +110,8 @@ deleteSmurf
       })
     }
   }
-
+  // Actions are central to
+  //  and they're quite simple. An action is a regular JavaScript object that usually has two properties, type and payload.
 /*
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
