@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const FETCHING_SMURF = "FETCHING_SMURF";
-export const FETCHED_SMURF = "FETCH_SMURF";
-export const ADDING_SMURF = "ADDING_SMURFS";
+export const FETCHING_SMURF = "FETCHING_SMURFS";
+export const FETCHED_SMURF = "FETCH_SMURFS";
+export const ADDING_SMURF = "ADDING_SMURF";
 export const ADD_SMURF = "ADD_SMURF";
 export const UPDATING_SMURF ="UPDATING_SMURF";
 export const UPDATE_SMURF = "UPDATE_SMURF";
@@ -59,14 +59,14 @@ export const addSmurfs = smurf => {
           payload:error
         })
         
-      });
-  };
-};
+      })
+  }
+}
 export const updateSmurfs = (smurfs, id ) => {
   const update = axios.delete(`http://localhost:3000/smurfs/${id}`,  {name: smurf.name, age: smurf.age, heigt:smurf.height});
   return function(dispatch) {
     dispatch({
-type:UPDATE_SMURF
+   type:UPDATE_SMURF
     });
     update
       .then(response =>  {
@@ -84,25 +84,30 @@ type:UPDATE_SMURF
   }
 }
 
-export const editSmurf = (id, smurfs) => {
-  return { type: EDIT_SMURF, smurfs, id };
-};
-export const submitSmurf = nsmurf => {
-  console.log(nsmurf);
-  const getInfo = axios.put(
-    `http://localhost:3333/api/smurfs/${nsmurf.id}`,
-    nsmurf
-  );
-  return dispatch => {
-    getInfo
-      .then(({ data }) => {
-        dispatch({ type: SUBMIT_SMURF, smurfs: data });
+export const deleteSmurf = id => {
+  const deleteSmurf = axios.delete(`http://localhost:3000/smurfs/${id}`);
+  return function(dispatch) {
+    dispatch({
+      type: DELETING_SMURF,
+     
+});
+deleteSmurf
+ .then(response =>{
+   dispatch({
+     type:DELETE_SMURF,
+     payload:response.data
+   })
+ })
+  .catch(error => {
+    dispatch({
+      type:ERROR,
+      payload: error
+    
+    })
       })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-};
+    }
+  }
+
 /*
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
