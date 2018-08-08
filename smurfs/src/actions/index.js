@@ -6,24 +6,37 @@ export const DELETE_SMURF = "DELETE_SMURF";
 export const SUBMIT_SMURF = "SUBMIT_SMURF";
 export const EDIT_SMURF = "EDIT_SMURF";
 
+// Action Types Go Here!
+// Be sure to export each action type so you can pull it into your reducer
 
+const URl = 'http://localhost:3000/smurfs'
+export const fetching_smurfs = () => {
+  const getSmurfs = axios.get(`{$URL}`);
+  return function( dispatch) {
+    dispatch({
+       type: FETCHING_SMURFS
+       });  
 
-export const fetching_smurf = () => {
-  const getInfo = axios.get("http://localhost:3333/api/smurfs");
-  return dispatch => {
-    dispatch({ type: FETCHING_SMURF });
-    getInfo
-      .then(({ data }) => {
-        dispatch({ type: FETCHED_SMURF, smurfs: data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-};
-export const newsmurf = nsmurf => {
-  const getInfo = axios.post("http://localhost:3333/api/smurfs", nsmurf);
-  return dispatch => {
+    getSmurfs
+      .then(response => {
+        dispatch({
+           type: FETCHING_SMURFS,
+           payload: response.data
+           })
+          })
+          .catch(error =>{
+            dispatch({
+              type:ERROR,
+              payload: error
+            })
+          })
+        }
+      }
+  
+export const addSmurfs = smurf => {
+  console.log(smurf)
+  const add = axios.post(`${URL}`, smurf);
+  return  => {
     dispatch({ type: FETCHING_SMURF });
     getInfo
       .then(({ data }) => {
