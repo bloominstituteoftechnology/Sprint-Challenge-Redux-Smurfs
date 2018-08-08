@@ -62,15 +62,24 @@ export const addSmurfs = smurf => {
       });
   };
 };
-export const deleteSmurf = id => {
-  const getInfo = axios.delete(`http://localhost:3333/api/smurfs/${id}`);
-  return dispatch => {
-    getInfo
-      .then(({ data }) => {
-        dispatch({ type: DELETE_SMURF, smurfs: data });
+export const updateSmurfs = (smurfs, id ) => {
+  const update = axios.delete(`http://localhost:3000/smurfs/${id}`,  {name: smurf.name, age: smurf.age, heigt:smurf.height});
+  return function(dispatch) {
+    dispatch({
+type:UPDATE_SMURF
+    });
+    update
+      .then(response =>  {
+        dispatch({
+           type: UPDATE_SMURF,
+           payload:response.data
+        })
       })
-      .catch(err => {
-        console.log(err);
+      .catch(error => {
+        dispatch({
+          type:ERROR,
+          payload:error
+        })
       })
   }
 }
