@@ -1,17 +1,10 @@
 import {
   GET_SMURFS,
-  GETTING_SMURFS,
-  CREATING_SMURF,
-  ERROR,
-  CREATE_SMURF,
-  UPDATE_SMURF,
-  DELETE_SMURF,
-  UPDATING_SMURF,
-  DELETING_SMURF,
-  SINGLE_SMURF,
-  TOGGLE_UPDATE_SMURF,
-  TOGGLE_CREATING_SMURF
- } from '../actions';
+  POST_SMURFS,
+  PUT_SMURFS,
+  DELETE_SMURFS,
+  ERROR
+} from '../actions';
 
 
 /*
@@ -29,7 +22,7 @@ import {
    error: null
  }
 */
-initialState = {
+const initialState = {
   smurfs: [],
   getSmurfs: false,
   createSmurfs: false,
@@ -43,32 +36,39 @@ initialState = {
   This will guard your namespacing issues.
   Components can read your store as, `state` and not `state.fooReducer`.
 */
-export default (state = initState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case GET_SMURFS:
-      return state;
-    case DELETE_SMURF:
-      return state;
-    case ADDING_SMURF:
-      return state;
-    case UPDATING_SMURF:
-      return state;
-    case DELETING_SMURF:
-      return state;
-    case GETTING_SMURFS:
-      return state;
-    case CREATING_SMURF:
-      return state;
-    case CREATE_SMURF:
-      return state;
-    case UPDATE_SMURF:
-      return state;
-    // case SINGLE_SMURF:
-    //   return state;
-    // case TOGGLE_UPDATE_SMURF:
-    //   return state;
-    // case TOGGLE_CREATING_SMURF:
-    //   return state;
+      return { ...state,
+        smurfs: action.smurfs,
+        error: null
+      };
+      break;
+    case POST_SMURFS:
+      return { ...state,
+        smurfs: action.smurfs,
+        error: null
+      };;
+      break;
+    case PUT_SMURFS:
+      return { ...state,
+        smurfs: [action.smurfs],
+        error: null
+      };;
+      break;
+    case DELETE_SMURFS:
+      const index = state.smurfs.findIndex(smurf => smurf.id === action.id);
+      const filtered = [...state.smurfs.slice(0, index), ...state.smurfs.slice(index + 1)];
+      return { ...state,
+        smurfs: filtered,
+        error: null
+      };;
+      break;
+    case ERROR:
+      return { ...state,
+        error: action.errorMessage
+      };;
+      break;
     default:
       return state;
   }
