@@ -1,7 +1,12 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
+
+export const FETCHING_SMURFS = 'FETCHING_DATA';
+export const SMURFS_FETCHED = 'DATA_FETCHED';
+export const FETCHING_ERROR = 'FETCHING_ERROR';
+export const ADDING_SMURF = 'ADDING_SMURF';
+export const FETCH_SINGLE_SMURF = 'FETCH_SINGLE_SMURF';
+export const DELETE_SMURF = 'ADDING_SMURF';
+export const UPDATE_SMURF = 'UPDATE_SMURF';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -13,3 +18,71 @@
    U - updateSmurf
    D - deleteSmurf
 */
+export const fetchData = () => {
+  const request = axios.get('http://localhost:3333/smurfs');
+  return (dispatch) => {
+    dispatch({type: FETCHING_SMURFS});
+    
+    request.then(res => {
+      dispatch({
+        type: SMURFS_FETCHED,
+        payload: res.data 
+      })
+    })
+    .catch(error => console.log(error));
+  }
+}
+
+export const addSmurf = (smurf) => {
+  const post = axios.post('http://localhost:3333/smurfs', smurf);
+  return (dispatch) => {
+    post.then(res => {
+      dispatch({
+      type: ADDING_SMURF,
+      payload: res.data
+    })}
+  ).catch(error => console.log(error))};
+}
+
+export const fetchSingleSmurf = id => {
+  const request = axios.get('http://localhost:3333/smurfs');
+  return (dispatch) => {
+    request.then(res => {
+      dispatch({
+        type: FETCH_SINGLE_SMURF,
+        payload: res.data.filter(smurf => smurf.id === id)
+      })
+    })
+    .catch(error => console.log(error))};
+  }
+
+export const deleteSmurf = id => {
+  const request = axios.delete(`http://localhost:3333/smurfs/${id}`);
+  return (dispatch) => {
+    request.then(res => {
+      dispatch({
+      type: DELETE_SMURF,
+      payload: res.data
+    })}
+  ).catch(error => console.log(error))};
+}
+
+export const updateSmurf = (id, smurf) => {
+  const put = axios.put(`http://localhost:3333/smurfs/${id}`, smurf);
+  return (dispatch) => {
+    put.then(res => {
+      dispatch({
+        type:UPDATE_SMURF,
+        payload: res.data
+      })
+    })
+  }
+}
+
+    // axios.post('http://localhost:3333/smurfs', {...this.state})
+    // .then(this.setState({
+    //   name: '',
+    //   age: '',
+    //   height: ''
+    // }))
+    // .then(window.location.reload());
