@@ -85,7 +85,7 @@ return dispatch => {
 }
 ```
 
-* If a smurf is created correctly, you should see a response that is an array of smurfs with uniqe id's assigned to each smurf.
+* If a smurf is created correctly, you should see a response that is an array of smurfs with unique id's assigned to each smurf.
 * Initially Brainey will be in the array, but it takes more than one smurf to make the village. Be sure to add a few smurfs to populate our smurf village.
 * **HINT** if you are going to be working on Stretch Problem, you'll need to use that unique `id`.
 * Example of object created in Smurf DB:
