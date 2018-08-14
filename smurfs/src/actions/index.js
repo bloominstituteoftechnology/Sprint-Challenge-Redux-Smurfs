@@ -1,7 +1,28 @@
+import axios from 'axios';
+
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const SMURFS_FETCHED = 'SMURFS_FETCHED';
+export const ERROR_FETCHING_SMURFS = 'ERROR_FETCHING_SMURFS';
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+
+export const fetchSmurfs = () => {
+  const promise = axios.get('http://localhost:3333/smurfs');
+  return function(dispatch) {
+    dispatch({ type: FETCHING_SMURFS });
+    promise
+      .then(response => {
+        console.log(response);
+        dispatch({ type: SMURFS_FETCHED, payload: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR_FETCHING_SMURFS, msg: 'Error fetching smurfs' });
+      });
+  };
+};
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
