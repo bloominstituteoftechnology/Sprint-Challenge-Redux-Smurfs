@@ -1,3 +1,13 @@
+/* Index styles */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* App styles */
+
 .App {
   text-align: center;
 }
@@ -25,4 +35,34 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* Header styles */
+
+.header {
+  background-image: url("https://ibin.co/48Z1dAhvLEZi.jpg");
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* SmurfForm styles */
+
+.form-container {
+  width: 50vw;
+  margin: 0 auto;
+}
+
+/* Card styles */
+
+.card-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.single-card {
+  width: 25vw;
+  margin: 20px;
 }
