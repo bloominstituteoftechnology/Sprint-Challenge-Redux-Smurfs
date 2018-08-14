@@ -3,3 +3,39 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+li{
+	color: chocolate;
+	font-size: 1.3rem;
+}
+
+.input-field{
+	border: 1px solid chocolate;
+	color: teal;
+	margin-left: 5px;
+}
+
+.add-btn{
+ 	border: 1px solid teal;
+	background: teal;
+        color: white;
+        margin-left: 5px;
+}
+
+.delete-btn{
+	border: 1px solid teal;
+        background: teal;
+        color: white;
+}
+
+.delete-btn:hover{
+	border: 1px solid #ddd;
+	background: #ddd;
+        color: black;    
+}
+
+
+h1{
+	color: teal;
+	font-size: 1.5rem;
+}
