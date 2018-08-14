@@ -1,19 +1,64 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
 
-/*
- Your initial/default state for this project could *Although does not have to* look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
-   error: null
- }
-*/
+import { FETCHING, 
+         FETCHED, 
+         ERROR,
+         ADDING,
+         ADDED,
+         UPDATING,
+         UPDATED 
+         } from '../actions';
 
+const initialState = {
+  smurfs: [],
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
+  error: null
+}
+
+const rootReducer = (state = initialState, action) => {
+  switch(action.type){
+    case FETCHING:
+    return {...state, fetchingSmurfs: true};
+
+    case FETCHED:
+    return {...state,
+    fetchingSmurfs: false,
+    smurfs: action.payload  
+    };
+
+    case ADDING:
+    return {...state, addingSmurf: true};
+
+    case ADDED:
+    return {...state,
+    addingSmurf: false,
+    smurfs: action.payload
+    };
+    
+    case UPDATING:
+    return {...state,
+    updatingSmurf: true};
+
+    case UPDATED:
+    return {...state,
+    updatingSmurf: false,
+    smurfs: action.payload
+    };
+
+    case ERROR:
+    return {...state,
+    fetchingSmurfs: false,
+    addingSmurf: false,
+    deletingSmurf:false,
+    updatingSmurf:false,
+    error: action.payload};
+    
+    default:
+      return state;
+  }
+}
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
@@ -21,3 +66,5 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+export default rootReducer;

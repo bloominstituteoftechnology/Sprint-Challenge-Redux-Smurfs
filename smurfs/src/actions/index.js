@@ -1,7 +1,12 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
+
+export const FETCHED = 'FETCHED';
+export const FETCHING = 'FETCHING';
+export const ERROR = 'ERROR';
+export const ADDING = 'ADDING';
+export const ADDED = 'ADDED';
+export const UPDATING = 'UPDATING';
+export const UPDATED = 'UPDATED';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -13,3 +18,37 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const fetchSmurfs = () => {
+  const smurfData = axios.get("http://localhost:3333/smurfs");
+  return function(dispatch) {
+    dispatch({ type: FETCHING });
+    smurfData.then(({data}) => {
+      console.log(data)
+      dispatch({type: FETCHED, payload: data});
+    })
+      .catch(err => { dispatch({type: ERROR, payload: err})})
+  }
+};
+
+export const addSmurf = newSmurf => {
+  const smurfData = axios.post("http://localhost:3333/smurfs", newSmurf);
+  return function(dispatch) {
+    dispatch({ type: ADDING });
+    smurfData.then(({data}) => {
+      dispatch({type: ADDED, payload: data});
+    })
+      .catch(err => {dispatch({type : ERROR, payload: err})})
+  }
+};
+
+export const updateSmurf = smurfEdit => {
+  const smurfData = axios.put(`http://localhost:3333/smurfs/${smurfEdit.id}`, smurfEdit);
+  return function(dispatch) {
+    dispatch({ type: UPDATING });
+    smurfData.then(({data}) => {
+      dispatch({type: UPDATED, payload: data});
+    })
+      .catch(err => {dispatch({type: ERROR, payload: err})})
+  }
+};
