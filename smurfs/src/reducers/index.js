@@ -1,18 +1,17 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
+import { GET_SMURF, GOT_SMURF, CREATING_SMURF, CREATED_SMURF, ERROR } from '../actions'
 
-/*
- Your initial/default state for this project could *Although does not have to* look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
-   error: null
- }
-*/
+const initialState = {
+  smurfs: [],
+  getSmurfs: false,
+  gotSmurfs: false,
+  creatingSmurf: false,
+  createdSmurf: false,
+  error: null
+}
+
 
 /*
   You'll only need one smurf reducer for this project.
@@ -21,3 +20,55 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+const smurfReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_SMURF:
+      return Object.assign({}, state, {
+        getSmurfs: true,
+        gotSmurfs: false,
+        creatingSmurf: false,
+        createdSmurf: false,
+        error: null
+      })
+    case GOT_SMURF:
+      return Object.assign({}, state, {
+        getSmurfs: false,
+        gotSmurfs: true,
+        creatingSmurf: false,
+        createdSmurf: false,
+        error: null,
+        smurfs: action.payload
+      })
+    case CREATING_SMURF:
+      return Object.assign({}, state, {
+        getSmurfs: false,
+        gotSmurfs: false,
+        creatingSmurf: true,
+        createdSmurf: false,
+        error: null,
+        smurfs: action.payload
+      })
+    case CREATED_SMURF:
+      return Object.assign({}, state, {
+        getSmurfs: false,
+        gotSmurfs: false,
+        creatingSmurf: false,
+        createdSmurf: true,
+        error: null,
+        smurfs: action.payload
+      })
+    case ERROR:
+      return Object.assign({}, state, {
+        getSmurfs: false,
+        gotSmurfs: false,
+        creatingSmurf: false,
+        createdSmurf: false,
+        error: action.payload
+      })
+    default:
+      return state
+  }
+}
+
+export default smurfReducer
