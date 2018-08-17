@@ -5,10 +5,11 @@ const Smurfs = (props) => {
         <div className="smurfs">
             {props.smurfs.map(smurf => {
                 return (
-                    <div className="smurf" key={smurf.name}>
+                    <div className="smurf" key={smurf.id}>
                         <p>{smurf.name}</p>
                         <p>{smurf.age}</p>
                         <p>{smurf.height}</p>
+                        <button onClick={props.deleteSmurf} id={smurf.id}>Delete</button>
                     </div>
                 )
             })}

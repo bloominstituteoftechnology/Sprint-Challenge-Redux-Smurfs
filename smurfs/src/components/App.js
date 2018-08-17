@@ -44,11 +44,15 @@ class App extends Component {
     })
   }
 
+  deleteSmurf = event => {
+    this.props.deleteSmurf(event.target.id);
+  }
+
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <Smurfs smurfs={this.props.smurfs} />
+        <Smurfs smurfs={this.props.smurfs} deleteSmurf={this.deleteSmurf} />
         <SmurfForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} newName={this.state.newName} newAge={this.state.newAge} newHeight={this.state.newHeight} />
       </div>
     );
