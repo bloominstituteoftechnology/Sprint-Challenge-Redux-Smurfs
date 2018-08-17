@@ -21,6 +21,7 @@ class App extends Component {
         <i class="fas fa-dove fa-spin"></i>
         <i class="fas fa-dove fa-spin"></i>
         <i class="fas fa-dove fa-spin"></i>
+        
         </div>
         {this.props.loading? (<i className="fas fa-spinner fa-pulse"></i>):(
           <div className="page">
@@ -31,6 +32,7 @@ class App extends Component {
             <img src='https://toppng.com/public/uploads/preview/smurf-115309669373ybtzqmwso.png'/>
             <p>{smurf.name}</p>
             <p>Age: {smurf.age}</p>
+            {console.log(smurf.id)}
             <p>Height: {smurf.height}</p>
             <button onClick={()=> this.props.deleteSmurf(smurf.id)}>Say G'bye</button>
           </div>

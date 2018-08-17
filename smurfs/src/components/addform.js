@@ -9,7 +9,7 @@ class Addform extends Component {
         this.state = {
             name: null,
             age: null,
-            height: null,
+            height: null, 
         }
     }
    
