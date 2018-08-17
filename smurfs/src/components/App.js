@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 import Smurfs from './Smurfs';
+import SmurfForm from './SmurfForm';
 
 /*
  to wire this component up you're going to need a few things.
@@ -31,6 +32,8 @@ componentDidMount() {
   .catch(error => console.log(error))
 }
 
+handleSubmit = data => this.setState({smurfs: data});
+
 
   render() {
     return (
@@ -44,6 +47,11 @@ componentDidMount() {
           <Smurfs 
           smurfs = {this.state.smurfs}
           />
+
+          <SmurfForm 
+          handleSubmit = {this.handleSubmit} 
+          />
+
         </div>
       </div>
     );
