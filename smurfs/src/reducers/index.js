@@ -8,6 +8,9 @@ import {
 	MURDERING_SMURF,
 	MURDER_SMURF_SUCCESS,
 	MURDER_SMURF_FAILURE,
+	EDITING_SMURF,
+	EDIT_SMURF_SUCCESS,
+	EDIT_SMURF_FAILURE,
 } from "../actions";
 
 const initialState = {
@@ -15,6 +18,7 @@ const initialState = {
 	gettingSmurfs: false,
 	addingSmurf: false,
 	murderingSmurf: false,
+	editingSmurf: false,
 	error: "",
 };
 
@@ -50,6 +54,13 @@ export const reducer = (state = initialState, action) => {
 			};
 		case MURDER_SMURF_FAILURE:
 			return { ...state, murderingSmurf: false };
+		case EDITING_SMURF:
+			return { ...state, editingSmurf: true };
+		case EDIT_SMURF_SUCCESS:
+			return { ...state, data: [...action.payload] };
+
+		case EDIT_SMURF_FAILURE:
+			return { ...state, eiditingSmurf: false };
 		default:
 			return state;
 	}

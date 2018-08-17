@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 
-import { getSmurfs, addSmurf, murderSmurf } from "../actions";
+import { getSmurfs, addSmurf, murderSmurf, editSmurf } from "../actions";
 import { connect } from "react-redux";
 
 const initState = {
@@ -37,6 +37,17 @@ class App extends Component {
 								<p>{smurf.name}</p>
 								<p>{smurf.age}</p>
 								<p>{smurf.height}</p>
+								<button
+									onClick={() =>
+										this.props.editSmurf(smurf.id, {
+											name: "Ash",
+											age: 7,
+											height: 13,
+										})
+									}
+								>
+									Edit Smurf
+								</button>
 								<button
 									onClick={() =>
 										this.props.murderSmurf(smurf.id)
@@ -102,5 +113,5 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ getSmurfs, addSmurf, murderSmurf },
+	{ getSmurfs, addSmurf, murderSmurf, editSmurf },
 )(App);

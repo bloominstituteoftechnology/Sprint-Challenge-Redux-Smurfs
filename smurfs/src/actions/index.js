@@ -12,6 +12,10 @@ export const MURDERING_SMURF = "MURDERING_SMURF";
 export const MURDER_SMURF_SUCCESS = "MURDER_SMURF_SUCCESS";
 export const MURDER_SMURF_FAILURE = "MURDER_SMURF_FAILURE";
 
+export const EDITING_SMURF = "EDITING_SMURF";
+export const EDIT_SMURF_SUCCESS = "EDIT_SMURF_SUCCESS";
+export const EDIT_SMURF_FAILURE = "EDIT_SMURF_FAILURE";
+
 const URL = "http://localhost:3333/smurfs";
 
 export const getSmurfs = () => {
@@ -69,6 +73,27 @@ export const murderSmurf = id => {
 			.catch(err => {
 				dispatch({
 					type: MURDER_SMURF_FAILURE,
+					payload: err,
+				});
+			});
+	};
+};
+
+export const editSmurf = (id, data) => {
+	const promise = axios.put(`${URL}/${id}`, data);
+	return dispatch => {
+		dispatch({ type: EDITING_SMURF });
+		promise
+			.then(response => {
+				console.log(response);
+				dispatch({
+					type: EDIT_SMURF_SUCCESS,
+					payload: response.data,
+				});
+			})
+			.catch(err => {
+				dispatch({
+					type: EDIT_SMURF_FAILURE,
 					payload: err,
 				});
 			});
