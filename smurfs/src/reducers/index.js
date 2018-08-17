@@ -1,4 +1,4 @@
-import { FETCHING_SMURFS, FETCH_SUCCESS } from '../actions';
+import { FETCHING_SMURFS, FETCH_SUCCESS, ADD_SUCCESS, DELETE_SUCCESS } from '../actions';
 
  const initialState = {
    smurfs: [],
@@ -24,7 +24,23 @@ export default (state= initialState, action) => {
           ...action.results
         ],
         fetchingSmurfs: false
-      }
+      };
+    case ADD_SUCCESS:
+      return {
+        ...state,
+        smurfs: [
+          ...action.results
+        ]
+      };
+    case DELETE_SUCCESS:
+      return {
+        ...state,
+        smurfs: [
+          ...action.results
+        ]
+      };
+    default:
+      return state;
 
   }
 }

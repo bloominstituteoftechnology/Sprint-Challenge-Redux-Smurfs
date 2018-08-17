@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import './App.css';
-import { connect } from 'react-redux';
-import { getSmurfs, addSmurf } from '../actions';
-import SmurfsList from './SmurfsList';
-import AddSmurf from './AddSmurf';
+import React, { Component } from "react";
+import "./App.css";
+import { connect } from "react-redux";
+import { getSmurfs, addSmurf, deleteSmurf } from "../actions";
+import SmurfsList from "./SmurfsList";
+import AddSmurf from "./AddSmurf";
 
 class App extends Component {
   componentDidMount() {
@@ -11,17 +11,22 @@ class App extends Component {
   }
 
   addSmurf = smurf => {
-    this.props.addSmurf(smurf)
+    this.props.addSmurf(smurf);
+  };
+
+  murderSmurf = id => {
+    this.props.deleteSmurf(id);
   }
 
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        {this.props.fetchingSmurfs ?
-          (<p> the smurfs b comin</p>)
-          : (<SmurfsList smurfs={this.props.smurfs} />)
-        }
+        {this.props.fetchingSmurfs ? (
+          <p> the smurfs b comin</p>
+        ) : (
+          <SmurfsList smurfs={this.props.smurfs} handleDelete={this.murderSmurf} />
+        )}
         <p> Add Smurf? </p>
         <AddSmurf handleAddSmurf={this.addSmurf} />
       </div>
@@ -31,7 +36,10 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   smurfs: state.smurfs,
-  fetchingSmurfs: state.fetchingSmurfs
-})
+  fetchingSmurfs: state.fetchingSmurfs,
+});
 
-export default connect(mapStateToProps, {getSmurfs, addSmurf})(App);
+export default connect(
+  mapStateToProps,
+  { getSmurfs, addSmurf, deleteSmurf }
+)(App);
