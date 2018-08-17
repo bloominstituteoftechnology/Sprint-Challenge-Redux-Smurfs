@@ -61,9 +61,12 @@ export default (state = initialState, action) => {
         hasError: action.payload
       };
     case ADD_NEW_SMURF:
-      return Object.assign({}, state, {
-        smurfs: [...state.smurfs, action.payload]
-      });
+      return {
+        ...state,
+        smurfs: [...state.smurfs, action.payload],
+        isFetching: false,
+        isFetched: true
+      };
     default:
       return state;
   }
