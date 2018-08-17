@@ -1,5 +1,5 @@
-const express = require('express');
-const cors = require('cors');
+const express = require('../../../Users/cmike/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/express');
+const cors = require('../../../Users/cmike/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/cors');
 const port = 3333;
 
 const server = express();

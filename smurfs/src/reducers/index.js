@@ -1,23 +1,79 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import {
+  FETCHING,
+  FETCHED,
+  UPDATING,
+  UPDATED,
+  DELETING,
+  DELETED,
+  EDITING,
+  EDITED
+} from "../actions";
 
-/*
- Your initial/default state for this project could *Although does not have to* look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
-   error: null
- }
-*/
+const initialState = {
+  smurfsFetching: false,
+  smurfsFetched: false,
+  smurfsEditing: false,
+  smurfsEdited: false,
+  smurfsUpdating: false,
+  smurfsUpdated: false,
+  smurfsDeleting: false,
+  smurfsDeleted: false,
+  smurfs: [],
+  error: null
+};
 
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
-  There is no need for 'combineReducers' in this project.
-  Components can then read your store as, `state` and not `state.fooReducer`.
-*/
+export const fetcher = (state = initialState, action) => {
+  switch (action.type) {
+      
+    case FETCHING:
+      return Object.assign({}, state, {
+        smurfsFetching: true
+      });
+
+    case FETCHED:
+      return Object.assign({}, state, {
+        smurfsFetched: true,
+        smurfsFetching: false,
+        smurfs: action.payload
+      });
+
+    case UPDATING:
+      return Object.assign({}, state, {
+        smurfsUpdating: true 
+      });
+      
+    case UPDATED:
+      return Object.assign({}, state, {
+        smurfsUpdating: false,
+        smurfsUpdated: true,
+        smurfs: action.payload
+      });
+
+    case DELETING:
+      return Object.assign({}, state, {
+        smurfsDeleting: true 
+      });
+      
+    case DELETED:
+      return Object.assign({}, state, {
+        smurfsDeleting: false,
+        smurfsDeleted: true,
+        smurfs: action.payload
+      });
+
+    case EDITING:
+      return Object.assign({}, state, {
+        smurfsEditing: true 
+      });
+      
+    case EDITED:
+      return Object.assign({}, state, {
+        smurfsEditing: false,
+        smurfsEdited: true,
+        smurfs: action.payload
+      });
+
+    default:
+      return state;
+  }
+};
