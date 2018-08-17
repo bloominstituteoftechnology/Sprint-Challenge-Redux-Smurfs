@@ -16,7 +16,6 @@ class Smurf extends React.Component{
         this.setState({ [e.target.placeholder]: e.target.value });
     }
     render() {
-        console.log(this.state);
         let smurf = this.props.smurf;
         return (
             <div className="Smurf">

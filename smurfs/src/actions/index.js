@@ -87,9 +87,6 @@ export const deleteSmurf = (id) => {
 }
 
 export const editSmurf = (smurf) => {
-  // let keys = Object.keys(smurf);
-  // let values = Object.values(smurf);
-  console.log(smurf);
   return function(dispatch) {
     dispatch({type: EDIT_SMURF});
     axios.put(`${url}/${smurf.id}`, {
