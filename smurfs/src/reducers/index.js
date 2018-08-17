@@ -70,7 +70,7 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         updatingSmurf: false,
         smurfUpdated: true,
-        smurfs: [...state.smurfs, ...action.payload]
+        smurfs: [...action.payload]
       })
     case DELETING_SMURF:
       console.log('deleting smurf');
@@ -82,7 +82,7 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         deletingSmurfs: false,
         smurfDeleted: true,
-        smurfs: [...state.smurfs, ...action.payload]
+        smurfs: [...action.payload]
       })
     case ERROR:
       console.log('error', action.payload);

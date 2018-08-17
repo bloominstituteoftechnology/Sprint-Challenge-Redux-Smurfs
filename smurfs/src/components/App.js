@@ -6,8 +6,20 @@ import AddSmurfForm from './AddSmurfForm';
 import UpdateSmurfForm from './UpdateSmurfForm';
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state ={
+      isHidden: true
+    }
+  }
+
   componentDidMount() {
     this.props.getSmurfs();
+  }
+
+  updateClick = () => {
+    this.setState({isHidden: !this.state.isHidden})
   }
 
   render() {
@@ -16,10 +28,10 @@ class App extends Component {
       <div className="App">
         <h1>Smurfs 2.0 w/ Redux</h1>
           <ul>
-          {this.props.smurfs.map(smurf => <li key={smurf.name}> Name: {smurf.name}, Age: {smurf.age}, Height: {smurf.height}&nbsp;
-          <button>Update</button>
-          <UpdateSmurfForm id={this.props.smurfs.findIndex(person => person.name === smurf.name)} />
-          <button onClick={() => {this.props.deleteSmurf(this.props.smurfs.findIndex(person => person.name === smurf.name)); this.forceUpdate();}}>Delete</button>
+          {this.props.smurfs.map(smurf => <li key={smurf.id}> Name: {smurf.name}, Age: {smurf.age}, Height: {smurf.height} cm&nbsp;
+          <button onClick={this.updateClick}>Update</button>
+          <UpdateSmurfForm id={smurf.id} hidden={this.state.isHidden} />
+          <button onClick={() => {this.props.deleteSmurf(smurf.id); this.forceUpdate();}}>Delete</button>
           <hr/>
           </li>)}
           </ul>

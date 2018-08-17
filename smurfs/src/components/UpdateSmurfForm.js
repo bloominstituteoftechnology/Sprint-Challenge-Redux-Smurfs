@@ -26,7 +26,7 @@ class UpdateSmurfForm extends Component {
 
     render() {
     return (
-        <div className="form">
+        <div className={"form " + (this.props.hidden ? "formHidden" : "formShown")}>
             <h4>Update this Smurf</h4>
             <form onSubmit={this.submitForm}>
             <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.changeHandler}/>
