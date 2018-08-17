@@ -28,7 +28,6 @@ export const getTheSmurfs = () => {
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const ADDED_SMURF = 'ADDING_SMURF';
 export const ADD_SMURF_FAILED = 'ADD_SMURF_FAILED';
-export const DELETING_SMURF = 'DELETING_SMURF';
 
 export const addASmurf = (newSmurf) => {
   return function(dispatch){
@@ -42,6 +41,23 @@ export const addASmurf = (newSmurf) => {
       dispatch(getTheSmurfs());
     }).catch(err => {
       dispatch({type: ADD_SMURF_FAILED, payload: err})
+    })
+  }
+}
+
+export const SMACKING_SMURF = 'SMACKING_SMURF';
+export const SMURF_SMACKED = 'SMURF_SMACKED';
+export const SMURF_DUCKED = 'SMURF_DUCKED';
+
+export const smackASmurf = (smurfToBeSmurfed) => {
+  return function(dispatch){
+    dispatch({type: SMACKING_SMURF});
+    axios.delete(`http://localhost:3333/smurfs/${smurfToBeSmurfed}`, {
+    }).then(res => {
+      dispatch({type: SMURF_SMACKED, payload: res});
+      dispatch(getTheSmurfs());
+    }).catch(err => {
+      dispatch({type: SMURF_DUCKED, payload: err})
     })
   }
 }

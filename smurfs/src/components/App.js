@@ -3,6 +3,7 @@ import './App.css';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {getTheSmurfs} from '../actions';
+import {smackASmurf} from '../actions';
 import SmurfForm from './smurfForm'
 /*
  to wire this component up you're going to need a few things.
@@ -22,6 +23,12 @@ class App extends Component {
     console.log(this.props)
   }
 
+  smackSmurf = (e) => {
+    e.preventDefault();
+    console.log('smackSmurf', e.target.value);
+    this.props.smackASmurf(e.target.value);
+  }
+
   render() {
     console.log(this.props.state.smurfs);
     return (
@@ -29,7 +36,12 @@ class App extends Component {
         <h1>Smurfs</h1>
         {this.props.state.smurfs.map(smurf => {
           return (
-            <h1 key={smurf.name}>{smurf.name}</h1>
+            <div key={smurf.name}>
+              <h1>{smurf.name}</h1>
+              <button value={smurf.id} onClick={this.smackSmurf}>Smack Smurf</button>
+            </div>
+
+
           )
         }
         )}
@@ -44,7 +56,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  getTheSmurfs
+  getTheSmurfs, smackASmurf
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

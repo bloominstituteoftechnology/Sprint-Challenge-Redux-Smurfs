@@ -10,7 +10,9 @@ import {GETTING_SMURFS,
   ADDING_SMURF,
   ADDED_SMURF,
   ADD_SMURF_FAILED,
-  // DELETING_SMURF
+  SMACKING_SMURF,
+  SMURF_SMACKED,
+  SMURF_DUCKED
 } from '../actions';
 
 /*
@@ -36,7 +38,6 @@ export const reduceTheSmurfs = (state = initialState, action) => {
       return Object.assign({}, state, {
         smurfs: action.payload.data,
         fetchingSmurfs: false,
-
       });
     case ERROR:
       return Object.assign({}, state, {
@@ -54,6 +55,18 @@ export const reduceTheSmurfs = (state = initialState, action) => {
     case ADD_SMURF_FAILED:
       return Object.assign({}, state, {
         error: action.payload
+      })
+    case SMACKING_SMURF:
+      return Object.assign({}, state, {
+        deletingSmurf: true
+      })
+    case SMURF_SMACKED:
+      return Object.assign({}, state, {
+        deletingSmurf: false
+      })
+    case SMURF_DUCKED:
+      return Object.assign({}, state, {
+        deletingSmurf: false, 
       })
     default:
       return state;
