@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from "react-redux";
-import { fetchSmurfs, addSmurfs, deleteSmurf } from "../actions";
+import { fetchSmurfs, addSmurfs, deleteSmurf, editSmurf } from "../actions";
 
 import Form from './Form'
 /*
@@ -15,7 +15,9 @@ class App extends Component {
     addSmurfName: '',
     addSmurfAge: '',
     addSmurfHeight: '',
-    deleteSmurfId: ''
+    deleteSmurfId: '',
+    editSmurfId: '',
+    editSmurfName: ''
   }
 
   componentDidMount() {
@@ -41,6 +43,14 @@ class App extends Component {
     this.props.deleteSmurfHandle(smurfId);
     this.setState({deleteSmurfId: ''});
   }
+  
+  editSmurf = (e) => {
+    e.preventDefault();
+    let smurfId = this.state.editSmurfId;
+    let smurfInfo = this.state.editSmurfName;
+    this.props.editSmurfHandle(smurfId, smurfInfo);
+    this.setState({editSmurfId: '', editSmurfName: ''});
+  }
 
   render() {
     return (
@@ -54,7 +64,10 @@ class App extends Component {
             addSmurfAge={this.state.addSmurfAge}
             addSmurfHeight={this.state.addSmurfHeight}
             deleteSmurf={this.deleteSmurf}
+            deleteSmurfId={this.state.deleteSmurfId}
             editSmurf={this.editSmurf}
+            editSmurfId={this.state.editSmurfId}
+            editSmurfName={this.state.editSmurfName}
           />
         </section>
         <main>
@@ -88,6 +101,10 @@ const mapDispatchToProps = dispatch => ({
   
   deleteSmurfHandle: (smurfId) => {
     dispatch(deleteSmurf(smurfId));
+  },
+
+  editSmurfHandle: (smurfId, smurfInfo) => {
+    dispatch(editSmurf(smurfId, smurfInfo));
   }
 });
 

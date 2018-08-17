@@ -37,15 +37,37 @@ const Form = props => {
       <section>
         <h3>Remove A Smurf to the Village</h3>
         <form action="submit" onSubmit={props.deleteSmurf}>
-          <label htmlFor="SmurfId">Smurf Id:</label><br />
+          <label htmlFor="SmurfIdDelete">Smurf Id:</label><br />
           <input 
             type="number"
-            id="SmurfId"
+            id="SmurfIdDelete"
             name="deleteSmurfId"
             onChange={props.onChange}
             value={props.deleteSmurfId}
           /><br />
           <button type="submit">Delete Smurf</button>
+        </form>
+      </section>
+      <section>
+        <h3>Edit A Smurf from the Village</h3>
+        <form action="submit" onSubmit={props.editSmurf}>
+          <label htmlFor="SmurfIdEdit">Smurf Id:</label><br />
+          <input 
+            type="number"
+            id="SmurfIdEdit"
+            name="editSmurfId"
+            onChange={props.onChange}
+            value={props.editSmurfId}
+          /><br />
+          <label htmlFor="SmurfNameEdit">Smurf Name:</label><br />
+          <input 
+            type="text"
+            id="SmurfNameEdit"
+            name="editSmurfName"
+            onChange={props.onChange}
+            value={props.editSmurfName}
+          /><br />
+          <button type="submit">Edit Smurf</button>
         </form>
       </section>
     </div>

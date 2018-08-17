@@ -1,7 +1,19 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCH_SMURFS, FETCH_SUCCESS, ADDING_SMURF, ADD_SUCCESS, DELETE_SMURF, DELETE_SUCCESS } from "../actions";
+import {
+   FETCH_SMURFS,
+   FETCH_SUCCESS,
+
+   ADDING_SMURF,
+   ADD_SUCCESS,
+
+   DELETE_SMURF,
+   DELETE_SUCCESS,
+   EDIT_SMURF,
+   EDIT_SUCCESS,
+   
+  } from "../actions";
 
 
 // Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -46,7 +58,17 @@ import { FETCH_SMURFS, FETCH_SUCCESS, ADDING_SMURF, ADD_SUCCESS, DELETE_SMURF, D
         deletingSmurf: false,
         smurfs: action.payload
       });
-      
+
+      case EDIT_SMURF:
+      return Object.assign({}, state, {
+        updatingSmurf: true,
+      });
+      case EDIT_SUCCESS:
+      return Object.assign({}, state, {
+        updatingSmurf: false,
+        smurfs: action.payload
+      });
+
       default:
         return state;
     }
