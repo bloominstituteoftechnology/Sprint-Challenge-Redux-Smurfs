@@ -50,7 +50,10 @@ export const reduceTheSmurfs = (state = initialState, action) => {
       return Object.assign({}, state, {
         addingSmurf: false,
         smurfs: action.payload.data,
-        count: (action.payload.length) + 1,
+      })
+    case ADD_SMURF_FAILED:
+      return Object.assign({}, state, {
+        error: action.payload
       })
     default:
       return state;
