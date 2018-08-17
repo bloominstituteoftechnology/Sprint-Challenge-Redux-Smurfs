@@ -9,6 +9,7 @@ const initialState = {
    deletingSmurf: false,
    error: null,
    doubleClicked : false, 
+   current: null,
 }
 export const rootReducer = (state = initialState, action) => {
   switch(action.type){
@@ -34,7 +35,7 @@ export const rootReducer = (state = initialState, action) => {
       }
     case UPDATED_SMURF:
       return {
-        ...state, updatingSmurf: false, smurfs: action.payload
+        ...state, updatingSmurf: false, smurfs: action.payload, current: null, doubleClicked: false
       }
     case DELETING_SMURF: 
       return {
@@ -46,7 +47,7 @@ export const rootReducer = (state = initialState, action) => {
       }
     case SMURF_CLICKED:
       return{
-        ...state, doubleClicked: !state.doubleClicked
+        ...state, doubleClicked: !state.doubleClicked, current: action.current
       }
     case ERROR:
       return {

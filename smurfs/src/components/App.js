@@ -27,10 +27,11 @@ class App extends Component {
   }
 
   doubleClickingSmurf = (id, name,age,height) => {
+    console.log(id)
     this.name.value = name;
     this.age.value = age; 
     this.height.value = height
-    this.props.clickedSmurf();
+    this.props.clickedSmurf(id);
   }
   deleteSmurf = id => {
     const sureToDelete = prompt('This can not be undone. To continue enter the word delete (just the word no extra characters)')
@@ -38,8 +39,11 @@ class App extends Component {
       this.props.deleteSmurf(id); 
     }
   }
-  updating = id => {
-
+  updating = () => {
+    const smurf = {name: this.name.value, age: parseInt(this.age.value,10), height: this.height.value}
+    console.log(smurf)
+    console.log(this.props.updating)
+    this.props.updateSmurf(this.props.current, smurf)
   }
 
   render() {
@@ -59,7 +63,7 @@ class App extends Component {
         <br/>
         <br/>
         {smurfs.map((smurf, i )=> 
-        <div onDoubleClick = {() => this.doubleClickingSmurf(smurf.name, smurf.age, smurf.height)}key ={i} className = 'scene'>
+        <div onDoubleClick = {() => this.doubleClickingSmurf(i, smurf.name, smurf.age, smurf.height)}key ={i} className = 'scene'>
           <div className ="card">
             <div className="card__face card__face--front">
             {smurf.name}
@@ -89,6 +93,7 @@ const mapStateToProps = state => {
     updatingSmurf: state.updatingSmurf,
     deletingSmurf: state.deletingSmurf,
     doubleClicked: state.doubleClicked,
+    current: state.current,
     error: state.error,
   }
 }
