@@ -1,7 +1,15 @@
 .App {
   text-align: center;
+  display: flex;
+  width: 1200px; 
+  flex-wrap: wrap;
 }
-
+.header {
+  width: 100%;
+}
+.form {
+  width: 100%;
+}
 .scene {
   width: 200px;
   height: 260px;
@@ -14,25 +22,30 @@
   position: relative;
   transition: transform 1s;
   transform-style: preserve-3d;
+  cursor:pointer;
+  border:1px solid black;
+  
 }
-
+.card.is-flipped{
+  transform: rotateY(180deg); 
+}
 .card__face{
   position: absolute;
   height: 100%;
   width:100%;
   backface-visibility: hidden;
+  
+  
 }
 
 .card__face--front {
   background: #00A1D1;
 }
 
-.card_face--back {
+.card__face--back {
   background: white;
   transform: rotateY(180deg); 
 }
-.card.is-flipped{
-  transform: rotateY(180deg); 
-}
+
 
 
