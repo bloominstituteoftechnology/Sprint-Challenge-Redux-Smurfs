@@ -58,7 +58,7 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         addingSmurf: false,
         smurfAdded: true,
-        smurfs: [...state.smurfs, ...action.payload]
+        smurfs: [...action.payload]
       })
     case UPDATING_SMURF:
       console.log('updating smurf');

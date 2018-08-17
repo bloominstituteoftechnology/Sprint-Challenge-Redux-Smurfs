@@ -21,8 +21,8 @@ export const ERROR = 'ERROR';
    D - deleteSmurf
 */
 
-export const addSmurf = (id) => {
-  const promise = axios.post(`http://localhost:3333/smurfs/${id}`);
+export const addSmurf = (name, age, height) => {
+  const promise = axios.post(`http://localhost:3333/smurfs/`, {name, age, height});
   return dispatch => {
     dispatch({type: ADDING_SMURF});
     promise 
@@ -52,7 +52,7 @@ export const getSmurfs = () => {
 }
 
 export const updateSmurf = (id, name, age, height) => {
-  const promise = axios.put(`http://localhost:3333/smurfs/${id}`, {name: name, age: age, height: height});
+  const promise = axios.put(`http://localhost:3333/smurfs/${id}`, {name, age, height});
   return dispatch => {
     dispatch({type: UPDATING_SMURF});
     promise 
