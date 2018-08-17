@@ -17,17 +17,19 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-
+            smurfs:[],
         }
     }
 
     componentDidMount(){
         this.props.getSmurfs();
+        this.setState({smurfs: this.props.smurfs})
     }
 
     handleAddSmurf = (data) => {
         console.log(data);
         this.props.addSmurf(data);
+        this.setState({smurfs: this.props.smurfs})
     }
 
     render(){

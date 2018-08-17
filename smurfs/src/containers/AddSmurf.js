@@ -53,5 +53,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { addSmurf })(AddSmurf);
+export default connect(mapStateToProps, { addSmurf } )(AddSmurf);
 

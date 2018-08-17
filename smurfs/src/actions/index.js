@@ -32,15 +32,14 @@ export const getSmurfs = () => {
 export const addSmurf = (smurf) => {
   
   let nuGuy = { name: smurf.name, age: smurf.age, height: smurf.height };
-  // console.log("nuguy",nuGuy);
   
   const promise = axios.post(URL, nuGuy);
-  console.log(promise);
   
   return (dispatch) => {
     dispatch({ type: ADDING_SMURF })
     promise
       .then((res) => {
+        console.log(res.data);
         dispatch({
           type: ADDED_SMURF,
           payload: res.data,
