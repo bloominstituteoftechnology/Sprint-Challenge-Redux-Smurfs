@@ -4,15 +4,19 @@
 import {
    FETCH_SMURFS,
    FETCH_SUCCESS,
+   FETCH_FAILURE,
 
    ADDING_SMURF,
    ADD_SUCCESS,
+   ADD_FAILURE,
 
    DELETE_SMURF,
    DELETE_SUCCESS,
+   DELETE_FAILURE,
+
    EDIT_SMURF,
    EDIT_SUCCESS,
-   
+   EDIT_FAILURE
   } from "../actions";
 
 
@@ -38,6 +42,10 @@ import {
         fetchingSmurfs: false,
         smurfs: action.payload
       });
+      case FETCH_FAILURE:
+      return Object.assign({}, state, {
+        error: true
+      });
 
       case ADDING_SMURF:
       return Object.assign({}, state, {
@@ -47,6 +55,10 @@ import {
       return Object.assign({}, state, {
         addingSmurf: false,
         smurfs: action.payload
+      });
+      case ADD_FAILURE:
+      return Object.assign({}, state, {
+        error: true
       });
 
       case DELETE_SMURF:
@@ -58,6 +70,10 @@ import {
         deletingSmurf: false,
         smurfs: action.payload
       });
+      case DELETE_FAILURE:
+      return Object.assign({}, state, {
+        error: true
+      });
 
       case EDIT_SMURF:
       return Object.assign({}, state, {
@@ -67,6 +83,10 @@ import {
       return Object.assign({}, state, {
         updatingSmurf: false,
         smurfs: action.payload
+      });
+      case EDIT_FAILURE:
+      return Object.assign({}, state, {
+        error: true
       });
 
       default:
