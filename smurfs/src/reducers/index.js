@@ -1,6 +1,4 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import { FETCH_SMURFS, FETCHED_SMURFS, SAVE_SMURFS, SAVED_SMURFS, UPDATING_SMURF,UPDATED_SMURF,DELETING_SMURF, DELETED_SMURF, SELECT_SMURF, ERROR } from '../actions'
 
 const initialState = {
   smurfs: [],
@@ -15,7 +13,7 @@ const initialState = {
 
 export const smurfReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_SMURFS :
+    case FETCH_SMURFS:
       return  (
         {
           ...state,        
@@ -49,6 +47,23 @@ export const smurfReducer = (state = initialState, action) => {
           } 
       )
 
+    case UPDATING_SMURF:
+      return  (
+        {
+          ...state,        
+          updatingSmurf: true, 
+          smurfs: action.payload           
+        }  
+      )           
+
+    case UPDATED_SMURF:
+      return (
+        {
+          ...state,        
+          updatingSmurf: false,          
+        } 
+      ) 
+
     case DELETING_SMURF:
       return  (
         {
@@ -79,23 +94,6 @@ export const smurfReducer = (state = initialState, action) => {
         }
       )
      
-    case UPDATING_SMURF:
-      return  (
-        {
-          ...state,        
-          updatingSmurf: true, 
-          smurfs: action.payload           
-        }  
-      )           
-
-    case UPDATED_SMURF:
-      return (
-        {
-          ...state,        
-          updatingSmurf: false,          
-        } 
-      ) 
-
     case ERROR:
       return(
         {
