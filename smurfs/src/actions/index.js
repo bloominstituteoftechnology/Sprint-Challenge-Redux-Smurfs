@@ -26,6 +26,7 @@ export const getSmurfs = () => {
           payload: res.data,
         })
       })
+      .catch(err => ({type: ERROR}));
   }
 }
 

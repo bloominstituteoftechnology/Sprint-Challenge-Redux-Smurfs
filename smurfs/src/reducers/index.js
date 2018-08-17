@@ -14,7 +14,7 @@ import { FETCHING_SMURFS, FETCHED_SMURFS } from '../actions/index';
 export const smurfReducer = (state = initState, action) => {
   switch(action.type){
     case FETCHING_SMURFS:
-      return Object.assign({}, state, { fetchingSmurfs = true });
+      return Object.assign({}, state, { fetchingSmurfs: true });
     case FETCHED_SMURFS:
       return Object.assign({}, state, {
         smurfs: [ ...state.smurfs, ...action.payload ],
