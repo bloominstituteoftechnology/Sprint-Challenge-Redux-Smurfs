@@ -28,11 +28,20 @@ export default function rootReducer(state = initialState, action) {
       return Object.assign({}, state, {
         savingSmurf: false,
         smurfs: action.payload
+      });
+    case DELETING_SMURF:
+      return Object.assign({}, state, {
+        deletingSmurf: true,
+      });
+    case SMURF_DELETED:
+      return Object.assign({}, state, {
+        deletingSmurf: false,
+        smurfs: action.payload
       })
     case ERROR:
       return Object.assign({}, state, {
         error: action.payload
-      })
+      });
     default:
       return state;
   }
