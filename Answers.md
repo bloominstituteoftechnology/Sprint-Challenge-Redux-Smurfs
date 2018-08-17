@@ -16,4 +16,4 @@ Middleware is software designed to extend the functionality of other, specific s
 `Redux-thunk` exemplifies how convoluted React's relationship is to Redux is.  In seriousness, it provides Redux with asynchronicity, allowing action creators, which otherwise only return objects, to return callbacks (e.g., the use of promises);
 
 6.  Which `react-redux` method links up our `components` with our `redux store`?
-The `react-redux` method that links components to the store is 'connect'. 
+The `react-redux` method that links components to the store is 'connect'. Connect provides pathways for sending state as props to components, for example.
