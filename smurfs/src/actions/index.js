@@ -26,14 +26,14 @@ export const getSmurf = () => {
   const promise = axios.get('http://localhost:3333/smurfs')
 
   return dispatch => {
-    dispatch({type: GET_SMURF});
+    dispatch({ type: GET_SMURF });
     promise.then((response) => {
       console.log(response.data)
-      dispatch({type: GOT_SMURF, payload: response.data})
+      dispatch({ type: GOT_SMURF, payload: response.data })
     })
-    .catch(err => {
-      dispatch({type: ERROR, payload: err})
-    })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err })
+      })
   }
 }
 
@@ -41,13 +41,13 @@ export const createSmurf = (smurf) => {
   const promise = axios.get('http://localhost:3333/smurfs', smurf)
 
   return dispatch => {
-    dispatch({type: CREATING_SMURF});
+    dispatch({ type: CREATING_SMURF });
     promise.then((response) => {
       console.log(response)
-      dispatch({type: CREATED_SMURF, payload: response.data})
+      dispatch({ type: CREATED_SMURF, payload: response.data })
     })
-    .catch(err => {
-      dispatch({type: ERROR, payload: err})
-    })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err })
+      })
   }
 }

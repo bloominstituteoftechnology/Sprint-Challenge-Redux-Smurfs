@@ -1,16 +1,16 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import {GET_SMURF, GOT_SMURF, CREATING_SMURF, CREATED_SMURF, ERROR} from '../actions'
+import { GET_SMURF, GOT_SMURF, CREATING_SMURF, CREATED_SMURF, ERROR } from '../actions'
 
 const initialState = {
-   smurfs: [],
-   getSmurfs: false,
-   gotSmurfs: false,
-   creatingSmurf: false,
-   createdSmurf: false,
-   error: null
- }
+  smurfs: [],
+  getSmurfs: false,
+  gotSmurfs: false,
+  creatingSmurf: false,
+  createdSmurf: false,
+  error: null
+}
 
 
 /*
@@ -22,51 +22,52 @@ const initialState = {
 */
 
 const smurfReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case GET_SMURF:
-    return Object.assign({}, state, {
-      getSmurfs: true,
-      gotSmurfs: false,
-      creatingSmurf: false,
-      createdSmurf: false,
-      error: null
-    })
+      return Object.assign({}, state, {
+        getSmurfs: true,
+        gotSmurfs: false,
+        creatingSmurf: false,
+        createdSmurf: false,
+        error: null
+      })
     case GOT_SMURF:
-    return Object.assign({}, state, {
-      getSmurfs: false,
-      gotSmurfs: true,
-      creatingSmurf: false,
-      createdSmurf: false,
-      error: null,
-      smurfs: action.payload 
-    })
+      return Object.assign({}, state, {
+        getSmurfs: false,
+        gotSmurfs: true,
+        creatingSmurf: false,
+        createdSmurf: false,
+        error: null,
+        smurfs: action.payload
+      })
     case CREATING_SMURF:
-    return Object.assign({}, state, {
-      getSmurfs: false,
-      gotSmurfs: false,
-      creatingSmurf: true,
-      createdSmurf: false,
-      error: null
-    })
+      return Object.assign({}, state, {
+        getSmurfs: false,
+        gotSmurfs: false,
+        creatingSmurf: true,
+        createdSmurf: false,
+        error: null,
+        smurfs: action.payload
+      })
     case CREATED_SMURF:
-    return Object.assign({}, state, {
-      getSmurfs: false,
-      gotSmurfs: false,
-      creatingSmurf: false,
-      createdSmurf: true,
-      error: null,
-      smurfs: action.payload
-    })
+      return Object.assign({}, state, {
+        getSmurfs: false,
+        gotSmurfs: false,
+        creatingSmurf: false,
+        createdSmurf: true,
+        error: null,
+        smurfs: action.payload
+      })
     case ERROR:
-    return Object.assign({}, state, {
-      getSmurfs: false,
-      gotSmurfs: false,
-      creatingSmurf: false,
-      createdSmurf: false,
-      error: action.payload
-    })
+      return Object.assign({}, state, {
+        getSmurfs: false,
+        gotSmurfs: false,
+        creatingSmurf: false,
+        createdSmurf: false,
+        error: action.payload
+      })
     default:
-    return state
+      return state
   }
 }
 
