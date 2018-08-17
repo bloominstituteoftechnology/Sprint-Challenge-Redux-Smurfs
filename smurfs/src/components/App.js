@@ -29,8 +29,13 @@ class App extends Component {
   };
   submitNewSmurfHandler = event => {
     event.preventDefault();
-    this.props.addNewSmurf(this.state.newSmurf);
-    this.setState({ newSmurf: "" });
+    let addedSmurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    };
+    this.props.addNewSmurf(addedSmurf);
+    this.setState({ name: "", age: "", height: "" });
   };
   render() {
     console.log("height", this.state.height);

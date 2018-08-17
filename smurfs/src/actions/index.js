@@ -31,9 +31,16 @@ export const fetchSmurfData = () => {
 };
 
 export const addNewSmurf = smurf => {
-  console.log("addnewSmurf", smurf);
-  return {
-    type: ADD_NEW_SMURF,
-    payload: smurf
+  // console.log("addnewSmurf", smurf);
+  // return {
+  //   type: ADD_NEW_SMURF,
+  //   payload: smurf
+  // };
+  return function(dispatch) {
+    dispatch({ type: FETCHING });
+    axios
+      .post(url, smurf)
+      .then(response => dispatch({ type: ADD_NEW_SMURF, payload: smurf }))
+      .catch(error => dispatch({ type: FETCH_FAILURE, payload: error }));
   };
 };
