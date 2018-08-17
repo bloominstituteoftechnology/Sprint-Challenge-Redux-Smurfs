@@ -61,11 +61,13 @@ const smurfsReducer = ( state = initialState, action) => {
         smurfs: action.payload
       });
       case TOGGLE_SMURF:
-      return state.smurfs.map(smurf => {
-        if (smurf.id === action.payload) {
-          return Object.assign({}, smurf, { toggled: !smurf.toggled });
-        }
-        return smurf;
+      return Object.assign({}, state, {
+        smurfs: state.smurfs.map(smurf => {
+          if (smurf.id === action.payload) {
+            return { ...smurf, toggled: !smurf.toggled };
+          }
+          return smurf;
+        })
       });
     default:
       return state;
