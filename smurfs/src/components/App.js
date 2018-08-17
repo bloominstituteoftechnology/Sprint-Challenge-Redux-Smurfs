@@ -26,7 +26,7 @@ class App extends Component {
   handleFormInput = e => {
     e.preventDefault();
     this.setState({ [e.target.placeholder]: e.target.value });
-  };
+  }
   render() {
     return (
       <div className="App">

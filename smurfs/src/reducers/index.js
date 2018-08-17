@@ -3,7 +3,8 @@
 */
 import{ GET_SMURFS, GET_SUCCESS, GET_FAILURE,
    ADD_SMURF, ADD_SUCCESS, ADD_FAILURE,
-    DEL_SMURF, DEL_SUCCESS, DEL_FAILURE } from '../actions';
+    DEL_SMURF, DEL_SUCCESS, DEL_FAILURE,
+    EDIT_SMURF, EDIT_SUCCESS, EDIT_FAILURE } from '../actions';
 
 
 /*
@@ -59,10 +60,25 @@ import{ GET_SMURFS, GET_SUCCESS, GET_FAILURE,
         return Object.assign({}, state, {
           deletingSmurf: false,
           smurfs: action.payload
-        })
+        });
       case DEL_FAILURE:
         return Object.assign({}, state, {
           deletingSmurf: false,
+          errors: [...state.errors, action.error]
+        });
+  //EDIT CASES
+      case EDIT_SMURF:
+        return Object.assign({}, state, {
+          updatingSmurf: true
+        });
+      case EDIT_SUCCESS:
+        return Object.assign({}, state, {
+          updatingSmurf: false,
+          smurfs: action.payload
+        })
+      case EDIT_FAILURE:
+        return Object.assign({}, state, {
+          updatingSmurf: false,
           errors: [...state.errors, action.error]
         })
       //DEFAULT
