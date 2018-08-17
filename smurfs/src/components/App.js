@@ -18,7 +18,16 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchSmurfData();
   }
+
+  inputChangeHandler = event => {
+    this.setState({ newSmurf: event.target.value });
+  };
+  submitNewSmurfHandler = event {
+    event.preventDefault();
+    
+  }
   render() {
+    console.log("newsmurf", this.state.newSmurf);
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -30,6 +39,14 @@ class App extends Component {
             return <li key={smurf.name}>{smurf.name}</li>;
           })}
         </ul>
+        <form>
+          <input
+            placeholder="name..."
+            value={this.state.newSmurf}
+            onChange={this.inputChangeHandler}
+          />
+          <button>Submit</button>
+        </form>
       </div>
     );
   }
