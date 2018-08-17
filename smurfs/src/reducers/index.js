@@ -1,7 +1,9 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import{ GET_SMURFS, GET_SUCCESS, GET_FAILURE, ADD_SMURF, ADD_SUCCESS, ADD_FAILURE } from '../actions';
+import{ GET_SMURFS, GET_SUCCESS, GET_FAILURE,
+   ADD_SMURF, ADD_SUCCESS, ADD_FAILURE,
+    DEL_SMURF, DEL_SUCCESS, DEL_FAILURE } from '../actions';
 
 
 /*
@@ -18,6 +20,7 @@ import{ GET_SMURFS, GET_SUCCESS, GET_FAILURE, ADD_SMURF, ADD_SUCCESS, ADD_FAILUR
 
  export default (state = initialState, action) => {
    switch(action.type) {
+//GET CASES
      case GET_SMURFS:
         return Object.assign({}, state, {
           fetchingSmurfs:true
@@ -32,6 +35,7 @@ import{ GET_SMURFS, GET_SUCCESS, GET_FAILURE, ADD_SMURF, ADD_SUCCESS, ADD_FAILUR
           fetchingSmurfs:false,
           errors: [...state.errors, action.error]
         });
+  //ADD CASES
       case ADD_SMURF:
         return Object.assign({}, state, {
           addingSmurf: true
@@ -39,13 +43,29 @@ import{ GET_SMURFS, GET_SUCCESS, GET_FAILURE, ADD_SMURF, ADD_SUCCESS, ADD_FAILUR
       case ADD_SUCCESS:
         return Object.assign({}, state, {
           addingSmurf:false,
-          smurfs: [...state.smurfs, action.payload]
+          smurfs: action.payload
         });
       case ADD_FAILURE:
         return Object.assign({}, state, {
           addingSmurf: false,
           errors: [...state.errors, action.error]
         });
+  //DEL CASES
+      case DEL_SMURF:
+        return Object.assign({}, state, {
+          deletingSmurf: true
+        });
+      case DEL_SUCCESS:
+        return Object.assign({}, state, {
+          deletingSmurf: false,
+          smurfs: action.payload
+        })
+      case DEL_FAILURE:
+        return Object.assign({}, state, {
+          deletingSmurf: false,
+          errors: [...state.errors, action.error]
+        })
+      //DEFAULT
       default:
         return state;      
    }

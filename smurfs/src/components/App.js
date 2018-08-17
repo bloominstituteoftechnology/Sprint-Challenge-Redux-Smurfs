@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSmurfs, addSmurf } from '../actions';
 
+import Smurf from './Smurfs';
+
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -26,7 +28,6 @@ class App extends Component {
     this.setState({ [e.target.placeholder]: e.target.value });
   };
   render() {
-    // console.log(this.state.name);
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -41,6 +42,7 @@ class App extends Component {
           <input type="text" onChange={this.handleFormInput} placeholder="height" />
           <button>Let's Smurf</button>
         </form>
+        {(this.props.smurfs) ? this.props.smurfs.map(smurf=> <Smurf key={smurf.id} smurf={smurf} /> ) : null}
       </div>
     );
   }

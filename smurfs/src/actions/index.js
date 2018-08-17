@@ -14,6 +14,11 @@ export const ADD_SMURF = 'ADD_SMURF';
 export const ADD_SUCCESS = 'ADD_SUCCESS';
 export const ADD_FAILURE = 'ADD_FAILURE';
 
+//DELETE
+export const DEL_SMURF = 'DEL_SMURF';
+export const DEL_SUCCESS = 'DEL_SUCCESS';
+export const DEL_FAILURE = 'DEL_FAILURE';
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -51,11 +56,26 @@ export const addSmurf = (smurf) => {
     })
       .then(function(response){
         console.log(response);
-        dispatch({type: ADD_SUCCESS})
+        dispatch({type: ADD_SUCCESS, payload: response.data})
       })
       .catch(function(error){
         console.log(error)
         dispatch({type: ADD_FAILURE, error: error})
       })
+  }
+}
+
+export const deleteSmurf = (id) => {
+  return function(dispatch) {
+    dispatch({type: DEL_SMURF});
+    axios.delete(`${url}/${id}`)
+    .then(function(response){
+      console.log(response)
+      dispatch({type: DEL_SUCCESS, payload: response.data})
+    })
+    .catch(function(error){
+      console.log(error)
+      dispatch({type: DEL_FAILURE, error: error})
+    })
   }
 }
