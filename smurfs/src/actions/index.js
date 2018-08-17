@@ -7,7 +7,7 @@ export const ADD_SMURF = 'ADD_SMURF';
 export const ERROR = 'ERROR';
 
 
-const URL = 'http://localhost:3333/api/smurfs';
+const URL = 'http://localhost:3333/smurfs';
 
 
 export const getSmurfs = () => {
