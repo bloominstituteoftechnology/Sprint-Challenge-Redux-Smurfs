@@ -28,6 +28,7 @@ class App extends Component {
   handleNewSmurf = smurf => {
     console.log(this.props.smurfs)
     this.props.createSmurf(smurf);
+    this.setState({ name: "", age: "", height: "", smurfs: this.props.smurfs });
   }
 
 
@@ -39,7 +40,7 @@ class App extends Component {
         <input onChange={this.handleInput} name="name" value={this.props.value} placeholder="name" />
         <input onChange={this.handleInput} name="age" value={this.props.value} placeholder="age" />
         <input onChange={this.handleInput} name="height" value={this.props.value} placeholder="height" />
-        <button onClick={this.handleNewSmurf}>add</button>
+        <button onClick={() => this.handleNewSmurf(this.state)}>add</button>
         {this.props.smurfs.map((smurf, index) => {
          return <h3 key={index}>{smurf.name} {smurf.age} {smurf.height}</h3>
         })}
