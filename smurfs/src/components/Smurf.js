@@ -2,18 +2,18 @@ import React from 'react';
 
 export default function Smurf (props) {
     return(
-        <div>
+        <div className="smurf">
             <div>
-                {props.smurfid}
+                <h1>{props.smurf.name}</h1>
             </div>
             <div>
-                {props.smurf.name}
+                <h2>{props.smurf.age}{' '}Years Old</h2>
             </div>
             <div>
-                {props.smurf.age}
+                <h3>{props.smurf.height}{' '} Tall</h3>
             </div>
             <div>
-                {props.smurf.height}
+                 <h4>Smurf ID:{' '}{props.smurfid}</h4>
             </div>
         </div>
     );

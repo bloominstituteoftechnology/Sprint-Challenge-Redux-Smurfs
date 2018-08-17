@@ -4,6 +4,7 @@ import {smurfFetcher, smurfUpdater, smurfDeleter, smurfEditer} from '../actions'
 import SmurfsList from '../components/SmurfsList';
 import InputForm from '../components/InputForm';
 
+
 class SmurfsContainer extends Component {
     constructor(){
         super();
@@ -54,6 +55,7 @@ smurfEditer = (e) => {
         return(
             <div>
                 <SmurfsList 
+                    
                     smurfs={this.props.smurfs} 
                 />
                 <InputForm
