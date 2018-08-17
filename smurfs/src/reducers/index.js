@@ -12,7 +12,7 @@ const initialState = {
    error: null
  }
 
-export const smurfReducer = (state = initialState, action){
+export const smurfReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'FETCHING_DATA':
     return Object.assign({}, state, {fetchingSmurfs: true}); 
