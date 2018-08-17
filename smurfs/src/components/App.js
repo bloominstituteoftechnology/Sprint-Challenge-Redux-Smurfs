@@ -15,9 +15,9 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      addName : ' ',
-      addAge : ' ',
-      addHeight : ' '
+      name : ' ',
+      age : ' ',
+      height : ' '
     }
   }
   componentDidMount() {
@@ -28,16 +28,15 @@ class App extends Component {
   }
    submit  = e => {
      e.preventDefault()
-     let smurf2 = {
-       name: this.state.addName,
-       age: this.state.addAge,
-       height: this.state.addHeight
-     }
-     this.props.addSmurf(smurf2)
+     this.props.addSmurf( {
+       name: this.state.name,
+       age: this.state.age,
+       height: this.state.height
+     })
      this.setState({
-       addName: ' ',
-       addAge: ' ',
-       addHeight: ' '
+       name: ' ',
+       age: ' ',
+       height: ' '
      })
    }
   render() {
@@ -48,7 +47,7 @@ class App extends Component {
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
         <Smurfs smurfs = {this.props.smurfs} />
-        <Form submit = {this.submit} change = {this.change} addName = {this.state.addName} addAge= {this.state.addAge} addHeight = {this.state.addHeight} />
+        <Form submit = {this.submit} change = {this.change} name = {this.state.name} age= {this.state.age} height = {this.state.height} />
       </div>
     );
   }

@@ -4,10 +4,10 @@ const Form = (props) => {
   return(
   <div>
       <form onSumbit = {props.submit} >
-            <input type = "text" name = "addName" onChange = {props.change} value = {props.addName} />
-            <input type = "number" name = "addAge" onChange = {props.change} value = {props.addAge} />
-            <input type = "text" name = "addHeight" onChange = {props.change} value = {props.addHeight} />
-            <button onSumbit = {props.submit}> Add </button>
+            <input type = "text" name = "name" onChange = {props.change} value = {props.name} />
+            <input type = "ext" name = "age" onChange = {props.change} value = {props.age} />
+            <input type = "text" name = "height" onChange = {props.change} value = {props.height} />
+            <button> Add </button>
         </form>
       </div>
     )
