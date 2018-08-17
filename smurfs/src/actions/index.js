@@ -3,6 +3,7 @@ import axios from "axios";
 export const ADD_NEW_SMURF = "ADD_NEW_SMURF";
 export const FETCHING = "FETCHING";
 export const FETCHING_POST = "FETCHING_POST";
+export const FETCHING_DEL = "FETCHING_DEL";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 
@@ -32,14 +33,14 @@ export const addNewSmurf = smurf => {
   };
 };
 
-// export const delSmurf = smurf => {
-//   return function(dispatch) {
-//     dispatch({ type: FETCHING_POST });
-//     axios
-//       .post(url, smurf)
-//       .then(response =>
-//         dispatch({ type: ADD_NEW_SMURF, payload: response.data })
-//       )
-//       .catch(error => dispatch({ type: FETCH_FAILURE, payload: error }));
-//   };
-// };
+export const delSmurf = smurf => {
+  return function(dispatch) {
+    dispatch({ type: FETCHING_DEL });
+    axios
+      .post(url, smurf)
+      .then(response =>
+        dispatch({ type: ADD_NEW_SMURF, payload: response.data })
+      )
+      .catch(error => dispatch({ type: FETCH_FAILURE, payload: error }));
+  };
+};

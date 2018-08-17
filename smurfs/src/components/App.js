@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchSmurfData, addNewSmurf } from "../actions/index";
+import { fetchSmurfData, addNewSmurf, delSmurf } from "../actions/index";
 import "./App.css";
 
 class App extends Component {
@@ -33,7 +33,7 @@ class App extends Component {
 
   deleteSmurfHandler = id => {
     console.log("DELETESMURFHANDLER WORKING", id);
-    // this.props.delSmurf(delSelectedSmurf);
+    this.props.delSmurf(id);
   };
 
   render() {
@@ -92,6 +92,7 @@ export default connect(
   mapStateToProps,
   {
     fetchSmurfData,
-    addNewSmurf
+    addNewSmurf,
+    delSmurf
   }
 )(App);
