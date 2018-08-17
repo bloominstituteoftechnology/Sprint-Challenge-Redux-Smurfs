@@ -5,6 +5,15 @@ import { connect } from 'react-redux';
 import { fetching_data } from '../../actions/index';
 
 class Smurfs extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name: '',
+      age: '',
+      height: '',
+    }
+  }
+
   componentDidMount() {
     this.props.fetching_data();
   }
