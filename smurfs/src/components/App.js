@@ -71,9 +71,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log('CDM1')
     this.props.getTheSmurfs();
-    console.log(this.props)
   }
 
   smackSmurf = (e) => {
@@ -106,12 +104,9 @@ class App extends Component {
           <SmurfForm ></SmurfForm>
         </div>
         <div className='allSmurfs'>
-          {
-            this.props.state.smurfs.map((smurf) => {
-              console.log(this.state)
+          {this.props.state.smurfs.map((smurf) => {
               return (<div className='smurf' key={smurf.id}>
-                {
-                  (this.state.editSmurfId == smurf.id)
+                {(this.state.editSmurfId == smurf.id)
                     ? (<EditSmurf smurf={smurf} resetSmurf={this.resetSmurf}></EditSmurf>)
                     : <div className="smurf2">
                         <div className="line">
@@ -138,8 +133,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {state: state};
+const mapStateToProps = store => {
+  return {state: store};
 }
 
 const mapDispatchToProps = {

@@ -39,8 +39,6 @@ class EditSmurf extends Component {
     };
   }
 
-
-
   editSmurf = (event, props) => {
     event.preventDefault();
     this.props.editSmurf(this.state);
