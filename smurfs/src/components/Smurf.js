@@ -63,7 +63,7 @@ class Smurf extends Component {
                         onChange={(event) => this.change(event)}
                         />
                         <button onClick={() => this.update({name, age, height})}>Update</button>
-                        <button onClick={() => this.delete(id)}>Delete</button>
+                       
                     </form>
                 ) : (
                     <div>
@@ -74,6 +74,7 @@ class Smurf extends Component {
                         onClick={() => this.setState({update: true})}>
                             Update
                         </button>
+                        <button onClick={() => this.delete(id)}>Delete</button>
                     </div>
                 )}
             </div>

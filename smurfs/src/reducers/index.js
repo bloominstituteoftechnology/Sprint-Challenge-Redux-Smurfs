@@ -9,10 +9,6 @@ import {
   UPDATING_SMURF
 } from '../actions/index';
 
-
-
-
-
 const initialState = {
    smurfs: [],
    gettingSmurfs: false,
@@ -25,7 +21,6 @@ const initialState = {
    deletedSmurf: false,
    error: null
  }
-
 
 export const smurfReducer = (state = initialState, action) => {
   switch(action.type) {
@@ -84,9 +79,7 @@ export const smurfReducer = (state = initialState, action) => {
       updatedSmurf: true,
       smurfs: action.payload
     }
-
-
-
+    
     default:
     return state
 
