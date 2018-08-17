@@ -2,6 +2,8 @@ import axios from 'axios'
 
 export const FETCH_SMURFS = 'FETCH_SMURFS'
 export const FETCHED_SMURFS = 'FETCHED_SMURFS'
+export const ADDING_SMURF = 'ADDING_SMURF'
+export const ADDED_SMURF ='ADD_SMURF'
 export const  ERROR = 'ERROR'
 
 /*
@@ -20,8 +22,26 @@ export const getSmurfs = () => {
     dispatch({ type: FETCH_SMURFS })
     axios.get(`http://localhost:3333/smurfs`)
       .then(res => {
-        console.log(res)
         dispatch({ type: FETCHED_SMURFS, payload: res.data })
+      })
+      .catch (err => dispatch({ type: ERROR, error: err }))
+  }
+}
+
+export const addSmurf = smurf => {
+  console.log('```````````ADDDSMURF``````````')
+  console.log(smurf)
+  return dispatch => {
+    console.log('```````````ADDD``````````')
+    dispatch({ type: ADDING_SMURF })
+    axios.post(`http://localhost:3333/smurfs`, {
+      name: smurf.name,
+      age: smurf.age,
+      height: smurf.height
+    })
+      .then(res => {
+        console.log(res)
+        dispatch({ type: ADDED_SMURF, payload: res.data})
       })
       .catch (err => dispatch({ type: ERROR, error: err }))
   }

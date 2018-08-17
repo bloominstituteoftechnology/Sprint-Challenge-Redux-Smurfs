@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-import {getSmurfs} from '../actions'
+import { getSmurfs, addSmurf } from '../actions'
 import Smurfs from './Smurfs';
+import AddNewSmurf from './AddNewSmurf';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -10,8 +11,36 @@ import Smurfs from './Smurfs';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {   
+  state = {
+    addNewSmurf: false,
+    name: '',
+    age: null,
+    height: null
+  }
+
   componentDidMount(){
     this.props.getSmurfs()
+  }
+
+  handleInputChange(event){
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  onClickAdd = (event) => {
+    console.log('~~~~~~~CLICKED~~~~~~')
+    this.props.addSmurf({
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    })
+    this.setState({
+      addNewSmurf: false,
+      name: '',
+      age: null,
+      height: null
+    })
   }
   render() {
     return (
@@ -24,6 +53,12 @@ class App extends Component {
           : this.props.fetchingSmurfs 
             ? <h1>Loading...</h1>
             : <Smurfs {...this.props} />}
+        <div className="addNewsmurf">
+          <div>
+                <h1>Add Smurf</h1>
+                <AddNewSmurf onChange={this.handleInputChange.bind(this)} onClick={this.onClickAdd}/>
+              </div>
+        </div>
       </div>
     );
   }
@@ -40,4 +75,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
+
+
+// {this.state.addNewSmurf 
+//   ? 
+//   : <button onClick={() =>  this.setState({
+//       addNewUser: true
+//   })}>Add NewUser</button> }
