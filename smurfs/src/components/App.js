@@ -21,8 +21,21 @@ class App extends Component {
     const name = this.name.value;
     const age = parseInt(this.age.value);
     const height = this.height.value; 
-    const smurf = {name, age, height}
-    this.props.addSmurf(smurf)
+    const smurf = {name, age, height};
+    this.resetFields(); 
+    this.props.addSmurf(smurf); 
+  }
+
+  doubleClickingSmurf = (name,age,height) => {
+    this.name.value = name;
+    this.age.value = age; 
+    this.height.value = height
+  }
+  deleteSmurf = id => {
+    const sureToDelete = prompt('This can not be undone. To continue enter the word delete (just the word no extra characters)')
+    if(sureToDelete.toLowerCase() === 'delete'){
+      this.props.deleteSmurf(id); 
+    }
   }
 
   render() {
@@ -39,17 +52,20 @@ class App extends Component {
         <br/>
         <br/>
         {smurfs.map((smurf, i )=> 
-        <div key ={i} className = 'scene'>
+        <div onDoubleClick = {() => this.doubleClickingSmurf(smurf.name, smurf.age, smurf.height)}key ={i} className = 'scene'>
           <div className ="card">
             <div className="card__face card__face--front">
             {smurf.name}
             </div> 
             <div className="card__face card__face--back">
               <h1>{smurf.name}</h1>
-              <br/>
+              
               <h1>{smurf.age}</h1>
-              <br/>
+              
               <h1>{smurf.height}</h1>
+              
+              
+              <i onClick = {() => this.deleteSmurf(smurf.id)}className="fas fa-minus-circle"></i>
             </div>
           </div>
         </div>)}
