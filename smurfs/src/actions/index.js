@@ -9,6 +9,7 @@ export const UPDATED_SMURF = 'UPDATED_SMURF';
 export const DELETING_SMURF = 'DELETING_SMURF';
 export const DELETED_SMURF = 'DELETED_SMURF';
 export const ERROR = 'ERROR'; 
+export const SMURF_CLICKED = 'SMURF_CLICKED';
 
 
 
@@ -85,5 +86,11 @@ export const deleteSmurf = (id) => {
       console.log(error) // console.log for now... delete later... 
       dispatch({type:ERROR, error: error})
     })
+  }
+}
+
+export const clickedSmurf = () => {
+  return dispatch => {
+    dispatch({type: SMURF_CLICKED})
   }
 }

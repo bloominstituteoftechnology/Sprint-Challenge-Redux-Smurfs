@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'; 
-import {getSmurfs, addSmurf, updateSmurf, deleteSmurf} from '../actions';
+import {getSmurfs, addSmurf, updateSmurf, deleteSmurf, clickedSmurf} from '../actions';
 import './App.css';
 
 
@@ -19,23 +19,27 @@ class App extends Component {
 
   addingSmurf = () => {
     const name = this.name.value;
-    const age = parseInt(this.age.value);
+    const age = parseInt(this.age.value,10);
     const height = this.height.value; 
     const smurf = {name, age, height};
     this.resetFields(); 
     this.props.addSmurf(smurf); 
   }
 
-  doubleClickingSmurf = (name,age,height) => {
+  doubleClickingSmurf = (id, name,age,height) => {
     this.name.value = name;
     this.age.value = age; 
     this.height.value = height
+    this.props.clickedSmurf();
   }
   deleteSmurf = id => {
     const sureToDelete = prompt('This can not be undone. To continue enter the word delete (just the word no extra characters)')
     if(sureToDelete.toLowerCase() === 'delete'){
       this.props.deleteSmurf(id); 
     }
+  }
+  updating = id => {
+
   }
 
   render() {
@@ -46,7 +50,10 @@ class App extends Component {
         <input type="text" placeholder="...name" ref ={input => this.name = input}/>
         <input type="text" placeholder="...age" ref ={input => this.age = input}/>
         <input type="text" placeholder ="...height" ref ={input => this.height = input}/>
-        <button onClick = {this.addingSmurf}>Add Smurf</button>
+        {this.props.doubleClicked === false ? <button onClick = {this.addingSmurf}>Add Smurf</button> 
+        : 
+        <button onClick ={this.updating}>Update Smurf</button>
+        }        
         <br/>
         <br/>
         <br/>
@@ -63,7 +70,6 @@ class App extends Component {
               <h1>{smurf.age}</h1>
               
               <h1>{smurf.height}</h1>
-              
               
               <i onClick = {() => this.deleteSmurf(smurf.id)}className="fas fa-minus-circle"></i>
             </div>
@@ -82,10 +88,11 @@ const mapStateToProps = state => {
     addingSmurf: state.addingSmurf,
     updatingSmurf: state.updatingSmurf,
     deletingSmurf: state.deletingSmurf,
+    doubleClicked: state.doubleClicked,
     error: state.error,
   }
 }
 
 
 
-export default connect(mapStateToProps, {getSmurfs,addSmurf, updateSmurf,deleteSmurf})(App);
+export default connect(mapStateToProps, {getSmurfs,addSmurf, updateSmurf,deleteSmurf, clickedSmurf})(App);

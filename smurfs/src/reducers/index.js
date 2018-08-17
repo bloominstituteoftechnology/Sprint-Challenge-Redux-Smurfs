@@ -1,5 +1,5 @@
 import {
-  FETCHING_SMURFS, FETCHED_SMURFS, POSTING_SMURF, POSTED_SMURF, UPDATING_SMURF, UPDATED_SMURF, DELETING_SMURF, DELETED_SMURF, ERROR
+  FETCHING_SMURFS, FETCHED_SMURFS, POSTING_SMURF, POSTED_SMURF, UPDATING_SMURF, UPDATED_SMURF, DELETING_SMURF, DELETED_SMURF, SMURF_CLICKED,ERROR
 } from '../actions';
 const initialState = {
   smurfs: [],
@@ -8,6 +8,7 @@ const initialState = {
    updatingSmurf: false,
    deletingSmurf: false,
    error: null,
+   doubleClicked : false, 
 }
 export const rootReducer = (state = initialState, action) => {
   switch(action.type){
@@ -42,6 +43,10 @@ export const rootReducer = (state = initialState, action) => {
     case DELETED_SMURF:
       return {
         ...state, deletingSmurf: false, smurfs: action.payload
+      }
+    case SMURF_CLICKED:
+      return{
+        ...state, doubleClicked: !state.doubleClicked
       }
     case ERROR:
       return {
