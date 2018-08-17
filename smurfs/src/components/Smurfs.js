@@ -10,6 +10,7 @@ const Smurfs = (props) => {
                         <p>{smurf.age}</p>
                         <p>{smurf.height}</p>
                         <button onClick={props.deleteSmurf} id={smurf.id}>Delete</button>
+                        <button onClick={props.toggleUpdate} id={smurf.id}>Update</button>
                     </div>
                 )
             })}

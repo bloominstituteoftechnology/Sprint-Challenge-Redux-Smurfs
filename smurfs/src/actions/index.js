@@ -46,7 +46,7 @@ export const addSmurf = smurf => {
       height: smurf.height
     })
       .then(res=> {
-        dispatch({ type: ADDED_SMURFS, payload: res.data});
+        dispatch({ type: ADDED_SMURFS, payload: res.data });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err});
@@ -59,10 +59,27 @@ export const deleteSmurf = smurfId => {
     dispatch({ type: DELETING_SMURFS });
     axios.delete(`http://localhost:3333/smurfs/${smurfId}`)
       .then(res=> {
-        dispatch({ type: DELETED_SMURFS, payload: res.data})
+        dispatch({ type: DELETED_SMURFS, payload: res.data })
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
+      })
+  }
+}
+
+export const updateSmurf = smurf => {
+  return dispatch => {
+    dispatch({ type: UPDATING_SMURFS });
+    axios.put(`http://localhost:3333/smurfs/${smurf.id}`, {
+      name: smurf.name,
+      age: smurf.age,
+      height: smurf.height
+    })
+      .then(res => {
+        dispatch({ type: UPDATED_SMURFS, payload: res.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err});
       })
   }
 }

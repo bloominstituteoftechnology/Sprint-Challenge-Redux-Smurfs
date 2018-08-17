@@ -4,6 +4,7 @@ import * as actions from '../actions';
 import { connect } from 'react-redux';
 import Smurfs from './Smurfs';
 import SmurfForm from './SmurfForm';
+import UpdateSmurf from './UpdateSmurf';
 
 /*
  to wire this component up you're going to need a few things.
@@ -17,7 +18,11 @@ class App extends Component {
     this.state = {
       newName: '',
       newAge: '',
-      newHeight: ''
+      newHeight: '',
+      updated: null,
+      updatedName: '',
+      updatedAge: '',
+      updatedHeight: ''
     }
   }
 
@@ -48,12 +53,43 @@ class App extends Component {
     this.props.deleteSmurf(event.target.id);
   }
 
+  toggleUpdate = event => {
+    this.setState({updated: Number(event.target.id)});
+  }
+
+  updateSmurf = event => {
+    event.preventDefault();
+    let updatedSmurf = {
+      name: this.state.updatedName,
+      age: this.state.updatedAge,
+      height: this.state.updatedHeight,
+      id: this.state.updated
+    }
+    this.props.updateSmurf(updatedSmurf);
+    this.setState({
+      updated: null,
+      updatedName: '',
+      updatedAge: '',
+      updatedHeight: ''
+    })
+  }
+
+  cancelUpdate = () => {
+    this.setState({
+      updated: null
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <Smurfs smurfs={this.props.smurfs} deleteSmurf={this.deleteSmurf} />
+        <Smurfs smurfs={this.props.smurfs} deleteSmurf={this.deleteSmurf} toggleUpdate={this.toggleUpdate} />
         <SmurfForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} newName={this.state.newName} newAge={this.state.newAge} newHeight={this.state.newHeight} />
+        {this.state.updated !== null 
+          ? <UpdateSmurf cancelUpdate={this.cancelUpdate} updateSmurf={this.updateSmurf} handleChange={this.handleChange} updatedName={this.state.updatedName} updatedAge={this.state.updatedAge} updatedHeight={this.state.updatedHeight}/> 
+          : null
+        }
       </div>
     );
   }
