@@ -14,13 +14,13 @@ export const ADD_NEW_SMURF = "ADD_NEW_SMURF";
 export const DEL_SMURF = "DEL_SMURF";
 export const MODIFY_SMURF = "MODIFY_SMURF";
 
-let url = "http://localhost:3333/smurfs/";
+let URL = "http://localhost:3333/smurfs/";
 
 export const fetchSmurfData = () => {
   return function(dispatch) {
     dispatch({ type: FETCHING });
     axios
-      .get(url)
+      .get(URL)
       .then(response =>
         dispatch({ type: FETCH_SUCCESS, payload: response.data })
       )
@@ -32,7 +32,7 @@ export const addNewSmurf = smurf => {
   return function(dispatch) {
     dispatch({ type: FETCHING_POST });
     axios
-      .post(url, smurf)
+      .post(URL, smurf)
       .then(response =>
         dispatch({ type: ADD_NEW_SMURF, payload: response.data })
       )

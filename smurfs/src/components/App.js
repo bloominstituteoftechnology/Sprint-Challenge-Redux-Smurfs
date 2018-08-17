@@ -53,20 +53,42 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div
+        className="App"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          background: "lightblue"
+        }}
+      >
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-        <ul style={{ listStyle: "none" }}>
+        <p>Smurfs living in Smurfville</p>
+        <ul
+          style={{
+            listStyle: "none",
+            textAlign: "center",
+            margin: "0",
+            padding: "0"
+          }}
+        >
           {this.props.smurfs.map(smurf => {
             return (
-              <li key={smurf.name}>
-                {smurf.name}
-                <button onClick={() => this.deleteSmurfHandler(smurf.id)}>
+              <li key={smurf.name} style={{ padding: "1rem" }}>
+                <p> {smurf.name} </p>
+                <p>{smurf.age} </p>
+                <p>{smurf.height} </p>
+                <button
+                  onClick={() => this.deleteSmurfHandler(smurf.id)}
+                  style={{ margin: "1rem" }}
+                >
                   Delete
                 </button>
-                <button onClick={() => this.modifySmurfHandler(smurf.id)}>
+                <button
+                  onClick={() => this.modifySmurfHandler(smurf.id)}
+                  style={{ margin: "1rem" }}
+                >
                   Modify
                 </button>
               </li>
@@ -85,6 +107,7 @@ class App extends Component {
             value={this.state.age}
             onChange={this.inputChangeHandler}
             name="age"
+            style={{ margin: "1rem" }}
           />
           <input
             placeholder="height..."
