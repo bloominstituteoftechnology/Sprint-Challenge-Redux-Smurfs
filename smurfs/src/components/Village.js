@@ -6,10 +6,12 @@ class Village extends Component {
         return(
             <div>
                 <ul>
-                    {this.props.theSmurfs.map(item =>{
+                    {this.props.village.map(item =>{
                         return(
                             <li key={item.name}>
-                            <p>{item.name}{item.age}{item.height}</p>
+                            <p>{item.name}</p>
+                            <p>{item.age}</p>
+                            <p>{item.height}</p>
                             </li>
                         
                         )

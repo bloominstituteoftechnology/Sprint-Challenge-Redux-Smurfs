@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/index';
 
 const initialState = {
-  theSmurfs: [],
+  village: [],
   getSmurfs: false, 
   addingSmurf: false, 
   updatingSmurf: false, 
@@ -14,11 +14,11 @@ export const smurfReducer = (state = initialState, action) => {
     case actionTypes.GETTING_SMURF: 
     return {...state, getSmurfs: true}
     case actionTypes.GET_SMURF: 
-    return {...state, theSmurfs: action.payload, getSmurfs: false}
+    return {...state, village: action.payload, getSmurfs: false}
     case actionTypes.ADDING_SMURF: 
     return{...state, addingSmurf: true}
     case actionTypes.ADDED_SMURF: 
-    return {...state, theSmurfs: action.payload, addingSmurf: false}
+    return {...state, village: action.payload, addingSmurf: false}
     case actionTypes.ERROR:
     return{
       ...state, 

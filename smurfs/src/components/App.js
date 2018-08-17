@@ -23,7 +23,7 @@ class App extends Component {
         {this.props.getSmurfs ? (
           <h1>Loading</h1>
         ): (
-          <Village theSmurfs={this.props.theSmurfs} />
+          <Village village={this.props.village} />
         )}
       </div>
       </div>
@@ -34,7 +34,7 @@ class App extends Component {
 const mapStateToProps = state => {
   const {smurfReducer} = state; 
   return{
-    theSmurfs: smurfReducer.theSmurfs, 
+    village: smurfReducer.village, 
     error: smurfReducer.error, 
     getSmurfs: smurfReducer.getSmurfs
   }
