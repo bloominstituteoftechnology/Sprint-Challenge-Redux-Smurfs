@@ -6,8 +6,8 @@ function Smurf (props){
             <p><strong>{props.name}</strong></p>
             <p>{props.age}</p>
             <p> {props.height}</p>
-            <button>Delete</button>
-            <button>Update</button>
+            <button onClick={() => props.deleteSmurf(props.id)}>Delete</button>
+            <button id={props.id} onClick={props.update}>Update</button>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import Smurf from './Smurf';
 function Smurfs (props){
     return (
         <div>
-            {props.smurfs.map(smurf => <Smurf key={smurf.id} {...smurf} />)}
+            {props.smurfs.map(smurf => <Smurf key={smurf.id} {...smurf} deleteSmurf={props.deleteSmurf} update={props.update}/>)}
         </div>
     )
 }

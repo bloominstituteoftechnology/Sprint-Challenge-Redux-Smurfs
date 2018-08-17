@@ -1,4 +1,4 @@
-import { FETCH_SMURFS, FETCHED_SMURFS, ERROR, ADDING_SMURF, ADDED_SMURF } from "../actions";
+import { FETCH_SMURFS, FETCHED_SMURFS, ERROR, ADDING_SMURF, ADDED_SMURF, DELETING_USER, DELETED_USER } from "../actions";
 
 const initialState =  {
   smurfs: [],
@@ -33,9 +33,21 @@ function smurfReducer (state = initialState, action) {
         smurfs: action.payload,
         addingSmurf: false
       }
-    case ERROR:
+    case DELETING_USER:
       return {
         ...state,
+        deletingSmurf: true
+      }
+    case DELETED_USER:
+      return {
+        ...state,
+        deletingSmurf: false,
+        smurfs: action.payload
+      }
+    case ERROR:
+      return {
+        ...initialState,
+        smurfs: state.smurfs,
         error: action.error
       }
     default:

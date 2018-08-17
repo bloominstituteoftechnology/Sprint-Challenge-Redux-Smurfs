@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-import { getSmurfs, addSmurf } from '../actions'
+import { getSmurfs, addSmurf, deleteSmurf, updateSmurf } from '../actions'
 import Smurfs from './Smurfs';
 import AddNewSmurf from './AddNewSmurf';
+import UpdateSmurf from './UpdateSmurf';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -15,7 +16,8 @@ class App extends Component {
     addNewSmurf: false,
     name: '',
     age: null,
-    height: null
+    height: null,
+    updateID: null,
   }
 
   componentDidMount(){
@@ -41,7 +43,6 @@ class App extends Component {
       height: null
     })
   }
-
   newSmurf = () => {
     if (this.state.addNewSmurf)
       return (
@@ -55,6 +56,32 @@ class App extends Component {
           addNewSmurf: true
         })}>Add NewUser</button>)
   }
+
+  toggleUpdate = event => {
+    const smurf = this.props.smurfs.filter(smurf => smurf.id == this.state.updateID)[0]
+    this.setState({
+      updateID: smurf.id,
+      name: smurf.name,
+      age: smurf.age,
+      height: smurf.height
+    })
+  }
+
+  onClickUpdate = event => {
+    this.props.updateSmurf({
+      name: this.state.name,
+      id: this.state.updateID,
+      age: this.state.age,
+      height: this.state.height
+    })
+    this.setState({
+      addNewSmurf: false,
+      name: '',
+      age: null,
+      height: null,
+      updateID: null
+    })
+  }
   render() {
     return (
       <div className="App">
@@ -66,10 +93,13 @@ class App extends Component {
           ? <div>No smurfs to display</div>
           : this.props.fetchingSmurfs 
             ? <h1>Loading...</h1>
-            : <Smurfs {...this.props} />}
+            : <Smurfs {...this.props} update={this.toggleUpdate}/>}
         </div>
         <div className="addNewsmurf">
-          { this.newSmurf()}
+          { this.state.updateID === null 
+              ? this.newSmurf()
+              : <UpdateSmurf {...this.state} onChange={this.handleInputChange.bind(this)} onClick={this.onClickUpdate}/>
+          } 
         </div>
       </div>
     );
@@ -87,4 +117,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf, updateSmurf })(App);
