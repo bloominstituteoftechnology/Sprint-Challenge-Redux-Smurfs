@@ -60,6 +60,7 @@ export const murderSmurf = id => {
 		dispatch({ type: MURDERING_SMURF });
 		promise
 			.then(response => {
+				console.log(response);
 				dispatch({
 					type: MURDER_SMURF_SUCCESS,
 					payload: response.data,
