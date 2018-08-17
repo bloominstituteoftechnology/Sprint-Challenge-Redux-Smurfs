@@ -36,13 +36,11 @@ export const addNewSmurf = smurf => {
 };
 
 export const delSmurf = smurf => {
-  console.log("DELETESMURF", url);
-  url += smurf;
-  console.log("DELETESMURF NEW URL", url);
+  console.log("DELETESMURF");
   return function(dispatch) {
     dispatch({ type: FETCHING_DEL });
     axios
-      .delete(url)
+      .delete(`http://localhost:3333/smurfs/${smurf}`)
       .then(response => dispatch({ type: DEL_SMURF, payload: response.data }))
       .catch(error => dispatch({ type: FETCH_FAILURE, payload: error }));
   };

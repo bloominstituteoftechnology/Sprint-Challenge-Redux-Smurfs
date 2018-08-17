@@ -59,7 +59,7 @@ export default (state = initialState, action) => {
     case DEL_SMURF:
       return {
         ...state,
-        smurfs: state.smurfs,
+        smurfs: action.payload,
         isFetching: false,
         isFetched: true
       };
