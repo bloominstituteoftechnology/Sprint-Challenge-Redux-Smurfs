@@ -1,22 +1,98 @@
-import React, { Component } from 'react';
-import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import React, { Component } from "react";
+import "./App.css";
+
+import { getSmurfs, addSmurf } from "../actions";
+import { connect } from "react-redux";
+
+const initState = {
+	name: "",
+	age: "",
+	height: "",
+};
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
-    );
-  }
+	state = {
+		name: "",
+		age: "",
+		height: "",
+	};
+
+	componentDidMount() {
+		this.props.getSmurfs();
+	}
+
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	};
+
+	render() {
+		return (
+			<div className="App">
+				{this.props.gettingData ? (
+					<div>Rounding up the smurfs</div>
+				) : (
+					this.props.data.map(smurf => {
+						return (
+							<div key={smurf.name}>
+								<p>{smurf.name}</p>
+								<p>{smurf.age}</p>
+								<p>{smurf.height}</p>
+							</div>
+						);
+					})
+				)}
+				{this.props.addingSmurf ? (
+					<div>Adding your new smurf</div>
+				) : (
+					<form
+						onSubmit={event => {
+							event.preventDefault();
+							this.props.addSmurf(this.state);
+							this.setState(initState);
+						}}
+					>
+						<div>
+							<input
+								onChange={this.handleChange}
+								type="text"
+								placeholder="Name"
+								name="name"
+								value={this.state.name}
+							/>
+						</div>
+						<div>
+							<input
+								onChange={this.handleChange}
+								type="number"
+								placeholder="Age"
+								name="age"
+								value={this.state.age}
+							/>
+						</div>
+						<div>
+							<input
+								onChange={this.handleChange}
+								type="text"
+								placeholder="Height"
+								name="height"
+								value={this.state.height}
+							/>
+							<button>Add Smurf</button>
+						</div>
+					</form>
+				)}
+			</div>
+		);
+	}
 }
 
-export default App;
+const mapStateToProps = state => ({
+	data: state.data,
+	gettingData: state.gettingData,
+	addingSmurf: state.addingSmurf,
+});
+
+export default connect(
+	mapStateToProps,
+	{ getSmurfs, addSmurf, },
+)(App);
