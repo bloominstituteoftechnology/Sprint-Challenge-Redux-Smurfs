@@ -17,11 +17,9 @@ export const getSmurfs = () => {
   return dispatch => {
     dispatch({type:FETCHING_SMURFS})
     promise.then(response => {
-      console.log(response) // console.log for now... delete later... 
       dispatch({type: FETCHED_SMURFS, payload: response.data})
     })
     .catch(error => {
-      console.log(error) // console.log for now... delete later.. 
       dispatch({type: ERROR, error: error})
     })
   }
@@ -32,11 +30,9 @@ export const addSmurf = (smurf) => {
   return dispatch => {
     dispatch({type:POSTING_SMURF})
     promise.then(response => {
-      console.log(response) // console.log for now... delete later.. 
       dispatch({type: POSTED_SMURF, payload: response.data})
     })
     .catch(error => {
-      console.log(error) // console.log for now... delete later.. 
       dispatch({type:ERROR, error: error}) 
     })
   }
@@ -47,11 +43,9 @@ export const updateSmurf = (id, smurf) => {
   return dispatch => {
     dispatch({type:UPDATING_SMURF})
     promise.then(response => {
-      console.log(response) // console.log for now... delete later... 
       dispatch({type: UPDATED_SMURF, payload: response.data})
     })
-    .catch(error => {
-      console.log(error) // console.log for now.. delete later.. 
+    .catch(error => { 
       dispatch({type: ERROR, error: error})
     })
   }
@@ -59,22 +53,18 @@ export const updateSmurf = (id, smurf) => {
 
 export const deleteSmurf = (id) => {
   const promise = axios.delete(`${url}${id}`)
-  console.log(`${url}${id}`)
   return dispatch => {
     dispatch({type: DELETING_SMURF})
     promise.then(response => {
-      console.log(response)
       dispatch({type:DELETED_SMURF, payload: response.data})
     })
     .catch(error => {
-      console.log(error) // console.log for now... delete later... 
       dispatch({type:ERROR, error: error})
     })
   }
 }
 
 export const clickedSmurf = id => {
-  console.log(id)
   return dispatch => {
     dispatch({type: SMURF_CLICKED, current: id})
   }

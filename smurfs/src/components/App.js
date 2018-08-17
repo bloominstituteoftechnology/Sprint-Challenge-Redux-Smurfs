@@ -27,14 +27,12 @@ class App extends Component {
   }
 
   doubleClickingSmurf = (id, name,age,height) => {
-    console.log(id)
     this.name.value = name;
     this.age.value = age; 
     this.height.value = height
     this.props.clickedSmurf(id);
   }
   deleteSmurf = id => {
-    console.log(id)
     const sureToDelete = prompt('This can not be undone. To continue enter the word delete (just the word no extra characters)')
     if(sureToDelete.toLowerCase() === 'delete'){
       this.props.deleteSmurf(id); 
@@ -42,8 +40,7 @@ class App extends Component {
   }
   updating = () => {
     const smurf = {name: this.name.value, age: parseInt(this.age.value,10), height: this.height.value}
-    console.log(smurf)
-    console.log(this.props.updating)
+    this.resetFields()
     this.props.updateSmurf(this.props.current, smurf)
   }
 
@@ -86,7 +83,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state) // for now delete later.. 
   return {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
