@@ -16,7 +16,7 @@ Some logic our actions will pass through before they hit the reducer.
 
 1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 
-redux-thunk permits us to give asyncrhonous instructions to our application. Simply put it makes our action-creators more complex.
+redux-thunk permits us to give asynchronous instructions to our application. Simply put it makes our action-creators more complex.
 
 1.  Which `react-redux` method links up our `components` with our `redux store`?
 
