@@ -14,8 +14,8 @@ class SmurfForm extends Component {
 
     handleAddSmurf = _ => {
         const {name, age, height} = this.state;
-        this.props.addingSmurf({name, age, height});
-        this.this.setState({name: '', age: '', height:''});
+        this.props.addSmurf({name, age, height});
+        this.setState({name: '', age: '', height:''});
     };
 
     render(){
