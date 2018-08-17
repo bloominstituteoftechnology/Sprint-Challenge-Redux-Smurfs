@@ -4,7 +4,8 @@ import {
   FETCHING_DEL,
   FETCH_SUCCESS,
   FETCH_FAILURE,
-  ADD_NEW_SMURF
+  ADD_NEW_SMURF,
+  DEL_SMURF
 } from "../actions";
 
 const initialState = {
@@ -52,6 +53,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         smurfs: action.payload,
+        isFetching: false,
+        isFetched: true
+      };
+    case DEL_SMURF:
+      return {
+        ...state,
+        smurfs: state.smurfs,
         isFetching: false,
         isFetched: true
       };
