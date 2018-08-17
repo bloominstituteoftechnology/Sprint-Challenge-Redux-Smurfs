@@ -31,9 +31,8 @@ class App extends Component {
     this.setState({ name: "", age: "", height: "" });
   };
 
-  deleteSmurfHandler = event => {
-    event.preventDefault();
-    console.log("DELETESMURFHANDLER WORKING", event);
+  deleteSmurfHandler = id => {
+    console.log("DELETESMURFHANDLER WORKING", id);
     // this.props.delSmurf(delSelectedSmurf);
   };
 
@@ -49,7 +48,9 @@ class App extends Component {
             return (
               <li key={smurf.name}>
                 {smurf.name}
-                <button onClick={this.deleteSmurfHandler}>Delete</button>
+                <button onClick={() => this.deleteSmurfHandler(smurf.id)}>
+                  Delete
+                </button>
               </li>
             );
           })}
