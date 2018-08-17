@@ -33,7 +33,7 @@ export const fetchSmurfData = () => {
 export const addNewSmurf = smurf => {
   console.log("addnewSmurf", smurf);
   return {
-    type: ADD_NEW_FRIEND,
+    type: ADD_NEW_SMURF,
     payload: smurf
   };
 };
