@@ -2,7 +2,13 @@
   Be sure to import in all of the action types from `../actions`
 */
 import { combineReducers } from 'redux';
-import { handleActions } from 'redux-actions';
+import { handleActions, combineActions } from 'redux-actions';
+
+import {
+  fetchSmurfsRequest,
+  fetchSmurfsSuccess,
+  fetchSmurfsFailure,
+} from '../actions';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -15,7 +21,20 @@ import { handleActions } from 'redux-actions';
  }
 */
 
-const smurfs = handleActions({}, []);
+const smurfs = handleActions(
+  {
+    [fetchSmurfsSuccess]: (_, { payload }) => payload,
+  },
+  [],
+);
+
+const isFetching = handleActions(
+  {
+    [fetchSmurfsRequest]: () => true,
+    [combineActions(fetchSmurfsSuccess, fetchSmurfsFailure)]: () => false,
+  },
+  false,
+);
 
 /*
   You'll only need one smurf reducer for this project.
@@ -27,4 +46,5 @@ const smurfs = handleActions({}, []);
 
 export default combineReducers({
   smurfs,
+  isFetching,
 });

@@ -1,7 +1,9 @@
-/* 
+/*
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+
+import { createActions } from 'redux-actions';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -13,3 +15,13 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const {
+  fetchSmurfsRequest,
+  fetchSmurfsSuccess,
+  fetchSmurfsFailure,
+} = createActions(
+  'FETCH_SMURFS_REQUEST',
+  'FETCH_SMURFS_SUCCESS',
+  'FETCH_SMURFS_FAILURE',
+);
