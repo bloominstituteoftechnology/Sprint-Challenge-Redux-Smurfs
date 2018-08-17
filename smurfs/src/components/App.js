@@ -42,7 +42,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
+        <h1>Smurf Village 2.0 W/ Redux</h1>
         {this.props.fetchingSmurfs ? (<span>materializing smurfs...</span>) : (
           <SmurfVillage smurfs={this.props.smurfs} />
         )}
