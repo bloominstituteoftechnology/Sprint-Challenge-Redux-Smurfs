@@ -1,4 +1,4 @@
-import {FETCHING,FETCHED,ERROR} from '../actions';
+import {FETCHING,FETCHED,ERROR,ADDING,ADDED} from '../actions';
 
 const initialState={
   smurfs: [],
@@ -24,6 +24,10 @@ export const smurfsReducer=(state=initialState,action)=>{
         updatingSmurf: false,
         deletingSmurf: false,
         error: null})
+    case ADDING:
+          return Object.assign({},state,{addingSmurf:true})
+    case ADDED: 
+          return Object.assign({},state,{addingSmurf:false,smurfs:action.payload})
     default:
       return state
   }
