@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
-import {addASmurf} from '../actions';
+import {editSmurf} from '../actions';
 import {connect} from 'react-redux';
 
-class SmurfForm extends Component {
+class EditSmurf extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
       age: '',
       height: '',
-      id: 4
+      id: props.smurf.id
     };
   }
-  addSmurf = (event, props) => {
+
+  editSmurf = (event, props) => {
     event.preventDefault();
-    this.props.addASmurf(this.state);
+    this.props.editSmurf(this.state);
     this.setState({
       name: '',
       age: '',
-      height: '',
-      id: this.state.smurf.id
+      height: ''
     })
   }
 
@@ -30,27 +30,26 @@ class SmurfForm extends Component {
   render() {
     return (
       <div className="SmurfForm">
-        <h3>Add New Smurf</h3>
-        <form onSubmit={this.addSmurf}>
+        <form onSubmit={this.editSmurf}>
           <input
             onChange={this.handleInputChange}
-            placeholder="name"
+            placeholder={this.props.smurf.name}
             value={this.state.name}
             name="name"
           />
           <input
             onChange={this.handleInputChange}
-            placeholder="age"
+            placeholder={this.props.smurf.age}
             value={this.state.age}
             name="age"
           />
           <input
             onChange={this.handleInputChange}
-            placeholder="height"
+            placeholder={this.props.smurf.height}
             value={this.state.height}
             name="height"
           />
-          <button type="submit">Add to the village</button>
+          <button type="submit">Edit the Smurf</button>
         </form>
       </div>
     );
@@ -62,7 +61,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  addASmurf
+  editSmurf
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SmurfForm);
+export default connect(mapStateToProps, mapDispatchToProps)(EditSmurf);

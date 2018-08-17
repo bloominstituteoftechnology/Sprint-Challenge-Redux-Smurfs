@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import {getTheSmurfs} from '../actions';
 import {smackASmurf} from '../actions';
 import SmurfForm from './smurfForm'
+import EditSmurf from './editSmurf'
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own.
@@ -14,6 +15,7 @@ import SmurfForm from './smurfForm'
 
 const AppDiv = styled.div`
   border: 1px solid red;
+
 `;
 
 class App extends Component {
@@ -29,6 +31,10 @@ class App extends Component {
     this.props.smackASmurf(e.target.value);
   }
 
+  editSmurf = (e) => {
+    e.preventDefault();
+    console.log(e.target)
+  }
   render() {
     console.log(this.props.state.smurfs);
     return (
@@ -38,10 +44,10 @@ class App extends Component {
           return (
             <div key={smurf.name}>
               <h1>{smurf.name}</h1>
+              <EditSmurf smurf={smurf}></EditSmurf>
               <button value={smurf.id} onClick={this.smackSmurf}>Smack Smurf</button>
+              <button onClick={this.editSmurf}>editSmurf</button>
             </div>
-
-
           )
         }
         )}

@@ -45,6 +45,26 @@ export const addASmurf = (newSmurf) => {
   }
 }
 
+export const EDITING_SMURF = 'EDITING_SMURF';
+export const EDITED_SMURF = 'EDITED_SMURF';
+export const EDIT_SMURF_FAILED = 'EDIT_SMURF_FAILED';
+
+export const editSmurf = (changedSmurf) => {
+  return function(dispatch){
+    dispatch({type: EDITING_SMURF});
+    axios.put(`http://localhost:3333/smurfs/${changedSmurf.id}`, {
+      "name": changedSmurf.name,
+      "age": changedSmurf.age,
+      "height": changedSmurf.height,
+    }).then(res => {
+      dispatch({type: EDITED_SMURF, payload: res});
+      dispatch(getTheSmurfs());
+    }).catch(err => {
+      dispatch({type: EDIT_SMURF_FAILED, payload: err})
+    })
+  }
+}
+
 export const SMACKING_SMURF = 'SMACKING_SMURF';
 export const SMURF_SMACKED = 'SMURF_SMACKED';
 export const SMURF_DUCKED = 'SMURF_DUCKED';
