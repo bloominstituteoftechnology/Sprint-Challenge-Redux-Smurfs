@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './App.css';
+import { connect } from 'react-redux';
+import { getSmurfs } from '../actions';
 
+import './App.css';
 import Smurfs from './Smurfs';
 import SmurfForm from './SmurfForm';
 
@@ -26,16 +28,22 @@ class App extends Component {
   }
 
 componentDidMount() {
-  axios
-  .get(url)
-  .then((response)=>this.setState({smurfs: response.data}))
-  .catch(error => console.log(error))
+  this.props.getSmurfs();
 }
+
+//uncomment this to retrieve data the old way
+// componentDidMount() {
+// axios
+// .get(url)
+// .then((response)=>this.setState({smurfs: response.data}))
+// .catch(error => console.log(error))
+// }
 
 handleSubmit = data => this.setState({smurfs: data});
 
 
   render() {
+    console.log('log smurfs in app render', this.props.smurfs)
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -58,4 +66,11 @@ handleSubmit = data => this.setState({smurfs: data});
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log('log state in mapStateToProps', state);
+  return {
+    smurfs: state.smurfs
+  }
+}
+
+export default connect(mapStateToProps, {getSmurfs})(App);
