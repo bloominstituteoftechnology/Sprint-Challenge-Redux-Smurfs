@@ -20,7 +20,7 @@ export const smurfReducer = (state = initState, action) => {
         fetchingSmurfs: false
       });
     case ADDING_SMURF:
-      return Object.assign({}, state, { addingSmurfs: true });
+      return Object.assign({}, state, { addingSmurf: true });
     case ADDED_SMURF:
       return Object.assign({}, state, {
         smurfs: [ ...state.smurfs, action.payload ],
