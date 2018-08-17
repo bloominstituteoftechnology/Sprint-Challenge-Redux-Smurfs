@@ -27,11 +27,11 @@ class App extends Component {
   }
   update = e => {
     this.props.updateSmurf(
-      this.state.name,
-      this.state.age,
-      this.state.height,
-      e.target.id
-    )
+        this.state.name,
+        this.state.age,
+        this.state.height,
+        e.target.id
+      )
     window.location.reload();
     this.setState({name: '', age: '', height:''})
   }
@@ -43,12 +43,13 @@ class App extends Component {
     this.props.getSmurfs();
   }
   render() {
+    console.log(this.state)
     return (
       <div className="App">
           <h1>Smurfs Village</h1>
           <SmurfsList smurfs={this.props.smurfs}
-                      submitUpdate={this.props.update}
-                      submitDelete={this.props.delete}/>
+                      submitUpdate={this.update}
+                      submitDelete={this.delete}/>
           <AddSmurf inputName={this.state.name}
                     inputAge={this.state.age}
                     inputHeight={this.state.height}
