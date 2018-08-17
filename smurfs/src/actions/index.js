@@ -9,6 +9,7 @@ export const DELETE_SMURF = "DELETE_SMURF";
 export const SMURF_DELETED = "SMURF_DELETED";
 export const EDIT_SMURF = "EDIT_SMURF";
 export const SMURF_EDITED = "SMURF_EDITED";
+export const TOGGLE_SMURF = "TOGGLE_SMURF";
 
 export const fetchSmurfs = () => {
   return function(dispatch) {
@@ -32,7 +33,8 @@ export const addNewSmurf = (name, age, height) => {
      .post(`http://localhost:3333/smurfs`, {
       name: name,
       age: age,
-      height: height
+      height: height,
+      toggled: false
       })
       .then(response => {
           dispatch({ type: SMURF_ADDED, payload: response.data[response.data.length - 1] });
@@ -67,7 +69,8 @@ export const editSmurf = (name, age, height, id) => {
       .put(`http://localhost:3333/smurfs/${id}`, {
           name: name,
           age: age,
-          height: height
+          height: height,
+          toggled: false
           })
       .then(response => {
           dispatch({ type: SMURF_EDITED, payload: response.data });
@@ -77,3 +80,10 @@ export const editSmurf = (name, age, height, id) => {
       })
  }
 }
+
+export const toggleSmurf = id => {
+  return {
+    type: TOGGLE_SMURF,
+    payload: id
+  };
+};

@@ -1,4 +1,4 @@
-import { FETCHING_SMURFS, SMURFS_FETCHED, ERROR, ADD_SMURF, SMURF_ADDED, DELETE_SMURF, SMURF_DELETED, EDIT_SMURF, SMURF_EDITED  } from '../actions';
+import { FETCHING_SMURFS, SMURFS_FETCHED, ERROR, ADD_SMURF, SMURF_ADDED, DELETE_SMURF, SMURF_DELETED, EDIT_SMURF, SMURF_EDITED,TOGGLE_SMURF } from '../actions';
 
  const initialState = {
    smurfs: [],
@@ -13,7 +13,7 @@ import { FETCHING_SMURFS, SMURFS_FETCHED, ERROR, ADD_SMURF, SMURF_ADDED, DELETE_
    error: null
  }
 
-const smurfsReducer = (state = initialState, action) => {
+const smurfsReducer = ( state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
       return Object.assign({}, state, {
@@ -32,33 +32,40 @@ const smurfsReducer = (state = initialState, action) => {
       });
       case ADD_SMURF:
       return Object.assign({}, state, {
-        addingFriend: true
+        addingSmurf: true
       });
       case SMURF_ADDED:
       return Object.assign({}, state, {
-        addingFriend: false,
-        friendAdded: true,
-        friends: [...state.friends, action.payload]
+        addingSmurf: false,
+        smurfAdded: true,
+        smurfs: [...state.smurfs, action.payload]
       });
       case DELETE_SMURF:
       return Object.assign({}, state, {
-        deletingFriend: true
+        deletingSmurf: true
       });
       case SMURF_DELETED:
       return Object.assign({}, state, {
-        deletingFriend: false,
-        friendDeleted: true,
-        friends: action.payload
+        deletingSmurf: false,
+        smurfDeleted: true,
+        smurfs: action.payload
       });
       case EDIT_SMURF:
       return Object.assign({}, state, {
-        updatingFriend: true
+        updatingSmurf: true
       });
       case SMURF_EDITED:
       return Object.assign({}, state, {
-        updatingFriend: false,
-        friendUpdated: true,
-        friends: action.payload
+        updatingSmurf: false,
+        smurfUpdated: true,
+        smurfs: action.payload
+      });
+      case TOGGLE_SMURF:
+      return state.smurfs.map(smurf => {
+        if (smurf.id === action.payload) {
+          return Object.assign({}, smurf, { toggled: !smurf.toggled });
+        }
+        return smurf;
       });
     default:
       return state;

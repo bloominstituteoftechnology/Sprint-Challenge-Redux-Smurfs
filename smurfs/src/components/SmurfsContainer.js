@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSmurfs, addNewSmurf, deleteSmurf } from "../actions";
+import { fetchSmurfs, addNewSmurf, deleteSmurf, toggleSmurf } from "../actions";
 import SmurfsList from "./SmurfsList";
 import AddSmurfForm from "./AddSmurfForm";
 
@@ -35,6 +35,10 @@ constructor() {
     this.props.deleteSmurf(id);
   };
 
+  toggleSmurf = (id) => {
+    this.props.toggleSmurf(id);
+  };
+
   render() {
     return (
       <div>
@@ -45,6 +49,7 @@ constructor() {
             <SmurfsList
             smurfs={this.props.smurfs}
             delete={this.deleteSmurf}
+            toggleSmurf={this.toggleSmurf}
             />
             <AddSmurfForm
             name={this.state.name}
@@ -70,5 +75,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
     fetchSmurfs,
     addNewSmurf,
-    deleteSmurf
+    deleteSmurf,
+    toggleSmurf
 })(SmurfsContainer);

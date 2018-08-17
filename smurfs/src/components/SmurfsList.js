@@ -8,10 +8,19 @@ export default function SmurfsList(props) {
     {props.smurfs.map(smurf => {
         return(
         <div key={smurf.id}>
-        <SmurfCard smurf={smurf} />
-        <EditSmurfForm smurf={smurf} />
-        <button onClick={() => props.delete(smurf.id)}>Delete Smurf</button>
-        </div>);
+
+          <h3>{smurf.name}</h3>
+          <button onClick={() => props.toggleSmurf(smurf.id)}>See Info</button>
+          <button onClick={() => props.delete(smurf.id)}>x</button>
+
+          <div className = "closed"
+                style={ smurf.toggled ? { display: "block" } : null } >
+          <SmurfCard smurf={smurf} />
+          <EditSmurfForm smurf={smurf} />
+          </div>
+
+        </div> 
+        );
     })}
     </div>
   );
