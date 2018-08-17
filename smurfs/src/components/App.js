@@ -25,6 +25,7 @@ class App extends Component {
   submitNewSmurfHandler = event => {
     event.preventDefault();
     this.props.addNewSmurf(this.state.newSmurf);
+    this.setState({ newSmurf: "" });
   };
   render() {
     console.log("newsmurf", this.state.newSmurf);

@@ -1,7 +1,12 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING, FETCH_SUCCESS, FETCH_FAILURE } from "../actions";
+import {
+  FETCHING,
+  FETCH_SUCCESS,
+  FETCH_FAILURE,
+  ADD_NEW_SMURF
+} from "../actions";
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -55,6 +60,10 @@ export default (state = initialState, action) => {
         isFetched: false,
         hasError: action.payload
       };
+    case ADD_NEW_SMURF:
+      return Object.assign({}, state, {
+        smurfs: [...state.smurfs, action.payload]
+      });
     default:
       return state;
   }
