@@ -1,22 +1,81 @@
 import React, { Component } from 'react';
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
-class App extends Component {
-  render() {
+import { fetchSmurf, addSmurf, updateSmurf, deleteSmurf } from '../actions/index';
+import { connect } from 'react-redux';
+
+class AppContainer extends Component {
+  constructor () {
+    super();
+    this.state = {
+      name: '',
+      age: '',
+      height: ''
+    }
+  }
+
+  componentDidMount () {
+    console.log('hi')
+    this.props.fetchSmurf();
+  }
+
+  handleOnChange = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleClear = () => {
+    this.setState({ name: '', age: '', height: '' });
+  }
+
+  render () {
+    const { addSmurf, updateSmurf, deleteSmurf } = this.props;
+    const { name, age, height } = this.state;
+    let newSmurf = {
+      name,
+      age,
+      height
+    };
+
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+      <div>
+        <input onChange={this.handleOnChange} type="text" name="name" placeholder="name" value={this.state.name} /> 
+        <input onChange={this.handleOnChange} type="text" name="age" placeholder="age" value={this.state.age} /> 
+        <input onChange={this.handleOnChange} type="text" name="height" placeholder="height" value={this.state.height} />
+        <button onClick={() => {
+          addSmurf(newSmurf);
+          this.handleClear();
+        }}>Add Smurf</button>
+
+        { ! this.props.isFetched && ! this.props.isAdded && ! this.props.isUpdated && ! this.props.isDeleted
+           ? <p>There is no smurf...</p>
+           : (
+             this.props.smurfs.map(smurf => {
+               return (
+                 <div>
+                    <ul>
+                      <li>{smurf.name}</li>
+                      <li>{smurf.age}</li>
+                      <li>{smurf.height}</li>
+                      <button onClick={() => deleteSmurf(smurf.id)}>Delete</button>
+                      <button onClick={() => {
+                        updateSmurf(smurf.id, newSmurf);
+                        this.handleClear();
+                      }}>Update</button>
+                    </ul>
+                 </div>
+               )
+             })
+           ) 
+        }
       </div>
-    );
+    )
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return { ...state };
+}
+
+export default connect(
+  mapStateToProps,
+  { fetchSmurf, addSmurf, updateSmurf, deleteSmurf }
+)(AppContainer);
