@@ -15,6 +15,27 @@ import { FETCHING_SMURFS, SMURFS_FETCHED, ADDING_SMURF, SMURF_ADDED, ERROR } fro
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case FETCHING_SMURFS:
+      return Object.assign({}, state, { fetchingSmurfs: true });
+    case ERROR:
+      return Object.assign({}, state, {
+        fetchingSmurfs: false,
+        error: action.payload
+      });
+    case SMURFS_FETCHED:
+      return Object.assign({}, state, {
+        smurfs: [...state.smurfs, ...action.payload],
+        fetchingSmurfs: false,
+        smurfsFetched: true
+      });
+    case ADDING_SMURF:
+      return Object.assign({}, state, {addingSmurf: true});
+    case SMURF_ADDED:
+      return Object.assign({}, state, {
+        smurfs: [...action.payload],
+        addingSmurf: false,
+        smurfAdded: true
+      });
     default:
       return state;
   }
