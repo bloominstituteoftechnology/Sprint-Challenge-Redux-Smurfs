@@ -7,8 +7,9 @@
 import {GETTING_SMURFS,
   GOT_SMURFS,
   ERROR,
-  // ADDING_SMURF,
-  // UPDATING_SMURF,
+  ADDING_SMURF,
+  ADDED_SMURF,
+  ADD_SMURF_FAILED,
   // DELETING_SMURF
 } from '../actions';
 
@@ -17,11 +18,7 @@ import {GETTING_SMURFS,
 */
 
 const initialState =  {
-   smurfs: [{
-     name: 'default',
-     age: 20,
-     height: '55cm'
-   }],
+   smurfs: [],
    fetchingSmurfs: false,
    addingSmurf: false,
    updatingSmurf: false,
@@ -29,15 +26,6 @@ const initialState =  {
    error: null,
    count: 0,
  }
-
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer.
-  This will guard your namespacing issues.
-  There is no need for 'combineReducers' in this project.
-  Components can then read your store as, `state` and not `state.fooReducer`.
-*/
-
 export const reduceTheSmurfs = (state = initialState, action) => {
   switch(action.type) {
     case GETTING_SMURFS:
@@ -46,15 +34,33 @@ export const reduceTheSmurfs = (state = initialState, action) => {
       });
     case GOT_SMURFS:
       return Object.assign({}, state, {
-        smurfs: [ action.payload.data],
+        smurfs: action.payload.data,
         fetchingSmurfs: false,
-        count: (action.payload.length) + 1,
+
       });
     case ERROR:
       return Object.assign({}, state, {
         error: action.payload
       })
+    case ADDING_SMURF:
+      return Object.assign({}, state, {
+        addingSmurf: true,
+      })
+    case ADDED_SMURF:
+      return Object.assign({}, state, {
+        addingSmurf: false,
+        smurfs: action.payload.data,
+        count: (action.payload.length) + 1,
+      })
     default:
       return state;
   }
 }
+
+/*
+  You'll only need one smurf reducer for this project.
+  Feel free to export it as a default and import as rootReducer.
+  This will guard your namespacing issues.
+  There is no need for 'combineReducers' in this project.
+  Components can then read your store as, `state` and not `state.fooReducer`.
+*/
