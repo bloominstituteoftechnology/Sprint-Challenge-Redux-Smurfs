@@ -17,6 +17,8 @@ class SmurfsContainer extends Component {
 
 componentDidMount () {
     this.props.actions(); 
+
+    
 }
 
 inputChangeHandler = (e) => {

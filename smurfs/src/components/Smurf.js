@@ -13,7 +13,7 @@ export default function Smurf (props) {
                 {props.smurf.age}
             </div>
             <div>
-                {props.smurf.email}
+                {props.smurf.height}
             </div>
         </div>
     );

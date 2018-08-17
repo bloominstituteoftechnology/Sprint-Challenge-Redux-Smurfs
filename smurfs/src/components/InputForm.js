@@ -32,9 +32,9 @@ export default function InputForm (props) {
               <input 
               onChange={props.inputChangeHandler}
               type="text"
-              value={props.email}
-              placeholder="email"
-              name="email"
+              value={props.height}
+              placeholder="height"
+              name="height"
               />
 
 

@@ -14,7 +14,7 @@ export const smurfFetcher = ( ) => {
     dispatch({ type: FETCHING });
 
     axios
-      .get("http://localhost:5000/api/friends")
+      .get("http://localhost:3333/smurfs")
       .then(data => {
         dispatch({ type: FETCHED, payload: data.data });
       })
@@ -34,7 +34,7 @@ export const smurfUpdater = (props) => {
         height: props.height,
     }
     axios
-      .post("http://localhost:5000/api/friends", newSmurf)
+      .post("http://localhost:3333/smurfs", newSmurf)
       .then(data => {
         dispatch({ type: UPDATED, payload: data.data });
     });
@@ -47,7 +47,7 @@ export const smurfDeleter = (id) => {
         dispatch({ type: DELETING });
 
     axios
-      .delete(`http://localhost:5000/api/friends/${id}`)
+      .delete(`http://localhost:3333/smurfs/${id}`)
       .then(data => {
         dispatch({ type: DELETED, payload: data.data });
     });
@@ -59,7 +59,7 @@ export const smurfEditer = (id, editedSmurf) => {
         dispatch({ type: EDITING });
 
     axios
-      .put(`http://localhost:5000/api/friends/${id}`, editedSmurf)
+      .put(`http://localhost:3333/smurfs/${id}`, editedSmurf)
       .then(data => {
         dispatch({ type: EDITED, payload: data.data });
     });
