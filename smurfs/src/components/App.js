@@ -53,7 +53,7 @@ handleSubmit = data => this.setState({smurfs: data});
 
         <div>
           <Smurfs 
-          smurfs = {this.state.smurfs}
+          smurfs = {this.props.smurfs}
           />
 
           <SmurfForm 
