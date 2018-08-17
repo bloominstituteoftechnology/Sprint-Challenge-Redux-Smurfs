@@ -47,7 +47,7 @@ smurfEditer = (e) => {
         height: this.state.height
     }
 
-    this.props.smurfEditer(this.state.id, editedSmurf)
+    this.props.smurfEditer((this.state.id - 1), editedSmurf)
 }
 
     render(){
