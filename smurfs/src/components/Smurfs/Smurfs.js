@@ -1,23 +1,7 @@
 import React, { Component } from 'react';
 import Smurf from './Smurf';
 
-import { connect } from 'react-redux';
-import { fetching_data } from '../../actions/index';
-
 class Smurfs extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      name: '',
-      age: '',
-      height: '',
-    }
-  }
-
-  componentDidMount() {
-    this.props.fetching_data();
-  }
-
   render() {
     return (
       <div className="smurfs-list">
@@ -39,11 +23,4 @@ class Smurfs extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-      fetchingSmurfs: state.smurfsReducer.fetchingSmurfs,
-      smurfs: state.smurfsReducer.smurfs,
-  }
-}
-
-export default connect(mapStateToProps, { fetching_data })(Smurfs);
+export default Smurfs;

@@ -1,4 +1,4 @@
-import { FETCHING, FETCHED, ERROR, ADDSMURF, SAVED_DATA } from '../actions';
+import { FETCHING, FETCHED, ERROR, SAVING_DATA, SAVED_DATA } from '../actions';
 
 const initialState = {
   smurfs: [],
