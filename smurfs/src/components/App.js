@@ -39,12 +39,14 @@ class App extends Component {
     });
   }
 
+  deleteSmurfHandler
+
   render() {
     return (
       <div className="App">
         <h1>Smurf Village 2.0 W/ Redux</h1>
         {this.props.fetchingSmurfs ? (<span className='fetching' >materializing smurfs...</span>) : (
-          <SmurfVillage smurfs={this.props.smurfs} />
+          <SmurfVillage smurfs={this.props.smurfs} deleteSmurfHandler={this.deleteSmurfHandler} />
         )}
         <SmurfForm inputChangeHandler={this.inputChangeHandler} inputName={this.state.name} inputAge={this.state.age} inputHeight={this.state.height} addSmurfHandler={this.addSmurfHandler} />
       </div>

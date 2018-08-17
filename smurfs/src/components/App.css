@@ -35,5 +35,6 @@
   border: 1px solid salmon;
   background: lightblue;
   border-radius: 22px;
+  margin: 22px 0;
   /* width: 50%; */
 }
