@@ -4,7 +4,7 @@ import Smurf from './Smurf';
 class Smurfs extends Component {
   render() {
     return (
-      <div className="smurfs-list">
+      <div className="smurfs-container">
         <ul>
           {this.props.smurfs.map(smurf => {
             return (

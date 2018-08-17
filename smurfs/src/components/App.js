@@ -7,8 +7,39 @@ import { connect } from 'react-redux';
 import { fetching_data } from '../actions';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name: '',
+      age:'',
+      height: '',
+    }
+  }
+
   componentDidMount() {
     this.props.fetching_data();
+  }
+
+  changeInputHandler = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  submitDataHandler = (event) => {
+    const newSmurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height,
+    }
+
+    this.prop.addSmurf(newSmurf);
+
+    this.setState({
+      name: '',
+      age: '',
+      height: '',
+    })
   }
 
   render() {
@@ -16,7 +47,7 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
-        <SmurfsForm />
+        <SmurfsForm change={this.changeInputHandler} submit={this.submitDataHandler}/>
         <Smurfs smurfs={this.props.smurfs}/>
       </div>
     );
