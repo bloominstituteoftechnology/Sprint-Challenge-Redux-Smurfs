@@ -1,4 +1,4 @@
-import { FETCHING, FETCHED, ERROR } from '../actions/index';
+import { FETCHING, FETCHED, ERROR } from '../actions';
 
 const initialState = {
   smurfs: [],
@@ -34,4 +34,4 @@ export const smurfsReducer = (state = initialState, action) => {
     default:
     return state;
   }
-};
+};  
