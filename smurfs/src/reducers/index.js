@@ -1,4 +1,4 @@
-import { GET, POST, PUT, DELETE, SUCCESS, FAILURE } from '../actions';
+import { GET, SUCCESS, FAILURE } from '../actions';
 
 const initialState = {
   smurfs: [],
