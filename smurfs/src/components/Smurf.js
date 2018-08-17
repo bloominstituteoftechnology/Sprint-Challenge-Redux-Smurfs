@@ -14,18 +14,35 @@ const SmurfView = styled.div`
     border: 1px solid #62cdfd;
 
 `
+
+const Form = styled.form`
+    margin: 10px 0;
+
+    > input {
+        margin: 5px 5px;
+    }
+    > button {
+        border: 1px solid #62cdfd;
+        background-color: #62cdfd;
+        border-radius: 5px;
+    }
+
+`
+
 const UpdateButton = styled.button`
     background: #62cdfd;
     margin: 5px;
     color: white;
     cursor: pointer;
     border: none;
+    border-radius: 5px;
 `
 const DeleteButton = styled.button`
     background: red;
     margin: 5px;
     cursor: pointer;
     border: none;
+    border-radius: 5px;
 `
 
 
@@ -70,7 +87,7 @@ class Smurf extends Component {
         return ( 
             <div>
                 {update ? (
-                    <form>
+                    <Form>
                         <input
                         name='name'
                         placeholder={name}
@@ -90,7 +107,7 @@ class Smurf extends Component {
                         onChange={(event) => this.change(event)}
                         />
                         <button onClick={() => this.update({name, age, height})}>Save changes</button>
-                    </form>
+                    </Form>
                 ) : (
                     <SmurfView>
                         <h1>{name}</h1>
