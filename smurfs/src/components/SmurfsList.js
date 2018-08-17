@@ -6,8 +6,10 @@ class SmurfsList extends React.Component{
         return(
             <ul>
                 {this.props.smurfs.map((smurf,i) => {
-                    <Smurf  key={i}
-                            smurf={smurf} />
+                    return(
+                        <Smurf  key={i}
+                                smurf={smurf} />
+                    )
                 })}
             </ul>
         )

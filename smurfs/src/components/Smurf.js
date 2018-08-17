@@ -8,4 +8,4 @@ export default function Smurf(props){
             <p>Height: {props.smurf.height}</p>
         </div>
     )
-}
+};

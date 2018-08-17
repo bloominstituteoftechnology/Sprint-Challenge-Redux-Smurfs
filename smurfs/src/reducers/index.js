@@ -26,7 +26,7 @@ export const rootReducer = (state = initialState, action) => {
         return Object.assign({}, state, {
           gettingSmurfs: false,
           gotSmurfs: true,
-          smurfs: [...state.smurfs, action.payload]
+          smurfs: action.payload
         })
       case ERRORS:
         return Object.assign({}, state, {
