@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function SmurfVillage(props) {
     return (
-        <div>
+        <div  >
             {props.smurfs.map((smurf, i) => (
-                <div key={i}>
+                <div className='smurf' key={i}>
                     <div>{smurf.name}</div>
                     <div> {smurf.age} </div>
                     <div> {smurf.height} </div>
