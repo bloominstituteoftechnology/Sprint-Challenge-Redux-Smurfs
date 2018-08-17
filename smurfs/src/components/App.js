@@ -5,9 +5,10 @@ import SmurfForm from './SmurfForm';
 import {getSmurfs} from '../actions';
 import {connect} from 'react-redux';
 
+
 class App extends Component {
   componentDidMount() {
-    this.this.props.getSmurfs();
+    this.props.getSmurfs();
   }
   render() {
     return (

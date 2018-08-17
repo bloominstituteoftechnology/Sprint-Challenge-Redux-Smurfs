@@ -1,4 +1,4 @@
-import{GET_SMURFS,GETTING_SMURFS,ADD_SMURF,ADDING_SMURF,ERROR} from '../actions';
+import{GET_SMURFS,GETTING_SMURFS,ADDING_SMURF,ADD_SMURF,ERROR} from '../actions';
 
 
 const initialState = {
@@ -9,13 +9,13 @@ const initialState = {
 }
 
 export const smurfsReducer = (state = initialState, action) => {
-  switch(action.type){
+  switch(action.type) {
     case GETTING_SMURFS:
     return {...state, gettingSmurfs: true};
     case GET_SMURFS:
     return{...state, smurfs: action.payload, gettingSmurfs: false};
     case ADDING_SMURF:
-    return {...state, addingSmurf: true};
+    return {...state,addingSmurf: true};
     case ADD_SMURF:
     return {...state, smurfs: action.payload, addingSmurf: false};
     case ERROR:
