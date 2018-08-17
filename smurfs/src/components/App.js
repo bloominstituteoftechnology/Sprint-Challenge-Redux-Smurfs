@@ -21,7 +21,6 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
         <SmurfList  smurfs={this.props.smurfs}/>
-        {console.log(this.props.smurfs)}
       </div>
     );
   }

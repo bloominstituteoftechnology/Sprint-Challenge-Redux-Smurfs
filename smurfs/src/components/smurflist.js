@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SmurfList = () => {
+const SmurfList = (props) => {
     return (  
         <div className="smurf-container">
             {this.props.smurfs.map(smurf => {

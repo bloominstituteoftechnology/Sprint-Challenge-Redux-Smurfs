@@ -12,8 +12,19 @@ export const ERROR = 'ERROR';
 
 const URL = 'http://localhost:3333/smurfs';
 
+export const getSmurfs = () => {
+  const smurfs = axios.get(`${URL}`);
+  return (dispatch) => {
+    dispatch({type: GETTING_SMURFS})
+    smurfs
+      .then(response => {
+        dispatch({ type: GET_SMURFS, payload: response.data});
+      });
+  };
+};
+
 export const addSmurf = () => {
-  const newSmurf = axios.post(`${URL}/create`)
+  const newSmurf = axios.post(`${URL}`)
   return (dispatch) => {
     dispatch({type: CREATING_SMURF})
     newSmurf
@@ -23,16 +34,6 @@ export const addSmurf = () => {
   };
 };
 
-export const getSmurfs = () => {
-  const smurfs = axios.get(`${URL}/get`);
-  return (dispatch) => {
-    dispatch({type: GETTING_SMURFS})
-    smurfs
-      .then(response => {
-        dispatch({ type: GET_SMURFS, payload: response.data});
-      });
-  };
-};
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
