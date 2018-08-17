@@ -17,13 +17,29 @@ class App extends Component {
       height: ''
     };
   }
-  
+
   componentDidMount() {
     // call our action
     this.props.getSmurfs();
     console.log(this.props.smurfs);
   }
 
+  handleInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  addSmurf = event => {
+    event.preventDefault();
+    
+    this.props.addSmurf(this.state);
+
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    });
+  }
+  
   render() {
     return (
       <div className="App">
