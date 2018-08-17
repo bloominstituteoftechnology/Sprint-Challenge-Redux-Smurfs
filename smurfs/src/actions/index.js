@@ -42,3 +42,20 @@ export const getSmurfs = () => {
   };
 };
 
+export const addSmurf = smurf => {
+  const smurfPull = axios.post(url, smurf);
+  return dispatch => {
+    dispatch({type: ADDING_SMURF})
+      smurfPull
+        .then(results => {
+          dispatch({ type: SMURF_ADDED, payload: results.data});
+        })
+        .catch(err => {
+          dispatch({type: ERROR, payload: err});
+        })
+  };
+};
+
+
+
+

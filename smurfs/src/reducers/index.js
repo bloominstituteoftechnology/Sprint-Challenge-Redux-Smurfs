@@ -45,9 +45,9 @@ const smurfReducer = (state = initialState, action)=> {
     case SMURFS_FETCHED:
       return Object.assign({}, state, { smurfs: action.payload, fetchingSmurfs: false})
     case ADDING_SMURF:
-      return Object.assign({}, state, {});
+      return Object.assign({}, state, {addingSmurf: true});
     case SMURF_ADDED:
-      return Object.assign({}, state, {});
+      return Object.assign({}, state, {smurfs: action.payload, addingSmurf: false, smurfAdded: true});
     case UPDATING_SMURF:
       return Object.assign({}, state, {});
     case SMURF_UPDATED:

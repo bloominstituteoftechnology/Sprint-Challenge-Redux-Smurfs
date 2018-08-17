@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import addSmurf from '../actions';
+import { connect } from 'react-redux';
+import { addSmurf }  from '../actions';
+
+
 
 const url = 'http://localhost:3333/smurfs'
 
@@ -89,4 +91,10 @@ class SmurfForm extends Component {
   }
 }
 
-export default SmurfForm;
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs
+  }
+}
+
+export default connect(mapStateToProps, {addSmurf})(SmurfForm);
