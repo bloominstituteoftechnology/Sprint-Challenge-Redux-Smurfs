@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {getSmurfs} from '../actions';
 
 
+
 const Smurfs = props => {
     return(
         <div>
