@@ -36,8 +36,7 @@ export const addSmurf = (smurf) => {
   return dispatch => {
     dispatch({ type: ADDING_SMURFS });
     promise.then((res) => {
-      console.log('res ', res);
-      dispatch({ type: SMURF_ADDED, payload: res });
+      dispatch({ type: SMURF_ADDED, payload: res.data });
     })
     .catch((err) => {
       dispatch({ type: ERROR, payload: err });

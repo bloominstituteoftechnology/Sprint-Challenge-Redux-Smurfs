@@ -22,7 +22,6 @@ export const smurfsReducer = (state = initialState, action) => {
     case ERROR:
       return {...state, error: action.payload};
     default:
-      console.log('defaulted! ', state);
       return state;
   }
 }

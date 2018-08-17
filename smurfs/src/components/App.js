@@ -44,7 +44,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('props ', this.props);
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
