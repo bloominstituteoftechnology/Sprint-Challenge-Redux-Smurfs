@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SmurfForm = props => {
-  const { name, age, height } = props.current;
+  const { name, age, height } = props.values;
   return (
     <div className="smurf-form">
       <form onSubmit={props.addSmurf}>

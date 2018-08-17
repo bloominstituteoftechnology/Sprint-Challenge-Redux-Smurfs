@@ -8,46 +8,36 @@ export const GET = 'GET',
   FAILURE = 'FAILURE';
 const URL = 'http://localhost:3333/smurfs';
 
-export const getSmurfs = () => dispatch => {
-  dispatch({ type: GET });
-  axios.get(URL)
+const handleData = (promise, dispatch) => {
+  promise
     .then(({ data }) => {
       dispatch({ type: SUCCESS, payload: data });
     })
     .catch(err => {
       dispatch({ type: FAILURE, payload: err });
     });
+};
+
+export const getSmurfs = () => dispatch => {
+  const promise = axios.get(URL);
+  dispatch({ type: GET });
+  handleData(promise, dispatch);
 };
 
 export const addSmurf = smurf => dispatch => {
+  const promise = axios.post(URL, smurf);
   dispatch({ type: POST });
-  axios.post(URL, smurf)
-    .then(({ data }) => {
-      dispatch({ type: SUCCESS, payload: data });
-    })
-    .catch(err => {
-      dispatch({ type: FAILURE, payload: err });
-    });
+  handleData(promise, dispatch);
 };
 
 export const deleteSmurf = id => dispatch => {
+  const promise = axios.delete(`${URL}/${id}`);
   dispatch({ type: DELETE });
-  axios.delete(`${URL}/${id}`)
-    .then(({ data }) => {
-      dispatch({ type: SUCCESS, payload: data });
-    })
-    .catch(err => {
-      dispatch({ type: FAILURE, payload: err });
-    });
+  handleData(promise, dispatch);
 };
 
 export const updateSmurf = (id, smurf) => dispatch => {
+  const promise = axios.put(`${URL}/${id}`, smurf);
   dispatch({ type: PUT });
-  axios.put(`${URL}/${id}`, smurf)
-    .then(({data})=> {
-      dispatch({ type: SUCCESS, payload: data });
-    })
-    .catch(err => {
-      dispatch({ type: FAILURE, payload: err });
-    });
+  handleData(promise, dispatch);
 };
