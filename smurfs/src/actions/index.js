@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const FETCHED_SMURFS = 'FETCHED_SMURFS'; 
-export const ADDED_SMURF = 'ADDED_SMURF';
 export const POSTING_SMURF = 'POSTING_SMURF';
 export const POSTED_SMURF = 'POSTED_SMURF';
 export const UPDATING_SMURF = 'UPDATING_SMURF';
