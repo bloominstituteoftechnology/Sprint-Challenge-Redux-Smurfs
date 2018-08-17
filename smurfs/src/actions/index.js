@@ -36,3 +36,18 @@ export const getSmurf = () => {
     })
   }
 }
+
+export const createSmurf = (smurf) => {
+  const promise = axios.get('http://localhost:3333/smurfs', smurf)
+
+  return dispatch => {
+    dispatch({type: CREATING_SMURF});
+    promise.then((response) => {
+      console.log(response)
+      dispatch({type: CREATED_SMURF, payload: response.data})
+    })
+    .catch(err => {
+      dispatch({type: ERROR, payload: err})
+    })
+  }
+}
