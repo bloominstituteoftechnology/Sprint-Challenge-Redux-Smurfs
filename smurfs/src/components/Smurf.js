@@ -11,7 +11,7 @@ const Smurf = props => {
       </div>
       <div>
         <button>Update</button>
-        <button>Delete</button>
+        <button onClick={props.delete}>Delete</button>
       </div>
     </div>
   );

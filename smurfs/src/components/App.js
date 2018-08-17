@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs, addSmurf } from '../actions';
+import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
 import Smurf from './Smurf';
 import SmurfForm from './SmurfForm';
 
@@ -33,6 +33,7 @@ class App extends Component {
             <Smurf
               smurf={smurf}
               key={smurf.id}
+              delete={() => this.props.deleteSmurf(smurf.id)}
             />
           );
         })}
@@ -45,4 +46,4 @@ const mapStateToProps = ({ smurfs, isFetching, err }) => {
   return { smurfs, isFetching, err };
 };
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf })(App);

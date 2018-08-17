@@ -29,3 +29,14 @@ export const addSmurf = smurf => dispatch => {
       dispatch({ type: FAILURE, payload: err });
     });
 };
+
+export const deleteSmurf = id => dispatch => {
+  dispatch({ type: DELETE });
+  axios.delete(`${URL}/${id}`)
+    .then(({ data }) => {
+      dispatch({ type: SUCCESS, payload: data });
+    })
+    .catch(err => {
+      dispatch({ type: FAILURE, payload: err });
+    });
+};
