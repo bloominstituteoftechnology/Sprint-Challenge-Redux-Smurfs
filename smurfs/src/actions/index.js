@@ -11,8 +11,8 @@ export const DELETING_SMURF = 'DELETING_SMURF';
 export const DELETED_SMURF = 'DELETED_SMURF';
 export const SELECT_SMURF = 'SELECT_SMURF';
 
-export const fetchSmurf = () => {
-  const request = axios.get(`http://localhost:5000/api/smurfs`)
+export const fetchSmurfs = () => {
+  const request = axios.get(`http://localhost:3333/smurfs`)
   return (dispatch) => {
       request.then(({data})=> {
           dispatch({type: FETCH_SMURFS, payload: data})
@@ -27,7 +27,7 @@ export const fetchSmurf = () => {
 };
 
 export const addSmurf = smurf => {
-  const request = axios.post(`http://localhost:5000/api/smurfs`, smurf)
+  const request = axios.post(`http://localhost:3333/smurfs`, smurf)
   return (dispatch) => {
       request.then(({data})=> {
           dispatch({type: SAVE_SMURFS, payload: data})
@@ -47,7 +47,7 @@ export const selectSmurf = id => ({
 })
 
 export const updateSmurf = (id, smurf) => {
-  const request = axios.put(`http://localhost:5000/api/smurfs/${id}`, smurf)
+  const request = axios.put(`http://localhost:3333/smurfs/${id}`, smurf)
   return (dispatch) => {
       request.then(({data})=> {
           dispatch({type: UPDATING_SMURF, payload: data})
@@ -62,7 +62,7 @@ export const updateSmurf = (id, smurf) => {
 };
 
 export const deleteSmurf = id => {    
-  const request = axios.delete(`http://localhost:5000/api/smurfs/${id}`)
+  const request = axios.delete(`http://localhost:3333/smurfs/${id}`)
   return (dispatch) => {
       request.then(({data})=> {
           dispatch({type: DELETING_SMURF, payload: data})
