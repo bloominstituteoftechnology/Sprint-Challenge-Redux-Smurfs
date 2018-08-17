@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchSmurfsRequest, addSmurfRequest } from '../actions';
+import {
+  fetchSmurfsRequest,
+  addSmurfRequest,
+  deleteSmurfRequest,
+} from '../actions';
 import Form from '../components/Form';
 
 class SmurfList extends Component {
@@ -9,8 +13,27 @@ class SmurfList extends Component {
     this.props.fetchSmurfsRequest();
   }
 
-  render() {
-    const { smurfs, addSmurfRequest } = this.props;
+  conditionallyRender() {
+    const {
+      smurfs,
+      addSmurfRequest,
+      deleteSmurfRequest,
+      isFetching,
+      isAdding,
+      isDeleting,
+    } = this.props;
+    if (isFetching) {
+      return <div>Calling all the smurfs from village...</div>;
+    }
+
+    if (isAdding) {
+      return <div>Genetically engineering a new smurf...</div>;
+    }
+
+    if (isDeleting) {
+      return <div>Vaporizing a smurf... stand back this is not a drill...</div>;
+    }
+
     const fields = [
       {
         name: 'name',
@@ -28,30 +51,39 @@ class SmurfList extends Component {
         placeholder: 'Enter height in cm',
       },
     ];
+
     return (
-      <div>
+      <React.Fragment>
         <Form fields={fields} onSubmit={addSmurfRequest} />
         {smurfs.map(smurf => (
-          <div key={smurf.name}>
+          <div key={smurf.id}>
             <h3>{smurf.name}</h3>
             <p>{smurf.height} tall</p>
             <p>{smurf.age} smurf years old</p>
+            <button onClick={() => deleteSmurfRequest(smurf.id)}>
+              Delete Smurf
+            </button>
           </div>
         ))}
-      </div>
+      </React.Fragment>
     );
+  }
+
+  render() {
+    return <div>{this.conditionallyRender()}</div>;
   }
 }
 
-function mapStateToProps({ smurfs, isFetching, isAdding }) {
+function mapStateToProps({ smurfs, isFetching, isAdding, isDeleting }) {
   return {
     smurfs,
     isFetching,
     isAdding,
+    isDeleting,
   };
 }
 
 export default connect(
   mapStateToProps,
-  { fetchSmurfsRequest, addSmurfRequest },
+  { fetchSmurfsRequest, addSmurfRequest, deleteSmurfRequest },
 )(SmurfList);

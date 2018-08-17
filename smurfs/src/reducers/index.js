@@ -11,6 +11,9 @@ import {
   addSmurfRequest,
   addSmurfSuccess,
   addSmurfFailure,
+  deleteSmurfRequest,
+  deleteSmurfSuccess,
+  deleteSmurfFailure,
 } from '../actions';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -26,16 +29,20 @@ import {
 
 const smurfs = handleActions(
   {
-    [combineActions(fetchSmurfsSuccess, addSmurfSuccess)]: (_, { payload }) =>
-      payload,
+    [combineActions(fetchSmurfsSuccess, addSmurfSuccess, deleteSmurfSuccess)]: (
+      _,
+      { payload },
+    ) => payload,
   },
   [],
 );
 
 const error = handleActions(
   {
-    [combineActions(fetchSmurfsFailure, addSmurfFailure)]: (_, { payload }) =>
-      payload,
+    [combineActions(fetchSmurfsFailure, addSmurfFailure, deleteSmurfFailure)]: (
+      _,
+      { payload },
+    ) => payload,
   },
   null,
 );
@@ -56,6 +63,14 @@ const isAdding = handleActions(
   false,
 );
 
+const isDeleting = handleActions(
+  {
+    [deleteSmurfRequest]: () => true,
+    [combineActions(deleteSmurfSuccess, deleteSmurfFailure)]: () => false,
+  },
+  false,
+);
+
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer.
@@ -69,4 +84,5 @@ export default combineReducers({
   error,
   isFetching,
   isAdding,
+  isDeleting,
 });

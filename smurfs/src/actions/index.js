@@ -23,6 +23,9 @@ export const {
   addSmurfRequest,
   addSmurfSuccess,
   addSmurfFailure,
+  deleteSmurfRequest,
+  deleteSmurfSuccess,
+  deleteSmurfFailure,
 } = createActions(
   'FETCH_SMURFS_REQUEST',
   'FETCH_SMURFS_SUCCESS',
@@ -30,4 +33,7 @@ export const {
   'ADD_SMURF_REQUEST',
   'ADD_SMURF_SUCCESS',
   'ADD_SMURF_FAILURE',
+  'DELETE_SMURF_REQUEST',
+  'DELETE_SMURF_SUCCESS',
+  'DELETE_SMURF_FAILURE',
 );

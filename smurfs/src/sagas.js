@@ -7,6 +7,9 @@ import {
   addSmurfSuccess,
   addSmurfFailure,
   addSmurfRequest,
+  deleteSmurfRequest,
+  deleteSmurfSuccess,
+  deleteSmurfFailure,
 } from './actions';
 
 function* fetchSmurfs() {
@@ -27,9 +30,19 @@ function* addSmurf(action) {
   }
 }
 
+function* deleteSmurf(action) {
+  try {
+    const response = yield call(axios.delete, '/smurfs/' + action.payload);
+    yield put(deleteSmurfSuccess(response.data));
+  } catch (err) {
+    yield put(deleteSmurfFailure(err));
+  }
+}
+
 function* rootSaga() {
   yield takeLatest(fetchSmurfsRequest.toString(), fetchSmurfs);
   yield takeEvery(addSmurfRequest.toString(), addSmurf);
+  yield takeEvery(deleteSmurfRequest.toString(), deleteSmurf);
 }
 
 export default rootSaga;
