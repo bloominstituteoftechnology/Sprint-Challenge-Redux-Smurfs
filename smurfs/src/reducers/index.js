@@ -1,6 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
+import{ GET_SMURFS, GET_SUCCESS, GET_FAILURE } from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -11,12 +12,27 @@
    updatingSmurf: false,
    deletingSmurf: false,
    smurfs: [],
-   error: null
+   errors: []
  }
 
  export default (state = initialState, action) => {
    switch(action.type) {
-    //  Cases
+     case GET_SMURFS:
+        return Object.assign({}, state, {
+          fetchingSmurfs:true
+        });
+      case GET_SUCCESS:
+        return Object.assign({}, state, {
+          fetchingSmurfs:false,
+          smurfs: action.payload
+        });
+      case GET_FAILURE:
+        return Object.assign({}, state, {
+          fetchingSmurfs:false,
+          errors: [...state.errors, action.error]
+        })
+      default:
+        return state;      
    }
  }
 
