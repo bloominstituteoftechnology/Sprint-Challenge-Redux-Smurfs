@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getSmurfs } from '../actions';
+import * as actions from '../actions';
 import { connect } from 'react-redux';
 import Smurfs from './Smurfs';
+import SmurfForm from './SmurfForm';
 
 /*
  to wire this component up you're going to need a few things.
@@ -11,18 +12,44 @@ import Smurfs from './Smurfs';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      newName: '',
+      newAge: '',
+      newHeight: ''
+    }
+  }
+
   componentDidMount(){
     this.props.getSmurfs();
+  }
+
+  handleChange = event => {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    let newSmurf = {
+      name: this.state.newName,
+      age: this.state.newAge,
+      height: this.state.newHeight
+    }
+    this.props.addSmurf(newSmurf);
+    this.setState({
+      newName: '',
+      newAge: '',
+      newHeight: ''
+    })
   }
 
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
         <Smurfs smurfs={this.props.smurfs} />
+        <SmurfForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} newName={this.state.newName} newAge={this.state.newAge} newHeight={this.state.newHeight} />
       </div>
     );
   }
@@ -40,4 +67,4 @@ const mapStateToProps = state => {
 }
  
 
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, actions)(App);

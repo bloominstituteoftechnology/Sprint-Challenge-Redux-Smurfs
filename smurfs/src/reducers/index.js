@@ -35,10 +35,22 @@ export const smurfReducer = (state = initialState, action) => {
         fetchingSmurfs: false,
         smurfs: action.payload
       }
+    case actionTypes.ADDING_SMURFS:
+      return {
+        ...state,
+        addingSmurfs: true
+      }
+    case actionTypes.ADDED_SMURFS:
+      return {
+        ...state,
+        addingSmurfs: false,
+        smurfs: action.payload
+      }
     case actionTypes.ERROR:
       return {
         ...state,
         fetchingSmurfs: false,
+        addingSmurf: false,
         error: action.payload
       }
     default:
