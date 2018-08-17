@@ -49,32 +49,46 @@ class SmurfForm extends Component {
     }
 
     render() {
-      return (
-        <div className="SmurfForm">
-          <form>
-            <input
-              onChange={this.handleInputChange}
-              placeholder="name"
-              value={this.state.name}
-              name="name"
-            />
-            <input
-              onChange={this.handleInputChange}
-              placeholder="age"
-              value={this.state.age}
-              name="age"
-            />
-            <input
-              onChange={this.handleInputChange}
-              placeholder="height"
-              value={this.state.height}
-              name="height"
-            />
-            <button onClick = {this.handleAdd}>Add to the village</button>
-            <button onClick = {this.handleUpdate}>Mutate selected smurf</button>
-            <button onClick = {this.handleDelete}>Kidnap selected smurf</button>
-          </form>
-        </div>
+      return (        
+          <form className="SmurfForm"> 
+            <h2 className="form-title">Edit or add a smurf!</h2>
+            <h2 className="form-sub-title">Please don't kidnap!</h2>
+                <div className="inputs"> 
+                    <div className= "input">
+                        <span>Name:</span>
+                        <input
+                            onChange={this.handleInputChange}
+                            placeholder="Name"
+                            value={this.state.name}
+                            name="name"
+                        />
+                    </div>
+                    <div className= "input">
+                        <span>Age:</span>
+                        <input
+                            onChange={this.handleInputChange}
+                            placeholder="Age"
+                            value={this.state.age}
+                            name="age"
+                        />
+                    </div> 
+                    <div className= "input">
+                        <span>Height:</span>
+                        <input
+                            onChange={this.handleInputChange}
+                            placeholder="Height"
+                            value={this.state.height}
+                            name="height"
+                        />
+                    </div>   
+                </div>             
+            
+                <div className="buttons">
+                    <button onClick = {this.handleAdd}>Add to the village</button>
+                    <button onClick = {this.handleUpdate}>Mutate selected smurf</button>
+                    <button onClick = {this.handleDelete}>Kidnap selected smurf</button>
+                </div>             
+          </form>        
       );
     }
   }
