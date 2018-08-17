@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import {connect} from 'react-redux';
 import {getSmurfs} from '../actions/index';
 import SmurfList from '../components/SmurfList';
@@ -10,6 +9,9 @@ import styled from 'styled-components';
 
 const AppBody = styled.div`
   text-align: center;
+  margin: 0 auto;
+  max-width: 1024px;
+  width: 100%;
 `
 
 class App extends Component {

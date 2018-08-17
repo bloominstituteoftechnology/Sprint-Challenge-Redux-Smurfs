@@ -17,6 +17,7 @@ const FormWrap = styled.div`
         align-items: center;
         > input {
             margin: 5px 5px;
+            padding-left: 5px;
         }
     }
 `

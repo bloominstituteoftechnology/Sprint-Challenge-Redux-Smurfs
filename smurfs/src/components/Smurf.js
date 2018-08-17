@@ -1,6 +1,33 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getSmurfs, updateSmurf, deleteSmurf} from '../actions/index';
+import styled from 'styled-components';
+
+
+const SmurfView = styled.div`
+    background: rgba(255, 255, 255, 0.8);
+    max-width: 500px;
+    margin: 10px auto;
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px 0;
+    border: 1px solid #62cdfd;
+
+`
+const UpdateButton = styled.button`
+    background: #62cdfd;
+    margin: 5px;
+    color: white;
+    cursor: pointer;
+    border: none;
+`
+const DeleteButton = styled.button`
+    background: red;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+`
+
 
 class Smurf extends Component {
     constructor(props) {
@@ -62,19 +89,23 @@ class Smurf extends Component {
                         value={height}
                         onChange={(event) => this.change(event)}
                         />
-                        <button onClick={() => this.update({name, age, height})}>Update</button>
+                        <button onClick={() => this.update({name, age, height})}>Save changes</button>
                     </form>
                 ) : (
-                    <div>
+                    <SmurfView>
                         <h1>{name}</h1>
-                        <p>{age}</p>
-                        <p>{height}</p>
-                        <button 
+                        <p>{age} Smurf years old</p>
+                        <p>{height} height</p>
+                        <UpdateButton 
                         onClick={() => this.setState({update: true})}>
                             Update
-                        </button>
-                        <button onClick={() => this.delete(id)}>Delete</button>
-                    </div>
+                        </UpdateButton>
+
+                        <DeleteButton
+                        onClick={() => this.delete(id)}>
+                            Delete
+                        </DeleteButton>
+                    </SmurfView>
                 )}
             </div>
          );
