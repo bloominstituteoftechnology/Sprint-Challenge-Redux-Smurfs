@@ -1,4 +1,7 @@
+import axios from 'axios';
+
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 
 /* 
   Action Types Go Here!
