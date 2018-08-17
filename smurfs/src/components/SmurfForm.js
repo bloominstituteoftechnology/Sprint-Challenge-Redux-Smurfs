@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import axios from "axios";
 import { connect } from 'react-redux';
-import {createSmurf} from '../actions';
+import { createSmurf } from '../actions';
 
 class SmurfForm extends Component {
     state = {
@@ -15,16 +14,16 @@ class SmurfForm extends Component {
     };
 
     handleAddSmurf = () => {
-        const {name, age, height} = this.state;
-        this.props.createSmurf({name, age, height});
-        this.setState({name:'', age: '', height: ''})
+        const { name, age, height } = this.state;
+        this.props.createSmurf({ name, age, height });
+        this.setState({ name: '', age: '', height: '' })
     }
 
 
     render() {
         return (
             <div className="SmurfForm">
-                <form onSubmit={this.handleAddSmurf}>
+                <form onSubmit={event => event.preventDefault()}>
                     <input
                         onChange={this.handleInputChange}
                         placeholder="name"
@@ -43,7 +42,7 @@ class SmurfForm extends Component {
                         value={this.state.height}
                         name="height"
                     />
-                    <button type="submit">Add to the village</button>
+                    <button onClick={() => this.handleAddSmurf()}>Add to the village</button>
                 </form>
             </div>
         );
@@ -57,8 +56,9 @@ class SmurfForm extends Component {
 const mapStateToProps = state => {
     return {
         error: state.error,
-        
+        addingSmurf: state.addingSmurf
+
     }
 }
 
-export default connect(mapStateToProps, {})(SmurfForm);
+export default connect(mapStateToProps, { createSmurf })(SmurfForm);

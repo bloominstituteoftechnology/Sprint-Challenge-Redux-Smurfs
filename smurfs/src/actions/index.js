@@ -28,30 +28,28 @@ export const fetchSmurfs = () => {
     axios
       .get('http://localhost:3333/smurfs')
       .then(response => {
-        dispatch({type:FETCHED, payload: response.data})
+        dispatch({ type: FETCHED, payload: response.data })
       })
       .catch(err => {
         console.log(err);
-        dispatch({type: ERROR, payload: err })
+        dispatch({ type: ERROR, payload: err })
       })
   }
 }
 
+//why ({data}) instead of response.data below ?
 
-// addSmurf = event => {
-//   event.preventDefault();
-
-//   const { name, age, height } = this.state;
-//   const newSmurf = { name, age, height };
-//   axios.post(`http://localhost:3333/smurfs`, newSmurf)
-//     .then(response => {
-//       this.props.setSmurfData(response.data);
-//     })
-//     .catch(error => this.props.setErrorHandler('Error Creating Smurf!'));
-
-//   this.setState({
-//     name: '',
-//     age: '',
-//     height: '',
-//   });
-// }
+export const createSmurf = smurf => {
+  return dispatch => {
+    dispatch({ type: ADDING });
+    axios
+      .post('http://localhost:3333/smurfs', smurf)
+      .then(({ data }) => {
+        dispatch({ type: ADDED, payload: data })
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch({ type: ERROR, payload: err })
+      })
+  }
+}
