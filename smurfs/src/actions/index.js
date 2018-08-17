@@ -12,7 +12,6 @@ export const DELETING_SMURF = 'DELETING_SMURF';
 export const DELETED_SMURF = 'DELETED_SMURF';
 export const ERROR = 'ERROR';
 
-
 const URL = `http://localhost:3333/smurfs`;
 
 export const getSmurfs = () => {
@@ -31,6 +30,8 @@ export const getSmurfs = () => {
 }
 
 export const addSmurf = (smurf) => {
+  console.log(smurf);
+  
   let nuGuy = { name: smurf.name, age: smurf.age, height: smurf.height };
   const promise = axios.post(URL + `/${nuGuy}`);
   return (dispatch) => {

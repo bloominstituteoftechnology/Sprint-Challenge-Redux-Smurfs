@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {} from 'redux';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions/index';
 import SmurfList from '../components/SmurfList';
@@ -26,14 +25,15 @@ class App extends Component {
         this.props.getSmurfs();
     }
 
-    handleAddSmurf = () => {
-
+    handleAddSmurf = (data) => {
+        console.log(data);
+        this.props.addSmurf(data);
     }
 
     render(){
         return (
             <AppContainer>
-            <AddSmurf />
+                <AddSmurf handleAddSmurf={this.handleAddSmurf}/>
                 <SmurfList smurfs={this.props.smurfs} />
             </AppContainer>
         )
