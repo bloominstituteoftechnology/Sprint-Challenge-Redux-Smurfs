@@ -5,12 +5,16 @@ import {
 	ADDING_SMURF,
 	ADD_SMURF_SUCCESS,
 	ADD_SMURF_FAILURE,
+	MURDERING_SMURF,
+	MURDER_SMURF_SUCCESS,
+	MURDER_SMURF_FAILURE,
 } from "../actions";
 
 const initialState = {
 	data: [],
 	gettingSmurfs: false,
 	addingSmurf: false,
+	murderingSmurf: false,
 	error: "",
 };
 
@@ -35,7 +39,13 @@ export const reducer = (state = initialState, action) => {
 				addingSmurfs: false,
 			});
 		case ADD_SMURF_FAILURE:
-			return Object.assign({}, state, { ADDING_SMURF: false });
+			return Object.assign({}, state, { addingSmurf: false });
+		case MURDERING_SMURF:
+			return Object.assign({}, state, { murderingSmurf: true });
+		case MURDER_SMURF_SUCCESS:
+			return Object.assign({}, state, { murderingSmurf: false });
+		case MURDER_SMURF_FAILURE:
+			return Object.assign({}, state, { murderingSmurf: false });
 		default:
 			return state;
 	}
