@@ -4,15 +4,22 @@
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
- {
+ */
+ const initialState = {
+   fetchingSmurfs: false,
+   addingSmurf: false,
+   updatingSmurf: false,
+   deletingSmurf: false,
    smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
    error: null
  }
-*/
+
+ export default (state = initialState, action) => {
+   switch(action.type) {
+    //  Cases
+   }
+ }
+
 
 /*
   You'll only need one smurf reducer for this project.
