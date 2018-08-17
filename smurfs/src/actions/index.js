@@ -22,13 +22,13 @@ export const ERROR = 'ERROR';
 export const fetching_data = () => {
     const endpoint = axios.get('http://localhost:3333/smurfs');
     return (dispatch) => {
-        dispatch({ type: FETCHING});
+        dispatch({ type: FETCHING})
 
         endpoint.then((response) => {
             dispatch({ type: FETCHED, payload: response.data })
-        })
+        })  
         .catch(err => {
             dispatch({ type: ERROR, payload: err })
-        });
+        })
     }
-}
+};

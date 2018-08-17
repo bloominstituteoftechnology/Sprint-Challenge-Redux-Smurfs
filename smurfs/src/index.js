@@ -7,13 +7,13 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import ***** from './reducers/index';
+import combineReducers from './reducers/index';
 
-const store = createStore(**** ,applyMiddleware(logger, thunk));
+const store = createStore(combineReducers, applyMiddleware(logger, thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
-  </Provider>,
+      <App />
+  </Provider>, 
   document.getElementById('root')
 );
