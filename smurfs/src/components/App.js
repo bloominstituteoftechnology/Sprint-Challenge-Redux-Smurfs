@@ -31,6 +31,12 @@ class App extends Component {
     this.setState({ name: "", age: "", height: "" });
   };
 
+  deleteSmurfHandler = event => {
+    event.preventDefault();
+    console.log("DELETESMURFHANDLER WORKING", event);
+    // this.props.delSmurf(delSelectedSmurf);
+  };
+
   render() {
     return (
       <div className="App">
@@ -40,7 +46,12 @@ class App extends Component {
         <div>Have fun!</div>
         <ul style={{ listStyle: "none" }}>
           {this.props.smurfs.map(smurf => {
-            return <li key={smurf.name}>{smurf.name}</li>;
+            return (
+              <li key={smurf.name}>
+                {smurf.name}
+                <button onClick={this.deleteSmurfHandler}>Delete</button>
+              </li>
+            );
           })}
         </ul>
         <form onSubmit={this.submitNewSmurfHandler}>

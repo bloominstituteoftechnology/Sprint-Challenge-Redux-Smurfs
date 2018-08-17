@@ -31,3 +31,15 @@ export const addNewSmurf = smurf => {
       .catch(error => dispatch({ type: FETCH_FAILURE, payload: error }));
   };
 };
+
+// export const delSmurf = smurf => {
+//   return function(dispatch) {
+//     dispatch({ type: FETCHING_POST });
+//     axios
+//       .post(url, smurf)
+//       .then(response =>
+//         dispatch({ type: ADD_NEW_SMURF, payload: response.data })
+//       )
+//       .catch(error => dispatch({ type: FETCH_FAILURE, payload: error }));
+//   };
+// };
