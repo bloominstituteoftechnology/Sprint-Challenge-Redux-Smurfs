@@ -27,7 +27,7 @@ export const getSmurf = () => {
 
   return dispatch => {
     dispatch({type: GET_SMURF});
-    getSmurf.then((response) => {
+    promise.then((response) => {
       console.log(response.data)
       dispatch({type: GOT_SMURF, payload: response.data})
     })
