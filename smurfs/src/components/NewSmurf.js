@@ -2,6 +2,36 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getSmurfs, postSmurf} from '../actions/index';
 
+import styled from 'styled-components';
+
+const FormWrap = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    background-color: #222;
+
+    > form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > input {
+            margin: 5px 5px;
+        }
+    }
+`
+const StyledButton = styled.button`
+
+    width: 50px;
+    height: 50px;
+    margin: 5px 5px;
+    cursor: pointer;
+    background: url(https://static.getjar.com/icon-50x50/00/55332_thm.jpg) no-repeat;
+        
+
+`
+
+
 class NewSmurf extends Component {
     constructor() {
         super();
@@ -27,31 +57,31 @@ class NewSmurf extends Component {
 
         const {name, age, height} = this.state;
         return ( 
-            <div>
+            <FormWrap>
                 
                 <form>
                         <input
                         name='name'
-                        placeholder='name'
+                        placeholder='Name'
                         value={name}
                         onChange={(event) => this.change(event)}
                         />
                         <input
                         name='age'
-                        placeholder='age'
+                        placeholder='Age'
                         value={age}
                         onChange={(event) => this.change(event)}
                         />
                         <input
                         name='height'
-                        placeholder='height'
+                        placeholder='Height'
                         value={height}
                         onChange={(event) => this.change(event)}
                         />
-                        <button onClick={() => this.addNew(this.state)}>Add New Smurf</button>
+                        <StyledButton onClick={() => this.addNew(this.state)}></StyledButton>
                     </form>
                 
-            </div>
+            </FormWrap>
          );
     }
 }

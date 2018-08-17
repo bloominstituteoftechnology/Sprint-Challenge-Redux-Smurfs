@@ -5,6 +5,13 @@ import {getSmurfs} from '../actions/index';
 import SmurfList from '../components/SmurfList';
 import NewSmurf from './NewSmurf';
 
+import styled from 'styled-components';
+
+
+const AppBody = styled.div`
+  text-align: center;
+`
+
 class App extends Component {
 
 componentDidMount() {
@@ -13,10 +20,10 @@ componentDidMount() {
 
   render() {
     return (
-      <div className="App">
+      <AppBody>
        <NewSmurf />
        <SmurfList {...this.props}/>
-      </div>
+      </AppBody>
     );
   }
 }

@@ -63,7 +63,6 @@ class Smurf extends Component {
                         onChange={(event) => this.change(event)}
                         />
                         <button onClick={() => this.update({name, age, height})}>Update</button>
-                       
                     </form>
                 ) : (
                     <div>
