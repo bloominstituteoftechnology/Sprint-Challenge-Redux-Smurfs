@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchSmurfData, addNewSmurf, delSmurf } from "../actions/index";
+import {
+  fetchSmurfData,
+  addNewSmurf,
+  delSmurf,
+  modifySmurf
+} from "../actions/index";
 import "./App.css";
 
 class App extends Component {
@@ -32,8 +37,18 @@ class App extends Component {
   };
 
   deleteSmurfHandler = id => {
-    console.log("DELETESMURFHANDLER WORKING", id);
     this.props.delSmurf(id);
+  };
+
+  modifySmurfHandler = id => {
+    console.log("modifySmurfHandler WORKING", id);
+    let addedSmurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    };
+    this.props.modifySmurf(id, addedSmurf);
+    this.setState({ name: "", age: "", height: "" });
   };
 
   render() {
@@ -50,6 +65,9 @@ class App extends Component {
                 {smurf.name}
                 <button onClick={() => this.deleteSmurfHandler(smurf.id)}>
                   Delete
+                </button>
+                <button onClick={() => this.modifySmurfHandler(smurf.id)}>
+                  Modify
                 </button>
               </li>
             );
@@ -93,6 +111,7 @@ export default connect(
   {
     fetchSmurfData,
     addNewSmurf,
-    delSmurf
+    delSmurf,
+    modifySmurf
   }
 )(App);

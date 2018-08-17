@@ -2,10 +2,12 @@ import {
   FETCHING,
   FETCHING_POST,
   FETCHING_DEL,
+  FETCHING_MODIFY,
   FETCH_SUCCESS,
   FETCH_FAILURE,
   ADD_NEW_SMURF,
-  DEL_SMURF
+  DEL_SMURF,
+  MODIFY_SMURF
 } from "../actions";
 
 const initialState = {
@@ -35,6 +37,12 @@ export default (state = initialState, action) => {
         isFetching: true,
         isFetched: false
       };
+    case FETCHING_MODIFY:
+      return {
+        ...state,
+        isFetching: true,
+        isFetched: false
+      };
     case FETCH_SUCCESS:
       return {
         ...state,
@@ -49,6 +57,7 @@ export default (state = initialState, action) => {
         isFetched: false,
         hasError: action.payload
       };
+
     case ADD_NEW_SMURF:
       return {
         ...state,
@@ -57,6 +66,13 @@ export default (state = initialState, action) => {
         isFetched: true
       };
     case DEL_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload,
+        isFetching: false,
+        isFetched: true
+      };
+    case MODIFY_SMURF:
       return {
         ...state,
         smurfs: action.payload,
