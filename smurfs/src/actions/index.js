@@ -29,10 +29,7 @@ export const getSmurfs = () => {
 }
 
 export const addSmurf = smurf => {
-  console.log('```````````ADDDSMURF``````````')
-  console.log(smurf)
   return dispatch => {
-    console.log('```````````ADDD``````````')
     dispatch({ type: ADDING_SMURF })
     axios.post(`http://localhost:3333/smurfs`, {
       name: smurf.name,
