@@ -1,4 +1,4 @@
-import { FETCHING_SMURFS, SMURFS_FETCHED, SAVING_SMURF, SMURF_SAVED, ERROR } from '../action-types';
+import { FETCHING_SMURFS, SMURFS_FETCHED, SAVING_SMURF, SMURF_SAVED, DELETING_SMURF, SMURF_DELETED, ERROR } from '../action-types';
 
  const initialState = {
    smurfs: [],

@@ -26,8 +26,9 @@ export default function SmurfsList(props) {
   return (
     <SmurfsDiv>
       <h1>SMURFS!</h1>
+      <h4>Double Click a Name to Remove</h4>
       <StyledUl>{props.smurfs.map((smurf, index) =>
-        <StyledLi key={index}><P>{smurf.name.toUpperCase()}</P><br/>
+        <StyledLi key={index}><P onDoubleClick={props.deleteSmurf}>{smurf.name.toUpperCase()}</P><br/>
         {smurf.age} <br/>
         {smurf.height}</StyledLi>)}
       </StyledUl>

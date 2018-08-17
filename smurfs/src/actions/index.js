@@ -1,4 +1,4 @@
-import { FETCHING_SMURFS, SMURFS_FETCHED, SAVING_SMURF, SMURF_SAVED, ERROR } from '../action-types';
+import { FETCHING_SMURFS, SMURFS_FETCHED, SAVING_SMURF, SMURF_SAVED, DELETING_SMURF, SMURF_DELETED, ERROR } from '../action-types';
 import axios from 'axios';
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -30,5 +30,11 @@ export const addSmurf = (smurf) => {
       dispatch({type: SMURF_SAVED, payload: response.data})
     })
     .catch(error => dispatch({type: ERROR, payload: "Oops! Couldn't save your smurf :("}))
+  }
+}
+
+export const deleteSmurf = (smurf) => {
+  return function(dispatch) {
+    dispatch({type })
   }
 }

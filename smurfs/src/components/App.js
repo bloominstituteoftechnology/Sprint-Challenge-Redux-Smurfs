@@ -36,8 +36,8 @@ class App extends Component {
     event.preventDefault();
     this.props.addSmurf({
       name: this.state.newName,
-      age: this.state.newAge,
-      height: this.state.newHeight
+      age: `${this.state.newAge.toString()} years old`,
+      height: `${this.state.newHeight}cm tall`
     });
     this.setState(initialAppState);
   }
@@ -47,6 +47,7 @@ class App extends Component {
       <div className="App">
         {this.props.fetchingSmurfs ? <h1>Loading Smurfs...</h1> : null}
         {this.props.smurfs !== [] ? <SmurfsList smurfs={this.props.smurfs} /> : null }
+        {this.props.savingSmurf ? <h1>Saving smurf...</h1> : null}
         <SmurfForm submitSmurf={this.submitSmurf} newAge={this.state.newAge} newName={this.state.newName} newHeight={this.state.newHeight} changeHandler={this.changeHandler} />
       </div>
     );
