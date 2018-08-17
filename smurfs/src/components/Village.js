@@ -1,7 +1,17 @@
 import React, {Component} from 'react'; 
-import './App.css'; 
+import './App.css';
+ 
+
+
 
 class Village extends Component {
+    handleDeleteSmurf = () =>{
+        const {id} = this.props.smurfSelected;
+        this.props.deleteSmurf(id); 
+    };
+    handleShowSmurf = smurf => {
+        this.props.updateSingleFriend(smurf); 
+    }
     render(){
         return(
             <div>
@@ -13,7 +23,6 @@ class Village extends Component {
                             <p>{item.age}</p>
                             <p>{item.height}</p>
                             </li>
-                        
                         )
                     })}
                 </ul>
@@ -21,4 +30,5 @@ class Village extends Component {
         )
     }
 }
+
 export default Village; 
