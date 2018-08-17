@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
+import {getTheSmurfs} from '../actions';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own.
@@ -15,13 +16,22 @@ const AppDiv = styled.div`
 
 class App extends Component {
   componentDidMount(){
-    console.log('CDM')
+    console.log('CDM1')
+    this.props.getTheSmurfs();
+    console.log(this.props)
   }
 
   render() {
+    console.log(this.props.state.smurfs);
     return (
       <AppDiv>
         <h1>Smurfs</h1>
+        {this.props.state.smurfs.map(smurf => {
+          return (
+            <h1 key={smurf.name}>{smurf.name}</h1>
+          )
+        }
+        )}
       </AppDiv>
     );
   }
@@ -31,4 +41,8 @@ const mapStateToProps = state => {
   return {state: state};
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+  getTheSmurfs
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
