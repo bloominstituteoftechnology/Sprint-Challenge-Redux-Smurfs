@@ -20,8 +20,14 @@ export const {
   fetchSmurfsRequest,
   fetchSmurfsSuccess,
   fetchSmurfsFailure,
+  addSmurfRequest,
+  addSmurfSuccess,
+  addSmurfFailure,
 } = createActions(
   'FETCH_SMURFS_REQUEST',
   'FETCH_SMURFS_SUCCESS',
   'FETCH_SMURFS_FAILURE',
+  'ADD_SMURF_REQUEST',
+  'ADD_SMURF_SUCCESS',
+  'ADD_SMURF_FAILURE',
 );

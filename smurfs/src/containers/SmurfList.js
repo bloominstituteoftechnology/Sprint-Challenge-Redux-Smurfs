@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchSmurfsRequest } from '../actions';
+import { fetchSmurfsRequest, addSmurfRequest } from '../actions';
 import Form from '../components/Form';
 
 class SmurfList extends Component {
@@ -10,7 +10,7 @@ class SmurfList extends Component {
   }
 
   render() {
-    const { smurfs } = this.props;
+    const { smurfs, addSmurfRequest } = this.props;
     const fields = [
       {
         name: 'name',
@@ -30,7 +30,7 @@ class SmurfList extends Component {
     ];
     return (
       <div>
-        <Form fields={fields} />
+        <Form fields={fields} onSubmit={addSmurfRequest} />
         {smurfs.map(smurf => (
           <div key={smurf.name}>
             <h3>{smurf.name}</h3>
@@ -43,14 +43,15 @@ class SmurfList extends Component {
   }
 }
 
-function mapStateToProps({ smurfs, isFetching }) {
+function mapStateToProps({ smurfs, isFetching, isAdding }) {
   return {
     smurfs,
     isFetching,
+    isAdding,
   };
 }
 
 export default connect(
   mapStateToProps,
-  { fetchSmurfsRequest },
+  { fetchSmurfsRequest, addSmurfRequest },
 )(SmurfList);

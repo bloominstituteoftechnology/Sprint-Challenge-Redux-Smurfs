@@ -8,6 +8,9 @@ import {
   fetchSmurfsRequest,
   fetchSmurfsSuccess,
   fetchSmurfsFailure,
+  addSmurfRequest,
+  addSmurfSuccess,
+  addSmurfFailure,
 } from '../actions';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -23,15 +26,32 @@ import {
 
 const smurfs = handleActions(
   {
-    [fetchSmurfsSuccess]: (_, { payload }) => payload,
+    [combineActions(fetchSmurfsSuccess, addSmurfSuccess)]: (_, { payload }) =>
+      payload,
   },
   [],
+);
+
+const error = handleActions(
+  {
+    [combineActions(fetchSmurfsFailure, addSmurfFailure)]: (_, { payload }) =>
+      payload,
+  },
+  null,
 );
 
 const isFetching = handleActions(
   {
     [fetchSmurfsRequest]: () => true,
     [combineActions(fetchSmurfsSuccess, fetchSmurfsFailure)]: () => false,
+  },
+  false,
+);
+
+const isAdding = handleActions(
+  {
+    [addSmurfRequest]: () => true,
+    [combineActions(addSmurfSuccess, addSmurfFailure)]: () => false,
   },
   false,
 );
@@ -46,5 +66,7 @@ const isFetching = handleActions(
 
 export default combineReducers({
   smurfs,
+  error,
   isFetching,
+  isAdding,
 });
