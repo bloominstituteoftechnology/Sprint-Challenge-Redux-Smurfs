@@ -32,6 +32,7 @@ export const reducer = (state = initialState, action) => {
 		case ADD_SMURF_SUCCESS:
 			return Object.assign({}, state, {
 				data: action.payload,
+				addingSmurfs: false,
 			});
 		case ADD_SMURF_FAILURE:
 			return Object.assign({}, state, { ADDING_SMURF: false });
