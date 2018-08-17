@@ -1,5 +1,7 @@
 import {GET_SMURFS,
         GOT_SMURFS,
+        ADD_SMURF,
+        ADDED_SMURF,
         ERRORS} from '../actions';
 
 
@@ -28,6 +30,16 @@ export const rootReducer = (state = initialState, action) => {
           gotSmurfs: true,
           smurfs: action.payload
         })
+      case ADD_SMURF:
+        return Object.assign({}, state, {
+          addingSmurf: true,
+        })
+      case ADDED_SMURF:
+        return Object.assign({}, state, {
+          addingSmurf: false,
+          addedSmurf: true,
+          smurfs: [...state.smurfs, action.payload]
+        })
       case ERRORS:
         return Object.assign({}, state, {
           gettingSmurfs: false,
@@ -36,7 +48,6 @@ export const rootReducer = (state = initialState, action) => {
           addedSmurf: false,
           error: action.payload,
         })
-
       default:
         return state;
     }
