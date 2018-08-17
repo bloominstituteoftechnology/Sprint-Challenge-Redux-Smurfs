@@ -54,7 +54,13 @@ class App extends Component {
   }
 
   toggleUpdate = event => {
-    this.setState({updated: Number(event.target.id)});
+    let foundSmurf = this.props.smurfs.filter(smurf => smurf.id === Number(event.target.id))[0];
+    this.setState({
+      updated: Number(event.target.id),
+      updatedName: foundSmurf.name,
+      updatedAge: foundSmurf.age,
+      updatedHeight: foundSmurf.height
+    });
   }
 
   updateSmurf = event => {
