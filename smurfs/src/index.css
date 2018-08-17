@@ -2,4 +2,126 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-image: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4);
+  font-family: 'Pacifico', cursive;
 }
+
+
+.smurfs {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+width: 800px;
+margin: 2% auto;
+z-index: 1;
+}
+
+.smurf-card {
+  box-sizing: border-box;
+  background: rgba(0, 0, 255, 0.356);
+  height: 200px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2% 0;
+  margin: 3%;
+  z-index: 1;
+  color: rgb(240, 236, 229);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: relative;
+  font-family: 'Bad Script', cursive;
+  font-size: 120%;
+  text-shadow: .5px .5px 3px #000000;
+  
+}
+
+.smurf-card > p {
+  margin: 0;
+}
+
+.smurf-card > button {
+  width: 70px;
+  height: 20px;
+  background: palevioletred;
+  display: flex;
+  align-self: center;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 4px 8px 0 inset rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+img {
+ width: 100px;
+ z-index: 10;
+ position: absolute;
+ right: 70%;
+
+ 
+}
+
+
+.formy {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 4%;
+  margin-top: -15%;
+  background: rgba(211, 198, 255, 0.24);
+  position: fixed;
+  border-radius: 5px;
+
+}
+
+.formy > input {
+  margin: 10%;
+  border-radius: 5px;
+  border: none;
+  font-family: 'Karla', sans-serif;
+  height: 18px;
+}
+
+.formy > button {
+  border-radius: 5px;
+  background: palegreen;
+  width: 80px;
+  margin-bottom: 5%;
+  font-family: 'Karla', sans-serif;
+}
+.formy2 {
+  width: 200px;
+  font-family: 'Pacifico', cursive;
+  font-size: 180%;
+  height: 289.858px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 4%;
+  margin-top: -15%;
+  background: rgba(255, 198, 231, 0.24);
+  position: fixed;
+  border-radius: 5px;
+
+}
+
+h1 {
+  font-size: 300%;
+  background: -webkit-linear-gradient(rgb(88, 194, 255), rgb(105, 8, 184));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.doves {
+  font-size: 200%;
+  color: palevioletred;
+}
+
+.doves > i {
+  margin: 0 3%;
+  text-shadow: .5px .5px 2px #0000008f;
+}
+
+
