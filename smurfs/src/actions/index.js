@@ -8,10 +8,6 @@ export const ADDING_SMURF = "ADDING_SMURF";
 export const ADD_SMURF_SUCCESS = "ADD_SMURF_SUCCESS";
 export const ADD_SMURF_FAILURE = "ADD_SMURF_FAILURE";
 
-export const MURDERING_SMURF = "MURDERING_SMURF";
-export const MURDER_SMURF_SUCCESS = "MURDER_SMURF_SUCCESS";
-export const MURDER_SMURF_FAILURE = "MURDER_SMURF_FAILURE";
-
 const URL = "http://localhost:3333/smurfs";
 
 export const getSmurfs = () => {
@@ -48,26 +44,6 @@ export const addSmurf = data => {
 			.catch(err => {
 				dispatch({
 					type: ADD_SMURF_FAILURE,
-					payload: err,
-				});
-			});
-	};
-};
-
-export const murderSmurf = id => {
-	const promise = axios.delete(`${URL}/${id}`);
-	return dispatch => {
-		dispatch({ type: MURDERING_SMURF });
-		promise
-			.then(response => {
-				dispatch({
-					type: MURDER_SMURF_SUCCESS,
-					payload: response.data,
-				});
-			})
-			.catch(err => {
-				dispatch({
-					type: MURDER_SMURF_FAILURE,
 					payload: err,
 				});
 			});
