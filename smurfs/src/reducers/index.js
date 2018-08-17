@@ -9,7 +9,7 @@ import { FETCHED_SMURFS, FETCHING_SMURFS, SMURF_ERROR } from "../actions";
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
-  addingSmurf: false,
+  // addingSmurf: false,
   // updatingSmurf: false,
   // deletingSmurf: false,
   error: null
@@ -29,12 +29,12 @@ const smurfReducer = (state = initialState, action) => {
       return Object.assign({}, state, { fetching: true });
     case FETCHED_SMURFS:
     return Object.assign({}, state, {
-      fetching: false,
-      smurfs: [....action.payload]
+      fetchingSmurfs: false,
+      smurfs: [...action.payload]
     });
     case SMURF_ERROR:
     return Object.assign({}, state, {
-      fetching: false,
+      fetchingSmurfs: false,
       error: action.payload
     });
     default:
