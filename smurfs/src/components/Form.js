@@ -7,7 +7,7 @@ const Form = (props) => {
             <input type = "text" name = "addName" onChange = {props.change} value = {props.addName} />
             <input type = "number" name = "addAge" onChange = {props.change} value = {props.addAge} />
             <input type = "text" name = "addHeight" onChange = {props.change} value = {props.addHeight} />
-            <button> Add </button>
+            <button onSumbit = {props.submit}> Add </button>
         </form>
       </div>
     )

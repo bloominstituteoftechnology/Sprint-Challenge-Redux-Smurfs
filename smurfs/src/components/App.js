@@ -27,12 +27,13 @@ class App extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
    submit  = e => {
+     e.preventDefault()
      let smurf2 = {
        name: this.state.addName,
        age: this.state.addAge,
        height: this.state.addHeight
      }
-     this.props.addSmurf(smurf2);
+     this.props.addSmurf(smurf2)
      this.setState({
        addName: ' ',
        addAge: ' ',
