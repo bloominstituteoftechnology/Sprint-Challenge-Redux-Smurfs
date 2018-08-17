@@ -35,6 +35,7 @@ export const addSmurf = (smurf) => {
 
 export const deleteSmurf = (smurf) => {
   return function(dispatch) {
-    dispatch({type })
+    dispatch({type: DELETING_SMURF });
+    axios.delete('http://localhost:3333/smurfs/')
   }
 }
