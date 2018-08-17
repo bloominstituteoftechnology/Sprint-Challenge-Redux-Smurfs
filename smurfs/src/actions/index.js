@@ -59,6 +59,7 @@ export const updateSmurf = (id, smurf) => {
 
 export const deleteSmurf = (id) => {
   const promise = axios.delete(`${url}${id}`)
+  console.log(`${url}${id}`)
   return dispatch => {
     dispatch({type: DELETING_SMURF})
     promise.then(response => {

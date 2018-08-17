@@ -34,6 +34,7 @@ class App extends Component {
     this.props.clickedSmurf(id);
   }
   deleteSmurf = id => {
+    console.log(id)
     const sureToDelete = prompt('This can not be undone. To continue enter the word delete (just the word no extra characters)')
     if(sureToDelete.toLowerCase() === 'delete'){
       this.props.deleteSmurf(id); 
@@ -63,7 +64,7 @@ class App extends Component {
         <br/>
         <br/>
         {smurfs.map((smurf, i )=> 
-        <div onDoubleClick = {() => this.doubleClickingSmurf(i, smurf.name, smurf.age, smurf.height)}key ={i} className = 'scene'>
+        <div onDoubleClick = {() => this.doubleClickingSmurf(smurf.id, smurf.name, smurf.age, smurf.height)}key ={i} className = 'scene'>
           <div className ="card">
             <div className="card__face card__face--front">
             {smurf.name}
