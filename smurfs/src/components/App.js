@@ -11,6 +11,19 @@ class App extends Component {
     this.props.getSmurfs(); 
   }
 
+  resetFields = () => {
+    this.name.value = ''
+    this.age.value = ''
+    this.height.value = ''
+  }
+
+  addingSmurf = () => {
+    const name = this.name.value;
+    const age = parseInt(this.age.value);
+    const height = this.height.value; 
+    const smurf = {name, age, height}
+    this.props.addSmurf(smurf)
+  }
 
   render() {
     const smurfs = this.props.smurfs; 
@@ -20,7 +33,7 @@ class App extends Component {
         <input type="text" placeholder="...name" ref ={input => this.name = input}/>
         <input type="text" placeholder="...age" ref ={input => this.age = input}/>
         <input type="text" placeholder ="...height" ref ={input => this.height = input}/>
-        <button>Add Smurf</button>
+        <button onClick = {this.addingSmurf}>Add Smurf</button>
         <br/>
         <br/>
         <br/>
