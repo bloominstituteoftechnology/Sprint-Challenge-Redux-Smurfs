@@ -10,7 +10,7 @@ const Smurf = props => {
         <p>{age} smurf years old</p>
       </div>
       <div>
-        <button>Update</button>
+        <button onClick={props.update}>Update</button>
         <button onClick={props.delete}>Delete</button>
       </div>
     </div>

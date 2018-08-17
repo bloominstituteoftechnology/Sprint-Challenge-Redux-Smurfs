@@ -40,3 +40,14 @@ export const deleteSmurf = id => dispatch => {
       dispatch({ type: FAILURE, payload: err });
     });
 };
+
+export const updateSmurf = (id, smurf) => dispatch => {
+  dispatch({ type: PUT });
+  axios.put(`${URL}/${id}`, smurf)
+    .then(({data})=> {
+      dispatch({ type: SUCCESS, payload: data });
+    })
+    .catch(err => {
+      dispatch({ type: FAILURE, payload: err });
+    });
+};
