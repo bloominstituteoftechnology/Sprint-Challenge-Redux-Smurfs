@@ -20,8 +20,8 @@ const Smurfs = props => {
 
     const mapStateToProps = state => {
         return{
-            error: state.smurfsReducer.error,
-            smurfs: state.smurfsReducer.smurfs
+            error: state.error,
+            smurfs: state.smurfs
         };
     };
 

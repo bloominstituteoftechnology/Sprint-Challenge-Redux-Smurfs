@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import './App.css';
 import Smurfs from './Smurfs';
 import SmurfForm from './SmurfForm';
 import {getSmurfs} from '../actions';
-import {connect} from 'react-redux';
 
 
-class App extends Component {
+ class App extends Component {
   componentDidMount() {
     this.props.getSmurfs();
   }
@@ -25,12 +25,17 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const{smurfsReducer} = state;
+  // const{smurfsReducer} = state;
   return {
-    smurfs: smurfsReducer.smurfs,
-    error: smurfsReducer.error,
-    gettingSmurfs: smurfsReducer.gettingSmurfs
-  };
+  //   smurfs: smurfsReducer.smurfs,
+  //   error: smurfsReducer.error,
+  //   gettingSmurfs: smurfsReducer.gettingSmurfs
+  // };
+  smurfs: state.smurfs,
+  fetching: state.gettingSmurfs,
+  error: state.error
+  }
 };
+
 
 export default connect(mapStateToProps,{getSmurfs})(App);
