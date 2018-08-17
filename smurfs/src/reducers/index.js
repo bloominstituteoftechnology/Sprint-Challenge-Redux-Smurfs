@@ -1,7 +1,8 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import{ GET_SMURFS, GET_SUCCESS, GET_FAILURE } from '../actions';
+import{ GET_SMURFS, GET_SUCCESS, GET_FAILURE, ADD_SMURF, ADD_SUCCESS, ADD_FAILURE } from '../actions';
+
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -30,7 +31,21 @@ import{ GET_SMURFS, GET_SUCCESS, GET_FAILURE } from '../actions';
         return Object.assign({}, state, {
           fetchingSmurfs:false,
           errors: [...state.errors, action.error]
-        })
+        });
+      case ADD_SMURF:
+        return Object.assign({}, state, {
+          addingSmurf: true
+        });
+      case ADD_SUCCESS:
+        return Object.assign({}, state, {
+          addingSmurf:false,
+          smurfs: [...state.smurfs, action.payload]
+        });
+      case ADD_FAILURE:
+        return Object.assign({}, state, {
+          addingSmurf: false,
+          errors: [...state.errors, action.error]
+        });
       default:
         return state;      
    }

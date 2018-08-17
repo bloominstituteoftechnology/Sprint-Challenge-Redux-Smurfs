@@ -4,9 +4,15 @@
 */
 import axios from 'axios';
 
+//GET
 export const GET_SMURFS = 'GET_SMURFS';
 export const GET_SUCCESS = 'GET_SUCCESS';
 export const GET_FAILURE = 'GET_FAILURE';
+
+//ADD
+export const ADD_SMURF = 'ADD_SMURF';
+export const ADD_SUCCESS = 'ADD_SUCCESS';
+export const ADD_FAILURE = 'ADD_FAILURE';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -31,6 +37,25 @@ export const getSmurfs = () => {
       .catch(function(error){
         console.log(error)
         dispatch({type: GET_FAILURE, error: error})
+      })
+  }
+}
+
+export const addSmurf = (smurf) => {
+  return function(dispatch) {
+    dispatch({type: ADD_SMURF});
+    axios.post(url, {
+      name: smurf.name,
+      age: smurf.age,
+      height: smurf.height
+    })
+      .then(function(response){
+        console.log(response);
+        dispatch({type: ADD_SUCCESS})
+      })
+      .catch(function(error){
+        console.log(error)
+        dispatch({type: ADD_FAILURE, error: error})
       })
   }
 }
