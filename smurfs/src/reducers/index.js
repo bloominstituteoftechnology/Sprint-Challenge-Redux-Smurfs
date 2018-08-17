@@ -44,7 +44,7 @@ export default (state = initialState, action) => {
     case ADD_NEW_SMURF:
       return {
         ...state,
-        smurfs: [...state.smurfs, action.payload],
+        smurfs: action.payload,
         isFetching: false,
         isFetched: true
       };
