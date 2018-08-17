@@ -50,6 +50,8 @@ export const addSmurf = smurf => {
 
 export const deleteSmurf = smurfID => {
   return dispatch => {
+    console.log(`~~~~~~~~~~DELETE~~~~~~~~~~~~`)
+    console.log(smurfID)
     dispatch({ type: DELETING_USER })
     axios.delete(`http://localhost:3333/smurfs/${smurfID}`)
       .then(res => {
@@ -61,8 +63,10 @@ export const deleteSmurf = smurfID => {
 
 export const updateSmurf = smurf => {
   return dispatch => {
+    console.log(`^^^^^^^^UPDATE^^^^^^^^`)
+    console.log(smurf)
     dispatch({ type: UPDATING_SMURF})
-    axios.put(`http://localhost:3333/smurfs/${smurf.sid}`, {
+    axios.put(`http://localhost:3333/smurfs/${smurf.id}`, {
       name: smurf.name,
       age: smurf.age,
       height: smurf.height,

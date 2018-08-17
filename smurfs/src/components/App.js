@@ -54,13 +54,14 @@ class App extends Component {
       return (
         <button onClick={() =>  this.setState({
           addNewSmurf: true
-        })}>Add NewUser</button>)
+        })}>+</button>)
   }
 
-  toggleUpdate = event => {
+  toggleUpdate = id => {
+    console.log(id)
     const smurf = this.props.smurfs.filter(smurf => smurf.id == this.state.updateID)[0]
     this.setState({
-      updateID: smurf.id,
+      updateID: id,
       name: smurf.name,
       age: smurf.age,
       height: smurf.height
@@ -68,9 +69,10 @@ class App extends Component {
   }
 
   onClickUpdate = event => {
+    const id = this.state.updateID
     this.props.updateSmurf({
       name: this.state.name,
-      id: this.state.updateID,
+      id: id,
       age: this.state.age,
       height: this.state.height
     })
