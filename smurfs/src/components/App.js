@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions';
+import { getSmurfs, deleteSmurf } from '../actions';
 import AddSmurfForm from './AddSmurfForm';
+import UpdateSmurfForm from './UpdateSmurfForm';
 
 class App extends Component {
   componentDidMount() {
@@ -15,7 +16,12 @@ class App extends Component {
       <div className="App">
         <h1>Smurfs 2.0 w/ Redux</h1>
           <ul>
-          {this.props.smurfs.map(smurf =><li>Name: {smurf.name}, Age: {smurf.age}, Height: {smurf.height}</li>)}
+          {this.props.smurfs.map(smurf => <li key={smurf.name}> Name: {smurf.name}, Age: {smurf.age}, Height: {smurf.height}&nbsp;
+          <button>Update</button>
+          <UpdateSmurfForm id={this.props.smurfs.findIndex(person => person.name === smurf.name)} />
+          <button onClick={() => {this.props.deleteSmurf(this.props.smurfs.findIndex(person => person.name === smurf.name)); this.forceUpdate();}}>Delete</button>
+          <hr/>
+          </li>)}
           </ul>
           <AddSmurfForm />
       </div>
@@ -29,4 +35,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {getSmurfs})(App);
+export default connect(mapStateToProps, {getSmurfs, deleteSmurf})(App);
