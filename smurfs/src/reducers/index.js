@@ -1,10 +1,15 @@
 import { FETCHING_SMURFS, FETCHED_SMURFS, ADDING_SMURF,
-          SMURF_ADDED, FIND_SMURF, DESELECT_SMURF, ERROR } from '../actions';
+          SMURF_ADDED, FIND_SMURF, DESELECT_SMURF,
+          STARTED_EDITING, CANCEL_EDITING, UPDATING_SMURF,
+          SMURF_UPDATED, DELETING_SMURF, SMURF_DELETED, ERROR } from '../actions';
 
 const initialState = {
   isFetchingSmurfs: false,
   isAddingSmurf: false,
-  viewSmurf: false,
+  isEditingSmurf: false,
+  isUpdatingSmurf: false,
+  isDeletingSmurf: false,
+  viewingSmurf: false,
   selectedSmurf: null,
   smurfs: [],
   error: null
@@ -45,6 +50,41 @@ export const smurfsReducer = (state=initialState, action) => {
         ...state,
         viewingSmurf: false,
         selectedSmurf: null
+      }
+    case STARTED_EDITING:
+      return {
+        ...state,
+        isEditingSmurf: true
+      }
+    case CANCEL_EDITING:
+      return {
+        ...state,
+        isEditingSmurf: false
+      }
+    case UPDATING_SMURF:
+      return {
+        ...state,
+        isUpdatingSmurf: true,
+      }
+    case SMURF_UPDATED:
+      return {
+        ...state,
+        isEditingSmurf: false,
+        isUpdatingSmurf: false,
+        smurfs: action.payload
+      }
+    case DELETING_SMURF:
+      return {
+        ...state,
+        isDeletingSmurf: true,
+      }
+    case SMURF_DELETED:
+      return {
+        ...state,
+        viewingSmurf: false,
+        isDeletingSmurf: false,
+        selectedSmurf: null,
+        smurfs: action.payload
       }
     case ERROR:
       return {

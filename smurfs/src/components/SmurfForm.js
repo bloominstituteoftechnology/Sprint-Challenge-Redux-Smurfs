@@ -10,19 +10,42 @@ class SmurfForm extends Component {
     }
   }
 
+  componentDidMount(){
+    console.log(this.props);
+    if(this.props.mode === "editing"){
+      this.setState({ name: this.props.name, age: this.props.age, height: this.props.height });
+    }
+  }
+
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value})
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    const newSmurf = {
-      name: this.state.name,
-      age: Number(this.state.age),
-      height: this.state.height,
+    if(this.props.mode === "adding"){
+      const newSmurf = {
+        name: this.state.name,
+        age: Number(this.state.age),
+        height: this.state.height,
+      }
+      this.props.addSmurf(newSmurf);
+      this.setState({name: '', age: '', height: ''});
     }
-    this.props.addSmurf(newSmurf);
-    this.setState({name: '', age: '', height: ''});
+    if(this.props.mode==="editing"){
+      const updatedSmurf = {
+        name: this.state.name,
+        age: Number(this.state.age),
+        height: this.state.height,
+        id: this.props.id
+      }
+      this.props.update(updatedSmurf);
+    }
+  }
+
+  handleCancel = event => {
+    event.preventDefault();
+    this.props.cancel();
   }
 
   render(){
@@ -56,7 +79,14 @@ class SmurfForm extends Component {
             value={this.state.height}
             name="height"
           />
-          <button type="submit">Update</button>
+          {this.props.mode==="adding" ? <button type="submit">Add Smurf</button> : null}
+          {this.props.mode==="editing" ? (
+            <React.Fragment>
+              <button type="submit">Update Smurf</button>
+              <button onClick={this.handleCancel}>Cancel</button>
+            </React.Fragment>
+          ) : null}
+
         </form>
       </div>
     );
