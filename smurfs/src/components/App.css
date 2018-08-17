@@ -23,18 +23,35 @@
 
 .app .smurf-list ul{
   list-style: none;
+  width: 100%;
 }
 
 .app .smurf-list ul li{
   border: 1px solid black;
   border-radius: 5px;
   padding: 10px 50px;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .app .smurf-list ul li:hover {
   background: black;
   color: white;
   cursor: pointer;
+}
+
+.app .smurf-display {
+  height: 80%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid red;
+  border-radius: 5px;
+  background: white;
 }
 .app .smurf-form {
   border: 1px solid red;

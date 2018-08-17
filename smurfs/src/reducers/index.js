@@ -1,9 +1,11 @@
 import { FETCHING_SMURFS, FETCHED_SMURFS, ADDING_SMURF,
-          SMURF_ADDED, ERROR } from '../actions';
+          SMURF_ADDED, FIND_SMURF, DESELECT_SMURF, ERROR } from '../actions';
 
 const initialState = {
   isFetchingSmurfs: false,
   isAddingSmurf: false,
+  viewSmurf: false,
+  selectedSmurf: null,
   smurfs: [],
   error: null
 }
@@ -31,6 +33,18 @@ export const smurfsReducer = (state=initialState, action) => {
         ...state,
         isAddingSmurf: false,
         smurfs: action.payload
+      }
+    case FIND_SMURF:
+      return {
+        ...state,
+        viewingSmurf: true,
+        selectedSmurf: state.smurfs.filter(smurf => smurf.id === action.id)[0],
+      }
+    case DESELECT_SMURF:
+      return {
+        ...state,
+        viewingSmurf: false,
+        selectedSmurf: null
       }
     case ERROR:
       return {

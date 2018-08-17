@@ -6,6 +6,8 @@ export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const FETCHED_SMURFS = 'FETCHED_SMURFS';
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const SMURF_ADDED = 'SMURF_ADDED';
+export const FIND_SMURF = 'FIND_SMURF';
+export const DESELECT_SMURF = 'DESELECT_SMURF';
 export const ERROR = 'ERROR';
 
 export const fetchSmurfs = () => {
@@ -28,6 +30,18 @@ export const addSmurf = smurf => {
   }
 };
 
+export const viewSmurf = id => {
+  return {
+    type: FIND_SMURF,
+    id
+  }
+}
+
+export const deselectSmurf = () => {
+  return {
+    type: DESELECT_SMURF
+  }
+}
 
 /*
   Action Types Go Here!
