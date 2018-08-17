@@ -2,7 +2,8 @@ import {
   FETCHING,
   FETCH_SUCCESS,
   FETCH_FAILURE,
-  ADD_NEW_SMURF
+  ADD_NEW_SMURF,
+  FETCHING_POST
 } from "../actions";
 
 const initialState = {
@@ -15,6 +16,12 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCHING:
+      return {
+        ...state,
+        isFetching: true,
+        isFetched: false
+      };
+    case FETCHING_POST:
       return {
         ...state,
         isFetching: true,
