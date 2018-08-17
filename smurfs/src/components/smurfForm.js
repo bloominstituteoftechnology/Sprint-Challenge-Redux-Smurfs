@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
 import {addASmurf} from '../actions';
 import {connect} from 'react-redux';
+import styled from 'styled-components';
+
+const FormDiv = styled.div`
+  border: 1px solid black;
+  padding: 5px;
+  background: white;
+  form {
+    display: flex;
+    flex-direction: column;
+    p {
+      color: blue
+    }
+    button {
+      width: 100%;
+    }
+  }
+`;
 
 class SmurfForm extends Component {
   constructor(props) {
@@ -29,8 +46,10 @@ class SmurfForm extends Component {
 
   render() {
     return (
-      <div className="SmurfForm">
-        <h3>Add New Smurf</h3>
+      <FormDiv>
+        <p className="title"><strong>
+          Add New Smurf
+        </strong></p>
         <form onSubmit={this.addSmurf}>
           <input
             onChange={this.handleInputChange}
@@ -52,7 +71,7 @@ class SmurfForm extends Component {
           />
           <button type="submit">Add to the village</button>
         </form>
-      </div>
+      </FormDiv>
     );
   }
 }
