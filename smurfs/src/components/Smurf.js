@@ -4,7 +4,7 @@ export default function Smurf (props) {
     return(
         <div>
             <div>
-                {props.smurf.id}
+                {props.smurfid}
             </div>
             <div>
                 {props.smurf.name}
