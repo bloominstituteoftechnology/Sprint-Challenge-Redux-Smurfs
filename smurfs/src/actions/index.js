@@ -28,7 +28,7 @@ export const ERROR = 'ERROR';
    D - deleteSmurf
 */
 const url = 'http://localhost:3333/smurfs/';
-export const getSmufs = () => {
+export const getSmurfs = () => {
   const promise = axios.get(url)
   return dispatch => {
     dispatch({type:FETCHING_SMURFS})
@@ -58,7 +58,7 @@ export const addSmurf = (smurf) => {
   }
 }
 
-export const updateSmuf = (id, smurf) => {
+export const updateSmurf = (id, smurf) => {
   const promise = axios.put(`${url}${id}`, smurf);
   return dispatch => {
     dispatch({type:UPDATING_SMURF})
