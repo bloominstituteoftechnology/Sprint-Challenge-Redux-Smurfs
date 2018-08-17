@@ -29,7 +29,8 @@ export const addSmurf = smurf => {
   console.log(newSmurf);
   return dispatch => {
     dispatch({type:ADDING_SMURF});
-    request.then(response => {
+    newSmurf
+    .then(response => {
       dispatch({type: ADD_SMURF , payload:response.data});
     })
     .catch(err => {
