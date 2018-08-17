@@ -19,6 +19,10 @@ const AppDiv = styled.div`
 `;
 
 class App extends Component {
+  state = {
+    editSmurfId: null,
+  }
+
   componentDidMount(){
     console.log('CDM1')
     this.props.getTheSmurfs();
@@ -33,20 +37,30 @@ class App extends Component {
 
   editSmurf = (e) => {
     e.preventDefault();
-    console.log(e.target)
+    console.log(e.target.id);
+    if (this.state.editSmurfId == e.target.id) {
+      this.setState({
+      editSmurfId: null
+    })
+  } else {
+    this.setState({
+      editSmurfId: e.target.id,
+    })
+  }
   }
   render() {
-    console.log(this.props.state.smurfs);
+    console.log(this);
     return (
       <AppDiv>
         <h1>Smurfs</h1>
-        {this.props.state.smurfs.map(smurf => {
+        {this.props.state.smurfs.map((smurf) => {
+          console.log(this.state)
           return (
-            <div key={smurf.name}>
+            <div key={smurf.id}>
               <h1>{smurf.name}</h1>
-              <EditSmurf smurf={smurf}></EditSmurf>
+              {(this.state.editSmurfId == smurf.id) ? (<EditSmurf smurf={smurf}></EditSmurf>) : null}
               <button value={smurf.id} onClick={this.smackSmurf}>Smack Smurf</button>
-              <button onClick={this.editSmurf}>editSmurf</button>
+              <button id={smurf.id} onClick={this.editSmurf}>Toggle Edit</button>
             </div>
           )
         }

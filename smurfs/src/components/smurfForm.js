@@ -19,7 +19,7 @@ class SmurfForm extends Component {
       name: '',
       age: '',
       height: '',
-      id: this.state.smurf.id
+
     })
   }
 
