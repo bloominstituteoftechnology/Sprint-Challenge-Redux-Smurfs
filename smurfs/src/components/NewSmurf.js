@@ -3,6 +3,7 @@ import React from 'react';
 const NewSmurf = props => {
   return (
     <div className='smurf-form'>
+      <h1>Add a Smurf!</h1>
       <form onSubmit={props.submitHandler}>
         <input name='name' placeholder='Enter name' value={props.state.name} onChange={props.changeHandler} />
         <input name='age' placeholder='Enter age' value={props.state.age} onChange={props.changeHandler} type='number' />

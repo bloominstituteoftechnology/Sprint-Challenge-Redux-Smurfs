@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background-image: url('https://stmed.net/sites/default/files/the-smurfs-2-wallpapers-30111-1669847.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+  padding: 50px;
 }
 
 .App-logo {
@@ -23,6 +28,20 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.smurf {
+  border-bottom: 1px solid silver;
+  width: 50%;
+  margin: 20px auto;
+}
+
+.smurf-form {
+  margin: 50px auto;
 }
