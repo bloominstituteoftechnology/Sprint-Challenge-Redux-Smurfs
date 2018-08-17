@@ -13,7 +13,7 @@ import {createSmurf} from '../actions/index';
      handleAddSmurf = _ =>{
         const {name, age, height} = this.state; 
         this.props.createSmurf({name, age, height});
-        this.setState({name: '', age: '', height: ''}); 
+        this.setState({name: '', age: '', height: '',}); 
     }; 
      render(){
         return (
@@ -36,7 +36,7 @@ import {createSmurf} from '../actions/index';
         />
          <input
         className='input'
-        name='heigth'
+        name='height'
         type='text'
         value={this.state.height}
         placeholder='height'

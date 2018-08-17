@@ -60,6 +60,6 @@ const URL = 'http://localhost:3333/smurfs'
     .then(({data})=>{
       dispatch({type: DELETED_SMURF, payload: data}); 
     })
-    .catch({type: ERROR, payload: err})
+    .catch(err => {({type: ERROR, payload: err})})
   }
 }
