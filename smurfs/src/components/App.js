@@ -12,7 +12,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newSmurf: ""
+      name: "",
+      age: "",
+      height: ""
     };
   }
   componentDidMount() {
@@ -20,7 +22,10 @@ class App extends Component {
   }
 
   inputChangeHandler = event => {
-    this.setState({ newSmurf: event.target.value });
+    // console.log("Name", event.target.value);
+    // console.log("he", event.target.value);
+    // console.log("age", event.target.value);
+    this.setState({ [event.target.name]: event.target.value });
   };
   submitNewSmurfHandler = event => {
     event.preventDefault();
@@ -28,7 +33,9 @@ class App extends Component {
     this.setState({ newSmurf: "" });
   };
   render() {
-    console.log("newsmurf", this.state.newSmurf);
+    console.log("height", this.state.height);
+    console.log("age", this.state.age);
+    console.log("name", this.state.name);
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -43,8 +50,21 @@ class App extends Component {
         <form onSubmit={this.submitNewSmurfHandler}>
           <input
             placeholder="name..."
-            value={this.state.newSmurf}
+            value={this.state.name}
             onChange={this.inputChangeHandler}
+            name="name"
+          />
+          <input
+            placeholder="age..."
+            value={this.state.age}
+            onChange={this.inputChangeHandler}
+            name="age"
+          />
+          <input
+            placeholder="height..."
+            value={this.state.height}
+            onChange={this.inputChangeHandler}
+            name="height"
           />
           <button>Submit</button>
         </form>
