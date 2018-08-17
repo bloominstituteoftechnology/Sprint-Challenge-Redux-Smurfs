@@ -43,7 +43,6 @@ class App extends Component {
     this.props.getSmurfs();
   }
   render() {
-    console.log(this.state)
     return (
       <div className="App">
           <h1>Smurfs Village</h1>
