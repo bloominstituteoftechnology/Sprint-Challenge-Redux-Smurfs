@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {getSmurfs,addSmurf} from '../actions';
+import {getSmurfs,addSmurf,deleteSmurf} from '../actions';
 import {connect} from 'react-redux';
 
 class App extends Component {
@@ -33,10 +33,12 @@ class App extends Component {
         {
           this.props.fetchingSmurfs?
           <h1>Loading...</h1>:
-          this.props.smurfs.map((e,i)=>
-            <ul key={i}><li>{e.name}</li>
+          this.props.smurfs.map((e)=>
+            <ul key={e.id}><li>{e.name}</li>
             <li>{e.age}</li>
-            <li>{e.height}</li></ul>
+            <li>{e.height}</li>
+            <i className="fas fa-trash-alt" onClick={()=>this.props.deleteSmurf(e.id)}></i>
+            </ul>
           )
         }
         <form>
@@ -55,4 +57,4 @@ const mapStateToProps=state=>{
     fetchingSmurfs:state.fetchingSmurfs 
   }
 }
-export default connect(mapStateToProps,{getSmurfs,addSmurf})(App);
+export default connect(mapStateToProps,{getSmurfs,addSmurf,deleteSmurf})(App);
