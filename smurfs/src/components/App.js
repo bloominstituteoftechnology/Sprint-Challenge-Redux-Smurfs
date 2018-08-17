@@ -11,13 +11,35 @@ class App extends Component {
     this.props.getSmurfs(); 
   }
 
+
   render() {
+    const smurfs = this.props.smurfs; 
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <input type="text" placeholder="...name" ref ={input => this.name = input}/>
+        <input type="text" placeholder="...age" ref ={input => this.age = input}/>
+        <input type="text" placeholder ="...height" ref ={input => this.height = input}/>
+        <button>Add Smurf</button>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        {smurfs.map((smurf, i )=> 
+        <div key ={i} className = 'scene'>
+          <div className ="card">
+            <div className="card__face card__face--front">
+            {smurf.name}
+            </div> 
+            <div className="card__face card__face--back">
+              <h1>{smurf.name}</h1>
+              <br/>
+              <h1>{smurf.age}</h1>
+              <br/>
+              <h1>{smurf.height}</h1>
+            </div>
+          </div>
+        </div>)}
       </div>
     );
   }

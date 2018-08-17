@@ -2,27 +2,37 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.scene {
+  width: 200px;
+  height: 260px;
+  perspective: 600px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
 }
 
-.App-title {
-  font-size: 1.5em;
+.card__face{
+  position: absolute;
+  height: 100%;
+  width:100%;
+  backface-visibility: hidden;
 }
 
-.App-intro {
-  font-size: large;
+.card__face--front {
+  background: #00A1D1;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.card_face--back {
+  background: white;
+  transform: rotateY(180deg); 
 }
+.card.is-flipped{
+  transform: rotateY(180deg); 
+}
+
+
