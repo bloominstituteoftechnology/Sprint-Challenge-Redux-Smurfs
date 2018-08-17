@@ -4,11 +4,13 @@ import {} from 'redux';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions/index';
 import SmurfList from '../components/SmurfList';
+import AddSmurf from '../containers/AddSmurf';
+
 
 const AppContainer = styled.div`
     width:986px;
     display:flex;
-    flex-flow:column;
+    flex-flow:row;
     border: solid 1px black;
 `;
 
@@ -24,10 +26,14 @@ class App extends Component {
         this.props.getSmurfs();
     }
 
+    handleAddSmurf = () => {
+
+    }
 
     render(){
         return (
             <AppContainer>
+            <AddSmurf />
                 <SmurfList smurfs={this.props.smurfs} />
             </AppContainer>
         )

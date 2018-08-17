@@ -1,4 +1,4 @@
-import { FETCHING_SMURFS, FETCHED_SMURFS } from '../actions/index';
+import { FETCHING_SMURFS, FETCHED_SMURFS, ADDED_SMURF, ADDING_SMURF } from '../actions/index';
 
 
  const initState = {
@@ -8,8 +8,7 @@ import { FETCHING_SMURFS, FETCHED_SMURFS } from '../actions/index';
    updatingSmurf: false,
    deletingSmurf: false,
    error: null
- }
-
+ };
 
 export const smurfReducer = (state = initState, action) => {
   switch(action.type){
@@ -18,8 +17,15 @@ export const smurfReducer = (state = initState, action) => {
     case FETCHED_SMURFS:
       return Object.assign({}, state, {
         smurfs: [ ...state.smurfs, ...action.payload ],
-        fetchingSmurfs: false,
-      })
+        fetchingSmurfs: false
+      });
+    case ADDING_SMURF:
+      return Object.assign({}, state, { addingSmurfs: true });
+    case ADDED_SMURF:
+      return Object.assign({}, state, {
+        smurfs: [ ...state.smurfs, action.payload ],
+        addingSmurf: false
+      });
     default:
       return state;
   }

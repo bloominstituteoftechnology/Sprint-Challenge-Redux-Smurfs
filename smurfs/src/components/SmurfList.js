@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import SmurfItem from './SmurfItem';
 
 const ListContainer = styled.div`
-    width:50%;
+    width:450px;
     display:flex;
     flex-flow:column;
     justify-content:space-around;

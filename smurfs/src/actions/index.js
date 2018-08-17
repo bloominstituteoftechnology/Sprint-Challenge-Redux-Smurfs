@@ -30,6 +30,18 @@ export const getSmurfs = () => {
   }
 }
 
-// export const addSmurf = (smurf) => {
-//   const promise = axios.get(URL)
-// }
+export const addSmurf = (smurf) => {
+  let nuGuy = { name: smurf.name, age: smurf.age, height: smurf.height };
+  const promise = axios.post(URL + `/${nuGuy}`);
+  return (dispatch) => {
+    dispatch({ type: ADDING_SMURF })
+    promise
+      .then((res) => {
+        dispatch({
+          type: ADDED_SMURF,
+          payload: res.data,
+        })
+      })
+      .catch(err => ({ type: ERROR }));
+  }
+}

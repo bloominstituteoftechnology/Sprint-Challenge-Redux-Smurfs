@@ -13,6 +13,8 @@ const SmurfItem = (props) => {
     return (
         <ItemContainer>
             <div>{props.smurf.name}</div>
+            <div>{props.smurf.age}</div>
+            <div>{props.smurf.height}</div>
         </ItemContainer>
     )
 }
