@@ -1,0 +1,34 @@
+.smurfs-container {
+    background-color: rgb(255, 182, 169);
+}
+
+.smurfs-container ul {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+}
+
+.Smurf {
+    border: 1px solid red;
+    margin: 20px 20px;
+    width: 250px;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: lighter;
+}
+
+.Smurf:hover {
+    background-color:  rgb(255, 245, 213);
+    border: 1px solid rgb(253, 251, 121);
+}
+
+.smurfs-container .image-container {
+    width: 100%;
+}
+
+.smurfs-container .image-container .smurfs-img{
+    width: 100%;
+}

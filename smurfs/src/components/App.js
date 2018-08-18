@@ -4,12 +4,13 @@ import SmurfsForm from './SmurfsForm/SmurfsForms';
 import Smurfs from './Smurfs/Smurfs';
 
 import { connect } from 'react-redux';
-import { fetching_data } from '../actions';
+import { fetching_data, addSmurf } from '../actions';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      newSmurf: [],
       name: '',
       age:'',
       height: '',
@@ -26,14 +27,14 @@ class App extends Component {
     })
   }
 
-  submitDataHandler = (event) => {
+  submitDataHandler = () => {
     const newSmurf = {
       name: this.state.name,
       age: this.state.age,
       height: this.state.height,
     }
 
-    this.prop.addSmurf(newSmurf);
+    this.props.addSmurf(newSmurf);
 
     this.setState({
       name: '',
@@ -45,9 +46,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <SmurfsForm change={this.changeInputHandler} submit={this.submitDataHandler}/>
+        <h1 className="app-title">SMURFS! 2.0 W/ Redux</h1>
+        <div className="main-content">Welcome to your Redux version of Smurfs!</div>
+        <SmurfsForm 
+          smurfs={this.props.smurfs} 
+          change={this.changeInputHandler} 
+          submit={this.submitDataHandler}
+        />
         <Smurfs smurfs={this.props.smurfs}/>
       </div>
     );
@@ -61,4 +66,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetching_data })(App);
+export default connect(mapStateToProps, { fetching_data, addSmurf })(App);

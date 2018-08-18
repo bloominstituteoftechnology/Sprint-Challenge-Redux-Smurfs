@@ -20,7 +20,7 @@ export const fetching_data = () => {
     }
 };
 
-export const add_smurf = (newSmurf) => {
+export const addSmurf = (newSmurf) => {
     const endpoint = axios.post('http://localhost:3333/smurfs', newSmurf);
     return (dispatch) => {
         dispatch({ type: SAVING_DATA})

@@ -1,33 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './SmurfsForm.css';
 
-class SmurfsForm extends Component {
-  render() {
-    return (
-      <div className="SmurfForm">
-        <form onSubmit={this.addSmurf} className="my-form">
-          <input
-            onChange={this.handleInputChange}
-            placeholder="name"
-            // value={this.state.name}
-            name="name"
-          />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="age"
-            // value={this.state.age}
-            name="age"
-          />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="height"
-            // value={this.state.height}
-            name="height"
-          />
-          <button type="submit">Create Smurf!</button>
-        </form>
-      </div>
-    );
-  }
+const SmurfsForm = props => {
+  return (
+    <div className="SmurfForm">
+      <form onSubmit={props.submit} className="my-form">
+        <input
+          onChange={props.change}
+          placeholder="name"
+          value={props.name}
+          name="name"
+        />
+        <input
+          onChange={props.change}
+          placeholder="age"
+          value={props.age}
+          name="age"
+        />
+        <input
+          onChange={props.change}
+          placeholder="height"
+          value={props.height}
+          name="height"
+        />
+        <button type="submit">Create Smurf!</button>
+      </form>
+    </div>
+  );
 }
 
 export default SmurfsForm;

@@ -1,26 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Smurf from './Smurf';
+import './Smurfs.css';
 
-class Smurfs extends Component {
-  render() {
-    return (
-      <div className="smurfs-container">
-        <ul>
-          {this.props.smurfs.map(smurf => {
-            return (
-            <Smurf
-                name={smurf.name}
-                id={smurf.id}
-                age={smurf.age}
-                height={smurf.height}
-                key={smurf.id}
-            />
-            );
-          })}
-        </ul>
+import smurfsImg from  '../img/smurfs_img.jpg';
+
+const Smurfs = props => {
+  return (
+    <div className="smurfs-container">
+      <div className="image-container">
+        <img src={smurfsImg} alt="smurfs jumbotron" className="smurfs-img"/>
       </div>
-    );
-  }
+      <ul>
+        {props.smurfs.map(smurf => {
+          return (
+          <Smurf
+              name={smurf.name}
+              age={smurf.age}
+              height={smurf.height}
+              key={smurf.height}
+          />
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
 
 export default Smurfs;
