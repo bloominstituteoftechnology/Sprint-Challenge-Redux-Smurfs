@@ -12,8 +12,8 @@ export default (state = initialState, action) => {
       return { ...state, isFetching: true };
     case SUCCESS:
       return { ...state, isFetching: false, smurfs: action.payload };
-    case FAILURE:
-      return { ...state, isFetching: false, err: null };
+    case FAILURE: // err not being utilized currently
+      return { ...state, isFetching: false, err: action.payload };
     default:
       return state;
   }
