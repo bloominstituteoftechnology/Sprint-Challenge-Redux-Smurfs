@@ -23,8 +23,8 @@ export const getSmurfs = () => {
   };
 };
 
-export const addSmurf = () => {
-  const newSmurf = axios.post(`${URL}`)
+export const addSmurf = (smurf) => {
+  const newSmurf = axios.post(`${URL}`, smurf)
   return (dispatch) => {
     dispatch({type: CREATING_SMURF})
     newSmurf
