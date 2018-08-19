@@ -8,7 +8,7 @@ export default function SmurfVillage(props) {
                     <div>{smurf.name}</div>
                     <div> {smurf.age} </div>
                     <div> {smurf.height} </div>
-                    {/* <button onClick={() => props.deleteSmurfHandler(smurf.id)} >murder smurf?</button> */}
+                    <button onClick={() => props.deleteSmurfHandler(smurf.id)} >murder smurf?</button>
                 </div>
             ))}
         </div>

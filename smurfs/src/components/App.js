@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchStuff, addSmurf } from '../actions';
+import { fetchStuff, addSmurf, deleteSmurf } from '../actions';
 import { connect } from 'react-redux';
 import SmurfVillage from './smurfVillage';
 import SmurfForm from './smurfForm';
@@ -39,7 +39,10 @@ class App extends Component {
     });
   }
 
-  deleteSmurfHandler
+  deleteSmurfHandler = id => {
+    // ev.preventDefault();
+    this.props.deleteSmurf(id);
+  }
 
   render() {
     return (
@@ -64,4 +67,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchStuff, addSmurf })(App);
+export default connect(mapStateToProps, { fetchStuff, addSmurf, deleteSmurf })(App);

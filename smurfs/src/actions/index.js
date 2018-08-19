@@ -7,6 +7,8 @@ export const SMURF_ADDED = 'SMURF_ADDED';
 export const UPDATING_SMURF = 'UPDATING_SMURF';
 export const DELETING_SMURF = 'DELETING_SMURF';
 export const ERROR = 'ERROR';
+export const SMURF_DELETED = 'SMURF_DELETED';
+
 
 const url = 'http://localhost:3333/smurfs';
 
@@ -51,6 +53,27 @@ export const addSmurf = smurf => {
       });
   };
 };
+
+export const deleteSmurf = id => {
+  const promise = axios.delete(`${url}/${id}`);
+  return(dispatch) => {
+    dispatch({ type: DELETING_SMURF })
+    promise
+      .then(response => {
+        dispatch({
+          type: SMURF_DELETED,
+          payload: response.data
+        })
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch({
+          type: ERROR,
+          payload: err
+        })
+      })
+  }
+}
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
