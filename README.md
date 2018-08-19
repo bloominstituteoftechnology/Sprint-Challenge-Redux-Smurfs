@@ -1,4 +1,4 @@
-# Assessing your Redux Fu
+Assessing your Redux Fu
 
 * The objective of this challenge is to get you used to answering a few questions about `Redux/Immutability` that are commonly asked in interviews.
 * We also have some more reps for you to help hammer in the knowledge you've thus far learned.

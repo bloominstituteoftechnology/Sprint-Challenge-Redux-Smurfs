@@ -1,0 +1,11 @@
+.smurf-container{
+    display: flex;
+    justify-content: center;
+}
+
+.smurf-card{
+    border: 1px solid black;
+    width: 400px;
+    margin: 20px;
+    background-color: white;
+}
