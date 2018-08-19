@@ -1,15 +1,43 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+export const GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+  SUCCESS = 'SUCCESS',
+  FAILURE = 'FAILURE';
+const URL = 'http://localhost:3333/smurfs';
+
+const handleData = (promise, dispatch) => {
+  promise
+    .then(({ data }) => {
+      dispatch({ type: SUCCESS, payload: data });
+    })
+    .catch(err => {
+      dispatch({ type: FAILURE, payload: err });
+    });
+};
+
+export const getSmurfs = () => dispatch => {
+  const promise = axios.get(URL);
+  dispatch({ type: GET });
+  handleData(promise, dispatch);
+};
+
+export const addSmurf = smurf => dispatch => {
+  const promise = axios.post(URL, smurf);
+  dispatch({ type: POST });
+  handleData(promise, dispatch);
+};
+
+export const deleteSmurf = id => dispatch => {
+  const promise = axios.delete(`${URL}/${id}`);
+  dispatch({ type: DELETE });
+  handleData(promise, dispatch);
+};
+
+export const updateSmurf = (id, smurf) => dispatch => {
+  const promise = axios.put(`${URL}/${id}`, smurf);
+  dispatch({ type: PUT });
+  handleData(promise, dispatch);
+};
