@@ -1,4 +1,4 @@
-import { FETCHING_SMURFS, SMURFS_FETCHED, ADDING_SMURF, SMURF_ADDED, ERROR, SMURF_DELETED, DELETING_SMURF, TOGGLE_UPDATE } from '../actions';
+import { FETCHING_SMURFS, SMURFS_FETCHED, ADDING_SMURF, SMURF_ADDED, ERROR, SMURF_DELETED, DELETING_SMURF, SMURF_UPDATED, UPDATING_SMURF } from '../actions';
 
 
  const initialState = {
@@ -8,6 +8,7 @@ import { FETCHING_SMURFS, SMURFS_FETCHED, ADDING_SMURF, SMURF_ADDED, ERROR, SMUR
    addingSmurf: false,
    smurfAdded: false,
    updatingSmurf: false,
+   smurfUpdated: false,
    deletingSmurf: false,
    smurfDeleted: false,
    error: null   
@@ -45,8 +46,14 @@ export default (state = initialState, action) => {
         deletingSmurf: false,
         smurfDeleted: true
       })
-    case TOGGLE_UPDATE:
-      return Object.assign({}, state, {updatingSmurf: !state.updatingSmurf});
+    case UPDATING_SMURF:
+      return Object.assign({}, state, {updatingSmurf: true});
+    case SMURF_UPDATED:
+      return Object.assign({}, state, {
+        smurfs: [...action.payload],
+        updatingSmurf: false,
+        smurfUpdated: true
+      })
     default:
       return state;
   }

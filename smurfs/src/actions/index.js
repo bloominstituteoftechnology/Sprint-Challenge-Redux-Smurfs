@@ -9,6 +9,7 @@ export const DELETING_SMURF = 'DELETING_SMURF';
 export const ERROR = 'ERROR';
 export const SMURF_DELETED = 'SMURF_DELETED';
 export const TOGGLE_UPDATE = 'TOGGLE_UPDATE';
+export const SMURF_UPDATED = 'SMURF_UPDATED';
 
 
 const url = 'http://localhost:3333/smurfs';
@@ -76,9 +77,30 @@ export const deleteSmurf = id => {
   }
 }
 
-export const toggleUpdate = id => {
-  return {
-    type: TOGGLE_UPDATE,
-    payload: id
+export const updateSmurf = (id, smurf) => {
+  const promise = axios.put(`${url}/${id}`, smurf )
+  return(dispatch) => {
+    dispatch({type: UPDATING_SMURF })
+    promise
+      .then(response => {
+        dispatch({
+          type: SMURF_UPDATED,
+          payload: response.data
+        })
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch({
+          type: ERROR,
+          payload: err
+        })
+      })
   }
 }
+
+// export const toggleUpdate = id => {
+//   return {
+//     type: TOGGLE_UPDATE,
+//     payload: id
+//   }
+// }
