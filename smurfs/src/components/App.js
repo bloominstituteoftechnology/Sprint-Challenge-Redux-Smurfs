@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchStuff, addSmurf, deleteSmurf } from '../actions';
+import { fetchStuff, addSmurf, deleteSmurf, toggleUpdate } from '../actions';
 import { connect } from 'react-redux';
 import SmurfVillage from './smurfVillage';
 import SmurfForm from './smurfForm';
@@ -44,14 +44,19 @@ class App extends Component {
     this.props.deleteSmurf(id);
   }
 
+  updateHandler = id => {
+    this.props.toggleUpdate(id);
+    this.forceUpdate();
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Smurf Village 2.0 W/ Redux</h1>
         {this.props.fetchingSmurfs ? (<span className='fetching' >materializing smurfs...</span>) : (
-          <SmurfVillage smurfs={this.props.smurfs} deleteSmurfHandler={this.deleteSmurfHandler} />
+          <SmurfVillage smurfs={this.props.smurfs} deleteSmurfHandler={this.deleteSmurfHandler} updateHandler={this.updateHandler} updatingSmurf={this.props.updatingSmurf} />
         )}
-        <SmurfForm inputChangeHandler={this.inputChangeHandler} inputName={this.state.name} inputAge={this.state.age} inputHeight={this.state.height} addSmurfHandler={this.addSmurfHandler} />
+        <SmurfForm inputChangeHandler={this.inputChangeHandler} inputName={this.state.name} inputAge={this.state.age} inputHeight={this.state.height} addSmurfHandler={this.addSmurfHandler}  />
       </div>
     );
   }
@@ -62,9 +67,9 @@ const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
     error: state.error,
-    fetchingSmurfs: state.fetchingSmurfs
-    
+    fetchingSmurfs: state.fetchingSmurfs,
+    updatingSmurf: state.updatingSmurf
   };
 };
 
-export default connect(mapStateToProps, { fetchStuff, addSmurf, deleteSmurf })(App);
+export default connect(mapStateToProps, { fetchStuff, addSmurf, deleteSmurf, toggleUpdate })(App);

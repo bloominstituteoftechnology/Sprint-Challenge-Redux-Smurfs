@@ -1,4 +1,4 @@
-import { FETCHING_SMURFS, SMURFS_FETCHED, ADDING_SMURF, SMURF_ADDED, ERROR, SMURF_DELETED, DELETING_SMURF } from '../actions';
+import { FETCHING_SMURFS, SMURFS_FETCHED, ADDING_SMURF, SMURF_ADDED, ERROR, SMURF_DELETED, DELETING_SMURF, TOGGLE_UPDATE } from '../actions';
 
 
  const initialState = {
@@ -45,6 +45,8 @@ export default (state = initialState, action) => {
         deletingSmurf: false,
         smurfDeleted: true
       })
+    case TOGGLE_UPDATE:
+      return Object.assign({}, state, {updatingSmurf: !state.updatingSmurf});
     default:
       return state;
   }

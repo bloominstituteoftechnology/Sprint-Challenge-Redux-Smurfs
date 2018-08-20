@@ -5,10 +5,12 @@ export default function SmurfVillage(props) {
         <div  >
             {props.smurfs.map((smurf, i) => (
                 <div className='smurf' key={i}>
-                    <div>{smurf.name}</div>
-                    <div> {smurf.age} </div>
-                    <div> {smurf.height} </div>
+                    <div>Name: {smurf.name}</div>
+                    <div>Age: {smurf.age} </div>
+                    <div>Height: {smurf.height} </div>
                     <button onClick={() => props.deleteSmurfHandler(smurf.id)} >murder smurf?</button>
+                    <button onClick={() => props.updateHandler(smurf.id)} >Mutate Smurf?</button>
+                    {props.updatingSmurf ? (<div className="updating" >updating....</div>) : (<div className="not-updating" >nothing here...</div>)}
                 </div>
             ))}
         </div>

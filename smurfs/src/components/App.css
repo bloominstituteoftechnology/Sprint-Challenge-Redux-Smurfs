@@ -38,3 +38,11 @@
   margin: 22px 0;
   /* width: 50%; */
 }
+
+.updating {
+  background: lawngreen;
+}
+
+.not-updating {
+  background: cadetblue;
+}
