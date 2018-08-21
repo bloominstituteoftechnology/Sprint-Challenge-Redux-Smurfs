@@ -26,3 +26,23 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.fetching {
+  background: orange;
+}
+
+.smurf {
+  border: 1px solid salmon;
+  background: lightblue;
+  border-radius: 22px;
+  margin: 22px 0;
+  /* width: 50%; */
+}
+
+.updating {
+  background: lawngreen;
+}
+
+.not-updating {
+  background: cadetblue;
+}

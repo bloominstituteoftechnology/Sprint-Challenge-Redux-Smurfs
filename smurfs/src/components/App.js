@@ -1,22 +1,78 @@
 import React, { Component } from 'react';
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import { fetchStuff, addSmurf, deleteSmurf,  } from '../actions';
+import { connect } from 'react-redux';
+import SmurfVillage from './smurfVillage';
+import SmurfForm from './smurfForm';
+
+
+
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      age: '',
+      height: '',
+      showForm: false
+    }
+  }
+
+  componentDidMount() {
+    this.props.fetchStuff();
+  }
+
+  inputChangeHandler = ev => {
+    this.setState({ [ev.target.name]: ev.target.value });
+  };
+
+  addSmurfHandler = ev => {
+    ev.preventDefault();
+    this.props.addSmurf({
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    });
+    this.setState({
+      name: '',
+      age: '',
+      height: '',
+      showForm: false
+    });
+  }
+
+  deleteSmurfHandler = id => {
+    this.props.deleteSmurf(id);
+  }
+
+  updateHandler = () => {
+    this.setState(function(prevState) {
+      return {showForm: !prevState.showForm}
+      })
+      this.forceUpdate();
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <h1>Smurf Village 2.0 W/ Redux</h1>
+        {this.props.fetchingSmurfs ? (<span className='fetching' >materializing smurfs...</span>) : (
+          <SmurfVillage smurfs={this.props.smurfs} deleteSmurfHandler={this.deleteSmurfHandler} updateHandler={this.updateHandler} showForm={this.state.showForm} />
+        )}
+        <SmurfForm inputChangeHandler={this.inputChangeHandler} inputName={this.state.name} inputAge={this.state.age} inputHeight={this.state.height} addSmurfHandler={this.addSmurfHandler}  />
       </div>
     );
   }
 }
 
-export default App;
+
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    error: state.error,
+    fetchingSmurfs: state.fetchingSmurfs,
+    // updatingSmurf: state.updatingSmurf
+  };
+};
+
+export default connect(mapStateToProps, { fetchStuff, addSmurf, deleteSmurf,  })(App);
