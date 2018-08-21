@@ -20,7 +20,9 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cors": "^2.8.4",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "nodemon": "^1.17.2"
