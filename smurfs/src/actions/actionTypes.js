@@ -1,0 +1,5 @@
+export const PENDING_SMURFS ='PENDING_SMURFS';
+export const SUCCESS_SMURFS = 'SUCCESS_SMURFS';
+export const POSTING_SMURFS = 'POSTING_SMURFS';  
+export const POST_SMURFS ='POST_SMURFS';
+export const ERROR_SMURFS = 'ERROR_SMURFS';

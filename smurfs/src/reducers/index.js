@@ -1,52 +1,48 @@
-import { FETCHING_SMURFS, SUCCESS_FETCHING, CREATING_SMURF, SUCCESS_CREATING, REJECTED } from '../actions';
+import * as AT from '../actions/actionTypes';
 
+/*
+ Your initial/default state for this project could look a lot like this
+*/
+ const initialState ={
+smurfs: [],
+fetchingSmurfs: false,
+addingSmurf: false,
+updatingSmurf: false,
+deletingSmurfs: false,
+error: null,
+}
+const smurfsReducer = (state =initialState, action) =>{
+switch(action.type){
+  case AT.PENDING_SMURFS:
+  console.log(state)
+      return{...state, fetchingSmurfs: true}
+  case AT.SUCCESS_SMURFS:
+  console.log(state)
+    return{...state, smurfs: action.payload, fetchingSmurfs: false}
 
-//  Your initial/default state for this project could look a lot like this
- 
-const initialState = {
-   smurfs: [],
-   fetchingSmurfs: false,
-   addingSmurf: false,
-   updatingSmurf: false,
-   deletingSmurfs: false,
-   error: null
- };
+    case AT.POSTING_SMURFS:
+      return { ...state, addingSmurfs: true };
+    case AT.POST_SMURFS:
+      return { ...state, smurfs: action.payload, addinfSmurfs: false };
 
+  case AT.ERROR_SMURFS:
+  console.log(state)
+  return {...state,
+    fetchingSmurfs: false,
+    addingSmurf: false,
+    updatingSmurf: false,
+    deletingSmurfs: false,
+    error: action.payload,
+}
+  default:
+  return state;
+}
+}
 
+export default smurfsReducer;
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
   This will guard your namespacing issues.
   Components can read your store as, `state` and not `state.fooReducer`.
 */
-
-
-export default (state = initialState, action) => {
-  switch(action.type) {
-  case FETCHING_SMURFS:
-    return Object.assign({}, state, { fetchingSmurfs: true
-    });
-  case SUCCESS_FETCHING:
-  return Object.assign({}, state, {
-    fetchingSmurfs: true,
-    error: null,
-    smurfs: action.payload
-    });
-  case CREATING_SMURF:
-    return Object.assign({}, state, { addingSmurf: true});
-  case SUCCESS_CREATING:
-    return Object.assign({}, state, {
-      addingSmurf: false,
-      error: null,
-      smurfs: action.payload
-    });
-  case REJECTED:
-    return Object.assign({}, state, {
-      error: action.payload,
-      fetchingSmurfs: false,
-      addingSmurf: false
-    });
-    default:
-      return state;
-  }
-};
