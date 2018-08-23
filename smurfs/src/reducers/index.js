@@ -14,6 +14,10 @@
  }
 */
 
+const RootReducer = () => {
+
+}
+
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
@@ -21,3 +25,5 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+export default RootReducer;
