@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 
 const store = createStore(
-  // rootReducer, 
+  rootReducer, 
   applyMiddleware(thunk, logger)
 );
 

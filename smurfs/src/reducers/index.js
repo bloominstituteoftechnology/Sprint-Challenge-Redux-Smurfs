@@ -27,12 +27,14 @@ const initialState = {
  }
 */
 
-export const smurfReducer = (state = initialState, {type, payload}) => {
+const smurfReducer = (state = initialState, {type, payload}) => {
   switch(type) {
     case GETTING_SMURFS:
       return {...state, gettingSmurfs: true, smurfs: [...payload]};
     case ADDING_SMURF:
       return {...state, addingSmurf: true};
+    case ERROR:
+      return {...state, gettingSmurfs: false, addingSmurf: false, error: 'error'}
   }
 }
 
@@ -43,3 +45,5 @@ export const smurfReducer = (state = initialState, {type, payload}) => {
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+export default smurfReducer;
