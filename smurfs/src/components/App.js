@@ -24,8 +24,13 @@ class App extends Component {
   }
 }
 
-mapStateToProps = state => {
-  
+const mapStateToProps = state => {
+  const { smurfReducer } = state;
+  return {
+    smurfs: smurfReducer.smurfs,
+    error: smurfReducer.error,
+    gettingSmurfs: smurfReducer.gettingSmurfs
+  }
 }
 
 export default connect(mapStateToProps, { getSmurfs })(App);
