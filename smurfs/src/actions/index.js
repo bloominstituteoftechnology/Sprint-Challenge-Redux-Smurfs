@@ -37,15 +37,12 @@ export const getSmurfs = () => {
 export const addSmurf = smurf => {
   return dispatch => {
     dispatch({type: ADD_SMURF}) 
-    axios.post('http://localhost:3333/smurfs', {
-      name: smurf.name, 
-      age: smurf.age,
-      height: smurf.height
-    })
+    axios.post('http://localhost:3333/smurfs', smurf) 
     .then(response => {
-      console.log(response)
       dispatch({type: ADDED_SMURF, payload: response.data})
     })
-    .catch (error => dispatch({ type: ERROR, payload: error}))
+    .catch (error => {
+      dispatch({ type: ERROR, payload: error});
+    })
   }
 }

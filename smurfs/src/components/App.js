@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import {getSmurfs} from '../actions';
-
+import {addSmurf} from '../actions';
 
 /*
  to wire this component up you're going to need a few things.
@@ -16,19 +16,29 @@ class App extends Component {
   state = {
     name: '',
     age: null,
-    height: ''
+    height: '',
   };
 
   componentDidMount() {
     this.props.getSmurfs();
   }
+
+  handleChanges = event => {
+  this.setState({
+    [event.target.name]: event.target.value,
+  });
+}
+
   render() {
+    const {name, age, height } = this.state;
     return (
       <div className="App">
 
-      <input placeholder="Name" type="text" name="name" value={this.state.name} onChange={this.handleChanges} />
-      <input placeholder="Age" type="text" age="age" value={this.state.name} onChange={this.handleChanges} />
-      <input placeholder="Height" type="text" height="height" value={this.state.name} onChange={this.handleChanges} />
+      <input placeholder="Smurf Name" type="text" name="name" value={name} onChange={this.handleChanges} />
+      <input placeholder="Smurf Age" type="number" name="age" value={age} onChange={this.handleChanges} />
+      <input placeholder="Smurf Height" type="text" name="height" value={height} onChange={this.handleChanges} />
+      <button onClick={()=> this.props.addSmurf(this.state)}> Add Smurf </button>
+      {this.props.addingSmurf ? <h4>Adding Smurf to Village</h4> : null}
       {this.props.fetchingSmurfs ? <h2>Getting Smurfs </h2> : null}
 
       {
@@ -53,7 +63,8 @@ const mapStateToProps = state => {
 return {
 smurfs: state.smurfs,
 fetchingSmurfs: state.fetchingSmurfs,
+addingSmurf: state.addingSmurf
 
 }};
 
-export default connect(mapStateToProps, {getSmurfs})(App);
+export default connect(mapStateToProps, {getSmurfs,addSmurf})(App);

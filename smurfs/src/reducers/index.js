@@ -44,12 +44,12 @@ export default (state = initialState, action) => {
 
     case ADDED_SMURF: 
     return {
-      ...state, addingSmurf: false, added: true, smurfs: action.payload
+      ...state, addingSmurf: false, smurfs: action.payload
     };
 
     case ERROR: 
     return {
-      ...state, error: action.payload
+      ...state, addingSmurf: false, error: action.payload
     };
 
     default:
