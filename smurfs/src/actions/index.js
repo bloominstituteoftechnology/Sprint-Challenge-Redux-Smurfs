@@ -21,3 +21,9 @@ export const ERROR_POSTING = "ERROR_POSTING";
    U - updateSmurf
    D - deleteSmurf
 */
+
+const URL = 'http://localhost:3333/smurfs';
+
+export const getData = () => {
+  const smurfs
+}
