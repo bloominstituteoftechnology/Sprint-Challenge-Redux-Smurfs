@@ -14,7 +14,7 @@
    D - deleteSmurf
 */
 
-import axios from 'axios';
+import axios from "axios";
 
 export const ERROR = "ERROR";
 export const GET_SMURFS = "GET_SMURFS";
@@ -30,33 +30,27 @@ const URL = "http://localhost:3333/smurfs";
 export const getSmurfs = () => {
   const smurfs = axios.get(URL);
   return dispatch => {
-    dispatch({type: GETTING_SMURFS});
-    smurfs 
+    dispatch({ type: GETTING_SMURFS });
+    smurfs
       .then(response => {
-        dispatch({type: GET_SMURFS, payload: response.data});
+        dispatch({ type: GET_SMURFS, payload: response.data });
       })
       .catch(err => {
-        dispatch({type:ERROR, payload: err});
+        dispatch({ type: ERROR, payload: err });
       });
-
-  } ;
+  };
 };
 
-
-
-export const createSmurf = () => {
-  const newSmurf = axios.post(`${URL}/smurfs`);
+export const createSmurf = newSmurf => {
+  const smurfs = axios.post(URL, newSmurf);
   return dispatch => {
-    dispatch({type: CREATING_SMURFS});
-    newSmurf
-      .then(response =>{
-        dispatch({type:CREATE_SMURFS, payload:response.data});
+    dispatch({ type: CREATING_SMURFS });
+    smurfs
+      .then(response => {
+        dispatch({ type: CREATE_SMURFS, payload: response.data });
       })
       .catch(err => {
-        dispatch({type:ERROR, payload: err});
+        dispatch({ type: ERROR, payload: err });
       });
-
-  }
-}
-
-
+  };
+};

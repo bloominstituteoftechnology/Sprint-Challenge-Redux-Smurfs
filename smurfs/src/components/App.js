@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import {connect} from 'react-redux';
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import { connect } from "react-redux";
+import {BrowserRouter as Router} from 'react-router-dom';
 
-import Header from './Header';
-import SmurfForm from './SmurfForm';
-import SmurfList from './SmurfList'; 
+import Header from "./Header";
+import SmurfForm from "./SmurfForm";
+import SmurfList from "./SmurfList";
 
 //actions
-import {getSmurfs} from '../actions';
+import { getSmurfs } from "../actions";
 
-import './App.css';
-import { smurfsReducer } from '../reducers/smurfsReducer';
+import "./App.css";
+import { smurfsReducer } from "../reducers/smurfsReducer";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -18,44 +19,42 @@ import { smurfsReducer } from '../reducers/smurfsReducer';
  `How do I ensure that my component links the state to props?`
  */
 
-
 class App extends Component {
-
   componentDidMount() {
-    this.props.getSmurfs(); 
+    this.props.getSmurfs();
   }
-
 
   render() {
     return (
+      
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
-        <Route exact path ='/' component={Header}/>
-        {/* <Route 
+        {/* <Route exact path ='/' component={Header}/> */}
+        <Route
           path="/smurfs"
-          render={this.props.smurfs => {
-            return <SmurfForm getSmurfs={this.props.smurfs}}} 
-          />  */}
-          {/* <Route
+          component={SmurfForm}
+        /> 
+        
+        <Route
           path="/smurfs"
-          render={props => {
-            return <SmurfList smurfs={this.state.smurfs} />;
-          }}
-        /> */}
+          component={SmurfList}
+        /> 
+        
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  const {smurfsReducer} = state;
-  return{
-  smurfs: smurfsReducer.smurfs,
-  error: smurfsReducer.error,
-  gettingSmurfs: smurfsReducer.gettingSmurfs
-};
+const mapStateToProps = state => {
+  const { smurfsReducer } = state;
+  return {
+    error: smurfsReducer.error,
+    gettingSmurfs: smurfsReducer.gettingSmurfs,
+  };
 };
 
-
-export default connect(mapStateToProps, {getSmurfs})(App);
+export default connect(
+  mapStateToProps,
+  { getSmurfs }
+)(App);

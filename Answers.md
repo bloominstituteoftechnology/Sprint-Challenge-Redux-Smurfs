@@ -1,7 +1,7 @@
-1.      ? Which method do we use to create a new object while extending the properties of another object?
+1.   Which method do we use to create a new object while extending the properties of another object?
     filter, map, and reduce methods
 
-2.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+2.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is        the store known as a 'single source of truth' in a redux application?
     Store: is the part of a redux app that contains all the stored state.
     Reducers: Reducers are a global representation of state in the application and can be passed/used anywhere. I believe they are used to ultimately change state.
     Actions: Actions are a way to create global methods throughout the application, mounting components, delete, add, etc

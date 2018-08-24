@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Smurf from './Smurf';
-
+import {connect} from 'react-redux';
 
 
 class SmurfList extends Component {
@@ -35,3 +35,14 @@ class SmurfList extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  const { smurfsReducer } = state;
+  return {
+    smurfs: smurfsReducer.smurfs,
+    error: smurfsReducer.error,
+  };
+};
+
+export default connect(mapStateToProps)(SmurfList);
+
