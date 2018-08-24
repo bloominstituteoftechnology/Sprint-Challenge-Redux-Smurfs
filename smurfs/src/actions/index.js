@@ -25,10 +25,10 @@ export const ADDED_SMURF = 'ADDED_SMURF'
 export const getSmurfs = () => {
   return dispatch => {
     dispatch({type: FETCH_SMURFS})
-    axios.get('http://localhost:333/smurfs')
+    axios.get('http://localhost:3333/smurfs')
     .then(response => {
       console.log(response)
-      dispatch({ typed: FETCHED_SMURFS, payload: response.data})
+      dispatch({ type: FETCHED_SMURFS, payload: response.data})
     })
     .catch (error => dispatch({type: ERROR, payload: error}))
   }
@@ -37,7 +37,7 @@ export const getSmurfs = () => {
 export const addSmurf = smurf => {
   return dispatch => {
     dispatch({type: ADD_SMURF}) 
-    axios.post('http://localhost:333/smurfs', {
+    axios.post('http://localhost:3333/smurfs', {
       name: smurf.name, 
       age: smurf.age,
       height: smurf.height

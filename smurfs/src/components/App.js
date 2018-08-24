@@ -12,16 +12,27 @@ import {getSmurfs} from '../actions';
  */
 
 class App extends Component {
+
+  state = {
+    name: '',
+    age: null,
+    height: ''
+  };
+
   componentDidMount() {
     this.props.getSmurfs();
   }
   render() {
     return (
       <div className="App">
+
+      <input placeholder="Name" type="text" name="name" value={this.state.name} onChange={this.handleChanges} />
+      <input placeholder="Age" type="text" age="age" value={this.state.name} onChange={this.handleChanges} />
+      <input placeholder="Height" type="text" height="height" value={this.state.name} onChange={this.handleChanges} />
       {this.props.fetchingSmurfs ? <h2>Getting Smurfs </h2> : null}
 
       {
-        !this.props.fetchingSmurfs && this.props.smurfs.lemgth ? 
+        !this.props.fetchingSmurfs && this.props.smurfs.length ? 
       <ul>
         {this.props.smurfs.map(smurf => (
         <li>

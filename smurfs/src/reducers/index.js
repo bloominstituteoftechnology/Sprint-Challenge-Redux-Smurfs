@@ -22,6 +22,7 @@ import { FETCH_SMURFS, FETCHED_SMURFS, ADD_SMURF, ADDED_SMURF, ERROR} from "../a
 */
 
 export default (state = initialState, action) => {
+  console.log(action.type);
   switch(action.type) {
     
     case FETCH_SMURFS:
@@ -29,7 +30,9 @@ export default (state = initialState, action) => {
       ...state, fetchingSmurfs: true
     };
 
+
     case FETCHED_SMURFS:
+     console.log("action", action.payload);
     return {
       ...state, fetchingSmurfs: false, smurfs: action.payload
     };
@@ -51,6 +54,6 @@ export default (state = initialState, action) => {
 
     default:
     return state
-  };
+  }
 };
 
