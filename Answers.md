@@ -13,6 +13,8 @@ from one place for our application.
 
 
 1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
+-Application state is the entire or overall application. Where as component state are individual components themselves that can
+interact with state.
 
 
 1.  What is middleware?

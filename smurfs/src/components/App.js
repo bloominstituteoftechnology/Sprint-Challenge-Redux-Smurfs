@@ -31,44 +31,39 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
         <div>
           <input
-          onChange={this.handleInputChanger}
-          name="name"
-          type="text"
-          value={this.state.name}
-          placeholder="Name" 
+            onChange={this.handleInputChanger}
+            name="name"
+            type="text"
+            value={this.state.name}
+            placeholder="Name"
           />
           <input
-          onChange={this.handleInputChanger}
-          name="age"
-          type="text"
-          value={this.state.age}
-          placeholder="Age" 
+            onChange={this.handleInputChanger}
+            name="age"
+            type="text"
+            value={this.state.age}
+            placeholder="Age"
           />
           <input
-          onChange={this.handleInputChanger}
-          name="height"
-          type="text"
-          value={this.state.height}
-          placeholder="Height" 
+            onChange={this.handleInputChanger}
+            name="height"
+            type="text"
+            value={this.state.height}
+            placeholder="Height"
           />
           <button onClick={this.handleSubmit}>Create New Smurf</button>
         </div>
         {this.props.smurfs.map(smurf => {
-          return (
-            <div>
-              Name:
-              {smurf.name}
-              Age:
-              {smurf.age}
-              Height:
-              {smurf.height}
-            </div>
-          );
+          <div>
+            Name:
+            {smurf.name}
+            Age:
+            {smurf.age}
+            Height:
+            {smurf.height}
+          </div>;
         })}
       </div>
     );

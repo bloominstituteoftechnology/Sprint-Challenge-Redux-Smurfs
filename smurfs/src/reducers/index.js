@@ -1,11 +1,11 @@
 import {
   FETCHING_SMURF,
   FETCHED_SMURF,
-  ERRROR_FETCHING,
+  ERROR_FETCHING,
   POSTING_SMURF,
   POSTED,
   ERROR_POSTING
-} from "./actions";
+} from "../actions";
 
 const initialState = {
   smurfs: [],
@@ -14,7 +14,7 @@ const initialState = {
   error: null
 };
 
-export const smurfReducer = (state = initialState, action) => {
+export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURF:
       return { ...state, fetchingSmurfs: true };
@@ -24,7 +24,7 @@ export const smurfReducer = (state = initialState, action) => {
       return { ...state, postingSmurfs: true };
     case POSTED:
       return { ...state, smurfs: [...action.payload], postingSmurfs: false };
-    case ERRROR_FETCHING:
+    case ERROR_FETCHING:
       return {
         ...state,
         fetchingSmurfs: false,
