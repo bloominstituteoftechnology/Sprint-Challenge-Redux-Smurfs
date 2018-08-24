@@ -1,4 +1,4 @@
-/* 
+/*
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
@@ -13,3 +13,23 @@
    U - updateSmurf
    D - deleteSmurf
 */
+import axios from 'axios';
+import { error } from 'util';
+
+export const FETCHING_SMURFS = 'FETCHING_SMURFS'
+export const FETCHED_SMURFS = 'FETCHED_SMURFS'
+export const SAVING_SMURFS = 'SAVING_SMURFS'
+export const SAVED_SMURFS = 'SAVED_SMURFS'
+export const ERROR_SMURFS = 'ERROR_SMURFS'
+
+
+export const getSmurfs = () => {
+  return(dispatch) => {
+    dispatch ({type: FETCHING_SMURFS });
+    axios.get('http://localhost:3333/smurfs')
+    .then(response => {
+      dispatch({ FETCHED_SMURFS, payload: response.data });
+    })
+    .catch(error => dispatch({type: error.payload }))
+  }
+};
