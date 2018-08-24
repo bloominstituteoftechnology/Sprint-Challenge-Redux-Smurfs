@@ -23,16 +23,22 @@ class AddSmurf extends Component {
         return (
             <form onSubmit={() => this.handleAddSmurf()}>
                 <input
+                    name='name'
+                    value={this.state.name}
                     type="text"
                     placeholder="Name"
                     onChange={this.handleInputChange}
                 />
                 <input
+                    name='age'
+                    value={this.state.age}
                     type="number"
                     placeholder="Age"
                     onChange={this.handleInputChange}
                 />
                 <input
+                    name='height'
+                    value={this.state.height}
                     type="number"
                     placeholder="Height"
                     onChange={this.handleInputChange}
