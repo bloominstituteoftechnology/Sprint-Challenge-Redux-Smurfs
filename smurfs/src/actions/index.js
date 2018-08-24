@@ -6,21 +6,22 @@ import axios from "axios";
 */
 
 export const FETCHING = "FETCHING";
-export const FETCHED = "FETCHING";
+export const FETCHED = "FETCHED";
 export const ERROR = "ERROR";
 export const ADD_SMURF = "ADD_SMURF";
 
 const URL = "http://localhost:3333/smurfs";
 export const fetchSmurfs = () => {
   console.log(URL)
-  const promise = axios.get(URL);
+  const promise = axios.get(URL)
   return dispatch => {
     dispatch({ type: FETCHING });
     promise
       .then(({ data }) => {
+        console.log("data", data)
         dispatch({
           type: FETCHED,
-          payload: data.results
+          payload: data
         });
       })
       .catch(err => {
@@ -31,6 +32,14 @@ export const fetchSmurfs = () => {
       });
   };
 };
+
+export const addSmurf = () => {
+  axios.post(URL, {
+    name: "test", 
+    age: "test",
+    height: "test" 
+  })
+}
 
 /*
   For this project you'll need at least 2 action creators for the main portion,

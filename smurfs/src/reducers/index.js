@@ -29,6 +29,10 @@ export const rootReducer = (state = initialState, action) => {
       ...state,
       error: "There has been an error loading content"
     }
+    case ADD_SMURF:
+    return {
+      smurfs: action.payload
+    }
 
     default:
     return state;
