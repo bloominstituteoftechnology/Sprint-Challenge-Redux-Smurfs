@@ -27,5 +27,36 @@ export const CREATE_SMURFS = "CREATE_SMURFS";
 
 const URL = "http://localhost:3333/smurfs";
 
-// export 
+export const getSmurfs = () => {
+  const smurfs = axios.get(URL);
+  return dispatch => {
+    dispatch({type: GETTING_SMURFS});
+    smurfs 
+      .then(response => {
+        dispatch({type: GET_SMURFS, payload: response.data});
+      })
+      .catch(err => {
+        dispatch({type:ERROR, payload: err});
+      });
+
+  } ;
+};
+
+
+
+export const createSmurf = () => {
+  const newSmurf = axios.post(`${URL}/smurfs`);
+  return dispatch => {
+    dispatch({type: CREATING_SMURFS});
+    newSmurf
+      .then(response =>{
+        dispatch({type:CREATE_SMURFS, payload:response.data});
+      })
+      .catch(err => {
+        dispatch({type:ERROR, payload: err});
+      });
+
+  }
+}
+
 
