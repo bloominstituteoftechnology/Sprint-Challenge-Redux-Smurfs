@@ -10,20 +10,64 @@ import { getTheData, postTheData } from "../actions";
  */
 class App extends Component {
   state = {
-    name: '',
-    age: '',
-    height: '',
+    name: "",
+    age: "",
+    height: ""
   };
   componentDidMount() {
     this.props.getTheData();
+    console.log("bing, data mounted.");
   }
+
+  handleInput = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleSubmit = () => {
+    this.props.postTheData({
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    });
+    this.setState({
+      name: "",
+      age: "",
+      height: ""
+    });
+  };
+
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-       {this.props.smurfs.map(smurf => {
-         return <div>Name: {smurf.name} - Age: {smurf.age} - Height: {smurf.height}</div>
-       })}
+        <div>
+          <input
+            onChange={this.handleInput}
+            name="name"
+            value={this.state.name}
+            placeholder="Smurf name"
+          />
+          <input
+            onChange={this.handleInput}
+            name="age"
+            value={this.state.age}
+            placeholder="age"
+          />
+          <input
+            onChange={this.handleInput}
+            name="height"
+            value={this.state.height}
+            placeholder="height"
+          />
+          <button onClick={this.handleSubmit}>Add smurf</button>
+        </div>
+        {this.props.smurfs.map(smurf => {
+          return (
+            <div key={smurf.name}>
+              Name: {smurf.name} - Age: {smurf.age} - Height: {smurf.height}
+            </div>
+          );
+        })}
       </div>
     );
   }

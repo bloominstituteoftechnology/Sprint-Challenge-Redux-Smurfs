@@ -22,14 +22,14 @@ export const getTheData = () => {
 export const postTheData = data => {
   const smurfs = axios.post("http://localhost:3333/smurfs", data);
   return dispatch => {
-    dispatch({ type: PENDING_SMURFS});
+    dispatch({ type: PENDING_SMURFS });
     smurfs
-        .then(response => {
-          console.log(response);
-          dispatch({ type: SUCCESS_SMURFS, payload: response.data });
-        })
-        .catch(err => {
-          dispatch({ type: ERROR_SMURFS, payload: "Error posting smurfs" });
-        });
+      .then(response => {
+        console.log(response);
+        dispatch({ type: SUCCESS_SMURFS, payload: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR_SMURFS, payload: "Error posting smurfs" });
+      });
   };
 };
