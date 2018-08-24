@@ -1,19 +1,19 @@
-import axios from 'axios';
+import axios from "axios";
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
-export const ERROR = 'ERROR';
-export const GET_SMURFS = 'GET_SMURFS';
-export const GETTING_SMURFS = 'GETTING_SMURFS';
-export const CREATING_SMURF = 'CREATING_SMURF';
-export const CREATE_SMURF = 'CREATE_SMURF';
-export const UPDATE_SMURFS = 'UPDATE_SMURFS';
-export const DELETE_SMURF = 'DELETE_SMURF';
-export const UPDATING_SMURF = 'UPDATING_SMURF';
-export const DELETING_SMURF = 'DELETING_SMURF';
-export const SINGLE_SMURF = 'SINGLE_SMURF';
-export const TOGGLE_UPDATE_SMURF = 'TOGGLE_UPDATE_SMURF';
+export const ERROR = "ERROR";
+export const GET_SMURFS = "GET_SMURFS";
+export const GETTING_SMURFS = "GETTING_SMURFS";
+export const CREATING_SMURF = "CREATING_SMURF";
+export const CREATE_SMURF = "CREATE_SMURF";
+export const UPDATE_SMURFS = "UPDATE_SMURFS";
+export const DELETE_SMURF = "DELETE_SMURF";
+export const UPDATING_SMURF = "UPDATING_SMURF";
+export const DELETING_SMURF = "DELETING_SMURF";
+export const SINGLE_SMURF = "SINGLE_SMURF";
+export const TOGGLE_UPDATE_SMURF = "TOGGLE_UPDATE_SMURF";
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -25,8 +25,7 @@ export const TOGGLE_UPDATE_SMURF = 'TOGGLE_UPDATE_SMURF';
    D - deleteSmurf
 */
 
-
-const URL = 'http://localhost:3333/smurfs';
+const URL = "http://localhost:3333/smurfs";
 
 export const getSmurfs = () => {
   const friends = axios.get(`${URL}/get`);
@@ -85,3 +84,12 @@ export const updateSingleSmurf = smurf => {
     payload: smurf
   };
 };
+
+axios
+  .post("http://localhost:3333/smurfs", { someData: response.data })
+  .then(response => {
+    dispatch({ type: GET_SMURFS, payload: response.data });
+  })
+  .catch(err => {
+    dispatch({ type: ERROR, payload: err });
+  });
