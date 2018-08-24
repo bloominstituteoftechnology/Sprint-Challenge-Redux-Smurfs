@@ -14,9 +14,11 @@ import Smurf from '../components/Smurf'
  */
 class App extends Component {
   state = {
-    name: "",
-    age: "",
-    height: ""
+    fields: {
+      name: "",
+      age: "",
+      height: ""
+    }
   };
   componentDidMount() {
     console.log("CDM", this.props);
@@ -34,7 +36,7 @@ class App extends Component {
     console.log("Render", this.props);
     return (
       <div className="App">
-        <form className="smurf-form" onSubmit={this.props.addSmurf}>
+        <form className="smurf-form" onSubmit={this.props.addSmurf(this.state.fields)}>
           <input
             onChange={this.handleInputChange}
             placeholder="name"

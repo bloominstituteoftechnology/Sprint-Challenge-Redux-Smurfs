@@ -1,4 +1,4 @@
-import { FETCHING, FETCHED, ERROR, ADD_SMURF } from "../actions";
+import { FETCHING, FETCHED, ERROR, ADD_SMURF, ADDING_SMURF } from "../actions";
 
 const initialState = {
 smurfs: [],
@@ -27,10 +27,20 @@ export const rootReducer = (state = initialState, action) => {
     case ERROR: 
     return {
       ...state,
-      error: "There has been an error loading content"
+      fetchingSmurfs: false,
+      addingSmurf: false,
+      error: "There has been an error loading content",
+      
+    }
+    case ADDING_SMURF: 
+    return {
+      ...state,
+      addingSmurf: true,
     }
     case ADD_SMURF:
     return {
+      ...state,
+      addingSmurf: false,
       smurfs: action.payload
     }
 
