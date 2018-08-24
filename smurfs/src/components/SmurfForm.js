@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
-import {getSmurfs} from '../actions';
+import {createSmurf} from '../actions';
 
 
 class SmurfForm extends Component {
@@ -15,7 +15,7 @@ class SmurfForm extends Component {
 
   handleAddSmurf = event => {
       const {name, age, height} = this.state;
-      this.props.getSmurfs({name, age, height});
+      this.props.createSmurf({name, age, height});
       this.setState({name: "", age: "", height: ""});
   };
 
@@ -26,7 +26,7 @@ class SmurfForm extends Component {
   render() {
     return (
       <div className="SmurfForm">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.props.handleAddSmurf}>
           <h2>Add to the Smurf Village</h2>
           <input
             onChange={this.handleInputChange}
@@ -55,3 +55,11 @@ class SmurfForm extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+    return {
+        error: state.error,
+        creatingSmurf: state.createSmurf
+    };
+};
+export default connect(mapStateToProps, {createSmurf})(SmurfForm);

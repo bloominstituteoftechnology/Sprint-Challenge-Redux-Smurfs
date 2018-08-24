@@ -2,6 +2,14 @@
   Be sure to import in all of the action types from `../actions`
 */
 
+import * as actionTypes from '../actions';
+import {smurfsReducer} from './smurfsReducer';
+import { reducers } from 'redux';
+
+export default reducers ({
+  smurfsReducer
+});
+
 
 
 
