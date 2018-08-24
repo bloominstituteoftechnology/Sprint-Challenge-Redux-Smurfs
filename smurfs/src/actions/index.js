@@ -30,7 +30,7 @@ export const getSmurfs = () => {
       console.log(response)
       dispatch({ typed: FETCHED_SMURFS, payload: response.data})
     })
-    .catch (error => dispatch({type: ERROR, error: error}))
+    .catch (error => dispatch({type: ERROR, payload: error}))
   }
 }
 
@@ -46,6 +46,6 @@ export const addSmurf = smurf => {
       console.log(response)
       dispatch({type: ADDED_SMURF, payload: response.data})
     })
-    .catch (error => dispatch({ type: ERROR, error: error}))
+    .catch (error => dispatch({ type: ERROR, payload: error}))
   }
 }
