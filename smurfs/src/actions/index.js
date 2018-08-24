@@ -8,6 +8,8 @@ import axios from 'axios';
 export const FETCH_SMURFS = 'FETCH_SMURFS';
 export const FETCHED_SMURFS = 'FETCHED_SMURFS';
 export const ERROR = 'ERROR';
+export const ADD_SMURF = 'ADD_SMURF'
+export const ADDED_SMURF = 'ADDED_SMURF'
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -32,3 +34,18 @@ export const getSmurfs = () => {
   }
 }
 
+export const addSmurf = smurf => {
+  return dispatch => {
+    dispatch({type: ADD_SMURF}) 
+    axios.post('http://localhost:333/smurfs', {
+      name: smurf.name, 
+      age: smurf.age,
+      height: smurf.height
+    })
+    .then(response => {
+      console.log(response)
+      dispatch({type: ADDED_SMURF, payload: response.data})
+    })
+    .catch (error => dispatch({ type: ERROR, error: error}))
+  }
+}
