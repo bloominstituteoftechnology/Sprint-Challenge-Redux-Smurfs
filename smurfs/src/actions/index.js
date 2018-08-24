@@ -13,3 +13,19 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+import axios from 'axios';
+
+export const ERROR = "ERROR";
+export const GET_SMURFS = "GET_SMURFS";
+export const GETTING_SMURFS = "GETTING_SMURFS";
+export const CREATING_SMURFS = "CREATING_SMURFS";
+export const CREATE_SMURFS = "CREATE_SMURFS";
+// export const ERROR = "ERROR";
+// export const ERROR = "ERROR";
+// export const ERROR = "ERROR";
+
+const URL = "http://localhost:3333/smurfs";
+
+// export 
+
