@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
 import { getTheData, postTheData } from "../actions";
+import smurfGif from '../smurf.gif'
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -61,6 +62,7 @@ class App extends Component {
           />
           <button onClick={this.handleSubmit}>Add smurf</button>
         </div>
+        <div className="smurfs">
         {this.props.smurfs.map(smurf => {
           return (
             <div key={smurf.name}>
@@ -68,6 +70,8 @@ class App extends Component {
             </div>
           );
         })}
+        </div>
+        <img src={smurfGif} width="200" alt="golf"/>
       </div>
     );
   }
@@ -75,7 +79,6 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    pending: state.pending,
     smurfs: state.smurfs
   };
 };
