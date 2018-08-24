@@ -15,7 +15,7 @@ class SmurfForm extends Component {
         event.preventDefault();
         let newSmurf = {
             age: this.state.age,
-            height: this.state.height.
+            height: this.state.height,
             id: this.state.id,
             name: this.state.name,
         };
@@ -29,7 +29,7 @@ class SmurfForm extends Component {
             });
     }
 
-    handleInputChange = e = {
+    handleInputChange = e => {
         this.setState({ [e.target.name]: e.target.value });
     };
 
@@ -56,11 +56,5 @@ class SmurfForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
-  return {
-    error: state.error,
-    addSmurf: state.addSmurf
-  };
-};
 
-export default connect(mapStateToProps, { addSmurf })SmurfForm;
+export default SmurfForm;

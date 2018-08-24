@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { fetchingSmurfs } from '../actions';
-import { Route } from 'react-router-dom';
 import SmurfForm from './SmurfForm';
 /*
  to wire this component up you're going to need a few things.
@@ -11,6 +10,13 @@ import SmurfForm from './SmurfForm';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  state = {
+    addSmurfName: '',
+    addSmurfAge: '',
+    addSmurfHeight: '',
+    deleteSmurfId: ''
+  }
+
   componentDidMount() {
     this.props.fetchingSmurfs();
   }
@@ -19,7 +25,23 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <Route exact path = '/smurfs' component={SmurfForm} />
+                <section>
+          <SmurfForm
+            onChange={this.onChange}
+            addSmurf={this.addSmurf}
+            addSmurfName={this.state.addSmurfName}
+            addSmurfAge={this.state.addSmurfAge}
+            addSmurfHeight={this.state.addSmurfHeight}
+          />
+        </section>
+        <main>
+          <h1>Smurfs</h1>
+          {this.props.fetchingSmurfs ? <h2>Loading...</h2> :
+            this.props.smurfs.map((item, index) => {
+              return <p key={index}>{item.id}: {item.name}</p>
+            })
+          }
+        </main>
       </div>
     );
   }

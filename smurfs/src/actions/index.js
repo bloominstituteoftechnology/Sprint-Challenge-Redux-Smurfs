@@ -28,7 +28,7 @@ export const fetchingSmurfs = () => {
   }
 }
 
-export const addSmurf = () => {
+export const addSmurf = (smurf) => {
   let post = axios.post('http://localhost:3333/smurfs', smurf)
   return dispatch => {
     post.then(response => {
