@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { connect } from "react-redux";
+import { getTheData, postTheData } from "../actions";
+import smurfGif from '../smurf.gif'
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -7,16 +10,80 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  state = {
+    name: "",
+    age: "",
+    height: ""
+  };
+  componentDidMount() {
+    this.props.getTheData();
+    console.log("bing, data mounted.");
+  }
+
+  handleInput = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleSubmit = () => {
+    this.props.postTheData({
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    });
+    this.setState({
+      name: "",
+      age: "",
+      height: ""
+    });
+  };
+
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <div>
+          <input
+            onChange={this.handleInput}
+            name="name"
+            value={this.state.name}
+            placeholder="Smurf name"
+          />
+          <input
+            onChange={this.handleInput}
+            name="age"
+            value={this.state.age}
+            placeholder="age"
+          />
+          <input
+            onChange={this.handleInput}
+            name="height"
+            value={this.state.height}
+            placeholder="height"
+          />
+          <button onClick={this.handleSubmit}>Add smurf</button>
+        </div>
+        <div className="smurfs">
+        {this.props.smurfs.map(smurf => {
+          return (
+            <div key={smurf.name}>
+              Name: {smurf.name} - Age: {smurf.age} - Height: {smurf.height}
+            </div>
+          );
+        })}
+        </div>
+        <img src={smurfGif} width="200" alt="smurf"/>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { getTheData, postTheData }
+)(App);
