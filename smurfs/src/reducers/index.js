@@ -1,4 +1,4 @@
-import {FETCH, FETCHING, ERROR, ADDING, ADDED, REMOVED} from '../actions';
+import {FETCH, FETCHED, ERROR, ADDING, ADDED, REMOVED} from '../actions';
 
 
 const initialState = {
@@ -10,7 +10,7 @@ const initialState = {
 
  export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCHING:
+    case FETCH:
     return {...state,
       loading: true,
     }
