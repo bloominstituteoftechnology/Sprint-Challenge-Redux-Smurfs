@@ -22,3 +22,17 @@ export const getSmurfs = () => {
       });
   };
 };
+
+export const postSmurfs = smurf => {
+  const newSmurf = axios.post(`${URL}`, smurf);
+  return dispatch => {
+    dispatch({ type: POSTING_SMURF });
+    newSmurf
+      .then(response => {
+        dispatch({ type: POSTED, payload: response.smurf });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR_POSTING, payload: "Error with posting" });
+      });
+  };
+};
