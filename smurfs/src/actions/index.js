@@ -10,10 +10,10 @@ export const ERROR_POSTING = "ERROR_POSTING";
 const URL = "http://localhost:3333/smurfs";
 
 export const getSmurfs = () => {
-  const smurf = axios.get(`${URL}`);
+  const smurfs = axios.get(`${URL}`);
   return dispatch => {
     dispatch({ type: FETCHING_SMURF });
-    smurf
+    smurfs
       .then(response => {
         dispatch({ type: FETCHED_SMURF, payload: response.data });
       })
@@ -24,10 +24,10 @@ export const getSmurfs = () => {
 };
 
 export const postSmurfs = smurf => {
-  const newSmurf = axios.post(`${URL}`, smurf);
+  const smurfs = axios.post(`${URL}`, smurf);
   return dispatch => {
     dispatch({ type: POSTING_SMURF });
-    newSmurf
+    smurfs
       .then(response => {
         dispatch({ type: POSTED, payload: response.smurf });
       })

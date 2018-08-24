@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
+import { connect } from "react-redux";
+import { getSmurfs, postSmurfs } from "../actions";
 
 /*
  to wire this component up you're going to need a few things.
@@ -9,6 +11,15 @@ import "./App.css";
  */
 
 class App extends Component {
+  state = {
+    name: "",
+    age: "",
+    height: ""
+  };
+
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
 
   render() {
     return (
@@ -17,9 +28,27 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        {this.props.smurfs.map(smurf => {
+          return (
+            <div>
+              Name:
+              {smurf.name}
+              Age:
+              {smurf.age}
+              Height:
+              {smurf.height}
+            </div>
+          );
+        })}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+
+  };
+};
+
+export default connect(mapStateToProps,{getSmurfs, postSmurfs})(App);
