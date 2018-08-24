@@ -6,6 +6,8 @@ import axios from 'axios';
 
 export const FETCH_SMURF = 'FETCH_SMURF';
 export const FETCHED = 'FETCHED';
+export const ADD_SMURF = 'ADD_SMURF';
+export const ADDED = 'ADDED'
 export const ERROR = 'ERROR';
 
 /*
@@ -32,6 +34,23 @@ export const fetchingSmurf = () => {
           type: FETCHED,
           payload: response.data
         });
+      })
+      .catch(error => {
+        dispatch({
+          type: ERROR,
+          payload: 'error: no smurfs found'
+        })
+      })
+  };
+};
+
+export const addSmurf = (smurf) => {
+  const newSmurf = axios.post('http://localhost:3333/smurfs', smurf)
+  return dispatch => {
+    dispatch({ type: ADD_SMURF });
+    newSmurf
+      .then(({ data }) => {
+        dispatch({ type: ADD_SMURF, payload: data });
       })
       .catch(error => {
         dispatch({

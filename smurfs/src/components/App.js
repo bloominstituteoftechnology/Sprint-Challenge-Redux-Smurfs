@@ -21,7 +21,7 @@ class App extends Component {
         <ul>
           {this.props.smurfs.map(smurf => {
             return (
-              <li key={smurf.name}>
+              <li key={smurf.id}>
                 {smurf.name}{' / '}
                 {smurf.age}{' / '}
                 {smurf.height}
