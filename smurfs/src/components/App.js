@@ -14,7 +14,7 @@ class App extends Component {
   state = {
     name: "",
     age: "",
-    height: ""
+    height: "",
   };
 
   componentDidMount() {
@@ -47,7 +47,9 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs,
+    postingSmurfs: state.postingSmurfs,
   };
 };
 
