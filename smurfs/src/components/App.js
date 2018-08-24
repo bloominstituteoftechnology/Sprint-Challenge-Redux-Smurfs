@@ -10,6 +10,7 @@ import SmurfList from './SmurfList';
 import {getSmurfs} from '../actions';
 
 import './App.css';
+import { smurfsReducer } from '../reducers/smurfsReducer';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -33,10 +34,9 @@ class App extends Component {
         <Route exact path ='/' component={Header}/>
         {/* <Route 
           path="/smurfs"
-          {/* render= {props => {
-              return <SmurfForm getSmurfs={}
-          }} */}
-          /> */}
+          render={this.props.smurfs => {
+            return <SmurfForm getSmurfs={this.props.smurfs}}} 
+          />  */}
           {/* <Route
           path="/smurfs"
           render={props => {
@@ -49,7 +49,13 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
+  const {smurfsReducer} = state;
+  return{
+  smurfs: smurfsReducer.smurfs,
+  error: smurfsReducer.error,
+  gettingSmurfs: smurfsReducer.gettingSmurfs
+};
+};
 
-}
 
 export default connect(mapStateToProps, {getSmurfs})(App);
