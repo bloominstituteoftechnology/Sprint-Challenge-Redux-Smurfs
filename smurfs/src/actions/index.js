@@ -29,7 +29,7 @@ export const postSmurfs = smurf => {
     dispatch({ type: POSTING_SMURF });
     smurfs
       .then(response => {
-        dispatch({ type: POSTED, payload: response.smurf });
+        dispatch({ type: POSTED, payload: response.data });
       })
       .catch(err => {
         dispatch({ type: ERROR_POSTING, payload: "Error with posting" });

@@ -19,11 +19,11 @@ export const rootReducer = (state = initialState, action) => {
     case FETCHING_SMURF:
       return { ...state, fetchingSmurfs: true };
     case FETCHED_SMURF:
-      return { ...state, smurfs: [...action.payload], fetchingSmurfs: false };
+      return { ...state, smurfs: action.payload, fetchingSmurfs: false };
     case POSTING_SMURF:
       return { ...state, postingSmurfs: true };
     case POSTED:
-      return { ...state, smurfs: [...action.payload], postingSmurfs: false };
+      return { ...state, smurfs: action.payload, postingSmurfs: false };
     case ERROR_FETCHING:
       return {
         ...state,

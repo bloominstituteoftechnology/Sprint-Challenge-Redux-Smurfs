@@ -56,14 +56,22 @@ class App extends Component {
           <button onClick={this.handleSubmit}>Create New Smurf</button>
         </div>
         {this.props.smurfs.map(smurf => {
-          <div>
-            Name:
-            {smurf.name}
-            Age:
-            {smurf.age}
-            Height:
-            {smurf.height}
-          </div>;
+          return (
+            <div>
+              <div>
+                Name:
+                {smurf.name}
+              </div>
+              <div>
+                Age:
+                {smurf.age}
+              </div>
+              <div>
+                Height:
+                {smurf.height}
+              </div>
+            </div>
+          );
         })}
       </div>
     );

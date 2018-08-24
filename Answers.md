@@ -4,7 +4,7 @@
 
 1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 
--Actions send data from the application to the store, they are also functions that are invoked when passed 'type'. 
+-Actions send action types and sometimes data from the application to the store.
 
 -Reducers change state in response to the actions. A store is where the whole state tree of my application lives.
 
@@ -13,9 +13,10 @@ from one place for our application.
 
 
 1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
 -Application state is the entire or overall application. Where as component state are individual components themselves that can
 interact with state.
-
+-If only needed input field then use component state.
 
 1.  What is middleware?
 
