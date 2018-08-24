@@ -4,10 +4,11 @@
 
 import * as actionTypes from '../actions';
 import {smurfsReducer} from './smurfsReducer';
-import { reducers } from 'redux';
+import { combineReducers } from 'redux';
 
-export default reducers ({
-  smurfsReducer
+export default combineReducers ({
+  smurfsReducer,
+  actionTypes
 });
 
 

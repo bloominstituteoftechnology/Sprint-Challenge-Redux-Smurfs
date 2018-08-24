@@ -1,5 +1,5 @@
 import React from "react";
-
+import {connect } from 'react-redux';
 
 // class Smurf extends
 const Smurf = props => {
@@ -19,6 +19,11 @@ Smurf.defaultProps = {
   age: ""
 };
 
-const 
+const mapStateToProps = (state) => {
+    return{
+        error: state.error,
+        showSmurf: state.smurfsReducer
+    };
+};
 
-export default Smurf;
+export default connect(mapStateToProps, {})(Smurf);
