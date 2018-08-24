@@ -71,7 +71,7 @@ class App extends Component {
           );
         })}
         </div>
-        <img src={smurfGif} width="200" alt="golf"/>
+        <img src={smurfGif} width="200" alt="smurf"/>
       </div>
     );
   }
