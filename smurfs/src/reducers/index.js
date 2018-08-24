@@ -1,6 +1,19 @@
+import{ 
+  ERROR, 
+  GETTING_SMURFS, 
+  ADDING_SMURF, 
+ } from '../actions';
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
+
+const initialState = {
+  smurfs: [],
+  gettingSmurfs: false,
+  addingSmurf: false,
+  error: null
+}
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -14,6 +27,17 @@
  }
 */
 
+const smurfReducer = (state = initialState, {type, payload}) => {
+  switch(type) {
+    case GETTING_SMURFS:
+      return {...state, gettingSmurfs: true, smurfs: [...payload]};
+    case ADDING_SMURF:
+      return {...state, addingSmurf: true};
+    case ERROR:
+      return {...state, gettingSmurfs: false, addingSmurf: false, error: 'error'}
+  }
+}
+
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
@@ -21,3 +45,5 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+export default smurfReducer;
