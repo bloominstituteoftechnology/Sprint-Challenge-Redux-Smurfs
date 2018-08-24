@@ -13,3 +13,20 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+const ADD = 'ADD';
+const DELETE = 'DELETE';
+
+export const addSmurf = (smurf) => {
+  return {
+    type: ADD,
+    smurf
+  }
+}
+
+export const deleteSmurf = (smurfid) => {
+  return {
+    type: DELETE,
+    smurfid
+  }
+}
