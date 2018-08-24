@@ -1,15 +1,38 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from "axios";
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+export const FETCHING_SMURF = "FETCHING_SMURF";
+export const FETCHED_SMURF = "FETCHED_SMURF";
+export const ERROR_FETCHING = "ERROR_FETCHING";
+export const POSTING_SMURF = "POSTING_SMURF";
+export const POSTED = "POSTED";
+export const ERROR_POSTING = "ERROR_POSTING";
+
+const URL = "http://localhost:3333/smurfs";
+
+export const getSmurfs = () => {
+  const smurfs = axios.get(`${URL}`);
+  return dispatch => {
+    dispatch({ type: FETCHING_SMURF });
+    smurfs
+      .then(response => {
+        dispatch({ type: FETCHED_SMURF, payload: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR_FETCHING, payload: "Error fetching smurfs" });
+      });
+  };
+};
+
+export const postSmurfs = smurf => {
+  const smurfs = axios.post(`${URL}`, smurf);
+  return dispatch => {
+    dispatch({ type: POSTING_SMURF });
+    smurfs
+      .then(response => {
+        dispatch({ type: POSTED, payload: response.smurf });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR_POSTING, payload: "Error with posting" });
+      });
+  };
+};
