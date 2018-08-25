@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import "./App.css";
 
 import { fetchSmurfs, addSmurf } from "../actions";
-import Smurf from '../components/Smurf'
+import Smurf from "../components/Smurf";
 
 /*
  to wire this component up you're going to need a few things.
@@ -20,6 +20,7 @@ class App extends Component {
       height: ""
     }
   };
+
   componentDidMount() {
     console.log("CDM", this.props);
     this.props.fetchSmurfs();
@@ -30,29 +31,39 @@ class App extends Component {
     }
   }
   handleInputChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    console.log("!!!!!", event.target.name);
+    const {name, value} = event.target 
+    this.setState((prevState) => ({ fields: {...prevState.fields, [name]: value }}));
   };
   render() {
-    console.log("Render", this.props);
+    console.log("Render", this.props, "and ", this.state);
+    const letMeGrab =  this.state.fields;
+    const { name, age, height } = letMeGrab;
+    const keys = Object.keys( this.state.fields );
+    console.log(keys)
+    console.log(name)
     return (
       <div className="App">
-        <form className="smurf-form" onSubmit={this.props.addSmurf(this.state.fields)}>
+        <form
+          className="smurf-form"
+          onSubmit={() => this.props.addSmurf(this.state.fields)}
+        >
           <input
             onChange={this.handleInputChange}
             placeholder="name"
-            value={this.state.name}
+            value={letMeGrab.name}
             name="name"
           />
           <input
             onChange={this.handleInputChange}
             placeholder="age"
-            value={this.state.age}
+            value={age}
             name="age"
           />
           <input
             onChange={this.handleInputChange}
             placeholder="height"
-            value={this.state.height}
+            value={height}
             name="height"
           />
           <button type="submit">Join village</button>
@@ -68,8 +79,7 @@ class App extends Component {
                 key={smurf.id}
               />
             );
-          })
-          }
+          })}
         </ul>
       </div>
     );
