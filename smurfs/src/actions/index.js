@@ -3,6 +3,9 @@
   Be sure to export each action type so you can pull it into your reducer
 */
 
+export const ADD_SMURF = 'ADD_SMURF';
+export const DELETE_SMURF = 'DELETE_SMURF';
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -14,19 +17,16 @@
    D - deleteSmurf
 */
 
-const ADD = 'ADD';
-const DELETE = 'DELETE';
-
 export const addSmurf = (smurf) => {
   return {
-    type: ADD,
+    type: ADD_SMURF,
     smurf
   }
 }
 
 export const deleteSmurf = (smurfid) => {
   return {
-    type: DELETE,
+    type: DELETE_SMURF,
     smurfid
   }
 }
