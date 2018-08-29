@@ -17,11 +17,14 @@ export const DELETE_SMURF = 'DELETE_SMURF';
    D - deleteSmurf
 */
 
-export const addSmurf = (smurf) => {
+export const addSmurf = (name, age, height) => {
   return {
     type: ADD_SMURF,
-    smurf
+    name: name,
+    age: age,
+    height: height
   }
+  console.log(name, age, height);
 }
 
 export const deleteSmurf = (smurfid) => {

@@ -5,6 +5,8 @@ import { ADD_SMURF, DELETE_SMURF } from '../actions';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  */
+
+
  const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
@@ -15,18 +17,19 @@ import { ADD_SMURF, DELETE_SMURF } from '../actions';
  }
 
 
-export default (smurfs = initialState, action) => {
+export default (smurfy = initialState, action) => {
   switch(action.type) {
     case ADD_SMURF:
-      return Object.assign({}, smurfs, {smurfs:[...smurfs.smurfs, action.smurf]});
+      return Object.assign({}, smurfy, {smurfs:[...smurfy.smurfs, {name: action.name, age: action.age, height: action.height, id: smurfy.smurfs.length}]});
       break;
     case DELETE_SMURF:
-      return Object.assign({}, smurfs, {smurfs:[...smurfs.smurfs].splice(action.smurfid)});
+      return Object.assign({}, smurfy, {smurfs:[...smurfy.smurfs].splice(action.smurfid)});
       break;
     default:
-      return smurfs;
+      return smurfy;
   }
 }
+
 
 /*
   You'll only need one smurf reducer for this project.
