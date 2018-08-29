@@ -1,8 +1,10 @@
+
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'; 
-import { getSmurfs } from '../actions';
-import Smurf from '../components/Smurf.js';
+import { fetchSmurfs } from '../actions'; // import fetchSmurfs
+import Smurf from './Smurf';
+import SmurfForm from './SmurfForm.js';
 
 /*
  to wire this component up you're going to need a few things.
@@ -10,41 +12,32 @@ import Smurf from '../components/Smurf.js';
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
+
 class App extends Component {
-  componentDidMount() {
-    this.props.getSmurfs(); 
+  componentDidMount() { // trigger our action
+    this.props.fetchSmurfs(); // call fetchSmurfs function
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to Smurf World!</h1>
-        </header>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Have fun!</div>
-        <div className="App-intro"> 
-          {this.props.smurfs.map(smurf => {
-            return <Smurf key={smurf} smurf={smurf} />; 
-          })}
-          {this.props.fetchingSmurfs ? (
-            <img src="https://vignette.wikia.nocookie.net/smurfs/images/2/22/The-smurf-show.jpg/revision/latest?cb=20131031173244" className="App-photo" alt="The Smurfs" />
-          ) : null}
-          {this.props.error !== null ? <div>{this.props.error}</div> : null}
-          </div>
+        <h1>SMURFS! 2.0 W/ Redux</h1>
+        {/* create a smurf form */}
+        <SmurfForm />          
+        {/* pass smurfs down into a component and iterate over that list of data */}
+        {this.props.smurfs.map(smurf => { // for each smurf 
+          return <Smurf key={smurf.id} smurf={smurf} />;  // create a Smurf component that passes down all of the smurf data
+        })}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state); 
-  return {
-    smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs,
-    error: state.error
+const mapStateToProps = state => {  // build mapStateToProps function
+  return {  // return the state we want our App to be concerned with 
+    fetchSmurfs: state.fetchingSmurfs,  // state of fetching smurfs
+    smurfs: state.smurfs  // state of smurfs 
   };
 };
 
-
-export default connect (mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { fetchSmurfs })(App);  // connect to fetchSmurfs
