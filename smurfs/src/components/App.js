@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './App.css';
-import { DELETE_SMURF, ADD_SMURF, addSmurf } from '../actions';
+import { addSmurf, loadData } from '../actions';
 import SmurfCard from './SmurfCard';
 /*
  to wire this component up you're going to need a few things.
@@ -17,6 +17,10 @@ class App extends Component {
       input_age: '',
       input_height: ''
     }
+  }
+
+  componentWillMount = () => {
+    this.props.loadData();
   }
 
   handleChangeName = (e) => {
@@ -49,12 +53,14 @@ class App extends Component {
     return (
       <div className="App">
         <h2>Type in a new smurf:</h2>
-        <input
+        <p>Name:</p><input
           value={this.state.input_name}
           onChange={this.handleChangeName}/>
+        <p>Age:</p>          
                   <input
           value={this.state.input_age}
           onChange={this.handleChangeAge}/>
+        <p>Height:</p>          
                   <input
           value={this.state.input_height}
           onChange={this.handleChangeHeight}/><br/>
@@ -87,5 +93,5 @@ const mapStateToProps = (state) => {
 //   }
 // }
 
-const Container = connect(mapStateToProps, {addSmurf})(App);
+const Container = connect(mapStateToProps, {addSmurf, loadData})(App);
 export default Container;

@@ -4,22 +4,24 @@ import {deleteSmurf} from '../actions';
 import { connect } from 'react-redux';
 
 class SmurfCard extends Component {
+handleOnClick = (e) => {
+    e.stopPropagation();
+    this.props.deleteSmurf(this.props.index);
+}
   render() {
-      const { index, name, age, height } = this.props;
+    const { name, age, height } = this.props;
     return (
       <div className="card">
         <div className="card_left">
             <button 
               className="delete"
-              onClick={e => {
-                  e.stopPropagation();
-                  deleteSmurf(index);
-              }}>Delete</button>
+              onClick={this.handleOnClick}
+            >Delete (below)</button>
         </div>
         <div className="card_right">
-        <p>{name}</p>
-        <p>{age}</p>
-        <p>{height}</p>
+        <p>Name: {name}</p>
+        <p>Age: {age}</p>
+        <p>Height: {height}</p>
         </div>
       </div>
     )

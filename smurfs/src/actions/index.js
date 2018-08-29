@@ -3,8 +3,14 @@
   Be sure to export each action type so you can pull it into your reducer
 */
 
+import axios from 'axios';
+
 export const ADD_SMURF = 'ADD_SMURF';
 export const DELETE_SMURF = 'DELETE_SMURF';
+export const LOADING_DATA = 'LOADING_DATA';
+export const LOADED_DATA = 'LOADED_DATA';
+export const FAILED_LOADING_DATA = 'FAILED_LOADING_DATA';
+
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -17,6 +23,17 @@ export const DELETE_SMURF = 'DELETE_SMURF';
    D - deleteSmurf
 */
 
+export const loadData = (dispatch) => {
+  return dispatch => 
+     dispatch({ type: LOADING_DATA});
+     axios.get('/smurfs')
+    // .then(
+    //   data => dispatch({ type: LOADED_DATA, data}),
+    //   err => dispatch({ type: FAILED_LOADING_DATA, err})
+    // );
+    .then(res => console.log(res));
+}
+
 export const addSmurf = (name, age, height) => {
   return {
     type: ADD_SMURF,
@@ -24,12 +41,11 @@ export const addSmurf = (name, age, height) => {
     age: age,
     height: height
   }
-  console.log(name, age, height);
 }
 
 export const deleteSmurf = (smurfid) => {
   return {
     type: DELETE_SMURF,
-    smurfid
+    smurfid: smurfid
   }
 }
