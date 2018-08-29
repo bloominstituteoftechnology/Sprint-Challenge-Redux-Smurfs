@@ -3,7 +3,7 @@
   Be sure to export each action type so you can pull it into your reducer
 */
 import axios from 'axios';  // import axios to create an axios call 
-// import Smurf from '../components/Smurf';
+import Smurf from '../components/Smurf';
 
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const SUCCESS = 'SUCCESS';
