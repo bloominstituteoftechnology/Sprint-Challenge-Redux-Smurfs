@@ -25,21 +25,30 @@ export const FAILED_LOADING_DATA = 'FAILED_LOADING_DATA';
 
 export const loadData = (dispatch) => {
   return dispatch => 
-     dispatch({ type: LOADING_DATA});
-     axios.get('/smurfs')
-    // .then(
-    //   data => dispatch({ type: LOADED_DATA, data}),
-    //   err => dispatch({ type: FAILED_LOADING_DATA, err})
-    // );
-    .then(res => console.log(res));
+    //  dispatch({type: LOADING_DATA});
+     axios.get('http://localhost:3333/smurfs')
+     .then(response => {dispatch({ type: LOADED_DATA, payload: response })})
+     .catch(err => {
+       dispatch({ type: FAILED_LOADING_DATA, err });
+     })
 }
 
-export const addSmurf = (name, age, height) => {
-  return {
-    type: ADD_SMURF,
-    name: name,
-    age: age,
-    height: height
+export const addSmurf = (name, age, height, dispatch) => {
+  return dispatch => {
+    axios.post('http://localhost:3333/smurfs', {
+      name: name,
+      age: age,
+      height: height
+    })
+    .then( response => 
+      dispatch({
+        type: ADD_SMURF,
+        name: name,
+        age: age,
+        height: height,
+        extra: response
+      })
+    )
   }
 }
 

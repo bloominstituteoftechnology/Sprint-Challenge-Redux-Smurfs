@@ -73,6 +73,7 @@ class App extends Component {
               )
             })
           }
+          {/* {console.log('yoooooo', this.props.smurfList)}; */}
         </ul>
       </div>
     );
