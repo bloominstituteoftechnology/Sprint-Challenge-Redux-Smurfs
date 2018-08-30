@@ -21,12 +21,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
+        <div className = "App-header">
+          <h1 className= "App-title">WELCOME TO SMURF WORLD!</h1>
+        </div>
         {/* create a smurf form */}
         <SmurfForm />          
         {/* pass smurfs down into a component and iterate over that list of data */}
-        {this.props.smurfs.map(smurf => { // for each smurf 
-          return <Smurf key={smurf.id} smurf={smurf} />;  // create a Smurf component that passes down all of the smurf data
+        {this.props.smurfs.map((smurf, index) => { // for each smurf 
+          return <Smurf key={index} smurf={smurf} />;  // create a Smurf component that passes down all of the smurf data
         })}
       </div>
     );
