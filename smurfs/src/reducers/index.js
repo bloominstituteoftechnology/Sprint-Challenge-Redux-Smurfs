@@ -40,7 +40,7 @@ export default (state = initialState, action) => {  // export default an anonymo
     return Object.assign({}, state, { fetchingSmurfs: true}); // return our Object of assign, new object extending all properties of state except return fetchingSmurfs as a boolean 
   case SUCCESS:
     return Object.assign({}, state, {
-      smurfs: action.paylod,  // override the array
+      smurfs: action.payload,  // override the array
       fetchingSmurfs: false,  // sets the state back to false after fetching 
       updatingSmurf: false, 
       deletingSmurf: false, 
