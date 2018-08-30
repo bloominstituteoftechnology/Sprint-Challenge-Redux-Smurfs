@@ -1,68 +1,73 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
-import axios from "axios";
+import axios  from "axios";
 
-export const FETCHINGSMURFS = "FETCHINGSMURFS";
-export const FETCHEDSMURFS = "FETCHEDSMURFS";
-export const ADDINGSMURFS = "ADDINGSMURFS";
-export const UPDATINGSMURFS = "UPDATINGSMURFS";
-export const DELETINGSMURFS = "DELETINGSMURFS";
-export const ERROR = "ERROR";
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const SMURFS_FETCHED = 'SMURFS_FETCHED';
 
-export const getSmurf = () => {
-  const request = axios.get("http://localhost:3333/api/smurfs");
-  return dispatch => {
-    dispatch({ type: FETCHINGSMURFS });
-    request
-      .then(({ data }) => {
-        dispatch({ type: FETCHEDSMURFS, smurfs: data });
+export const ADDING_SMURF = 'ADDING_SMURF';
+export const SMURF_ADDED = 'SMURF_ADDED';
+
+export const UPDATING_SMURF = 'UPDATING_SMURF';
+export const SMURF_UPDATED = 'SMURF_UPDATED';
+
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const SMURF_DELETED = 'SMURF_DELETED';
+
+export const ERROR = 'ERROR';
+
+
+
+export const getSmurfs = () => {
+  const getData = axios.get(`http://localhost:3333/smurfs`);
+  return function(dispatch) {
+    dispatch({type: FETCHING_SMURFS});
+    getData
+      .then(response => {
+        dispatch({type: SMURFS_FETCHED, payload: response.data})
       })
       .catch(err => {
-        console.log(err);
-      });
-  };
+        dispatch({type: ERROR, payload: err})
+      })
+  }
 };
 
-export const addSmurf = smurf => {
-  const request = axios.post("http://localhost:3333/api/smurfs", smurf);
-  return dispatch => {
-    dispatch({ type: ADDINGSMURFS });
-    request
-      .then(({ data }) => {
-        dispatch({ type: FETCHEDSMURFS, smurfs: data });
+export const addSmurf = (smurf) => {
+  const postData = axios.post(`http://localhost:3333/smurfs`, smurf);
+  return function(dispatch) {
+    dispatch({type: ADDING_SMURF});
+    postData
+      .then(response => {
+        dispatch({type: SMURF_ADDED, payload: response.data})
       })
       .catch(err => {
-        console.log(err);
-      });
-  };
+        dispatch({type: ERROR, payload: err})
+      })
+  }
 };
 
-export const deleteSmurf = id => {
-  const request = axios.delete(`http://localhost:3333/api/smurfs/${id}`);
-  return dispatch => {
-    request
-      .then(({ data }) => {
-        dispatch({ type: DELETINGSMURFS, smurfs: data });
+export const updateSmurf = (id, smurf ) => {
+  const putData = axios.put(`http://localhost:3333/smurfs/${id}`, smurf);
+  return function(dispatch) {
+    dispatch({type: UPDATING_SMURF});
+    putData
+      .then(response => {
+        dispatch({type: SMURF_UPDATED, payload: response.data})
       })
       .catch(err => {
-        console.log(err);
-      });
-  };
+        dispatch({type: ERROR, payload: err})
+      })
+  }
 };
 
-export const updateSmurf = smurf => {
-  return { type: UPDATINGSMURFS, smurf };
-};
-
-export const saveSmurf = (id, smurf) => {
-  return dispatch => {
-    const request = axios.put(`http://localhost:3333/smurfs/${id}`, smurf);
-    request
-      .then(({ data }) => dispatch({ type: FETCHEDSMURFS, smurfs: data }))
+export const deleteSmurf = (id) => {
+  const deleteData = axios.delete(`http://localhost:3333/smurfs/${id}`);
+  return function(dispatch) {
+    dispatch({type: DELETING_SMURF})
+    deleteData
+      .then(response => {
+        dispatch({type: SMURF_DELETED, payload: response.data})
+      })
       .catch(err => {
-        console.log(err);
-      });
-  };
+        dispatch({type: ERROR, payload: err})
+      })
+  }
 };

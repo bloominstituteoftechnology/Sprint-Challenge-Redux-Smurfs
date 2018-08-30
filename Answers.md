@@ -12,7 +12,7 @@ concat, map, reduce, and filter all create new arrays from the source array. You
 
 3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
 
-Application state is managed by Redux, and is the record of data that the application is using, while Component state is a local record of data that is tied to that component. Application state is good for updating data that will be transferred to the server, while Component state is good for managing UI changes until the user approves the changes by triggering an action.
+Application state is managed by Redux, and is the record of data that the application is using. While Component state is a local record of data that is tied to that component. Application state is good for updating data that will be transferred to the server, while Component state is good for managing UI changes until the user approves the changes by triggering an action.
 
 4. What is middleware?
 
