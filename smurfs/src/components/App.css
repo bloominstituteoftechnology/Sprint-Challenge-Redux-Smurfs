@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: lightgray;
+  height: 1200px;
 }
 
 .App-logo {
@@ -8,10 +13,24 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  height: 180px;
   padding: 20px;
   color: white;
+  background-image: url('https://www.comicscenter.net/uploads/images/expos_les_grandes_expositions/smurfs-imps-2008-3.jpg');
+  background-size: 100% 110%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 10px;
+}
+
+.header-title {
+  margin-top: 30px;
+  text-shadow: 
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;
+  font-size: 30px;
 }
 
 .App-title {
@@ -20,6 +39,11 @@
 
 .App-intro {
   font-size: large;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
