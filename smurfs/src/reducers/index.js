@@ -1,6 +1,17 @@
+
+import {FETCH_SMURFS} from '../actions';
 /*
   Be sure to import in all of the action types from `../actions`
 */
+
+export default (state = [], action) => {
+  switch (action.type) {
+    case FETCH_SMURFS:
+      return state.concat(action.payload);
+    default:
+    return state;
+  }
+};
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
