@@ -1,22 +1,47 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import './App.css';
+import Smurf from './Smurf';
+import { fetchSmurfs } from '../actions';
+import SmurfForm from './SmurfForm.js';
+
+
 /*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
+  To wire this component up you're going to need a few things.
+  I'll let you do this part on your own. 
+  Just remember, `how do I `connect` my components to redux?`
+  `How do I ensure that my component links the state to props?`
  */
+
 class App extends Component {
+  
+  componentDidMount() { // Triggers our action.
+    this.props.fetchSmurfs(); // Calls the fetchSmurfs function.
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <div className="App-header">
+          <h1 className="App-title">Welcome to the Land of the Smurfs!</h1>
+        </div>
+      {/* Creates a SmurfForm. */}
+      <SmurfForm />
+      {/* pass smurfs down into a component and iterate over that list of data */}
+      {this.props.smurfs.map((smurf, index) => { // For each Smurf.
+        return <Smurf key={index} smurf={smurf} />; // Create a Smurf component that passes down all of the smurf data.
+      })}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => { // Builds mapStateToProps function.
+  return { // Returns the state we want our App to be concerned with.
+    fetchSmurfs: state.fetchingSmurfs, // State of fetching Smurfs.
+    smurfs: state.smurfs // State of Smurfs.
+  };
+};
+
+export default connect(mapStateToProps, {fetchSmurfs})(App); // Connect to fetchSmurfs.

@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import /* You need some sort of reducer */ './reducers';
 
-const store = createStore(
-  () => {}, // this is the most basic reducer. A function that returns and object. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
-);
+import './index.css';
+import App from './components/App';
+import rootReducer from './reducers';
+
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
+//   () => {}, // this is the most basic reducer. A function that returns an object. Replace it.
+// //   applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+// );
 
 ReactDOM.render(
   <Provider store={store}>
@@ -19,3 +20,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
