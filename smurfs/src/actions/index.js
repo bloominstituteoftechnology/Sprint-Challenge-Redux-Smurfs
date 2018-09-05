@@ -1,15 +1,53 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+export const FETCHED_SMURFS = 'FETCHED_SMURFS'
+export const FETCHING_SMURFS = 'FETCHING_SMURFS'
+export const ADDING_SMURF = 'ADDING_SMURF'
+export const UPDATING_SMURF = 'UPDATING_SMURF'
+export const DELETING_SMURF = 'DELETING_SMURF'
+export const ERROR = 'ERROR'
+
+export const getSmurfs = () => {
+  return (dispatch) => {
+    const request = axios.get('http://localhost:3333/smurfs')
+    dispatch({ type: FETCHING_SMURFS})
+    request
+    .then(({data}) => dispatch({ type: FETCHED_SMURFS, smurfs:data}))
+    .catch(error => dispatch({ type: ERROR, error}))
+  }
+}
+
+export const addSmurf = (smurf) => {
+  return (dispatch) => {
+    const request = axios.post('http://localhost:3333/smurfs', smurf)
+    dispatch({ type: ADDING_SMURF})
+    request
+    .then(({data}) => dispatch({ type: FETCHED_SMURFS, smurfs:data}))
+    .catch(error => dispatch({ type: ERROR, error}))
+  }
+}
+
+export const deleteSmurf = (id) => {
+  return (dispatch) => {
+    const request = axios.delete(`http://localhost:3333/smurfs/${id}`)
+    dispatch({ type: DELETING_SMURF})
+    request
+    .then(({data}) => dispatch({ type: FETCHED_SMURFS, smurfs:data}))
+    .catch(error => dispatch({ type: ERROR, error}))
+  }
+}
+
+export const updateSmurf = (smurf) => {
+  return { type: UPDATING_SMURF, smurf}
+}
+
+export const saveSmurf = (id, smurf) => {
+  return (dispatch) => {
+    const request = axios.put(`http://localhost:3333/smurfs/${id}`, smurf)
+    request
+    .then(({data}) => dispatch({ type: FETCHED_SMURFS, smurfs:data}))
+    .catch(error => dispatch({ type: ERROR, error}))
+  }
+}
+
+
