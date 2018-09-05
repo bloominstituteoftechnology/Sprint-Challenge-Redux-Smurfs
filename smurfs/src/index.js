@@ -6,16 +6,18 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import /* You need some sort of reducer */ './reducers';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { smurfReducer } from './reducers';
 
 const store = createStore(
-  () => {}, // this is the most basic reducer. A function that returns and object. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+  smurfReducer, applyMiddleware(thunk, logger)
 );
 
 ReactDOM.render(
   <Provider store={store}>
+   <BrowserRouter>
     <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
