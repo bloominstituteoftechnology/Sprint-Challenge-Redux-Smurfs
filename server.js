@@ -19,9 +19,11 @@ let smurfs = [
     height: '5cm'
   }
 ];
+
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
+
 let smurfId = 0;
 
 server.post('/smurfs', (req, res) => {
@@ -33,9 +35,11 @@ server.post('/smurfs', (req, res) => {
       res
     );
   }
+
   const findSmurfByName = smurf => {
     return smurf.name === name;
   };
+
   if (smurfs.find(findSmurfByName)) {
     return sendUserError(
       `Ya gone did smurfed! ${name} already exists in the smurf DB.`,
@@ -54,7 +58,9 @@ server.put('/smurfs/:id', (req, res) => {
   const findSmurfById = smurf => {
     return smurf.id == id;
   };
+
   const foundSmurf = smurfs.find(findSmurfById);
+  
   if (!foundSmurf) {
     return sendUserError('No Smurf found by that ID', res);
   } else {
