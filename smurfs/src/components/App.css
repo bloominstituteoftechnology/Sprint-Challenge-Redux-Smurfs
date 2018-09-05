@@ -26,3 +26,25 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.smurfForm {
+  margin: 2rem 0;
+  height: 6rem;
+  padding-top: 1.5rem;
+  padding-left: 15rem;
+  border: 1px solid lightgrey;
+}
+
+.smurf {
+  margin-bottom: 2rem;
+}
+
+.delete-button {
+  border-radius: 12px;
+  box-shadow: 0 5px 10px 0;
+}
+
+.delete-button:hover {
+  background-color: #5e6570;
+  color: white;
+}
