@@ -2,20 +2,21 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+body {
+  background-color: rgb(161, 245, 220);
 }
 
 .App-header {
-  background-color: #222;
+  background-color: lightblue;
   height: 150px;
   padding: 20px;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 35px;
+  margin-top: 50px;
+  color: coral;
 }
 
 .App-intro {
@@ -25,4 +26,148 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+ul li {
+  list-style-type: none;
+  margin: 20px;
+}
+
+ul {
+  padding: 0;
+}
+
+.smurf-container {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+}
+
+.smurf-card {
+  font-size: 20px;
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 20px;
+  margin-top: 20px;
+  width: 350px;
+  height: 200px;
+  box-shadow: 4px 4px 6px coral;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+}
+
+.smurf-card .title {
+  color: coral;
+}
+
+.smurf-card button {
+  background-color: rgb(209, 209, 209);
+  color: white;
+}
+
+.form input{
+  font-size: 20px;
+}
+
+.form button {
+  font-size: 20px;
+}
+
+.form button:hover {
+  color: coral;
+  box-shadow: 4px 4px 6px gray;
+}
+
+.edit-button {
+  font-size: 20px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.edit-button:hover {
+  background-color: white !important;
+  color: coral !important;
+  box-shadow: 4px 4px 6px gray;
+}
+
+.remove-button {
+  font-size: 20px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.remove-button:hover {
+  background-color: white !important;
+  color: coral !important;
+  box-shadow: 4px 4px 6px gray;
+}
+
+.edit-form input{
+  margin: 10px;
+  font-size: 20px;
+}
+
+.edit-form button {
+  margin: 0 20px 20px 20px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.edit-form button:hover {
+  color: coral;
+  background-color: white;
+  box-shadow: 4px 4px 6px gray;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+  width: 350px;
+  min-width: 220px;
+  height: 200px;
+  margin: 20px;
+}
+
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+	transform: rotateY(180deg);
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 2s;
+	transform-style: preserve-3d;
+  padding: 0;
+  margin: 0;
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+  box-shadow: 4px 4px 6px coral;
+  background-color: lightblue;
+}
+
+.front li {
+  margin: 30px;
+  font-size: 25px;
+}
+
+.front ul {
+  margin: 0;
 }
