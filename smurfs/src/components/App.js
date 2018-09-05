@@ -1,22 +1,44 @@
-import React, { Component } from 'react';
-import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import React, { Component } from "react";
+import "./App.css";
+import { connect } from "react-redux";
+import { Container, Row } from "reactstrap";
+import { fetchingSmurfs, deletingSmurf } from "../actions";
+import ItemCard from "./ItemCard";
+import AddNew from "./AddNew";
+
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchingSmurfs();
+  }
   render() {
+    const smurfs = this.props.smurfs;
+    console.log("smurfsArray",smurfs);
     return (
-      <div className="App">
+      <Container className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
+        <div className="container">
+          Welcome to your Redux version of Smurfs!
+        </div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-      </div>
+        <br />
+        <br />
+        {smurfs.map((item, i) => {
+          return (
+            <Row className="" key={Date.now()}>
+              <ItemCard
+              fetchingSmurfs={this.props.fetchingSmurfs}
+              deletingSmurf={this.props.deletingSmurf}
+              item={item} id={item.id} key={Date.now() + item.id} />
+            </Row>
+          );
+        })}
+        <AddNew />
+      </Container>
     );
   }
 }
-
-export default App;
+const mapStateToProps = state => {
+  return { smurfs: state.smurfs };
+};
+export default connect(mapStateToProps, { fetchingSmurfs, deletingSmurf })(App);
