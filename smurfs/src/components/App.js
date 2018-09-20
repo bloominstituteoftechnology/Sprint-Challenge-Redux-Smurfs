@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getSmurfs, addSmurf } from '../actions/index';
-import './App.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getSmurfs, addSmurf } from "../actions/index";
+import "./App.css";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -9,49 +9,66 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  state = {
+    name: "",
+    age: "",
+    height: ""
+  };
+
   componentDidMount() {
     this.props.getSmurfs();
   }
 
-  handleInput = event => {
+  handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-};
+  };
 
-submitSmurf = event => {
-    event.preventDefault();
-    this.props.addSmurf({
-        name: this.state.name,
-        age: this.state.age,
-        height: this.state.height,
-    });
+  handleSubmit() {
+    this.props.addSmurf(this.state);
     this.setState({
-        name: '',
-        age: '',
-        height: '',
+      name: "",
+      age: "",
+      height: ""
     });
   }
+
   render() {
     return (
       <div className="App">
-      <ul>
-        {this.props.smurfs.map(smurf => {
-          return (
-          <li key={this.props.smurfs}>
-          <p>{smurf.name}</p>
-          <p>{smurf.age}</p>
-          <p>{smurf.height} </p>
-          </li>
-        );
-        })}
-      </ul>
-
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <form onSubmit={this.submitSmurf}>
-          <input onChange={this.handleInput} type="text" name="name" placeholder="Name" />
-          <input onChange={this.handleInput} type="number" name="age" placeholder="Age" />
-          <input onChange={this.handleInput} type="number" name="height" placeholder="Height" />
+        
+        <form onSubmit={() => this.handleSubmit()}>
+          <input
+            onChange={this.handleChange.bind(this)}
+            type="text"
+            name="name"
+            placeholder="Name"
+          />
+          <input
+            onChange={this.handleChange.bind(this)}
+            type="number"
+            name="age"
+            placeholder="Age"
+          />
+          <input
+            onChange={this.handleChange.bind(this)}
+            type="number"
+            name="height"
+            placeholder="Height"
+          />
           <button type="submit"> Add Smurf </button>
         </form>
+        <ul>
+          {this.props.smurfs.map(smurf => {
+            return (
+              <li>
+                <h4>{smurf.name}</h4>
+                <p>{smurf.age} years old</p>
+                <p>{smurf.height} tall</p>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }
@@ -60,9 +77,11 @@ submitSmurf = event => {
 const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
-    fetching: state.fetching,
-    error: state.error,
-  }
-}
+  
+  };
+};
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
+export default connect(
+  mapStateToProps,
+  { getSmurfs, addSmurf }
+)(App);
