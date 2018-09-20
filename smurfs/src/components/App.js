@@ -53,7 +53,11 @@ class App extends Component {
         <div>Have fun!</div>
         
            {this.props.smurfs.map(smurf => {
-              return <h3 key={smurf.id}>{smurf.name}</h3>;
+             return <div>
+             <h3 key={smurf.id}>{smurf.name}</h3>
+             <h4>{smurf.age}</h4>
+             <h4>{smurf.height}</h4>
+            </div>
             })}
 
           <div className="SmurfForm">
