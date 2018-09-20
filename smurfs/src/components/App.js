@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions/index';
+import { getSmurfs, addSmurf } from '../actions/index';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -36,7 +36,7 @@ submitSmurf = event => {
       <ul>
         {this.props.smurfs.map(smurf => {
           return (
-          <li>
+          <li key={this.props.smurfs}>
           <p>{smurf.name}</p>
           <p>{smurf.age}</p>
           <p>{smurf.height} </p>
@@ -65,4 +65,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
