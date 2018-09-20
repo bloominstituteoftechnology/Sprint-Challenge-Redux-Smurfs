@@ -33,7 +33,7 @@ export const fetchSmurfs = () => (dispatch) => {
     });
 };
 
-export const createSmurf = (newSmurf) => (dispatch) =>{
+export const createSmurf = (newSmurf) => (dispatch) => {
   dispatch({type: START_SMURF});
   axios
     .post('http://localhost:3333/smurfs', newSmurf)
@@ -46,5 +46,6 @@ export const createSmurf = (newSmurf) => (dispatch) =>{
       })
     })
 }
+
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {fetchSmurfs, createSmurf} from '../actions';
+import {fetchSmurfs,createSmurf} from '../actions';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -58,6 +58,7 @@ class App extends Component {
 
           <div className="SmurfForm">
         <h1>Create Your New Smurf!</h1>
+
         <form onSubmit={this.addSmurf}>
           <input
             onChange={this.handleInputChange}
@@ -89,9 +90,10 @@ class App extends Component {
 
 const mapStateToProps = state => ({
       smurfs: state.smurfs,
-      fetchingSmurfs: state.fetchingSmurfs 
+      fetchingSmurfs: state.fetchingSmurfs,
+      addingSmurf: state.addingSmurf 
     }) 
 
-  export default connect(mapStateToProps,{fetchSmurfs})(App);
+  export default connect(mapStateToProps,{fetchSmurfs, createSmurf})(App);
        
 
