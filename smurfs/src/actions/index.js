@@ -11,8 +11,9 @@ export const FETCH_ERROR = 'FETCH_ERROR';
 export const fetchData = () => {
   return (dispatch) => {
     dispatch({ type: FETCHING_DATA });
-    axios
-      .get('http://localhost:3333/smurfs')
+    const promise = axios.get('http://localhost:3333/smurfs');
+
+    promise
       .then((response) => {
         dispatch({ type: FETCHED_DATA, payload: response.data });
       })
