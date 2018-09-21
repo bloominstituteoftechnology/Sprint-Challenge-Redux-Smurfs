@@ -1,7 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-
-import { fetchSmurfs } from "../actions";
 import Smurf from "./Smurf";
 
 function Smurfs(props) {
@@ -12,20 +9,14 @@ function Smurfs(props) {
     <div className="smurfs-list-wrapper">
       {props.smurfs.map(smurf => (
         <Smurf 
-        smurf={smurf}
-        id={smurf.id}
-        key={smurf.name}
-        deleteSmurf={props.deleteSmurf} />
+          smurf={smurf}
+          id={smurf.id}
+          key={smurf.name}
+          deleteSmurf={props.deleteSmurf} />
       ))}
     </div>
   );
 }
 
-const mapStateToProps = state => ({
-  smurfs: state.smurfs
-});
 
-export default connect(
-  mapStateToProps,
-  { fetchSmurfs }
-)(Smurfs);
+export default Smurfs;

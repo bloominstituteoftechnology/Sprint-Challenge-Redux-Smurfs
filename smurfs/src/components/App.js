@@ -30,7 +30,7 @@ class App extends Component {
         ) : (
           <div className="smurf-village-wrapper">
             <h1>Welcome to Smurf Village!</h1>
-            <SmurfForm {...this.state} />
+            <SmurfForm />
             <h2>Smurf Residents:</h2>
             <Smurfs {...this.props} />
           </div>
@@ -45,17 +45,12 @@ const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
-    smurfAdded: state.smurfAdded,
-    deletedSmurf: state.deletedSmurf,
-
-    error: state.error
   };
 };
 
 export default connect(
   mapStateToProps,
   {
-    /* actions go here */
     fetchSmurfs,
     addNewSmurf,
     deleteSmurf
