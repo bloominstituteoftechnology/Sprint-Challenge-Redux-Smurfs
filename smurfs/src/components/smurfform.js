@@ -5,13 +5,13 @@ const SmurfForm = (props) => {
     return(
         <form onSubmit={props.submitHandler}>
             <label htmlFor='name' value='Name' />
-            <input name='name' value={props.tmpSmurf.name} placeholder='Name' onChange={props.inputHandler} />
+            <input name='name' type='text' value={props.tmpSmurf.name} placeholder='Name' onChange={props.inputHandler} />
             <br />
             <label htmlFor='age' value='Age' />
-            <input name='age' value={props.tmpSmurf.age} placeholder='Age' onChange={props.inputHandler} />
+            <input name='age' type='number' value={props.tmpSmurf.age} placeholder='Age' onChange={props.inputHandler} />
             <br />
             <label htmlFor='height' value='Height' />
-            <input name='height' value={props.tmpSmurf.height} placeholder='Height' onChange={props.inputHandler} />
+            <input name='height' type='text' value={props.tmpSmurf.height} placeholder='Height' onChange={props.inputHandler} />
             <br />
             <br />
             <input type='submit' value='Smurf!' />

@@ -61,16 +61,14 @@ class App extends Component {
   submitHandler = (event) => {
     event.preventDefault();
     if(this.state.tmpSmurf.name && this.state.tmpSmurf.age && this.state.tmpSmurf.height) {
-      if(this.state.tmpSmurf.id === -1) {
-        this.props.postSmurf({name: this.state.tmpSmurf.name, age: this.state.tmpSmurf.age, height: this.state.tmpSmurf.height});
+      const tmpSmurf = this.state.tmpSmurf;
+      if(tmpSmurf.id === -1) {
+        this.props.postSmurf({name: tmpSmurf.name, age: tmpSmurf.age, height: tmpSmurf.height});
       } else {
-        const smurfCheck = this.props.smurfsList.find( (smurf) => smurf.id === this.state.tmpSmurf.id);
-        const tmpSmurf = this.state.tmpSmurf;
+        const smurfCheck = this.props.smurfsList.find( (stateSmurf) => stateSmurf.id === tmpSmurf.id);
         if(smurfCheck.name !== tmpSmurf.name || smurfCheck.age !== tmpSmurf.age || smurfCheck.height !== tmpSmurf.height) {
-          this.props.putSmurf(this.state.tmpSmurf)
-        } else {
-          this.resetCompState();
-        };
+          this.props.putSmurf(tmpSmurf);
+        }
       }
       this.resetCompState();
     }
