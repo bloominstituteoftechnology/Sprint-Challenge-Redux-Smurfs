@@ -28,7 +28,7 @@ export const saveSmurf = (smurf) => {
     dispatch({type: SAVING_SMURFS});
     axios
       .post('http://localhost:3333/smurfs', smurf)
-      .then(response => {dispatch({type: SMURFS_SAVED,}) })
+      .then(response => {dispatch({type: SMURFS_SAVED, payload:response.data}) })
       .catch(error => {
         dispatch({type: ERROR, payload: 'Houston, we have a problem', error})
       })

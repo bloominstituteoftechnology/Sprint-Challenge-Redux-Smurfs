@@ -35,14 +35,15 @@ export const smurfsReducer = (state = initState, action) => {
       return {
         ...state,
         fetchingSmurfs: false,
-        smurfs: state.smurfs.concat(action.payload),
+        smurfs: action.payload,
         smurfsFetched: true
       }
     case SMURFS_SAVED:
       return {
         ...state,
         savingSmurfs: false,
-        smurfs: state.smurfs.concat(action.payload)
+        smurfsSaved: true,
+        smurfs: action.payload
       }
     case SAVING_SMURFS:
       return {

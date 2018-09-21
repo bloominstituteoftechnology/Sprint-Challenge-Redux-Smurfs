@@ -8,11 +8,15 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { smurfsReducer } from './reducers';
 
+import { BrowserRouter } from 'react-router-dom'
+
 const store = createStore(smurfsReducer, compose(applyMiddleware(thunk, logger)));
 
 ReactDOM.render(
   <Provider store={store}>
+    <BrowserRouter>
     <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
