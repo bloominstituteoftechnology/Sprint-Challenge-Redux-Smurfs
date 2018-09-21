@@ -32,7 +32,7 @@ class App extends Component {
 	}
 
 	toggleSetState = () => {
-		return this.setState({ ...this.state, addSmurf: !this.state.addSmurf, buttonText: this.state.addSmurf ? 'Add Smurf' : 'Go to Smurf Village' });
+		return this.setState({ ...this.state, addSmurf: !this.state.addSmurf, buttonText: this.state.addSmurf ? 'Add a Smurf' : 'Go back to Smurf Village' });
 	}
 
 	toggleAddSmurf = e => {
@@ -56,7 +56,7 @@ class App extends Component {
 			<div className = 'App'>
 				<h1>Welcome to Smurf Village!</h1>
 				
-				<button onClick = { this.toggleAddSmurf }>{ this.state.buttonText }</button>
+				<button className = 'toggle-add-smurf-btn' onClick = { this.toggleAddSmurf }>{ this.state.buttonText }</button>
 
 				{ this.props.getSmurfsErrorMsg && <p>GET '/smurfs' { this.props.getSmurfsErrorMsg }</p> }
 				{ this.props.postSmurfErrorMsg && <p>POST '/smurfs' { this.props.postSmurfErrorMsg }</p> }

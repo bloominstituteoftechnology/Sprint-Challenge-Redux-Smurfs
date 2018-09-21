@@ -1,6 +1,9 @@
 // React
 import React from 'react';
 
+// Styles
+import './Forms.css';
+
 class AddSmurfForm extends React.Component {
 	state = {
 		name: '',

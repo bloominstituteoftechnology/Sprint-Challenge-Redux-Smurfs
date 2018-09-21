@@ -1,0 +1,42 @@
+.smurf-container {
+	display: flex;
+	justify-content: center;
+	margin: 10px;
+}
+
+.smurf-container .smurf-div {
+	border: 1px solid black;
+	border-radius: 5px;
+	width: max-content;
+	padding: 10px;
+}
+
+.smurf-container .smurf-div .btn {
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.smurf-container .smurf-div .btn:hover {
+	cursor: pointer;
+}
+
+.smurf-container .smurf-div .edit-btn {
+	background-color: blueviolet;
+	color: white;
+	margin-right: 10px;
+}
+
+.smurf-container .smurf-div .edit-btn:hover {
+	background-color: white;
+	color: blueviolet;
+}
+
+.smurf-container .smurf-div .delete-btn {
+	background-color: darkred;
+	color: white;
+}
+
+.smurf-container .smurf-div .delete-btn:hover {
+	background-color: white;
+	color: darkred;
+}

@@ -4,6 +4,9 @@ import React from 'react';
 // Components
 import EditSmurfForm from './EditSmurfForm';
 
+// Styles
+import './Smurf.css';
+
 class Smurf extends React.Component {
 	state = {
 		id: '',
@@ -31,15 +34,17 @@ class Smurf extends React.Component {
 
 	render() {
 		return(
-			<div>
-				<p>Name: { this.state.name }</p>
-				<p>Age: { this.state.age }</p>
-				<p>Height: { this.state.height }</p>
+			<div className = 'smurf-container'>
+				<div className = 'smurf-div'>
+					<p>Name: { this.state.name }</p>
+					<p>Age: { this.state.age }</p>
+					<p>Height: { this.state.height }</p>
 
-				<button onClick = { this.toggleEditForm }>Edit { this.state.name }</button>
-				<button onClick = { () => this.props.deleteSmurf(this.state.id) }>Delete { this.state.name }</button>
+					<button className = 'btn edit-btn' onClick = { this.toggleEditForm }>Edit { this.state.name }</button>
+					<button className = 'btn delete-btn' onClick = { () => this.props.deleteSmurf(this.state.id) }>Delete { this.state.name }</button>
 
-				{ this.state.toggleEditForm && <EditSmurfForm putSmurf = { this.putSmurf } smurf = { this.state } /> }
+					{ this.state.toggleEditForm && <EditSmurfForm putSmurf = { this.putSmurf } smurf = { this.state } /> }
+				</div>
 			</div>
 		);
 	}

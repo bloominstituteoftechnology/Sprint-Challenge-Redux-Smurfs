@@ -1,6 +1,9 @@
 // React
 import React from 'react';
 
+// Styles
+import './Forms.css';
+
 export default class EditSmurfForm extends React.Component {
 	state = {
 		id: '',
