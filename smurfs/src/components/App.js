@@ -93,6 +93,7 @@ class App extends Component {
           age={this.state.age} 
           height={this.state.height} 
         />
+        {this.state.updated !== null ?
         <UpdateSmurf 
           updateSmurf={this.updateSmurf} 
           handleChange={this.handleChange} 
@@ -100,7 +101,7 @@ class App extends Component {
           updatedAge={this.state.updatedAge} 
           updatedHeight={this.state.updatedHeight}
         /> 
-        
+        : null}
       </div>
     );
   }
