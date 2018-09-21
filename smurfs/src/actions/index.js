@@ -40,12 +40,17 @@ export const getSmurfs = () => (dispatch) => {
 }
 
 export const UPDATE_SMURF = 'UPDATE_SMURF'
+export const UPDATING_SMURF = 'UPDATING_SMURF'
+export const UPDATING_COMPLETE = 'UPDATING_COMPLETE'
 export const updateSmurf = () => (dispatch) => {}
 
 export const DELETE_SMURF = 'DELETE_SMURF'
+export const DELETING_SMURF = 'DELETING_SMURF'
+export const DELETING_COMPLETE = 'DELETING_COMPLETE'
 export const deleteSmurf = () => (dispatch) => {}
 
-
+export const ERROR_HANDLE = 'ERROR_HANDLE'
+export const errorHandle = () => (dispatch) => {}
 
 
 

@@ -29,8 +29,14 @@ import {
   FETCHING_COMPLETE,
 
   UPDATE_SMURF,
-
+  UPDATING_SMURF,
+  UPDATING_COMPLETE,
+  
   DELETE_SMURF,
+  DELETING_SMURF,
+  DELETING_COMPLETE,
+
+  ERROR_HANDLE
 } from '../actions'
 
 const initialState =  {
@@ -43,42 +49,37 @@ const initialState =  {
 }
 
 export default function (state =initialState, action) {
-  switch(action.type){
+  switch(action.type) {
     case ADD_SMURF:
-      return {
-        ...state,
-        smurfs: [
-          ...state.smurfs,
-          action.payload
-        ]
-      }
+      return { ...state, smurfs: [...state.smurfs, action.payload] }
     case ADDING_SMURF:
-      return {
-        ...state,
-        addingSmurf: true
-      }
+      return { ...state, addingSmurf: true }
     case ADDING_COMPLETE:
-      return {
-        ...state,
-        addingSmurf: false
-      }
+      return { ...state, addingSmurf: false }
 
     case GET_SMURFS:
-      return {
-        ...state,
-        smurfs: action.payload
-      }
+      return { ...state, smurfs: action.payload }
     case FETCHING_SMURFS:
-      return {
-        ...state,
-        fetchingSmurfs: true
-      }
+      return { ...state, fetchingSmurfs: true }
     case FETCHING_COMPLETE:
-      return {
-        ...state,
-        fetchingSmurfs: false
-      }
+      return { ...state, fetchingSmurfs: false }
+
+    case UPDATE_SMURF:
+      return {}
+    case UPDATING_SMURF:
+      return { ...state, updatingSmurf: true }
+    case UPDATING_COMPLETE:
+      return { ...state, updatingSmurf: false }
       
+    case DELETE_SMURF:
+      return {}
+    case DELETING_SMURF:
+      return { ...state, deletingSmurf: true }
+    case DELETING_COMPLETE:
+      return { ...state, deletingSmurf: false }
+      
+    case ERROR_HANDLE:
+      return { ...state, error: action.payload }
 
     default:
       return state
