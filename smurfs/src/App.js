@@ -56,14 +56,15 @@ class App extends Component {
           <h1>Loading Data Please Wait...</h1>
         ) : (
           <React.Fragment>
-            <SmurfList
-              smurfs={this.props.smurfs}
-            />
             <SmurfForm
               inputData={this.state.inputData}
               handleInput={this.handleInput}
               handleAdd={this.handleAdd}
             />
+            <SmurfList
+              smurfs={this.props.smurfs}
+            />
+            
           </React.Fragment>
         )}
       </div>

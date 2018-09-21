@@ -47,7 +47,6 @@ export const smurfsReducer = (state = initialState, action) => {
         smurfs: action.payload,
         fetchingData: false,
         dataFetched: true,
-        updatingSmurf: false,
       };
     case FETCH_ERROR:
       return {
@@ -57,7 +56,7 @@ export const smurfsReducer = (state = initialState, action) => {
     case INITIALIZE_SMURF_ADD:
       return {
         ...state,
-        addingFriend: true,
+        addingSmurf: true,
       };
     case COMPLETE_SMURF_ADD:
       return {
