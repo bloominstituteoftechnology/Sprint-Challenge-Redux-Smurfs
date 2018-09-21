@@ -38,3 +38,21 @@ export const smfFth = () => dispatch => {
         });
       });
 }
+
+export const smfSv = smf_idv => dispatch => {
+  dispatch({ type: SMF_SV_IP });
+  axios
+      .post("http://localhost:3333/smurfs", smf_idv)
+      .then(response => {
+        dispatch({
+          type: SMF_SV_SCS,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: SMF_SV_FLR,
+          payload: err
+        });
+      });
+}

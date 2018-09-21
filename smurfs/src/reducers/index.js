@@ -42,7 +42,13 @@ export const smfReducer = (state = initialState, action) => {
     case SMF_FTH_SCS:
       return { ...state, smf_fthg: false, smf_fthd: true, smf_arr: [...state.smf_arr, ...action.payload ]};
     case SMF_FTH_FLR:
-      return { ...state, smf_fthg:false, err: "Error gathering information" }
+      return { ...state, smf_fthg:false, err: "Error gathering information" };
+    case SMF_SV_IP:
+      return { ...state, smf_svg: true };
+    case SMF_FTH_SCS:
+      return {...state, smf_svg: false, smf_svd: true, smf_arr: [...state.smf_arr, action.payload]};
+    case SMF_FTH_FLR:
+      return {...state, smf_svg: false, err: "Error gathering information" };
     default:
       return state;
   }
