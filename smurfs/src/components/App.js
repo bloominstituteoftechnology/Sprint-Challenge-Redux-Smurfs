@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
+import { getSmurfs, addSmurf, deleteSmurf, updateSmurf } from '../actions';
 import Smurfs from './Smurfs';
 import CreateSmurfForm from './CreateSmurfForm';
 import UpdateSmurf from './UpdateSmurf';
@@ -118,4 +118,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf, UpdateSmurf }) (App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf, updateSmurf }) (App);

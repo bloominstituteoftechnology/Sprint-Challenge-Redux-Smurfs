@@ -70,3 +70,20 @@ export const deleteSmurf = smurfId => {
       })
   }
 }
+
+export const updateSmurf = smurf => {
+  return dispatch => {
+    dispatch({ type: UPDATING_SMURFS });
+    axios.put(`http://localhost:3333/smurfs/${smurf.id}`, {
+      name: smurf.name,
+      age: smurf.age,
+      height: smurf.height
+    })
+      .then(res => {
+        dispatch({ type: UPDATED_SMURFS, payload: res.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err});
+      })
+  }
+}
