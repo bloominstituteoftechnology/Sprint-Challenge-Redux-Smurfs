@@ -6,17 +6,80 @@ import './App.css';
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
+import Smurfs from './Smurfs';
+import SmurfForm from './SmurfForm';
+import Smurf from './Smurf';
+import {fetchSmurfs,
+        saveSmurf,
+        updateSmurf,
+        deleteSmurf
+      } from '../actions';
+import {NavLink, Route} from 'react-router-dom';
+import axios from 'axios';
+import { connect } from 'react-redux';
+
 class App extends Component {
+  componentDidMount=()=> {
+    this.props.fetchSmurfs();
+  }
+
+  handleCreateOrUpdate = (smurf, isUpdate) => {
+    // console.log(smurf);
+    if (!isUpdate){
+      this.props.saveSmurf(smurf);
+    } else{
+      // this.props.updateSmurf(smurf);
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <NavLink  exact
+                  to="/"
+                  className="link list-link"
+                  activeClassName="activeNavButton">Smurf List</NavLink>
+        <NavLink  to="/smurf-form"
+                  className="link form-link"
+                  activeClassName="activeNavButton">Add Smurf</NavLink>
+        <Route  exact
+                path="/"
+                render={props =>  
+                        <Smurfs {...props}
+                                smurfs={this.props.smurfs}
+                                handleCreateOrUpdate={this.handleCreateOrUpdate} 
+                                // handleDelete={this.handleDelete}
+                        /> } />
+        <Route  path="/smurf-form"
+                render={props => <SmurfForm {...props}
+                                            smurfs={this.props.smurfs}
+                                            handleCreateOrUpdate={this.handleCreateOrUpdate}
+                                            componentDidMount={this.componentDidMount} /> } />
+        { this.props.error ? console.log("wtf")
+                          : null}
       </div>
-    );
-  }
+    )}
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    smurfs: state.smurfs, 
+    fetchingSmurfs: state.fetchingSmurfs,
+    SmurfsFetched: state.SmurfsFetched,
+    smurfSaved: state.smurfSaved,
+    savingSmurf: state.savingSmurf,
+    // updatingSmurf: state.updatingSmurf,
+    // smurfUpdated: state.smurfUpdated,
+    // deletingSmurf: state.deletingSmurf,
+    // smurfDeleted: state.smurfDeleted,
+    error: state.error
+  };
+};
+
+export default connect(mapStateToProps, 
+  { fetchSmurfs,
+    saveSmurf
+    // updateFriend,
+    // deleteFriend
+  })(App);
