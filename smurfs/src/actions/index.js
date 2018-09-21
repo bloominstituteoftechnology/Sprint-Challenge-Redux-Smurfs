@@ -13,3 +13,17 @@
    U - updateSmurf
    D - deleteSmurf
 */
+import axios from 'axios'
+
+export const ADD_SMURF = 'ADD_SMURF'
+export const GET_SMURFS = 'GET_SMURFS'
+export const UPDATE_SMURF = 'UPDATE_SMURF'
+export const DELETE_SMURF = 'DELETE_SMURF'
+
+export const addSmurf = () => (dispatch) => {}
+
+export const getSmurfs = () => (dispatch) => {}
+
+export const updateSmurf = () => (dispatch) => {}
+
+export const deleteSmurf = () => (dispatch) => {}
