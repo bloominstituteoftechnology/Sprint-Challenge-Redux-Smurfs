@@ -31,6 +31,21 @@ export const getSmurfs = () => {
   };
 };
 
+// get Smurf - to get a singular smurf another part of the CRUD R!
+export const getSmurf = (id) => {
+  return dispatch => {
+    dispatch({ type: 'FETCHING_SMURF' });
+    axios
+      .get(`http://localhost:3333/smurfs/${id}`)
+      .then(response => {
+        dispatch({ type: 'SMURF_FETCHED', payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: 'ERROR', payload: error });
+      });
+  }
+}
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
