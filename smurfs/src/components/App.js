@@ -1,22 +1,93 @@
 import React, { Component } from 'react';
+import { get, removeSmurf } from '../actions';
+import { connect } from 'react-redux';
+import SmurfForm from './SmurfForm';
+import styled from 'styled-components';
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+
+const Smurfs = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 800px;
+  margin: 2% auto;
+  z-index: 1;
+`;
+
+const SmurfCard = styled.div`
+  box-sizing: border-box;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  height: 200px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2% 0;
+  margin: 3%;
+  z-index: 1;
+  color: rgb(240, 236, 229);
+  border-radius: 5px 10px;
+  position: relative;
+  font-size: 30px;
+
+  p {
+    margin: 0;
+  }
+
+  button {
+    width: 70px;
+    text-align: center;
+    height: 20px;
+    align-self: center;
+    border-radius: 5px;
+    border: none;
+    font-family: Acme;
+    box-shadow: 0 4px 8px 0 inset rgba(0, 0, 0, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+  }
+`;
+
 class App extends Component {
+  componentDidMount() {
+    this.props.get();
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <h1>Welcome to our Village!</h1>
+        <div>We hope you enjoy your stay!</div>
+
+        <div className="page">
+          <SmurfForm />
+          <Smurfs>
+            {this.props.smurfs.map(smurf => (
+              <SmurfCard>
+                <p>{smurf.name}</p>
+                <p>Age: {smurf.age}</p>
+                {console.log(smurf.id)}
+                <p>Height: {smurf.height}</p>
+                <button onClick={() => this.props.removeSmurf(smurf.id)}>
+                  Goodbye!
+                </button>
+              </SmurfCard>
+            ))}
+          </Smurfs>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    loading: state.loading
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { get, removeSmurf }
+)(App);
