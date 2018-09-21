@@ -1,0 +1,28 @@
+.form-container{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10%;
+}
+
+.form-container input{
+    margin: 2% 0;
+    height: 50px;
+    border-radius: 4px;
+    border: 1px solid powderblue;
+}
+
+.form-container button{
+    height: 50px;
+    width: 200px;
+    margin: 0 auto;
+    border-radius: 4px;
+    border: 1px solid powderblue;
+    background-color: deepskyblue;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.form-container button:hover {
+    background-color: paleturquoise;
+}
