@@ -1,23 +1,93 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // Actions
-import { deleteSmurf } from '../actions';
+import { updateSmurf, deleteSmurf } from '../actions';
 
-const Smurf = props => {
-	return (
-		<li className="Smurf">
-			<h3>{props.smurf.name}</h3>
-			<p>{props.smurf.age}</p>
-			<p>{props.smurf.height}</p>
+class Smurf extends Component {
+	state = { editing: false };
 
-			<button onClick={() => props.deleteSmurf(props.smurf.id)}>
-				Cull smurf
-			</button>
-		</li>
-	);
-};
+	editSmurf = () => {
+		this.setState({
+			name: this.props.smurf.name,
+			age: this.props.smurf.age,
+			height: this.props.smurf.height,
+			editing: true
+		});
+	};
+
+	changeHandler = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	};
+
+	submitHandler = event => {
+		event.preventDefault();
+
+		this.props.updateSmurf({
+			id: this.props.smurf.id,
+			name: this.state.name,
+			age: this.state.age,
+			height: this.state.height
+		});
+
+		this.setState({
+			editing: false,
+			name: undefined,
+			age: undefined,
+			height: undefined
+		});
+	};
+
+	render() {
+		return !this.state.editing ? (
+			<li className="Smurf">
+				<h3>{this.props.smurf.name}</h3>
+				<p>{this.props.smurf.age}</p>
+				<p>{this.props.smurf.height}</p>
+
+				<button onClick={this.editSmurf}>Modify smurf</button>
+
+				<button onClick={() => this.props.deleteSmurf(this.props.smurf.id)}>
+					Cull smurf
+				</button>
+			</li>
+		) : (
+			<form onSubmit={this.submitHandler}>
+				<br />
+				<br />
+				<input
+					type="text"
+					value={this.state.name}
+					name="name"
+					onChange={this.changeHandler}
+					required
+				/>
+				<br />
+				<br />
+				<input
+					type="text"
+					value={this.state.age}
+					name="age"
+					onChange={this.changeHandler}
+					required
+				/>
+				<br />
+				<br />
+				<input
+					type="text"
+					value={this.state.height}
+					name="height"
+					onChange={this.changeHandler}
+					required
+				/>
+				<br />
+				<br />
+				<input type="submit" value="Submit Modifications" />
+			</form>
+		);
+	}
+}
 
 export default connect(
 	null,
-	{ deleteSmurf }
+	{ updateSmurf, deleteSmurf }
 )(Smurf);
