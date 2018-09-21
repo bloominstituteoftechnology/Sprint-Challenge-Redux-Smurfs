@@ -1,28 +1,88 @@
+#root {
+  background-color: rgb(49, 165, 253);
+  height: 100vh;
+  padding-top: 50px;
+}
+
 .App {
+  background-color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.headerText {
+  width: 45%;
+}
+
+.WelcomeSmurf {
+  padding: 20px 0;
+}
+
+.title {
+  font-size: 3rem;
+  color: rgb(49, 165, 253);
+  width: 85%;
+  margin: 130px 0 90px 10px;
+}
+
+.citizenship {
+  margin-bottom: 0;
+  margin-left: 90px;
+  font-weight: bold;
+}
+
+form {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+input {
+  font-size: 1rem;
+  margin: 0 10px;
+  width: 17%;
+  height: 25px;
+}
+
+button {
+  width: 8%;
+  font-size: 1rem;
+  border-radius: 7px;
+}
+
+button:hover {
+  background-color:  rgb(49, 165, 253);
+  cursor: pointer;
+}
+
+.smurfRoster {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.smurf {
+  width: 25%;
+  margin: 20px 15px;
+  padding: 10px;
+  border: 2px rgb(49, 165, 253) solid;
+}
+
+.name {
+  font-size: 1.6rem;
+}
+
+.smurf p {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  margin: 12px 0;
 }
