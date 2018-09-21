@@ -32,6 +32,7 @@ const initialState = {
   fetchingSmurfs: false,
   addingSmurf: false,
   deletingSmurf: false,
+  editingSmurf: false,
   error: '',
 };
 
@@ -87,6 +88,23 @@ export default (state = initialState, action) => {
         ...state,
         deletingSmurf: false,
         error: 'Delete error',
+      };
+    case EDITING_SMURF:
+      return {
+        ...state,
+        editingSmurf: true,
+      };
+    case EDITED_SMURF:
+      return {
+        ...state,
+        editingSmurf: false,
+        smurfs: action.payload,
+      };
+    case EDIT_ERROR:
+      return {
+        ...state,
+        editingSmurf: false,
+        error: 'editing error',
       };
     default:
       return state;

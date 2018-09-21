@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { editSmurf } from '../actions';
+
 class EditSmurfForm extends Component {
   state = {
     editInputs: {
@@ -11,6 +13,16 @@ class EditSmurfForm extends Component {
     },
   };
 
+  resetForm() {
+    this.setState({
+      editInputs: {
+        name: '',
+        age: '',
+        height: '',
+      },
+    });
+  }
+
   handleInput = (event) => {
     this.setState({
       editInputs: {
@@ -20,10 +32,17 @@ class EditSmurfForm extends Component {
     });
   };
 
+  handleEditSmurf = (event) => {
+    event.preventDefault();
+    console.log('HandleEditSmurf');
+    this.props.editSmurf(this.state.editInputs);
+    this.resetForm();
+  };
+
   render() {
     console.log('edit form', this.props);
     return (
-      <form>
+      <form onSubmit={this.handleEditSmurf}>
         <label>Name:</label>
         <input
           type="text"
@@ -54,10 +73,14 @@ class EditSmurfForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    editingSmurf: state.editingSmurf,
+  };
 };
 
 export default connect(
   mapStateToProps,
-  {}
+  {
+    editSmurf,
+  }
 )(EditSmurfForm);

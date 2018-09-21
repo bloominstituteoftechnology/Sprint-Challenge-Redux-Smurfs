@@ -69,12 +69,14 @@ export const editSmurf = (smurf) => {
       `http://localhost:3333/smurfs/${smurf.id}`,
       smurf
     );
-    promise.then((response) => {
-      dispatch({ type: EDITED_SMURF, payload: response.data }).catch((err) => {
+    promise
+      .then((response) => {
+        dispatch({ type: EDITED_SMURF, payload: response.data });
+      })
+      .catch((err) => {
         console.log(err);
         dispatch({ type: EDIT_ERROR });
       });
-    });
   };
 };
 /*
