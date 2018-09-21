@@ -2,4 +2,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  font-family: Acme;
+}
+
+img {
+  width: 100px;
+  z-index: 10;
+  position: absolute;
+  right: 70%;
 }

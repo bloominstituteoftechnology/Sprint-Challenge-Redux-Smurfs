@@ -1,6 +1,30 @@
 import React, { Component } from 'react';
 import { add } from '../actions';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+
+const Form = styled.form`
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+
+  input {
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    height: 18px;
+  }
+
+  button {
+    border-radius: 5px;
+    background: lightblue;
+    width: 80px;
+    margin-bottom: 5%;
+    font-family: Acme;
+  }
+`;
 
 class SmurfForm extends Component {
   constructor(props) {
@@ -24,7 +48,7 @@ class SmurfForm extends Component {
             homebound.
           </div>
         ) : (
-          <form
+          <Form
             className="form"
             onSubmit={event => {
               event.preventDefault();
@@ -40,7 +64,7 @@ class SmurfForm extends Component {
               placeholder="Height"
             />
             <button type="submit">Join us!</button>
-          </form>
+          </Form>
         )}
       </div>
     );
