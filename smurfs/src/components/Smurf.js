@@ -1,13 +1,14 @@
 import React from "react";
-function Smurf(props) {
+
+const Smurf = (props) => {
   return (
     <div>
-      <p>
-        <strong>{props.name}</strong>
-      </p>
-      <p>{props.age}</p>
-      <p> {props.height}</p>
+      <p>test</p>
+      <h1>
+        {props.smurf.name}
+      </h1>
     </div>
   );
-}
+};
+
 export default Smurf;
