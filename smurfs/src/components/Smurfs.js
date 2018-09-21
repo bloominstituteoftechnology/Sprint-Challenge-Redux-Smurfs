@@ -44,10 +44,13 @@ class Smurfs extends Component {
 
 const mapStateToProps = state => {
     return {
-        error: state.smurfsReducer.error
+        error: state.smurfsReducer.error,
+        showUpdate: state.singleSmurfReducer.showUpdate,
+        smurfSelected: state.singleSmurfReducer.smurfSelected
     }
 }
 
 export default connect(mapStateToProps, {
-    updateSingleSmurf
-}(Smurfs))
+    updateSingleSmurf,
+    toggleShowUpdate
+})(Smurfs);

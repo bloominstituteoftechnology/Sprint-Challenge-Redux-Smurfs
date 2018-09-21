@@ -4,8 +4,8 @@ export default function SelectedSmurf(props) {
   return (
     <div>
       <h4>{props.selected.name}</h4>
-      <span onClick={() => props.handleShowSmurf({})}> X </span>
-      <div>{props.selected.email}</div>
+      <span onClick={() => props.handleShowSmurf({})}> Click here to close Smurf </span>
+      <div>{props.selected.height}</div>
       <div>{props.selected.age}</div>
       <button onClick={() => props.handleDeleteFriend()}>{`Delete ${
         props.selected.name

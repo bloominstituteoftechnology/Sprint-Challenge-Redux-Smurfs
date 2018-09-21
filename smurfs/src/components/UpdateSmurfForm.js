@@ -4,7 +4,7 @@ const UpdateSmurfForm = props => {
   return (
     <form>
       <input placeholder={props.smurf.name} />
-      <input placeholder={props.smurf.email} />
+      <input placeholder={props.smurf.height} />
       <input placeholder={props.smurf.age} />
     </form>
   );

@@ -16,7 +16,7 @@ class SmurfForm extends Component {
     handleAddSmurf = () => {
         const { name, age, height } = this.state;
         this.props.createSmurf({ name, age, height });
-        this.setState({ name: '', age: '', email: ''})
+        this.setState({ name: '', age: '', height: ''})
     };
 
     render() {
@@ -57,8 +57,8 @@ class SmurfForm extends Component {
 const mapStateToProps = state => {
   return {
     error: state.error,
-    creatingFriend: state.creatingFriend
+    creatingSmurf: state.creatingSmurf
   };
 };
 
-export default connect(mapStateToProps, { createFriend })(FriendForm);
+export default connect(mapStateToProps, { createSmurf })(SmurfForm);

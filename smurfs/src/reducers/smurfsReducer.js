@@ -21,7 +21,7 @@ export const smurfsReducer = (state = initialState, action) => {
         case actionTypes.CREATING_SMURF:
             return {...state, creatingSmurf: true};
         case actionTypes.CREATE_SMURF:
-            return {...state, friends: action.payload, creatingSmurf: false };
+            return {...state, smurfs: action.payload, creatingSmurf: false };
         case actionTypes.ERROR:
             return {
                 ...state,
