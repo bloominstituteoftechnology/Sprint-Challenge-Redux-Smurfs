@@ -33,7 +33,7 @@ const SmurfForm = (props) => {
     />
     </label> 
     <br />
-    <button onClick={props.saveSmurfsData}>Add Friend</button> 
+    <button onClick={props.saveSmurfData}>Add Friend</button> 
     </form>
    );
 }

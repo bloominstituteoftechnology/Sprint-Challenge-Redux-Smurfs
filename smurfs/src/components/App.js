@@ -39,8 +39,8 @@ class App extends Component {
   };
 
   render() {
-    console.log('App.js')
-    console.log(this.props)
+    // console.log('App.js')
+    // console.log(this.props)
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -52,7 +52,7 @@ class App extends Component {
             name={this.props.name} 
             age={this.props.age} 
             height={this.props.height} 
-            saveFriendData={this.saveFriendData}
+            saveSmurfData={this.saveSmurfData}
             textInputHandler={this.textInput}
         />
         </div>
@@ -69,13 +69,12 @@ class App extends Component {
   }
 }
 
-// export default App;
 
 // our mapDispatchToProps needs to have two properties inherited from state
 // the smurfs and the fetching boolean
 const mapDispatchToProps = state => {
   return {
-    state,
+    // state,
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
     error: state.error
