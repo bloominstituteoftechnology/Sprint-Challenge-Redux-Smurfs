@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
+import { fetchSmurfs, newSmurf, deleteSmurf } from '../actions';
+
+import { Route, Link } from 'react-router-dom';
+import SmurfList from './SmurfList';
+import SmurfCard from './SmurfCard';
+
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -7,16 +14,66 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      age: '',
+      height: ''
+    }
+  }
+  
+  componentDidMount() {
+    this.props.fetchSmurfs();
+  }
+  
+  handleInput = event => {
+    event.preventDefault();
+
+    if(event.target.name === 'age') {
+      this.setState({
+      age: Number(event.target.value)
+      })} 
+    else if (event.target.name === 'name'){
+      this.setState({
+          name: event.target.value
+    })} else {
+          this.setState({
+              height: event.target.value
+    })}
+  }
+
+  addSmurf = event => {
+    event.preventDefault();
+    this.props.newSmurf(this.state);
+  }
+
+  deleteSmurf = (id) => {
+    this.props.deleteSmurf(id);
+  }
+  
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <h2>Welcome to <Link to='/smurfs'>Smurf Village</Link></h2>
+        <Route exact path='/smurfs' render={props => (
+          <SmurfList {...props} smurfs={this.props.smurfs} deleteSmurf={this.deleteSmurf} 
+          addSmurf={this.addSmurf} fetchingSmurfs={this.props.fetchingSmurfs} handleInput={this.handleInput} />
+        )} />
+        <Route exact path='/smurf/:id' render={props => (
+          <SmurfCard {...props} smurfs={this.props.smurfs} />
+        )} />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs,
+  }
+}
+
+export default connect(mapStateToProps, {fetchSmurfs, newSmurf, deleteSmurf})(App);
