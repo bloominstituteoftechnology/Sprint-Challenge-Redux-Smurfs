@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchSmurfs, newSmurf, deleteSmurf } from '../actions';
+import { fetchSmurfs, newSmurf, deleteSmurf, editSmurf } from '../actions';
 
+import { Route, Link } from 'react-router-dom';
+import SmurfList from './SmurfList';
+import SmurfCard from './SmurfCard';
 
 /*
  to wire this component up you're going to need a few things.
@@ -40,43 +43,33 @@ class App extends Component {
     })}
   }
 
+  editSmurf = (id, event) => {
+    event.preventDefault();
+    this.props.editSmurf(id.id, this.state);
+    console.log('editSmurf id', id.id);
+    console.log('editSmurf state', this.state);
+  }
+
   addSmurf = event => {
     event.preventDefault();
     this.props.newSmurf(this.state);
   }
 
   deleteSmurf = (id) => {
-    // s
     this.props.deleteSmurf(id);
   }
   
   render() {
     return (
       <div className="App">
-        {this.props.fetchingSmurfs ? (
-          <h3>fetching smurfs...</h3>
-        ) : (
-          <div>
-            {this.props.smurfs.map(smurf => 
-              <div key={smurf.name}>
-                <h2>Smurf,</h2>
-                <h3>Name: {smurf.name}</h3>
-                <h4>Age: {smurf.age}</h4>
-                <h5>Height: {smurf.height}</h5>
-                <button onClick={() => this.deleteSmurf(smurf.id)}>Delete</button>
-              </div>
-            )}
-            <div>
-                <h3>Add a Friend</h3>
-                <form>
-                    <input type="text" name="name" placeholder="name" onChange={this.handleInput}/>
-                    <input type="text" name="age" placeholder="age" onChange={this.handleInput}/>
-                    <input type="text" name="height" placeholder="height" onChange={this.handleInput}/>
-                    <input type="submit" onClick={this.addSmurf}/>
-                </form>
-            </div>
-          </div>
-        )}
+        <h2>Welcome to <Link to='/smurfs'>Smurf Village</Link></h2>
+        <Route exact path='/smurfs' render={props => (
+          <SmurfList {...props} smurfs={this.props.smurfs} deleteSmurf={this.deleteSmurf} 
+          addSmurf={this.addSmurf} fetchingSmurfs={this.props.fetchingSmurfs} handleInput={this.handleInput} />
+        )} />
+        <Route exact path='/smurf/:id' render={props => (
+          <SmurfCard {...props} smurfs={this.props.smurfs} editSmurf={this.editSmurf} handleInput={this.handleInput}/>
+        )} />
       </div>
     );
   }
@@ -90,4 +83,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchSmurfs, newSmurf, deleteSmurf})(App);
+export default connect(mapStateToProps, {fetchSmurfs, newSmurf, deleteSmurf, editSmurf})(App);
