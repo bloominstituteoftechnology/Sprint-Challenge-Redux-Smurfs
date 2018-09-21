@@ -23,12 +23,11 @@ class App extends Component {
         {this.props.fetching ? (
           <h4>We're smurfin' comin! JEEZ... one moment</h4>
         ) : (
-          <div className='App-loaded'>
+          <div className='App-loaded'>          
+            <SmurfAddForm  />
             <SmurfsList
               smurfs={this.props.smurfs}
             />
-
-            <SmurfAddForm  />
           </div>
         )}
       </div>

@@ -3,8 +3,7 @@ import {
   SUCCESS_FETCHING,
   ERROR,
   ADDING,
-  SUCCESS_ADDING,
-  ERROR_ADDING,
+  SUCCESS_ADDING,  
 } from '../actions';
 
 
