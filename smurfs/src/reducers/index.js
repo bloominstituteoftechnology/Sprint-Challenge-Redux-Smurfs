@@ -42,6 +42,16 @@ export default (state = initialState, action) => {
         fetchingSmurfs: false
       });
 
+    case "FETCHING_SMURF":
+      return Object.assign({}, state, { fetchingSmurf: true });
+
+    case "SMURF_FETCHED":
+      return Object.assign({}, state, {
+        smurf: action.payload,
+        smurfFetched: true,
+        fetchingSmurf: false
+      });
+
     case "ADDING_SMURF":
       return Object.assign({}, state, { addingSmurf: true });
 
