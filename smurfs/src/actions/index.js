@@ -28,7 +28,7 @@ export const getSmurfs = () => {
       .get('http://localhost:3333/smurfs')
 
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         dispatch({ type: FETCHED, payload: response.data });
       })
 
