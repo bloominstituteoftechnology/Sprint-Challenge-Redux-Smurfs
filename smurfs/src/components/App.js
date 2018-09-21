@@ -7,7 +7,9 @@
 import React, { Component } from 'react'
 import './App.css'
 import { connect } from 'react-redux'
-import { getSmurfs } from '../actions'
+import { getSmurfs, addSmurf } from '../actions'
+import Smurfs from './Smurfs'
+import AddSmurfForm from './AddSmurfForm'
 
 class App extends Component {
   componentDidMount() {
@@ -18,18 +20,38 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
+        <AddSmurfForm addSmurf={this.props.addSmurf} />
         <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        {this.props.fetchingSmurfs ? (
+            <h2>Loading...</h2>
+          ) : (
+            <Smurfs smurfs={this.props.smurfs} />
+          )}
+
+        {/* { console.log(this.props.smurfs) } */}
+        {/* { !this.props.fetchingSmurfs ? <Smurfs smurfs={this.props.smurfs} /> : <h2>Loading...</h2>} */}
+        {/* { this.props.smurfs.map(smurf => {
+          return (
+            <p>{smurf.name}</p>
+          )
+        })} */}
       </div>
     )
   }
 }
 
-const mapStateToProps = (state, action) => ({})
+const mapStateToProps = (state) => ({
+  smurfs: state.smurfs,
+  fetchingSmurfs: state.fetchingSmurfs,
+  addingSmurf: state.addingSmurf,
+  updatingSmurf: state.updatingSmurf,
+  deletingSmurf: state.deletingSmurf,
+  error: state.error
+})
 
 const mapDispatchToProps = {
-  getSmurfs
+  getSmurfs,
+  addSmurf
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

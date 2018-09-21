@@ -48,10 +48,10 @@ const initialState =  {
   error: null
 }
 
-export default function (state =initialState, action) {
+export default function (state = initialState, action) {
   switch(action.type) {
     case ADD_SMURF:
-      return { ...state, smurfs: [...state.smurfs, action.payload] }
+      return { ...state, smurfs: action.payload }
     case ADDING_SMURF:
       return { ...state, addingSmurf: true }
     case ADDING_COMPLETE:
