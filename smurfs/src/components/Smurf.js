@@ -41,8 +41,8 @@ class Smurf extends Component {
 		return !this.state.editing ? (
 			<li className="Smurf">
 				<h3>{this.props.smurf.name}</h3>
-				<p>{this.props.smurf.age}</p>
-				<p>{this.props.smurf.height}</p>
+				<p>Age: {this.props.smurf.age}</p>
+				<p>Height: {this.props.smurf.height}</p>
 
 				<button onClick={this.editSmurf}>Modify smurf</button>
 
@@ -57,6 +57,7 @@ class Smurf extends Component {
 				<input
 					type="text"
 					value={this.state.name}
+					placeholder="Name"
 					name="name"
 					onChange={this.changeHandler}
 					required
@@ -66,6 +67,7 @@ class Smurf extends Component {
 				<input
 					type="text"
 					value={this.state.age}
+					placeholder="Age"
 					name="age"
 					onChange={this.changeHandler}
 					required
@@ -75,6 +77,7 @@ class Smurf extends Component {
 				<input
 					type="text"
 					value={this.state.height}
+					placeholder="Height"
 					name="height"
 					onChange={this.changeHandler}
 					required
