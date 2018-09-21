@@ -27,6 +27,13 @@
   to { transform: rotate(360deg); }
 }
 
+.smurf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .smurf-label {
   font-weight: bold;
 }
@@ -57,7 +64,14 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  background-color: dodgerblue;
   cursor: pointer;
   user-select: none;
+}
+
+.button.deliver-smurf {
+  background-color: dodgerblue;
+}
+
+.button.banish-smurf {
+  background-color: tomato;
 }

@@ -51,13 +51,13 @@ const papaSmurf = (village = emptyVillage, action) => {
     return {...village, changingSmurfs: true};
 
     case ACTIONS.SMURF_CHANGED:
-    return {...village, changingSmurfs: false, smurfs: action.smurf};
+    return {...village, changingSmurfs: false, smurfs: action.smurfs};
 
     case ACTIONS.BANISHING_SMURF:
     return {...village, banishingSmurfs: true};
 
     case ACTIONS.SMURF_BANISHED:
-    return {...village, banishingSmurfs: false, smurfs: action.smurf};
+    return {...village, banishingSmurfs: false, smurfs: action.smurfs};
 
     default:
     return village;

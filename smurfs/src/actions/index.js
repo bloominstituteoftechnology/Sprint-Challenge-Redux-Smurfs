@@ -41,7 +41,7 @@ export const deliverSmurf = smurf => dispatch => {
 
 export const changeSmurf = smurf => dispatch => {
   console.log('Change Smurf')
-  dispatch({type: ACTIONS.CHANGING_SMURFS});
+  dispatch({type: ACTIONS.CHANGING_SMURF});
   axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
   .then(response => {console.log(response); return dispatch({type: ACTIONS.SMURF_CHANGED, smurfs: response.data})})
   .catch(err => console.log('ERROR CHANGING SMURFS:', err.message))
@@ -49,7 +49,7 @@ export const changeSmurf = smurf => dispatch => {
 
 export const banishSmurf = smurf => dispatch => {
   console.log('Banish Smurf')
-  dispatch({type: ACTIONS.BANISHING_SMURFS});
+  dispatch({type: ACTIONS.BANISHING_SMURF});
   axios.delete(`http://localhost:3333/smurfs/${smurf.id}`)
   .then(response => {console.log(response); return dispatch({type: ACTIONS.SMURF_BANISHED, smurfs: response.data})})
   .catch(err => console.log('ERROR BANISHING SMURFS:', err.message))
