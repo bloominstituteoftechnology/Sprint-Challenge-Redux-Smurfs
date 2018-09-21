@@ -53,7 +53,6 @@ class Smurf extends Component {
 		) : (
 			<form onSubmit={this.submitHandler}>
 				<br />
-				<br />
 				<input
 					type="text"
 					value={this.state.name}

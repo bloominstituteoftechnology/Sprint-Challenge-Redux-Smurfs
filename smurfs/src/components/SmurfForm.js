@@ -33,6 +33,8 @@ class SmurfForm extends Component {
 	render() {
 		return (
 			<form onSubmit={this.submitHandler}>
+				<br />
+				<h3>New Smurf</h3>
 				<input
 					type="text"
 					value={this.state.name}
@@ -41,6 +43,8 @@ class SmurfForm extends Component {
 					onChange={this.changeHandler}
 					required
 				/>
+				<br />
+				<br />
 				<input
 					type="text"
 					value={this.state.age}
@@ -49,6 +53,8 @@ class SmurfForm extends Component {
 					onChange={this.changeHandler}
 					required
 				/>
+				<br />
+				<br />
 				<input
 					type="text"
 					value={this.state.height}
@@ -57,6 +63,8 @@ class SmurfForm extends Component {
 					onChange={this.changeHandler}
 					required
 				/>
+				<br />
+				<br />
 				<input type="submit" value="Add New Smurf" />
 			</form>
 		);
