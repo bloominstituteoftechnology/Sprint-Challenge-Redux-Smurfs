@@ -4,6 +4,7 @@ import './App.css';
 
 import { fetchSmurfs } from '../actions';
 import SmurfList from './SmurfList';
+import SmurfForm from './SmurfForm';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -11,6 +12,12 @@ import SmurfList from './SmurfList';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  state = {
+    nameInput: '',
+    ageInput: '',
+    heightInput: '',
+  };
+  
   componentDidMount = () => {
     this.props.fetchSmurfs();
   }
@@ -18,6 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <SmurfForm />
         <SmurfList smurfs={this.props.smurfs} />
       </div>
     );
