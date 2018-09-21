@@ -7,7 +7,7 @@ import { getSmurfs } from '../actions';
 
 class SmurfList extends Component {
 	componentDidMount() {
-		this.props.fetchSmurfs();
+		this.props.getSmurfs();
 	}
 
 	render() {
@@ -32,7 +32,7 @@ class SmurfList extends Component {
 
 const mapStateToProps = state => ({
 	smurfs: state.smurfs,
-	fetching: state.fetching,
+	gettingSmurfs: state.gettingSmurfs,
 	error: state.error
 });
 
