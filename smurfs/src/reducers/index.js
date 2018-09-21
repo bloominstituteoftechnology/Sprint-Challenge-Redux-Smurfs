@@ -61,6 +61,19 @@ export const smurfReducer = (state = initialState, action) => {
         deletingSmurf: false,
         smurfs: action.payload
       }
+
+    case UPDATING_SMURFS:
+      return {
+        ...state,
+        updatingSmurf: true
+      }
+
+    case UPDATED_SMURFS:
+      return {
+        ...state,
+        updatingSmurf: false,
+        smurfs: action.payload
+      }
     
     case ERROR:
       return {
@@ -68,6 +81,7 @@ export const smurfReducer = (state = initialState, action) => {
         fetchingSmurfs: false,
         addingSmurf: false,
         deletingSmurf: false,
+        updatingSmurf: false,
         error: action.payload
       }
 

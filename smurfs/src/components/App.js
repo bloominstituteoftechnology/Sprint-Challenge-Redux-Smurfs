@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
 import Smurfs from './Smurfs';
 import CreateSmurfForm from './CreateSmurfForm';
+import UpdateSmurf from './UpdateSmurf';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -16,7 +17,11 @@ class App extends Component {
     this.state = {
       name: '',
       age: '',
-      height: ''
+      height: '',
+      updated: null,
+      updatedName: '',
+      updatedAge: '',
+      updatedHeight: ''
     }
   }
 
@@ -49,6 +54,29 @@ class App extends Component {
     this.props.deleteSmurf(e.target.id);
   }
 
+  updateSmurf = e => {
+    e.preventDefault();
+    let updatedSmurf = {
+      name: this.state.updatedName,
+      age: this.state.updatedAge,
+      height: this.state.updatedHeight,
+      id: this.state.updated
+    }
+    this.props.updateSmurf(updatedSmurf);
+    this.setState({
+      updated: null,
+      updatedName: '',
+      updatedAge: '',
+      updatedHeight: ''
+    })
+  }
+
+  toggleUpdate = e => {
+    this.setState({
+      updated: Number(e.target.id)
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -56,6 +84,7 @@ class App extends Component {
         <Smurfs 
           smurfs={this.props.smurfs}
           deleteSmurf={this.deleteSmurf}
+          toggleUpdate={this.toggleUpdate}
         />
         <CreateSmurfForm 
           handleSubmit={this.handleSubmit} 
@@ -64,6 +93,14 @@ class App extends Component {
           age={this.state.age} 
           height={this.state.height} 
         />
+        <UpdateSmurf 
+          updateSmurf={this.updateSmurf} 
+          handleChange={this.handleChange} 
+          updatedName={this.state.updatedName} 
+          updatedAge={this.state.updatedAge} 
+          updatedHeight={this.state.updatedHeight}
+        /> 
+        
       </div>
     );
   }
@@ -80,4 +117,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf }) (App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf, UpdateSmurf }) (App);
