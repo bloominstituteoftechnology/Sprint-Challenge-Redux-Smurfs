@@ -14,6 +14,7 @@ const SmurfsList =(props) => {
                 {props.smurfsList.map( (smurf, i) => 
                     <Smurf 
                         smurf={smurf} 
+                        editHandler={props.editHandler} 
                         deleteSmurf={props.deleteSmurf} 
                         key={i} 
                     /> 
@@ -40,6 +41,7 @@ SmurfsList.propTypes = {
         deletedSmurf: PropTypes.bool, 
         error: PropTypes.string.isRequired
       }).isRequired,
+      editHandler: PropTypes.func,
       deleteSmurf: PropTypes.func
 };
 

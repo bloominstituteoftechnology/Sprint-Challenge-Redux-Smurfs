@@ -8,7 +8,7 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 import { connect } from 'react-redux';
-import { postSmurf, getSmurfs, deleteSmurf } from '../actions/';
+import { postSmurf, getSmurfs, putSmurf, deleteSmurf } from '../actions/';
 
 import SmurfForm from './smurfform';
 import SmurfsList from './smurfslist';
@@ -60,8 +60,22 @@ class App extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.postSmurf(this.state.tmpSmurf);
-    this.resetCompState();
+    if(this.state.tmpSmurf.name && this.state.tmpSmurf.age && this.state.tmpSmurf.height) {
+      if(this.state.tmpSmurf.id === -1) {
+        this.props.postSmurf({name: this.state.tmpSmurf.name, age: this.state.tmpSmurf.age, height: this.state.tmpSmurf.height});
+      } else {
+        this.props.putSmurf(this.state.tmpSmurf);
+      }
+      this.resetCompState();
+    }
+  };
+
+  editHandler = (smurfToEdit) => {
+    this.setState({
+      ...this.state,
+      tmpSmurf: smurfToEdit
+    });
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   };
 
   render() {
@@ -79,6 +93,7 @@ class App extends Component {
         <SmurfsList 
           smurfsList={this.props.smurfsList} 
           crudStates={this.props.crudStates} 
+          editHandler={this.editHandler} 
           deleteSmurf={this.props.deleteSmurf} 
         />
       </div>
@@ -109,7 +124,11 @@ App.propTypes = {
     deletingSmurf: PropTypes.bool, 
     deletedSmurf: PropTypes.bool, 
     error: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  postSmurf: PropTypes.func.isRequired,
+  getSmurfs: PropTypes.func.isRequired, 
+  putSmurf: PropTypes.func.isRequired, 
+  deleteSmurf: PropTypes.func
 };
 
-export default connect(mapStateToProps, { postSmurf, getSmurfs, deleteSmurf })(App);
+export default connect(mapStateToProps, { postSmurf, getSmurfs, putSmurf, deleteSmurf })(App);

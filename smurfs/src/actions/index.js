@@ -56,11 +56,11 @@ export const getSmurfs = () => {
 };
 
 // Update (PUT)
-export const putSmurf = (updatedSmurf, smurfId) => {
+export const putSmurf = (updatedSmurf) => {
     return (dispatch) => {
         dispatch( {type: PUTTING_SMURF} );
         Axios
-            .put(`${dataSource}/${smurfId}`, updatedSmurf)
+            .put(`${dataSource}/${updatedSmurf.id}`, updatedSmurf)
             .then( (response) => {
                 dispatch( {type: PUT_SMURF, payload: response.data} );
             })
