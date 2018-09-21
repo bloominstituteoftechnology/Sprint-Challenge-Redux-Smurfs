@@ -1,0 +1,63 @@
+.smurf-container {
+	display: flex;
+	justify-content: center;
+	margin: 10px;
+	width: 100%;
+	box-shadow: 10px 10px 5px #aaaaaa;
+	transition: 0.2s;
+}
+
+.smurf-container:hover {
+	box-shadow: none;
+}
+
+.smurf-container .smurf-div {
+	border: 1px solid black;
+	border-radius: 5px;
+	width: 100%;
+	padding: 10px;
+}
+
+.smurf-container .smurf-div .btn {
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.smurf-container .smurf-div .btn:hover {
+	cursor: pointer;
+}
+
+.smurf-container .smurf-div .edit-btn {
+	background-color: darkcyan;
+	color: white;
+	margin-right: 10px;
+}
+
+.smurf-container .smurf-div .edit-btn:hover {
+	background-color: white;
+	color: darkcyan;
+}
+
+.smurf-container .smurf-div .delete-btn {
+	background-color: darkred;
+	color: white;
+}
+
+.smurf-container .smurf-div .delete-btn:hover {
+	background-color: white;
+	color: darkred;
+}
+
+
+/* Animations */
+
+@keyframes fade-in-anim {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+.fade-in {
+	animation-name: fade-in-anim;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}

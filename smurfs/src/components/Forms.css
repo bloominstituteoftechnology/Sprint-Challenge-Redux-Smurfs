@@ -1,0 +1,44 @@
+form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+	margin-top: 10px;
+}
+
+form * {
+	margin: 10px;
+}
+
+form input {
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+
+form button {
+	padding: 5px 10px;
+	background-color: green;
+	color: white;
+	border-radius: 5px;
+}
+
+form button:hover {
+	background-color: white;
+	color: green;
+	cursor: pointer;
+}
+
+
+/* Animations */
+
+@keyframes fade-in-anim {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+.fade-in {
+	animation-name: fade-in-anim;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}
