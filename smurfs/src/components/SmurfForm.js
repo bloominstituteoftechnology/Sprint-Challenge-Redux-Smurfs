@@ -10,7 +10,7 @@ class SmurfForm extends Component {
     };
 
     handleInputChange = event => {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({ [event.target.name]: event.target.value });
     };
 
     handleCreateSmurf = () => {
@@ -51,3 +51,15 @@ class SmurfForm extends Component {
     }
 
 }
+
+const mapStateToProps = state => {
+    return {
+        error: state.error,
+        creatingSmurf: state.creatingSmurf,
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    { createSmurf }
+)(SmurfForm);
