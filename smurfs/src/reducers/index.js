@@ -31,22 +31,31 @@ const initialState = {
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 export default (state = initialState, action) => {
+  switch (action.type) {
+    case "FETCHING_SMURFS":
+      return Object.assign({}, state, { fetchingSmurfs: true });
 
-  switch(action.type) {
-    case 'FETCHING_SMURFS':
-        return Object.assign({}, state, { fetchingSmurfs: true });
+    case "SMURFS_FETCHED":
+      return Object.assign({}, state, {
+        smurfs: action.payload,
+        smurfsFetched: true,
+        fetchingSmurfs: false
+      });
 
-    case 'SMURFS_FETCHED':
-      return Object.assign({}, state, { smurfs: action.payload, smurfsFetched: true, fetchingSmurfs: false });
-
-    case 'ADDING_SMURF':
+    case "ADDING_SMURF":
       return Object.assign({}, state, { addingSmurf: true });
 
-    case 'SMURF_ADDED':
-      return Object.assign({}, state, { smurfs: action.payload, smurfAdded: true, addingSmurf: false });
-      
+    case "SMURF_ADDED":
+      return Object.assign({}, state, {
+        smurfs: action.payload,
+        smurfAdded: true,
+        addingSmurf: false
+      });
+
+    case "ERROR":
+      return Object.assign({}, state, { error: action.payload });
+
     default:
       return state;
   }
-
 };
