@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING_SMURF, SMURF_FETCHED, FETCH_ERROR, ADDING_SMURF, SMURF_ADDED } from '../actions';
+import { FETCHING_SMURFS, SMURFS_FETCHED, FETCH_ERROR, ADDING_SMURF, SMURF_ADDED } from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -17,9 +17,9 @@ const initialState = {
 
 export const smurfReducer = (state = initialState, action) => {
   switch(action.type) {
-    case FETCHING_SMURF:
+    case FETCHING_SMURFS:
       return Object.assign({}, state, {fetchingSmurfs:true});
-    case SMURF_FETCHED:
+    case SMURFS_FETCHED:
       return Object.assign({}, state, {
         smurfs: [...state.smurfs, ...action.payload],
         fetchingSmurfs: false

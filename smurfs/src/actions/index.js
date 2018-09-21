@@ -5,7 +5,7 @@
 import axios from 'axios';
 
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
-export const SMURF_FETCHED = 'SMURF_FETCHED';
+export const SMURFS_FETCHED = 'SMURFS_FETCHED';
 export const FETCH_ERROR = 'FETCH_ERROR';
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const SMURF_ADDED = 'SMURF_ADDED';
@@ -16,7 +16,7 @@ export const fetchSmurfs = () => dispatch => {
   axios.get('http://localhost:3333/smurfs')
     .then(res => {
       console.log('fetch smurfs res', res);
-      dispatch({ type: SMURF_FETCHED, payload: 'res, fix me in actions'})
+      dispatch({ type: SMURFS_FETCHED, payload: res.data })
     })
     .catch(err => {
       dispatch({ type: FETCH_ERROR })
@@ -30,7 +30,7 @@ export const newSmurf = smurf => dispatch => {
     .then(res => {
       console.log('newSmurf', smurf);
       console.log('newSmurf res', res);
-      dispatch({ type: SMURF_ADDED, payload: 'res, fix me in actions'})
+      dispatch({ type: SMURF_ADDED, payload: res.data })
     })
     .catch(err => {
       dispatch({ type: FETCH_ERROR, payload: err })
