@@ -8,9 +8,9 @@ const initialState = {
   error: null
 };
 
-export default rootReducer = (state = initialState, action) => {
+export const rootReducer = (state = initialState, action) => {
   switch(action.type) {
-    case FETCHING_SMURF:
+    case FETCHING_SMURFS:
       return Object.assign({}, state, {fetchingSmurfs:true});
 
     case SMURF_FETCHED:
