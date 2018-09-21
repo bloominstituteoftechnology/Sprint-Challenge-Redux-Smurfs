@@ -1,11 +1,11 @@
-import { FETCH_SMURFS, FETCHING_SMURFS, ADD_SMURF, ADDING_SMURF, ERROR } from '../actions';
+import { FETCH_SMURFS, FETCHING_SMURFS, ADD_SMURF, ADDING_SMURF, DELETE_SMURF, DELETING_SMURF, ERROR } from '../actions';
 
 const initialState =  {
   smurfs: [],
   fetchingSmurfs: false,
   addingSmurf: false,
   // updatingSmurf: false,
-  // deletingSmurf: false,
+  deletingSmurf: false,
   error: null
 }
 
@@ -33,6 +33,18 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         addingSmurf: true
+      }
+
+    case DELETE_SMURF:
+      return {
+        ...state,
+        deletingSmurf: false,
+        smurfs: state.smurfs.filter(smurf => smurf.id !== action.id)
+      }
+    case DELETING_SMURF:
+      return {
+        ...state,
+        deletingSmurf: true
       }
 
     case ERROR:

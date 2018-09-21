@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchSmurfs, addSmurf } from '../actions';
+import { fetchSmurfs, addSmurf, deleteSmurf } from '../actions';
 
 import Smurfs from '../components/Smurfs';
 import SmurfForm from '../components/SmurfForm';
@@ -31,8 +31,9 @@ const mapStateToProps = state => {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
     addingSmurf: state.addingSmurf,
+    deletingSmurf: state.deletingSmurf,
     error: state.error
   }
 }
 
-export default connect(mapStateToProps, { fetchSmurfs, addSmurf })(App);
+export default connect(mapStateToProps, { fetchSmurfs, addSmurf, deleteSmurf })(App);
