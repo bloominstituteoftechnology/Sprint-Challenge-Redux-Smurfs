@@ -1,19 +1,59 @@
 import React, { Component } from 'react';
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import { connect } from 'react-redux';
+// import './styles/App.css';
+import { fetchData, addSmurf} from './actions';
+
 class App extends Component {
+
+  state = {
+    inputData: {
+      name: '',
+      age: '',
+      height: '',
+      id: '',
+    },
+  };
+
+  componentDidMount() {
+    //When mounted, run the fetchData action which calls the API
+    this.props.fetchData();
+  }
+  
+  handleInput = (event) => {
+    //Event handler for when you start typing in a form
+    this.setState({
+      inputData: {
+        ...this.state.inputData,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  handleAdd = (event) => {
+    //Event handler for when you click a button that you want to trigger info added
+    event.preventDefault();
+    this.props.addSmurf(this.state.inputData);
+    this.resetForm();
+  };
+
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        {!this.props.dataFetched ? (
+          <h1>Loading Data Please Wait...</h1>
+        ) : (
+          <React.Fragment>
+            <SmurfList
+              smurfs={this.props.smurfss}
+            />
+            <SmurfForm
+              inputData={this.state.inputData}
+              handleInput={this.handleInput}
+              handleAdd={this.handleAdd}
+            />
+          </React.Fragment>
+        )}
       </div>
     );
   }
