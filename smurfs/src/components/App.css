@@ -26,3 +26,96 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+.selected-smurf{
+  border: 2px solid red;
+}
+.SmurfForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  border: 1px solid powderblue;
+  width: 500px;
+  margin-left: 125px;
+}
+.Smurfs{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  max-width: 800px;
+  margin: 70px auto;
+  border-radius: 5px;
+}
+
+.smurf{
+  background-color: lightblue;
+  border-radius: 5px;
+  width: 200px;
+  height: 150px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
+  margin: 25px 0 15px 0;
+  line-height: 22px;
+}
+
+.form-title{
+  color: powderblue;
+}
+
+.inputs{
+  display: flex;
+  justify-content: space-evenly; 
+  width: 100%;
+  margin-top: 30px;
+}
+.input{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+input{
+  border: 1px solid lightblue;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 10px;
+  height: 30px;
+}
+.buttons{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px 0;
+  width: 100%;
+}
+button{
+  background-color: lightblue;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  width: 150px;
+}
+
+span{ 
+  color: powderblue;
+}
+
+h1{
+  color: LightGreen;
+}
+
+h2{
+  color: Yellow;
+}

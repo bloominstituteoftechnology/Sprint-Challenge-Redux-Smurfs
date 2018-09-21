@@ -27,7 +27,7 @@ export const SELECT_SMURF = 'SELECT_SMURF';
 */
 
 
-export const fetchSmurf = () => {
+export const fetchSmurfs = () => {
   const request = axios.get(`http://localhost:3333/smurfs`)
   return (dispatch) => {
       request.then(({data})=> {
@@ -60,7 +60,7 @@ export const selectSmurf = id => ({
   id        
 })
 export const updateSmurf = (id, smurf) => {
-  const request = axios.put(`http://localhost:3333/smurf/${id}`, smurf)
+  const request = axios.put(`http://localhost:3333/smurfs/${id}`, smurf)
   return (dispatch) => {
       request.then(({data})=> {
           dispatch({type: UPDATING_SMURF, payload: data})
