@@ -3,7 +3,7 @@
 * `filter()` - this returns a new array containing the output of the old array after a callback filtering function has been invoked and does in an a non mutative way.
 * `map()` - this maps over an array and does a specific action upon each iteratable item based on a callback function that is passed in as a parameter.
 * `find()` - this returns a new array containing the output of the action of a boolean operation to test a condition or set of conditions using a callback function to return the items that come up as true.
-* `Object.create()` - this returns a new object and extends the properties of an object passed in as a parameter in a non destructive manner.
+* `Object.assign()` - this returns a new object and extends the properties of an object passed in as a parameter in a non destructive manner.
 
 2.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 
