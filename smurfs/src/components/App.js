@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
 import { connect } from "react-redux";
-import { getSmurfsData, addNewSmurf } from "../actions";
+import { getSmurfsData, addNewSmurf, deleteSmurf } from "../actions";
 import Smurf from "./Smurf";
 import Smurfs from "./Smurfs";
 import SmurfForm from "./SmurfForm";
@@ -29,7 +29,10 @@ class App extends Component {
             </Link> */}
 
           <SmurfForm addNewSmurf={this.props.addNewSmurf} />
-          <Smurfs smurfs={this.props.smurfs} />
+          <Smurfs
+            smurfs={this.props.smurfs}
+            deleteSmurf={this.props.deleteSmurf}
+          />
         </div>
       </div>
     );
@@ -50,5 +53,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getSmurfsData, addNewSmurf }
+  { getSmurfsData, addNewSmurf, deleteSmurf }
 )(App);

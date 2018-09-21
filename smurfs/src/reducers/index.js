@@ -1,7 +1,15 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING, FETCHED, ERROR, ADDING, ADDED } from "../actions";
+import {
+  FETCHING,
+  FETCHED,
+  ERROR,
+  ADDING,
+  ADDED,
+  DELETING,
+  DELETED
+} from "../actions";
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -15,6 +23,7 @@ const initialState = {
   addedSmurf: false,
   updatingSmurf: false,
   deletingSmurf: false,
+  deletedSmurf: false,
   error: null
 };
 
@@ -46,6 +55,15 @@ const smurfsReducer = (state = initialState, action) => {
         smurfs: action.payload,
         addingSmurf: false,
         addedSmurf: true
+      };
+    case DELETING:
+      return { ...state, deletingSmurf: true };
+    case DELETED:
+      return {
+        ...state,
+        smurfs: action.payload,
+        deletingSmurf: false,
+        deletedSmurf: true
       };
 
     default:

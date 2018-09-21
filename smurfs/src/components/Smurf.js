@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Smurf = props => {
   return (
-    <a href={`/smurfs${props.id >= 0 ? props.id : ""}`}>
+    <a href={`/smurfs/${props.id >= 0 ? props.id : ""}`}>
       {console.log(props)}
       <div className="Smurf">
         <h3>{props.name}</h3>
@@ -11,7 +11,10 @@ const Smurf = props => {
         <p>{props.age} smurf years old</p>
         <div
           className="delete"
-          onClick={e => props.deleteSmurf(e, props.id)}
+          onClick={e => {
+            e.preventDefault();
+            props.deleteSmurf(props.id);
+          }}
           href="#"
         >
           Delete

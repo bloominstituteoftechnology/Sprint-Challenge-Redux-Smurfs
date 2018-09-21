@@ -7,6 +7,8 @@ export const FETCHED = "FETCHED_SMURFS_SUCCESS";
 export const ERROR = "SMURFS_ERROR";
 export const ADDING = "ADDING_SMURF";
 export const ADDED = "ADDED_SMURF";
+export const DELETING = "DELETING_SMURF";
+export const DELETED = "DELETED_SMURF";
 
 //Action creator
 export const getSmurfsData = () => {
@@ -21,12 +23,26 @@ export const getSmurfsData = () => {
 };
 
 export const addNewSmurf = smurf => {
-  const newSmurf = axios.post(URL, smurf);
+  const newSmurfPromise = axios.post(URL, smurf);
   return dispatch => {
     dispatch({ type: ADDING });
-    newSmurf
+    newSmurfPromise
       .then(({ data }) => {
         dispatch({ type: ADDED, payload: data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
+
+export const deleteSmurf = id => {
+  const deleteSmurfPromise = axios.delete(`${URL}/${id}`);
+  return dispatch => {
+    dispatch({ type: DELETING });
+    deleteSmurfPromise
+      .then(({ data }) => {
+        dispatch({ type: DELETED, payload: data });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
