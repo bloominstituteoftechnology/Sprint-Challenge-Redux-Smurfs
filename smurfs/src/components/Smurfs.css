@@ -1,0 +1,37 @@
+.smurf-container {
+    display: flex;
+    justify-content: center;
+    background: #000d1a;
+
+}
+
+.smurfs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    
+}
+
+.smurfCard {
+    display: flex;
+    justify-content: space-evenly;
+    border: 2px solid 1e90ff;
+    background: #004d99;
+    margin: 10px;
+    width: 60%;
+}
+
+.smurfCard p {
+    color: white;
+    
+}
+
+.smurfCard h2 {
+    color: #99ccff;
+}
+
+.selectedSmurf {
+    background-color: #99ccff;
+    height: 
+}

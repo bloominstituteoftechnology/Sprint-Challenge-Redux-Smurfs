@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import SelectedSmurf from './SelectedSmurf';
 import { updateSingleSmurf, toggleShowUpdate, deleteSmurf } from '../actions';
 import UpdateSmurfForm from './UpdateSmurfForm';
+import './Smurfs.css';
 
 class Smurfs extends Component {
     handleShowSmurf = smurf => {
@@ -20,18 +21,18 @@ class Smurfs extends Component {
 
     render() {
         return (
-            <div className="container">
-                <ul className="smurfs">
+            <div className="smurf-container">
+                <div className="smurfs">
                     {this.props.smurfs.map(smurf => {
                         return (
-                            <li onClick={() => this.handleShowSmurf(smurf)} key={smurf.id}>
-                                <p>Name: {smurf.name}</p>
-                                <p>Age:{smurf.age}</p>
-                                <p>Height:{smurf.height}</p>
-                            </li>
+                            <div className="smurfCard"onClick={() => this.handleShowSmurf(smurf)} key={smurf.id}>
+                                <div className="name"><h2> {smurf.name}</h2></div>
+                                <div className="details"><p>Age: {smurf.age}</p>
+                                <p>Height: {smurf.height}</p></div>
+                            </div>
                         );
                     })}    
-                </ul>
+                </div>
                 {Object.keys(this.props.smurfSelected).length > 0 ? (
                     <SelectedSmurf
                         handleShowSmurf={this.handleShowSmurf}

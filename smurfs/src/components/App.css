@@ -1,12 +1,11 @@
 .App {
   text-align: center;
+  background-color: #000d1a;
 }
 
-.App-logo {
- 
-  height: 80px;
+h1 {
+  color: white;
 }
-
 .App-header {
   background-color: #222;
   height: 150px;
@@ -19,6 +18,7 @@
 }
 
 .h3 {
+  color: white;
   animation: h3-spin infinite 20s linear;
 }
 

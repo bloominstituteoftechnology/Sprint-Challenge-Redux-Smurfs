@@ -1,8 +1,9 @@
 import React from 'react';
+import "./Smurfs.css";
 
 export default function SelectedSmurf(props) {
   return (
-    <div>
+    <div className="selectedSmurf">
       <h4>{props.selected.name}</h4>
       <span onClick={() => props.handleShowSmurf({})}> Click here to close Smurf </span>
       <div>{props.selected.height}</div>
