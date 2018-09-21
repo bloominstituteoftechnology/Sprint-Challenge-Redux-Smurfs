@@ -24,8 +24,7 @@ class Smurf extends Component {
                 <CardTitle>Information</CardTitle>
                 <CardText>Age: {this.props.smurf.age}</CardText>
                 <CardText>height: {this.props.smurf.height}</CardText>
-                {/* <Button color="deep-orange lighten-1" size="sm" onClick={event => {event.preventDefault; props.goToUpdateFriendForm(event, props.friend.id)}}>Edit</Button> */}
-                <Button onClick={this.toggle} color="red accent-4" size="sm">Delete</Button>
+                <button onClick={event => {this.handleSmurfDelete(event)}} >Delete</button>
                 </CardBody>
                 </Card>
     
