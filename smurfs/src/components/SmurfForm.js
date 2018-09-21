@@ -15,13 +15,13 @@ export default function SmurfForm(props) {
             value={props.ageInput}
             onChange={props.handleChange}
             />
-            <input type="email"
+            <input type="text"
             name="heightInput"
             placeholder="Height"
             value={props.nameInput}
             onChange={props.handleChange}
             />
-            <button>Add Smurf to Village</button>
+            <button onClick={props.addNewSmurf}>Add Smurf to Village</button>
 
         </form>
     )

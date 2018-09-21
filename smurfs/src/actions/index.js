@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export const FETCHING = 'FETCHING';
 export const ADDING = 'ADDING';
+export const ADDED = 'ADDED';
 export const UPDATING = 'UPDATING';
 export const DELETING = 'DELETING';
 export const ERROR = 'ERROR';
@@ -23,6 +24,21 @@ export const fetchSmurfs = () => {
       console.log(err);
       dispatch({ type: ERROR, err: err })
     })
+  }
+}
+
+export const addSmurf = smurf => {
+  return dispatch => {
+    dispatch({ type: ADDING });
+    axios
+    .post('http://localhost:3333/smurfs', smurf)
+    .then(response => {
+      console.log(response);
+      dispatch({
+        type: ADDED,
+        payload: response.data
+      });
+    });
   }
 }
 

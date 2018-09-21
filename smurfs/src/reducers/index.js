@@ -1,4 +1,4 @@
-import { FETCHING, FETCHED, ADDING, UPDATING, DELETING, ERROR } from '../actions';
+import { FETCHING, FETCHED, ADDING, ADDED, UPDATING, DELETING, ERROR } from '../actions';
 
  const initialState =
  {
@@ -15,8 +15,11 @@ export default function (state = initialState, action) {
     case FETCHING:
     return {...state, fetchingSmurfs: true};
     case FETCHED:
-    return {...state, smurfs: [...action.payload]};
+    return {...state, smurfs: [...action.payload], fetchingSmurfs: false};
     case ADDING:
+    return {...state, addingSmurf: true};
+    case ADDED:
+    return {...state, smurfs: [...action.payload], addingSmurf: false};
     case UPDATING:
     case DELETING:
     case ERROR:
