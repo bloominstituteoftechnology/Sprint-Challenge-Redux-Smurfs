@@ -17,11 +17,13 @@ class SmurfList extends Component {
 					<p>Populating Village...</p>
 				) : (
 					<ul>
-						{this.props.smurfs.length && !this.props.error
-							? this.props.smurfs.map(smurf => {
-									return <Smurf key={smurf.id} smurf={smurf} />;
-							  })
-							: 'The village is empty.'}
+						{this.props.smurfs.length
+							? this.props.smurfs.map(smurf => (
+									<Smurf key={smurf.id} smurf={smurf} />
+							  ))
+							: !this.props.error
+								? 'The village is empty.'
+								: null}
 					</ul>
 				)}
 				{this.props.error ? <p>{this.props.error}</p> : null}
