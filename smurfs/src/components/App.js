@@ -2,15 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 
-import { fetchData, addSmurf } from '../actions';
+import { fetchData, addSmurf, deleteSmurf } from '../actions';
 import SmurfList from './SmurfList';
 import AddSmurfForm from './AddSmurfForm';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+
 class App extends Component {
   state = {
     smurfFormInputs: {
@@ -55,7 +50,10 @@ class App extends Component {
     if (this.props.fetchingSmurfs) return <h2>Loading Data...</h2>;
     return (
       <div className="App">
-        <SmurfList smurfs={this.props.smurfs} />
+        <SmurfList
+          smurfs={this.props.smurfs}
+          deleteSmurf={this.props.deleteSmurf}
+        />
         <AddSmurfForm
           smurfFormInputs={this.state.smurfFormInputs}
           handleInput={this.handleInput}
@@ -72,11 +70,12 @@ const mapStateToProps = (state) => {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
     addingSmurf: state.addingSmurf,
+    deletingSmurf: state.deletingSmurf,
     error: state.error,
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchData, addSmurf }
+  { fetchData, addSmurf, deleteSmurf }
 )(App);

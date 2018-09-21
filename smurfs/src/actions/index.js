@@ -1,7 +1,3 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
 import axios from 'axios';
 
 export const FETCHING_DATA = 'FETCHING_DATA';
@@ -11,6 +7,10 @@ export const FETCH_ERROR = 'FETCH_ERROR';
 export const ADD_SMURF_START = 'ADD_SMURF_START';
 export const ADD_SMURF_COMPLETE = 'ADD_SMURF_COMPLETE';
 export const ADD_SMURF_ERROR = 'ADD_SMURF_ERROR';
+
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const DELETED_SMURF = 'DELETED_SMURF';
+export const DELETE_ERROR = 'DELETE_ERROR';
 
 export const fetchData = () => {
   return (dispatch) => {
@@ -39,6 +39,21 @@ export const addSmurf = (newSmurf) => {
       .catch((err) => {
         console.log(err);
         dispatch({ type: ADD_SMURF_ERROR });
+      });
+  };
+};
+
+export const deleteSmurf = (id) => {
+  return (dispatch) => {
+    dispatch({ type: DELETING_SMURF });
+    const promise = axios.delete(`http://localhost:3333/smurfs/${id}`);
+    promise
+      .then((response) => {
+        dispatch({ type: DELETED_SMURF, payload: response.data });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({ type: DELETE_ERROR });
       });
   };
 };

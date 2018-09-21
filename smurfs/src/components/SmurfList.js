@@ -5,7 +5,13 @@ const SmurfList = (props) => {
   return (
     <div>
       {props.smurfs.map((smurf) => {
-        return <Smurf smurf={smurf} key={smurf.name} />;
+        return (
+          <Smurf
+            smurf={smurf}
+            key={smurf.name}
+            deleteSmurf={props.deleteSmurf}
+          />
+        );
       })}
     </div>
   );

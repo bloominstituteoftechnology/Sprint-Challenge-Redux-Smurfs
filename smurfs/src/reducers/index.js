@@ -8,6 +8,9 @@ import {
   ADD_SMURF_START,
   ADD_SMURF_COMPLETE,
   ADD_SMURF_ERROR,
+  DELETING_SMURF,
+  DELETED_SMURF,
+  DELETE_ERROR,
 } from '../actions';
 
 /*
@@ -25,6 +28,7 @@ const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
   addingSmurf: false,
+  deletingSmurf: false,
   error: '',
 };
 
@@ -64,14 +68,24 @@ export default (state = initialState, action) => {
         addingSmurf: false,
         error: 'Add smurf error',
       };
+    case DELETING_SMURF:
+      return {
+        ...state,
+        deletingSmurf: true,
+      };
+    case DELETED_SMURF:
+      return {
+        ...state,
+        deletingSmurf: false,
+        smurfs: action.payload,
+      };
+    case DELETE_ERROR:
+      return {
+        ...state,
+        deletingSmurf: false,
+        error: 'Delete error',
+      };
     default:
       return state;
   }
 };
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
-  There is no need for 'combineReducers' in this project.
-  Components can then read your store as, `state` and not `state.fooReducer`.
-*/
