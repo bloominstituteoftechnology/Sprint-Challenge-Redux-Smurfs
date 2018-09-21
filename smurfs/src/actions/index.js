@@ -1,5 +1,21 @@
 import axios from "axios";
 
+
+// add Smurf function (the C in CRUD)
+export const addSmurf = (newSmurf) => {
+  return dispatch => {
+    dispatch({ type: 'ADDING_SMURF' });
+    axios
+      .post(`http://localhost:3333/smurfs`, newSmurf)
+      .then(response => {
+        dispatch({ type: 'SMURF_ADDED', payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: 'ERROR', payload: error });
+      });
+  }
+}
+
 // get Smurfs function (the R in CRUD)!
 export const getSmurfs = () => {
   return dispatch => {
