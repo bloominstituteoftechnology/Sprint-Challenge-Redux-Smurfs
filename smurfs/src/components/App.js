@@ -6,9 +6,10 @@ import { connect } from 'react-redux';
 
 // Components
 import Smurf from './Smurf';
+import AddSmurfForm from './AddSmurfForm';
 
 // Actions
-import { getSmurfs } from '../actions';
+import { getSmurfs, postNewSmurf } from '../actions';
 
 // Styles
 import './App.css';
@@ -21,17 +22,41 @@ import './App.css';
 */
 
 class App extends Component {
+	state = {
+		addSmurf: false,
+		buttonText: 'Add Smurf'
+	};
+
 	componentDidMount() {
 		this.props.getSmurfs();
+	}
+
+	toggleSetState = () => {
+		return this.setState({ ...this.state, addSmurf: !this.state.addSmurf, buttonText: this.state.addSmurf ? 'Add Smurf' : 'Go to Smurf Village' });
+	}
+
+	toggleAddSmurf = e => {
+		e.preventDefault();
+
+		return this.toggleSetState();
+	}
+
+	postSmurf = smurf => {
+		this.props.postNewSmurf(smurf);
+		this.toggleSetState();
 	}
 
 	render() {
 		return (
 			<div className = 'App'>
 				<h1>Welcome to Smurf Village!</h1>
-				{ this.props.getSmurfsErrorMsg && <p>GET '/smurfs' { this.props.getSmurfsErrorMsg }</p> }
+				
+				<button onClick = { this.toggleAddSmurf }>{ this.state.buttonText }</button>
 
-				{ this.props.getSmurfsMsg ? <p>{ this.props.getSmurfsMsg }</p> : this.props.smurfs.map((smurf, i) => <Smurf key = { i } smurf = { smurf } />)}
+				{ this.props.getSmurfsErrorMsg && <p>GET '/smurfs' { this.props.getSmurfsErrorMsg }</p> }
+				{ this.props.postSmurfErrorMsg && <p>POST '/smurfs' { this.props.postSmurfErrorMsg }</p> }
+
+				{ this.state.addSmurf ? <AddSmurfForm postSmurf = { this.postSmurf } /> : this.props.getSmurfsMsg ? <p>{ this.props.getSmurfsMsg }</p> : this.props.smurfs.map((smurf, i) => <Smurf key = { i } smurf = { smurf } />)}
 			</div>
 		);
 	}
@@ -41,6 +66,7 @@ const mapStateToProps = state => ({
 	smurfs: state.smurfs,
 	getSmurfsErrorMsg: state.getSmurfsErrorMsg,
 	getSmurfsMsg: state.getSmurfsMsg,
+	postSmurfErrorMsg: state.postSmurfErrorMsg,
 });
 
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs, postNewSmurf })(App);
