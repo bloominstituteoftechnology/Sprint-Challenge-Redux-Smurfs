@@ -11,7 +11,13 @@ const SmurfsList =(props) => {
             <p style={{color: '#FF0000'}}>Smurfs {props.crudStates.error}</p>
         :
             <div>
-                {props.smurfsList.map( (smurf, i) => <Smurf smurf={smurf} smurfId={i} key={i} /> )}
+                {props.smurfsList.map( (smurf, i) => 
+                    <Smurf 
+                        smurf={smurf} 
+                        deleteSmurf={props.deleteSmurf} 
+                        key={i} 
+                    /> 
+                )}
             </div>
     );
 };
@@ -19,8 +25,9 @@ const SmurfsList =(props) => {
 SmurfsList.propTypes = {
     smurfsList: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string,
-        age: PropTypes.oneOfType([PropTypes.number, PropTypes.string]), 
-        height: PropTypes.string
+        age: PropTypes.number, 
+        height: PropTypes.string,
+        id: PropTypes.number
     })).isRequired,
     crudStates: PropTypes.shape({
         postingSmurf: PropTypes.bool.isRequired, 
@@ -32,7 +39,8 @@ SmurfsList.propTypes = {
         deletingSmurf: PropTypes.bool.isRequired, 
         deletedSmurf: PropTypes.bool, 
         error: PropTypes.string.isRequired
-      })
+      }).isRequired,
+      deleteSmurf: PropTypes.func
 };
 
 export default SmurfsList;

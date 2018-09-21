@@ -5,6 +5,7 @@ const Smurf = (props) => {
     return (
         <div>
             <h3>{props.smurf.name}</h3>
+            <p style={{fontWeight: 'bolder'}} onClick={ () => props.deleteSmurf(props.smurf.id) } >X</p>
             <p>Age: {props.smurf.age}</p>
             <p>Height: {props.smurf.height}</p>
         </div>
@@ -14,10 +15,11 @@ const Smurf = (props) => {
 Smurf.propTypes = {
     smurf: PropTypes.shape({
         name: PropTypes.string.isRequired,
-        age: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired, 
-        height: PropTypes.string.isRequired
+        age: PropTypes.number.isRequired, 
+        height: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired
     }).isRequired,
-    smurfId: PropTypes.number.isRequired
+    deleteSmurf: PropTypes.func.isRequired
 };
 
 export default Smurf;

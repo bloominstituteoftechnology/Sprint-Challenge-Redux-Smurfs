@@ -23,7 +23,8 @@ SmurfForm.propTypes = {
     tmpSmurf: PropTypes.shape({
         name: PropTypes.string.isRequired,
         age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-        height: PropTypes.string.isRequired
+        height: PropTypes.string.isRequired, 
+        id: PropTypes.number.isRequired
     }).isRequired, 
     inputHandler: PropTypes.func.isRequired,
     submitHandler: PropTypes.func.isRequired

@@ -8,7 +8,7 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 import { connect } from 'react-redux';
-import { postSmurf, getSmurfs } from '../actions/';
+import { postSmurf, getSmurfs, deleteSmurf } from '../actions/';
 
 import SmurfForm from './smurfform';
 import SmurfsList from './smurfslist';
@@ -18,7 +18,8 @@ class App extends Component {
     tmpSmurf: {
       name: '',
       age: '',
-      height: ''
+      height: '', 
+      id: -1
     }
   };
 
@@ -31,7 +32,8 @@ class App extends Component {
       tmpSmurf: {
         name: '',
         age: '', 
-        height: ''
+        height: '', 
+        id: -1
       }
     })
   };
@@ -77,6 +79,7 @@ class App extends Component {
         <SmurfsList 
           smurfsList={this.props.smurfsList} 
           crudStates={this.props.crudStates} 
+          deleteSmurf={this.props.deleteSmurf} 
         />
       </div>
     );
@@ -95,7 +98,7 @@ App.propTypes = {
     name: PropTypes.string,
     age: PropTypes.number, 
     height: PropTypes.string
-  })),
+  })).isRequired,
   crudStates: PropTypes.shape({
     postingSmurf: PropTypes.bool, 
     postedSmurf: PropTypes.bool, 
@@ -106,7 +109,7 @@ App.propTypes = {
     deletingSmurf: PropTypes.bool, 
     deletedSmurf: PropTypes.bool, 
     error: PropTypes.string
-  })
+  }).isRequired
 };
 
-export default connect(mapStateToProps, { postSmurf, getSmurfs })(App);
+export default connect(mapStateToProps, { postSmurf, getSmurfs, deleteSmurf })(App);
