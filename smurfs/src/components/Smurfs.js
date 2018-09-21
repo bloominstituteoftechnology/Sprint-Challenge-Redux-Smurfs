@@ -4,9 +4,6 @@ import { connect } from "react-redux";
 import Smurf from './Smurf';
 
 class Smurfs extends Component {
-	componentDidMount() {
-		this.props.getSmurfs();
-  }
   
 	render() {
 		return (

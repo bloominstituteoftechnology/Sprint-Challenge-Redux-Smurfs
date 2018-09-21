@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Smurfs from './Smurfs';
 import AddSmurf from './AddSmurf';
-import { getSmurfs, addSmurfs } from '../actions';
+import { getSmurfs } from '../actions';
 import { connect } from "react-redux";
 /*
  to wire this component up you're going to need a few things.
@@ -34,4 +34,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs, addSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs })(App);
