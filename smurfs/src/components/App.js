@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 import './App.css';
-import {fetchSmurfs} from '../actions';
-import {addSmurf} from '../actions';
+import {fetchSmurfs, addSmurf, deleteSmurf} from '../actions';
 
 /*
  to wire this component up you're going to need a few things.
@@ -28,6 +27,10 @@ class App extends Component {
 
   handleSubmit = () => {
     this.props.addSmurf(this.state);
+  }
+
+  handleDelete = () => {
+    this.props.deleteSmurf(this.id)
   }
 
   render() {
