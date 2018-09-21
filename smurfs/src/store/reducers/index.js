@@ -1,3 +1,10 @@
+// import { combineReducers } from 'redux';
+// import { smurfsReducer } from './smurfsReducer';
+
+// export default combineReducers({
+//   smurfsReducer
+// });
+
 /* Be sure to import in all of the action types from `../actions` */
 import { 
   
@@ -30,7 +37,7 @@ const initialState = {
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
-export const rootReducer = (state = initialState, action) => {
+export const smurfsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURF:
     return Object.assign({}, state, {fetchingSmurfs: true}); //if we are fetching simply trigger the boolean.
