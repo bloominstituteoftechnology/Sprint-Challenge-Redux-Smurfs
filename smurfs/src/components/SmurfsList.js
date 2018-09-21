@@ -9,7 +9,7 @@ const SmurfsList = (props) => {
             {/* Friend's Info Here */}
             <p>Name: {smurf.name}</p>
             <p>Age: {smurf.age}</p>
-            <p>Email: {smurf.email}</p>
+            <p>Height: {smurf.height}</p>
           </div>)}
 
         </div>
