@@ -24,7 +24,7 @@ const SmurfForm = (props) => {
       <input
         type="number"
         name="height"
-        placeholder="50cm"
+        placeholder="50"
         value={props.inputData.height}
         onChange={props.handleInput}
       />
