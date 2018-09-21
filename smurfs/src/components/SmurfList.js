@@ -6,7 +6,7 @@ export default function SmurfList(props){
             {props.smurfs.map((smurf,index) =>{
                 return(
                     <li key={index}>
-                        NAME:{smurf.name} age:{smurf.age} height:{smurf.height}
+                        {smurf.name} age:{smurf.age} height:{smurf.height}
                     </li>
                 )
             })}

@@ -28,14 +28,10 @@ export default function smurfsAction(){
         .get('http://localhost:3333/smurfs')
         .then(response =>{
           console.log(response);
-          dispatch({type:FETCHED,
-            payload: response.data})
+          dispatch({type:FETCHED, payload: response.data});
         })
         .catch(error =>{
-          dispatch({
-            type: ERROR,
-            payload: error
-          })
+          dispatch({type: ERROR, payload: error});
           console.log(error)
         })
   }
@@ -47,8 +43,11 @@ export const createSmurf = smurf =>{
       axios
         .post('http://localhost:3333/smurfs', smurf)
         .then(response =>{
-          console.log(response);
-          dispatch({type:FETCHED})
+          console.log('createSmurf FETCHED',response);
+          dispatch({type:FETCHED, payload: response.data})
+        })
+        .catch(error =>{
+          dispatch({type: ERROR, payload: error})
         })
   }
 }

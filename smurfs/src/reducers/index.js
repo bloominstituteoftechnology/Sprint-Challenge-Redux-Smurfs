@@ -43,11 +43,11 @@ const charsReducer = (state = initialState, action) =>{
     case FETCHED:
       return{
         ...state,
+        smurfs: action.payload,
         fetchingSmurfs:false,
         addingSmurf: false,
         updatingSmurf: false,
         deletingSmurf: false,
-        smurfs: state.smurfs.concat(action.payload)
       }
     case ADDING:
       return{
@@ -56,7 +56,6 @@ const charsReducer = (state = initialState, action) =>{
         addingSmurf:true,
         updatingSmurf: false,
         deletingSmurf: false,
-        smurfs: state.smurfs.concat(action.payload)
       }
     case UPDATING:
       return{

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
-import smurfsAction,{createSmurf} from '../actions';
+import smurfsAction from '../actions';
 import CreaterContainer from './CreaterContainer';
 import SmurfList from './SmurfList';
 /*
@@ -25,7 +25,11 @@ class App extends Component {
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
         <CreaterContainer />
-        <SmurfList smurfs={this.props.mySmurfs} />
+        {(this.props.fetchingSmurfs||this.props.addingSmurf||this.props.updatingSmurf||this.props.deletingSmurf) ? (
+          <h1>Loading</h1>
+        ) : (
+          <SmurfList smurfs={this.props.mySmurfs} />
+        )}
       </div>
     );
   }
