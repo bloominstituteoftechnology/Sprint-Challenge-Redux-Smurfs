@@ -13,3 +13,5 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+export {FETCHING_SMURFS, FETCHED_SMURFS, ADDING_SMURF, ERROR, addSmurf, fetchSmurfs} from './smurfsActions';
