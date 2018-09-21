@@ -1,4 +1,4 @@
-import { FETCHING, ADDING, UPDATING, DELETING, ERROR } from '../actions';
+import { FETCHING, FETCHED, ADDING, UPDATING, DELETING, ERROR } from '../actions';
 
  const initialState =
  {
@@ -13,6 +13,9 @@ import { FETCHING, ADDING, UPDATING, DELETING, ERROR } from '../actions';
 export default function (state = initialState, action) {
   switch (action.type) {
     case FETCHING:
+    return {...state, fetchingSmurfs: true};
+    case FETCHED:
+    return {...state, smurfs: [...action.payload]};
     case ADDING:
     case UPDATING:
     case DELETING:
