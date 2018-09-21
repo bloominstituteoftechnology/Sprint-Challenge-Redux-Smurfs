@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background-image: url("http://bluebuddies.com/Smurf_Picture_and_Files/00003411/287195_213524528694618_112912768755795_547759_796850_o.jpg");
+}
+
+.App h1 {
+  color: white;
 }
 
 .App-logo {
@@ -23,6 +28,33 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card {
+  background-color: #88ccff;
+  border: 1px solid black;
+  width: 150px;
+  margin: 15px auto;
+  padding: 30px;
+  color: white;
+}
+
+.form {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.smurfs-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: center;
+  margin: 0 auto;
 }
