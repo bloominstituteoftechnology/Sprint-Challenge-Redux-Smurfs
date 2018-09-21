@@ -23,6 +23,7 @@ const Form = styled.form`
     width: 80px;
     margin-bottom: 5%;
     font-family: Acme;
+    cursor: pointer;
   }
 `;
 
