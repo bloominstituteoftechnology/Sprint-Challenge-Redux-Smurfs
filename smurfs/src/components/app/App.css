@@ -1,0 +1,87 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.smurf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.smurf-label {
+  font-weight: bold;
+}
+
+.add-smurf-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.add-smurf-container .add-smurf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-smurf-container .add-smurf  input {
+  height: 40px;
+  padding-left: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.buttons {
+  display: flex;
+}
+
+.button {
+  height: 40px;
+  width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+
+.button.deliver-smurf {
+  background-color: dodgerblue;
+}
+
+.button.banish-smurf {
+  background-color: tomato;
+  margin-right: 5px;
+}
+
+.button.update-smurf {
+  background-color: turquoise;
+  margin-left: 5px;
+}
