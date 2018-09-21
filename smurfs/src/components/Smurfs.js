@@ -8,7 +8,6 @@ class Smurfs extends Component {
         return(
             <div>
             {this.props.smurfs.map(smurf => {
-                console.log("Mapping smurfs");
                 return(
                     <div key={smurf.id}>
                         {smurf.name}
