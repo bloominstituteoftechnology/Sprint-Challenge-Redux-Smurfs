@@ -20,27 +20,15 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <AddSmurfForm addSmurf={this.props.addSmurf} />
         <div>Welcome to your Redux version of Smurfs!</div>
-        {this.props.fetchingSmurfs ? (
-            <h2>Loading...</h2>
-          ) : (
-            <Smurfs smurfs={this.props.smurfs} />
-          )}
-
-        {/* { console.log(this.props.smurfs) } */}
-        {/* { !this.props.fetchingSmurfs ? <Smurfs smurfs={this.props.smurfs} /> : <h2>Loading...</h2>} */}
-        {/* { this.props.smurfs.map(smurf => {
-          return (
-            <p>{smurf.name}</p>
-          )
-        })} */}
+        { this.props.fetchingSmurfs ? <h2>Loading...</h2> : <Smurfs smurfs={this.props.smurfs} /> }
+        <AddSmurfForm addSmurf={this.props.addSmurf}/>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, action) => ({
   smurfs: state.smurfs,
   fetchingSmurfs: state.fetchingSmurfs,
   addingSmurf: state.addingSmurf,
