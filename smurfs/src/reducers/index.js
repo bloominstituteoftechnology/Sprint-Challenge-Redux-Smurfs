@@ -15,7 +15,7 @@ const initialState = {
    error: null
 }
 
-export default rootReducer = (state = initialState, action) => {
+export const smurfReducer = (state = initialState, action) => {
   switch(action.type) {
     case FETCHING_SMURF:
       return Object.assign({}, state, {fetchingSmurfs:true});
