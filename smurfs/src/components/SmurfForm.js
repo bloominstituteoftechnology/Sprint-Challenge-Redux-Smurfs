@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addSmurf} from '../actions';
+import './App.css';
 import axios from 'axios';
 
 class SmurfForm extends React.Component {
