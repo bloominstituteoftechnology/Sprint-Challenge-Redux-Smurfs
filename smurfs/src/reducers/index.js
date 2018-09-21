@@ -1,6 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
+import { FETCHING_DATA, FETCHED_DATA, FETCH_ERROR } from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -22,6 +23,23 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case FETCHING_DATA:
+      return {
+        ...state,
+        fetchingSmurfs: true,
+      };
+    case FETCHED_DATA:
+      return {
+        ...state,
+        smurfs: action.payload,
+        fetchingSmurfs: false,
+      };
+    case FETCH_ERROR:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        error: 'Error fetching data',
+      };
     default:
       return state;
   }

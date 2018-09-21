@@ -2,7 +2,26 @@
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+import axios from 'axios';
 
+export const FETCHING_DATA = 'FETCHING_DATA';
+export const FETCHED_DATA = 'FETCHED_DATA';
+export const FETCH_ERROR = 'FETCH_ERROR';
+
+export const fetchData = () => {
+  return (dispatch) => {
+    dispatch({ type: FETCHING_DATA });
+    axios
+      .get('http://localhost:3333/smurfs')
+      .then((response) => {
+        dispatch({ type: FETCHED_DATA, payload: response.data });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({ type: FETCH_ERROR });
+      });
+  };
+};
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
