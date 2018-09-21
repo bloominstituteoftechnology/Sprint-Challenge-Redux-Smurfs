@@ -1,22 +1,103 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import { Route, Switch, withRouter } from 'react-router-dom';
+import Header from './Header';
+import Form from './Form';
+import SmurfsList from './SmurfsList';
+import Smurf from './Smurf';
+import { getSmurfs, addSmurf } from '../actions';
+
 class App extends Component {
+  state = {
+    name: '',
+    age: '',
+    height: ''
+  }
+
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
+
+  handleSmurfSubmit = e => {
+    e.preventDefault();
+
+    const newSmurf = { name: this.state.name,
+                       age: this.state.age,
+                       height: this.state.height };
+
+    this.props.addSmurf(newSmurf);
+
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    });
+
+    this.props.history.push('/');
+  }
+
+  handleInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleCancel = e => {
+    e.preventDefault();
+
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    });
+
+    this.props.history.push('/');
+  }
+
   render() {
+    if (this.props.fetchingSmurfs) {
+      return (
+        <div>Loading smurfs...</div>
+      )
+    }
+
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+      <div className="wrapper">
+        <Header />
+
+        <Route exact path="/" render={ props =>
+            <SmurfsList smurfs={this.props.smurfs} />
+          }
+        />
+
+        <Switch>
+
+          <Route path="/smurfs/add" render={ props =>
+            <Form name={this.state.name}
+                         age={this.state.age}
+                         height={this.state.height}
+                         handleSmurfSubmit={this.handleSmurfSubmit}
+                         handleInputChange={this.handleInputChange}
+                         handleCancel={this.handleCancel} />
+            }
+          />
+
+          <Route path="/smurfs/:id" render={ props =>
+             <Smurf {...props} />
+            }
+          />
+
+        </Switch>
+
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs
+  }
+}
+
+export default withRouter(connect(mapStateToProps, { getSmurfs, addSmurf })(App));
