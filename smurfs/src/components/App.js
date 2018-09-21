@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getSmurfs, addSmurf } from '../actions';
+import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
 import Smurfs from './Smurfs';
 import CreateSmurfForm from './CreateSmurfForm';
 /*
@@ -45,11 +45,18 @@ class App extends Component {
     })
   }
 
+  deleteSmurf = e => {
+    this.props.deleteSmurf(e.target.id);
+  }
+
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <Smurfs smurfs={this.props.smurfs} />
+        <Smurfs 
+          smurfs={this.props.smurfs}
+          deleteSmurf={this.deleteSmurf}
+        />
         <CreateSmurfForm 
           handleSubmit={this.handleSubmit} 
           handleChange={this.handleChange} 
@@ -73,4 +80,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf }) (App);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, deleteSmurf }) (App);
