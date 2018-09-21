@@ -70,6 +70,7 @@ export const smurfsReducer = (state = initState, action) => {
       return {
         ...state,
         deletingSmurf: false,
+        smurfs: action.payload
 
       }
     case SMURFS:

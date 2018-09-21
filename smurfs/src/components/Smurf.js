@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import { deleteSmurf } from '../actions'
+import { connect } from 'react-redux'
 
 const Smurf = props => {
   const button = props.location
@@ -11,15 +13,18 @@ const Smurf = props => {
       <strong>{props.height} tall</strong>
       <p>{props.age} smurf years old</p>
       {button}
-      <button onClick={(event) => props.delete(event, props.id)}> Banish </button>
+      <div onClick={() => props.deleteSmurf(props.id)}> Banish </div>
     </div>
   );
 };
 
-Smurf.defaultProps = {
-  name: '',
-  height: '',
-  age: ''
-};
+const mapStatetoProps = state => {
+  return {
+    smurfsFetched: state.smurfsFetched,
+    smurfs: state.smurfs
+  }
+}
 
-export default Smurf;
+export default connect(mapStatetoProps,
+  {deleteSmurf})
+  (Smurf)

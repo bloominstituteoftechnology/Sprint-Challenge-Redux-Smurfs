@@ -23,15 +23,13 @@ class App extends Component {
   }
 
   render() {
-    console.log('PROPS');
-    console.log(this.props);
       return (
         !this.props.smurfsFetched
         ? <p> all is loading </p>
         :
         <div className="App">
           <Route path='/' component={Header} />
-          <Route path='/smurf-form' render={props =>
+          <Route exact path='/smurf-form' render={props =>
             <SmurfForm {...props}  />
           }/>
           <Route exact path='/smurfs' render={props =>
