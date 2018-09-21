@@ -20,13 +20,11 @@ export const ERROR = 'ERROR';
    D - deleteSmurf
 */
 
-const URL = 'http://localhost:3333';
-
 export const getSmurfs = () => {
   return dispatch => {
     dispatch({ type: FETCHING });
     axios
-    .get(`${URL}/smurfs`)
+    .get('http://localhost:3333/smurfs')
     .then(res => {
       dispatch({ type: FETCHED, payload: res.data});
     })
@@ -36,11 +34,11 @@ export const getSmurfs = () => {
   }
 }
 
-export const addSmurfs = (data) => {
+export const addSmurfs = (smurf) => {
   return dispatch => {
     dispatch({ type: ADDING });
     axios
-    .get(`${URL}/smurfs`, data)
+    .get('http://localhost:3333/smurfs', smurf)
     .then(res => {
       dispatch({ type: ADDED, payload: res.data});
     })

@@ -8,9 +8,9 @@ import { FETCHING, FETCHED, ADDING, ADDED, ERROR } from '../actions';
  const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
+   fetchedSmurfs: false,
    addingSmurf: false,
-   updatingSmurf: false,
-   deletingSmurf: false,
+   addedSmurf: false,
    error: null
  }
 
@@ -33,6 +33,7 @@ export const rootReducer = (state = initialState, action) => {
       return {...state,
       smurfs: action.payload,
       fetchingSmurfs: false,
+      fetchedSmurfs: true
     };
     case ADDING:
       return {...state,
@@ -40,7 +41,9 @@ export const rootReducer = (state = initialState, action) => {
     };
     case ADDED:
       return {...state,
+      smurfs: action.payload,
       addingSmurf: false,
+      addedSmurf: true
     };
     case ERROR:
       return {...state,
