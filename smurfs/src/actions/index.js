@@ -20,12 +20,13 @@ export const ERROR = "ERROR";
    U - updateSmurf
    D - deleteSmurf
 */
+
 export const fetchSmurfs = () => {
   return dispatch => {
     dispatch({ type: FETCHING_SMURFS });
 
     axios
-      .get('http://localhost:3333')
+      .get('http://localhost:3333/smurfs')
       .then(response => {
         dispatch({
           type: FETCH_SMURFS,
@@ -42,7 +43,7 @@ export const fetchSmurfs = () => {
 }
 
 export const addSmurf = (smurf) => {
-  const newSmurf = axios.post('http://localhost:3333', smurf);
+  const newSmurf = axios.post('http://localhost:3333/smurfs', smurf);
 
   return dispatch => {
     dispatch({ type: ADDING_SMURF });

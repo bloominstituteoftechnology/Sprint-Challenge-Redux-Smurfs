@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCH_SMURFS, FETCHING_SMURFS, ADD_SMURF, ADDING_SMURF } from '../actions';
+import { FETCH_SMURFS, FETCHING_SMURFS, ADD_SMURF, ADDING_SMURF, ERROR } from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
