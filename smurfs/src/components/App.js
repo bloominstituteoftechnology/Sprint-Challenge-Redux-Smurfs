@@ -13,24 +13,25 @@ import './App.css';
 class App extends Component {
     
     state = {
-	age: 0,
-	name: 'Smurf',
-	height: '10cm'
+	name: 'Smurf2000',
+	age: 10,
+	height: '5cm'
     }
 
     componentDidMount() {
 	this.props.getSmurfs();
     };
     
-    handleChange = event => {
+    handleChange = e => {
+	e.preventDefault();
 	this.setState ({
-	    [event.target.name]: event.target.value
+	    [e.target.name]: e.target.value
 	});
     }
     
     render() {
 	const { name, age, height } = this.state;
-	const { addSmurf, fetchingSmurfs, smurfs } = this.props; 
+	const { addSmurf, smurfs } = this.props; 
 	
 	return (
 	    <div className="App">
@@ -48,7 +49,7 @@ class App extends Component {
 		<input name="name" type="text" placeholder="name" value={name} onChange={this.handleChange}/>
 		<input name="age" type="number" placeholder="age" value={age} onChange={this.handleChange}/>
 		<input name="height" type="text" placeholder="height" value={height} onChange={this.handleChange}/>
-                <button onClick = {() => addSmurf({name, age, height})}>New</button>
+		<button onClick = {() => {addSmurf({ name, age, height }); window.location.reload()}}>Add Smurf</button>
 		</section>
 		</div>
 	);
@@ -59,7 +60,6 @@ class App extends Component {
 
 const mapStateToProps = state => ({
     smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs,
     addingSmurf: state.addingSmurf,
     error: state.error
 });
