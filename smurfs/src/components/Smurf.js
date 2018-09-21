@@ -37,6 +37,15 @@ class Smurf extends Component {
 		});
 	};
 
+	cancelHandler = () => {
+		this.setState({
+			editing: false,
+			name: undefined,
+			age: undefined,
+			height: undefined
+		});
+	};
+
 	render() {
 		return !this.state.editing ? (
 			<li className="Smurf">
@@ -84,6 +93,7 @@ class Smurf extends Component {
 				<br />
 				<br />
 				<input type="submit" value="Submit Modifications" />
+				<button onClick={this.cancelHandler}>Cancel</button>
 			</form>
 		);
 	}
