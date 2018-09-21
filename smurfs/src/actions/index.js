@@ -24,7 +24,7 @@ export const POSTING = 'POSTING';
 export const POSTED = 'POSTED';
 
 export const fetchSmurfs = () => {
-    const request = axios.get(`http://localhost:3333/api/smurfs`);
+    const request = axios.get(`http://localhost:3333/smurfs`);
 
     return dispatch => {
         dispatch({type: FETCHING})
@@ -41,7 +41,7 @@ export const fetchSmurfs = () => {
 export const addSmurf = newSmurf => {
     console.log(newSmurf);
 
-    const request = axios.post(`http://localhost:3333/api/smurfs`, newSmurf);
+    const request = axios.post(`http://localhost:3333/smurfs`, newSmurf);
     return dispatch => {
         dispatch({type: 'POSTING'});
         request.then(res => {
