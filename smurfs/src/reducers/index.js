@@ -21,7 +21,8 @@ const initState = {
   deletingSmurf: false,
   smurfDeleted: false,
   smurfs: [],
-  error: null
+  error: null,
+  updater: true
 }
 
 export const smurfsReducer = (state = initState, action) => {

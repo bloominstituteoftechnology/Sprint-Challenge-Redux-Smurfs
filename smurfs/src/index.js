@@ -15,7 +15,7 @@ const store = createStore(smurfsReducer, compose(applyMiddleware(thunk, logger))
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-    <App />
+    <App anyprop={{a:1}}/>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')
