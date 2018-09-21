@@ -21,11 +21,16 @@
 */
 import {
   ADD_SMURF,
+  ADDING_SMURF,
+  ADDING_COMPLETE,
+  
   GET_SMURFS,
-  UPDATE_SMURF,
-  DELETE_SMURF,
   FETCHING_SMURFS,
   FETCHING_COMPLETE,
+
+  UPDATE_SMURF,
+
+  DELETE_SMURF,
 } from '../actions'
 
 const initialState =  {
@@ -39,6 +44,25 @@ const initialState =  {
 
 export default function (state =initialState, action) {
   switch(action.type){
+    case ADD_SMURF:
+      return {
+        ...state,
+        smurfs: [
+          ...state.smurfs,
+          action.payload
+        ]
+      }
+    case ADDING_SMURF:
+      return {
+        ...state,
+        addingSmurf: true
+      }
+    case ADDING_COMPLETE:
+      return {
+        ...state,
+        addingSmurf: false
+      }
+
     case GET_SMURFS:
       return {
         ...state,
@@ -47,12 +71,12 @@ export default function (state =initialState, action) {
     case FETCHING_SMURFS:
       return {
         ...state,
-        fetching: true
+        fetchingSmurfs: true
       }
     case FETCHING_COMPLETE:
       return {
         ...state,
-        fetching: false
+        fetchingSmurfs: false
       }
       
 

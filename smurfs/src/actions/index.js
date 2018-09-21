@@ -16,33 +16,38 @@
 import axios from 'axios'
 
 export const ADD_SMURF = 'ADD_SMURF'
-export const GET_SMURFS = 'GET_SMURFS'
-export const UPDATE_SMURF = 'UPDATE_SMURF'
-export const DELETE_SMURF = 'DELETE_SMURF'
-export const FETCHING_SMURFS = 'FETCHING_SMURFS'
-export const FETCHING_COMPLETE = 'FETCHING_COMPLETE'
-
-export const addSmurf = () => (dispatch) => {
-  dispatch({ type: FETCHING_SMURFS })
-
+export const ADDING_SMURF = 'ADDING_SMURF'
+export const ADDING_COMPLETE = 'ADDING_COMPLETE'
+export const addSmurf = (newSmurf) => (dispatch) => {
+  dispatch({ type: ADDING_SMURF })
   axios
-    .get('http://localhost:3333/smurfs')
-    .then(res =>
-      dispatch({
-        type: GET_SMURFS,
-        payload: res.data
-      })
-    )
-    .then(() => 
-      dispatch({
-        type: FETCHING_COMPLETE
-      })
-    )
+    .post('http://localhost:3333/smurfs', newSmurf)
+    .then(res => dispatch({ type: ADD_SMURF, payload: res.data }))
+    .then(() => dispatch({ type: ADDING_COMPLETE }))
     .catch(err => console.log(err))
 }
 
-export const getSmurfs = () => (dispatch) => {}
+export const GET_SMURFS = 'GET_SMURFS'
+export const FETCHING_SMURFS = 'FETCHING_SMURFS'
+export const FETCHING_COMPLETE = 'FETCHING_COMPLETE'
+export const getSmurfs = () => (dispatch) => {
+  dispatch({ type: FETCHING_SMURFS })
+  axios
+    .get('http://localhost:3333/smurfs')
+    .then(res => dispatch({ type: GET_SMURFS, payload: res.data }))
+    .then(() => dispatch({ type: FETCHING_COMPLETE }))
+    .catch(err => console.log(err))
+}
 
+export const UPDATE_SMURF = 'UPDATE_SMURF'
 export const updateSmurf = () => (dispatch) => {}
 
+export const DELETE_SMURF = 'DELETE_SMURF'
 export const deleteSmurf = () => (dispatch) => {}
+
+
+
+
+
+
+
