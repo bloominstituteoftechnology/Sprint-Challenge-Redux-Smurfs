@@ -5,7 +5,8 @@ const initialState = {
     gettingSmurfs: false,
     updatingSmurf: false,
     creatingSmurf: false,
-    error: null
+    error: null,
+    deletingSmurf: false
 };
 
 export const smurfsReducer = (state = initialState, action) => {
@@ -22,12 +23,17 @@ export const smurfsReducer = (state = initialState, action) => {
             return {...state, creatingSmurf: true};
         case actionTypes.CREATE_SMURF:
             return {...state, smurfs: action.payload, creatingSmurf: false };
+        case actionTypes.DELETING_SMURF:
+            return { ...state, deletingSmurf: true };
+        case actionTypes.DELETE_SMURF:
+            return { ...state, friends: action.payload, deletingSmurf: false };
         case actionTypes.ERROR:
             return {
                 ...state,
                 gettingSmurfs: false,
                 updatingSmurf: false,
                 creatingSmurf: false,
+                deletingSmurf: false,
                 error: action.payload
             };
 

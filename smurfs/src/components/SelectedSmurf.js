@@ -7,7 +7,7 @@ export default function SelectedSmurf(props) {
       <span onClick={() => props.handleShowSmurf({})}> Click here to close Smurf </span>
       <div>{props.selected.height}</div>
       <div>{props.selected.age}</div>
-      <button onClick={() => props.handleDeleteFriend()}>{`Delete ${
+      <button onClick={() => props.handleDeleteSmurf()}>{`Delete ${
         props.selected.name
       }`}</button>
       <button onClick={() => props.toggleShowUpdate()}>{`Update ${

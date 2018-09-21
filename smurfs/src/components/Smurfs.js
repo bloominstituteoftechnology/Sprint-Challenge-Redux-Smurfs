@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SelectedSmurf from './SelectedSmurf';
-import { updateSingleSmurf, toggleShowUpdate } from '../actions';
+import { updateSingleSmurf, toggleShowUpdate, deleteSmurf } from '../actions';
 import UpdateSmurfForm from './UpdateSmurfForm';
 
 class Smurfs extends Component {
@@ -11,6 +11,11 @@ class Smurfs extends Component {
 
       toggleShowUpdate = () => {
         this.props.toggleShowUpdate();
+      };
+
+      handleDeleteSmurf = () => {
+          const { id } = this.props.smurfSelected;
+          this.props.deleteSmurf(id);
       };
 
     render() {
@@ -28,17 +33,21 @@ class Smurfs extends Component {
                     })}    
                 </ul>
                 {Object.keys(this.props.smurfSelected).length > 0 ? (
-          <SelectedSmurf
-            handleShowSmurf={this.handleShowSmurf}
-            toggleShowUpdate={this.toggleShowUpdate}
-            selected={this.props.smurfSelected}
-          />
-        ) : null}
-        {this.props.showUpdate ? (
-          <UpdateSmurfForm smurf={this.props.smurfSelected} />
-        ) : null}
-                    </div>
-        );
+                    <SelectedSmurf
+                        handleShowSmurf={this.handleShowSmurf}
+                        toggleShowUpdate={this.toggleShowUpdate}
+                        selected={this.props.smurfSelected}
+                        handleDeleteSmurf={this.handleDeleteSmurf}
+                    />
+                    ) : null}
+                    {this.props.showUpdate ? (
+                    <UpdateSmurfForm smurf={this.props.smurfSelected} />
+                    ) : null}
+                    {this.props.deletingSmurf ? (
+                        <h3>Smurf off!</h3>
+                    ) : null}
+        </div>
+    );
     }
 }
 
@@ -46,11 +55,13 @@ const mapStateToProps = state => {
     return {
         error: state.smurfsReducer.error,
         showUpdate: state.singleSmurfReducer.showUpdate,
-        smurfSelected: state.singleSmurfReducer.smurfSelected
+        smurfSelected: state.singleSmurfReducer.smurfSelected,
+        deletingSmurf: state.smurfsReducer.deletingSmurf
     }
 }
 
 export default connect(mapStateToProps, {
     updateSingleSmurf,
-    toggleShowUpdate
+    toggleShowUpdate,
+    deleteSmurf
 })(Smurfs);

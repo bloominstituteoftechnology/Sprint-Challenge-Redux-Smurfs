@@ -26,6 +26,9 @@ export const UPDATE_SMURF = 'UPDATE_SMURF';
 export const SINGLE_SMURF = 'SINGLE_SMURF';
 export const TOGGLE_UPDATE_SMURF = 'TOGGLE_UPDATE_SMURF';
 
+export const DELETE_SMURF = 'DELETE_SMURF';
+export const DELETING_SMURF = 'DELETING_SMURF';
+
 const URL = 'http://localhost:3333/smurfs/';
 
 export const getSmurfs = () => {
@@ -62,6 +65,23 @@ export const createSmurf = smurf => {
 //   .then(response => {this.setState({ smurfs: response.data, name: "", age:"", height: "" });
 // })
 // }
+
+export const deleteSmurf = id => {
+  const deletedSmurf = axios.delete(`${URL}`, {
+    data: { id }
+  });
+  return dispatch => {
+    dispatch({ type: DELETING_SMURF });
+    deletedSmurf
+      .then(({ data }) => {
+        dispatch({ type: DELETE_SMURF, payload: data });
+        dispatch({ type: SINGLE_SMURF, payload: {} });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
 
 export const toggleShowUpdate = () => {
   return {
