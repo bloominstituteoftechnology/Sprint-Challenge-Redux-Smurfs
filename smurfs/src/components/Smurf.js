@@ -8,7 +8,7 @@ function Smurf(props) {
       <h3>Name: {props.smurf.name}</h3>
       <p>Age: {props.smurf.age}</p>
       <p>Height: {props.smurf.height}</p>
-      <div onClick={() => props.deleteSmurf(props.id)} >X</div>
+      <div className="delete-button" onClick={() => props.deleteSmurf(props.id)} >Banish Smurf</div>
     </div>;
 }
 

@@ -74,5 +74,17 @@
   background:#222;
   color: white;
   letter-spacing: 1.5px;
+  padding: 5px;
+}
+
+.delete-button {
+  width: 150px;
+  background: white;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  font-weight: 700;
 }
 
