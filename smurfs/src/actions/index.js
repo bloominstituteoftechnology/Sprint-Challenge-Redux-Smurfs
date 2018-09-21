@@ -38,3 +38,21 @@ export const getSmurfs = () => {
       })
   }
 }
+
+export const addSmurf = smurf => {
+  return dispatch => {
+    dispatch({ type: ADDING_SMURFS });
+    axios
+      .post(`http://localhost:3333/smurfs`, {
+        name: smurf.name,
+        age: smurf.age,
+        height: smurf.height
+      })
+      .then(res => {
+        dispatch({ type: ADDED_SMURFS, payload: res.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      })
+  }
+}
