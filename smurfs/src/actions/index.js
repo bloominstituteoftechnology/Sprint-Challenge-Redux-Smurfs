@@ -42,7 +42,8 @@ export const deliverSmurf = smurf => dispatch => {
 export const changeSmurf = smurf => dispatch => {
   console.log('Change Smurf')
   dispatch({type: ACTIONS.CHANGING_SMURF});
-  axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+  console.log(smurf);
+  axios.put(`http://localhost:3333/smurfs/${smurf.id}`, {...smurf})
   .then(response => {console.log(response); return dispatch({type: ACTIONS.SMURF_CHANGED, smurfs: response.data})})
   .catch(err => console.log('ERROR CHANGING SMURFS:', err.message))
 }

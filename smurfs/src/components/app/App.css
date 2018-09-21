@@ -57,6 +57,10 @@
   margin-right: 10px;
 }
 
+.buttons {
+  display: flex;
+}
+
 .button {
   height: 40px;
   width: 160px;
@@ -74,4 +78,10 @@
 
 .button.banish-smurf {
   background-color: tomato;
+  margin-right: 5px;
+}
+
+.button.update-smurf {
+  background-color: turquoise;
+  margin-left: 5px;
 }

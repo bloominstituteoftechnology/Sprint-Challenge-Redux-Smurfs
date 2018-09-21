@@ -15,7 +15,9 @@ const DeliverSmurfForm = props => {
             <input onChange={props.inputHandler} type="text" name="name" placeholder="name"/>
             <input onChange={props.inputHandler} type="number" name="age" placeholder="age"/>
             <input onChange={props.inputHandler} type="text" name="height" placeholder="height"/>
-            <div className="button deliver-smurf" onClick={() => props.deliverSmurf(props.smurf)}>Deliver Smurf </div>
+            <div className="buttons">
+                <div className="button deliver-smurf" onClick={() => props.deliverSmurf(props.smurf)}>Deliver Smurf </div>
+            </div>
         </form>
     </div>
     )

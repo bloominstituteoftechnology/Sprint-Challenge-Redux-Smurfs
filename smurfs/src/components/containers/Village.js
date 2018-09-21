@@ -22,7 +22,7 @@ class Village extends React.Component {
             <div className="village">
                 <DeliverSmurfForm deliverSmurf={this.props.deliverSmurf} inputHandler={this.inputHandler} smurf={this.state}/>
             { this.props.smurfs.map(
-                smurf => <Smurf key={smurf.id} smurf={smurf} banishSmurf={this.props.banishSmurf}/>
+                smurf => <Smurf key={smurf.id} smurf={smurf} banishSmurf={this.props.banishSmurf} changeSmurf={this.props.changeSmurf} smurfDataForUpdate={this.state}/>
                 )}
             </div> 
         )
