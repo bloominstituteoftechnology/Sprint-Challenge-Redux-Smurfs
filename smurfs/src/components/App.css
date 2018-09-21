@@ -23,6 +23,20 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Applications {
+  background: lightblue;
+}
+
+.Applications div button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
 }

@@ -21,3 +21,10 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+import { combineReducers } from "redux";
+import { smurfReducer } from "./smurfReducer";
+
+const rootReducer = combineReducers({ smurfReducer });
+
+export default rootReducer;
