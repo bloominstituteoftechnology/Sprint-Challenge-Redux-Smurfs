@@ -6,6 +6,8 @@ import { getSmurfsData, addNewSmurf, deleteSmurf } from "../actions";
 import Smurf from "./Smurf";
 import Smurfs from "./Smurfs";
 import SmurfForm from "./SmurfForm";
+import SmurfPage from "./SmurfPage";
+import { Route } from "react-router-dom";
 
 /*
  to wire this component up you're going to need a few things.
@@ -20,6 +22,8 @@ class App extends Component {
     this.props.getSmurfsData();
   }
   render() {
+    {
+    }
     return (
       <div className="App">
         <div className="background-image">
@@ -33,6 +37,20 @@ class App extends Component {
             smurfs={this.props.smurfs}
             deleteSmurf={this.props.deleteSmurf}
           />
+
+          {/* <Route
+            exact
+            path="/smurfs/:Id"
+            render={props => {
+              const id = props.params;
+              console.log(id);
+              return (
+                <SmurfPage
+                  smurf={this.props.smurfs.find(smurf => smurf.id === id)}
+                />
+              );
+            }}
+          /> */}
         </div>
       </div>
     );

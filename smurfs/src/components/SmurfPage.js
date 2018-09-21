@@ -1,20 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Smurf = props => {
+const SmurfPage = props => {
   return (
-    <a
-      href={`/smurfs/${props.id >= 0 ? props.id : ""}`}
-      onClick={e => {
-        console.log(props);
-        // e.preventDefault();
-      }}
-    >
-      {console.log(props)}
+    <a href={`/smurfs/${props.id >= 0 ? props.id : ""}`}>
       <div className="Smurf">
-        <h3>{props.name}</h3>
-        <strong>{props.height} tall</strong>
-        <p>{props.age} smurf years old</p>
+        <h3>{props.smurf.name}</h3>
+        <strong>{props.smurf.height} tall</strong>
+        <p>{props.smurf.age} smurf years old</p>
         <div
           className="delete"
           onClick={e => {
@@ -30,16 +23,16 @@ const Smurf = props => {
   );
 };
 
-Smurf.defaultProps = {
+SmurfPage.defaultProps = {
   name: "",
   height: "",
   age: ""
 };
 
-Smurf.propTypes = {
+SmurfPage.propTypes = {
   name: PropTypes.string.isRequired,
   height: PropTypes.number.isRequired,
   age: PropTypes.number.isRequired
 };
 
-export default Smurf;
+export default SmurfPage;
