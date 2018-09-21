@@ -13,7 +13,7 @@ class App extends Component {
       name: '',
       age: '',
       height: '',
-      id: 0,
+      id: '',
     },
   };
 
