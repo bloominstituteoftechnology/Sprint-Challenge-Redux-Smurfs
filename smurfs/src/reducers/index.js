@@ -55,7 +55,8 @@ const charsReducer = (state = initialState, action) =>{
         fetchingSmurfs:false, 
         addingSmurf:true,
         updatingSmurf: false,
-        deletingSmurf: false
+        deletingSmurf: false,
+        smurfs: state.smurfs.concat(action.payload)
       }
     case UPDATING:
       return{
