@@ -43,7 +43,7 @@ export const fetchSmurfs = () => {
   };
 };
 
-export const addNewFriend = smurf => dispatch => {
+export const addNewSmurf = smurf => dispatch => {
   dispatch({ type: ADDING_SMURF });
 
   axios

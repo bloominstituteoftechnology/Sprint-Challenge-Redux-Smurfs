@@ -8,7 +8,7 @@ function Smurf(props) {
     <div className="smurf-card" key={props.smurf.id}>
       {props.smurf.name}
       {props.smurf.age}
-      {props.smurf.email}
+      {props.smurf.height}
       <div>X</div>
     </div>
   );
