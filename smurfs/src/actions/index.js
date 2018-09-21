@@ -18,7 +18,7 @@ export const ERROR = 'ERROR';
    U - updateSmurf
    D - deleteSmurf
 */
-export const fetchSmurfs = () => {
+export const getSmurfs= () => {
   return dispatch => {
     dispatch({ type: FETCHING_SMURFS });
     const promise = axios.get('http://localhost:3333/smurfs')
@@ -32,7 +32,7 @@ export const fetchSmurfs = () => {
   };
 };
 
-export const saveSmurf = smurf => {
+export const addSmurf = smurf => {
   return dispatch => {
     dispatch({ type: SAVING_SMURFS })
     axios.post('http://localhost:3333/smurfs', smurf)
