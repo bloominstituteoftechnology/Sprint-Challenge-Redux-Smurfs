@@ -1,0 +1,21 @@
+const dataSource = 'http://localhost:3333/smurfs';
+
+POST:
+    /smurfs
+
+GET
+    /smurfs
+
+PUT
+    /smurfs/:id
+
+DELETE
+    /smurfs/:id
+
+let smurfs = [
+  {
+    name: 'Brainey',
+    age: 200,
+    height: '5cm'
+  }
+];
