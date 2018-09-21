@@ -37,6 +37,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <h1>Welcome to the Smurf Village, traveller!</h1>
         <SmurfForm addNewSmurf={this.addNewSmurf}
                     handleChange={this.handleChange} />
         <SmurfList smurfs={this.props.smurfs} />

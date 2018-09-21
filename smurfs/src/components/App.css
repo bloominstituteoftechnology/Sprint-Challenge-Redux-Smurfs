@@ -27,7 +27,13 @@
   to { transform: rotate(360deg); }
 }
 
+.smurfsContainer {
+  display: flex;
+  flex-flow: row wrap;
+}
 .smurf-card {
+  display: flex;
+  flex-direction: column;
   border: 3px solid blue;
   margin: 2rem;
   width: 500px;
