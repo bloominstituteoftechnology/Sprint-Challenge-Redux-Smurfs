@@ -20,6 +20,7 @@ class App extends Component {
             return (
               <Smurf
                 className={smurf.name}
+                key={Math.random()}
                 name={smurf.name}
                 age={smurf.age}
                 height={smurf.height}
