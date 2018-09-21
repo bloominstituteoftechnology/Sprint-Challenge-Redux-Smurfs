@@ -10,6 +10,10 @@ import {
 	POSTING_SMURF,
 	POSTING_SMURF_COMPLETE,
 	POSTING_SMURF_ERROR,
+
+	PUTTING_SMURF,
+	PUTTING_SMURF_COMPLETE,
+	PUTTING_SMURF_ERROR,
 } from '../actions';
 /*
 	Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -27,6 +31,7 @@ const initialState = {
 	getSmurfsMsg: null,
 	getSmurfsErrorMsg: null,
 	postSmurfErrorMsg: null,
+	putSmurfErrorMsg: null,
 };
 
 const smurfReducer = (state = initialState, action) => {
@@ -74,6 +79,26 @@ const smurfReducer = (state = initialState, action) => {
 				postSmurfErrorMsg: action.payload + '',
 			};
 		}
+
+		// PUT
+		case PUTTING_SMURF: {
+			return state;
+		}
+		case PUTTING_SMURF_COMPLETE: {
+			return { 
+				...state,
+				smurfs: action.payload,
+			};
+		}
+		case PUTTING_SMURF_ERROR: {
+			return {
+				...state, 
+				smurfs: [ ...state.smurfs ], 
+				putSmurfErrorMsg: action.payload + '',
+			};
+		}
+
+		// DEFAULT
 		default: {
 			return state;
 		}

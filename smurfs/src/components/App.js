@@ -9,7 +9,7 @@ import Smurf from './Smurf';
 import AddSmurfForm from './AddSmurfForm';
 
 // Actions
-import { getSmurfs, postNewSmurf } from '../actions';
+import { getSmurfs, postNewSmurf, putSmurf } from '../actions';
 
 // Styles
 import './App.css';
@@ -46,6 +46,11 @@ class App extends Component {
 		this.toggleSetState();
 	}
 
+	putSmurf = smurf => {
+		this.props.putSmurf(smurf);
+		window.location.reload();
+	}
+
 	render() {
 		return (
 			<div className = 'App'>
@@ -55,8 +60,9 @@ class App extends Component {
 
 				{ this.props.getSmurfsErrorMsg && <p>GET '/smurfs' { this.props.getSmurfsErrorMsg }</p> }
 				{ this.props.postSmurfErrorMsg && <p>POST '/smurfs' { this.props.postSmurfErrorMsg }</p> }
+				{ this.props.putSmurfErrorMsg && <p>PUT '/smurfs' { this.props.putSmurfErrorMsg }</p> }
 
-				{ this.state.addSmurf ? <AddSmurfForm postSmurf = { this.postSmurf } /> : this.props.getSmurfsMsg ? <p>{ this.props.getSmurfsMsg }</p> : this.props.smurfs.map((smurf, i) => <Smurf key = { i } smurf = { smurf } />)}
+				{ this.state.addSmurf ? <AddSmurfForm postSmurf = { this.postSmurf } /> : this.props.getSmurfsMsg ? <p>{ this.props.getSmurfsMsg }</p> : this.props.smurfs.map((smurf, i) => <Smurf key = { i } smurf = { smurf } putSmurf = { this.putSmurf } />)}
 			</div>
 		);
 	}
@@ -67,6 +73,7 @@ const mapStateToProps = state => ({
 	getSmurfsErrorMsg: state.getSmurfsErrorMsg,
 	getSmurfsMsg: state.getSmurfsMsg,
 	postSmurfErrorMsg: state.postSmurfErrorMsg,
+	putSmurfErrorMsg: state.putSmurfErrorMsg,
 });
 
-export default connect(mapStateToProps, { getSmurfs, postNewSmurf })(App);
+export default connect(mapStateToProps, { getSmurfs, postNewSmurf, putSmurf })(App);

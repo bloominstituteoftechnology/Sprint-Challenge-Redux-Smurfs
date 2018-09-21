@@ -12,6 +12,10 @@ export const POSTING_SMURF = 'POSTING_SMURF';
 export const POSTING_SMURF_COMPLETE = 'POSTING_SMURF_COMPLETE';
 export const POSTING_SMURF_ERROR = 'POSTING_SMURF_ERROR';
 
+export const PUTTING_SMURF = 'PUTTING_SMURF';
+export const PUTTING_SMURF_COMPLETE = 'PUTTING_SMURF_COMPLETE';
+export const PUTTING_SMURF_ERROR = 'PUTTING_SMURF_ERROR';
+
 /*
 	For this project you'll need at least 2 action creators for the main portion,
 	and 2 more for the stretch problem.
@@ -44,5 +48,17 @@ export const postNewSmurf = smurf => dispatch => {
 		.catch(err => {
 			console.log(err);
 			dispatch({ type: POSTING_SMURF_ERROR, payload: err });
+		})
+}
+
+export const putSmurf = smurf => dispatch => {
+	dispatch({ type: PUTTING_SMURF });
+
+	axios
+		.put(`http://localhost:3333/smurfs/${ smurf.id }`, smurf)
+		.then(res => dispatch({ type: PUTTING_SMURF_COMPLETE, payload: res.data }))
+		.catch(err => {
+			console.log(err);
+			dispatch({ type: PUTTING_SMURF_ERROR, payload: err });
 		})
 }
