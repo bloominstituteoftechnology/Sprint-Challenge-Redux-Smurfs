@@ -6,9 +6,15 @@ import './App.css'
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
+
 import { connect } from 'react-redux'
+import { addSmurf } from '../actions'
 
 class App extends Component {
+  componentDidMount() {
+    this.props.addSmurf()
+  }
+
   render() {
     return (
       <div className="App">
@@ -23,7 +29,9 @@ class App extends Component {
 
 const mapStateToProps = (state, action) => ({})
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  addSmurf
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
 
