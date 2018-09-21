@@ -2,7 +2,7 @@ import React from 'react';
 
 const Smurf = (props) => {
     return (
-        <div>
+        <div className = 'smurf'>
             <span><strong>Name:</strong> {props.name}</span><br />
             <span><strong>Age:</strong> {props.age}</span><br />
             <span><strong>Height:</strong> {props.height}</span><br />

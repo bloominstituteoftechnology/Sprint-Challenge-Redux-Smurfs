@@ -70,7 +70,7 @@ class AddSmurfForm extends React.Component {
     render(){
 
     return (
-        <div>
+        <div className = 'add-smurf-form'>
             <form onSubmit={this.handleSubmit}>
             
             <input type = 'text' placeholder='Name' name='input-name' onChange={this.handleInput} value={this.state.name}></input>
