@@ -10,9 +10,9 @@ class Smurfs extends Component {
             {this.props.smurfs.map(smurf => {
                 return(
                     <div key={smurf.id}>
-                        {smurf.name}
-                        {smurf.age}
-                        {smurf.height}
+                        <h3>{smurf.name}</h3>
+                        <p>Age: {smurf.age}</p>
+                        <p>Height: {smurf.height}</p>
                     </div> 
                 )
             })}
