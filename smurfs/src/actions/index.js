@@ -37,6 +37,8 @@ export const newSmurf = smurf => dispatch => {
       dispatch({ type: SMURF_ADDED, payload: res.data })
     })
     .catch(err => {
+      console.log('newSmurf', smurf);
+      
       dispatch({ type: FETCH_ERROR, payload: err })
     });
 }

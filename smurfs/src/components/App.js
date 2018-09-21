@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchSmurfs, newSmurf, deleteSmurf, editSmurf } from '../actions';
+import { fetchSmurfs, newSmurf, deleteSmurf } from '../actions';
 
 import { Route, Link } from 'react-router-dom';
 import SmurfList from './SmurfList';
@@ -43,13 +43,6 @@ class App extends Component {
     })}
   }
 
-  editSmurf = (id, event) => {
-    event.preventDefault();
-    this.props.editSmurf(id.id, this.state);
-    console.log('editSmurf id', id.id);
-    console.log('editSmurf state', this.state);
-  }
-
   addSmurf = event => {
     event.preventDefault();
     this.props.newSmurf(this.state);
@@ -68,7 +61,7 @@ class App extends Component {
           addSmurf={this.addSmurf} fetchingSmurfs={this.props.fetchingSmurfs} handleInput={this.handleInput} />
         )} />
         <Route exact path='/smurf/:id' render={props => (
-          <SmurfCard {...props} smurfs={this.props.smurfs} editSmurf={this.editSmurf} handleInput={this.handleInput}/>
+          <SmurfCard {...props} smurfs={this.props.smurfs} />
         )} />
       </div>
     );
@@ -83,4 +76,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchSmurfs, newSmurf, deleteSmurf, editSmurf})(App);
+export default connect(mapStateToProps, {fetchSmurfs, newSmurf, deleteSmurf})(App);
