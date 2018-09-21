@@ -1,75 +1,48 @@
 import React, { Component } from 'react';
-import './App.css';
+import { get, removeSmurf } from '../actions';
 import { connect } from 'react-redux';
-
-import { fetchSmurfs, addSmurf } from '../actions';
+import SmurfForm from './SmurfForm';
+import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      age: '',
-      height: ''
-    }
-  }
-
   componentDidMount() {
-    this.props.fetchSmurfs();
+    this.props.get();
   }
-
-  handleInput = event => {
-    event.preventDefault();
-     if(event.target.name === 'age') {
-      this.setState({
-      age: Number(event.target.value)
-      })}
-    else if (event.target.name === 'name'){
-      this.setState({
-          name: event.target.value
-    })} else {
-          this.setState({
-              height: event.target.value
-    })}
-  }
-
-   submitSmurf = event => {
-    event.preventDefault();
-    this.props.addSmurf(this.state);
-  };
 
   render() {
     return (
-      <div className = 'app'>
-        {this.props.fetchingSmurfs ? (
-          <h3>Just a moment!</h3>
-        ) : (
-          <div>
-            {this.props.smurfs.map(smurf =>
-              <div key = {smurf.name}>
-                <h2>Smurf Information</h2>
-                <h3>Name: {smurf.name}</h3>
+      <div className = 'App'>
+        <h1>The Smurf Village</h1>
+        <div>Welcome, guest!</div>
+
+        <div className = 'container'>
+          <SmurfForm />
+          <div className = 'smurfs'>
+            {this.props.smurfs.map(smurf => (
+              <div className = 'smurf-card'>
+                <p>{smurf.name} Smurf</p>
                 <p>Age: {smurf.age}</p>
                 <p>Height: {smurf.height}</p>
+                <button onClick = {() => this.props.removeSmurf(smurf.id)}>
+                  Remove this smurf :(
+                </button>
               </div>
-            )}
-            <div>
-                <h3>Add a Smurf!</h3>
-                <form>
-                    <input type = 'text' name = 'name' placeholder = 'Name' onChange = {this.handleInput}/>
-                    <input type = 'text' name = 'age' placeholder = 'Age' onChange = {this.handleInput}/>
-                    <input type = 'text' name = 'height' placeholder = 'Height' onChange = {this.handleInput}/>
-                    <input type = 'submit' onClick = {this.submitSmurf} />
-                </form>
-            </div>
+            ))}
           </div>
-        )}
+        </div>
       </div>
     );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    loading: state.loading
   };
 };
 
-const mapStateToProps = (state, action) => ({}) /* placeholder */
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  { get, removeSmurf }
+)(App);

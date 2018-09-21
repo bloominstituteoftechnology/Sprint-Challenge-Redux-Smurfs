@@ -1,37 +1,53 @@
-import { FETCHING_SMURFS, SMURF_FETCHED, FETCHING_ERROR, ADDING_SMURF, SMURF_ADDED } from '../actions';
+import { FETCH, FETCHED, ERROR, ADDING, ADDED, REMOVED } from '../actions';
 
 const initialState = {
-  fetchingSmurfs: false,
-  addingSmurf: false,
-  updatingSmurf: false,
-  deletingSmurf: false,
+  loading: false,
+  adding: false,
+  smurfs: [],
   error: null
 };
 
 export const rootReducer = (state = initialState, action) => {
-  switch(action.type) {
-    case FETCHING_SMURFS:
-      return Object.assign({}, state, {fetchingSmurfs:true});
+  switch (action.type) {
+    case FETCH:
+      return {
+        ...state,
+        loading: true
+      };
 
-    case SMURF_FETCHED:
-      return Object.assign({}, state, {
-        smurfs: [...state.smurfs, ...action.payload],
-        fetchingSmurfs: false
-      });
+    case FETCHED:
+      return {
+        ...state,
+        smurfs: action.payload,
+        loading: false
+      };
 
-    case FETCHING_ERROR:
-      return Object.assign({}, state, {
-        fetchingSmurfs: false,
+    case ERROR:
+      return {
+        ...state,
+        loading: false,
         error: 'Sorry, we encountered an error.'
-      });
+      };
 
-    case ADDING_SMURF:
-      return {...state, addingSmurf: true };
+    case ADDING:
+      return {
+        ...state,
+        adding: true
+      };
 
-    case SMURF_ADDED:
-      return {...state, addingSmurf: false, smurfs: action.payload };
+    case ADDED:
+      return {
+        ...state,
+        smurfs: action.payload,
+        adding: false
+      };
 
+    case REMOVED:
+      return {
+        ...state,
+        smurfs: action.payload
+      };
     default:
       return state;
   }
-}
+};
