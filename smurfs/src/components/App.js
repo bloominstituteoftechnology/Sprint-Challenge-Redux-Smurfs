@@ -29,8 +29,9 @@ class App extends Component {
 		return (
 			<div className = 'App'>
 				<h1>Welcome to Smurf Village!</h1>
+				{ this.props.getSmurfsErrorMsg && <p>GET '/smurfs' { this.props.getSmurfsErrorMsg }</p> }
 
-				{ this.props.smurfs.map((smurf, i) => <Smurf key = { i } smurf = { smurf } />)}
+				{ this.props.getSmurfsMsg ? <p>{ this.props.getSmurfsMsg }</p> : this.props.smurfs.map((smurf, i) => <Smurf key = { i } smurf = { smurf } />)}
 			</div>
 		);
 	}
@@ -38,6 +39,8 @@ class App extends Component {
 
 const mapStateToProps = state => ({
 	smurfs: state.smurfs,
+	getSmurfsErrorMsg: state.getSmurfsErrorMsg,
+	getSmurfsMsg: state.getSmurfsMsg,
 });
 
 export default connect(mapStateToProps, { getSmurfs })(App);

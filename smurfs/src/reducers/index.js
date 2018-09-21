@@ -20,18 +20,35 @@ import {
 */
 const initialState = {
 	smurfs: [],
+	getSmurfsMsg: null,
+	getSmurfsErrorMsg: null,
 };
 
 const smurfReducer = (state = initialState, action) => {
 	switch(action.type) {
 		case GETTING_SMURFS: {
-			return state;
+			return { 
+				...state, 
+				smurfs: [ ...state.smurfs ], 
+				getSmurfsMsg: 'Getting smurfs...', 
+				getSmurfsErrorMsg: null
+			};
 		}
 		case GETTING_SMURFS_COMPLETE: {
-			return { ...state, smurfs: action.payload };
+			return { 
+				...state, 
+				smurfs: action.payload, 
+				getSmurfsMsg: null,
+				getSmurfsErrorMsg: null 
+			};
 		}
 		case GETTING_SMURFS_ERROR: {
-			return state;
+			return { 
+				...state, 
+				smurfs: [ ...state.smurfs ], 
+				getSmurfsMsg: null,
+				getSmurfsErrorMsg: action.payload + '' 
+			};
 		}
 		default: {
 			return state;
