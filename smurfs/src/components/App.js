@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
-import smurfsAction from '../actions';
+import smurfsAction,{createSmurf} from '../actions';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -13,6 +13,8 @@ class App extends Component {
     this.props.smurfsAction();
   }
 
+  handleChange=event => this.setState({inputText:event.target.value});
+
   render() {
     return (
       <div className="App">
@@ -20,6 +22,10 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        <input 
+          type='text'
+        />
+        <button>Add Smurf</button>
       </div>
     );
   }
@@ -30,7 +36,7 @@ const mapDispatchtoProps = state =>({
   fetchingSmurfs: state.fetchingSmurfs,
   addingSmurf: state.addingSmurf,
   updatingSmurf: state.updatingSmurf,
-  deletingSmurf: state.deletingSmurf
+  deletingSmurf: state.deletingSmurf,
 });
 
 

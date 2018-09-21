@@ -40,3 +40,14 @@ export default function smurfsAction(){
         })
   }
 }
+
+export const createSmurf = smurf =>{
+  return dispatch =>{
+    dispatch({type:ADDING})
+      axios
+        .post('http://localhost:3333/smurfs', smurf)
+        .then(response =>{
+          console.log(response);
+        })
+  }
+}
