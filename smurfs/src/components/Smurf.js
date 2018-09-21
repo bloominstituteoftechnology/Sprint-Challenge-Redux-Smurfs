@@ -1,18 +1,13 @@
-import React from 'react';
-
-const Smurf = (props) => {
+import React from "react";
+function Smurf(props) {
   return (
     <div>
-      <h1>
-        {props.smurf.name}
-      </h1>
-
-      {/* <h1 onClick={() => props.updateForm(props.friend)}>
-        {props.friend.name}
-      </h1> */}
-      
+      <p>
+        <strong>{props.name}</strong>
+      </p>
+      <p>{props.age}</p>
+      <p> {props.height}</p>
     </div>
   );
-};
-
+}
 export default Smurf;

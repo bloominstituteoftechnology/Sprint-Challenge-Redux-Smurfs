@@ -39,6 +39,16 @@ class App extends Component {
     this.resetForm();
   };
 
+  resetForm() {
+    this.setState({
+      inputData: {
+        name: '',
+        age: '',
+        email: '',
+      },
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -64,12 +74,12 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     //Basically maps actions and reducers to the state
-    fetchingData: state.smurfsReducer.fetchingData,
-    dataFetched: state.smurfsReducer.dataFetched,
-    addingSmurf: state.smurfsReducer.addingSmurf,
-    updatingSmurf: state.smurfsReducer.updatingSmurf,
-    smurfs: state.smurfsReducer.smurfs,
-    error: state.smurfsReducer.error,
+    fetchingData: state.fetchingData,
+    dataFetched: state.dataFetched,
+    addingSmurf: state.addingSmurf,
+    updatingSmurf: state.updatingSmurf,
+    smurfs: state.smurfs,
+    error: state.error,
   };
 };
 
