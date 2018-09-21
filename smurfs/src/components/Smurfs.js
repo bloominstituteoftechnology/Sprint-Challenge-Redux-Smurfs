@@ -14,7 +14,8 @@ function Smurfs(props) {
         <Smurf 
         smurf={smurf}
         id={smurf.id}
-        key={smurf.name} />
+        key={smurf.name}
+        deleteSmurf={props.deleteSmurf} />
       ))}
     </div>
   );

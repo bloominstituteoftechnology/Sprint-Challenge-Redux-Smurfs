@@ -13,6 +13,7 @@ import "./App.css";
 
 import { fetchSmurfs } from "../actions";
 import { addNewSmurf } from "../actions";
+import { deleteSmurf } from "../actions";
 import Smurfs from "./Smurfs";
 import SmurfForm from "./SmurfForm";
 
@@ -27,9 +28,11 @@ class App extends Component {
         {this.props.fetchingSmurfs ? (
           <img src={logo} className="App-logo" alt="logo" />
         ) : (
-          <div>
-            <Smurfs {...this.props} />
+          <div className="smurf-village-wrapper">
+            <h1>Welcome to Smurf Village!</h1>
             <SmurfForm {...this.state} />
+            <h2>Smurf Residents:</h2>
+            <Smurfs {...this.props} />
           </div>
         )}
       </div>
@@ -43,6 +46,7 @@ const mapStateToProps = state => {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
     smurfAdded: state.smurfAdded,
+    deletedSmurf: state.deletedSmurf,
 
     error: state.error
   };
@@ -53,6 +57,7 @@ export default connect(
   {
     /* actions go here */
     fetchSmurfs,
-    addNewSmurf
+    addNewSmurf,
+    deleteSmurf
   }
 )(App);
