@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #222;
   height: 150px;
@@ -14,15 +9,19 @@
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.Smurfbox {
+  display: flex;
+  justify-content: center;
 }
 
-.App-intro {
-  font-size: large;
+.names {
+  font-weight: 900;
+  margin-bottom: 5px;
+  font-size: 20px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.smurf {
+  margin: 20px;
+  background-color: teal;
+  padding: 0 10px 10px 10px;
 }
