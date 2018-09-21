@@ -37,6 +37,7 @@ class Smurf extends React.Component {
 				<p>Height: { this.state.height }</p>
 
 				<button onClick = { this.toggleEditForm }>Edit { this.state.name }</button>
+				<button onClick = { () => this.props.deleteSmurf(this.state.id) }>Delete { this.state.name }</button>
 
 				{ this.state.toggleEditForm && <EditSmurfForm putSmurf = { this.putSmurf } smurf = { this.state } /> }
 			</div>

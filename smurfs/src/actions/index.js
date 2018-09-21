@@ -16,6 +16,10 @@ export const PUTTING_SMURF = 'PUTTING_SMURF';
 export const PUTTING_SMURF_COMPLETE = 'PUTTING_SMURF_COMPLETE';
 export const PUTTING_SMURF_ERROR = 'PUTTING_SMURF_ERROR';
 
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const DELETING_SMURF_COMPLETE = 'DELETING_SMURF_COMPLETE';
+export const DELETING_SMURF_ERROR = 'DELETING_SMURF_ERROR';
+
 /*
 	For this project you'll need at least 2 action creators for the main portion,
 	and 2 more for the stretch problem.
@@ -60,5 +64,17 @@ export const putSmurf = smurf => dispatch => {
 		.catch(err => {
 			console.log(err);
 			dispatch({ type: PUTTING_SMURF_ERROR, payload: err });
+		})
+}
+
+export const deleteSmurf = id => dispatch => {
+	dispatch({ type: DELETING_SMURF });
+
+	axios
+		.delete(`http://localhost:3333/smurfs/${ id }`)
+		.then(res => dispatch({ type: DELETING_SMURF_COMPLETE, payload: res.data }))
+		.catch(err => {
+			console.log(err);
+			dispatch({ type: DELETING_SMURF_ERROR, payload: err });
 		})
 }

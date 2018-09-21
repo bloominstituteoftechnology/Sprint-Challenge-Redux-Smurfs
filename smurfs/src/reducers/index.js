@@ -14,6 +14,10 @@ import {
 	PUTTING_SMURF,
 	PUTTING_SMURF_COMPLETE,
 	PUTTING_SMURF_ERROR,
+	
+	DELETING_SMURF,
+	DELETING_SMURF_COMPLETE,
+	DELETING_SMURF_ERROR,
 } from '../actions';
 /*
 	Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -95,6 +99,24 @@ const smurfReducer = (state = initialState, action) => {
 				...state, 
 				smurfs: [ ...state.smurfs ], 
 				putSmurfErrorMsg: action.payload + '',
+			};
+		}
+
+		// DELETE
+		case DELETING_SMURF: {
+			return state;
+		}
+		case DELETING_SMURF_COMPLETE: {
+			return { 
+				...state, 
+				smurfs: action.payload,
+			};
+		}
+		case DELETING_SMURF_ERROR: {
+			return {
+				...state, 
+				smurfs: [ ...state.smurfs ], 
+				deleteSmurfErrorMsg: action.payload + '',
 			};
 		}
 
