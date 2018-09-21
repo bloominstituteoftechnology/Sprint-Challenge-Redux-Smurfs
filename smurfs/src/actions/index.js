@@ -14,16 +14,24 @@ export const fetchSmurfs = () => {
     .get('http://localhost:3333/smurfs')
 
     .then(response => {
+        console.log(response.data);
         dispatch({ type: 'SMURFS_FETCHING_SUCCESS', payload: response.data });
     })
     .catch(error => {
         console.log(error);
         dispatch({ type: 'SMURFS_FETCHING_ERROR'});
 
-    });
-    };
+    })    
+    };    
 };
 
+const addSmurf = (smurf) => {
+   
+
+    axios.post('http://localhost:3333/smurfs', smurf)
+    .then(response => this.setState({smurfs:response.data}))
+    .catch(error => console.log(error));
+  }
 
 /* 
   Action Types Go Here!

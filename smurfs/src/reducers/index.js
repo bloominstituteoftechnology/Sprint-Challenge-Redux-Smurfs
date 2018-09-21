@@ -1,8 +1,8 @@
-import { FETCHING_SMURFS, SMURFS_FETCHING_SUCCESS, SMURFS_FETCHING_ERROR } from '../actions';
+import { FETCHING_SMURFS, SMURFS_FETCHING_SUCCESS, SMURFS_FETCHING_ERROR, addSmurf } from '../actions';
 
 
 const initialState = {
-  smurfs: [], fetchingSmurfs: false, error: null, fetched: false
+  smurfs: [], fetchingSmurfs: false, error: null, fetched: false, addingSmurf: false
 };
 
 const smurfsReducer = (state = initialState, action) => {
@@ -22,6 +22,15 @@ const smurfsReducer = (state = initialState, action) => {
         fetchingSMurfs: false,
         error: "Error fetching Smurfs"
       });
+
+      case 'ADD_SMURF':
+      return [...state,
+      {
+        name: action.name,
+        age: action.age,
+        height: action.height,
+        addingSmurf: true
+      }]
 
     default:
       return state;
