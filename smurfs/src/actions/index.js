@@ -48,7 +48,6 @@ export const removeSmurf = id => {
   return dispatch => {
     axios
       .delete(`http://localhost:3333/smurfs/${id}`)
-
       .then(response => {
         dispatch({ type: REMOVED, payload: response.data });
       })
