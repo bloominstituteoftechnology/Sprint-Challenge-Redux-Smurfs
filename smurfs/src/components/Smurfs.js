@@ -11,7 +11,10 @@ function Smurfs(props) {
   return (
     <div className="smurfs-list-wrapper">
       {props.smurfs.map(smurf => (
-        <Smurf smurf={smurf} key={smurf.id} />
+        <Smurf 
+        smurf={smurf}
+        id={smurf.id}
+        key={smurf.name} />
       ))}
     </div>
   );

@@ -5,7 +5,7 @@ import { fetchSmurfs } from "../actions";
 
 function Smurf(props) {
   return (
-    <div className="smurf-card" key={props.smurf.id}>
+    <div className="smurf-card" key={props.smurf.name}>
       {props.smurf.name}
       {props.smurf.age}
       {props.smurf.height}

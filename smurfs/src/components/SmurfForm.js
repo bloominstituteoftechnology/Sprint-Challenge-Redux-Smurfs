@@ -19,7 +19,7 @@ class SmurfForm extends React.Component {
     }
 
 
-    handleAddNewFriend = () => {
+    handleAddNewSmurf = () => {
         const smurf = this.state;
         this.props.addNewSmurf(smurf);
         this.setState({ name: '', age: '', height: '' });
