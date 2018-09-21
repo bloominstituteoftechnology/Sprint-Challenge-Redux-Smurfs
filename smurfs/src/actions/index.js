@@ -5,6 +5,7 @@ import axios from 'axios';
   Be sure to export each action type so you can pull it into your reducer
 */
 export const FETCHING = 'FETCHING';
+export const FETCHED = 'FETCHED';
 export const ADDING = 'ADDING';
 export const UPDATING = 'UPDATING';
 export const DELETING = 'DELETING';
@@ -20,13 +21,15 @@ export const ERROR = 'ERROR';
    U - updateSmurf
    D - deleteSmurf
 */
-export default function action(){
+export default function smurfsAction(){
   return dispatch =>{
     dispatch({type: FETCHING})
       axios
         .get('http://localhost:3333/smurfs')
         .then(response =>{
           console.log(response);
+          dispatch({type:FETCHED,
+            payload: response.data})
         })
         .catch(error =>{
           dispatch({
