@@ -1,7 +1,14 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING_DATA, FETCHED_DATA, FETCH_ERROR } from '../actions';
+import {
+  FETCHING_DATA,
+  FETCHED_DATA,
+  FETCH_ERROR,
+  ADD_SMURF_START,
+  ADD_SMURF_COMPLETE,
+  ADD_SMURF_ERROR,
+} from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -39,6 +46,23 @@ export default (state = initialState, action) => {
         ...state,
         fetchingSmurfs: false,
         error: 'Error fetching data',
+      };
+    case ADD_SMURF_START:
+      return {
+        ...state,
+        addingSmurf: true,
+      };
+    case ADD_SMURF_COMPLETE:
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfs: action.payload,
+      };
+    case ADD_SMURF_ERROR:
+      return {
+        ...state,
+        addingSmurf: false,
+        error: 'Add smurf error',
       };
     default:
       return state;

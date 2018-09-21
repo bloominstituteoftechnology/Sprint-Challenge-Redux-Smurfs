@@ -8,6 +8,10 @@ export const FETCHING_DATA = 'FETCHING_DATA';
 export const FETCHED_DATA = 'FETCHED_DATA';
 export const FETCH_ERROR = 'FETCH_ERROR';
 
+export const ADD_SMURF_START = 'ADD_SMURF_START';
+export const ADD_SMURF_COMPLETE = 'ADD_SMURF_COMPLETE';
+export const ADD_SMURF_ERROR = 'ADD_SMURF_ERROR';
+
 export const fetchData = () => {
   return (dispatch) => {
     dispatch({ type: FETCHING_DATA });
@@ -20,6 +24,21 @@ export const fetchData = () => {
       .catch((err) => {
         console.log(err);
         dispatch({ type: FETCH_ERROR });
+      });
+  };
+};
+
+export const addSmurf = (newSmurf) => {
+  return (dispatch) => {
+    dispatch({ type: ADD_SMURF_START });
+    const promise = axios.post('http://localhost:3333/smurfs', newSmurf);
+    promise
+      .then((response) => {
+        dispatch({ type: ADD_SMURF_COMPLETE, payload: response.data });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({ type: ADD_SMURF_ERROR });
       });
   };
 };
