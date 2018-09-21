@@ -28,7 +28,7 @@ const smurfReducer = (state = initialState, action) => {
 			return state;
 		}
 		case GETTING_SMURFS_COMPLETE: {
-			return state;
+			return { ...state, smurfs: action.payload };
 		}
 		case GETTING_SMURFS_ERROR: {
 			return state;

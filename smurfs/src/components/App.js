@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 // Dependencies
 import { connect } from 'react-redux';
 
+// Components
+import Smurf from './Smurf';
+
 // Actions
 import { getSmurfs } from '../actions';
 
@@ -24,16 +27,17 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
-				<h1>SMURFS! 2.0 W/ Redux</h1>
-				<div>Welcome to your Redux version of Smurfs!</div>
-				<div>Start inside of your `src/index.js` file!</div>
-				<div>Have fun!</div>
+			<div className = 'App'>
+				<h1>Welcome to Smurf Village!</h1>
+
+				{ this.props.smurfs.map((smurf, i) => <Smurf key = { i } smurf = { smurf } />)}
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+	smurfs: state.smurfs,
+});
 
 export default connect(mapStateToProps, { getSmurfs })(App);
