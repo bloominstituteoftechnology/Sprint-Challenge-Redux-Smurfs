@@ -15,15 +15,13 @@ class App extends Component {
     this.props.smurfsAction();
   }
 
-  handleChange=event => this.setState({inputText:event.target.value});
-
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
+        {/* <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <div>Have fun!</div> */}
         <CreaterContainer />
         {(this.props.fetchingSmurfs||this.props.addingSmurf||this.props.updatingSmurf||this.props.deletingSmurf) ? (
           <h1>Loading</h1>
