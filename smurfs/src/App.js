@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 // import './styles/App.css';
-import { fetchData, addSmurf} from './actions';
+import { fetchData, addSmurf} from './';
+import SmurfList from './components/SmurfList';
+import SmurfForm from './components/SmurfForm';
 
 class App extends Component {
 
