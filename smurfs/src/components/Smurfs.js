@@ -8,8 +8,9 @@ class Smurfs extends Component {
         return(
             <div>
             {this.props.smurfs.map(smurf => {
+                console.log("Mapping smurfs");
                 return(
-                    <div key={`${smurf.name} ${smurf.id}`}>
+                    <div key={smurf.id}>
                         {smurf.name}
                         {smurf.age}
                         {smurf.height}
@@ -31,4 +32,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, fetchSmurfs)(Smurfs);
+export default connect(mapStateToProps, { fetchSmurfs })(Smurfs);

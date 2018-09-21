@@ -47,6 +47,7 @@ class SmurfForm extends Component {
 
     addSmurfEvent = event => {
         event.preventDefault();
+        const {name, age, height} = this.state;
         const newSmurf = {name, age, height};
         this.props.addSmurf(newSmurf);
         this.setState({
@@ -57,4 +58,4 @@ class SmurfForm extends Component {
     }
 }
 
-export default SmurfForm;
+export default connect(null, { addSmurf })(SmurfForm);

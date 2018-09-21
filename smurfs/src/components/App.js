@@ -24,14 +24,15 @@ class App extends Component {
     console.log(this.props);
     return (
       <div className="App">
-      {this.props.fetchingSmurfs ? (
+        <h1>Smurf List</h1>
+      {/* {this.props.fetchingSmurfs ? (
         <img src={logo} />
-      ) : (
+      ) : ( */}
         <div>
             <Smurfs />
             <SmurfForm />
         </div>
-      )}
+      {/* )} */}
       </div>
     );
   }

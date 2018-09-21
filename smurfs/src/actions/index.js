@@ -30,7 +30,7 @@ export const fetchSmurfs = () => {
       .then(response => {
         dispatch({
           type: FETCH_SMURFS,
-          payload: response.data.results
+          payload: response.data
         });
       })
       .catch(error => {
