@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { getSmurfs, addSmurf } from '../actions';
 import './App.css';
 import Header from './Header';
+import Form from './Form';
+import SmurfsList from './SmurfsList';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -58,6 +60,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Form />
+        <SmurfsList />
       </div>
     );
   }
