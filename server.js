@@ -1,9 +1,10 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const port = 3333;
 
 const server = express();
-server.use(express.json());
+server.use(bodyParser.json());
 server.use(cors());
 
 const sendUserError = (msg, res) => {
@@ -14,16 +15,16 @@ const sendUserError = (msg, res) => {
 
 let smurfs = [
   {
-    name: 'Brainey',
+    id: 0,
+    name: 'Brainey Smurf',
     age: 200,
-    height: '5cm',
-    id: 0
+    height: '8cm'
   }
 ];
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
-let smurfId = 0;
+let smurfId = 1;
 
 server.post('/smurfs', (req, res) => {
   const { name, age, height } = req.body;

@@ -42,22 +42,22 @@ const papaSmurf = (village = emptyVillage, action) => {
     return {...village, findingSmurfs: false, smurfs: action.smurfs};
 
     case ACTIONS.DELIVERING_SMURF:
-    return village;
+    return {...village, deliveringSmurfs: true};
 
     case ACTIONS.SMURF_DELIVERED:
-    return village;
+    return {...village, deliveringSmurfs: false, smurfs: action.smurfs};
 
     case ACTIONS.CHANGING_SMURF:
-    return village;
+    return {...village, changingSmurfs: true};
 
     case ACTIONS.SMURF_CHANGED:
-    return village;
+    return {...village, changingSmurfs: false, smurfs: action.smurf};
 
     case ACTIONS.BANISHING_SMURF:
-    return village;
+    return {...village, banishingSmurfs: true};
 
     case ACTIONS.SMURF_BANISHED:
-    return village;
+    return {...village, banishingSmurfs: false, smurfs: action.smurf};
 
     default:
     return village;

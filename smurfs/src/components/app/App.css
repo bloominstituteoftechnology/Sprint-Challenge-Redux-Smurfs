@@ -30,3 +30,34 @@
 .smurf-label {
   font-weight: bold;
 }
+
+.add-smurf-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.add-smurf-container .add-smurf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-smurf-container .add-smurf  input {
+  height: 40px;
+  padding-left: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.button {
+  height: 40px;
+  width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background-color: dodgerblue;
+  cursor: pointer;
+  user-select: none;
+}

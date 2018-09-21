@@ -9,7 +9,7 @@ export const ACTIONS = {
   FINDING_SMURFS: 'FINDING_SMURFS', SMURFS_FOUND: 'SMURFS_FOUND', 
   DELIVERING_SMURF: 'DELIVERING_SMURF', SMURF_DELIVERED: 'SMURF_DELIVERED', 
   CHANGING_SMURF: 'CHANGING_SMURF', SMURF_CHANGED: 'SMURF_CHANGED',
-  BANISHING_SMURF: 'BANISHING_SMURF', SMURF_BANISHED: 'SMURF_BANISHED',
+  BANISHING_SMURF: 'BANISHING_SMURF', SMURF_BANISHED: 'SMURF_BANISHED'
 }
 
 /*
@@ -22,6 +22,7 @@ export const ACTIONS = {
    U - updateSmurf
    D - deleteSmurf
 */
+
 export const findSmurfs = () => dispatch => {
   console.log('Find Smurfs')
   dispatch({type: ACTIONS.FINDING_SMURFS});
@@ -30,14 +31,26 @@ export const findSmurfs = () => dispatch => {
   .catch(err => console.log('ERROR FINDING SMURFS:', err.message))
 }
 
-export const deliverSmurf = () => {
+export const deliverSmurf = smurf => dispatch => {
   console.log('Deliver Smurf')
+  dispatch({type: ACTIONS.DELIVERING_SMURF});
+  axios.post('http://localhost:3333/smurfs/', {...smurf})
+  .then(response => dispatch({type: ACTIONS.SMURF_DELIVERED, smurfs: response.data}))
+  .catch(err => console.log('ERROR DELIVERING SMURFS:', err.message))
 }
 
-export const changeSmurf = () => {
+export const changeSmurf = smurf => dispatch => {
   console.log('Change Smurf')
+  dispatch({type: ACTIONS.CHANGING_SMURFS});
+  axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+  .then(response => {console.log(response); return dispatch({type: ACTIONS.SMURF_CHANGED, smurfs: response.data})})
+  .catch(err => console.log('ERROR CHANGING SMURFS:', err.message))
 }
 
-export const banishSmurf = () => {
+export const banishSmurf = smurf => dispatch => {
   console.log('Banish Smurf')
+  dispatch({type: ACTIONS.BANISHING_SMURFS});
+  axios.delete(`http://localhost:3333/smurfs/${smurf.id}`)
+  .then(response => {console.log(response); return dispatch({type: ACTIONS.SMURF_BANISHED, smurfs: response.data})})
+  .catch(err => console.log('ERROR BANISHING SMURFS:', err.message))
 }
