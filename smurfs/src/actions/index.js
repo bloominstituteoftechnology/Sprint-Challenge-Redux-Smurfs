@@ -22,6 +22,8 @@ export const FETCHING = 'FETCHING';
 export const ERROR = 'ERROR';
 export const POSTING = 'POSTING';
 export const POSTED = 'POSTED';
+export const DELETING = 'DELETING';
+export const DELETED = 'DELETED';
 
 export const fetchSmurfs = () => {
     const request = axios.get(`http://localhost:3333/smurfs`);
@@ -43,7 +45,7 @@ export const addSmurf = newSmurf => {
 
     const request = axios.post(`http://localhost:3333/smurfs`, newSmurf);
     return dispatch => {
-        dispatch({type: 'POSTING'});
+        dispatch({type: POSTING});
         request.then(res => {
             dispatch({type: POSTED, payload: res.data})
         }).catch(err => {
@@ -51,4 +53,20 @@ export const addSmurf = newSmurf => {
             dispatch({type: ERROR})
         });
     }
+}
+
+export const deleteSmurf = id => {
+  const deleteRequest = axios.delete(`http://localhost:3333/smurfs/${id}`);
+
+  return dispatch => {
+    dispatch({type: DELETING});
+
+    deleteRequest.then(res => {
+      dispatch({type: DELETED, payload: res.data});
+    }).catch(err => {
+      console.log(err);
+      dispatch({type: ERROR})
+    })
+    window.location.reload();
+}
 }

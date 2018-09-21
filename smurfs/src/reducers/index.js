@@ -23,7 +23,7 @@
 
   */
 
- import {FETCHED, FETCHING, ERROR, POSTING, POSTED} from '../actions/index';
+ import {FETCHED, FETCHING, ERROR, POSTING, POSTED, DELETING, DELETED} from '../actions/index';
 
  const initialState = {
      smurfs: [],
@@ -60,6 +60,12 @@
                  fet: false,
                  error: "Data fetch failed"
              })
+
+        case DELETING:
+             return Object.assign({}, state, {deletingSmurf: true, smurfDeleted: false})
+
+        case DELETED:
+             return Object.assign({}, state, {deletingSmurf: true, smurfDeleted: true})
              
          default:
              return state;

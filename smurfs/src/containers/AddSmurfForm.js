@@ -50,7 +50,7 @@ class AddSmurfForm extends React.Component {
 
         let newSmurf = {
             name: currentState.name,
-            age: currentState.age,
+            age: Number(currentState.age),
             height: currentState.height
         }
         
