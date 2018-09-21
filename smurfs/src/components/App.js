@@ -4,6 +4,10 @@ import {getSmurfs} from '../actions';
 import {connect} from 'react-redux';
 import SmurfList from '../components/SmurfList';
 import AddSmurfForm from './AddSmurfForm';
+import {Route, Link} from 'react-router-dom';
+import {withRouter} from 'react-router';
+
+
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -17,8 +21,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AddSmurfForm />
-        <SmurfList smurfs={this.props.smurfs} />
+        <Route exact path="/newSmurf" component={AddSmurfForm} />
+        <Link to="/newSmurf">Add New Smurf</Link>
+        <Route exact path="/" render={() => <SmurfList smurfs={this.props.smurfs} />} />
       </div>
     );
   }
@@ -37,4 +42,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {getSmurfs})(App);
+export default withRouter(connect(mapStateToProps, {getSmurfs})(App));

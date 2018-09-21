@@ -6,7 +6,7 @@ class AddSmurfForm extends React.Component {
   state = {
     name: '',
     age: '',
-    height: ''
+    height: '',
   }
   onChangeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value});
