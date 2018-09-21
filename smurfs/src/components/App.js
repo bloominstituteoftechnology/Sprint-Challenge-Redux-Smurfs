@@ -64,7 +64,13 @@ class App extends Component {
       if(this.state.tmpSmurf.id === -1) {
         this.props.postSmurf({name: this.state.tmpSmurf.name, age: this.state.tmpSmurf.age, height: this.state.tmpSmurf.height});
       } else {
-        this.props.putSmurf(this.state.tmpSmurf);
+        const smurfCheck = this.props.smurfsList.find( (smurf) => smurf.id === this.state.tmpSmurf.id);
+        const tmpSmurf = this.state.tmpSmurf;
+        if(smurfCheck.name !== tmpSmurf.name || smurfCheck.age !== tmpSmurf.age || smurfCheck.height !== tmpSmurf.height) {
+          this.props.putSmurf(this.state.tmpSmurf)
+        } else {
+          this.resetCompState();
+        };
       }
       this.resetCompState();
     }
