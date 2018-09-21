@@ -61,8 +61,7 @@ class App extends Component {
               handleInput={this.handleInput}
               handleAdd={this.handleAdd}
             />
-            <SmurfList
-              smurfs={this.props.smurfs}
+            <SmurfList smurfs={this.props.smurfs}
             />
             
           </React.Fragment>

@@ -8,10 +8,10 @@ const Smurf = (props) => {
         {props.smurf.name}
       </h1>
       <p>
-      {props.smurf.age}
+        {props.smurf.age}
       </p>
       <p>
-      {props.smurf.height}
+        {props.smurf.height}
       </p>
     </div>
   );
