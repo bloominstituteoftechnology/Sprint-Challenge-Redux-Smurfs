@@ -8,7 +8,9 @@ import {
   FETCHING_SMURFS_FAILURE,
   POSTING_SMURF,
   POSTING_SMURF_SUCCESSFUL,
-  POSTING_SMURF_FAILURE
+  POSTING_SMURF_FAILURE,
+  DELETING_SMURF_SUCCESSFUL,
+  DELETING_SMURF_FAILURE,
 } from '../actions';
 
 let id = 1;
@@ -38,8 +40,13 @@ export default (state = initialState, action) => {
     case POSTING_SMURF:
       return Object.assign({}, state, {addingSmurf: true});
     case POSTING_SMURF_SUCCESSFUL:
+      action.payload.id = newId();
       return Object.assign({}, state, {smurfs: [...state.smurfs, action.payload]});
     case POSTING_SMURF_FAILURE:
+      return Object.assign({}, state, {error: action.payload});
+    case DELETING_SMURF_SUCCESSFUL:
+      return Object.assign({}, state, {smurfs: action.payload});
+    case DELETING_SMURF_FAILURE:
       return Object.assign({}, state, {error: action.payload});
     default:
       return state;
