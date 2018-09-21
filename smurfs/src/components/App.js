@@ -17,7 +17,14 @@ class App extends Component {
       <div className="App">
         <ul>
           {this.props.smurfs.map(smurf => {
-            return <Smurf className={smurf.name} name={smurf.name} />;
+            return (
+              <Smurf
+                className={smurf.name}
+                name={smurf.name}
+                age={smurf.age}
+                height={smurf.height}
+              />
+            );
           })}
         </ul>
         <SmurfForm />
