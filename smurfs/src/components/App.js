@@ -50,14 +50,14 @@ class App extends Component {
     if (this.props.fetchingSmurfs) return <h2>Loading Data...</h2>;
     return (
       <div className="App">
-        <SmurfList
-          smurfs={this.props.smurfs}
-          deleteSmurf={this.props.deleteSmurf}
-        />
         <AddSmurfForm
           smurfFormInputs={this.state.smurfFormInputs}
           handleInput={this.handleInput}
           handleAddSmurf={this.handleAddSmurf}
+        />
+        <SmurfList
+          smurfs={this.props.smurfs}
+          deleteSmurf={this.props.deleteSmurf}
         />
       </div>
     );

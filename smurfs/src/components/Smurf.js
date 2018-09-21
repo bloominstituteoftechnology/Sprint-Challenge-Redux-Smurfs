@@ -1,7 +1,8 @@
 import React from 'react';
+import EditSmurfForm from './EditSmurfForm';
 
 const Smurf = (props) => {
-  // console.log(props);
+  console.log(props);
   return (
     <div>
       <h2>{props.smurf.name}</h2>
@@ -10,6 +11,7 @@ const Smurf = (props) => {
       <button onClick={() => props.deleteSmurf(props.smurf.id)}>
         Delete Smurf
       </button>
+      <EditSmurfForm smurf={props.smurf} />
     </div>
   );
 };

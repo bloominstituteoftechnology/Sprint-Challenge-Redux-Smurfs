@@ -11,6 +11,9 @@ import {
   DELETING_SMURF,
   DELETED_SMURF,
   DELETE_ERROR,
+  EDITING_SMURF,
+  EDITED_SMURF,
+  EDIT_ERROR,
 } from '../actions';
 
 /*
