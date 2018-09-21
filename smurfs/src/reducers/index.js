@@ -34,29 +34,29 @@ const initialState =  {
 
 export const rootReducer = (state = initialState, action) => {
   switch(action.type) {
-    case "FETCH_SMURFS":
+    case FETCH_SMURFS:
       return {
         ...state,
         smurfs: action.payload,
         fetchingSmurfs: false
       }
-    case "FETCHING_SMURFS":
+    case FETCHING_SMURFS:
       return {
         ...state,
         fetchingSmurfs: true
       }
-    case "ADD_SMURF":
+    case ADD_SMURF:
       return {
         ...state,
         smurfs: action.payload,
         addingSmurf: false
       }
-    case "ADDING_SMURF":
+    case ADDING_SMURF:
       return {
         ...state,
         addingSmurf: true
       }
-    case "ERROR":
+    case ERROR:
       return {
         ...state,
         fetchingSmurfs: false,
