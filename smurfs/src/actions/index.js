@@ -60,20 +60,3 @@ export const addSmurf = (newSmurf) => {
       });
   };
 };
-
-
-//Smurf update stuff below:
-
-// export const updateForm = (friend) => {
-//   return (dispatch) => {
-//     //Action indicates that it wants the update form displayed, and the associated data here is the friend obect you're about to update
-//     dispatch({ type: DISPLAY_UPDATE_FORM, payload: friend });
-//   };
-// };
-
-// export const updateFriend = (updatedFriend) => {
-//   return (dispatch) => {
-//     dispatch({ type: UPDATING_FRIEND });
-//     axios.put('http://localhost:5000/api/friends');
-//   };
-// };

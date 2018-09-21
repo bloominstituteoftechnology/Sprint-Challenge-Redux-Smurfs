@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 // import './styles/App.css';
-import { fetchData, addSmurf} from './';
+import { fetchData, addSmurf} from './actions';
 import SmurfList from './components/SmurfList';
 import SmurfForm from './components/SmurfForm';
 
@@ -61,4 +61,22 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    //Basically maps actions and reducers to the state
+    fetchingData: state.smurfsReducer.fetchingData,
+    dataFetched: state.smurfsReducer.dataFetched,
+    addingSmurf: state.smurfsReducer.addingSmurf,
+    updatingSmurf: state.smurfsReducer.updatingSmurf,
+    smurfs: state.smurfsReducer.smurfs,
+    error: state.smurfsReducer.error,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    fetchData,
+    addSmurf,
+  }
+)(App);

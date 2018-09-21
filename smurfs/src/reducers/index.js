@@ -8,11 +8,8 @@ import {
   INITIALIZE_SMURF_ADD,
   COMPLETE_SMURF_ADD,
   ADD_SMURF_ERROR,
-  DISPLAY_UPDATE_FORM,
-  UPDATING_SMURF,
-  UPDATED_SMURF,
-  UPDATE_ERROR,
 } from '../actions';
+
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -47,7 +44,7 @@ export const smurfsReducer = (state = initialState, action) => {
     case DATA_FETCHED:
       return {
         ...state,
-        friends: action.payload,
+        smurfs: action.payload,
         fetchingData: false,
         dataFetched: true,
         updatingSmurf: false,
@@ -74,20 +71,6 @@ export const smurfsReducer = (state = initialState, action) => {
         error: 'Error adding smurf',
         addingSmurf: false,
       };
-    // case DISPLAY_UPDATE_FORM:
-    //   return {
-    //     ...state,
-    //     friends: state.friends.filter(
-    //       (friend) => friend.id === action.payload.id
-    //     ),
-    //     updatingFriend: true,
-    //   };
-    // case UPDATING_FRIEND:
-    //   break;
-    // case UPDATED_FRIEND:
-    //   break;
-    // case UPDATE_ERROR:
-    //   break;
     default:
       return state;
   }
