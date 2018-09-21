@@ -47,7 +47,7 @@ class App extends Component {
         ) : (
           <React.Fragment>
             <SmurfList
-              smurfs={this.props.smurfss}
+              smurfs={this.props.smurfs}
             />
             <SmurfForm
               inputData={this.state.inputData}

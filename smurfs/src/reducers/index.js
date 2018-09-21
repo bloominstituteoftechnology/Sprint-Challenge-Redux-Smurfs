@@ -50,29 +50,29 @@ export const smurfsReducer = (state = initialState, action) => {
         friends: action.payload,
         fetchingData: false,
         dataFetched: true,
-        updatingFriend: false,
+        updatingSmurf: false,
       };
     case FETCH_ERROR:
       return {
         ...state,
         error: 'Error fetching data',
       };
-    case INITIALIZE_FRIEND_ADD:
+    case INITIALIZE_SMURF_ADD:
       return {
         ...state,
         addingFriend: true,
       };
-    case COMPLETE_FRIEND_ADD:
+    case COMPLETE_SMURF_ADD:
       return {
         ...state,
-        addingFriend: false,
-        friends: action.payload,
+        addingSmurf: false,
+        smurfs: action.payload,
       };
-    case ADD_FRIEND_ERROR:
+    case ADD_SMURF_ERROR:
       return {
         ...state,
-        error: 'Error adding friend',
-        addingFriend: false,
+        error: 'Error adding smurf',
+        addingSmurf: false,
       };
     // case DISPLAY_UPDATE_FORM:
     //   return {

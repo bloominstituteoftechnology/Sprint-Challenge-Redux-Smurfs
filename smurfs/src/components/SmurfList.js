@@ -11,7 +11,7 @@ const SmurfList = (props) => {
             Smurf={smurf}
             //Below, you're setting a prop of the Friend component for updateForm. This allows the click handler to know which updateForm is associated with which friend, based on which friend you click. Otherwise, it wouldn't know which friend object to update.
             // updateForm={props.updateForm}
-            key={friend.id}
+            key={smurf.id}
           />
         );
       })}

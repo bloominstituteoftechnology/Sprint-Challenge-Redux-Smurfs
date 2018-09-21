@@ -56,7 +56,7 @@ export const addSmurf = (newSmurf) => {
       })
       .catch((err) => {
         console.log(err);
-        dispatch({ type: ADD_FRIEND_ERROR });
+        dispatch({ type: ADD_SMURF_ERROR });
       });
   };
 };
