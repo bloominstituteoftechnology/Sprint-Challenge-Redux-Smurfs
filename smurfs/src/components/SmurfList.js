@@ -7,6 +7,7 @@ export default function SmurfList(props){
                 return(
                     <li key={index}>
                         {smurf.name} age:{smurf.age} height:{smurf.height}
+                        <button type='submit' onClick={props.deleteSmurf}>Delete</button>
                     </li>
                 )
             })}

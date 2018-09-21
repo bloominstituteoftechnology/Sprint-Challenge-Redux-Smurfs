@@ -33,13 +33,7 @@ const initialState = {
 const charsReducer = (state = initialState, action) =>{
   switch(action.type){
     case FETCHING:
-      return{
-        ...state,
-        fetchingSmurfs:true,
-        addingSmurf: false,
-        updatingSmurf: false,
-        deletingSmurf: false
-      }
+      return{...state, fetchingSmurfs:true}
     case FETCHED:
       return{
         ...state,
@@ -50,34 +44,16 @@ const charsReducer = (state = initialState, action) =>{
         deletingSmurf: false,
       }
     case ADDING:
-      return{
-        ...state, 
-        fetchingSmurfs:false, 
-        addingSmurf:true,
-        updatingSmurf: false,
-        deletingSmurf: false,
-      }
+      return{...state, addingSmurf:true}
     case UPDATING:
-      return{
-        ...state, 
-        fetchingSmurfs:false, 
-        addingSmurf:false, 
-        updatingSmurf: true, 
-        deletingSmurf: false
-      }
+      return{...state, updatingSmurf: true}
     case DELETING:
-      return{
-        ...state, 
-        fetchingSmurfs:false, 
-        addingSmurf:false, 
-        updatingSmurf: false, 
-        deletingSmurf: true
-      }
+      return{...state, updatingSmurf: false}
     case ERROR:
       return{
         ...state, 
-        fetchingSmurfs:false, 
-        addingSmurf:false, 
+        fetchingSmurfs: false, 
+        addingSmurf: false, 
         updatingSmurf: false, 
         deletingSmurf: false
       }
