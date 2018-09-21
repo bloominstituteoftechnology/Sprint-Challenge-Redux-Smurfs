@@ -9,8 +9,8 @@ class Smurfs extends Component {
                     return (
                         <div className="smurf" key={smurf.name}>
                             <p className="names">{smurf.name}</p>
-                            Age: {smurf.age} <br></br>
-                            Height: {smurf.height}
+                            Age: {smurf.age}  years old<br></br>
+                            Height: {smurf.height}cm tall
                         </div>
                     );
                 })}

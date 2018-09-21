@@ -33,7 +33,7 @@ export const smurfsReducer = (state = initialState, action) => {
    case ADDING:
       return Object.assign({}, state, {
         addingSmurf: true,
-      });
+    });
       
 
     case ADDED:
