@@ -48,7 +48,7 @@ export const smurfsReducer = (state = initialState, action) => {
       });
     case SMURF_FETCH_ERROR:
       return Object.assign({}, state, {
-        fetchingFriends: false, //we're also no longer fetching here so set the boolean to false
+        fetchingSmurfs: false, //we're also no longer fetching here so set the boolean to false
         error: "Error occured fetching Smurfs" // now we're getting an error back, set the error message
       });
     case ADD_SMURF_START:

@@ -39,6 +39,8 @@ class App extends Component {
   };
 
   render() {
+    console.log('App.js')
+    console.log(this.props)
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -73,9 +75,10 @@ class App extends Component {
 // the smurfs and the fetching boolean
 const mapDispatchToProps = state => {
   return {
-    smurfs: state.smurfsReducer.smurfs,
-    fetchingSmurfs: state.smurfsReducer.fetchingSmurfs,
-    error: state.smurfsReducer.error
+    state,
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs,
+    error: state.error
   };
 };
 
