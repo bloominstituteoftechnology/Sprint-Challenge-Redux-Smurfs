@@ -1,4 +1,4 @@
-import { FETCHING_SMURF, SMURF_FETCHED, FETCHING_ERROR, ADDING_SMURF, SMURF_ADDED } from '../actions';
+import { FETCHING_SMURFS, SMURF_FETCHED, FETCHING_ERROR, ADDING_SMURF, SMURF_ADDED } from '../actions';
 
 const initialState = {
   fetchingSmurfs: false,
