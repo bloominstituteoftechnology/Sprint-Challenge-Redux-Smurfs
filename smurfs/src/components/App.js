@@ -53,7 +53,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className = 'App'>
+			<div className = 'App fade-in'>
 				<h1>Welcome to Smurf Village!</h1>
 				
 				<button className = 'toggle-add-smurf-btn' onClick = { this.toggleAddSmurf }>{ this.state.buttonText }</button>
@@ -63,7 +63,7 @@ class App extends Component {
 				{ this.props.putSmurfErrorMsg && <p>PUT '/smurfs' { this.props.putSmurfErrorMsg }</p> }
 				{ this.props.deleteSmurfErrorMsg && <p>DELETE '/smurfs' { this.props.deleteSmurfErrorMsg }</p> }
 
-				{ this.state.addSmurf ? <AddSmurfForm postSmurf = { this.postSmurf } /> : this.props.getSmurfsMsg ? <p>{ this.props.getSmurfsMsg }</p> : this.props.smurfs.map((smurf, i) => <Smurf key = { i } smurf = { smurf } putSmurf = { this.putSmurf } deleteSmurf = { this.props.deleteSmurf } />)}
+				{ this.state.addSmurf ? <AddSmurfForm postSmurf = { this.postSmurf } /> : this.props.getSmurfsMsg ? <p>{ this.props.getSmurfsMsg }</p> : <div className = 'smurfs-container'><div className = 'smurfs'> { this.props.smurfs.map((smurf, i) => <Smurf key = { i } smurf = { smurf } putSmurf = { this.putSmurf } deleteSmurf = { this.props.deleteSmurf } />) }</div></div> }
 			</div>
 		);
 	}

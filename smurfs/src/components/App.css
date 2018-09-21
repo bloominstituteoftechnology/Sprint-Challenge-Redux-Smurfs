@@ -14,3 +14,28 @@
 	color: blue;
 	cursor: pointer;
 }
+.App .smurfs-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.App .smurfs-container .smurfs {
+	width: max-content;
+}
+
+
+/* Animations */
+
+@keyframes fade-in-anim {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+.fade-in {
+	animation-name: fade-in-anim;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}

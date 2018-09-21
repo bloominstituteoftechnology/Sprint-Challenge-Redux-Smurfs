@@ -41,7 +41,7 @@ export default class EditSmurfForm extends React.Component {
 
 	render() {
 		return(
-			<form onSubmit = { this.handleSubmit }>
+			<form className = 'fade-in' onSubmit = { this.handleSubmit }>
 				Name:
 				<input 
 					name = 'name' 

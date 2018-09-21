@@ -34,7 +34,7 @@ class Smurf extends React.Component {
 
 	render() {
 		return(
-			<div className = 'smurf-container'>
+			<div className = 'smurf-container fade-in'>
 				<div className = 'smurf-div'>
 					<p>Name: { this.state.name }</p>
 					<p>Age: { this.state.age }</p>

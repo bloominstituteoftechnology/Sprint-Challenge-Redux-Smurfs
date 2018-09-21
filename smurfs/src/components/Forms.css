@@ -28,3 +28,17 @@ form button:hover {
 	color: green;
 	cursor: pointer;
 }
+
+
+/* Animations */
+
+@keyframes fade-in-anim {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+.fade-in {
+	animation-name: fade-in-anim;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}
