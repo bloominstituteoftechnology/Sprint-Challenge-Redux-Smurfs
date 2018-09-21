@@ -1,8 +1,54 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
 
+export const FETCHING_SMURFS = 'FETCHING_SMURFS'
+  export const SMURFS_FETCHED = 'SMURFS_FETCHED'
+  export const SMURFS_SAVED = 'SMURFS_SAVED'
+  export const SAVING_SMURFS = 'SAVING_SMURFS'
+  export const UPDATING_SMURF = 'UPDATING_SMURF'
+  export const SMURF_UPDATED = 'SMURF_UPDATED'
+  export const DELETING_SMURF = 'DELETING_SMURF'
+  export const SMURF_DELETED = 'SMURF_DELETED'
+  export const SMURFS = 'SMURFS'
+  export const ERROR = 'ERROR'
+
+export const fetchSmurfs = () => {
+  return dispatch => {
+    dispatch({type: FETCHING_SMURFS})
+    axios
+      .get('http://localhost:3333/smurfs/')
+      .then(response => { dispatch({type: SMURFS_FETCHED, payload: response.data}) })
+      .catch(error => {
+        dispatch({type: ERROR, payload: 'Houston, we have a problem', error})
+      })
+  }
+}
+
+export const saveSmurf = (smurf) => {
+  return dispatch => {
+    dispatch({type: SAVING_SMURFS});
+    axios
+      .post('http://localhost:3333/smurfs', smurf)
+      .then(response => {dispatch({type: SMURFS_SAVED, payload:response.data}) })
+      .catch(error => {
+        dispatch({type: ERROR, payload: 'Houston, we have a problem', error})
+      })
+  }
+}
+
+export const deleteSmurf = (smurfId) => {
+  console.log('delete firing');
+  return dispatch => {
+    dispatch({type: DELETING_SMURF})
+    axios
+    .delete(`http://localhost:3333/smurfs/${smurfId}`)
+    .then(response =>{
+      dispatch({type: SMURF_DELETED, payload: response.data})
+    })
+    .catch(error => {
+      console.error('Wops! Mistake!', error)
+    })
+  }
+}
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
