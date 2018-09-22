@@ -6,9 +6,8 @@ import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
-import /* You need some sort of reducer */rootReducer from './reducers'
-
-const initialState = {}
+/* You need some sort of reducer */ 
+import rootReducer from './reducers'
 
 const allMiddlewares = compose(
   applyMiddleware(thunk, logger),
@@ -17,7 +16,6 @@ const allMiddlewares = compose(
 
 const store = createStore(
   rootReducer,
-  initialState,
   allMiddlewares,
   // () => {}, // this is the most basic reducer. A function that returns and object. Replace it.
   // applyMiddleware(/* be sure to throw in the proper middlewares here*/)

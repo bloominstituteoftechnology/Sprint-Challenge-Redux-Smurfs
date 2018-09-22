@@ -18,11 +18,6 @@ import axios from 'axios'
 export const ADD_SMURF = 'ADD_SMURF'
 export const ADDING_SMURF = 'ADDING_SMURF'
 export const ADDING_COMPLETE = 'ADDING_COMPLETE'
-
-export const GET_SMURFS = 'GET_SMURFS'
-export const FETCHING_SMURFS = 'FETCHING_SMURFS'
-export const FETCHING_COMPLETE = 'FETCHING_COMPLETE'
-
 export const addSmurf = (newSmurf) => (dispatch) => {
   dispatch({ type: ADDING_SMURF })
   axios
@@ -32,27 +27,29 @@ export const addSmurf = (newSmurf) => (dispatch) => {
     .catch(err => console.log(err))
 }
 
+export const GETTING_SMURFS = 'GETTING_SMURFS'
+export const GETTING_SMURFS_SUCCESS = 'GETTING_SMURFS_SUCCESS'
+export const GETTING_SMURFS_FAILURE = 'GETTING_SMURFS_FAILURE'
 export const getSmurfs = () => (dispatch) => {
-  dispatch({ type: FETCHING_SMURFS })
+  dispatch({ type: GETTING_SMURFS })
   axios
     .get('http://localhost:3333/smurfs')
-    .then(res => dispatch({ type: GET_SMURFS, payload: res.data }))
-    .then(() => dispatch({ type: FETCHING_COMPLETE }))
-    .catch(err => console.log(err))
+    .then(res => dispatch({ type: GETTING_SMURFS_SUCCESS, payload: res.data }))
+    .catch((err) => dispatch({ type: GETTING_SMURFS_FAILURE , payload: err }))
 }
 
-// export const UPDATE_SMURF = 'UPDATE_SMURF'
-// export const UPDATING_SMURF = 'UPDATING_SMURF'
-// export const UPDATING_COMPLETE = 'UPDATING_COMPLETE'
-// export const updateSmurf = () => (dispatch) => {}
+export const UPDATE_SMURF = 'UPDATE_SMURF'
+export const UPDATING_SMURF = 'UPDATING_SMURF'
+export const UPDATING_COMPLETE = 'UPDATING_COMPLETE'
+export const updateSmurf = () => (dispatch) => {}
 
-// export const DELETE_SMURF = 'DELETE_SMURF'
-// export const DELETING_SMURF = 'DELETING_SMURF'
-// export const DELETING_COMPLETE = 'DELETING_COMPLETE'
-// export const deleteSmurf = () => (dispatch) => {}
+export const DELETE_SMURF = 'DELETE_SMURF'
+export const DELETING_SMURF = 'DELETING_SMURF'
+export const DELETING_COMPLETE = 'DELETING_COMPLETE'
+export const deleteSmurf = () => (dispatch) => {}
 
-// export const ERROR_HANDLE = 'ERROR_HANDLE'
-// export const errorHandle = () => (dispatch) => {}
+export const ERROR_HANDLE = 'ERROR_HANDLE'
+export const errorHandle = () => (dispatch) => {}
 
 
 

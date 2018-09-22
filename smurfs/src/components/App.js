@@ -21,7 +21,8 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
-        { this.props.fetchingSmurfs ? <h2>Loading...</h2> : <Smurfs smurfs={this.props.smurfs} /> }
+        { this.props.fetchingSmurfs ? <h2>Loading...</h2> : null }
+        { !this.props.fetchingSmurfs && this.props.smurfs.length ? <Smurfs smurfs={this.props.smurfs} /> : null }
         <AddSmurfForm addSmurf={this.props.addSmurf}/>
       </div>
     )

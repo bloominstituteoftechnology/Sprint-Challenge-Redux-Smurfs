@@ -5,18 +5,15 @@ class Smurfs extends Component {
     return (
       <div>
         <h2>Smurfs Component</h2>
-        { 
-          this.props.smurfs ? (
-            this.props.smurfs.map(smurf => {
-              return (
-                <div key={smurf.name}>
-                  <h3>Name: {smurf.name}</h3>
-                  <p>{smurf.age}</p>
-                  <p>{smurf.height}</p>
-                </div>
-              )
-            })
-          ) :  null
+        { this.props.smurfs.map(smurf => {
+            return (
+              <div key={smurf.name}>
+                <h3>Name: {smurf.name}</h3>
+                <p>{smurf.age}</p>
+                <p>{smurf.height}</p>
+              </div>
+            )
+          })
         }
       </div>
     )
