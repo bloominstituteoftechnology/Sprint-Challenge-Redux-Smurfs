@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class SmurfForm extends Component {
+class SmurfForm extends Component {
   constructor(props) {
     super(props);
 
@@ -84,4 +84,4 @@ export default class SmurfForm extends Component {
 // }
   
 
-// export default SmurfForm;
+export default SmurfForm;
