@@ -4,7 +4,7 @@ const initialState =  {
   smurfs: [],
   fetchingSmurfs: false,
   addingSmurf: false,
-  // updatingSmurf: false,
+  updatingSmurf: false,
   deletingSmurf: false,
   error: null
 }
