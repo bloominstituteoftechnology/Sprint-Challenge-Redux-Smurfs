@@ -33,7 +33,8 @@ export const GETTING_SMURFS_FAILURE = 'GETTING_SMURFS_FAILURE'
 export const getSmurfs = () => (dispatch) => {
   dispatch({ type: GETTING_SMURFS })
   axios
-    .get('http://localhost:3333/smurfs')
+    // .get('http://localhost:3333/smurfs')
+    .get('http://localhost:3333/smurfsapi')
     .then(res => dispatch({ type: GETTING_SMURFS_SUCCESS, payload: res.data }))
     .catch((err) => dispatch({ type: GETTING_SMURFS_FAILURE , payload: err }))
 }
