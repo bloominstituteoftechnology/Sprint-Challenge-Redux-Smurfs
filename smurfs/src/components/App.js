@@ -23,14 +23,14 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         { this.props.fetchingSmurfs ? <h2>Loading...</h2> : null }
         { !this.props.fetchingSmurfs && this.props.smurfs.length ? <Smurfs smurfs={this.props.smurfs} /> : null }
-        { this.props.error ? alert(`We tried retrieving the smurfs but got an error: \n${this.props.error}`) : null }
+        { this.props.error ? alert(this.props.error) : null }
         <AddSmurfForm addSmurf={this.props.addSmurf}/>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state, action) => ({
+const mapStateToProps = (state) => ({
   smurfs: state.smurfs,
   fetchingSmurfs: state.fetchingSmurfs,
   addingSmurf: state.addingSmurf,

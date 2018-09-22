@@ -20,9 +20,9 @@
   Components can then read your store as, `state` and not `state.footReducer`.
 */
 import {
-  ADD_SMURF,
   ADDING_SMURF,
-  ADDING_COMPLETE,
+  ADDING_SMURF_SUCCESS,
+  ADDING_SMURF_FAILURE,
   
   GETTING_SMURFS,
   GETTING_SMURFS_SUCCESS,
@@ -50,19 +50,21 @@ const initialState =  {
 
 export default function (state = initialState, action) {
   switch(action.type) {
-    case ADD_SMURF:
-      return { ...state, smurfs: action.payload }
     case ADDING_SMURF:
       return { ...state, addingSmurf: true }
-    case ADDING_COMPLETE:
-      return { ...state, addingSmurf: false }
+    case ADDING_SMURF_SUCCESS:
+      return { ...state, smurfs: action.payload, addingSmurf: false}
+    case ADDING_SMURF_FAILURE:
+    const ADDING_SMURF_ERROR = `Smurf Creation Error: \n${action.payload}` 
+      return { ...state, error: ADDING_SMURF_ERROR }
 
     case GETTING_SMURFS:
         return { ...state, fetchingSmurfs: true }
     case GETTING_SMURFS_SUCCESS:
       return { ...state, smurfs: action.payload, fetchingSmurfs: false }
     case GETTING_SMURFS_FAILURE:
-      return { ...state, error: action.payload }
+      const GETTING_SMURFS_ERROR = `API Retrieval Error: \n${action.payload}`
+      return { ...state, error: GETTING_SMURFS_ERROR }
 
     case UPDATE_SMURF:
       return {}
