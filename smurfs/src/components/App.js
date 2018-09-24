@@ -36,9 +36,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  smurfs: state.smurfReducer.smurfs,
-  fetching: state.smurfReducer.fetching,
-  error: state.smurfReducer.error
+  smurfs: state.smurfs,
+  fetching: state.fetching,
+  error: state.error
 });
 
 export default connect(
