@@ -1,8 +1,14 @@
-import { FETCHING_SMURFS, SMURFS_FETCHING_SUCCESS, SMURFS_FETCHING_ERROR, addSmurf } from '../actions';
+import { FETCHING_SMURFS, SMURFS_FETCHING_SUCCESS, SMURFS_FETCHING_ERROR } from '../actions';
 
 
 const initialState = {
-  smurfs: [], fetchingSmurfs: false, error: null, fetched: false, addingSmurf: false
+  smurfs: [], 
+  fetchingSmurfs: false,
+  error: null, 
+  fetched: false,
+  addingSmurf: false,
+  // updatingSmurf: false,
+  // deletingSmurf: false
 };
 
 const smurfsReducer = (state = initialState, action) => {
