@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {getSmurf} from '../actions/index';
+import {getSmurf, createSmurf} from '../actions/index';
 import AddSmurf from './AddSmurf';
 import './App.css';
 /*
@@ -27,7 +27,7 @@ class App extends Component {
           </div>
           )}
         </div>
-        {/* <AddSmurf smurf = {this.props.smurf} /> */}
+        {/* <AddSmurf addsmurf = {this.props.createSmurf} /> */}
       </div>
     );
   }
@@ -40,4 +40,6 @@ const mapStateToProps = state => {
     fetchingSmurfs: state.fetchingSmurfs
   };
 };
-export default connect(mapStateToProps, {getSmurf})(App);
+
+
+export default connect(mapStateToProps, {getSmurf, createSmurf})(App);
