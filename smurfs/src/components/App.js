@@ -20,9 +20,14 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+
+        {this.props.gettingSmurfs ? <h2>Loading...</h2> : null}
+        {!this.props.gettingSmurfs && this.props.smurfs.length ? (
+          <Smurfs smurfs={this.props.smurfs} />
+        ) : null}
+        {this.props.error ? alert(this.props.error) : null}
+        <br />
+        <SmurfForm addSmurf={this.props.addSmurf} />
       </div>
     );
   }
@@ -31,11 +36,9 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   smurfs: state.smurfs,
-  fetchingSmurfs: state.fetchingSmurfs,
+  gettingSmurfs: state.gettingSmurfs,
   addingSmurf: state.addingSmurf,
-  updatingSmurf: state.updatingSmurf,
-  deletingSmurf: state.deletingSmurf,
-  error: state.error
+  
 });
 
 
