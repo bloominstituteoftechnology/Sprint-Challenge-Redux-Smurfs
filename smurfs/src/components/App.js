@@ -29,6 +29,21 @@ class App extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  handleAddSmurfChange = event => {
+    event.preventDefault();
+    const newSmurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height,
+    };
+    this.props.addSmurf(newSmurf);
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -38,6 +53,7 @@ class App extends Component {
         <SmurfForm 
           state={this.state}
           handleInput={this.handleInputChange}
+          handleAddSmurf={this.handleAddSmurfChange}
         />
       </div>
     );
