@@ -5,8 +5,8 @@ import axios from 'axios';
 */
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const FETCHED_SMURFS = 'FETCHED_SMURFS';
-export const ADDING_SMURFS = 'ADDING_SMURFS';
-export const ADDED_SMURFS = 'ADDED_SMURFS';
+export const ADDING_SMURF = 'ADDING_SMURF';
+export const ADDED_SMURF = 'ADDED_SMURF';
 export const ERROR = 'ERROR';
 
 /*
@@ -32,3 +32,4 @@ export const getSmurfs = () => {
       });
   };
 };
+
