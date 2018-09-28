@@ -26,3 +26,15 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.smurfContainer{
+  border: 1px solid black;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+.smurfContainer li{
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-decoration: none;
+  list-style-type: none;
+}

@@ -13,7 +13,7 @@ class App extends Component {
 
 state = {
   name: '',
-  age: '',
+  age: Number(''),
   height: ''
 }
 
@@ -47,7 +47,14 @@ addSmurf = () => {
       </div>
       <ul>
         {this.props.smurfs.map(smurf => {
-                  return <li key={smurf.name}>{smurf.name}</li>;
+                  return (
+                    <div className='smurfContainer'>
+                      <li key={smurf.id}>{smurf.name}</li>
+                      <li> {smurf.age}</li>
+                      <li> {smurf.height}</li>
+                    </div>
+
+                  );
                 })}
 
       </ul>
@@ -74,7 +81,7 @@ addSmurf = () => {
           value={this.state.height}
           name="height"
           type="text"
-          placeholder="height"
+          placeholder="Height"
           onChange={this.handleInputChange}
         />
         <button onClick={() => this.addSmurf()} type="button">

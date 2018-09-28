@@ -32,7 +32,7 @@ export const smurfReducer = (state = initialState, action) => {
     case CREATEING_SMURF:
     return {...state, addingSmurf:true};
     case CREATE_SMURF:
-    return {...state, smurfs:action.payload, addingSmurf:false}
+    return {...state, smurfs: action.payload, addingSmurf:false}
     case ERROR:
     return {
       ...state,
@@ -43,7 +43,7 @@ export const smurfReducer = (state = initialState, action) => {
         error: action.payload
     };
     default:
-  return state
+  return state;
   }
 }
 
