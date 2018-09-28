@@ -5,6 +5,7 @@
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
+   
    smurfs: [],
    fetchingSmurfs: false
    addingSmurf: false
@@ -13,6 +14,15 @@
    error: null
  }
 */
+
+const initialState = {
+  smurfs: [],
+  fetchingSmurfs: false
+  addingSmurf: false
+  updatingSmurf: false
+  deletingSmurf: false
+  error: null
+}
 
 /*
   You'll only need one smurf reducer for this project.
