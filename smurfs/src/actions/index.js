@@ -1,7 +1,12 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+
+
+export const GETTING_SMURFS = 'GETTING_SMURFS'
+export const GETTING_SMURFS_SUCCESS = 'GETTING_SMURFS_SUCCESS'
+export const GETTING_SMURFS_FAILURE = 'GETTING_SMURFS_FAILURE'
+
+export const ADDING_SMURF = 'ADD_SMURF'
+export const ADDING_SMURF_SUCCESS = 'ADDING_SMURF'
+export const ADDING_SMURF_FAILURE = 'ADDING_COMPLETE'
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
