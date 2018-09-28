@@ -22,7 +22,7 @@ const Smurfs = props => {
 
 const mapStateToProps = state => {
   return {
-    smurfs: state.smufs
+    smurfs: state.smurfs
   };
 }
 
