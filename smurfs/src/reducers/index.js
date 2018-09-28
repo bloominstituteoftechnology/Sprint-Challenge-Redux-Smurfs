@@ -17,14 +17,14 @@ import { GETTING_SMURF, SMURFS_RECEIVED, ERROR, CREATING_SMURF, CREATED_SMURF } 
 
 const intitialState =  {
   smurfs: [],
-  fetchingSmurfs: false
-  addingSmurf: false
-  updatingSmurf: false
-  deletingSmurf: false
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
   error: null
 }
 
-export default (state = intitialState, action) {
+export default (state = intitialState, action) => {
   switch(action.type) {
     case GETTING_SMURF:
       return { ...state, fetchingSmurfs: true };
