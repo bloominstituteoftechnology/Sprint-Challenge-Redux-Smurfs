@@ -15,11 +15,11 @@
 */
 import axios from 'axios';
 
-export const FETCHING_SMURFS = 'FETCHING_SMUFS';
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const FETCHED_SMURFS = 'FETCHED_SMURFS';
 export const NO_SMURFS_FETCHED = 'NO_SUMRFS_FETCHED';
 
-export const ADDING_SUMRFS = 'ADDING_SMURFS';
+export const ADDING_SMURFS = 'ADDING_SMURFS';
 export const ADDED_SMURFS = 'ADDED_SMURFS';
 export const NO_SMURFS_ADDED = 'NO_SMURFS_ADDED';
 
@@ -37,7 +37,7 @@ export const getSmurfs = () => dispatch => {
 };
 
 export const addNewSmurf = smurf => dispatch => {
-  dispatch({ type: ADDING_SUMRFS });
+  dispatch({ type: ADDING_SMURFS });
   axios.post('/smurfs', smurf)
     .then(response => {
       dispatch({ type: ADDED_SMURFS, payload: response.data });

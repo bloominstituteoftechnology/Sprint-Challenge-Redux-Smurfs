@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getSmurfs } from '../actions';
 import SmurfList from '../components/SmurfList.js';
 
-class SmurfListView extends React.Components {
+class SmurfListView extends React.Component {
     componentDidMount() {
         this.props.getSmurfs();
     }

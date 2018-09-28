@@ -7,7 +7,7 @@ function SmurfForm(props) {
     return (
         <Fragment>
             <form>
-                <div className="smufBoxes">
+                <div className="smurfBoxes">
                     <input
                         type="text"
                         value={props.smurf.name}
@@ -16,7 +16,7 @@ function SmurfForm(props) {
                         placeholder="smurfs name..."
                     />
                 </div>
-                <div className="smufBoxes">
+                <div className="smurfBoxes">
                     <input
                         type="text"
                         value={props.smurf.age}
@@ -25,7 +25,7 @@ function SmurfForm(props) {
                         placeholder="smurfs age..."
                     />
                 </div>
-                <div className="smufBoxes">
+                <div className="smurfBoxes">
                     <input
                         type="text"
                         value={props.smurf.height}

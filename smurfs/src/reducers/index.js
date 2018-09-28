@@ -26,7 +26,7 @@ import {
   FETCHING_SMURFS,
   FETCHED_SMURFS,
   NO_SMURFS_FETCHED,
-  ADDING_SUMRFS,
+  ADDING_SMURFS,
   ADDED_SMURFS,
   NO_SMURFS_ADDED
 } from '../actions';
@@ -47,7 +47,7 @@ export const smurfReducer = (state = initialState, action) => {
     case NO_SMURFS_FETCHED:
       console.log(action.payload);
       return { ...state, getSmurfs: false, error: action.payload};
-    case ADDING_SUMRFS:
+    case ADDING_SMURFS:
       return { ...state, addNewSmurf: true };
     case ADDED_SMURFS:
       return { ...state, addNewSmurf: false, smurfs: action.payload};

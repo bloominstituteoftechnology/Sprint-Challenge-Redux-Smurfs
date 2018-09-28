@@ -1,13 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addNewSmurf } from '../actions';
-import SmurfForm from '../components/SmufForm.js';
-
-// const blankSmurfForm = {
-//     name: '',
-//     age: '',
-//     height: '',
-// }
+import SmurfForm from '../components/SmurfForm';
 
 class SmurfFormView extends React.Component {
     state = {
