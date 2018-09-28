@@ -25,7 +25,7 @@ export function getSmurfs() {
     axios
       .get(`http://localhost:3333/smurfs`)
         .then(res => {
-          console.log(res.data);
+          console.log('received smurf', res.data);
           dispatch({ type: SMURFS_RECEIVED, payload: res.data })
         })
           .catch(err => {
@@ -39,7 +39,7 @@ export function addSmurf(smurf) {
   return function(dispatch) {
     dispatch({ type: CREATING_SMURF });
     axios
-      .post('`http://localhost:3333/smurfs`', smurf)
+      .post(`http://localhost:3333/smurfs`, smurf)
         .then(res => {
           dispatch({ type: CREATED_SMURF, payload: res.data })
         })

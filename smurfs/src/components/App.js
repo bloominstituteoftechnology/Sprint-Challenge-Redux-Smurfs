@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getSmurfs, addSmurf } from '../actions/index';
 
@@ -25,6 +25,11 @@ class App extends Component {
   }
 
   render() {
+
+    const { name, age, height } = this.state
+    const { addSmurf, smurfs } = this.props; 
+
+
     return (
       <div className="App">
         <h1>Smurf List Maker</h1>
@@ -32,15 +37,16 @@ class App extends Component {
           <input name="name" type="text" placeholder="text" value={this.state.name} onChange={this.handleChange} />
           <input name="age" type="text" placeholder="age" value={this.state.age} onChange={this.handleChange} />
           <input name="height" type="text" placeholder="height" value={this.state.height} onChange={this.handleChange} />
+          <button onClick={() => addSmurf({name, age, height})}> Add Smurf </button>
         </div>
 
         <div>
-          {this.props.smurfs.map(smurf => (
-            <div>
+          {smurfs.map(smurf => (
+            <Fragment key={smurf.name}>
               <p>{smurf.name}</p>
               <p>{smurf.age}</p>
               <p>{smurf.height}</p>
-            </div>
+            </Fragment>
           ))}
         </div>
       </div>
@@ -50,9 +56,6 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   smurfs: state.smurfs,
-  fetchingSmurfs: state.fetchingSmurfs,
-  addingSmurf: state.addingSmurf,
-  error: state.error
 })
 
 
