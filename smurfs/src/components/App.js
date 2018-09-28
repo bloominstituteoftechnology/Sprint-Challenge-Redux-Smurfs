@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { getSmurf, addSmurf, deleteSmurf, updateSmurf } from '../actions';
-import Smurf from '../views';
-import SmurfForm from '../views';
+import Smurf from '../views/Smurf';
+import SmurfForm from '../views/SmurfForm';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -39,7 +39,7 @@ class App extends Component {
     this.setState({ name: '', age: '', height: '', editId: null });
   };
 
-  deleteClick = event => {
+  deleteClick = (event, id) => {
     event.preventDefault();
     this.props.deleteSmurf(id);
   };
