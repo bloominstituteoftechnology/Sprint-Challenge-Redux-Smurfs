@@ -25,6 +25,10 @@ class App extends Component {
     this.props.getSmurfs();
   }
 
+  handleInputChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
   render() {
     return (
       <div className="App">
@@ -33,6 +37,7 @@ class App extends Component {
         <Smurfs smurfs={this.props.smurfs} />
         <SmurfForm 
           state={this.state}
+          handleInput={this.handleInputChange}
         />
       </div>
     );
