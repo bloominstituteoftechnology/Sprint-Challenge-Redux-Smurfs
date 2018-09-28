@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Smurf from './Smurf';
 
-class Smurfs extends Component {
+class SmurfsList extends Component {
   render() {
     return (
       <div className="Smurfs">
@@ -28,4 +28,4 @@ Smurf.defaultProps = {
  smurfs: [],
 };
 
-export default Smurfs;
+export default SmurfsList;
