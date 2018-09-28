@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .App-logo {
@@ -7,7 +10,7 @@
   height: 80px;
 }
 
-.App-header {
+/* .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
@@ -20,9 +23,71 @@
 
 .App-intro {
   font-size: large;
-}
+} */
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.smurf-card {
+  background: #3b68ae;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  padding: 20px 0;
+  line-height: 10px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+}
+
+.smurf-card h3 {
+  font-size: 1.4rem;
+}
+
+.smurf-village-wrapper h1 {
+  font-size: 2.5rem;
+}
+
+.smurf-village-wrapper h2 {
+  font-size: 2rem;
+}
+
+.smurf-form input {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin: 0 1%;
+  padding: 5px;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.button {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 500;
+  height: 30px;
+  width: 150px;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  background: #222;
+  color: white;
+  letter-spacing: 1.5px;
+  padding: 5px;
+}
+
+.delete-btn {
+  width: 150px;
+  background: white;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  font-weight: 700;
 }
