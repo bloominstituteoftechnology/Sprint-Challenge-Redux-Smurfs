@@ -9,16 +9,19 @@ export const ERROR = 'ERROR';
   Be sure to export each action type so you can pull it into your reducer
 */
 
-export const getSmurf = dispatch => {
-  dispatch({type: FETCHING});
-  axios
-  .get('http://localhost:3333/smurfs')
-  .then(response => {
-      dispatch({type: FETCHED, payload:response});
-  })
-  .catch(err => {
-      dispatch({type: ERROR});
-  })
+export const getSmurf = (dispatch) => {
+  return dispatch => {
+    dispatch({type: FETCHING});
+    axios
+    .get('http://localhost:3333/smurfs')
+    .then(response => {
+        dispatch({type: FETCHED, payload:response.data});
+    })
+    .catch(err => {
+      console.log(err);
+        dispatch({type: ERROR});
+    })
+  }
 }
 /*
   For this project you'll need at least 2 action creators for the main portion,
