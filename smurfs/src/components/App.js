@@ -46,12 +46,10 @@ addSmurf = () => {
 
       </div>
       <ul>
-        {if (this.props.smurfs) {
-          this.props.smurfs.map(smurf => {
-                          return <li key={smurf.id}>{smurf.name}</li>;
-                        })
-        }
-          }
+        {this.props.smurfs.map(smurf => {
+                  return <li key={smurf.name}>{smurf.name}</li>;
+                })}
+
       </ul>
 
         <form className=''>
@@ -91,7 +89,7 @@ addSmurf = () => {
 const mapStateToProps = state => {
   console.log(state)
   return {
-   smurfs: state
+   smurfs: state.smurfs
  };
 }
 

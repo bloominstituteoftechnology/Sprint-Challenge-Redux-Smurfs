@@ -41,7 +41,9 @@ export const smurfReducer = (state = initialState, action) => {
         deletingFriend: false,
         updatingFriend: false,
         error: action.payload
-    }
+    };
+    default:
+  return state
   }
 }
 
