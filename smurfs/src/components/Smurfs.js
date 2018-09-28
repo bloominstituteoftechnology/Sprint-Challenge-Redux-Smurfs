@@ -1,5 +1,7 @@
 import React from 'react';
 import Smurf from './Smurf';
+import { connect } from 'react-redux';
+import { getSmurfs } from '../actions';
 
 const Smurfs = props => {
   return (
@@ -7,7 +9,7 @@ const Smurfs = props => {
       {props.smurfs.map(smurf => {
         return (
           <Smurf
-            key={smurf.id}
+            key={smurf.name}
             id={smurf.id}
             name={smurf.name}
             age={smurf.age}
@@ -19,4 +21,10 @@ const Smurfs = props => {
   );
 };
 
-export default Smurfs;
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs
+  }
+}
+
+export default connect(mapStateToProps, {getSmurfs})(Smurfs);

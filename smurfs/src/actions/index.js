@@ -5,8 +5,8 @@ import axios from 'axios';
 */
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const FETCHED_SMURFS = 'FETCHED_SMURFS';
-export const SAVING_SMURFS = 'SAVING_SMURFS';
-export const SAVED_SMURFS = 'SAVED_SMURFS';
+export const SAVING_SMURF = 'SAVING_SMURF';
+export const SAVED_SMURF = 'SAVED_SMURF';
 export const ERROR = 'ERROR';
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -21,8 +21,8 @@ export const ERROR = 'ERROR';
 export const getSmurfs= () => {
   return dispatch => {
     dispatch({ type: FETCHING_SMURFS });
-    const promise = axios.get('http://localhost:3333/smurfs')
-    promise 
+    axios
+      .get('http://localhost:3333/smurfs')
       .then(response => {
         dispatch({ type: FETCHED_SMURFS, payload: response.data });
       })
@@ -34,10 +34,10 @@ export const getSmurfs= () => {
 
 export const addSmurf = smurf => {
   return dispatch => {
-    dispatch({ type: SAVING_SMURFS })
+    dispatch({ type: SAVING_SMURF })
     axios.post('http://localhost:3333/smurfs', smurf)
       .then(response => {
-        dispatch({ tpye: SAVED_SMURFS, payload: response.data });
+        dispatch({ type: SAVED_SMURF, payload: response.data });
       })
       .catch(error => {
         dispatch({ type: ERROR, payload: error });

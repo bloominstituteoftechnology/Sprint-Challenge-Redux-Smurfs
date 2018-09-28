@@ -60,4 +60,12 @@ class App extends Component {
   }
 }
 
-export default connect(null, { getSmurfs, addSmurf })(App);
+const mapStateToProps = state => {
+  return {
+    fetchingSmurfs: state.fetchingSmurfs,
+    savingingSmurf: state.savingSmurf,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);

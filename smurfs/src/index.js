@@ -10,6 +10,7 @@ import smurfsReducer from /* You need some sort of reducer */ './reducers/index'
 
 const store = createStore(
   smurfsReducer, // this is the most basic reducer. A function that returns and object. Replace it.
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware( thunk, logger /* be sure to throw in the proper middlewares here*/)
 );
 
