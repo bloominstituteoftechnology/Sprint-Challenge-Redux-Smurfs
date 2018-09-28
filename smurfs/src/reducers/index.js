@@ -1,4 +1,4 @@
-import { FETCHING_SMURF, FETCHED_SMURF, SMURF_ERROR } from '../actions';
+import { FETCHING_SMURF, FETCHED_SMURF, ERROR_SMURF } from '../actions';
 
 const initialState = {
   smurfs: [],
@@ -18,7 +18,7 @@ const smurfReducer = (state = initialState, action) => {
         smurfs: action.data,
         fetchingSmurfs: false
       });
-    case SMURF_ERROR:
+    case ERROR_SMURF:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         error: 'No smurfs!'
