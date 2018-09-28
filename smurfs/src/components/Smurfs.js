@@ -20,6 +20,10 @@ const Smurfs = props => {
   );
 }
 
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smufs
+  };
+}
 
-
-export default connect(null, {getSmurfs})(Smurfs);
+export default connect(mapStateToProps, {getSmurfs})(Smurfs);
