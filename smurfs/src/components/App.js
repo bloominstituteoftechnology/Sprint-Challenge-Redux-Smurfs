@@ -11,6 +11,19 @@ import { getSmurfs, addSmurf } from '../actions';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      age: '',
+      height: ''
+    };
+  }
+
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
+
   render() {
     return (
       <div className="App">
