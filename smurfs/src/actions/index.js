@@ -33,3 +33,16 @@ export const getSmurfs = () => {
   };
 };
 
+export const addSmurf = smurf => {
+  return dispatch => {
+    dispatch({ type: ADDING_SMURF });
+    axios
+      .post('http://localhost:3333/smurfs', smurf)
+      .then(response => {
+        dispatch({ type: ADDED_SMURF, payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error });
+      });
+  };
+};
