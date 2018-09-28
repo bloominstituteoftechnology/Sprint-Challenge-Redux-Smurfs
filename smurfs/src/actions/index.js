@@ -24,6 +24,10 @@ export const ADDING_SMURF = "ADDING_SMURF";
 export const SMURF_ADDED = "SMURF_ADDED";
 export const ADD_SMURF_ERROR = "ADD_SMURF_ERROR";
 
+export const DELETING_SMURF = "DELETING_SMURF";
+export const DELETED_SMURF = "DELETED_SMURF";
+export const DELETE_ERROR = "DELETE_ERROR";
+
 export const fetchSmurfs = () => {
   return dispatch => {
     dispatch({ type: FETCHING });
@@ -39,6 +43,7 @@ export const fetchSmurfs = () => {
       });
   };
 };
+
 export const addNewSmurf = smurf => dispatch => {
   dispatch({ type: ADDING_SMURF });
   axios
@@ -49,4 +54,18 @@ export const addNewSmurf = smurf => dispatch => {
     .catch(err => {
       dispatch({ type: ADD_SMURF_ERROR, payload: err });
     });
+};
+
+export const deleteSmurf = id => {
+  return dispatch => {
+    dispatch({ type: DELETING_SMURF });
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(response => {
+        dispatch({ type: DELETED_SMURF, payload: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: DELETE_ERROR, payload: err.message });
+      });
+  };
 };

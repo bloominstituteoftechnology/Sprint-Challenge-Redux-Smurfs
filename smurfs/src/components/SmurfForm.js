@@ -22,7 +22,7 @@ class SmurfForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Smurf-Form">
         <input
           text="name"
           value={this.state.name}

@@ -1,23 +1,14 @@
 import React from "react";
-import { connect } from "react-redux";
-import { fetchSmurfs } from "../actions";
 
 function Smurf(props) {
   return (
     <div className="smurf-card" key={props.smurf.name}>
-      {props.smurf.name}
-      {props.smurf.age}
-      {props.smurf.height}
-      <div>X</div>
+      <h3>{props.smurf.name}</h3>
+      <p>{props.smurf.age}</p>
+      <p>{props.smurf.height}</p>
+      <div onClick={() => props.deleteSmurf(props.id)}>Exile Smurf</div>
     </div>
   );
 }
 
-const mapStateToProps = state => ({
-  smurfs: state.smurfs
-});
-
-export default connect(
-  mapStateToProps,
-  { fetchSmurfs }
-)(Smurf);
+export default Smurf;

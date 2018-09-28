@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import logo from "../logo.svg";
+// import logo from "../logo.svg";
 import "./App.css";
 
 import { fetchSmurfs } from "../actions";
 import { addNewSmurf } from "../actions";
+import { deleteSmurf } from "../actions";
 import Smurfs from "./Smurfs";
 import SmurfForm from "./SmurfForm";
 
@@ -26,7 +27,9 @@ class App extends Component {
         {this.props.fetchingSmurfs ? (
           <img src={logo} className="App-logo" alt="logo" />
         ) : (
-          <div>
+          <div className="smurf-village-wrapper">
+            <h1>Welcome to Smurf Village!</h1>
+            <h2>Smurf Citizens:</h2>
             <Smurfs {...this.props} />
             <SmurfForm {...this.state} />
           </div>
@@ -42,6 +45,7 @@ const mapStateToProps = state => {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
     smurfAdded: state.smurfAdded,
+    deleteSmurf: state.deleteSmurf,
     error: state.error
   };
 };
@@ -51,6 +55,7 @@ export default connect(
   {
     /* actions go here */
     fetchSmurfs,
-    addNewSmurf
+    addNewSmurf,
+    deleteSmurf
   }
 )(App);
