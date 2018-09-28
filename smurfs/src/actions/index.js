@@ -1,3 +1,4 @@
+import axios from 'axios';
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
@@ -17,3 +18,19 @@ export const CREATED_SMURF
    U - updateSmurf
    D - deleteSmurf
 */
+
+export function getSmurfs() {
+  return function(dispatch) {
+    dispatch({ type: GETTING_SMURF });
+    axios
+      .get(`http://localhost:3333/smurfs`)
+        .then(res => {
+          console.log(res.data);
+          dispatch({ TYPE: SMURFS_RECEIVED, payload: res.data })
+        })
+          .catch(err => {
+            console.log(err, 'Failure in getting smurfs');
+            dispatch: ({ TYPE: ERROR, payload: err })
+          })
+  }
+}
