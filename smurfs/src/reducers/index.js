@@ -32,6 +32,8 @@ export const smurfReducer = (state = initialState, action) => {
         fetching: false, 
         error: action.payload
       };
+    case 'CREATE_SMURF':
+      return 
     default:
       return state;
   }
