@@ -12,12 +12,12 @@ import {FETCHING, FETCHED, ERROR} from '../actions/index'
 */
 const initialState = {
    smurfs: [],
-   fetching: false
-   fetched: false
+   fetching: false,
+   fetched: false,
    error: null
 }
 
-export default smurfReducer = (state = initialState, action) => {
+export const smurfReducer = (state = initialState, action) => {
   switch(action.type) {
     case FETCHING:
       return{...state, fetching:true};
@@ -33,7 +33,7 @@ export default smurfReducer = (state = initialState, action) => {
         error: action.payload
       };
     default:
-      return state;```
+      return state;
   }
 };
 
