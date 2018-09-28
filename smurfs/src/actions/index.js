@@ -28,15 +28,15 @@ export const DELETING_SMURF = "DELETING_SMURF";
 export const DELETED_SMURF = "DELETED_SMURF";
 export const DELETE_ERROR = "DELETE_ERROR";
 
-const URL = 'http://localhost:3333/smurfs/';
+// const URL = 'http://localhost:3333/smurfs/';
 
 export const fetchSmurfs = () => {
-  const smurfGet = axios.get(`${URL}`);
+  // const smurfGet = axios.get(`${URL}`);
   return dispatch => {
     dispatch({ type: FETCHING });
-    // axios
-    //   .get("http://localhost:3333/smurfs")
-    smurfGet
+    axios
+      .get("http://localhost:3333/smurfs")
+    // smurfGet
       .then(response => {
         console.log(response);
         dispatch({ type: FETCHED, payload: response.data });
@@ -49,11 +49,11 @@ export const fetchSmurfs = () => {
 };
 
 export const addNewSmurf = smurf => dispatch => {
-  const smurfPost = axios.post(`${URL}`, smurf);
+  // const smurfPost = axios.post(`${URL}`, smurf);
   dispatch({ type: ADDING_SMURF });
-  // axios
-  //   .post("http://localhost:3333/smurfs", smurf)
-  smurfPost
+  axios
+    .post("http://localhost:3333/smurfs", smurf)
+  // smurfPost
     .then(response => {
       dispatch({ type: SMURF_ADDED, payload: response.data });
     })
@@ -63,12 +63,12 @@ export const addNewSmurf = smurf => dispatch => {
 };
 
 export const deleteSmurf = id => {
-  const smurfDelete = axios.delete(`${URL}`, id)
+  // const smurfDelete = axios.delete(`${URL}`, id)
   return dispatch => {
     dispatch({ type: DELETING_SMURF });
-    // axios
-    //   .delete(`http://localhost:3333/smurfs/${id}`)
-    smurfDelete
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+    // smurfDelete
       .then(response => {
         dispatch({ type: DELETED_SMURF, payload: response.data });
       })

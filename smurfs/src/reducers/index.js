@@ -35,13 +35,13 @@ import {
 } from "../actions";
 
 const initialState = {
+  smurfs: [],
   fetchingSmurfs: false,
   smurfsFetched: false,
   smurfAdded: false,
   addingSmurf: false,
   deletingSmurf: false,
   deletedSmurf: false,
-  smurfs: [],
   error: null
 };
 
