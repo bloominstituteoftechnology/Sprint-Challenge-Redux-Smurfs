@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getSmurfs, addSmurf } from "../actions";
-import Smurfs from "./Smurfs";
+import SmurfList from './SmurfsList';
+import Smurfs from './Smurf';
 import SmurfForm from "./SmurfForm";
 import './App.css';
 /*
@@ -12,23 +13,27 @@ import './App.css';
  */
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      age: '',
+      height: ''
+    };
+  }
+
   componentDidMount() {
     this.props.getSmurfs();
   };
 
   render() {
     return (
-      <div className="App">
+      <React.Fragment>
         <h1>SMURFS! 2.0 W/ Redux</h1>
-
-        {this.props.gettingSmurfs ? <h2>Loading...</h2> : null}
-        {!this.props.gettingSmurfs && this.props.smurfs.length ? (
-          <Smurfs smurfs={this.props.smurfs} />
-        ) : null}
-        {this.props.error ? alert(this.props.error) : null}
-        <br />
-        <SmurfForm addSmurf={this.props.addSmurf} />
-      </div>
+        
+        <SmurfList smurfs={this.state.smurfs} /> 
+       
+      </React.Fragment>
     );
   }
 }

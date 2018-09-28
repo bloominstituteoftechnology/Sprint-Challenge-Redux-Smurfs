@@ -4,9 +4,6 @@ export const GETTING_SMURFS = 'GETTING_SMURFS'
 export const GETTING_SMURFS_SUCCESS = 'GETTING_SMURFS_SUCCESS'
 export const GETTING_SMURFS_FAILURE = 'GETTING_SMURFS_FAILURE'
 
-export const ADDING_SMURF = 'ADD_SMURF'
-export const ADDING_SMURF_SUCCESS = 'ADDING_SMURF'
-export const ADDING_SMURF_FAILURE = 'ADDING_COMPLETE'
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -23,6 +20,5 @@ export const getSmurfs = () => (dispatch) => {
   axios
     .get('http://localhost:3333/smurfs')
       .then(res => dispatch({ type: GETTING_SMURFS_SUCCESS, payload: res.data }))
-        //.catch((err) => console.log(err.response))
             .catch((err) => dispatch({ type: GETTING_SMURFS_FAILURE , payload: err }))
 }
