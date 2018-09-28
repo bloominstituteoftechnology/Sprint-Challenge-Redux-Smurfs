@@ -14,6 +14,7 @@ class SmurfForm extends Component {
       [event.target.name]: event.target.value
     });
   };
+
   handleAddNewSmurf = () => {
     const smurf = this.state;
     this.props.addNewSmurf(smurf);
@@ -24,27 +25,27 @@ class SmurfForm extends Component {
     return (
       <div className="Smurf-Form">
         <input
-          text="name"
+          name="name"
           value={this.state.name}
           type="text"
           onChange={this.handleInputChange}
           placeholder="Name"
         />
         <input
-          text="age"
+          name="age"
           value={this.state.age}
           type="number"
           onChange={this.handleInputChange}
           placeholder="Age"
         />
         <input
-          text="height"
+          name="height"
           value={this.state.height}
           type="height"
           onChange={this.handleInputChange}
           placeholder="Height"
         />
-        <button onClick={this.handleAddNewSmurf}>Add Smurf</button>
+        <button className="button" onClick={this.handleAddNewSmurf}>Add Smurf</button>
       </div>
     );
   }
