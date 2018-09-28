@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, div } from 'react';
 import { connect } from 'react-redux';
 import { getSmurfs, addSmurf } from '../actions/index';
 
@@ -34,19 +34,19 @@ class App extends Component {
       <div className="App">
         <h1>Smurf List Maker</h1>
         <div>
-          <input name="name" type="text" placeholder="text" value={this.state.name} onChange={this.handleChange} />
-          <input name="age" type="text" placeholder="age" value={this.state.age} onChange={this.handleChange} />
-          <input name="height" type="text" placeholder="height" value={this.state.height} onChange={this.handleChange} />
+          <input name="name" type="text" placeholder="text" value={this.state.name} onChange={this.handleChange} /> <br />
+          <input name="age" type="text" placeholder="age" value={this.state.age} onChange={this.handleChange} /> <br />
+          <input name="height" type="text" placeholder="height" value={this.state.height} onChange={this.handleChange} /> <br />
           <button onClick={() => addSmurf({name, age, height})}> Add Smurf </button>
         </div>
 
-        <div>
+        <div className="smurfContainer">
           {smurfs.map(smurf => (
-            <Fragment key={smurf.name}>
+            <div key={smurf.name} className="eachSmurf">
               <p>{smurf.name}</p>
               <p>{smurf.age}</p>
               <p>{smurf.height}</p>
-            </Fragment>
+            </div>
           ))}
         </div>
       </div>
