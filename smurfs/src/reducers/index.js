@@ -27,14 +27,17 @@ const intitialState =  {
 export default (state = intitialState, action) => {
   switch(action.type) {
     case GETTING_SMURF:
+      // Object.assign({}, state, {fetchingSmurfs: true})
       return { ...state, fetchingSmurfs: true };
     case SMURFS_RECEIVED:
+      // Object.assign({}, state, {fetchingSmurfs: false, smurfs: action.payload})
       return { ...state, fetchingSmurfs: false, smurfs: action.payload }
     case CREATING_SMURF:
       return { ...state, addingSmurf: true }
     case CREATED_SMURF:
-      return { ...state, addingSmurf: false }
+      return { ...state, addingSmurf: false , smurfs: action.payload }
     case ERROR:
+      // Object.assign({}, state, {fecthingSmurfs: false, error: action.payload})
       return { ...state, fetchingSmurfs: false, error: action.payload }
     default:
       return state;

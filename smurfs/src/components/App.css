@@ -4,6 +4,7 @@
   width: 450px;
   padding: 5px;
   margin: 0 auto;
+  border-radius: 4px;
 }
 
 .smurfContainer {
@@ -16,6 +17,7 @@
   color: white;
   padding: 30px;
   margin: 30px;
+  border-radius: 4px;
 }
 
 button {
@@ -25,4 +27,12 @@ button {
   width: 80px;
   margin: 0 auto;
   margin-top: 6px;
+}
+
+.name {
+  font-size: 28px;
+}
+
+input {
+  text-align: center;
 }
