@@ -37,20 +37,12 @@ class App extends Component {
 
 
 const mapStateToProps = state => ({
-  smurfs: state.smurfs,
-  gettingSmurfs: state.gettingSmurfs,
-  addingSmurf: state.addingSmurf,
-  
+  smurfs: state.smurfs 
 });
 
-// const mapDispatchToProps = {
-//   getSmurfs,
-//   addSmurfs
-// }
+
 
 export default connect(
   mapStateToProps,
-  //mapDispatchToProps,
-  {getSmurfs},
-  //{addSmurfs}
+  {getSmurfs, addSmurfs},
 )(App);
