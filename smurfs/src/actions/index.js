@@ -26,3 +26,6 @@ export const getSmurfs = () => (dispatch) => {
                 .catch((err) => dispatch({ type: GETTING_SMURFS_FAILURE , payload: err }))
 }
 
+export const ADDING_SMURF = 'ADD_SMURF';
+export const ADDING_SMURF_SUCCESS = 'ADDING_SMURF';
+export const ADDING_SMURF_FAILURE = 'ADDING_COMPLETE';

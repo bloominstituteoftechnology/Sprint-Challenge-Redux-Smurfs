@@ -21,8 +21,8 @@ class App extends Component {
   
 
   componentDidMount() {
-    this.props.getSmurfs();
-    //console.log(this.props.getSmurfs());
+    //this.props.getSmurfs();
+    console.log(this.props.getSmurfs());
   };
 
   render() {
