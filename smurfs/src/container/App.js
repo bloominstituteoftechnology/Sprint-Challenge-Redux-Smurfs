@@ -29,9 +29,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        
         <SmurfList smurfs={this.props.smurfs} /> 
-       
       </React.Fragment>
     );
   }
@@ -49,5 +47,6 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  {getSmurfs}
+  {getSmurfs},
+  {addSmurfs}
 )(App);
