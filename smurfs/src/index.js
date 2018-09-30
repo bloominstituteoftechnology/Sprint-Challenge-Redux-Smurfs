@@ -8,8 +8,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import {smurfReducer} from  './reducers';
 
-const store = createStore(smurfReducer, applyMiddleware(logger, thunk));
-//switch order
+const store = createStore(smurfReducer, applyMiddleware(thunk, logger));
+
 
 ReactDOM.render(
   <Provider store={store}>

@@ -20,15 +20,16 @@ class App extends Component {
   
 
   componentDidMount() {
-    //this.props.getSmurfs();
-    console.log(this.props.getSmurfs());
+    this.props.getSmurfs();
+    //console.log(this.props.getSmurfs());
   };
 
   render() {
     return (
       <React.Fragment>
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <SmurfList smurfs={this.props.smurfs} /> 
+        <SmurfList smurfs={this.props.smurfs} />
+        <SmurfForm /> 
       </React.Fragment>
     );
   }
@@ -42,10 +43,14 @@ const mapStateToProps = state => ({
   
 });
 
-
+// const mapDispatchToProps = {
+//   getSmurfs,
+//   addSmurfs
+// }
 
 export default connect(
   mapStateToProps,
+  //mapDispatchToProps,
   {getSmurfs},
-  {addSmurfs}
+  //{addSmurfs}
 )(App);

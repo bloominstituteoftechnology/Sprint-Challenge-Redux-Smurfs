@@ -10,9 +10,10 @@ Reducers change the state in response to action object received.
 3.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
 
 A.
+
 4.  What is middleware?
 
-A. Middleware such as thunk and logger extend the functionality of Redux.
+A. Middleware such as thunk and logger extend the functionality of Redux. //Provide better/longer answer.
 
 5.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 
