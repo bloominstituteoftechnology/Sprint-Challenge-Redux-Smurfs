@@ -17,7 +17,27 @@ class App extends Component {
       age: '',
       height: ''
     };
-  
+
+
+    handleInputChange = event => {
+      this.setState({ [event.target.name]: event.target.value });
+    }
+
+    
+     handleAddSmurfChange = event => {
+      event.preventDefault();
+      const newSmurf = {
+        name: this.state.name,
+        age: this.state.age,
+        height: this.state.height,
+      };
+      this.props.addSmurfs(newSmurf);
+      this.setState({
+        name: '',
+        age: '',
+        height: ''
+      });
+    }
 
   componentDidMount() {
     this.props.getSmurfs();
@@ -29,7 +49,11 @@ class App extends Component {
       <React.Fragment>
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <SmurfList smurfs={this.props.smurfs} />
-        <SmurfForm /> 
+        <SmurfForm 
+          state={this.state}
+          handleInput={this.handleInputChange}
+          handleAddSmurf={this.handleAddSmurfChange}
+        /> 
       </React.Fragment>
     );
   }
