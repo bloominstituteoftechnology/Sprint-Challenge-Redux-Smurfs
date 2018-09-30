@@ -39,6 +39,16 @@ export const smurfReducer = (state= initialState, action) => {
       const GETTING_SMURFS_ERROR = `API Retrieval Error: ${action.payload}`
       return { ...state, error: GETTING_SMURFS_ERROR }
 
+    case ADDING_SMURF:
+      return { ...state, addingSmurf: true }
+    case ADDING_SMURF_SUCCESS:
+      return { ...state, smurfs: action.payload, addingSmurf: false}
+    case ADDING_SMURF_FAILURE:
+    const ADDING_SMURF_ERROR = `Smurf Creation Error: \n${action.payload}` 
+      return { ...state, error: ADDING_SMURF_ERROR }
+
+
+
 
 
     default:
