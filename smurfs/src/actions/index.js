@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const GETTING_SMURFS = 'GETTING_SMURFS'
-export const GETTING_SMURFS_SUCCESS = 'GETTING_SMURFS_SUCCESS'
-export const GETTING_SMURFS_FAILURE = 'GETTING_SMURFS_FAILURE'
+export const GETTING_SMURFS = 'GETTING_SMURFS';
+export const GETTING_SMURFS_SUCCESS = 'GETTING_SMURFS_SUCCESS';
+export const GETTING_SMURFS_FAILURE = 'GETTING_SMURFS_FAILURE';
 
 
 /*
@@ -20,8 +20,9 @@ export const getSmurfs = () => (dispatch) => {
   axios
     .get('http://localhost:3333/smurfs')
       .then(res => {
-              console.log('received smurf', res.data);
+              //console.log(res.data);
               dispatch({ type: GETTING_SMURFS_SUCCESS, payload: res.data })
               })
                 .catch((err) => dispatch({ type: GETTING_SMURFS_FAILURE , payload: err }))
 }
+

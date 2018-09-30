@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getSmurfs, addSmurf } from "../actions";
-import SmurfList from './SmurfsList';
-import Smurfs from './Smurf';
-import SmurfForm from "./SmurfForm";
+import SmurfList from '../components/SmurfsList';
+import Smurfs from '../components/Smurf';
+import SmurfForm from "../components/SmurfForm";
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -13,17 +13,16 @@ import './App.css';
  */
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
+  state = {
       name: '',
       age: '',
       height: ''
     };
-  }
+  
 
   componentDidMount() {
     this.props.getSmurfs();
+    //console.log(this.props.getSmurfs());
   };
 
   render() {
@@ -31,7 +30,7 @@ class App extends Component {
       <React.Fragment>
         <h1>SMURFS! 2.0 W/ Redux</h1>
         
-        <SmurfList smurfs={this.state.smurfs} /> 
+        <SmurfList smurfs={this.props.smurfs} /> 
        
       </React.Fragment>
     );

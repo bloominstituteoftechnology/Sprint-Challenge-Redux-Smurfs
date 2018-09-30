@@ -6,7 +6,7 @@ import {
   GETTING_SMURFS,
   GETTING_SMURFS_SUCCESS,
   GETTING_SMURFS_FAILURE,
-} from '../actions'
+} from '../actions';
 
 
  
@@ -16,8 +16,8 @@ import {
    addingSmurf: false,
    updatingSmurf: false,
    deletingSmurf: false,
-   error: null
- }
+   error: null,
+ };
 
 
 /*
@@ -29,7 +29,7 @@ import {
 */
 
 export const smurfReducer = (state= initialState, action) => {
-  console.log(state);
+  //console.log(state);
   switch(action.type){
     case GETTING_SMURFS:
         return { ...state, fetchingSmurfs: true }
