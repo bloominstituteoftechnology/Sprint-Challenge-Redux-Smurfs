@@ -44,7 +44,7 @@ export const smurfReducer = (state= initialState, action) => {
     case ADDING_SMURF_SUCCESS:
       return { ...state, smurfs: action.payload, addingSmurf: false}
     case ADDING_SMURF_FAILURE:
-    const ADDING_SMURF_ERROR = `Smurf Creation Error: \n${action.payload}` 
+    const ADDING_SMURF_ERROR = `Smurf Creation Error: ${action.payload}` 
       return { ...state, error: ADDING_SMURF_ERROR }
 
 

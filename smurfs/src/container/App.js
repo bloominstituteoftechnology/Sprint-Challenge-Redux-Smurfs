@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getSmurfs, addSmurfs } from "../actions";
-import SmurfList from '../components/SmurfsList';
-import SmurfForm from "../components/SmurfForm";
+import SmurfList from '../presentational/SmurfsList';
+import SmurfForm from "../presentational/SmurfForm";
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -23,7 +23,7 @@ class App extends Component {
       this.setState({ [event.target.name]: event.target.value });
     }
 
-    
+
      handleAddSmurfChange = event => {
       event.preventDefault();
       const newSmurf = {
@@ -48,12 +48,12 @@ class App extends Component {
     return (
       <React.Fragment>
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <SmurfList smurfs={this.props.smurfs} />
         <SmurfForm 
           state={this.state}
           handleInput={this.handleInputChange}
           handleAddSmurf={this.handleAddSmurfChange}
         /> 
+         <SmurfList smurfs={this.props.smurfs} />
       </React.Fragment>
     );
   }
