@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import SmurfListView from '../view/SmurfListView.js';
-import SmurfFormView from '../view/SmurfFormView.js';
+import SmurfListView from '../view/SmurfListView';
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-        <SmurfListView {...this.props}/>
-        <SmurfFormView {...this.props}/>
+        <div>
+          <SmurfListView />
+        </div>
+       
       </div>
     );
   }

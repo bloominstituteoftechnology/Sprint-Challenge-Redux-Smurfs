@@ -23,27 +23,30 @@ export const ADDING_SMURFS = 'ADDING_SMURFS';
 export const ADDED_SMURFS = 'ADDED_SMURFS';
 export const NO_SMURFS_ADDED = 'NO_SMURFS_ADDED';
 
-export const getSmurfs = () => dispatch => {
+export function getSmurfs() {
+  return function(dispatch) {
   dispatch({ type: FETCHING_SMURFS });
-  const promise = axios.get('/smurfs');
-  promise
+  axios.get('http://localhost:3333/smurfs')
     .then(response => {
       dispatch({ type: FETCHED_SMURFS, payload: response.data });
     })
-    .catch(error => {
-      console.log("the smurfs must be hiding from us...", error)
-      dispatch({ type: NO_SMURFS_FETCHED, payload: error });
+    .catch(err => {
+      console.log("the smurfs must be hiding from us...", err)
+      dispatch({ type: NO_SMURFS_FETCHED, payload: err});
     });
-};
+  };
+}
 
-export const addNewSmurf = smurf => dispatch => {
-  dispatch({ type: ADDING_SMURFS });
-  axios.post('/smurfs', smurf)
+export function addNewSmurf(smurf) {
+  return function(dispatch) {
+  dispatch({ type: ADDING_SMURFS }); 
+  axios.post('http://localhost:3333/smurfs', smurf)
     .then(response => {
       dispatch({ type: ADDED_SMURFS, payload: response.data });
     })
-    .catach(error => {
-      console.log("that smurf doesn't want to be your friend right now...", error)
-      dispatch({ type: NO_SMURFS_ADDED, payload: error});
+    .catach(err => {
+      console.log("that smurf doesn't want to be your friend right now...", err)
+      dispatch({ type: NO_SMURFS_ADDED, payload: err});
     });
+  };
 }

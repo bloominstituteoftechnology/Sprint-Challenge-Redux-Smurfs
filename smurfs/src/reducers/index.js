@@ -33,7 +33,7 @@ import {
 
 const initialState = {
   smurfs: [],
-   getSmurfs: false,
+   grabbingSmurfs: false,
    addNewSmurf: false,
    error: null
 };
@@ -41,19 +41,19 @@ const initialState = {
 export const smurfReducer = (state = initialState, action) => {
   switch(action.type) {
     case FETCHING_SMURFS:
-      return { ...state, getSmurfs: true };
+      return Object.assign({}, state, {grabbingSmurfs: true,});
     case FETCHED_SMURFS:
-      return { ...state, getSmurfs: false, smurfs: action.payload};
+      return Object.assign({}, state, {grabbingSmurfs: false, smurfs: action.payload,});
     case NO_SMURFS_FETCHED:
       console.log(action.payload);
-      return { ...state, getSmurfs: false, error: action.payload};
+      return Object.assign({}, state, {grabbingSmurfs: false, error: action.payload,});
     case ADDING_SMURFS:
-      return { ...state, addNewSmurf: true };
+      return Object.assign({}, state, {addNewSmurf: true,});
     case ADDED_SMURFS:
-      return { ...state, addNewSmurf: false, smurfs: action.payload};
+      return Object.assign({}, state, {addNewSmurf: false, smurfs: action.payload,});
     case NO_SMURFS_ADDED:
-      console.log(action.payload);
-      return { ...state, addNewSmurf: false, error: action.payload};
+    console.log(action.payload);
+    return Object.assign({}, state, {addNewSmurf: false, error: action.payload,});
     default:
       return state;
   }
