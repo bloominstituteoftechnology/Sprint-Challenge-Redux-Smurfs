@@ -1,28 +1,95 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.card {
+	width: 300px;
+	height: 300px;
+	margin: 20px 0;
+	border: 1px solid black;
+	padding: 20px;
+	box-sizing: border-box;
+}
+.container {
+	max-width: 1200px;
+}
+.flex-wrap {
+	width: 100%;
+	min-height: 100vh;
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: space-between;
+	box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.addElement {
+	font-size: 46px;
+	font-weight: 900;
+	background-color: rgb(187, 48, 48);
+	color: white;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	cursor: pointer;
+	transform: translate(-50%, -50%);
+	box-shadow: 1px 10px 20px rgba(99, 99, 99, 0.095);
+	transition: all 0.4s;
+	z-index: 11;
+}
+.addElement:hover {
+	font-size: 56px;
+	border-radius: 10%;
+	box-shadow: 1px 10px 20px rgba(99, 99, 99, 0.295);
+}
+.modal {
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(255, 255, 255, 0.9);
+	z-index: 10;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.addFrom {
+	width: 300px;
+	padding: 30px;
+	background-color: #ebebeb;
+	border: 1px solid #b4b4b4;
+	transition: all 0.4s;
+}
+.addFrom input,
+.addFrom input:focus {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+	border: none;
+	margin: 5px 0;
+	/* border-radius: 10px; */
+	background-color: #ebebeb;
+	border-bottom: 2px solid #8b8b8b94;
+	outline: none;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.submit {
+	background-color: rgb(187, 48, 48);
+	color: white;
+	font-size: 16px;
+	padding: 10px 20px;
+	border-radius: 10px;
+	border: none;
+	margin-left: 50%;
+	transform: translate(-50%);
+	margin-top: 30px;
+	cursor: pointer;
 }
