@@ -13,15 +13,12 @@ class App extends Component {
 		this.props.getSmurfs();
 	}
 	handleAdd = e => {
-		// console.log(e);
 		this.setState({ addFrom: !this.state.addFrom });
 	};
 	deleteSmurf = id => {
-		// console.log(id);
 		this.props.deleteSmurfs(id);
 	};
 	render() {
-		console.log(this.props);
 		let smurfs = this.props.smurfs.map((item, i) => (
 			<Smurf key={item.id} smurf={item} delete={this.deleteSmurf} />
 		));
@@ -29,7 +26,7 @@ class App extends Component {
 			<p> waiting</p>
 		) : (
 			<div className="container">
-				{smurfs}
+				<div className="flex-wrap">{smurfs}</div>
 				{this.state.addFrom ? <AddFrom add={this.handleAdd} /> : null}
 				<div className="addElement" onClick={this.handleAdd}>
 					+

@@ -34,7 +34,6 @@ export const getSmurfs = () => {
 		axios
 			.get(URL + "/smurfs")
 			.then(response => {
-				console.log(response.data);
 				dispatch(handleGet(response.data));
 			})
 			.catch(error => {

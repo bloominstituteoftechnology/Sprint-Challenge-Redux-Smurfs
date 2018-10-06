@@ -20,22 +20,18 @@ class AddFrom extends Component {
 	addSmurf = e => {
 		e.preventDefault();
 		this.props.addSmurfs(this.state);
-		this.setState(
-			{
-				name: "",
-				age: 0,
-				height: 0
-			},
-			() => {
-				this.props.handleAdd();
-			}
-		);
+		this.setState({
+			name: "",
+			age: 0,
+			height: 0
+		});
+		this.props.add();
 	};
 	render() {
 		let { name, age, height } = this.state;
 		return (
 			<div className="modal">
-				<form className="addFrom">
+				<form className="addFrom" onSubmit={this.addSmurf}>
 					<input
 						type="text"
 						placeholder="name"
