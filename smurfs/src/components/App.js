@@ -27,8 +27,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         ) : (
           <div>
-            <SmurfForm {...this.state} />
-            <Smurfs {...this.props} />
+            <SmurfForm />
+            <Smurfs />
           </div>
         )}
       </div>

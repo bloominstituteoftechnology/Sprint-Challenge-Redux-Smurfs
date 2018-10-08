@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { fetchSmurfs } from "../actions";
 import "./App.css";
 
 function Smurf(props) {
@@ -13,11 +11,4 @@ function Smurf(props) {
   );
 }
 
-const mapStateToProps = state => ({
-  smurfs: state.smurfs
-});
-
-export default connect(
-  mapStateToProps,
-  { fetchSmurfs }
-)(Smurf);
+export default Smurf;
