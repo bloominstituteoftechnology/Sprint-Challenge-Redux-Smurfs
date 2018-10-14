@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
+import { fetchSmurfs } from '../actions';
+import Smurf from './Smurf';
+import SmurfForm from './SmurfForm';
 
-import { getSmurfs } from '../actions';
+
+/* import { getSmurfs } from '../actions';
 import { addSmurf } from '../actions';
 import { deleteSmurf } from '../actions';
 import { connect } from 'react-redux';
-
+ */
 
 
 
@@ -20,40 +25,30 @@ import { connect } from 'react-redux';
 
 class App extends Component {
   componentDidMount() {
-    this.props.getSmurfs();
+    this.props.fetchSmurfs();
   }
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
+        <SmurfForm />
+        {this.props.smurfs.map(smurf => {
+         return  <Smurf key={smurf.id} smurf={smurf} />;
+          })}
       </div>
-  <SmurfForm />
-        </header >
-  { this.props.error ? <h3>Error Fetching Smurfs</h3> : null }
-  < div className = "Flex-Container" >
-    {
-      this.props.gettingSmurfs ? (
-        <img src={logo} className="App-logo" alt="logo" />
-      ) : (
-          <Smurfs smurfs={this.props.smurfs} />
-      )
-  }
-    
-        </div >
-      </div >  
     );
   }
 }
 
-  const mapStateToProps = state => {
-    const { rootReducer } = state;
-    return {
-      smurfs: rootReducer.smurfs,
-      error: rootReducer.error,
-      gettingSmurfs: rootReducer.gettingSmurfs
-    };
-  };  
+const mapStateToProps = state => {
+  return {
+    fetchSmurfs: state.fetchingSmurfs,
+    smurfs: state.smurfs
 
-  
-  export default connect(mapStateToProps, { getSmurfs })(App);
+  };
+
+};
+
+
+export default connect(mapStateToProps, { fetchSmurfs})(App);
+

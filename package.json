@@ -19,9 +19,23 @@
   "homepage": "https://github.com/LambdaSchool/Sprint-Challenge--Redux#readme",
   "dependencies": {
     "cors": "^2.8.4",
+    "eslint": "^5.6.0",
+    "eslint-plugin-react": "^7.11.1",
     "express": "^4.16.3"
   },
   "devDependencies": {
     "nodemon": "^1.17.2"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+
+      }
+    }
+
   }
 }
