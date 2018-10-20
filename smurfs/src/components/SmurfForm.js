@@ -7,7 +7,7 @@ class SmurfForm extends React.Component {
     name: '',
     age: '',
     height: '',
-    id: 0,
+    id: 'x',
   };
 
   render() {
