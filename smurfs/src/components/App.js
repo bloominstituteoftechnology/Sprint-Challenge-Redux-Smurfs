@@ -51,6 +51,12 @@ class App extends Component {
         alert('New smurf added! Scroll down to see.')
       }
       event.target.reset();
+      this.setState({
+        name: '',
+        age: '',
+        height: '',
+        editSmurf: null,
+      })
     }
     else {alert('Please fill out the form!')}
   }
