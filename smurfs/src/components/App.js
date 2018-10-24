@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
-import {getSmurfs, addSmurf, deleteSmurf} from '../actions'
+import {getSmurfs, addSmurf, deleteSmurf, editSmurf} from '../actions'
 import Smurfs from './Smurfs';
 import SmurfForm from './SmurfForm';
  
@@ -18,6 +18,8 @@ class App extends Component {
       name: '',
       age: '',
       height: '',
+      editSmurf: null,
+
     }
   }
 
@@ -39,10 +41,25 @@ class App extends Component {
         age: this.state.age,
         height: this.state.height,
       }
-      this.props.addSmurf(smurf);
+
+      if (this.state.editSmurf !== null) {
+        this.props.editSmurf(smurf, this.state.editSmurf.id)
+        alert('Edits submitted.')
+      }
+      else {
+        this.props.addSmurf(smurf);
+        alert('New smurf added! Scroll down to see.')
+      }
       event.target.reset();
     }
     else {alert('Please fill out the form!')}
+  }
+
+  editHandler = (smurf) => {
+    alert('Edit mode activated. Please fill out the form.')
+    this.setState({
+      editSmurf: smurf,
+    })
   }
 
 
@@ -50,8 +67,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Smurf Village</h1>
-        <SmurfForm changeHandler={this.changeHandler} submitHandler={this.submitHandler}/>
-        <Smurfs smurfs={this.props.smurfs} deleteHandler={this.props.deleteSmurf}/>
+        <SmurfForm changeHandler={this.changeHandler} submitHandler={this.submitHandler} editSmurf={this.state.editSmurf}/>
+        {this.props.got ? <Smurfs smurfs={this.props.smurfs} deleteHandler={this.props.deleteSmurf} editHandler={this.editHandler}/> : <div>Wrangling some smurfs...</div>}
       </div>
     );
   }
@@ -64,4 +81,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {getSmurfs, addSmurf, deleteSmurf})(App);
+export default connect(mapStateToProps, {getSmurfs, addSmurf, deleteSmurf, editSmurf})(App);

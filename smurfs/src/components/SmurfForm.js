@@ -3,6 +3,7 @@ import React from 'react';
 const SmurfForm = props => {
     return (
         <div className="SmurfForm">
+            {props.editSmurf === null ? null : <p>You are editing {props.editSmurf.name}, who is {props.editSmurf.age} years old and {props.editSmurf.height} tall.</p>}
             <form onSubmit={props.submitHandler}>
                 <input
                     onChange={props.changeHandler}

@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import {GET_SMURFS, GOT_SMURFS, DELETING_SMURF, ADDING_SMURF, ERROR} from '../actions'; // make sure to fill this in with actions
+import {GET_SMURFS, GOT_SMURFS, DELETING_SMURF, ADDING_SMURF, ERROR, EDITING_SMURF} from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -19,6 +19,7 @@ const initialState = {
   got: false,
   deleting: false,
   adding: false,
+  editing: false,
   smurfs: [],
   error: null,
 }
@@ -41,6 +42,8 @@ export default (state = initialState, action) => {
       return {...state, deleting: true}
     case ADDING_SMURF:
       return {...state, adding: true}
+    case EDITING_SMURF:
+      return {...state, editing: true}
     case ERROR:
       return {...state, error: action.payload}
     default:

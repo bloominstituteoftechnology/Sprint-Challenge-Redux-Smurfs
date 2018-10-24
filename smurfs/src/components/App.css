@@ -8,7 +8,7 @@ ul {
 
 .Smurfs {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: space-evenly;
   align-items: center;
 }
@@ -37,6 +37,18 @@ ul {
 
 .delete:hover {
   color: crimson;
+}
+
+.edit {
+  position: absolute;
+  cursor: pointer;
+  top: 10px;
+  right: 40px;
+  font-size: 10px;
+}
+
+.edit:hover {
+  color: black;
 }
 
 form {

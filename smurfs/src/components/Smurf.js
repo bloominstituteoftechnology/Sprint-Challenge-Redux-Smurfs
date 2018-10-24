@@ -7,6 +7,7 @@ const Smurf = props => {
             <strong>{props.smurf.height} tall</strong>
             <p>{props.smurf.age} smurf years old</p>
             <div className="delete" onClick={() => props.deleteHandler(props.smurf.id)}>✕</div>
+            <div className="edit" onClick={() => props.editHandler(props.smurf)}>EDIT</div>
         </div>
     )
 }
