@@ -58,7 +58,7 @@ export const deleteSmurf = id => dispatch => {
   // let's do some async stuff! Thanks react-thunk :)
   dispatch({ type: "DELETING" });
   axios
-    .delete(`http://localhost:3333/api/smurfs/${id}`)
+    .delete(`http://localhost:3333/smurfs/${id}`)
     .then(response => {
       dispatch({ type: DELETING_SUCCESS, payload: response.data });
     })
