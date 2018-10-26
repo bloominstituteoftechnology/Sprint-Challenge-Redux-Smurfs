@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, NavLink, withRouter } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { addSmurf, getSmurfs, updateSmurf, deleteSmurf } from '../actions'
 import Nav from './Nav'

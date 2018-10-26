@@ -1,20 +1,29 @@
-import React from 'react'
-import {
-  SmurfContainer,
-  SmurfText,
-  SmurfName,
-  RemoveSmurf
-} from '../styles/Smurf'
+import React, { Component, Fragment } from 'react'
+import SmurfStatic from './SmurfStatic'
+import SmurfEdit from './SmurfEdit'
 
-const Smurf = ({ id, name, age, height, deleteSmurf }) => (
-  <SmurfContainer>
-    <SmurfName to={`/smurf/${id}`}>{name}</SmurfName>
-    <SmurfText>id: {id}</SmurfText>
-    <SmurfText>age: {age}</SmurfText>
-    <SmurfText>height: {height}</SmurfText>
-    <RemoveSmurf onClick={() => deleteSmurf(id)}>x</RemoveSmurf>
-  </SmurfContainer>
-)
+class Smurf extends Component {
+  state = { editing: false }
+
+  toggleEditMode = () => {
+    this.setState({ editing: !this.state.editing })
+  }
+
+  render() {
+    const { editing } = this.state
+    const { toggleEditMode } = this
+
+    return (
+      <Fragment>
+        {editing ? (
+          <SmurfEdit toggleEditMode={toggleEditMode} {...this.props} />
+        ) : (
+          <SmurfStatic toggleEditMode={toggleEditMode} {...this.props} />
+        )}
+      </Fragment>
+    )
+  }
+}
 
 Smurf.defaultProps = {
   name: '',

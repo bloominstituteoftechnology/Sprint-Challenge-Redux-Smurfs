@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { FormContainer, Form } from '../styles/SmurfForm'
 
 class SmurfForm extends Component {
