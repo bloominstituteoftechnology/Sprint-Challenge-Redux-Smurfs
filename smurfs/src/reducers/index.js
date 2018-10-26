@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import {smurfsReducer} from './SmurfsReducer'; 
+import {SmurfsReducer} from './SmurfsReducer'; 
 import {singleSmurfReducer} from './SelectedSmurfReducer'; 
 
 export default combineReducers({
-    smurfsReducer,
+    SmurfsReducer,
     singleSmurfReducer
 })

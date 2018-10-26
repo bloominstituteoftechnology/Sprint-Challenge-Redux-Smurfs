@@ -8,7 +8,7 @@ import {
     showUpdate: false
   };
 
-  export const singleFriendReducer = (state = initialState, action) =>{
+  export const singleSmurfReducer = (state = initialState, action) =>{
     switch(action.type) {
         case SINGLE_SMURFS: 
         return { ...state, smurfSelected: action.payload, showUpdate: false};
