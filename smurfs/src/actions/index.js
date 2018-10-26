@@ -25,12 +25,32 @@ export const ERROR = "ERROR";
 export const fetchSmurfs = () => {
   const request = axios.get(`http://localhost:3333/smurfs`);
 
+  // thunk
   return dispatch => {
     dispatch({ type: FETCHING });
 
     request
       .then(res => {
         dispatch({ type: FETCHED, payload: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch({ type: ERROR });
+      });
+  };
+};
+
+export const addSmurf = newSmurf => {
+  console.log(newSmurf);
+
+  const request = axios.post(`http://localhost:3333/smurfs`, newSmurf);
+
+  // thunk
+  return dispatch => {
+    dispatch({ type: POSTING });
+    request
+      .then(res => {
+        dispatch({ type: POSTED, payload: res.data });
       })
       .catch(err => {
         console.log(err);
