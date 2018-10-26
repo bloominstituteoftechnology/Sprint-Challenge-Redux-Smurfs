@@ -11,7 +11,7 @@ class SmurfsList extends Component {
             smurf={smurf}
             key={smurf.name}
             handleDeleteSmurf={this.props.handleDeleteSmurf}
-            handleEditSmurf={this.props.handleEditSmurf}
+            handleUpdateSmurf={this.props.handleUpdateSmurf}
           />
         ))}
       </div>

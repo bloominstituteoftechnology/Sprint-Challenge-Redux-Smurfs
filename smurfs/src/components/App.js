@@ -8,6 +8,14 @@ import SmurfList from './SmurfsList';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      age: '',
+      height: ''
+    };
+  }
   componentDidMount() {
     this.props.getSmurfs();
   }
@@ -40,6 +48,7 @@ class App extends Component {
           <SmurfList
             smurfs={this.props.smurfs}
             handleDeleteSmurf={this.handleDeleteSmurf}
+            handleUpdateSmurf={this.handleUpdateSmurf}
           />
         )}
       </div>
