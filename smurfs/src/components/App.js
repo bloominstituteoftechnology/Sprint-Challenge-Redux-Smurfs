@@ -24,9 +24,9 @@ class App extends Component {
   clickHandler = event => {
     event.preventDefault();
     console.log('click handler', this.state)
-    const { name, age, email } = this.state;
-    this.props.addSmurf({ name, age, email });
-    this.props({ name: '', age: null, height: '' });
+    const { name, age, height } = this.state;
+    this.props.addSmurf({ name, age, height });
+    this.setState({ name: '', age: null, height: '' });
   };
   handleInputChange = event => this.setState({ 
     [event.target.name]: event.target.value 
