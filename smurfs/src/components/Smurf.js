@@ -17,9 +17,9 @@ class Smurf extends Component {
         const { name, age, height, id } = this.props.smurf
         return (
             <div className="smurf-card">
-                <div>Name: {name}</div>
-                <div>Age: {age}</div>
-                <div>Height: {height}</div>
+                <div className="smurf-detail">Name: {name}</div>
+                <div className="smurf-detail">Age: {age}</div>
+                <div className="smurf-detail">Height: {height}</div>
                 <div className='smurf-btns'>
                     <div className='btn' onClick={() => this.props.updating(id)}>edit</div>
                     <div className='btn' id={id} onClick={this.deleteSmurf}>delete</div>
