@@ -11,3 +11,28 @@
   display: flex;
   flex-direction: column;
 }
+
+.smurfs-container section {
+  margin: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px blue;
+  background: #92b6f2;
+}
+
+.smurfs-container section .first-line {
+  display: flex;
+  justify-content: center;
+}
+
+.smurfs-container section .first-line img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.smurfs-container section h2 {
+  margin: 0;
+  padding: 0;
+}
