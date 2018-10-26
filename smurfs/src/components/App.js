@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, NavLink } from 'react-router-dom'
+import { Route, NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { addSmurf, getSmurfs, updateSmurf, deleteSmurf } from '../actions'
 import Nav from './Nav'
@@ -51,7 +51,9 @@ class App extends Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { addSmurf, getSmurfs, updateSmurf, deleteSmurf }
-)(App)
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { addSmurf, getSmurfs, updateSmurf, deleteSmurf }
+  )(App)
+)
