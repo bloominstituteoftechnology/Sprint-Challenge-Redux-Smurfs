@@ -6,7 +6,7 @@ import Smurfs from "../components/Smurfs";
 import SmurfForm from "../components/SmurfForm";
 import Header from "../components/Header";
 import { fetchingSmurfs, addSmurf, deleteSmurf } from "../actions";
-//
+
 class SmurfsListView extends React.Component {
   componentDidMount() {
     this.props.fetchingSmurfs();
@@ -33,7 +33,7 @@ class SmurfsListView extends React.Component {
           <div className="village">
             <Route
               exact
-              path="/village"
+              path="/"
               render={props => (
                 <Smurfs
                   {...props}
