@@ -6,8 +6,13 @@ const SmurfList = props => {
         <div>
             <h1>Hello Smurfs!!</h1>
             {props.smurfs.map(smurf => {
-                console.log("CURRENT SMURF" ,smurf)
-                return <h1>{smurf.name} : "brainy" </h1> 
+                return (
+                    <div className="smurf-card">
+                        <h2>{smurf.name}</h2>
+                        <h4>{smurf.age} Years Old</h4>
+                        <h4>{smurf.height}</h4>
+                    </div>
+                ) 
             })}
         </div>
     )
