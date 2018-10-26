@@ -10,8 +10,25 @@ import { connect } from 'react-redux';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      newSmurf: ''
+    }
+  }
   componentDidMount() {
     this.props.fetchingSmurfs();
+  }
+
+  handleSmurfInput =  event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleAddNewSmurf = event => {
+    event.preventDefault();
+    this.props.addingSmurf(this.state.newSmurf, addingSmurf: false)
   }
   render() {
     if(this.props.fetchingSmurfs) {
@@ -22,9 +39,39 @@ class App extends Component {
         <h1>SMURFS Redux Village</h1>
         {this.props.smurfs.map(smurf => {
           return(
-            <p key={smurf.id + 1}>
-              {smurf.name}
-            </p>
+            <div key={smurf.id + 1}>
+              <p>Name: {smurf.name}</p>
+              <p>Age: {smurf.age}</p>
+              <p>Height: {smurf.height}</p>
+              
+              <form onSubmit = { this.handleAddNewTodo }>
+
+              <input
+                type = "text"
+                placeholder = "Smurf Name"
+                value = { this.state.newSmurf }
+                name = "name"
+                onChange = { this.handleSmurfInput } 
+              />
+              <input 
+                type="text"
+                placeholder="Age"
+                value={this.state.newSmurf}
+                name="age"
+                onChange={this.handleSmurfInput}
+              />
+              <input 
+                type="text"
+                placeholder="Height"
+                value={this.state.newSmurf}
+                name="height"
+                onChange={this.state.newSMurf}
+              />
+
+          <button onClick = { this.handleAddNewSmurf }>Add Smurf</button>
+        </form>
+              
+            </div>
           )
         })}
       </div>
