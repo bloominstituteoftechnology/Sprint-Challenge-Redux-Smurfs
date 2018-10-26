@@ -3,7 +3,7 @@
 */
 import {
   GETTING, GETTING_SUCCESS, GETTING_ERROR,
-  PUTTING, PUTTING_ERROR
+  POSTING, POSTING_SUCCESS, POSTING_ERROR
 } from '../actions';
 
 /*
@@ -42,15 +42,18 @@ const smurfsReducer = (state = initialState, action) => {
         fetchingSmurfs: false,
         error: action.payload
       }
-    case PUTTING:
+    case POSTING:
+      return {...state, addingSmurf: true };
+    case POSTING_SUCCESS:
       return {
         ...state,
-        addingSmurf: true
-      };
-    case PUTTING_ERROR:
+        smurfs: action.payload,
+        addingSmurf: false
+      }
+    case POSTING_ERROR:
       return {
         ...state,
-        savingFriends: false,
+        addingSmurf: false,
         error: action.payload
       }
     default:
