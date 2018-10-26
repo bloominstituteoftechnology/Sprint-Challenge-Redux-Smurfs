@@ -25,3 +25,9 @@ Middleware adds new functionality to Redux and intercepts every action before it
 #Question 5
 
 Redux-Thunk is essentially middleware that allows asynchronous calls to tie into Redux actions and allows for the dispatching of CRUD based HTTP requests, `.then()` and `.catch()` methods and allows efficient work flow with APIs and their data within React-Redux.
+
+
+#Question 6
+
+React-Redux has a module called { connect } that you can use to link and export a
+"dumb component" and create a "smart component" that now is in communication with the Redux data store.  It actually is quite a interesting approach and gives the developer a lot of ways to handle how data lives in and moves around a given program.  With React, Redux, and middleware you can store data application wide or in a more compartmentalized manner on components and then have the ability to move that data within components never even touching the store, or if one chooses you also have the ability to do the opposite and have methods for allowing communication between any localized component state and the larger application based state store if needed. One of those methods, that also should be mentioned at this point is the mapStateToProps method which also allows state data to then be passed between components as props.  So generally, a flow of data in a Redux loop moves from the component to the action creators which produce an action that gets dispatched to the reducers which then update state, which then if needed can be passed to props back to the component which then can be passed in the "data flows down" manner to other components if need be.
