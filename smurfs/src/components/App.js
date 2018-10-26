@@ -28,6 +28,11 @@ class App extends Component {
     this.props.addSmurf({ name, age, height });
     this.setState({ name: '', age: null, height: '' });
   };
+  handleDelete=(event, id)=> {
+    event.preventDefault();
+    console.log('my id is ', id)
+    // this.props.deleteFriend(id);
+  }
   handleInputChange = event => this.setState({ 
     [event.target.name]: event.target.value 
   });
@@ -35,9 +40,6 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS!</h1>
-        {this.props.smurfs.map((smurf, i)=> {
-          return <Smurf key={i} smurf={smurf}/>
-        })}
         <form className='form'>
           <h3>Add a Smurf</h3>
           <input 
@@ -57,7 +59,19 @@ class App extends Component {
             placeholder='height'
             onChange={this.handleInputChange}></input>
           <button onClick={this.clickHandler}>Submit</button>
-        </form>        
+        </form>  
+        {this.props.smurfs.map((smurf)=> {
+          const id = smurf.id;
+          return (
+            <div key={smurf.id}>
+              <Smurf 
+                id ={id} 
+                smurf={smurf}/>
+              <button onClick={(id) => {this.state.handleDelete}}>DELETE</button>
+            </div>
+          );
+
+        })}      
       </div>
     );
   }
