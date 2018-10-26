@@ -1,5 +1,114 @@
+
+/*-- Global Reset ------------------------------*/
+html {
+    font-size: 62.5%;
+}
+html, body{
+    margin: 0;
+    padding: 0;
+}
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    font-size: 1.6rem;
+}
+* {
+    box-sizing: border-box;
+}
+
+/*-- Smurfs Container --------------------------*/
+.smurfs {
+    font-family: sans-serif;
+    width: 80rem;
+    margin: 0 auto;
+    padding: 1rem;
+    border: solid black 1px;
+    display: flex;
+    flex-direction: column;
+}
+.smurfs h1 {
+    font-family: sans-serif;
+    color: #336699;
+    text-align: center;
+}
+
+/*-- Error Display -----------------------------*/
+.error {
+    background: #fee;
+    border: 1px solid red;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+/*-- Smurf Adding Form -------------------------*/
+.smurfs form {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 1rem 0;
+    align-self: center;
+    width: 40rem;
+}
+.smurfs form > * {
+    width: 100%;
+}
+.smurfs form h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0;
+} 
+
+/*-- Smurf List --------------------------------*/
+.smurf-list {
+    display: grid;
+    grid: auto-flow dense / repeat(3, 1fr);
+    flex-direction: column;
+    position: relative;
+}
+.smurf-list > * {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background: #eee;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: 3px solid transparent;
+    background: #369;
+    color: white;
+    font-weight: bold;
+    /* Above necessary to prevent resize on hover */
+}
+.smurf-list > *:hover {
+    border: 3px solid black;
+}
+.smurf.smurf_focus {
+    background: white;
+    border: 3px dotted grey;
+}
+.smurf-list_loading .smurf {
+    visibility: hidden;
+}
+.load-notifier {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.smurf-list-cancel,
+.smurf-list-delete {
+    display: none;
+}
+.smurf-list_focus .smurf-list-cancel,
+.smurf-list_focus .smurf-list-delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+.smurf-list-cancel {}
+.smurf-list-delete {
+    background: #600;
 }
