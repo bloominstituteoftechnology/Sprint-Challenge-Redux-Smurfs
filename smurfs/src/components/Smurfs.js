@@ -1,8 +1,9 @@
 import React, {Component} from 'react'; 
-import '../App.css'; 
+import './App.css'; 
 import SelectedSmurf from './SelectedSmurf'; 
 import {connect} from 'react-redux'; 
 import {updateSingleSmurf, toggleShowUpdate} from '../actions'; 
+import UpdateSmurfForm from './UpdateSmurfsFrom';
 
 class Smurfs extends Component {
     handleShowSmurf = smurf =>{
@@ -15,7 +16,7 @@ class Smurfs extends Component {
         return (
             <div className="Container">
             <ul>
-            {this.props.smurf.map(smurf =>{
+            {this.props.smurfs.map(smurf =>{
                 return(
                     <ul onClick={() => this.handleShowSmurf(smurf)} key={smurf.id}>
                     {smurf.name}
@@ -25,13 +26,13 @@ class Smurfs extends Component {
             </ul>
             {Object.keys(this.props.smurfSelected).length > 0 ? (
                 <SelectedSmurf
-                handleShowFriend={this.handleShowSmurf}
+                handleShowSmurf={this.handleShowSmurf}
                 toggleShowUpdate={this.toggleShowUpdate}
                 selected={this.props.smurfSelected}
                 />
             ) : null}
             {this.props.showUpdate ? (
-                <UpdateSmurfsForm friend={this.props.smurfSelected} />
+                <UpdateSmurfForm friend={this.props.smurfSelected} />
             ) : null}
             </div>
         );
@@ -40,9 +41,9 @@ class Smurfs extends Component {
 
 const mapStateToProps = state => {
     return{
-        error: state.smurfsReducer.error, 
+        //error: state.smurfsReducer.error, 
         showUpdate: state.singleSmurfReducer.showUpdate, 
-        friendSelected: state.singleSmurfReducer.smurfSelected
+        smurfSelected: state.singleSmurfReducer.smurfSelected
     };
 };
 export default connect(mapStateToProps, {
