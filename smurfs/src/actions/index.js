@@ -28,11 +28,16 @@ export const addSmurf = (smurf) => dispatch => {
     })
 }
 
-export const deleteSmurf = () => dispatch => {
-  dispatch({type: FETCHING_SMURFS });
+export const deleteSmurf = (id) => dispatch => {
+  dispatch({type: DELETING_SMURFS });
   axios
-    .get("http://localhost:3333/smurfs")
-    .then(res => console.log(res))
+    .delete(`http://localhost:3333/smurfs/${id}`)
+    .then(res => {
+      dispatch({type: FETCHING_SMURFS_SUCCESS, payload: res.data})
+    })
+    .catch(error => {
+      dispatch({type: FETCHING_SMURFS_FAILURE, payload: error})
+    })
 }
 
 /*

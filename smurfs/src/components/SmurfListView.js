@@ -12,13 +12,16 @@ class SmurfListView extends React.Component {
 
     render() {
         if (this.props.fetchingSmurfs) {
-            return <h1>Gargamel couldn't stop them, the smurfs are on the way...</h1>
+            return <h1>Gargamel can't stop them, the smurfs are on the way...</h1>
+        }
+        if (this.props.deletingSmurf) {
+            return <h1>Well, Gargamel stopped that smurf...</h1>
         }
         return (
             <div>
                 <Smurfs smurfs={this.props.smurfs} />
                 <CreateSmurfForm addSmurf={this.props.addSmurf} />
-                {/* <DeleteSmurfForm deleteSmurf={this.props.deleteSmurf}/> */}
+                <DeleteSmurfForm deleteSmurf={this.props.deleteSmurf}/>
             </div>
         );
     }
@@ -28,6 +31,7 @@ const mapStateToProps = state => {
     return {
         smurfs: state.smurfs,
         fetchingSmurfs: state.fetchingSmurfs,
+        deletingSmurf: state.deletingSmurf,
     }
 }
 
