@@ -27,7 +27,9 @@ class SmurfsListView extends React.Component {
     } else {
       return (
         <div>
-          <Route path="/" component={Header} />
+          <div>
+            <Route path="/" component={Header} />
+          </div>
           <div className="village">
             <Route
               exact
@@ -41,17 +43,20 @@ class SmurfsListView extends React.Component {
               )}
             />
           </div>
-          <Route
-            exact
-            path="/smurf-form"
-            render={props => (
-              <SmurfForm
-                {...props}
-                smurfs={this.props.smurfs}
-                addSmurf={this.props.addSmurf}
-              />
-            )}
-          />
+
+          <div className="factory">
+            <Route
+              exact
+              path="/smurf-form"
+              render={props => (
+                <SmurfForm
+                  {...props}
+                  smurfs={this.props.smurfs}
+                  addSmurf={this.props.addSmurf}
+                />
+              )}
+            />
+          </div>
         </div>
       );
     }
