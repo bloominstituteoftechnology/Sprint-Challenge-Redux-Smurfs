@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { getSmurfs, addSmurf } from '../actions';
+import Fetching from './Fetching';
+import SmurfsList from './SmurfsList';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -29,19 +31,6 @@ class App extends Component {
   }
 
   render() {
-    if (this.props.fetchingSmurfs) {
-      return (<div>
-        Slow your roll... We are fetching Smurfs.
-      </div>)
-    } else {
-      this.props.smurfs.map(smurf => (
-        <div>
-        <h2>{smurf.name}</h2>
-        <h3>{smurf.age}</h3>
-        <h3>{smurf.height}</h3>
-        </div>
-      ))
-    };
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -66,6 +55,10 @@ class App extends Component {
           value={this.state.height}
           onChange={this.changeHandler}
         />
+        {this.props.fetchingSmurfs ? (
+          <Fetching /> 
+          ) : ( 
+          <SmurfsList smurfs={this.props.smurfs} /> )}
         <button onClick={() => this.props.addSmurf(this.state)}>Submit</button>
       </div>
     );
