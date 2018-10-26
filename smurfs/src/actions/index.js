@@ -53,7 +53,7 @@ export const updateSmurf = ({ id, name, age, height }) => dispatch => {
     .catch(err => dispatch({ type: ERROR, payload: err }))
 }
 
-export const deleteSmurf = ({ id }) => dispatch => {
+export const deleteSmurf = id => dispatch => {
   dispatch({ type: DELETING })
 
   axios

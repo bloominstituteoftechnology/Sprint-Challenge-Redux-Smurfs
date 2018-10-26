@@ -6,12 +6,13 @@ import {
   RemoveSmurf
 } from '../styles/Smurf'
 
-const Smurf = ({ id, name, age, height, removeSmurf }) => (
+const Smurf = ({ id, name, age, height, deleteSmurf }) => (
   <SmurfContainer>
     <SmurfName to={`/smurf/${id}`}>{name}</SmurfName>
+    <SmurfText>id: {id}</SmurfText>
     <SmurfText>age: {age}</SmurfText>
     <SmurfText>height: {height}</SmurfText>
-    <RemoveSmurf onClick={() => removeSmurf(id)}>x</RemoveSmurf>
+    <RemoveSmurf onClick={() => deleteSmurf(id)}>x</RemoveSmurf>
   </SmurfContainer>
 )
 
