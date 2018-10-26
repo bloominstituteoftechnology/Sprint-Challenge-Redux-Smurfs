@@ -33,7 +33,7 @@ class App extends Component {
 
   clickHandler = event => {
     event.preventDefault();
-    console.log('click handler', this.state)
+    // console.log('click handler', this.state)
     const newSmurf = {
       name: this.state.name,
       age: this.state.age,
@@ -59,21 +59,21 @@ class App extends Component {
           <input
             type='text'
             name='name'
-            value={this.props.smurfs.name}
+            value={this.state.name}
             placeholder='Name'
             onChange={this.handleInputChange}
           />
           <input
             type='number'
             name='age'
-            value={this.props.smurfs.age}
+            value={this.state.age}
             placeholder='Age'
             onChange={this.handleInputChange}
           />
           <input
             type='text'
             name='height'
-            value={this.props.smurfs.height}
+            value={this.state.height}
             placeholder='Height'
             onChange={this.handleInputChange}
           />

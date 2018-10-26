@@ -38,7 +38,7 @@ export const getSmurfs = () => dispatch => {
 }
 
 export const postSmurf = (newSmurf) => dispatch => {
-  console.log('Post Smurfs called');
+  console.log('postSmurfs called');
   dispatch({ type: POSTING });
   axios
     .post('http://localhost:3333/smurfs', newSmurf)
