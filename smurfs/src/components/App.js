@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
+import { getSmurfs } from '../actions';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -9,9 +10,16 @@ import { connect } from 'react-redux';
  */
 class App extends Component {
   
-  //componentDidMount
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
 
   render() {
+    if (this.props.fetchingSmurfs) {
+      <div>
+        Slow your roll... We're fetching Smurfs.
+      </div>
+    }
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -22,7 +30,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  smurfs: state.smurfs
+  smurfs: state.smurfs,  //props also? 
+  fetchingSmurfs: state.fetchingSmurfs
 })
 
-export default connect (mapStateToProps, {} )(App);
+export default connect (mapStateToProps, {getSmurfs} )(App);
