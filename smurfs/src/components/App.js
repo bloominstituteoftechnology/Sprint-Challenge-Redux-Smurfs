@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
+
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -10,13 +12,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        {
+          this.props.smurfs.map(smurf => {
+            return (
+              <div>
+                <h2>{smurf.name}</h2>
+                <h2>{smurf.age}</h2>
+                <h2>{smurf.height}</h2>
+              </div>
+            )
+          })
+        }
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  // const {smurfs, addingSmurf, updatingSmurf, deleteSmurf, error} = state;
+  return {...state}
+}
+
+export default connect(mapStateToProps , {})(App);
