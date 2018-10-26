@@ -22,7 +22,7 @@ import * as actions from '../actions';
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-export default smurfDUCER = (state = initialState, action) => {
+export const smurfDUCER = (state = initialState, action) => {
     switch(action.type){
       case actions.GETTING_SMURFS:
         return {...state, gettingSmurfs: true}
