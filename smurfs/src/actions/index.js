@@ -38,6 +38,27 @@ export const addSmurf = (smurf) => async dispatch => {
   }
 }
 
+export const updateSmurf = (smurf, id) => async dispatch => {
+  try {
+    dispatch({type: UPDATE_SMURF});
+    const res = await axios.put(`${url}/smurfs/${id}`, smurf)
+    dispatch({type: UPDATE_SMURF_SUCCESS, payload: res.data})
+  } catch(err) {
+    dispatch({type: UPDATE_SMURF_FAILURE, payload: err})
+  }
+}
+
+export const deleteSmurf = (id) => async dispatch => {
+  try {
+    dispatch({type: DELETE_SMURF});
+    const res = await axios.delete(`${url}/smurfs/${id}`)
+    dispatch({type: DELETE_SMURF_SUCCESS, payload: res.data})
+  } catch(err) {
+    dispatch({type: DELETE_SMURF_FAILURE, payload: err})
+  }
+}
+
+
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
