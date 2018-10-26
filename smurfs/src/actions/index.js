@@ -8,6 +8,10 @@ export const ADD_SMURF = 'ADD_SMURF';
 export const ADD_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS';
 export const ADD_SMURF_FAILURE = 'ADD_SMURF_FAILURE';
 
+export const UPDATE_SMURF = 'UPDATE_SMURF';
+export const UPDATE_SMURF_SUCCESS = 'UPDATE_SMURF_SUCCESS';
+export const UPDATE_SMURF_FAILURE = 'UPDATE_SMURF_FAILURE';
+
 export const DELETE_SMURF = 'DELETE_SMURF';
 export const DELETE_SMURF_SUCCESS = 'DELETE_SMURF_SUCCESS';
 export const DELETE_SMURF_FAILURE = 'DELETE_SMURF_FAILURE';
@@ -44,6 +48,18 @@ export const addSmurf = ({ name, age, height }) => dispatch => {
     })
     .catch(err => {
       dispatch({ type: ADD_SMURF_FAILURE, payload: err });
+    });
+};
+
+export const updateSmurf = ({ id, name, age, height }) => dispatch => {
+  dispatch({ type: UPDATE_SMURF });
+  axios
+    .put(`http://localhost:3333/smurfs/${id}`, { name, age, height })
+    .then(res => {
+      dispatch({ type: UPDATE_SMURF_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: UPDATE_SMURF_FAILURE, payload: err });
     });
 };
 

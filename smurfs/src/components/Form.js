@@ -18,6 +18,7 @@ class Form extends Component {
     e.preventDefault();
     const { name, age, height } = this.state;
     this.props.handleAddSmurf({ name, age, height });
+    this.setState({ name: '', age: '', height: '' });
   };
 
   render() {
@@ -46,7 +47,7 @@ class Form extends Component {
           placeholder="Enter age..."
           onChange={this.handleInputChange}
         />
-        <button type="submit">Add Smurf</button>
+        <button type="submit">{this.props.title}</button>
       </form>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
+import { getSmurfs, addSmurf, deleteSmurf, updateSmurf } from '../actions';
 
 import Form from './Form';
 import SmurfList from './SmurfsList';
@@ -17,6 +17,11 @@ class App extends Component {
     this.props.addSmurf({ name, age, height });
   };
 
+  handleUpdateSmurf = ({ id, name, age, height }) => {
+    // e.preventDefault();
+    this.props.updateSmurf({ id, name, age, height });
+  };
+
   handleDeleteSmurf = id => {
     this.props.deleteSmurf(id);
   };
@@ -24,7 +29,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Form handleAddSmurf={this.handleAddSmurf} />
+        {this.props.updatingSmurf ? (
+          <Form handleUpdateSmurf title="Update Smurf" />
+        ) : (
+          <Form handleAddSmurf={this.handleAddSmurf} title="Add Smurf" />
+        )}
         {this.props.fetchingSmurfs ? (
           <div>Loading...</div>
         ) : (
@@ -41,11 +50,12 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs
+    fetchingSmurfs: state.fetchingSmurfs,
+    updatingSmurf: state.updatingSmurf
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getSmurfs, addSmurf, deleteSmurf }
+  { getSmurfs, addSmurf, deleteSmurf, updateSmurf }
 )(App);

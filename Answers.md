@@ -7,6 +7,6 @@
 1.  What is middleware?
     Middleware in redux takes an action and does something to it before it is sent to the reducer. It is a function.
 1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-    Redux Thunk is a middleware that allows you to pass in functions to blank instead of object so we can run ansyncronious JavaScript.
+    Redux Thunk is a middleware that allows you to pass in functions to blank instead of object so we can run asynchronous JavaScript.
 1.  Which `react-redux` method links up our `components` with our `redux store`?
     connect.
