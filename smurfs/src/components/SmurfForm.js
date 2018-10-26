@@ -45,7 +45,7 @@ render() {
         value={ this.state.height }
         name='height'
         placeholder='height'
-        onChange={ this.state.height }
+        onChange={ this.changeHandler }
         />
 
         <button onClick = { this.newSmurfHandler }>Add Smurf</button>
