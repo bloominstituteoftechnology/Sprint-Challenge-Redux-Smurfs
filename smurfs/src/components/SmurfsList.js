@@ -6,7 +6,7 @@ export default props => {
       <h1>Smurfs List</h1>
       {props.smurfs.map(item => {
         return (
-          <div>
+          <div onClick={() => props.getSmurf(item)}>
             <h1>{item.name}</h1>
             <h1>{item.age}</h1>
             <h1>{item.height}</h1>

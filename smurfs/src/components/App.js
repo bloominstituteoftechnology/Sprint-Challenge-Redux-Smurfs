@@ -23,7 +23,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return { fetchingSmurfs: state.fetchingSmurfs };
+  return { fetchingSmurfs: state.mainReducer.fetchingSmurfs };
 };
 
 export default connect(

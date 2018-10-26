@@ -32,12 +32,14 @@ export class componentName extends Component {
   render() {
     return (
       <div>
+        <h1>ADD FORM</h1>
         <form onSubmit={this.updateDatabase}>
           <input type="text" placeholder="name" onChange={this.handleInput} />
           <input type="text" placeholder="age" onChange={this.handleInput} />
           <input type="text" placeholder="height" onChange={this.handleInput} />
           <button onSubmit={this.updateDatabase}>Create a smurf</button>
         </form>
+        <h1>END OF ADD FORM</h1>
       </div>
     );
   }

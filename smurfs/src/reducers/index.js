@@ -17,7 +17,8 @@ import {
   FETCH_COMPLETE,
   FETCH_ERROR,
   ADD_SMURF,
-  DELETE_SMURF
+  DELETE_SMURF,
+  UPDATE_SMURF
 } from '../actions';
 /*
   You'll only need one smurf reducer for this project.
@@ -29,14 +30,10 @@ import {
 
 const initialState = {
   smurfs: [],
-  fetchingSmurfs: false,
-  addingSmurf: false,
-  updatingSmurf: false,
-  deletingSmurf: false,
-  error: null
+  fetchingSmurfs: false
 };
 
-export default (state = initialState, action) => {
+export const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_COMPLETE:
       return {
@@ -54,6 +51,11 @@ export default (state = initialState, action) => {
         smurfs: action.payload
       };
     case DELETE_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload
+      };
+    case UPDATE_SMURF:
       return {
         ...state,
         smurfs: action.payload

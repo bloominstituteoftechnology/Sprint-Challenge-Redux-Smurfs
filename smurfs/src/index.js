@@ -4,9 +4,15 @@ import './index.css';
 import App from './components/App';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './reducers';
+import { mainReducer } from './reducers';
+import singleSmurfReducer from './reducers/singleSmurf';
+
+const rootReducer = combineReducers({
+  mainReducer,
+  singleSmurfReducer
+});
 
 const store = createStore(
   rootReducer,
