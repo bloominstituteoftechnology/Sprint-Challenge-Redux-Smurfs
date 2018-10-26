@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { fetchSmurfs } from "../actions/index";
 import { connect } from "react-redux";
+import SmurfList from "./SmurfList";
 
 /*
  to wire this component up you're going to need a few things.
@@ -19,6 +20,7 @@ class App extends Component {
       <div className="App">
         <h1>testing</h1>
         {/* map over smurfs with list component  */}
+        <SmurfList smurfs={this.props.smurfs} />
       </div>
     );
   }
