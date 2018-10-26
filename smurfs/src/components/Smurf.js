@@ -1,7 +1,7 @@
 import React from "react";
 
 const Smurf = ({ smurf, handleUpdate, handleDelete }) => (
-  <div className="smurf" key={smurf.id}>
+  <div className="smurf">
     <h2>Name: {smurf.name}</h2>
     <p>Age: {smurf.age}</p>
     <p>Height: {smurf.height}</p>

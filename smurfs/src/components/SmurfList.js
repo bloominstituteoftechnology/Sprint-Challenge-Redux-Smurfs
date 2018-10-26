@@ -8,6 +8,7 @@ const SmurfList = ({ smurfs, handleUpdate, handleDelete }) => (
         smurf={smurf}
         handleUpdate={handleUpdate}
         handleDelete={handleDelete}
+        key={smurf.id}
       />
     ))}
   </div>
