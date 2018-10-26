@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Smurfs from './Smurfs';
 import SmurfForm from './SmurfForm';
 import Navigation from './Navigation';
+import {Route} from 'react-router-dom';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -19,10 +20,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
         <Navigation />
+
         <h1>Smurf Village Residents:</h1>
-        <Smurfs smurfs ={this.props.smurfs}/>
-        <SmurfForm />
+
+        <Route
+          exact path = "/"
+          render = {props =>(
+          <Smurfs {...props}
+          smurfs={this.props.smurfs} />
+          )}/>
+
+          <Route
+          path = "/newsmurf"
+          render = {props =>(
+          <SmurfForm {...props}
+          smurfs={this.props.smurfs} />
+          )}/>
+
       </div>
     );
   }

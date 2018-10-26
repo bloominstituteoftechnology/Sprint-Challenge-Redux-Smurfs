@@ -6,6 +6,7 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
+// import SmurfForm from './SmurfForm';
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export default class Example extends React.Component {
           <NavbarBrand href="/">Smurf Village Registry</NavbarBrand>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Register a New Smurf</NavLink>
+                <NavLink href="/newsmurf">Register a New Smurf</NavLink>
               </NavItem>
             </Nav>
         </Navbar>
