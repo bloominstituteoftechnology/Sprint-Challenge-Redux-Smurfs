@@ -2,6 +2,10 @@
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+export const FETCHINGSMURFS = 'FETCHINGSMURFS'
+export const ADDINGSMURF = "ADDINGSMURF"
+export const UPDATINGSMURF = "UPDATINGSMURF"
+export const DELETINGSMURF = "DELETINGSMURF"
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
