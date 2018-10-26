@@ -41,11 +41,11 @@ export const fetchSmurfs = () => dispatch => {
     });
 };
 
-export const addSmurf = friend => dispatch => {
+export const addSmurf = smurf => dispatch => {
   // let's do some async stuff! Thanks react-thunk :)
   dispatch({ type: "ADDING" });
   axios
-    .post("http://localhost:3333/api/smurfs", friend)
+    .post("http://localhost:3333/smurfs", smurf)
     .then(response => {
       dispatch({ type: ADDING_SUCCESS, payload: response.data });
     })

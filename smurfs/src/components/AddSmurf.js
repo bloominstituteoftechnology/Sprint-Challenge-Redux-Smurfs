@@ -1,28 +1,28 @@
 import React, { Component } from "react";
 
 
-class AddFriend extends Component {
+class AddSmurf extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       name: "",
       age: null,
-      email: ""
+      height: ""
     };
   }
 
-  addFriend = event => {
+  addSmurf = event => {
     event.preventDefault();
     // add code to create the smurf using the api
-    const { name, age, email } = this.state;
+    const { name, age, height } = this.state;
 
-  this.props.addFriend({ name, age, email });
+  this.props.addSmurf({ name, age, height });
 
     this.setState({
       name: "",
       age: null,
-      email: ""
+      height: ""
     });
   };
 
@@ -32,8 +32,8 @@ class AddFriend extends Component {
 
   render() {
     return (
-      <div className="friendAddForm">
-        <form onSubmit={this.addFriend}>
+      <div className="SmurfAddForm">
+        <form onSubmit={this.addSmurf}>
           <input
             onChange={this.handleInputChange}
             placeholder="name"
@@ -48,11 +48,11 @@ class AddFriend extends Component {
           />
           <input
             onChange={this.handleInputChange}
-            placeholder="email"
-            value={this.state.email}
-            name="email"
+            placeholder="height"
+            value={this.state.height}
+            name="height"
           />
-          <button type="submit">Add Friend</button>
+          <button type="submit">Add Smurf</button>
         </form>
       </div>
     );
@@ -63,4 +63,4 @@ class AddFriend extends Component {
 
 
 
-export default AddFriend;
+export default AddSmurf;

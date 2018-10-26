@@ -3,6 +3,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchSmurfs, addSmurf, deleteSmurf } from "../actions";
 import DisplaySmurf from "./DisplaySmurf";
+import AddSmurf from './AddSmurf';
+
 
 class SmurfList extends React.Component {
   componentDidMount() {
@@ -10,24 +12,24 @@ class SmurfList extends React.Component {
   }
 
   render() {
-    let displayItem = this.props.fetching ?
-      (
-        <h3>Data is Loading...</h3>
-     )
-      : 
-      (
-        this.props.smurfs.map(smurf => (
-          <DisplaySmurf key={smurf.id} smurf={smurf} />
-        ))
-      ) 
-    ;
+    let displayItem = this.props.fetching ? (
+      <h3>Data is Loading...</h3>
+    ) : (
+      this.props.smurfs.map(smurf => (
+        <DisplaySmurf key={smurf.id} smurf={smurf} deleteSmurf = {this.props.deleteSmurf}/>
+      ))
+    );
 
-    return <section className="smurfListContainer">{displayItem}</section>;
+    return (
+      <div className = "container">
+        <AddSmurf addSmurf = {this.props.addSmurf} />
+        <div className="smurfListContainer">{displayItem}</div>;
+    </div>
+    )
   }
 }
 
-const mapStateToProps = ({fetching, smurfs}) => {
-  console.log("DisplaySmufs MapState", smurfs);
+const mapStateToProps = ({ fetching, smurfs }) => {
   return {
     smurfs,
     fetching
