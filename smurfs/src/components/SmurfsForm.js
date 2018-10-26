@@ -1,60 +1,70 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { addSmurfs } from '../actions';
-
+import React, {Component} from 'react'; 
+import { connect } from 'react-redux'; 
+import { createSmurfs} from '../actions';
+import '../App.css';
 class SmurfForm extends Component {
-    state = {
-        name: '',
-        age: '',
-        height: ''
-    };
+    state={
+        name: '', 
+        age: '', 
+        height: '', 
+    }; 
+    handleInputChange = event => {
+        this.setState({ [event.target.name]: event.target.value}); 
+    }; 
 
-    handleInputChange = e => {
-        this.setState({ [e.target.name]: e.target.value });
-    };
-
-    handleAddSmurf = () => {
-        const { name, age, height } = this.state;
-        this.props.addSmurfs({ name, age, height });
-        this.setState({ name: '', age: '', height: '', });
-    }
-
+    handleAddSmurf = _ => {
+        const {name, age, height} = this.state; 
+        this.props.createSmurfs({name, age, height}); 
+        this.setState({name: '', age:'', height:''}); 
+    }; 
     render() {
-        return (
-            <form onSubmit={() => this.handleAddSmurf()}>
-                <input
-                    name='name'
-                    value={this.state.name}
-                    type="text"
-                    placeholder="Name"
-                    onChange={this.handleInputChange}
+        return(
+            <form className="layout" onSubmit={() => this.handleAddSmurf()}>
+            <label className="forms">
+                Name:
+                <input 
+                className="input"
+                value={this.state.name}
+                type="text"
+                placeholder="Name"
+                onChange={this.handleInputChange}
                 />
-                <input
-                    name='age'
-                    value={this.state.age}
-                    type="number"
-                    placeholder="Age"
-                    onChange={this.handleInputChange}
+            </label>
+            
+            <label className="forms">
+                Age:
+                <input 
+                className="input"
+                value={this.state.age}
+                placeholder="age"
+                type="text"
+                onChange={this.handleInputChange}
                 />
-                <input
-                    name='height'
-                    value={this.state.height}
-                    type="number"
-                    placeholder="Height"
-                    onChange={this.handleInputChange}
+            </label>
+            <label className="forms">
+                Email:
+                <input 
+                className="input"
+                value={this.state.height}
+                type="text"
+                placeholder="Height"
+                onChange={this.handleInputChange}
                 />
-                <button type='submit'>
-                    Add New Smurf
-                </button>
+            </label>
+            
+            <button type="submit">
+                Add New Smurf
+            </button>
             </form>
         );
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        addSmurfs: state.addSmurfs
+const mapStateToProps = state =>{
+    return{
+        error: state.error, 
+        creatingSmurfs: state.creatingSmurfs
     };
-}
+};
 
-export default connect(mapStateToProps, { addSmurfs })(SmurfForm);
+export default connect(mapStateToProps, { createSmurfs })(SmurfForm); 
