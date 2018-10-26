@@ -24,7 +24,7 @@ export const getSmurfs = () => {
   return function(dispatch) {
       dispatch({ type: FETCHING });
       axios
-          .get('http://localhost:333/smurfs/')
+          .get('http://localhost:3333/smurfs/')
           .then(response => {
               dispatch({ type: SUCCESS, payload: response.data });
           })
@@ -42,7 +42,7 @@ export const addSmurf = newSmurf => {
     return function(dispatch) {
         dispatch({ type: ADDING });
         axios
-            .post('http://localhost:333/smurfs/', newSmurf)
+            .post('http://localhost:3333/smurfs/', newSmurf)
             .then(response => {
                 dispatch({ type: ADDED, payload: response.data })
             })
