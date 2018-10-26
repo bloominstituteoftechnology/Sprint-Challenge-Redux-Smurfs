@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>v a p o r s m u r f</h1>
+        <h1 className="headline">v a p o r s m u r f</h1>
 
         <AddSmurfForm />
 

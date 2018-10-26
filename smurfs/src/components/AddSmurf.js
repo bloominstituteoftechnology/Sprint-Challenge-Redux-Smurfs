@@ -66,7 +66,7 @@ class AddSmurfForm extends React.Component {
 
   render() {
     return (
-      <div className="SmurfForm">
+      <div className="smurf__form">
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -74,6 +74,7 @@ class AddSmurfForm extends React.Component {
             name="input-name"
             onChange={this.handleInput}
             value={this.state.name}
+            class="smurf__input"
           />
           <input
             type="number"
@@ -81,6 +82,7 @@ class AddSmurfForm extends React.Component {
             name="input-age"
             onChange={this.handleInput}
             value={this.state.age}
+            class="smurf__input"
           />
           <input
             type="text"
@@ -88,8 +90,12 @@ class AddSmurfForm extends React.Component {
             name="input-height"
             onChange={this.handleInput}
             value={this.state.height}
+            class="smurf__input"
           />
-          <button type="submit">Submit Smurf</button>
+          <br />
+          <button type="submit" className="smurf__submit">
+            Submit Smurf
+          </button>
         </form>
       </div>
     );

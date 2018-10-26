@@ -1,16 +1,71 @@
 .App {
   text-align: center;
+  background: -webkit-linear-gradient(
+    to right,
+    #c4e0e5,
+    #4ca1af
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #c4e0e5,
+    #4ca1af
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  display: flex;
+  justify-content: center;
+  height: 100vh;
 }
 
-.container {
+@import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Source+Code+Pro");
+
+.headline {
+  font-family: Architects Daughter;
+  font-size: 25px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
 }
 
 .smurf {
-  width: 75vw;
-  border: 3px solid blue;
+  width: 50vw;
+  border: 3px solid white;
+  margin: 20px;
+  padding: 10px;
+}
+
+.smurf__row {
+  display: flex;
+  align-items: center;
+  font-family: Source Code Pro;
+}
+
+.smurf__specification {
+  text-transform: uppercase;
+  font-size: 30px;
 }
 
 .smurf__detail {
+  margin-left: 15px;
+}
+
+.smurf__form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.smurf__input {
+  height: 40px;
+  width: 200px;
+  margin: 20px;
   text-transform: uppercase;
-  font-weight: bold;
+  border: 1px solid black;
+}
+
+.smurf__submit {
+  text-transform: uppercase;
+  height: 75px;
+  width: 200px;
+  font-family: Source Code Pro;
+  font-size: 18px;
+  letter-spacing: 4px;
 }

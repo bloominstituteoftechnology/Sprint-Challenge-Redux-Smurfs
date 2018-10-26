@@ -5,14 +5,20 @@ const Smurf = props => {
   return (
     <div className="container">
       <div className="smurf">
-        <h2 className="smurf__detail">Name:</h2>
-        <h2 className="smurf__name">{props.name}</h2>
+        <div className="smurf__row">
+          <h2 className="smurf__specification">Name:</h2>
+          <h2 className="smurf__detail">{props.name}</h2>
+        </div>
 
-        <h2 className="smurf__detail">Age:</h2>
-        <h2 className="smurf__age">{props.age}</h2>
+        <div className="smurf__row">
+          <h2 className="smurf__specification">Age:</h2>
+          <h2 className="smurf__detail">{props.age}</h2>
+        </div>
 
-        <h2 className="smurf__detail">Height:</h2>
-        <h2 className="smurf__height">{props.height}</h2>
+        <div className="smurf__row">
+          <h2 className="smurf__specification">Height:</h2>
+          <h2 className="smurf__detail">{props.height}</h2>
+        </div>
       </div>
     </div>
   );
