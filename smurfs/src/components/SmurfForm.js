@@ -19,10 +19,14 @@ class SmurfForm extends React.Component {
       }
     });
   };
+  addSmurf = e => {
+    e.preventDefault();
+    this.props.addSmurf(this.state.newSmurf);
+  };
   render() {
     return (
       <div>
-        <form action="">
+        <form onSubmit={this.addSmurf}>
           <input
             type="text"
             onChange={this.handleSmurfFormInput}
