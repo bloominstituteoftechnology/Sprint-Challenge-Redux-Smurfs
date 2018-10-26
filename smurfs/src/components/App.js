@@ -40,6 +40,33 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
+        <form onSubmit={this.addSmurf}>
+          <input
+            type="text"
+            name="name"
+            value={this.state.name}
+            onChange={this.handleInput}
+            placeholder="Enter Name"
+            required
+          />
+          <input
+            type="text"
+            name="age"
+            value={this.state.age}
+            onChange={this.handleInput}
+            placeholder="Enter Age"
+            required
+          />
+          <input
+            type="text"
+            name="height"
+            value={this.state.height}
+            onChange={this.handleInput}
+            placeholder="Enter Height"
+            required
+          />
+          <button type="submit">Add Smurf</button>
+        </form>
         <Smurfs smurfs={this.props.smurfs} />
       </div>
     );
