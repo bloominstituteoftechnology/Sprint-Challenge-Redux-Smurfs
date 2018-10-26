@@ -2,7 +2,13 @@
   Be sure to import in all of the action types from `../actions`
 */
 
-import { FETCHING_SMURFS, FETCHING_SMURFS_SUCCESS, FETCHING_SMURFS_FAILURE } from '../actions/index';
+import {
+  FETCHING_SMURFS,
+  FETCHING_SMURFS_SUCCESS,
+  FETCHING_SMURFS_FAILURE,
+  ADDING_SMURF_SUCCESS,
+  ADDING_SMURF_FAILURE
+} from '../actions/index';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -38,6 +44,17 @@ const rootReducer = (state = initialState, action) => {
       };
     case FETCHING_SMURFS_FAILURE:
       return { ...state, fetchingSmurfs: false, error: action.payload };
+    case ADDING_SMURF_SUCCESS:
+      return {
+        ...state,
+        smurfs: [...state.smurfs, action.payload]
+      };
+    case ADDING_SMURF_FAILURE:
+      return {
+        ...state,
+        error: 'Smurf creation failed.'
+      };
+
     default:
       return state;
   }

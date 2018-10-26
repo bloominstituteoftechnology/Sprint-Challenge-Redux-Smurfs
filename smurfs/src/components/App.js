@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions/index';
 import Smurf from './Smurf';
+import SmurfMaker from './SmurfMaker';
 
 /*
  to wire this component up you're going to need a few things.
@@ -11,6 +12,10 @@ import Smurf from './Smurf';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  constructor() {
+    super();
+  }
+
   componentDidMount() {
     this.props.getSmurfs();
   }
@@ -21,6 +26,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">SMURFS! 2.0 W/ Redux</h1>
           <div>Welcome to your Redux version of Smurfs!</div>
+          <SmurfMaker />
         </header>
         {this.props.fetchingSmurfs ? (
           <h3>Hold tight, we're fetching your smurfs...</h3>
