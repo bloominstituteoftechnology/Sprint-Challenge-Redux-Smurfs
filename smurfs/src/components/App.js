@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
+import {Route, Link, NavLink} from 'react-router-dom';
+import {withRouter} from 'react-router';
+import Smurf from './Smurf';
+import Smurfs from './Smurfs';
+import SmurfForm from './SmurfForm';
 
 
 /*
@@ -13,20 +18,65 @@ import * as actions from '../actions';
 class App extends Component {
 
   state = {
-    smurfs: this.props.smurfs
+    smurfs: this.props.smurfs,
+    newSmurf: {
+      name: '',
+      age: '',
+      height: ''
+        },
+    prepDelete: false
   }
 
+  handleInput = (e) => {
+    this.setState({newSmurf: {
+                   [e.target.name]: e.target.value 
+    }})
+  }
 
+  prepDelete = () => {
+    this.setState({prepDelete: !this.state.prepDelete})
+  }
+
+  
   componentDidMount(){
     this.props.getSmurfs()
   }
 
 
+
+
   render() {
-    const {smurfs } = this.props;
+    const {smurfs, deleteSmurf, addSmurf } = this.props;
     return (
       <div className="App">
-        {smurfs.map(smurf => <h1>{smurf.name}</h1>)}
+
+      <header><h1>Smurf Village</h1></header>
+      <nav><NavLink to='/'>Home</NavLink><NavLink to='/addSmurf'>Add Smurf</NavLink><div className="delete"onClick={this.prepDelete}>Delete Smurf</div></nav>
+      
+      <Route exact path='/' render={props =>
+                      <Smurfs {...props}
+                              smurfs={smurfs}
+                              prepDelete={this.state.prepDelete}
+                              delete={deleteSmurf} />
+      } />
+        
+      <Route  path='/addSmurf' render={props =>
+                              <SmurfForm 
+                              {...props}
+                              handleInput={this.handleInput} 
+                              newSmurf={this.state.newSmurf}
+                              addSmurf={addSmurf} />
+       }/>
+      <Route path='/smurfs/:id' render={props => <div className='smurfpage-container'><Smurf {...props} 
+                                                  smurf={smurfs}
+                                                  delete={deleteSmurf}
+                                                  prepDelete={this.state.prepDelete}
+                                                  smurfPage />
+                                                  </div>
+                                                  }/>
+
+
+      
       </div>
     );
   }
@@ -38,4 +88,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, actions)(App);
+export default withRouter(connect(mapStateToProps, actions)(App));
