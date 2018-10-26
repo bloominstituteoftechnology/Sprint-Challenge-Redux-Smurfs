@@ -36,6 +36,11 @@ class App extends Component {
   };
 
   render() {
+    if (this.props.fetchingSmurfs) {
+      return <h3 className="App">Gathering Smurfs</h3>;
+    } else if (this.props.error) {
+      return <h3>Not Found</h3>;
+    }
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
