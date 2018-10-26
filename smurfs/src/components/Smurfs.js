@@ -15,7 +15,7 @@ class Smurfs extends Component {
     render(){
         return (
             <div className="Container">
-            <ul>
+            <ul className="smurf-list">
             {this.props.smurfs.map(smurf =>{
                 return(
                     <ul onClick={() => this.handleShowSmurf(smurf)} key={smurf.id}>

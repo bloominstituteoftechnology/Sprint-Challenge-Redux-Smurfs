@@ -55,7 +55,7 @@ class SmurfForm extends Component {
                 />
             </label>
             
-            <button type="submit">
+            <button type="submit" className="submit-button">
                 Add New Smurf
             </button>
             </form>
