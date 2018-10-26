@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { deleteSmurf } from '../actions'
 
 const Smurf = props => {
   const { id, name, age, height} = props
@@ -26,4 +28,13 @@ Smurf.defaultProps = {
   age: ''
 };
 
-export default Smurf;
+const mapStateToProps = state => {
+  return {}
+}
+
+export default connect(
+  mapStateToProps,
+  {
+    deleteSmurf
+  }
+)(Smurf);

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { 
   getSmurfs,
-  createSmurf
+  createSmurf,
 } from '../actions'
 import { 
   SmurfList,
@@ -21,7 +21,10 @@ class SmurfListView extends Component {
     return ( 
       <div className="SmurfListView">
         <CreateSmurfForm createSmurf={this.props.createSmurf}/>
-        <SmurfList smurfs={this.props.smurfs} /> 
+        <SmurfList 
+          smurfs={this.props.smurfs} 
+          deleteSmurf={this.props.deleteSmurf}
+        /> 
       </div>
     );
   }

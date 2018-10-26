@@ -1,5 +1,4 @@
 import React ,{ Component } from 'react';
-import { createSmurf } from '../actions';
 
 class CreateSmurfForm extends Component {
   constructor(props) {
@@ -20,7 +19,7 @@ class CreateSmurfForm extends Component {
       age: '',
       height: ''
     })
-    this.forceUpdate()
+    // this.forceUpdate()
   }
   handleOnChange = (event) => {
     const stateValue = event.target.placeholder.split(' ').pop()
@@ -33,7 +32,7 @@ class CreateSmurfForm extends Component {
       type: 'input',
       onChange: this.handleOnChange,
     }
-    if (this.state == this.initState) {
+    if (this.state === this.initState) {
       inputProps.value = ''
     }
     return ( 
@@ -56,7 +55,6 @@ class CreateSmurfForm extends Component {
           />
           <button 
             type="submit"
-            onClick={this.handleOnSubmit}
           >Submit</button>
         </form> 
       </div>

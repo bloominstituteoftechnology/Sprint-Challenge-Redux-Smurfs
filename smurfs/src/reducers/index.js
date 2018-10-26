@@ -3,7 +3,8 @@ import {
   FETCHINGSMURFS, 
   SMURFSFETCHED,
   ERROR,
-  ADDINGSMURF
+  ADDINGSMURF,
+  DELETINGSMURF
 } from '../actions'
 /*
   Be sure to import in all of the action types from `../actions`
@@ -52,6 +53,11 @@ const smurfReducer = (state = initalState, action) => {
         smurfs: action.data
       }
     case ADDINGSMURF:
+      return {
+        ...state,
+        smurfs: action.data
+      }
+    case DELETINGSMURF:
       return {
         ...state,
         smurfs: action.data
