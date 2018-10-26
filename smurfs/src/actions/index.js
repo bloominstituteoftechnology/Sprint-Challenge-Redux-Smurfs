@@ -9,28 +9,27 @@ export const fetchSmurfs = () => dispatch => {
     const promise = axios.get('http://localhost:3333/smurfs')
     dispatch({type: GET_SMURF})
     promise
-    .then(({data}) => {
-        dispatch({type: GET_SMURFSUCCESS, payload: data})
+    .then(response => {
+        dispatch({type: GET_SMURFSUCCESS, payload: response.data})
     })
     .catch(err => {
-        dispatch({type: FRIENDS_ERR, payload: err})
+        dispatch({type: GET_SMURFERR, payload: err})
     })
 }
 
-export const addSmurf= (value) => {
-    return {
-      type: ADD_SMURF,
-      payload: value
-    };
+export const addSmurf = smurf => {
+  return dispatch => {
+    dispatch({ type: ADD_SMURF });
+    axios
+      .post('http://localhost:3333/smurfs', smurf)
+      .then(() => {
+        dispatch(fetchSmurfs());
+      })
+      .catch(err => {
+        dispatch({ type: GET_SMURFERR, payload: err });
+      });
   };
-
-  export const updateSmurf= (id) => {
-    return {
-      type: UPDATE_SMURF,
-      payload: id
-    };
-  };
-
+};
 
 
 /* 
