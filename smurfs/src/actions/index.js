@@ -20,11 +20,13 @@ export const FETCHED = "FETCHED"
 const URL = "http://localhost:3333/smurfs";
 
 export const getSmurfs = () => dispatch => {
+  dispatch({ type:FETCHING_SMURFS });
   axios
     .get(URL)
     .then(response => {
+      console.log("Axios .then call",response.data)
       dispatch({
-        type : FETCHING_SMURFS,
+        type : FETCHED,
         payload : response.data,
       })
     })

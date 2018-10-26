@@ -23,6 +23,13 @@ export const smurfReducer = (state = initialState,action)=>{
   switch(action.type){
     case FETCHING_SMURFS :
       return {...state, fetchingSmurfs : true}
+
+    case FETCHED :
+      return{
+        ...state,
+        smurfs : action.payload,
+        fetchingSmurfs : false,
+      }
     default : return state;
   }
 }
