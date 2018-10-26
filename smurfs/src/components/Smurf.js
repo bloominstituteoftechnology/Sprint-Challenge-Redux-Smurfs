@@ -19,18 +19,18 @@ class Smurf extends React.Component {
 
   delete = () => {
     const id = this.props.smurf.id;
-    this.props.deleteSmurf(id); 
+    this.props.deleteSmurf(id);
   }
   render(){
     return (
       <div className='smurf-container'>
       <div className='smurf-buttons'>
-      <div className='edit-button button' onClick={this.toggleEdit}>Edit</div>
-      <div className='delete-button button' onClick={this.delete}>Delete</div>
+      <div className='edit-button button' onClick={this.toggleEdit}><i className="far fa-edit"/></div>
+      <div className='delete-button button' onClick={this.delete}><i className="far fa-trash-alt"/></div>
       </div>
       <div className='smurf-card'>
       <h3>{this.props.smurf.name}</h3>
-      <p>{this.props.smurf.age}</p>
+      <p>{this.props.smurf.age} years old</p>
       <p>{this.props.smurf.height}</p>
       {this.state.editing && <Form smurf={this.props.smurf} submit={this.props.editSmurf}/>}
       </div>

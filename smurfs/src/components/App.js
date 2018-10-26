@@ -15,7 +15,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Welcome to Smurf Village</h1>
+        <div className='add-form'>
         <Form submit={this.props.addSmurf}/>
+        </div>
         <SmurfList />
       </div>
     );
