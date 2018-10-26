@@ -14,4 +14,34 @@
   width:30%;
   margin: 20px auto;
   padding: 10px;
+  height:250px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.smurf .editing-form {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.smurf .editing-form * {
+  margin: 10px auto;
+padding:5px;
+}
+
+.cancel-edit-button, .delete-button, .edit-button {
+  width:40%;
+  margin:0 auto;
+  padding:5px;
+  margin:5px auto;
+}
+
+.smurf button {
+  color:white;
+  background: #1BA1D0;
+  border:none;
+  border-radius:3px;
+  font-weight:bold;
 }
