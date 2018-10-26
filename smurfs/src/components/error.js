@@ -1,9 +1,13 @@
 
+
+//== Error - Display for errr messages =========================================
+
 //-- Dependencies --------------------------------
 import React from "react";
+import {connect} from 'react-redux';
 
-//-- Error ---------------------------------------
-export default function (props) {
+//-- Component -----------------------------------
+function Error(props) {
     if(!props.error){ return null;}
     return (
         <div className="error">
@@ -11,3 +15,14 @@ export default function (props) {
         </div>
     );
 }
+
+//-- Redux Coupling ------------------------------
+function mapStateToProps(state) {
+    return {
+        error: state.error,
+    };
+}
+let ReduxError = connect(mapStateToProps, {})(Error);
+
+//-- Exporting -----------------------------------
+export default ReduxError;

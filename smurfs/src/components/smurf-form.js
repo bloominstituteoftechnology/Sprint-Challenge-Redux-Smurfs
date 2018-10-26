@@ -113,6 +113,7 @@ function mapStateToProps(state) {
 SmurfForm = connect(mapStateToProps, {
     addSmurf: actions.addSmurf,
     updateSmurf: actions.updateSmurf,
+    notReady: actions.notReady,
 })(SmurfForm);
 
 //-- Exporting -----------------------------------

@@ -1,8 +1,11 @@
 
+
+//== Smurf =====================================================================
+
 //-- Dependencies --------------------------------
 import React from "react";
 
-//-- Smurf - Implementation & Export -------------
+//-- Component & Export --------------------------
 export default function Smurf(props) {
     return (
         <div className='smurf' onClick={props.onClick} data-id={props.smurf.id}>

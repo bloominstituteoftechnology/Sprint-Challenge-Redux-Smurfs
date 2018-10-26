@@ -81,8 +81,7 @@ SmurfList = connect(mapStateToProps, {
     onFocus: actions.focusSmurf,
     onCancel: actions.focusCancel,
     onDelete: actions.deleteSmurf,
-    /*notReady: actions.notReady,
-*/})(SmurfList);
+})(SmurfList);
 
 //-- Exporting -----------------------------------
 export default SmurfList;
