@@ -39,6 +39,12 @@ export const rootReducer = (state = initialState, action) => {
 
     case SMURF_FETCH_FAILURE:
       return { ...state, fetchingSmurfs: false, error: action.payload };
+    
+    case ADD_SMURF:
+      return {
+        ...state,
+        smurfs: [ ...state.smurfs, { name: action.name, age: action.age, height: action.height }]
+      };
 
     default:
       return state;

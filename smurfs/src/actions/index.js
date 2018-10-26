@@ -28,3 +28,4 @@ export const fetchSmurfs = () => dispatch => {
       dispatch({ type: SMURF_FETCH_FAILURE, payload: error });
     });
 };
+
