@@ -3,9 +3,9 @@ import axios from "axios";
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const FETCHING_SMURFS_SUCCESS = "FETCHING_SMURFS_SUCCESS";
 export const FETCHING_SMURFS_FAILURE = "FETCHING_SMURFS_FAILURE";
-// export const ADD_SMURF = "ADD_SMURF";
-// export const ADD_SMURF_SUCCESS = "ADD_SMURF_SUCCESS";
-// export const ADD_SMURF_FAILURE = "ADD_SMURF_FAILURE";
+export const ADD_SMURF = "ADD_SMURF";
+export const ADD_SMURF_SUCCESS = "ADD_SMURF_SUCCESS";
+export const ADD_SMURF_FAILURE = "ADD_SMURF_FAILURE";
 
 const server = `http://localhost:3333/smurfs`;
 
@@ -27,23 +27,23 @@ export const fetchingSmurfs = () => dispatch => {
     });
 };
 
-// export const addFriend = friend => dispatch => {
-//   dispatch({ type: ADD_FRIEND });
-//   axios
-//     .post(server, friend)
-//     .then(response => {
-//       dispatch({
-//         type: ADD_FRIEND_SUCCESS,
-//         payload: response.data
-//       });
-//     })
-//     .catch(error => {
-//       dispatch({
-//         type: ADD_FRIEND_FAILURE,
-//         payload: error
-//       });
-//     });
-// };
+export const addSmurf = smurf => dispatch => {
+  dispatch({ type: ADD_SMURF });
+  axios
+    .post(server, smurf)
+    .then(response => {
+      dispatch({
+        type: ADD_SMURF_SUCCESS,
+        payload: response.data
+      });
+    })
+    .catch(error => {
+      dispatch({
+        type: ADD_SMURF_FAILURE,
+        payload: error
+      });
+    });
+};
 
 // export const deleteFriend = id => dispatch => {
 //   dispatch({ type: DELETE_FRIEND });

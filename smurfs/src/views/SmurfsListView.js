@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import Smurfs from "../components/Smurfs";
-// import SmurfForm from "../components/SmurfForm";
+import SmurfForm from "../components/SmurfForm";
 import {
-  fetchingSmurfs
-  // addSmurf,
+  fetchingSmurfs,
+  addSmurf
   // deleteSmurf,
 } from "../actions";
 
@@ -19,27 +19,28 @@ class SmurfsListView extends React.Component {
 
   render() {
     console.log("inListView", this.props.smurfs);
-    // if (this.props.fetchingFriends) {
-    //   return (
-    //     <div className="fetching">
-    //       <h1>Hold On.. We're Summoning Your Crew.. </h1>
-    //     </div>
-    //   );
-    // }
-    return (
-      <div>
-        <Smurfs
-          smurfs={this.props.smurfs}
-          //   deleteFriend={this.props.deleteFriend}
-          //   updateFriend={this.props.updateFriend}
-        />
+    if (this.props.fetchingFriends) {
+      return (
+        <div className="fetching">
+          <h1>Hold On.. We're Summoning Your Crew.. </h1>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Smurfs
+            smurfs={this.props.smurfs}
+            //   deleteFriend={this.props.deleteFriend}
+            //   updateFriend={this.props.updateFriend}
+          />
 
-        {/* <FriendForm
-            friends={this.props.friends}
-            addFriend={this.props.addFriend}
-          /> */}
-      </div>
-    );
+          <SmurfForm
+            smurfs={this.props.smurfs}
+            addSmurf={this.props.addSmurf}
+          />
+        </div>
+      );
+    }
   }
 }
 
@@ -47,8 +48,8 @@ const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
     error: state.error,
-    fetchingSmurfs: state.fetchingSmurfs
-    //   addFriend: smurfsReducer.addFriend,
+    fetchingSmurfs: state.fetchingSmurfs,
+    addSmurf: state.addSmurf
     //   deleteFriend: smurfsReducer.deleteFriend,
     //   updateFriend: smurfsReducer.updateFriend
   };
@@ -57,8 +58,8 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    fetchingSmurfs
-    //   addFriend,
+    fetchingSmurfs,
+    addSmurf
     //   deleteFriend
   }
 )(SmurfsListView);
