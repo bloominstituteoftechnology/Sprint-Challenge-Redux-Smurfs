@@ -61,8 +61,8 @@
 }
 
 .smurf {
-  border: 1px solid gray;
-  background-color: #88CCFF;
+  color: navy;
+  border: 5px solid #88CCFF;
   padding: 20px;
   width: 200px;
   border-radius: 5px;
