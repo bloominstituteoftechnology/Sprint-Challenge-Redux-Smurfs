@@ -2,6 +2,8 @@
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+import axios from 'axios';
+
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -13,3 +15,57 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const FETCHING = 'FETCHING';
+export const SUCCESS = 'SUCCESS';
+export const FAILURE = 'FAILURE';
+
+export const getSmurfs = () => {
+  return function(dispatch) {
+      dispatch({ type: FETCHING });
+      axios
+          .get('http://localhost:3333/smurfs/')
+          .then(response => {
+              dispatch({ type: SUCCESS, payload: response.data });
+          })
+          .catch(error => {
+              dispatch({ type: FAILURE, payload: error })
+          });
+  }
+}
+
+export const ADDING = 'ADDING';
+export const ADDED = 'ADDED';
+export const FAILED_ADD = 'FAILED_ADD';
+
+export const addSmurf = newSmurf => {
+    return function(dispatch) {
+        dispatch({ type: ADDING });
+        axios
+            .post('http://localhost:3333/smurfs/', newSmurf)
+            .then(response => {
+                dispatch({ type: ADDED, payload: response.data })
+            })
+            .catch(error => {
+                dispatch({ type: FAILED_ADD, payload: error })
+            });
+    }
+}
+
+export const DELETING = 'DELETING';
+export const DELETED = 'DELETED';
+export const FAILED_DELETE = 'FAILED_DELETE';
+
+export const deleteSmurf = id => {
+    return function(dispatch) {
+        dispatch({ type: DELETING });
+        axios
+            .delete(`http://localhost:3333/smurfs/${id}`)
+            .then(response => {
+                dispatch({ type: DELETED, payload: response.data })
+            })
+            .catch(error => {
+                dispatch({ type: FAILED_DELETE, payload: error })
+            });
+    }
+}
