@@ -14,6 +14,7 @@
   color: #3cbded;
   height: 16px;
   border-radius: 5px;
+  font-family: 'Patrick Hand', cursive;
 }
 
 .button:focus {
@@ -42,6 +43,7 @@ input {
   border-left: none;
   border-right: none;
   text-align: center;
+  font-family: 'Patrick Hand', cursive;
 }
 
 ::placeholder {
