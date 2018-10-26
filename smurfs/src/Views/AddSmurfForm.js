@@ -19,21 +19,31 @@ class AddSmurfForm extends Component {
   addSmurfFunc = event => {
     event.preventDefault();
     this.props.createSmurf(this.state);
-    this.setState({
-      name: "",
-      age: "",
-      height: ""
-    });
+    console.log(this.state);
+    this.setState(
+      {
+        name: "",
+        age: "",
+        height: ""
+      },
+      console.log(this.state)
+    );
   };
 
   render() {
     return (
       <div>
-        <form onSubmit={this.addSmurfFunc}>
+        <form onSubmit={event => this.addSmurfFunc(event)}>
           <div>
-            <input onChange={this.changeHandler} name="name" placeholder="Name" type="input" />
-            <input onChange={this.changeHandler} name="age" placeholder="Age" type="input" />
-            <input onChange={this.changeHandler} name="height" placeholder="Height" type="input" />
+            <input onChange={this.changeHandler} name="name" placeholder="Name" type="input" value={this.state.name} />
+            <input onChange={this.changeHandler} name="age" placeholder="Age" type="input" value={this.state.age} />
+            <input
+              onChange={this.changeHandler}
+              name="height"
+              placeholder="Height"
+              type="input"
+              value={this.state.height}
+            />
           </div>
           <button type="submit">Add Smurf</button>
         </form>

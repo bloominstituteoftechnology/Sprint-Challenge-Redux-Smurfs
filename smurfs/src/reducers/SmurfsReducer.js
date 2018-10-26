@@ -25,14 +25,15 @@ export const smurfsReducer = (state = initialState, action) => {
       return { ...state, error: action.payload };
     case ADD_SUCCESS:
       return {
-        smurfs: [...action.payload]
+        ...state,
+        smurfs: [...state, ...action.payload]
       };
     case ADD_FAILURE:
       return { ...state, error: action.payload };
     case DELETE_SMURF_SUCCESS:
       return {
         ...state,
-        smurfs: state.smurfs.filter(smurf => smurf !== action.payload)
+        smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload.id)
       };
 
     default:
