@@ -46,7 +46,6 @@ const mapStateToProps = state => {
     fetchingSmurfs: state.fetchingSmurfs,
     addSmurf: state.addSmurf,
     deleteSmurf: state.deleteSmurf
-    //   updateFriend: smurfsReducer.updateFriend
   };
 };
 
