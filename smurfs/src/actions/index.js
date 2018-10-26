@@ -20,19 +20,16 @@ export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const FETCHING_SMURFS_SUCCESS = "FETCHING_SMURFS_SUCCESS";
 export const FETCHING_SMURFS_FAILURE = "FETCHING_SMURFS_FAILURE";
 
-
-export const ADD_SMURF_COMPLETE = "ADD_SMURF_COMPLETE";
+export const ADD_SMURF_SUCCESS = "ADD_SMURF_SUCCESS";
 export const ADD_SMURF_FAILURE = "ADD_SMURF_FAILURE";
-
 
 export const UPDATE_SMURF_SUCCESS = "UPDATE_SMURF_SUCCESS";
 export const UPDATE_SMURF_FAILURE = "UPDATE_SMURF_FAILURE";
 
-
 export const DELETE_SMURF_SUCCESS = "DELETE_SMURF_SUCCESS";
 export const DELETE_SMURF_FAILURE = "DELETE_SMURF_FAILURE";
 
-const URL = "http://localhost:3333/smurfs/"
+const URL = "http://localhost:3333/smurfs/";
 
 export const fetchSmurfs = () => dispatch => {
   dispatch({ type: FETCHING_SMURFS });
