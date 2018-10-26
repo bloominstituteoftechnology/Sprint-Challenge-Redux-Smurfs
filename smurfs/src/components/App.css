@@ -1,28 +1,90 @@
 .App {
-  text-align: center;
-}
+    text-align: center;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+  }
+  
+  .App-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+  }
+  
+  .App-title {
+    font-size: 1.5em;
+  }
+  
+  .App-intro {
+    font-size: large;
+  }
+  
+  ul {
+      list-style-type: none;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    
+  }
+  
+  form {
+      display: flex;
+      flex-flow: column nowrap;
+      align-self: center;
+      height: 200px;
+      justify-content: space-evenly;
+      margin: 10px 0;
+      align-items: center;
+  }
+  
+  label {
+      font-family: Monaco;
+      font-size: 14px;
+      color: black;
+  
+  }
+  
+  input {
+      width: 150px;
+      height: 20px;
+      border: 2px solid darkgray;
+  }
+  
+  input[type='submit'] {
+      width: 100px;
+      border-radius: 15px;
+      margin-top: 20px;
+      font-family: Monaco;
+  }
+  .list {
+      border: 2px solid black;
+      width: 15%;
+      padding: 10px;
+      margin: 20px;
+      font-family: monaco;
+      font-size: 16px;
+      color: black;
+      background-image: linear-gradient(white, lightblue, lightgray);
+      
+  }
+  li {
+      height: auto;
+      width: auto;
+  }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+  button {
+      border: 1px solid black;
+      font-family: monaco;
+      padding: 2px;
+      margin: 10px 2px;
+      width: 100px;
+      border-radius: 15px;
+  }

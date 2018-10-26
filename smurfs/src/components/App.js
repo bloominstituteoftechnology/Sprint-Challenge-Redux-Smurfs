@@ -70,30 +70,32 @@ class App extends Component {
                                 )
                             })}
                         </ul>
-                        <form onSubmit={this.handleSubmit}>
-                            <label forHtml="name">Name:</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                onChange={this.handleChange}
-                            />
-                            <label forHtml="age">Age:</label>
-                            <input
-                                type="number"
-                                id="age"
-                                name="age"
-                                onChange={this.handleChange}
-                            />
-                            <label forHtml="height">Height:</label>
-                            <input
-                                type="text"
-                                id="height"
-                                name="height"
-                                onChange={this.handleChange}
-                            />
-                            <input type="submit" value="submit" />
-                        </form>
+                        <div className="form">
+                            <form onSubmit={this.handleSubmit}>
+                                <label forHtml="name">Name:</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    onChange={this.handleChange}
+                                />
+                                <label forHtml="age">Age:</label>
+                                <input
+                                    type="number"
+                                    id="age"
+                                    name="age"
+                                    onChange={this.handleChange}
+                                />
+                                <label forHtml="height">Height:</label>
+                                <input
+                                    type="text"
+                                    id="height"
+                                    name="height"
+                                    onChange={this.handleChange}
+                                />
+                                <input type="submit" value="submit" />
+                            </form>
+                        </div>
                     </div>
                 )}
                 {this.props.error !== '' ? <p>{this.props.error}</p> : null}
