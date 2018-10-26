@@ -69,3 +69,11 @@
   font-size: 18px;
   letter-spacing: 4px;
 }
+
+.smurf__img {
+  height: 40%;
+  width: 40%;
+  justify-self: center;
+  align-self: center;
+  margin-top: 40px;
+}

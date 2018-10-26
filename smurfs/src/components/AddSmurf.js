@@ -76,6 +76,7 @@ class AddSmurfForm extends React.Component {
             value={this.state.name}
             class="smurf__input"
           />
+          <br />
           <input
             type="number"
             placeholder="Age"
@@ -84,6 +85,7 @@ class AddSmurfForm extends React.Component {
             value={this.state.age}
             class="smurf__input"
           />
+          <br />
           <input
             type="text"
             placeholder="Height"
@@ -97,6 +99,11 @@ class AddSmurfForm extends React.Component {
             Submit Smurf
           </button>
         </form>
+        <img
+          class="smurf__img"
+          src="https://www.clipartmax.com/png/full/165-1650004_mu-man-smurf-mu-man-smurf.png"
+          alt=""
+        />
       </div>
     );
   }
