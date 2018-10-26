@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./App.css";
-// import actions here;
+import {getSmurfs, addSmurf} from "../actions";
 import {connect} from "react-redux";
 
 /*
@@ -10,6 +10,10 @@ import {connect} from "react-redux";
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  componentDidMount = () => {
+    this.props.getSmurfs();
+  };
+
   render() {
     return (
       <div className="App">
@@ -17,18 +21,24 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        {this.props.fetchingSmurfs ? (
+          <h1>Loading</h1>
+        ) : (
+          this.props.smurfs.map(smurf => <h1 key={smurf.name}>{smurf.name}</h1>)
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  /* reducers */
+  return {
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs
+  };
 };
 
 export default connect(
   mapStateToProps,
-  {
-    /* actions */
-  }
+  {getSmurfs, addSmurf}
 )(App);
