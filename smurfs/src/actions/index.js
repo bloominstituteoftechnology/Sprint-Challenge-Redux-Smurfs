@@ -52,21 +52,19 @@ export const updateSmurf = smurf => {
     dispatch({ type: SMURF_FETCH });
     axios
       .put(`http://localhost:3333/smurfs/${smurf.editId}`, smurf)
-      .then(response =>
-        dispatch({ type: UPDATE_SMURF, data: response.data }).catch(err => {
-          dispatch({ type: SMURF_ERROR, payload: err });
-        })
-      );
+      .then(response => dispatch({ type: UPDATE_SMURF, data: response.data }))
+      .catch(err => {
+        dispatch({ type: SMURF_ERROR, payload: err });
+      });
   };
 };
 
 export const deleteSmurf = id => {
   return dispatch => {
-    dispatch({ type: DELETE_SMURF });
-    axios.delete(`http://localhost:3333/smurfs/${id}`).then(response =>
-      dispatch({ type: SMURF_FETCHED, data: response.data }).catch(err => {
-        dispatch({ type: SMURF_ERROR, payload: err });
-      })
-    );
+    dispatch({ type: SMURF_FETCH });
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(response => dispatch({ type: DELETE_SMURF, data: response.data }))
+      .catch(err => console.log(err));
   };
 };

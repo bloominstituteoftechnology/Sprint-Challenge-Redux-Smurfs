@@ -65,7 +65,8 @@ class App extends Component {
                 <Smurf
                   key={smurf.id}
                   smurf={smurf}
-                  editSmurf={this.editSmurf}
+                  editSmurf={this.props.updateSmurf}
+                  deleteSmurf={this.props.deleteSmurf}
                 />
               ))}
             </Fragment>

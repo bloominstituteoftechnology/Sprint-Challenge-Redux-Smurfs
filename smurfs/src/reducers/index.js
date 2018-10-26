@@ -43,7 +43,10 @@ const smurfReducer = (state = initialState, action) => {
         error: 'No smurfs!'
       });
     case DELETE_SMURF:
-      return Object.assign({}, state, { smurfs: action.payload });
+      return Object.assign({}, state, {
+        smurfs: action.data,
+        fetchingSmurfs: false
+      });
     default:
       return state;
   }

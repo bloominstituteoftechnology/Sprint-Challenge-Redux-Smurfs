@@ -13,7 +13,7 @@ function Smurf(props) {
       </button>
       <button
         className="button"
-        onClick={event => props.deleteClick(event, props.smurf.id)}
+        onClick={event => props.deleteSmurf(props.smurf.id)}
       >
         Delete
       </button>
