@@ -3,7 +3,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
- 
+ width: 100%;
   
 }
 
@@ -31,6 +31,8 @@ h1{
 .smurfForm{
   margin: 20px 0;
   width: 100%;
+  text-align: center;
+  
 
 }
 
@@ -38,20 +40,24 @@ h1{
   margin: 0 1%;
   background-color: white;
   font-size: 1.3rem;
-  padding: 3px 0;
+  /* padding: 3px 0; */
+
 }
+
+
 
 .smurfs{
   font-size: 1.8rem;
   line-height: 33px;
-  margin: 20px 3%;
-  width: 40%;
+  margin: 20px 1%;
+  width: 45%;
   border: 1px solid white;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   background-color: white;
+  padding: 20px 0;
   
 
 }
@@ -75,5 +81,10 @@ button{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  flex-direction: row;
   
+}
+
+.FormSmurfWrapper{
+  width: 80%;
 }

@@ -5,7 +5,7 @@ import SmurfForm from './smurfForm';
 const SmurfList = props => {
     console.log(props);
     return (
-        <div>
+        <div className='FormSmurfWrapper'>
             <SmurfForm />
             <div className='smurfWraper'>
                 {props.smurfs.map(smurf => {
