@@ -5,6 +5,7 @@ import { getSmurfs } from '../actions/index';
 import Smurfs from './Smurfs';
 
 import './App.css';
+import NewSmurfForm from './NewSmurfForm';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -17,17 +18,19 @@ class App extends Component {
   }
 
   render() {
-    if(this.props.fetchingSmurfs){
+    if (this.props.fetchingSmurfs) {
       return <h2>Fetching smurfs...</h2>
     }
     return (
-      <Smurfs smurfs={this.props.smurfs} />
+      <div>
+        <NewSmurfForm />
+        <Smurfs />
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  //console.log('app state: ', state);
   return {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,

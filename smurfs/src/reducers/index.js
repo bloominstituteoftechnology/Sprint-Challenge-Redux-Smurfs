@@ -25,32 +25,43 @@
 import * as actionTypes from '../actions/index.js';
 
 const initialState = {
-    smurfs: [],
-    fetchingSmurfs: null,
-    addingSmurf: false,
-    updatingSmurf: false,
-    deletingSmurf: false,
-    error: null
+  smurfs: [],
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
+  error: null
 };
 
 export const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case actionTypes.FETCHING_SMURFS:
-            return { ...state, fetchingSmurfs: true };
-        case actionTypes.FETCHING_SMURFS_SUCCESS:
-            return {
-                ...state,
-                smurfs: [...state.smurfs, ...action.payload],
-                fetchingSmurfs: false
-            };
-        case actionTypes.FETCHING_SMURFS_FAILURE:
-            return { ...state, fetchingSmurfs: false, error: action.payload };
-        case actionTypes.ADD_SMURF:
-            return {
-                ...state,
-                smurfs: [...state.smurfs, action.payload]
-            };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case actionTypes.FETCHING_SMURFS:
+      return { ...state, fetchingSmurfs: true };
+
+    case actionTypes.FETCHING_SMURFS_SUCCESS:
+      return {
+        ...state,
+        smurfs: [...state.smurfs, ...action.payload],
+        fetchingSmurfs: false
+      };
+
+    case actionTypes.FETCHING_SMURFS_FAILURE:
+      return { ...state, fetchingSmurfs: false, error: action.payload };
+
+    case actionTypes.ADD_SMURF:
+      return { ...state, addingSmurf: true };
+
+    case actionTypes.ADD_SMURF_SUCCESS:
+      return {
+        ...state,
+        smurfs: [...action.payload],
+        fetchingSmurfs: false
+      };
+
+    case actionTypes.ADD_SMURF_FAILURE:
+      return { ...state, fetchingSmurfs: false, error: action.payload };
+      
+    default:
+      return state;
+  }
 };
