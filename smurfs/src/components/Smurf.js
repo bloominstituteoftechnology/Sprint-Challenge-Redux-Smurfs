@@ -6,7 +6,7 @@ const Smurf = props => {
   };
 
   return (
-    <div className="smurf-card card card-body">
+    <div className="Smurf ">
       <h2 className="card-header">{props.smurf.name}</h2>
       <h3>age: {props.smurf.age}</h3>
       <h3>height: {props.smurf.height} cm</h3>

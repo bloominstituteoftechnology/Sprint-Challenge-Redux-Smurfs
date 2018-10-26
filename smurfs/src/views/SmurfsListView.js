@@ -28,19 +28,19 @@ class SmurfsListView extends React.Component {
       return (
         <div>
           <Route path="/" component={Header} />
-
-          <Route
-            exact
-            path="/village"
-            render={props => (
-              <Smurfs
-                {...props}
-                smurfs={this.props.smurfs}
-                deleteSmurf={this.props.deleteSmurf}
-              />
-            )}
-          />
-
+          <div className="village">
+            <Route
+              exact
+              path="/village"
+              render={props => (
+                <Smurfs
+                  {...props}
+                  smurfs={this.props.smurfs}
+                  deleteSmurf={this.props.deleteSmurf}
+                />
+              )}
+            />
+          </div>
           <Route
             exact
             path="/smurf-form"
