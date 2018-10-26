@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING_SMURFS, SMURFS_FETCH_SUCCESS, FRIENDS_FETCH_FAILURE } from '../actions';
+import { FETCHING_SMURFS, SMURFS_FETCH_SUCCESS, SMURFS_FETCH_FAILURE } from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this*/
@@ -35,7 +35,7 @@ const smurfReducer = (state = initialState, action) => {
               smurfs: [...state.smurfs, ...action.payload]
       };
 
-    case FRIENDS_FETCH_FAILURE:
+    case SMURFS_FETCH_FAILURE:
       return {
         ...state, fetchingSmurfs: false, error: action.payload
       };
