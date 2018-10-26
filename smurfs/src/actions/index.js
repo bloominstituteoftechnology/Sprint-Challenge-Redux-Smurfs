@@ -1,5 +1,11 @@
 import axios from 'axios';
 
+export const ACTIVE_SMURF_HANDLER = 'active_smurf_handler';
+
+export const GET_SMURF = 'get_smurf';
+export const GET_SMURF_SUCCESS = 'get_smurf_success';
+export const GET_SMURF_FAILURE = 'get_smurf_failure';
+
 export const GET_SMURFS = 'get_smurfs';
 export const GET_SMURFS_SUCCESS = 'get_smurfs_success';
 export const GET_SMURFS_FAILURE = 'get_smurfs_failure';
@@ -17,6 +23,23 @@ export const DELETE_SMURF_SUCCESS = 'delete_smurf_success';
 export const DELETE_SMURF_FAILURE = 'delete_smurf_failure';
 
 const url = 'http://localhost:3333';
+
+export const activeSmurfHandler = (ev) => {
+  return {
+    type: ACTIVE_SMURF_HANDLER,
+    payload: {name: ev.target.name, value: ev.target.value}
+  }
+}
+
+export const getSmurf = (id) => async dispatch => {
+  try {
+    dispatch({type: GET_SMURF});
+    const res = await axios.get(`${url}/smurfs/${id}`)
+    dispatch({type: GET_SMURF_SUCCESS, payload: res.data})
+  } catch(err) {
+    dispatch({type: GET_SMURF_FAILURE, payload: err})
+  }
+}
 
 export const getSmurfs = () => async dispatch => {
   try {
@@ -38,10 +61,10 @@ export const addSmurf = (smurf) => async dispatch => {
   }
 }
 
-export const updateSmurf = (smurf, id) => async dispatch => {
+export const updateSmurf = (smurf) => async dispatch => {
   try {
     dispatch({type: UPDATE_SMURF});
-    const res = await axios.put(`${url}/smurfs/${id}`, smurf)
+    const res = await axios.put(`${url}/smurfs/${smurf.id}`, smurf)
     dispatch({type: UPDATE_SMURF_SUCCESS, payload: res.data})
   } catch(err) {
     dispatch({type: UPDATE_SMURF_FAILURE, payload: err})

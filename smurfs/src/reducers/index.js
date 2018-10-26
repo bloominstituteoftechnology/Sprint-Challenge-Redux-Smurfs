@@ -1,4 +1,8 @@
 import {
+  ACTIVE_SMURF_HANDLER,
+  GET_SMURF,
+  GET_SMURF_FAILURE,
+  GET_SMURF_SUCCESS,
   GET_SMURFS,
   GET_SMURFS_FAILURE,
   GET_SMURFS_SUCCESS,
@@ -16,7 +20,9 @@ import {
 
 const initialState = {
   smurfs: [],
+  activeSmurf: {},
   fetchingSmurfs: false,
+  fetchingSmurf: false,
   addingSmurf: false,
   updatingSmurf: false,
   deletingSmurf: false,
@@ -25,6 +31,25 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type) {
+
+    case ACTIVE_SMURF_HANDLER : 
+      return {
+        ...state,
+        activeSmurf: {
+          ...state.activeSmurf,
+          [action.payload.name]: action.payload.value,
+        }
+      }
+
+    case GET_SMURF : return {...state, fetchingSmurf: true}
+    case GET_SMURF_FAILURE : return {...state, fetchingSmurf: false, error: action.payload}
+    case GET_SMURF_SUCCESS : 
+      return {
+        ...state, 
+        fetchingSmurf: false,
+        activeSmurf: action.payload
+      }
+
     case GET_SMURFS : return {...state, fetchingSmurfs: true}
     case GET_SMURFS_FAILURE : return {...state, fetchingSmurfs: false, error: action.payload}
     case GET_SMURFS_SUCCESS : 

@@ -39,6 +39,10 @@ const SmurfForm = props => {
           </FormInputs>
           <FormButtons>
               <StyledButton type="submit">{props.isEditMode?'Update Smurf':'Add to Village'}</StyledButton>
+              {
+                props.isEditMode ? <StyledButton type="button" onClick={props.cancelEdit}>Cancel</StyledButton>:null
+              }
+              
           </FormButtons>
       </StyledForm>
     </Container>

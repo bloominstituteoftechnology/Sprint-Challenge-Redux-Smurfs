@@ -18,8 +18,7 @@ class App extends Component {
         name: '',
         age: '',
         height: '',
-      },
-      eidtMode: false
+      }
     }
   }
 
@@ -70,13 +69,11 @@ class App extends Component {
               smurf={this.state.smurfForm}
               onChange={this.formHandler}
               onSubmit={this.addSmurf}
-              isEditMode={this.state.editMode}
             />
           }
         />
 
         <Route
-          exact
           path="/smurf/:id"
           render={(props) => 
             <Smurf
