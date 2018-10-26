@@ -2,7 +2,12 @@
   Be sure to import in all of the action types from `../actions`
 */
 
-import { SMURF_FETCH, SMURF_FETCHED, SMURF_ERROR } from '../actions';
+import {
+  SMURF_FETCH,
+  SMURF_FETCHED,
+  SMURF_ERROR,
+  DELETE_SMURF
+} from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this*/
@@ -37,6 +42,8 @@ const smurfReducer = (state = initialState, action) => {
         fetchingSmurfs: false,
         error: 'No smurfs!'
       });
+    case DELETE_SMURF:
+      return Object.assign({}, state, { smurfs: action.payload });
     default:
       return state;
   }

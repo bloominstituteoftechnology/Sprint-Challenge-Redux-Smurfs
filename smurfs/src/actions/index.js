@@ -19,6 +19,9 @@ import axios from 'axios';
 export const SMURF_FETCH = 'SMURF_FETCH';
 export const SMURF_FETCHED = 'SMURF_FETCHED';
 export const SMURF_ERROR = 'SMURF_ERROR';
+export const UPDATE_SMURF = 'UPDATE_SMURF';
+export const UPDATING_SMURF = 'UPDATING_SMURF';
+export const DELETE_SMURF = 'DELETE_SMURF';
 
 export const getSmurf = () => {
   return dispatch => {
@@ -41,5 +44,29 @@ export const addSmurf = smurf => {
       .catch(err => {
         dispatch({ type: SMURF_ERROR, payload: err });
       });
+  };
+};
+
+export const updateSmurf = smurf => {
+  return dispatch => {
+    dispatch({ type: SMURF_FETCH });
+    axios
+      .put(`http://localhost:3333/smurfs/${smurf.editId}`, smurf)
+      .then(response =>
+        dispatch({ type: UPDATE_SMURF, data: response.data }).catch(err => {
+          dispatch({ type: SMURF_ERROR, payload: err });
+        })
+      );
+  };
+};
+
+export const deleteSmurf = id => {
+  return dispatch => {
+    dispatch({ type: DELETE_SMURF });
+    axios.delete(`http://localhost:3333/smurfs/${id}`).then(response =>
+      dispatch({ type: SMURF_FETCHED, data: response.data }).catch(err => {
+        dispatch({ type: SMURF_ERROR, payload: err });
+      })
+    );
   };
 };

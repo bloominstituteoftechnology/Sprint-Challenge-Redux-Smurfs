@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { getSmurf, addSmurf } from '../actions';
+import { getSmurf, addSmurf, updateSmurf, deleteSmurf } from '../actions';
 import SmurfForm from '../views/SmurfForm';
 import Smurf from '../views/Smurf';
 
@@ -40,6 +40,18 @@ class App extends Component {
     this.setState({ name: '', age: '', height: '', editId: null });
   };
 
+  editSmurf = smurf => {
+    this.setState(
+      {
+        name: smurf.name,
+        age: smurf.age,
+        height: smurf.height,
+        editId: smurf.id
+      },
+      () => console.log(this.state)
+    );
+  };
+
   render() {
     return (
       <div className="App">
@@ -50,7 +62,11 @@ class App extends Component {
           ) : (
             <Fragment>
               {this.props.smurfs.map(smurf => (
-                <Smurf key={smurf.id} smurf={smurf} />
+                <Smurf
+                  key={smurf.id}
+                  smurf={smurf}
+                  editSmurf={this.editSmurf}
+                />
               ))}
             </Fragment>
           )}
@@ -74,5 +90,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getSmurf, addSmurf }
+  { getSmurf, addSmurf, updateSmurf, deleteSmurf }
 )(App);
