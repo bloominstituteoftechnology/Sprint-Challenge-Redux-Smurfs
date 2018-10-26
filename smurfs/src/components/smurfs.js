@@ -60,6 +60,7 @@ class Smurfs extends Component {
       this.props.addSmurf(SmurfData);
     }
     focusSmurf = eventClick => {
+        //eventClick.currentTarget.
     }
 }
 
