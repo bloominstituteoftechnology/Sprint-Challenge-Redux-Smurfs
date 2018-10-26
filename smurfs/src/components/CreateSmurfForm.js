@@ -21,10 +21,6 @@ class CreateSmurfForm extends Component {
       age: '',
       height: ''
     })
-    document
-      .querySelectorAll('.Create-Smurf-Form form input')
-      .forEach(input => input.value = '')
-    // this.forceUpdate()
   }
   handleOnChange = (event) => {
     const stateValue = event.target.placeholder.split(' ').pop()
@@ -46,16 +42,19 @@ class CreateSmurfForm extends Component {
           <input 
             {...inputProps}
             smurfdata="name"
+            value={this.state.name}
             placeholder={'enter smurf name'} 
           />
           <input 
             {...inputProps}
             smurfdata="age"
+            value={this.state.age}
             placeholder={'enter smurf age'}
           />
           <input 
             {...inputProps}
             smurfdata="height"
+            value={this.state.height}
             placeholder={'enter smurf height'}
           />
           <button 
