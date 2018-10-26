@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
+import { fetchSmurfs } from "../actions/index";
+import { connect } from "react-redux";
+
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -21,4 +24,15 @@ class App extends Component {
   }
 }
 
-export default Connect(mapStateToProps)(App);
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    error: state.error,
+    fetching: state.fetchingSmurfs
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchSmurfs }
+)(App);

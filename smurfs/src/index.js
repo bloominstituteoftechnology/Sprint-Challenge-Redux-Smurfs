@@ -8,7 +8,7 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import smurfsReducer from "./reducers";
 
-const store = createStore({ smurfsReducer }, applyMiddleware(thunk, logger));
+const store = createStore(smurfsReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <Provider store={store}>
