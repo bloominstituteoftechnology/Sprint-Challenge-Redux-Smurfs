@@ -22,3 +22,6 @@ Sort of touched upon in the previous response, its the scope and reach of each s
 
 Middleware adds new functionality to Redux and intercepts every action before it flows through the Reducers.  It can do things such as stop actions, log actions and states, dispatch different actions, and dispatch multiple actions and help with asynchronous work.
 
+#Question 5
+
+Redux-Thunk is essentially middleware that allows asynchronous calls to tie into Redux actions and allows for the dispatching of CRUD based HTTP requests, `.then()` and `.catch()` methods and allows efficient work flow with APIs and their data within React-Redux.
