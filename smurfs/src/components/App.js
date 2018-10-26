@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './App.css';
 
-import { fetchSmurfs } from '../actions';
+import { fetchSmurfs, addSmurf } from '../actions';
 import SmurfList from './SmurfList';
 import SmurfForm from './SmurfForm';
 /*
@@ -17,15 +17,28 @@ class App extends Component {
     ageInput: '',
     heightInput: '',
   };
-  
+
   componentDidMount = () => {
     this.props.fetchSmurfs();
   }
 
+  handleChange = event => this.setState({ [event.target.name]: event.target.value });
+
+  addNewSmurf = () => {
+    const smurf = {
+      id: this.props.smurfs.length,
+      name: this.state.nameInput,
+      age: this.state.ageInput,
+      height: this.state.heightInput
+    }
+    console.log(smurf);
+    this.props.addSmurf(smurf);
+  }
   render() {
     return (
       <div className="App">
-        <SmurfForm />
+        <SmurfForm addNewSmurf={this.addNewSmurf}
+                    handleChange={this.handleChange} />
         <SmurfList smurfs={this.props.smurfs} />
       </div>
     );
@@ -38,4 +51,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchSmurfs })(App);
+export default connect(mapStateToProps, { fetchSmurfs, addSmurf })(App);
