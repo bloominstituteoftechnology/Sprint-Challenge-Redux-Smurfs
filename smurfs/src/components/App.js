@@ -7,7 +7,7 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 import { connect } from 'react-redux';
-import { getSmurfs, addSmurf } from '../actions';
+import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
 
 class App extends Component {
   constructor() {
@@ -36,6 +36,11 @@ class App extends Component {
   handleAdd = event => {
     event.preventDefault();
     this.props.addSmurf(this.state);
+  }
+
+  handleDelete = (event,id) => {
+    event.preventDefault();
+    this.props.deleteSmurf(id)
   }
 
   render() {
@@ -69,6 +74,9 @@ class App extends Component {
               <h1>{smurf.name}</h1>
               <p>Age: {smurf.age}</p>
               <p>Height: {smurf.height}</p>
+              <button onClick={event => this.handleDelete(event, smurf.id)}>
+                  Delete
+              </button>
             </div>
           )
         })}
@@ -87,5 +95,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   getSmurfs,
-  addSmurf
+  addSmurf,
+  deleteSmurf
 })(App);

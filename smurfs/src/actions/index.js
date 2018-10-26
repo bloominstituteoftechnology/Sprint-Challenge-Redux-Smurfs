@@ -51,3 +51,21 @@ export const addSmurf = newSmurf => {
             });
     }
 }
+
+export const DELETING = 'DELETING';
+export const DELETED = 'DELETED';
+export const FAILED_DELETE = 'FAILED_DELETE';
+
+export const deleteSmurf = id => {
+    return function(dispatch) {
+        dispatch({ type: DELETING });
+        axios
+            .delete(`http://localhost:3333/smurfs/${id}`)
+            .then(response => {
+                dispatch({ type: DELETED, payload: response.data })
+            })
+            .catch(error => {
+                dispatch({ type: FAILED_DELETE, payload: error })
+            });
+    }
+}
