@@ -4,9 +4,12 @@ import { fetchSmurfs, addSmurf } from "../actions";
 
 class SmurfForm extends Component {
   smurfsHandler = event => {
+    event.preventDefault();
     this.setState({ [event.target.name]: event.target.value });
+  
   };
-   submitSmurf = () => {
+   submitSmurf = event => {
+    event.preventDefault();
     this.props.addSmurf({
       name: this.state.name,
       age: this.state.age,

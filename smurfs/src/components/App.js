@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchSmurfs } from "../actions";
 import SmurfForm from "./SmurfForm.js"
+import Smurf from "./Smurf"
 // import actions
 
 class App extends React.Component {
@@ -15,7 +16,7 @@ class App extends React.Component {
 
   render() {
     if (this.props.fetching) {
-      return <h3>Fetching Friends ...</h3>
+      return <h3>Fetching Smurfs ...</h3>
       // return something here to indicate that you are fetching data
     }
     return (
@@ -25,13 +26,8 @@ class App extends React.Component {
         ) : (
           <div>
             {this.props.smurfs.map(smurfs => {
-              return (
-                <li key={smurfs.index}>
-                  Name: {smurfs.name}, <br />
-                  Age: {smurfs.age}, <br />
-                  Height: {smurfs.height}, <br />
-                </li>
-              );
+              return <Smurf key={smurfs.index} name={smurfs.name} age={smurfs.age} height={smurfs.height}/>
+              ;
             })}
           </div>
         )}
