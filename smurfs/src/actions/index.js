@@ -8,6 +8,10 @@ export const ADD_SMURF = 'ADD_SMURF'
 export const ADD_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS'
 export const ADD_SMURF_ERROR = 'ADD_SMURF_ERROR'
 
+export const DELETE_SMURF = 'DELETE_SMURF'
+export const DELETE_SMURF_SUCCESS = 'DELETE_SMURF_SUCCESS'
+export const DELETE_SMURF_ERROR = 'DELETE_SMURF_ERROR'
+
 export const getSmurfs = () => {
     return dispatch => {
         dispatch({ type: GET_SMURFS })
@@ -37,6 +41,25 @@ export const addSmurf = smurf => {
             .catch(err => {
                 console.log(err)
                 dispatch({ type: ADD_SMURF_ERROR })
+            })
+    }
+}
+export const deleteSmurf = id => {
+    return dispatch => {
+        dispatch({ type: DELETE_SMURF })
+        axios
+            .delete(`http://localhost:3333/smurfs/${id}`)
+            .then(res => {
+                dispatch({
+                    type: DELETE_SMURF_SUCCESS,
+                    payload: res.data,
+                })
+            })
+            .catch(err => {
+                console.log(err)
+                dispatch({
+                    type: DELETE_SMURF_ERROR,
+                })
             })
     }
 }
