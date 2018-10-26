@@ -23,8 +23,10 @@ newSmurfHandler = event => {
 
 render() {
     return (
+        <div>
+        <h1 className="form-title">Register a New Smurf:</h1>
 
-        <Form onSubmit = { this.newSmurfHandler }>
+        <Form onSubmit = { this.newSmurfHandler } className="smurf-form">
         <FormGroup>
           <Label for="name">Smurf Name:</Label>
           <Input 
@@ -56,6 +58,7 @@ render() {
         </FormGroup>
         <Button onClick = { this.newSmurfHandler }>Submit</Button>
       </Form>
+      </div>
         // <form onSubmit = { this.newSmurfHandler }>
         
         // <input

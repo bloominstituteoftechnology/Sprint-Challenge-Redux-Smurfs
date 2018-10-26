@@ -23,8 +23,6 @@ class App extends Component {
 
         <Navigation />
 
-        <h1>Smurf Village Residents:</h1>
-
         <Route
           exact path = "/"
           render = {props =>(
