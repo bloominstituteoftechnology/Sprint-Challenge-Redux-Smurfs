@@ -9,6 +9,8 @@ export const UPDATING_SMURF = 'UPDATING_SMURF';
 export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
 export const DELETING_SMURF = 'DELETING_SMURF';
 export const DELETE_SUCCESS = 'DELETE_SUCCESS';
+export const GET_SMURF = 'GET_SMURF';
+export const GET_SMURF_SUCCESS = 'GET_SMURF_SUCCESS';
 export const ERROR = 'ERROR';
 
 /*
@@ -58,4 +60,18 @@ export const updateSmurf = (id, smurf) => (dispatch) => {
          dispatch({ type: UPDATE_SUCCESS, payload: response.data})})
        
        .catch(err => dispatch({type: ERROR, payload: err}))
+}
+
+export const getSmurf = (id) => (dispatch) => {
+
+  dispatch({type: GET_SMURF});
+  axios.get('http://localhost:3333/smurfs')
+         .then(response =>{ 
+          console.log('smurfpage',response.data);
+          let smurf = response.data.filter(smurf => 
+            
+           `${smurf.id}` === `${id}`
+                );
+          console.log(smurf);
+          this.setState({smurf: smurf[0]}) })
 }

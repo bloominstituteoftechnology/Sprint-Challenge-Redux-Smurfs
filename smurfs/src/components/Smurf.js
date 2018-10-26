@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import  {Link} from 'react-router-dom';
+import {Spring, config} from 'react-spring';
 
 class Smurf extends React.Component {
   state = {
@@ -36,8 +37,11 @@ class Smurf extends React.Component {
  
 render(){
   return (
+  
   <div className='smurf-container' onClick={this.flip} styles={this.props.smurfPage ? 'margin: 0 auto' : ''}>
-    <div className={`Smurf ${this.state.toggled ? 'flip' : ''}`}>
+    <Spring delay={1500}config={config.gentle} from={{opacity: 0}} to={{opacity: 1}}>
+    { (props) => (
+    <div style={props}className={`Smurf ${this.state.toggled ? 'flip' : ''}`}>
       <div className={`front`}>
         <h1>{this.state.smurf.name}</h1>
         {this.props.prepDelete || this.props.smurfPage ? 
@@ -59,8 +63,10 @@ render(){
       : null }
       </div>
       
-    </div>
+    </div>)}
+    </Spring>
   </div>
+  
     
   );
 }
