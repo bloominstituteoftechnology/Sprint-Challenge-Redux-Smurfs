@@ -25,14 +25,14 @@ export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCHING_SMURF });
   axios
     .get(url)
-    .then( response => {
-      console.log("response", response)
-      dispatch({ type: FETCHING_SMURF_SUCCESS, payload: response.data})
+    .then( ({data}) => {
+      console.log("response data", data)
+      dispatch({ type: FETCHING_SMURF_SUCCESS, payload: data})
     })
-    .catch(error => {
+    .catch(({data}) => {
       dispatch({
         type: FETCHING_SMURF_FAIL,
-        payload: "Failed to retrieve Smurf", error
+        payload: "Failed to retrieve Smurf", data
       })
     })
 }
