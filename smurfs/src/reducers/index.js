@@ -19,7 +19,7 @@ export const reducer = ( state = initialState, action) => {
     case FETCHING_SMURFS_SUCCESS:
       return {
         ...state,
-        smurfs: [...state.smurfs, ...action.payload]
+        smurfs: [...state.smurfs, ...action.payload],
         isFetching: false
       };
     case FETCHING_SMURFS_FAILURE: 
