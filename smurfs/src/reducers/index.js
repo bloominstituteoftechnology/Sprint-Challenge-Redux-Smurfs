@@ -4,7 +4,10 @@
 import {
   FETCHING_SMURFS,
   FETCHING_SMURFS_SUCCESS,
-  FETCHING_SMURFS_FAILURE
+  FETCHING_SMURFS_FAILURE,
+  ADDING_SMURF,
+  ADDING_SMURF_SUCCESS,
+  ADDING_SMURF_FAILURE
 } from '../actions'
 
 /*
@@ -42,17 +45,15 @@ export default (state = initialState, action) => {
     case FETCHING_SMURFS:
       return { ...state, fetchingSmurfs: true };
     case FETCHING_SMURFS_SUCCESS:
-      return {
-        ...state,
-        fetchingSmurfs: false,
-        smurfs: action.payload
-      }
+      return { ...state, fetchingSmurfs: false, smurfs: action.payload };
     case FETCHING_SMURFS_FAILURE:
-      return {
-        ...state,
-        fetchingSmurfs: false,
-        error: action.payload
-      }
+      return { ...state, fetchingSmurfs: false, error: action.payload };
+    case ADDING_SMURF:
+      return { ...state, addingSmurf: true };
+    case ADDING_SMURF_SUCCESS:
+      return { ...state, addingSmurf: false, smurfs: action.payload };
+    case ADDING_SMURF_FAILURE:
+      return { ...state, addingSmurf: false, error: action.payload };
     default:
       return state;
   }
