@@ -21,10 +21,6 @@ export const FETCH_ERROR = 'FETCH_ERROR';
 export const INITIALIZE_SMURF_ADD = 'INITIALIZE_SMURF_ADD';
 export const COMPLETE_SMURF_ADD = 'COMPLETE_SMURF_ADD';
 export const ADD_SMURF_ERROR = 'ADD_SMURF_ERROR';
-export const DISPLAY_UPDATE_FORM = 'DISPLAY_UPDATE_FORM';
-export const UPDATING_SMURF = 'UPDATING_SMURF';
-export const UPDATED_SMURF = 'UPDATED_SMURF';
-export const UPDATE_ERROR = 'UPDATE_ERROR';
 
 export const fetchData = () => {
   return (dispatch) => {
