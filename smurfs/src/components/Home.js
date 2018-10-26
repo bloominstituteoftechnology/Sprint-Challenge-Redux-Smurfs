@@ -1,19 +1,15 @@
 import React from 'react';
+import './styles.css'
 import ListContainer from './ListContainer'
-import './styles.css';
-// import ActionsContainer from './ActionsContainer'
-// import styled from 'styled-components';
+import ActionsContainer from './ActionsContainer'
 
-// const WrapperDiv = styled.div`
-//   display:flex;
-// `
 
 const Home = () =>{
     return (
-        <div>
-          
+        <div className='home'>
+          <ActionsContainer></ActionsContainer> 
           <ListContainer></ListContainer>
-          </div>
+        </div>
       );
 }
 

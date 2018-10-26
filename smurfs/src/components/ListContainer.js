@@ -1,11 +1,8 @@
 import React from 'react'
 import { fetchSmurfs } from '../actions/index'
 import { connect } from "react-redux";
-// import styled from 'styled-components';
+import Smurf from '../components/Smurf'
 
-// const Loading = styled.h1`
-//     font-size:4rem;
-// `
 
 class ListContainer extends React.Component {
 
@@ -16,6 +13,7 @@ class ListContainer extends React.Component {
         event.preventDefault();
     }
     render(){
+        console.log('this.props',this.props)
         if(this.props.fetchingSmurfs){
             return <h1>FETCHING!!!</h1>
         } else {
@@ -23,7 +21,7 @@ class ListContainer extends React.Component {
                 <div>
                     {
                         this.props.smurfsList.map(el=>{
-                            <div></div>
+                           return <Smurf key={el.id} data={el}/>
                         })
                     }
                 </div>
@@ -35,6 +33,7 @@ class ListContainer extends React.Component {
 
 
 const mapStateToProps = state => {
+    console.log('state = ', state)
     return {
         fetchingSmurfs:state.fetchingSmurfs,
         smurfsList:state.smurfs

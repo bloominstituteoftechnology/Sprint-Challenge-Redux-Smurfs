@@ -1,35 +1,41 @@
-// import React from 'react'; 
-// import styled from 'styled-components';
-// import { connect } from "react-redux";
-// const Input = styled.input`
-//     width:300px;
-//     height:25px;
-//     font-size:1.6rem;
-// `
-// const P = styled.p`
-//     font-size:2.5rem;
-//     font-weight:bold;
-// `
-
-// class ActionsContainer extends React.Component{
-//     constructor(props){
-//         super(props)
-//     }
-//     handleFieldChange(event){
-//         this.setState({[event.target.id]:event.target.value})
-//     }
-//     formSubmit(event){
-//         event.preventDefault();
-//     }
-//     render(){
-//         return(
-//             <form onSubmit={this.formSubmit}>
-//                 <button>SMURF!</button>
-//             </form>
-//         )
-//     }
-// }
+import React from 'react'; 
+import { connect } from "react-redux";
+import { addingSmurf } from '../actions/index'
 
 
-//   export default connect(null,{ })(ActionsContainer);
+class ActionsContainer extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+            Name:'',
+            Age:'',
+            Height:''
+        }
+
+    }
+    handleFieldChange=(event)=>{
+        this.setState({[event.target.id]:event.target.value})
+    }
+    formSubmit=(event)=>{
+        event.preventDefault();
+        this.props.addingSmurf({
+            name:this.state.Name,
+            age:this.state.Age,
+            height:this.state.Height
+        })
+    }
+    render(){
+        return(
+            <form onSubmit={this.formSubmit}>
+                <p>Name</p><input id='Name' onChange={this.handleFieldChange} placeholder='Name' value ={this.state.Name}></input>
+                <p>Age</p><input id='Age' onChange={this.handleFieldChange} placeholder='Age' value ={this.state.Age}></input>
+                <p>Height</p><input id='Height' onChange={this.handleFieldChange} placeholder='Height' value={this.state.Height}></input>
+                <button>Submit Smurf</button>
+            </form>
+        )
+    }
+}
+
+
+  export default connect(null,{ addingSmurf})(ActionsContainer);
   
