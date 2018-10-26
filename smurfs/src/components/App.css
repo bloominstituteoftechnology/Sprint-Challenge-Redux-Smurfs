@@ -1,12 +1,16 @@
 .App {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+ width: 100%;
+  
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+img{
+  margin-top: 10px;
+  width: 80%;
 }
-
 .App-header {
   background-color: #222;
   height: 150px;
@@ -18,11 +22,69 @@
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
+h1{
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 30px 0;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.smurfForm{
+  margin: 20px 0;
+  width: 100%;
+  text-align: center;
+  
+
+}
+
+.smurfForm input{
+  margin: 0 1%;
+  background-color: white;
+  font-size: 1.3rem;
+  /* padding: 3px 0; */
+
+}
+
+
+
+.smurfs{
+  font-size: 1.8rem;
+  line-height: 33px;
+  margin: 20px 1%;
+  width: 45%;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 20px 0;
+  
+
+}
+
+.smurfs h2{
+  font-size: 2.3rem;
+  background-color: white;
+}
+
+.smurfs p{
+  background-color: white;
+}
+
+button{
+  margin: 13px 0;
+  background-color: white;
+  font-size: 1.8rem;
+}
+
+.smurfWraper{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  
+}
+
+.FormSmurfWrapper{
+  width: 80%;
 }
