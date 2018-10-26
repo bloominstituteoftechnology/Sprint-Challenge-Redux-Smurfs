@@ -1,6 +1,37 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import { GET_SMURF, ADD_SMURF, GET_SMURFSUCCESS, GET_SMURFERR} from '../actions';
+
+
+const initialState = {
+    smurfs: [],
+    fetchingSmurfs: false,
+    fetchedSmurfs: false,
+    addingSmurf: false,
+    addedSmurf: false,
+    error: null
+};
+
+export const smurfReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_SMURF: 
+    return {...state, fetchingSmurfs: true}
+    case GET_SMURFSUCCESS: 
+    return  {...state, fetchingSmurfs: false, fetchedSmurfs: true, smurfs: action.payload}
+    case GET_SMURFERR: 
+    return {...state, fetchedSmurfs: false, error: action.payload}
+    case ADD_SMURF: 
+    return { ...state, fetchingSmurfs: false, addedSmurf: true };
+      
+
+    // Fill me in with the important reducers
+    // action types should be FETCHING, SUCCESS and FAILURE
+    // your switch statement should handle all of these cases.
+
+
+    default:
+      return state;
+  }
+};
+
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this

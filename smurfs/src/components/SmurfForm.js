@@ -21,21 +21,21 @@ class SmurfForm extends Component {
             type="text"
             name="name"
             onChange={this.smurfsHandler}
-            placeholder="Add Smurf Name Here.."
+            placeholder="Smurf Name"
           />
           <br />
           <input
             type="number"
             name="age"
             onChange={this.smurfsHandler}
-            placeholder="Add Smurf Age Here.."
+            placeholder="Smurf Age"
           />
           <br />
           <input
             type="text"
             name="height"
             onChange={this.smurfsHandler}
-            placeholder="Add Smurf Height Here.."
+            placeholder="Smurf Height."
           />
           <br />
           <button onClick={this.submitSmurf}> Add Smurf </button>
