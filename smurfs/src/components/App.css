@@ -1,14 +1,57 @@
+body {
+  background-image: url(https://images.pexels.com/photos/314937/pexels-photo-314937.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .App {
   text-align: center;
 }
 
 .smurfs {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
 }
 
 .smurf {
+  position: relative;
   width: 200px;
+  background: white;
   box-shadow: 1px 1px 1px grey;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.fa-trash {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 1rem;
+}
+
+.fa-edit {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 1rem;
+}
+
+.addForm input {
+  outline: none;
+  background: none;
+  text-align: center;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid black;
+  margin: 0 5px 10px;
+}
+
+.addForm button {
+  font-size: 1rem;
+  border: none;
+  box-shadow: 1px 1px 1px grey;
+  padding: 5px 25px;
+  opacity: 0.7;
 }

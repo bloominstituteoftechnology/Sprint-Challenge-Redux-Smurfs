@@ -18,6 +18,7 @@ class App extends Component {
       name: "",
       age: "",
       height: "",
+      editingId: "",
       isEditing: false
     };
   }
@@ -30,6 +31,38 @@ class App extends Component {
   addToSmurfs = smurf => {
     this.props.addSmurf(smurf);
     this.setState({ name: "", age: "", height: "" });
+  };
+  toggleEditing = (name, age, height, id) => {
+    if (!this.state.isEditing) {
+      this.setState({
+        isEditing: true,
+        name: name,
+        age: age,
+        height: height,
+        editingId: id
+      });
+    } else {
+      this.setState({
+        isEditing: false,
+        name: "",
+        age: "",
+        height: "",
+        editingId: ""
+      });
+    }
+  };
+  updateToSmurfs = () => {
+    this.props.updateSmurf(
+      { name: this.state.name, age: this.state.age, height: this.state.height },
+      this.state.editingId
+    );
+    this.setState({
+      isEditing: false,
+      name: "",
+      age: "",
+      height: "",
+      editingId: ""
+    });
   };
   render() {
     return this.props.fetchingSmurfs ? (
@@ -45,11 +78,13 @@ class App extends Component {
           handleInput={this.handleInput}
           addToSmurfs={this.addToSmurfs}
           isEditing={this.state.isEditing}
+          updateToSmurfs={this.updateToSmurfs}
         />
-        <h1>SMURFS! 2.0 W/ Redux</h1>
+        <h1>Smurf Village</h1>
         <SmurfList
           smurfs={this.props.smurfs}
           deleteSmurf={this.props.deleteSmurf}
+          toggleEditing={this.toggleEditing}
         />
       </div>
     );
