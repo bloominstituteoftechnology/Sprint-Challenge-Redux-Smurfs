@@ -67,7 +67,7 @@ body {
 }
 .Smurf {
   background-color: rgb(217, 247, 248);
-  padding: 0.5rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   height: fit-content;
