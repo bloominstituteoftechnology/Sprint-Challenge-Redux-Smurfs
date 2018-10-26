@@ -3,11 +3,15 @@
 */
 import { FETCHING_SMURFS, FETCHING_SMURFS_SUCCESS, FETCHING_SMURFS_FAILURE } from '../actions/'
 import { ADDING_SMURFS, ADDING_SMURFS_SUCCESS, ADDING_SMURFS_FAILURE } from '../actions/'
+import { DELETING_SMURFS, DELETING_SMURFS_SUCCESS, DELETING_SMURFS_FAILURE } from '../actions/'
+import { EDITING_SMURFS, EDITING_SMURFS_SUCCESS, EDITING_SMURFS_FAILURE } from '../actions/'
+
+
 const initialState =  {
    smurfs: [],
    fetchingSmurfs: false,
-   addingSmurf: false,
-   updatingSmurf: false,
+   DELETINGSmurf: false,
+   editingSmurf: false,
    deletingSmurf: false,
    error: null,
  }
@@ -50,6 +54,34 @@ export const SmurfsReducer = (state=initialState,action) =>{
     return {
         ...state,addingSmurf:false
     }
+
+    case DELETING_SMURFS:
+    return {
+        ...state,deletingSmurf:true,
+    }
+    case DELETING_SMURFS_SUCCESS:
+    return {
+        ...state,smurfs:action.payload,deletingSmurf:false
+    }
+    case DELETING_SMURFS_FAILURE:
+    return {
+        ...state,deletingSmurf:false
+    }
+
+
+    case EDITING_SMURFS:
+    return {
+        ...state,editingSmurf:true,
+    }
+    case EDITING_SMURFS_SUCCESS:
+    return {
+        ...state,smurfs:action.payload,editingSmurf:false
+    }
+    case EDITING_SMURFS_FAILURE:
+    return {
+        ...state,editingSmurf:false
+    }
+
 
 
     default:

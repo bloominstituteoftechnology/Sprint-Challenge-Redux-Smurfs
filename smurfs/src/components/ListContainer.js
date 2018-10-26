@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchSmurfs } from '../actions/index'
+import { fetchSmurfs,deleteSmurf } from '../actions/index'
 import { connect } from "react-redux";
 import Smurf from '../components/Smurf'
 
@@ -11,6 +11,7 @@ class ListContainer extends React.Component {
     }
     handleDeleteSmurf = (event,id) =>{
         event.preventDefault();
+        this.props.deleteSmurf(id);
     }
     render(){
         console.log('this.props',this.props)
@@ -21,7 +22,7 @@ class ListContainer extends React.Component {
                 <div>
                     {
                         this.props.smurfsList.map(el=>{
-                           return <Smurf key={el.id} data={el}/>
+                           return <Smurf key={el.id} handleDeleteSmurf={this.handleDeleteSmurf} data={el}/>
                         })
                     }
                 </div>
@@ -40,5 +41,5 @@ const mapStateToProps = state => {
     };
   };
 
-  export default connect(mapStateToProps,{ fetchSmurfs })(ListContainer);
+  export default connect(mapStateToProps,{ fetchSmurfs,deleteSmurf })(ListContainer);
   

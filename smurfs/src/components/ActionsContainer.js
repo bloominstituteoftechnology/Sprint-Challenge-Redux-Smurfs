@@ -23,6 +23,7 @@ class ActionsContainer extends React.Component{
             age:this.state.Age,
             height:this.state.Height
         })
+        this.setState({Name:'', Age:'', Height:'' })
     }
     render(){
         return(
