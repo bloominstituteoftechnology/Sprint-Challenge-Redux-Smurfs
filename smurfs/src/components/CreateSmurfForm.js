@@ -1,4 +1,6 @@
 import React ,{ Component } from 'react';
+import { connect } from 'react-redux';
+import { createSmurf } from '../actions'
 
 class CreateSmurfForm extends Component {
   constructor(props) {
@@ -19,6 +21,9 @@ class CreateSmurfForm extends Component {
       age: '',
       height: ''
     })
+    document
+      .querySelectorAll('.Create-Smurf-Form form input')
+      .forEach(input => input.value = '')
     // this.forceUpdate()
   }
   handleOnChange = (event) => {
@@ -36,7 +41,7 @@ class CreateSmurfForm extends Component {
       inputProps.value = ''
     }
     return ( 
-      <div className="Create-Smurf-From">
+      <div className="Create-Smurf-Form">
         <form onSubmit={this.handleOnSubmit}>
           <input 
             {...inputProps}
@@ -61,5 +66,14 @@ class CreateSmurfForm extends Component {
     );
   }
 }
- 
-export default CreateSmurfForm;
+
+const mapStateToProps = state => {
+  return {}
+}
+
+export default connect(
+  mapStateToProps,
+  {
+    createSmurf
+  }
+)(CreateSmurfForm);

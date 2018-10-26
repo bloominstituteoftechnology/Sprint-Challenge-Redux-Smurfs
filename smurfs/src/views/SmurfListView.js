@@ -20,10 +20,9 @@ class SmurfListView extends Component {
   render() { 
     return ( 
       <div className="SmurfListView">
-        <CreateSmurfForm createSmurf={this.props.createSmurf}/>
+        <CreateSmurfForm />
         <SmurfList 
           smurfs={this.props.smurfs} 
-          deleteSmurf={this.props.deleteSmurf}
         /> 
       </div>
     );
