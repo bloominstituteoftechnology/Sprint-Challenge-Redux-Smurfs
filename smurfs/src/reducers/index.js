@@ -4,7 +4,7 @@ import {
   FAILURE,
   POST_SMURF,
   DELETE_SMURF,
-  PUT_SMURF, 
+  PUT_SMURF,
 } from '../actions';
 
 /*
@@ -14,6 +14,7 @@ import {
     smurfs: [],
     fetchingSmurfs: false,
     error: null,
+    editing: false,
   }
 
   export const rootReducer = (state = initialState, action) => {
@@ -37,6 +38,7 @@ import {
           fetchingSmurfs: false,
           error: action.payload,
         }
+        
       default:
       return state;
     }

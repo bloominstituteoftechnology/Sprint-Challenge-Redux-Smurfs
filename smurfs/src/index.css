@@ -13,11 +13,16 @@ body {
 .App h1 {
   font-size: 70px;
   text-transform: uppercase;
-  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+  /* text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
     0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
     0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
     0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
-    0 20px 20px rgba(0, 0, 0, 0.15);
+    0 20px 20px rgba(0, 0, 0, 0.15); */
+    /* text-shadow:
+		-1px -1px 0 #AA0422,
+		1px -1px 0 #AA0422,
+		-1px 1px 0 #AA0422,
+		1px 1px 0 #AA0422; */
 }
 
 .smurf-list {
@@ -34,6 +39,7 @@ body {
   margin: 15px;
   width: 250px;
   height: 250px;
+  border-radius: 5px;
 }
 
 .smurf-buttons {
@@ -61,9 +67,11 @@ body {
 
 form input {
   text-align: center;
-  padding: 5px;
+  padding: 6px;
   font-size: 16px;
   font-family: "Boogaloo", cursive;
+  border: 1px solid #AA0422;
+  border-radius: 3px;
 }
 
 form button {
@@ -72,8 +80,9 @@ form button {
   color: #AA0422;
   border: 1px solid #AA0422;
   background: white;
-  padding: 5px;
+  padding: 6px;
   cursor: pointer;
+  border-radius: 3px;
 }
 
 form button:hover{

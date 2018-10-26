@@ -40,8 +40,14 @@ class Smurf extends React.Component {
 
 }
 
+const mapStateToProps = state => {
+  return {
+    editing: state.editing
+  }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     editSmurf,
     deleteSmurf,
