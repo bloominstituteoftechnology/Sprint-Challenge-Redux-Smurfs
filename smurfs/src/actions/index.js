@@ -4,6 +4,9 @@ import axios from 'axios';
   Be sure to export each action type so you can pull it into your reducer
 */
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const FETCH_SMURF = 'FETCH_SMURF';
+export const ADDING_SMURF = 'ADDING_SMURF';
+export const ADD_SMURF = 'ADD_SMURF';
 export const SMURF_FAILURE = 'SMURF_FAILURE';
 
 /*
@@ -22,7 +25,21 @@ export const fetchingSmurfs = () => {
     dispatch({ type: FETCHING_SMURFS });
     smurfs
       .then( response => {
-        dispatch({ type: FETCHING_SMURFS, payload: response.data })
+        dispatch({ type: FETCH_SMURFS, payload: response.data })
+      })
+      .catch( error => {
+        dispatch({ type: SMURF_FAILURE, payload: error})
+      })
+  }
+}
+
+export const addSMurf = smurf => {
+  const newSmurf = axios.post('http://localhost:3333/smurfs', smurf);
+  return dispatch => {
+    dispatch({ type: ADDING_SMURF })
+    newSmurf
+      .then(({ data }) => {
+        dispatch({ type: ADD_SMURF, payload: data })
       })
       .catch( error => {
         dispatch({ type: SMURF_FAILURE, payload: error})
