@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, {Component} from "react";
+import "./App.css";
+// import actions here;
+import {connect} from "react-redux";
+
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -19,4 +22,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  /* reducers */
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    /* actions */
+  }
+)(App);
