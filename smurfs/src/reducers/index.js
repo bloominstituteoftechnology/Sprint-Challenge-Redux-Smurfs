@@ -8,7 +8,7 @@ import { FETCHING_SMURFS, FETCHING_SMURFS_SUCCESS, FETCHING_SMURFS_FAILURE } fro
  const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
-   //addingSmurf: false,
+   addingSmurf: false,
    //updatingSmurf: false
    //deletingSmurf: false
    error: null
@@ -18,6 +18,14 @@ import { FETCHING_SMURFS, FETCHING_SMURFS_SUCCESS, FETCHING_SMURFS_FAILURE } fro
    switch(action.type) {
     case FETCHING_SMURFS:
       return {...state, fetchingSmurfs: true};
+    case FETCHING_SMURFS_SUCCESS:
+      return {...state, 
+        fetchingSmurfs: false, 
+        smurfs: [...state.smurfs, ...action.payload]};
+    case FETCHING_SMURFS_FAILURE:
+     return {...state, 
+        fetchingSmurfs: false, 
+        error: action.payload};
     default: 
       return state;
    }

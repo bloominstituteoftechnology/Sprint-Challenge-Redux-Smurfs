@@ -33,5 +33,5 @@ export function getSmurfs() {
           type: FETCHING_SMURFS_FAILURE, 
           payload: error });
       })
-    }
+  }
 };
