@@ -13,3 +13,9 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+import axios from 'axios';
+
+export const SMURF_FETCH = 'SMURF_FETCH';
+export const SMURF_FETCHED = 'SMURF_FETCHED';
+export const SMURF_ERROR = 'SMURF_ERROR';
