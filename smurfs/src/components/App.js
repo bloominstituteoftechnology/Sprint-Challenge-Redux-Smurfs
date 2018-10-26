@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./App.css";
-import {getSmurfs, addSmurf} from "../actions";
+import {getSmurfs, addSmurf, deleteSmurf} from "../actions";
 import {connect} from "react-redux";
 
 /*
@@ -31,6 +31,11 @@ class App extends Component {
     e.preventDefault();
     this.props.addSmurf(newSmurf);
     this.setState({name: "", age: "", height: ""});
+  };
+
+  deleteSmurf = (e, id) => {
+    e.preventDefault();
+    this.props.deleteSmurf(id);
   };
 
   render() {
@@ -68,7 +73,22 @@ class App extends Component {
         {this.props.fetchingSmurfs ? (
           <h1>Loading</h1>
         ) : (
-          this.props.smurfs.map(smurf => <h1 key={smurf.name}>{smurf.name}</h1>)
+          <div>
+            {this.props.smurfs.map(smurf => {
+              return (
+                <div key={smurf.id}>
+                  <h1>
+                    {smurf.name}{" "}
+                    <span>
+                      <button onClick={e => this.deleteSmurf(e, smurf.id)}>
+                        Delete
+                      </button>
+                    </span>
+                  </h1>
+                </div>
+              );
+            })}
+          </div>
         )}
       </div>
     );
@@ -84,5 +104,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {getSmurfs, addSmurf}
+  {getSmurfs, addSmurf, deleteSmurf}
 )(App);
