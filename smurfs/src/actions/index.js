@@ -18,7 +18,7 @@ export const FETCHING_SMURFS_FAILED = "FETCHING_SMURFS_FAILED";
    U - updateSmurf
    D - deleteSmurf
 */
-export const addSmurf = () => dispatch => {
+export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCHING_SMURFS });
   axios.get("http://localhost:3333/smurfs").then(res => {
     dispatch({ type: FETCHING_SMURFS_SUCCESS, payload: res.data });

@@ -45,6 +45,8 @@ const rootReducer = (state = initialState, action) => {
         fetchingSmurfs: false,
         smurfs: [...state.smurfs, ...action.payload]
       };
+    default:
+      return { ...state };
   }
 };
 
