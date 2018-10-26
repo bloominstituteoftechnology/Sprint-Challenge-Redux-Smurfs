@@ -3,7 +3,8 @@
 */
 import { FETCHING_SMURF,
  FETCHING_SMURF_SUCCESS,
- FETCHING_SMURF_FAIL } from "../actions"
+ ADD_SMURF,
+ ADD_SMURF_SUCCESS } from "../actions"
 
 
 /*
@@ -42,6 +43,17 @@ export default (state = initialState, action) => {
         ...state,
         smurfs: action.payload,
         fetchingSmurfs: false
+      }
+    case ADD_SMURF:
+      return {
+        addingSmurf: true,
+        ...state
+      }
+    case ADD_SMURF_SUCCESS:
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfs: action.payload
       }
     default:
       return state

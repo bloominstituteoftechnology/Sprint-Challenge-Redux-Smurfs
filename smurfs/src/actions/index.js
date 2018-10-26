@@ -4,9 +4,14 @@
 */
 import axios from 'axios'
 
+
 export const FETCHING_SMURF = "FETCHING_SMURF";
 export const FETCHING_SMURF_SUCCESS = "FETCHING_SMURF_SUCCESS"
 export const FETCHING_SMURF_FAIL = "FETCHING_SMURF_FAIL"
+
+export const ADD_SMURF = "ADD_SMURF";
+export const ADD_SMURF_SUCCESS = "ADD_SMURF_SUCCESS";
+export const ADD_SMURF_FAIL = "ADD_SMURF_FAIL";
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -33,6 +38,21 @@ export const getSmurfs = () => dispatch => {
       dispatch({
         type: FETCHING_SMURF_FAIL,
         payload: "Failed to retrieve Smurf", data
+      })
+    })
+}
+
+export const addSmurf = (smurf) => dispatch => {
+  dispatch({ type: ADD_SMURF });
+  axios
+    .post(url, smurf)
+    .then(({ data }) => {
+      dispatch({ type: ADD_SMURF_SUCCESS, payload: [...data]})
+    })
+    .catch(error => {
+      dispatch({
+        type: ADD_SMURF_FAIL,
+        payload: "Failed adding smurf", error
       })
     })
 }

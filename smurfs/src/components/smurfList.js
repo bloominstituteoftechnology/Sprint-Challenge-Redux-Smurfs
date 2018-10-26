@@ -2,15 +2,15 @@ import React from 'react'
 
 const SmurfList = (props) => {
     return (
-        <div>
-            {props.smurfs.map(smurf => {
-                return <div>
-                            <h3>{smurf.name}</h3>
-                            <h3>{smurf.age}</h3>
-                            <h3>{smurf.height}</h3>
-                        </div>
-            })}
-        </div>
+           <div>
+               {props.smurfs.map(smurf => {
+                   return <div>
+                            <h1>{smurf.name}</h1>
+                            <h1>{smurf.age}</h1>
+                            <h1>{smurf.height}</h1>
+                            </div>
+               })}
+           </div>
     )
 }
 
