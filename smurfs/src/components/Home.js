@@ -1,5 +1,6 @@
 import React from 'react';
 import ListContainer from './ListContainer'
+import './styles.css';
 // import ActionsContainer from './ActionsContainer'
 // import styled from 'styled-components';
 
