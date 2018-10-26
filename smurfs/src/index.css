@@ -7,3 +7,11 @@ body {
 * {
   box-sizing: border-box;
 }
+
+a {
+  color: #000;
+}
+
+.active {
+  color: #2783FB;
+}

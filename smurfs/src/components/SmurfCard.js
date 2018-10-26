@@ -5,7 +5,7 @@ import { StyledSmurfCard, SmurfCardInfo } from '../Style';
 const SmurfCard = props => {
 
   return (
-      <StyledSmurfCard>
+      <StyledSmurfCard onClick={props.onClick}>
         <div className="bgImg"></div>
         <SmurfCardInfo>
           <div>

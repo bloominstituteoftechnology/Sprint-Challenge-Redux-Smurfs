@@ -31,7 +31,7 @@ const FormButtons = styled.div`
 const SmurfForm = props => {
   return (
     <Container>
-      <StyledForm onSubmit={props.onSubmit}>
+      <StyledForm onSubmit={(e) => {props.onSubmit(e, props.history)}}>
           <FormInputs>
               <StyledInput type="text" name="name" placeholder="Name" value={props.smurf.name} onChange={props.onChange} autoComplete="off" required/>
               <StyledInput type="number" name="age" placeholder="Age" value={props.smurf.age} onChange={props.onChange} autoComplete="off" required/>

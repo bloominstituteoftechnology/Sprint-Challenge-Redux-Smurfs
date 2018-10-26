@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
 
 import { getSmurfs, addSmurf } from '../actions';
 import Smurfs from './Smurfs';
+import Smurf from './Smurf';
 import SmurfForm from './SmurfForm';
+import Header from './Header';
 import './App.css';
 
 class App extends Component {
@@ -28,23 +31,63 @@ class App extends Component {
     this.setState({ smurfForm: {...this.state.smurfForm, [ev.target.name]: ev.target.value }})
   }
 
-  addSmurf= (ev) => {
+  addSmurf= (ev, history) => {
     ev.preventDefault();
-
     this.props.addSmurf(this.state.smurfForm);
+    this.setState({smurfForm: {name: '', age: '', height: ''}});
+    history.push('/');
+  }
+
+  smurfClicked = (ev, history, id) => {
+    ev.preventDefault();
+    history.push(`/smurf/${id}`)
   }
 
 
   render() {
     return (
       <div className="App">
-        <SmurfForm
-          smurf={this.state.smurfForm}
-          onChange={this.formHandler}
-          onSubmit={this.addSmurf}
-          isEditMode={this.state.editMode}
+        <Header />
+        <Route
+          exact
+          path="/"
+          render={props => 
+            <Smurfs 
+              {...props} 
+              smurfs={this.props.smurfs}
+              onClick={this.smurfClicked}
+            />
+          
+          }
         />
-        <Smurfs smurfs={this.props.smurfs}/>
+        
+        <Route
+          exact
+          path="/smurf-form"
+          render={(props) => 
+            <SmurfForm
+              {...props}
+              smurf={this.state.smurfForm}
+              onChange={this.formHandler}
+              onSubmit={this.addSmurf}
+              isEditMode={this.state.editMode}
+            />
+          }
+        />
+
+        <Route
+          exact
+          path="/smurf/:id"
+          render={(props) => 
+            <Smurf
+              {...props}
+              smurf={this.state.smurfForm}
+              onChange={this.formHandler}
+              onSubmit={this.addSmurf}
+              isEditMode={this.state.editMode}
+            />
+          }
+        />
       </div>
     );
   }
@@ -54,4 +97,4 @@ const mapStateToProps = state => {
   return {...state}
 }
 
-export default connect(mapStateToProps , { getSmurfs, addSmurf })(App);
+export default withRouter(connect(mapStateToProps , { getSmurfs, addSmurf })(App));
