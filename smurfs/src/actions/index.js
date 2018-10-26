@@ -30,8 +30,8 @@ export const fetchSmurfs = () => dispatch => {
 };
 
 export const addSmurf = (name, age, height) => (dispatch, getState) => {
-  const smurfsID = getState().smurfs;
-  const newID = smurfsID[smurfsID.length - 1].id + 1;
+  const smurfs = getState().smurfs;
+  const newID = smurfs[smurfs.length - 1].id + 1;
   console.log(name, age, height);
   axios
     .post("http://localhost:3333/smurfs", {
