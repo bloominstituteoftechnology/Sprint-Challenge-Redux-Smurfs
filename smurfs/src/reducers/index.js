@@ -3,8 +3,10 @@
 */
 import 
 {
-
-}
+  FETCHING_SMURFS,
+  ADDING_SMURF,
+  FETCHED,
+} from '../actions';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this */
 const initialState = {
@@ -17,9 +19,11 @@ const initialState = {
 }
 
 
-export const rootReducer = (state = initialState,action){
+export const smurfReducer = (state = initialState,action)=>{
   switch(action.type){
-
+    case FETCHING_SMURFS :
+      return {...state, fetchingSmurfs : true}
+    default : return state;
   }
 }
 

@@ -2,7 +2,7 @@
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
-
+import axios from 'axios';
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -14,4 +14,19 @@
    D - deleteSmurf
 */
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
-export const 
+export const ADDING_SMURF = "ADDING_SMURF"
+export const FETCHED = "FETCHED"
+
+const URL = "http://localhost:3333/smurfs";
+
+export const getSmurfs = () => dispatch => {
+  axios
+    .get(URL)
+    .then(response => {
+      dispatch({
+        type : FETCHING_SMURFS,
+        payload : response.data,
+      })
+    })
+    .catch(error => alert(error))
+}
