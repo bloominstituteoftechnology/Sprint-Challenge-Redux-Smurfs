@@ -48,7 +48,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        smurfs: [...state.smurfs, ...action.payload]
+        smurfs: action.payload
       };
     case FETCHING_SMURFS_FAILURE:
       console.log(action.payload);
