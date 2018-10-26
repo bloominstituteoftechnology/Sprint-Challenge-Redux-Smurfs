@@ -5,9 +5,9 @@ const SmurfList = props => {
     return(
         <div>
             <h1>Hello Smurfs!!</h1>
-            {props.smurfs.map(smurf => {
+            {props.smurfs.map((smurf,index) => {
                 return (
-                    <div className="smurf-card">
+                    <div key={index} className="smurf-card">
                         <h2>{smurf.name}</h2>
                         <h4>{smurf.age} Years Old</h4>
                         <h4>{smurf.height}</h4>
