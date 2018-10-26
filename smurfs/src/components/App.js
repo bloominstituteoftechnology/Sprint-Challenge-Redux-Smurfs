@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchSmurfs } from '../actions'
+import { fetchSmurfs, addSmurf } from '../actions'
 import { connect } from "react-redux";
 import Smurfs from './Smurfs';
+import AddSmurfForm from './AddSmurfForm';
 
 
 /*
@@ -18,6 +19,10 @@ class App extends Component {
     this.props.fetchSmurfs()
   };
 
+  addSmurf = smurf => {
+    this.props.addSmurf(smurf);
+  };
+
   render() {
     console.log("Props", this.props);
     return (
@@ -26,6 +31,11 @@ class App extends Component {
         <Smurfs 
             smurfs = {this.props.smurfs}
         />
+
+        <AddSmurfForm 
+            addSmurf = {this.addSmurf}
+        />
+
       </div>
     );
   }
@@ -40,4 +50,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect (mapStateToProps, { fetchSmurfs })(App);
+export default connect (mapStateToProps, { fetchSmurfs, addSmurf })(App);

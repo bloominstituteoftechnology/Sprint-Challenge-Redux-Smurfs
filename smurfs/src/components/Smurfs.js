@@ -11,7 +11,7 @@ const Smurfs = (props) => {
                      
                      <h3>Name :   {smurf.name} </h3>
                      <p>Age :  {smurf.age} </p>
-                     <p> Height : {smurf.email} </p>
+                     <p> Height : {smurf.height} </p>
 
                 </div>
             )}
