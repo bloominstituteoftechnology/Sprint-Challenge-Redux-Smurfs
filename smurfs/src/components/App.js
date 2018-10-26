@@ -23,6 +23,23 @@ class App extends Component {
     this.props.getSmurf();
   }
 
+  handleChange = event => {
+    if (event.target.name === 'age') {
+      const number = parseInt(event.target.value, 10);
+      this.setState({ [event.target.name]: number });
+    } else {
+      this.setState({ [event.target.name]: event.target.value });
+    }
+  };
+
+  handleClick = event => {
+    event.preventDefault();
+    this.state.editId !== null
+      ? this.props.updateSmurf(this.state)
+      : this.props.addSmurf(this.state);
+    this.setState({ name: '', age: '', height: '', editId: null });
+  };
+
   render() {
     return (
       <div className="App">
