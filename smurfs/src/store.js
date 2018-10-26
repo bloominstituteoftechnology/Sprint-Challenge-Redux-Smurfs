@@ -18,7 +18,7 @@ const myToUpperCase = store => next => action => {
 
 const thunk = store => next => action => {
   if (typeof action === "function") {
-    if (!store.getState().smurfettes.fetching) {
+    if (!store.getState().smurfettes.fetchingSmurfs) {
       action(store.dispatch);
     } else {
       console.log("WHAT ARE YOU TRYING TO DO IM ALREADY FETCHING???");

@@ -16,7 +16,7 @@ function Form(props) {
           <input id={key} name={key} value={value} onChange={props.onChange} />
         </div>
       ))}
-      <button type="submit">Submit</button>
+      <button type="submit">Smurfy!</button>
     </form>
   );
 }

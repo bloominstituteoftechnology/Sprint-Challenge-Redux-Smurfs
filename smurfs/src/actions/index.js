@@ -19,22 +19,22 @@ import axios from 'axios';
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const FETCHING_SMURFS_SUCCESS = "FETCHING_SMURFS_SUCCESS";
 export const FETCHING_SMURFS_FAILURE = "FETCHING_SMURFS_FAILURE";
-export const ADDING_SMURFS_SUCCESS = "ADDING_SMURFS_SUCCESS";
-export const ADDING_SMURFS_FAILURE = "ADDING_SMURFS_FAILURE";
-export const DELETING_SMURFS_SUCCESS = "DELETING_SMURFS_SUCCESS";
-export const DELETING_SMURFS_FAILURE = "DELETING_SMURFS_FAILURE";
+export const ADDING_SMURF_SUCCESS = "ADDING_SMURF_SUCCESS";
+export const ADDING_SMURF_FAILURE = "ADDING_SMURF_FAILURE";
+export const DELETING_SMURF_SUCCESS = "DELETING_SMURF_SUCCESS";
+export const DELETING_SMURF_FAILURE = "DELETING_SMURF_FAILURE";
 export const CLEAR_ERROR = "CLEAR_ERR";
 
 const url = "http://localhost:3333/smurfs";
 
-export const fetchingSmurfs = () => dispatch => {
+export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCHING_SMURFS });
   axios
     .get(url)
-    .then(({ data }) => {
+    .then(({ smurfs }) => {
       dispatch({
         type: FETCHING_SMURFS_SUCCESS,
-        payload: data
+        payload: smurfs.data
       });
     })
     .catch(err => {
@@ -51,11 +51,11 @@ export const addingSmurf = smurf => dispatch => {
   axios
     .post(url, smurf)
     .then(res => {
-      dispatch({ type: ADDING_SMURFS_SUCCESS, payload: res.data });
+      dispatch({ type: ADDING_SMURF_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);
-      dispatch({ type: ADDING_SMURFS_FAILURE });
+      dispatch({ type: ADDING_SMURF_FAILURE });
       dispatch(clearError());
     });
 };
@@ -68,10 +68,10 @@ export const deletingSmurf = id => dispatch => {
   axios
     .delete(`${url}/${id}`)
     .then(res => {
-      dispatch({ type: DELETING_SMURFS_SUCCESS, payload: id });
+      dispatch({ type: DELETING_SMURF_SUCCESS, payload: id });
     })
     .catch(err => {
       console.log(err);
-      dispatch({ type: DELETING_SMURFS_FAILURE });
+      dispatch({ type: DELETING_SMURF_FAILURE });
     });
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 
 import { SmurfList } from '../components';
-import { fetchingSmurfs } from "../actions";
+import { getSmurfs } from "../actions";
 
 class SmurfListView extends React.Component {
   constructor() {
@@ -10,17 +10,17 @@ class SmurfListView extends React.Component {
   }
 
   componentDidMount() {
-    debugger;
-    this.props.fetchingSmurfs();
+    // debugger;
+    this.props.getSmurfs();
   }
 
   render() {
-    if (this.props.fetching) {
+    if (this.props.fetchingSmurfs) {
       <h2>Fetching only smurfy smurfs...</h2>;
     }
     return (
       <div className="SmurfList_wrapper">
-        <button onClick={this.props.fetchingSmurfs}>Get More!</button>
+        <button onClick={this.props.getSmurfs}>Get More!</button>
         <SmurfList smurfs={this.props.smurfs} />;
       </div>
     );
@@ -32,11 +32,11 @@ const mapStateToProps = state => {
   return {
     smurfs: state.smurfettes.smurfs,
     error: state.smurfettes.error,
-    fetching: state.smurfettes.fetching
+    fetching: state.smurfettes.fetchingSmurfs
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchingSmurfs }
+  { getSmurfs }
 )(SmurfListView);
