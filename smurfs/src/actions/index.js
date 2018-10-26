@@ -44,9 +44,9 @@ axios.get(`${url}`)
 })
 }
 
-export const addSmurf = smurf => dispatch => {
+export const addSmurf = newSmurf => dispatch => {
   dispatch({type:CREATING});
-  axios.post(`${url}`, smurf)
+  axios.post(`${url}`, newSmurf)
   .then(response => {
     dispatch({type: CREATING_SUCCESS, payload:response.data})
   })
@@ -65,9 +65,9 @@ export const deleteSmurf = id => dispatch => {
   })
 }
 
-export const updateSmurf = (id, smurf) => dispatch =>{
+export const updateSmurf = (id, updatedSmurf) => dispatch =>{
   dispatch({type:UPDATING});
-  axios.put(`${url}/${id}`, smurf)
+  axios.put(`${url}/${id}`, updatedSmurf)
   .then(response=>{
     dispatch({type:UPDATING_SUCCESS, payload:response.data})
   })
