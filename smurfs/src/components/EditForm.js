@@ -30,27 +30,19 @@ class EditForm extends Component {
 
     editSmurf = event => {
         event.preventDefault();
-        //let targetId = Number(event.target.id)
         const { id, name, age, height } = this.state;
         let editedSmurf = {id, name, age, height}
-        console.log(editedSmurf);
         this.props.updateSmurf(editedSmurf)
-            // this.setState(() => ({
-            //     id: null,
-            //     name: '',
-            //     age: '',
-            //     height: '',
-            // }))
     }
 
     render() {
         return (
-            <div className='smurf-form'>
-                <form className='form' onSubmit={this.editSmurf}>Edit Smurf
-                    <input name='name' value={this.state.name} onChange={this.changeHandler} type='text' placeholder='Name' required></input>
-                    <input name='age' value={this.state.age} onChange={this.changeHandler} type='text' placeholder='Age' required></input>
-                    <input name='height' value={this.state.height} onChange={this.changeHandler} type='text' placeholder='Height' required></input>
-                    <input className='submit' type='submit' value='submit'/>
+            <div className='edit'>
+                <form className='edit-form' onSubmit={this.editSmurf}>Edit Smurf
+                    <input className='edit-input' name='name' value={this.state.name} onChange={this.changeHandler} type='text' placeholder='Name' required></input>
+                    <input className='edit-input' name='age' value={this.state.age} onChange={this.changeHandler} type='text' placeholder='Age' required></input>
+                    <input className='edit-input' name='height' value={this.state.height} onChange={this.changeHandler} type='text' placeholder='Height' required></input>
+                    <input className='edit-submit' type='submit' value='submit'/>
                 </form>
             </div>
         )

@@ -24,7 +24,7 @@ class Smurf extends Component {
                     <div className='btn' onClick={() => this.props.updating()}>edit</div>
                     <div className='btn' id={id} onClick={this.deleteSmurf}>delete</div>
                 </div>
-                {this.props.editing === true ? <EditForm smurf={this.props.smurf}/> : <div/ >}
+                {this.props.editing === true ? <EditForm smurf={this.props.smurf}/> : <img className='smurf-img' src={require('../images/smurf.png')} alt='Smurf'/>}
             </div>
         )
     }

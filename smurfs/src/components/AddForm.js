@@ -31,22 +31,18 @@ class AddForm extends Component {
 
     render() {
         return (
-            <div className='smurf-form'>
-                <form className='form' onSubmit={this.addSmurf}>Add Smurf
-                    <input name='name' value={this.state.name} onChange={this.changeHandler} type='text' placeholder='Name' required></input>
-                    <input name='age' value={this.state.age} onChange={this.changeHandler} type='text' placeholder='Age' required></input>
-                    <input name='height' value={this.state.height} onChange={this.changeHandler} type='text' placeholder='Height' required></input>
-                    <input className='submit' type='submit' value='submit'/>
+            <div className='add'>
+                <form className='add-form' onSubmit={this.addSmurf}>Add Smurf
+                    <input className='add-input' name='name' value={this.state.name} onChange={this.changeHandler} type='text' placeholder='Name' required></input>
+                    <input className='add-input' name='age' value={this.state.age} onChange={this.changeHandler} type='text' placeholder='Age' required></input>
+                    <input className='add-input' name='height' value={this.state.height} onChange={this.changeHandler} type='text' placeholder='Height' required></input>
+                    <input className='add-submit' type='submit' value='submit'/>
                 </form>
             </div>
         )
     }
 }
-const mapStateToProps = state => {
-    return {
-        smurfs: state.smurfs,
-        //unnecessary?
-    };
-};
+
+const mapStateToProps = () => {};
 
 export default connect(mapStateToProps, { addSmurf })(AddForm);

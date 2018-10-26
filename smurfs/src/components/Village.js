@@ -16,8 +16,11 @@ class Village extends Component {
         return (
             this.props.fetching ? 
             <div className='loading'>Loading Village</div> :
-            <div className="village">Welcome to Smurf Village
-                {this.props.smurfs.map(smurf => <Smurf key={smurf.id} smurf={smurf}/>)}
+            <div className="village">
+                <h2 className='welcome'>Welcome to Smurf Village</h2>
+                <div className='smurfs-container'>
+                    {this.props.smurfs.map(smurf => <Smurf key={smurf.id} smurf={smurf}/>)} 
+                </div>
             </div>
         )
     }
