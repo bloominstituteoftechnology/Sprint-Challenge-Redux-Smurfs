@@ -2,6 +2,9 @@ import {
   FETCH_SMURFS,
   SUCCESS,
   FAILURE,
+  POST_SMURF,
+  DELETE_SMURF,
+  PUT_SMURF, 
 } from '../actions';
 
 /*
