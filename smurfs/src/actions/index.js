@@ -34,7 +34,7 @@ const URL = "http://localhost:3333/smurfs/";
 export const fetchSmurfs = () => dispatch => {
   dispatch({ type: FETCHING_SMURFS });
   axios
-    .get("http://localhost:3333/smurfs")
+    .get(URL)
     .then(response => {
       dispatch({
         type: FETCHING_SMURFS_SUCCESS,

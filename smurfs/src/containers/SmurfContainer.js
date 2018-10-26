@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchSmurfs, addSmurf } from "../actions";
+import { fetchSmurfs, addSmurf, updateSmurf, deleteSmurf } from "../actions";
 
 import SmurfList from "../components/SmurfList";
 import SmurfForm from "../components/SmurfForm";
@@ -20,7 +20,8 @@ class SmurfContainer extends Component {
         name: "",
         age: "",
         height: ""
-      }
+      },
+      showUpdateForm: false
     };
   }
 
@@ -46,14 +47,44 @@ class SmurfContainer extends Component {
     });
   };
 
+  handleUpdate = id => {
+    const smurfToUpdate = this.props.smurfs.find(smurf => smurf.id === id);
+    this.setState({
+      newSmurf: smurfToUpdate,
+      showUpdateForm: true
+    });
+  };
+
+  handleDelete = id => {
+    this.props.deleteSmurf(id);
+  };
+
+  handleSubmitUpdate = event => {
+    event.preventDefault();
+    this.props.updateSmurf(this.state.newSmurf);
+    this.setState({
+      newSmurf: blankFormValues,
+      showUpdateForm: false
+    });
+  };
+
   render() {
     return (
       <div className="main-content">
-        <SmurfList smurfs={this.props.smurfs} />
+        <SmurfList
+          smurfs={this.props.smurfs}
+          handleUpdate={this.handleUpdate}
+          handleDelete={this.handleDelete}
+        />
         <SmurfForm
           handleInputChange={this.handleChange}
           newSmurf={this.state.newSmurf}
-          handleAddSmurf={this.handleAddSmurf}
+          handleOnClick={
+            this.state.showUpdateForm
+              ? this.handleSubmitUpdate
+              : this.handleAddSmurf
+          }
+          showUpdateForm={this.state.showUpdateForm}
         />
       </div>
     );
@@ -70,5 +101,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchSmurfs, addSmurf }
+  { fetchSmurfs, addSmurf, updateSmurf, deleteSmurf }
 )(SmurfContainer);
