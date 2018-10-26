@@ -6,7 +6,8 @@ export const GET_SMURFS = 'GET_SMURFS';
 export const ERR = 'ERR';
 export const ADDING = 'ADDING';
 export const CREATE_SMURF = 'CREATE_SMURF'
-
+export const TOGGLE_UPDATE_SMURF = 'TOGGLE_UPDATE_SMURF'
+export const SINGLE_SMURF = 'SINGLE_SMURF'
 
 /* 
   Action Types Go Here!
@@ -41,3 +42,16 @@ export const createSmurf = smurf => {
     })
   }
 }
+
+export const toggleShowUpdate = () => {
+  return {
+    type: TOGGLE_UPDATE_SMURF
+  };
+};
+
+export const updateSingleSmurf = smurf => {
+  return {
+    type: SINGLE_SMURF,
+    payload: smurf
+  };
+};

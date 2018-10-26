@@ -17,9 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       {this.props.fetching ? <h2>Fetching Smurfs</h2> : this.props.smurfs.map((smurf, index) => (
-         <Smurfs smurf={smurf} key={index} />
-       ))}
+       {this.props.fetching ? <h3>Fetching Friends</h3> : <Smurfs smurfs={this.props.smurfs} />}
        <SmurfForm />
       </div>
     );
@@ -27,10 +25,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+  const { smurfsReducer } = state
   return {
-    smurfs:  state.smurfs,
-    fetching: state.fetchingSmurfs,
-    err: state.error
+    smurfs:  smurfsReducer.smurfs,
+    fetching: smurfsReducer.fetchingSmurfs,
+    err: smurfsReducer.error
   }
 }
 
