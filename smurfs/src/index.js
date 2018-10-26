@@ -4,13 +4,20 @@ import './index.css';
 import App from './components/App';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware,compose } from 'redux';
 import { Provider } from 'react-redux';
-import /* You need some sort of reducer */ './reducers';
+import {smurfReducer} from './reducers';
+
+
+const middlewares = compose(
+  applyMiddleware(thunk,logger),
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+)
+
 
 const store = createStore(
-  () => {}, // this is the most basic reducer. A function that returns and object. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+  smurfReducer,
+  middlewares
 );
 
 ReactDOM.render(
@@ -18,4 +25,4 @@ ReactDOM.render(
     <App />
   </Provider>,
   document.getElementById('root')
-);
+); 
