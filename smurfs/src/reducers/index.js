@@ -1,9 +1,9 @@
-import { GOT_SMURFS, FETCHING_SMURFS } from '../actions';
+import { GOT_SMURFS, FETCHING_SMURFS, ADD_SMURF } from '../actions';
 
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
-  // addingSmurf: false
+  addingSmurf: false,
   // updatingSmurf: false
   // deletingSmurf: false
   error: null
@@ -19,6 +19,11 @@ const smurfReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingSmurfs: true  
+      }
+    case ADD_SMURF:
+      return {
+        ...state,
+        addingSmurf: true
       }
     default:
       return state

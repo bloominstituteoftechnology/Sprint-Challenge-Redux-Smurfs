@@ -5,7 +5,7 @@ import axios from 'axios';
 */
 export const GOT_SMURFS = 'GOT_SMURFS';
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
-// export const ADD_SMURF = 'ADD_SMURF';
+export const ADD_SMURF = 'ADD_SMURF';
 
 
 export const getSmurfs = () => dispatch => {
@@ -21,6 +21,7 @@ export const getSmurfs = () => dispatch => {
 }
 
 export const addSmurf = (newSmurf) => dispatch => {
+  dispatch({ type: ADD_SMURF })
   return (
     axios
       .post('http://localhost:3333/smurfs', newSmurf)

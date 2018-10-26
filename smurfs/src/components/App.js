@@ -19,8 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.fetchingSmurfs ? <Loading /> : <SmurfList smurfs={this.props.smurfs} />}
-        {/* <SmurfList smurfs={this.props.smurfs}/> */}
+        {this.props.fetchingSmurfs || this.props.addingSmurf ? <Loading /> : <SmurfList smurfs={this.props.smurfs} />}
         <SmurfForm />
       </div>
     );
@@ -30,7 +29,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs
+    fetchingSmurfs: state.fetchingSmurfs,
+    addingSmurf: state.addingSmurf
   }
 }
 export default connect(mapStateToProps, { getSmurfs })(App);
