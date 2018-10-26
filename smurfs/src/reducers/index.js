@@ -1,3 +1,5 @@
+import { GOT_SMURFS } from '../actions';
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
@@ -13,6 +15,10 @@ const initialState = {
 
 const smurfReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GOT_SMURFS:
+      return {
+        smurfs: action.payload
+      }
     default:
       return state
   }
