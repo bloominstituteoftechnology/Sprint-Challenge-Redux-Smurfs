@@ -3,11 +3,11 @@ import React from "react";
 const Smurf = props => {
   return (
     <div className='contact-card'>
-      <h3>{props.friend.name}</h3>
-      <p>{props.friend.age}</p>
-      <p>{props.friend.email}</p>
+      <h3>{props.smurf.name}</h3>
+      <p>{props.smurf.age}</p>
+      <p>{props.smurf.email}</p>
       <button 
-        onClick={() => props.deleteFriend()}>DELETE</button>
+        onClick={() => {}}>DELETE</button>
     </div>
   )       
 };

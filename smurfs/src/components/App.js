@@ -10,14 +10,54 @@ import Smurf from './smurf';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      age: null,
+      height: ''
+    }
+  }
   componentDidMount() {
     this.props.fetchSmurfs();
   }
+  clickHandler = event => {
+    event.preventDefault();
+    console.log('click handler', this.state)
+    const { name, age, email } = this.state;
+    this.props.addSmurf({ name, age, email });
+    this.props({ name: '', age: null, height: '' });
+  };
+  handleInputChange = event => this.setState({ 
+    [event.target.name]: event.target.value 
+  });
   render() {
     return (
       <div className="App">
         <h1>SMURFS!</h1>
-        <Smurf />
+        {this.props.smurfs.map((smurf, i)=> {
+          return <Smurf key={i} smurf={smurf}/>
+        })}
+        <form className='form'>
+          <h3>Add a Smurf</h3>
+          <input 
+            name='name' 
+            value={this.props.smurfs.name}
+            placeholder='Name'
+            onChange={this.handleInputChange}></input>
+          <input 
+            type='number'
+            name='age' 
+            value={this.props.smurfs.age}
+            placeholder='Age'
+            onChange={this.handleInputChange}></input>
+          <input 
+            name='height' 
+            value={this.props.smurfs.height}
+            placeholder='height'
+            onChange={this.handleInputChange}></input>
+          <button onClick={this.clickHandler}>Submit</button>
+        </form>        
       </div>
     );
   }
