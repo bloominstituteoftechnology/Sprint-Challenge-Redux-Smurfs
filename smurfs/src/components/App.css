@@ -1,28 +1,87 @@
 .App {
-  text-align: center;
-}
+    text-align: center;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    justify-content: center;
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+  }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
+  ul {
+      list-style-type: none;
+      max-width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+          
+  }
+  
+  form {
+      display: flex;
+      flex-flow: column nowrap;
+      align-self: center;
+      height: 200px;
+      justify-content: space-evenly;
+      align-items: center;
+  }
+  
+  label {
+      font-family: Monaco;
+      font-size: 14px;
+      color: black;
+      max-width: 100%;
+  
+  }
+  
+  input {
+      max-width: 100%;
+      height: 20px;
+      border: 2px solid darkgray;
+  }
+  
+  input[type='submit'] {
+      max-width: 100px;
+      border-radius: 15px;
+      margin-top: 20px;
+      font-family: Monaco;
+  }
+  .list {
+      border: 2px solid black;
+      max-width: 40%;
+      padding: 10px;
+      margin: 20px;
+      font-family: monaco;
+      font-size: 16px;
+      color: black;
+      background-image: linear-gradient(white, lightblue, lightgray);
+      
+  }
+  li {
+      height: auto;
+      max-width: 100%;
+  }
 
-.App-title {
-  font-size: 1.5em;
-}
+  button {
+      border: 1px solid black;
+      font-family: monaco;
+      padding: 2px;
+      margin: 10px 2px;
+      max-width: 100px;
+      border-radius: 15px;
+  }
 
-.App-intro {
-  font-size: large;
-}
+  .add {
+      border: 2px solid black;
+      max-width: 950px;
+      height: auto;
+      padding: 25px 20px;
+      font-family: Monaco;
+      font-size: 32px;
+      margin-bottom: 50px;
+      
+  }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+  .addInputs {
+      border: 2px solid darkgray;
+      max-width: 200px;
+      padding: 10px;
+
+  }
