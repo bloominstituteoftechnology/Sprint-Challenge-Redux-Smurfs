@@ -4,4 +4,4 @@ const Smurf = props =>{
     return <li>{props.smurf.name}</li>;
 }
 
-export default Friend;
+export default Smurf;
