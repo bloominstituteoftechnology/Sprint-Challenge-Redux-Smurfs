@@ -3,28 +3,17 @@ import { connect } from 'react-redux';
 import { addSmurf } from '../actions/index';
 
 class SmurfForm extends React.Component{
-    constructor(){
-        super();
-        this.state = {
-            name: '',
-            age: '',
-            height: '',
-            id: ''
-        }
-    }
+    state = {
+        name: '',
+        age: '',
+        height: '',
+        id: ''
+    };
+    changeHandler = event => {
+        this.setState({ [event.target.name]: event.target.value });
+    };
 
-    nameChangeHandler = event => {
-        this.setState({ name: event.target.value });
-    }
-    ageChangeHandler = event => {
-        this.setState({ age: event.target.value });
-    }
-    heightChangeHandler = event => {
-        this.setState({ height: event.target.value });
-    }
-
-    submitHandler = event => {
-        event.preventDefault();
+    submitHandler = () => {
         let currentId = Math.floor(Math.random() * 1000000);
         this.props.addSmurf(this.state);
         this.setState({name:'', age:'', height: '', id: currentId});
@@ -32,26 +21,32 @@ class SmurfForm extends React.Component{
 
     render() {
         return (
-            <form onSubmit={this.submitHandler}>
-                <input 
-                    type='text'
-                    placeholder="name"
+            <form>
+                <input
+                    className="input"
                     value={this.state.name}
-                    onChange={this.nameChangeHandler}
+                    name="name"
+                    type="text"
+                    placeholder="Name"
+                    onChange={this.changeHandler}
                 />
-                <input 
-                    type='text'
-                    placeholder="age"
-                    value={this.state.name}
-                    onChange={this.ageChangeHandler}
+                <input
+                    className="input"
+                    value={this.state.age}
+                    name="age"
+                    type="text"
+                    placeholder="Age"
+                    onChange={this.changeHandler}
                 />
-                <input 
-                    type='text'
-                    placeholder="height"
-                    value={this.state.name}
-                    onChange={this.heightChangeHandler}
+                <input
+                    className="input"
+                    value={this.state.height}
+                    name="height"
+                    type="text"
+                    placeholder="Height"
+                    onChange={this.changeHandler}
                 />
-                <button type="submit">Add Smurf</button>
+                <button onClick={() => this.submitHandler()} type="button">Add Smurf</button>
             </form>
         );
     }
