@@ -1,39 +1,37 @@
 import axios from "axios";
 
-export const ERROR = "ERROR";
-export const GET_SMURFS = "GET_SMURFS";
 export const GETTING_SMURFS = "GETTING_SMURFS";
+export const GETTING_SMURFS_SUCCESS = "GETTING_SMURFS_SUCCESS";
+export const GETTING_SMURFS_FAILURE = "GETTING_SMURFS_FAILURE";
 export const CREATING_SMURF = "CREATING_SMURF";
-export const CREATE_SMURF = "CREATE_SMURF";
+export const CREATING_SMURF_SUCCESS = "CREATING_SMURF_SUCCESS";
+export const CREATING_SMURF_FAILURE = "CREATING_SMURF_FAILURE";
 
-const URL = "http://localhost:3333/smurfs";
-
-export const getSmurfs = () => {
-  const smurfs = axios.get(`${URL}/get`);
-  return dispatch => {
-    dispatch({ type: GETTING_SMURFS });
-    smurfs
-      .then(response => {
-        dispatch({ type: GET_SMURFS, payload: response.data });
-      })
-      .catch(err => {
-        dispatch({ type: ERROR, payload: err });
+export const getSmurfs = () => dispatch => {
+  dispatch({ type: GETTING_SMURFS });
+  axios
+    .get("http://localhost:3333/smurfs")
+    .then(({ data }) => {
+      dispatch({
+        type: GETTING_SMURFS_SUCCESS,
+        payload: data
       });
-  };
+    })
+    .catch(error => {
+      dispatch({ type: GETTING_SMURFS_FAILURE, payload: error });
+    });
 };
 
-export const createSmurf = smurf => {
-  const newSmurf = axios.post(`${URL}/create`, smurf);
-  return dispatch => {
-    dispatch({ type: CREATING_SMURF });
-    newSmurf
-      .then(({ data }) => {
-        dispatch({ type: CREATE_SMURF, payload: data });
-      })
-      .catch(err => {
-        dispatch({ type: ERROR, payload: err });
-      });
-  };
+export const addSmurf = newSmurf => dispatch => {
+  dispatch({ type: CREATING_SMURF });
+  axios
+    .post("http://localhost:3333/smurfs", newSmurf)
+    .then(res => {
+      dispatch({ type: CREATING_SMURF_SUCCESS, payload: res.data });
+    })
+    .catch(error => {
+      dispatch({ type: CREATING_SMURF_FAILURE, payload: error });
+    });
 };
 /* 
   Action Types Go Here!

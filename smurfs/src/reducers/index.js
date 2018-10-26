@@ -1,37 +1,47 @@
-import * as actionTypes from "../actions";
+import {
+  GETTING_SMURFS,
+  GETTING_SMURFS_SUCCESS,
+  GETTING_SMURFS_FAILURE,
+  CREATING_SMURF,
+  CREATING_SMURF_SUCCESS,
+  CREATING_SMURF_FAILURE
+} from "../actions";
 
+let idNum = 0;
 const initialState = {
   smurfs: [],
   gettingSmurfs: false,
   creatingSmurf: false,
+  id: idNum++,
   error: null
 };
 
-const smurfsReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.GETTING_SMURFS:
+    case GETTING_SMURFS:
       return { ...state, gettingSmurfs: true };
-    case actionTypes.GET_SMURFS:
-      return { ...state, smurfs: action.payload, gettingSmurfs: false };
-    case actionTypes.CREATING_SMURF:
-      return { ...state, creatingSmurf: true };
-    case actionTypes.CREATE_SMURF:
-      return { ...state, smurfs: action.payload, creatingSmurf: false };
-    case actionTypes.ERROR:
+    case GETTING_SMURFS_SUCCESS:
       return {
         ...state,
-        gettingSmurfs: false,
-        creatingSmurf: false,
-        deletingSmurf: false,
-        updatingSmurf: false,
-        error: action.payload
+        smurfs: [...state.smurfs, ...action.payload],
+        gettingSmurfs: false
       };
+    case GETTING_SMURFS_FAILURE:
+      return { ...state, error: action.payload };
+    case CREATING_SMURF:
+      return { ...state, creatingSmurf: true };
+    case CREATING_SMURF_SUCCESS:
+      return {
+        ...state,
+        smurfs: [...state.smurfs, ...action.payload],
+        creatingSmurf: false
+      };
+    case CREATING_SMURF_FAILURE:
+      return { ...state, error: action.payload };
     default:
       return state;
   }
 };
-
-export default smurfsReducer;
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
