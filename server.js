@@ -14,6 +14,7 @@ const sendUserError = (msg, res) => {
 
 let smurfs = [
   {
+    id: 0,
     name: 'Brainey',
     age: 200,
     height: '5cm'
@@ -22,7 +23,7 @@ let smurfs = [
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
-let smurfId = 0;
+let smurfId = 1;
 
 server.post('/smurfs', (req, res) => {
   const { name, age, height } = req.body;
@@ -37,10 +38,7 @@ server.post('/smurfs', (req, res) => {
     return smurf.name === name;
   };
   if (smurfs.find(findSmurfByName)) {
-    return sendUserError(
-      `Ya gone did smurfed! ${name} already exists in the smurf DB.`,
-      res
-    );
+    return sendUserError(`Ya gone did smurfed! ${name} already exists in the smurf DB.`, res);
   }
 
   smurfs.push(newSmurf);
