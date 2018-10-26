@@ -1,9 +1,8 @@
 import React from 'react';
 
 const SmurfList = props => {
-    console.log('props', props);
     return (<div>{
-        props.smurfs.map(smurf => <div>{smurf.name}</div>)
+        props.smurfs.map((smurf, index) => <div id={index} key={smurf.name}>{smurf.name}</div>)
     }</div>);
 }
 
