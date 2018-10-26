@@ -46,6 +46,12 @@ export const rootReducer = (state = initialState, action) => {
         smurfs: [ ...state.smurfs, { id: action.id, name: action.name, age: action.age, height: action.height }]
       };
 
+    case EDIT_SMURF:
+      return {
+        ...state,
+        smurfs: [ ...state.smurfs, { id: action.id, name: action.name, age: action.age, height: action.height }]
+      }
+
     default:
       return state;
   };

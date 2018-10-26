@@ -29,10 +29,13 @@ export const fetchSmurfs = () => dispatch => {
     });
 };
 
-export const addSmurf = (name, age, height) => dispatch => {
+export const addSmurf = (name, age, height) => (dispatch, getState) => {
+  const smurfsID = getState().smurfs;
+  const newID = smurfsID[smurfsID.length - 1].id + 1;
   console.log(name, age, height);
   axios
     .post("http://localhost:3333/smurfs", {
+      id: newID,
       name: name,
       age: age,
       height: height
@@ -40,6 +43,7 @@ export const addSmurf = (name, age, height) => dispatch => {
     .then(() => {
       dispatch({
         type: ADD_SMURF,
+        id: newID,
         name: name,
         age: age,
         height: height
@@ -50,9 +54,10 @@ export const addSmurf = (name, age, height) => dispatch => {
     });
 };
 
-export const editSmurf = (id, name, age, height) => {
+export const editSmurf = (id, name, age, height) => dispatch => {
   axios
     .put(`http://localhost:3333/smurfs/${id}`, {
+      id: id,
       name: name,
       age: age,
       height: height

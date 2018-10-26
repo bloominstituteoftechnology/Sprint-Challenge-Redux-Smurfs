@@ -8,7 +8,7 @@ class SmurfForm extends React.Component {
     this.state = {
       name: "",
       age: null,
-      height: ''
+      height: '',
     };
   }
 
@@ -25,6 +25,7 @@ class SmurfForm extends React.Component {
       height: ''
     });
   };
+
 
   render() {
     return (
