@@ -1,29 +1,31 @@
-import React, { Component } from 'react';
-import './App.css';
-import styled from 'styled-components';
+import React from "react";
+import "./App.css";
+import styled from "styled-components";
+import SmurfForm from "./SmurfForm";
+import SmurfDisplay from './SmurfDisplay'
 
-
-
-const AppContainer = styled.div `
+const AppContainer = styled.div`
   width: 90%;
   margin: 0 auto;
   box-sizing: border-box;
-`
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
-class App extends Component {
-  render() {
-    return (
-      <AppContainer>
-      <div></div>
-
-      </AppContainer>
-    );
+  h1 {
+    font-size: 85px;
+    text-align: center;
+    color: white;
+    text-shadow: 3px 3px 10px blue, -3px -3px 10px blue;
+    margin: 10px;
   }
-}
+`;
+
+const App = () => {
+  return (
+    <AppContainer>
+      <h1>Smurf Village</h1>
+      <SmurfForm></SmurfForm>
+      <SmurfDisplay></SmurfDisplay>
+      
+    </AppContainer>
+  );
+};
 
 export default App;

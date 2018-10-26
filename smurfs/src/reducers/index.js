@@ -18,9 +18,9 @@ const initialState = {
 export const smurfReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCHING_SMURFS:
-      return state;
+      return {...state, fetchingSmurfs:true}
     case SMURFS_FETCHED:
-      return state;
+      return {...state, fetchingSmurfs:false, smurfs:payload}
     case ADDING_SMURF:
       return state;
     case SMURF_ADDED:

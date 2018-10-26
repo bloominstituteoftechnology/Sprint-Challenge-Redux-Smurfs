@@ -1,8 +1,18 @@
+import axios from 'axios'
+
 export const FETCHING_SMURFS = 'FETCHING_SMURFS'
 export const SMURFS_FETCHED = 'SMURFS_FETCHED'
 export const COLOSSAL_SMURF_UP = 'COLOSSAL_SMURF_UP'
 export const ADDING_SMURF = 'ADDING_SMURF'
 export const SMURF_ADDED = 'SMURF_ADDED'
+
+
+
+
+export const fetchSmurfs = () => dispatch =>{
+  dispatch({type: FETCHING_SMURFS})
+  axios.get('http://localhost:3333/smurfs').then(({data}) => dispatch({type: SMURFS_FETCHED, payload: data }))
+}
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
