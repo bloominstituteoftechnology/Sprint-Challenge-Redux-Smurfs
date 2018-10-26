@@ -1,3 +1,8 @@
+
+
+//== Smurfs List Application ===================================================
+
+//-- Dependencies --------------------------------
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -8,11 +13,13 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 
+//-- Generate Data store for Applicaton ----------
 const store = createStore(
   rootReducer,
   applyMiddleware(thunk, logger),
 );
 
+//-- Mount Applicaton ----------------------------
 ReactDOM.render(
   <Provider store={store}>
     <Smurfs />
