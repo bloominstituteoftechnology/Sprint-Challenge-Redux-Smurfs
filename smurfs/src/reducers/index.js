@@ -1,13 +1,14 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
+import { FETCHING_SMURFS } from '../actions';
 
 
  //Your initial/default state for this project could *Although does not have to* look a lot like this
  const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
-   addingSmurf: false,
+   //addingSmurf: false,
    //updatingSmurf: false
    //deletingSmurf: false
    error: null
@@ -15,7 +16,8 @@
 
  const rootReducer = (state = initialState, action) => {
    switch(action.type) {
-
+    case FETCHING_SMURFS:
+      return {...state, fetchingSmurfs: true};
     default: 
       return state;
    }
