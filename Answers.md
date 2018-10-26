@@ -1,6 +1,6 @@
-1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
-1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
-1.  What is middleware?
-1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-1.  Which `react-redux` method links up our `components` with our `redux store`?
+1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?  .map .filter .reduce  Object.assign
+1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?  Actions are payloads of information that come from user interaction (like events) with your application and that are sent to your store.  Reducers take in those actions and determine how state will change based on those actions.  Store is an object that holds the application state, making it the source of truth. 
+1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?  Use application state with redux when state needs to be persistant and managed globally through multiple component trees for something like where everything is password protected.  Use component state in react when state is more ephemeral and related to a specific branch of components where mutation is not as complex.
+1.  What is middleware?  Middleware is like a bridge that extends the functionality of an application. 
+1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?  Since redux is synchronous we need middleware like thunk to handle async actions when needed, by delaying dispatch of action.  It allows you to use action creators that return a function instead of an object/action. 
+1.  Which `react-redux` method links up our `components` with our `redux store`?  connect 

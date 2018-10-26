@@ -31,7 +31,7 @@ class App extends Component {
   render() {
     if (this.props.fetchingSmurfs) {
       return (<div>
-        Slow your roll... We're fetching Smurfs.
+        Slow your roll... We are fetching Smurfs.
       </div>)
     } else {
       this.props.smurfs.map(smurf => (

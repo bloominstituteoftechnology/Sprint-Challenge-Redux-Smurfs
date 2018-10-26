@@ -26,10 +26,10 @@ export function getSmurfs() {
     dispatch({ type: FETCHING_SMURFS });
     axios
       .get('http://localhost:3333/smurfs')
-      .then(response => {   //data or response? 
+      .then( ({ data }) => {   //data or response? 
         dispatch({ 
           type: FETCHING_SMURFS_SUCCESS,
-          payload: response.data });
+          payload: data });
       })
       .catch(error => {
         dispatch({ 
