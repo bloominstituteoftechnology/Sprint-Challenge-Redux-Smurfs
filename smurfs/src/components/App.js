@@ -13,11 +13,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      newSmurf: {
-        name: '',
-        age: '',
-        height: ''
-      }
+      
+      name: '',
+      age: '',
+      height: ''
+      
     }
   }
 
@@ -27,45 +27,45 @@ class App extends Component {
 
   handleInputChange = event => {
     this.setState({
-      newSmurf: {
+      
         [event.target.name]: event.target.value
-      }
+      
     });
   };
 
   handleAdd = event => {
     event.preventDefault();
-    this.props.addSmurf(this.state.newSmurf);
+    this.props.addSmurf(this.state);
   }
 
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <form onSubmit={event => this.handleAdd}>
+        <form onSubmit={event => this.handleAdd(event)}>
           <input
             onChange={this.handleInputChange}
             placeholder="name"
-            value={this.state.newSmurf.name}
+            value={this.state.name}
             name="name"
           />
           <input
             onChange={this.handleInputChange}
             placeholder="age"
-            value={this.state.newSmurf.age}
+            value={this.state.age}
             name="age"
           />
           <input
             onChange={this.handleInputChange}
             placeholder="height"
-            value={this.state.newSmurf.height}
+            value={this.state.height}
             name="height"
           />
           <button type="submit">Add to the village</button>
         </form>
         {this.props.smurfs.map(smurf => {
           return (
-            <div>
+            <div key={smurf.id}>
               <h1>{smurf.name}</h1>
               <p>Age: {smurf.age}</p>
               <p>Height: {smurf.height}</p>
