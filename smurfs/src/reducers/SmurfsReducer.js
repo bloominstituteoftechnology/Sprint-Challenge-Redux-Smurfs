@@ -8,7 +8,8 @@ import {
   
   const initialState = {
     smurfs: [], 
-    isFetching: false, 
+    isFetching: false,
+    updatingSmurfs: false, 
     creatingSmurfs: false,  
     error: null,
   };
@@ -20,7 +21,7 @@ import {
         return {
           ...state,
           isFetching: false,
-          friends: action.payload
+          smurfs: action.payload
         };
       case FETCHING_SMURFS_FAILURE:
         return { ...state, isFetching: false, error: action.payload };
