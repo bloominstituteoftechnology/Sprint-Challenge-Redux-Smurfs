@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -19,4 +21,9 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    smurfs: state.smurfs
+  }
+}
+export default connect(mapStateToProps)(App);
