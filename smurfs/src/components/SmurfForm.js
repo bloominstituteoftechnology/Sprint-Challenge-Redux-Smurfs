@@ -22,33 +22,40 @@ class SmurfForm extends React.Component {
   addSmurf = e => {
     e.preventDefault();
     this.props.addSmurf(this.state.newSmurf);
+    this.setState({
+      newSmurf: {
+        name: "",
+        age: "",
+        height: ""
+      }
+    });
   };
   render() {
     return (
-      <div>
+      <div className="smurf-form-container">
         <form onSubmit={this.addSmurf}>
           <input
             type="text"
             onChange={this.handleSmurfFormInput}
-            value={this.state.name}
+            value={this.state.newSmurf.name}
             name="name"
             placeholder="Name"
           />
           <input
-            type="text"
+            type="number"
             onChange={this.handleSmurfFormInput}
-            value={this.state.age}
+            value={this.state.newSmurf.age}
             name="age"
             placeholder="Age"
           />
           <input
             type="text"
             onChange={this.handleSmurfFormInput}
-            value={this.state.height}
+            value={this.state.newSmurf.height}
             name="height"
             placeholder="Height"
           />
-          <input type="submit" value="Add New Smurf" />
+          <input type="submit" value="Add New Smurf" id="smurf-submit" />
         </form>
       </div>
     );

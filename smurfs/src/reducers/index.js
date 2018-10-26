@@ -57,7 +57,7 @@ const rootReducer = (state = initialState, action) => {
         smurfs: action.payload
       };
     default:
-      return { ...state };
+      return state;
   }
 };
 

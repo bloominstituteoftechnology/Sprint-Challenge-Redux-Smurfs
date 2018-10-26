@@ -14,7 +14,7 @@ class Smurfs extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello from smrufs.js</h1>
+        <h1>Welcome to Smurf Village</h1>
         <Smurf smurfs={this.props.smurfs} />
         <SmurfForm addSmurf={this.props.addSmurf} />
       </div>
