@@ -3,7 +3,8 @@ import {
   FETCHING_SMURFS_SUCCESS,
   FETCHING_SMURFS_FAILURE,
   ADDING_SMURF,
-  GOT_SMURFS
+  GOT_SMURFS,
+  DELETING_SMURF
 } from "../actions";
 
 /*
@@ -48,13 +49,14 @@ export const SmurfsReducer = (state = initialState, action) => {
     case ADDING_SMURF:
       return {
         ...state,
-        isAdding: true
+        isAdding: true,
+        smurfs: [...state.smurfs, action.payload]
       };
     case GOT_SMURFS:
       return {
         ...state,
         isAdding: false,
-        smurfs: [...state.smurfs, ...action.payload]
+        // smurfs: [...state.smurfs, ...action.payload]
       };
     default:
       return state;
