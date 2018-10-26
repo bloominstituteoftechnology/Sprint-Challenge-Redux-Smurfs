@@ -6,7 +6,10 @@ const SmurfList = props => {
         <div>
             {props.smurfList.map(smurf => {
                return( <ul key={smurf.height}>
-                   <Smurf smurf={smurf}/> 
+                   <Smurf 
+                   smurf={smurf}
+                   handleDeleteSmurf={props.handleDeleteSmurf}
+                   /> 
                 </ul>
                )
             })}

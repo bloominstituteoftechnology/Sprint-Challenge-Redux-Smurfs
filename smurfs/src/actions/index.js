@@ -4,6 +4,7 @@ export const FETCHING_SMURF = 'FETCHING_SMURF'
 export const SMURF_FETCHED = 'SMURF_FETCHED'
 export const SMURF_FAILURE = 'SMURF_FAILURE'
 export const ADD_SMURF = 'ADD_SMURF'
+export const DELETE_SMURF = 'DELETE_SMURF'
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -33,6 +34,15 @@ export const addSmurf = smurf => dispatch => {
   .post('http://localhost:3333/smurfs', smurf)
   .then(response => {
     dispatch({type: ADD_SMURF, payload: response.data})
+  })
+  .catch(error => alert(error))
+}
+
+export const deleteSmurf = id => dispatch => {
+  axios
+  .delete(`http://localhost:3333/smurfs/${id}`)
+  .then(response => {
+    dispatch({type: DELETE_SMURF, payload: response.data})
   })
   .catch(error => alert(error))
 }

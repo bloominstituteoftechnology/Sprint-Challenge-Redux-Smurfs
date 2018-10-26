@@ -1,4 +1,4 @@
-import {FETCHING_SMURF, SMURF_FETCHED, SMURF_FAILURE, ADD_SMURF} from '../actions'
+import {FETCHING_SMURF, SMURF_FETCHED, SMURF_FAILURE, ADD_SMURF, DELETE_SMURF} from '../actions'
 
 const initialState = {
   smurfs: [],
@@ -15,6 +15,8 @@ switch (action.type) {
   case SMURF_FAILURE:
   return {...state, isFetching: false, error: action.payload}
   case ADD_SMURF:
+  return {...state, smurfs: action.payload}
+  case DELETE_SMURF:
   return {...state, smurfs: action.payload}
   default:
   return state
