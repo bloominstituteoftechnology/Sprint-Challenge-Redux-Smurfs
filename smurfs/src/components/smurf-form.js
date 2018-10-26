@@ -24,7 +24,14 @@ class SmurfForm extends React.Component {
 
     //-- Rendering -----------------------------------
     render() {
-        let header = <h2>Add Smurf:</h2>;
+        let header;
+        // Add a Smurf
+        if(this.props.focus === null){
+            header = <h2>Add Smurf:</h2>;
+        // Update a Smurf
+        } else{
+            header = <h2>Update Smurf:</h2>
+        }
         return (
             <form onSubmit={this.handleSubmit}>
                 {header}
@@ -68,14 +75,20 @@ class SmurfForm extends React.Component {
           this.props.notReady('You cannot add a smurf right now');
           return;
         }
-        // Generate smurf data and send to server
+        // Generate smurf data and clear state
         let smurfData = {
             name: this.state.name,
             age: Number(this.state.age),
             height: this.state.height,
         };
         this.clearState();
-        this.props.addSmurf(smurfData);   
+        // Send to server as new smurf or smurf update
+        if(this.props.focus === null){
+            this.props.addSmurf(smurfData);   
+        } else{
+            smurfData.id = this.props.focus;
+            this.props.updateSmurf(smurfData);
+        }
     }
 
     //-- Utility Methods -----------------------------
@@ -99,6 +112,7 @@ function mapStateToProps(state) {
 }
 SmurfForm = connect(mapStateToProps, {
     addSmurf: actions.addSmurf,
+    updateSmurf: actions.updateSmurf,
 })(SmurfForm);
 
 //-- Exporting -----------------------------------

@@ -29,7 +29,6 @@ class Smurfs extends React.Component {
             <div className="smurfs">
                 <div>
                     <h1>`SMURFS! 2.0 W/ Redux</h1>
-                    <p>Welcome to your Redux version of Smurfs!</p>
                 </div>
                 <SmurfForm />
                 <Error error={this.props.error} />

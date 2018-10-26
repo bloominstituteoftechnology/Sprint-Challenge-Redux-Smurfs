@@ -46,14 +46,21 @@ export function getSmurfs() {
     };
 };
 
-//-- ADD_SMURF - Agent submits a new smurf
+//-- (null) - Agent submits a new smurf
 export function addSmurf(smurfData) {
     return function (dispatch) {
         server.post('smurfs', smurfData, dispatch);
     }
 }
 
-//-- DELETE_SMURF - Agent wants to delete a smurf
+//-- (null) - Agent submits new info for a smurf
+export function updateSmurf(smurfData) {
+    return function (dispatch) {
+        server.put(`smurfs/${smurfData.id}`, smurfData, dispatch);
+    }
+}
+
+//-- (null) - Agent wants to delete a smurf
 export function deleteSmurf(id) {
     return function (dispatch) {
         server.delete(`smurfs/${id}`, null, dispatch)
@@ -111,6 +118,13 @@ const server = {
         dispatch({type: FETCHING});
         this.standardHandling(
             axios.post(this.formatUrl(url), data),
+            dispatch,
+        );
+    },
+    put(url, data, dispatch){
+        dispatch({type: FETCHING});
+        this.standardHandling(
+            axios.put(this.formatUrl(url), data),
             dispatch,
         );
     },
