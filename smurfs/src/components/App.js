@@ -33,8 +33,8 @@ class App extends Component {
   addSmurf= (ev, history) => {
     ev.preventDefault();
     this.props.addSmurf(this.state.smurfForm);
-    this.setState({smurfForm: {name: '', age: '', height: ''}});
     history.push('/');
+    this.setState({smurfForm: {name: '', age: '', height: ''}});
   }
 
   smurfClicked = (ev, history, id) => {
@@ -55,6 +55,9 @@ class App extends Component {
               {...props} 
               smurfs={this.props.smurfs}
               onClick={this.smurfClicked}
+              fetchingSmurfs={this.props.fetchingSmurfs}
+              addingSmurf={this.props.addingSmurf}
+              deletingSmurf={this.props.deletingSmurf}
             />
           
           }

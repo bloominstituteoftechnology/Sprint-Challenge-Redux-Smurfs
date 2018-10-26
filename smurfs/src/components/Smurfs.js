@@ -3,6 +3,9 @@ import SmurfCard from './SmurfCard';
 import { Container } from '../Style';
 
 const Smurfs = props => {
+  if (props.fetchingSmurfs) return <h2>Loading Smurfs...</h2>
+  if (props.addingSmurf) return <h2>Adding Smurfs...</h2>
+  if (props.deletingsmurf) return <h2>Deleting Smurfs...</h2>
   return (
     <div>
       <h1>Smurf Village</h1>

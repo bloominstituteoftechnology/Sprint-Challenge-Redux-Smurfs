@@ -13,6 +13,7 @@ class Smurf extends Component  {
   }
 
   componentDidMount() {
+    console.log(this.props);
     const { id } = this.props.match.params;
     this.props.getSmurf(id);
     this.setState({smurf: this.props.activeSmurf});
@@ -29,13 +30,13 @@ class Smurf extends Component  {
 
   showEdit = (ev) => {
     ev.preventDefault();
-    this.props.history.push(`${this.props.location.pathname}/edit`);
+    this.props.history.push(`${this.props.match.url}/edit`);
   }
 
   editSmurf = (ev) => {
     ev.preventDefault();
-
     this.props.updateSmurf(this.props.activeSmurf);
+    // if (this.props.mathc)
     this.props.history.push(`/smurf/${this.props.activeSmurf.id}`);
   }
 
@@ -43,14 +44,14 @@ class Smurf extends Component  {
     ev.preventDefault();
     const { id } = this.props.match.params;
     this.props.getSmurf(id);
-    this.setState({smurf: this.props.activeSmurf},() => {
-      this.props.history.push(`/smurf/${this.props.activeSmurf.id}`);
-    });
+    this.setState({smurf: this.props.activeSmurf});
+    this.props.history.push(`/smurf/${this.props.activeSmurf.id}`)
   }
 
   render() {
     const { name, age, height, id } = this.props.activeSmurf;
     if(this.props.fetchingSmurf) return <h2>Loading Smurf...</h2>
+    if(this.props.updatingSmurf) return <h2>Updating Smurf...</h2>
     return (
       <Container>
         <StyledSmurf>
@@ -91,11 +92,12 @@ class Smurf extends Component  {
 };
 
 const mapStateToProps = state => {
-  const { fetchingSmurf, activeSmurf } = state;
+  const { fetchingSmurf, activeSmurf, updatingSmurf } = state;
 
   return {
     fetchingSmurf,
-    activeSmurf
+    activeSmurf,
+    updatingSmurf,
   }
 }
 
