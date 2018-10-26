@@ -36,6 +36,7 @@ export const createSmurf = smurf => dispatch => {
   axios
     .post(url, smurf)
     .then(res => {
+      console.log(res);
       dispatch({ type: ADD_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -55,11 +56,14 @@ export const updateSmurf = id => dispatch => {
     });
 };
 
-export const deleteSmurf = id => dispatch => {
+export const deleteSmurf = (e, id) => dispatch => {
+  console.log(id);
+  e.preventDefault();
   axios
-    .delete(`{url}/${id}`)
+    .delete(`${url}/${id}`)
     .then(res => {
-      dispatch({ type: DELETE_SMURF_SUCCESS, payload: id });
+      console.log(res.data);
+      dispatch({ type: DELETE_SMURF_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);

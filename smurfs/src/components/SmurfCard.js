@@ -1,14 +1,20 @@
 import React from "react";
+import { connect } from "react-redux";
+import { deleteSmurf } from "../actions";
 
 const SmurfCard = props => {
-  console.log(props);
+  console.log(props.smurf.id);
   return (
     <div>
-      <h4>{props.smurf.name}</h4>
-      <h4>{props.smurf.age}</h4>
-      <h4>{props.smurf.height}</h4>
+      <p>{props.smurf.name}</p>
+      <p>{props.smurf.age}</p>
+      <p>{props.smurf.height}</p>
+      <button onClick={e => props.deleteSmurf(e, props.smurf.id)}>Delete</button>
     </div>
   );
 };
 
-export default SmurfCard;
+export default connect(
+  null,
+  { deleteSmurf }
+)(SmurfCard);
