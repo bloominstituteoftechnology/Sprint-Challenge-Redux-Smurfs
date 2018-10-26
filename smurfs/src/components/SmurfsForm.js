@@ -7,7 +7,7 @@ export class componentName extends Component {
     super();
     this.state = {
       name: '',
-      age: null,
+      age: '',
       height: ''
     };
   }
@@ -19,11 +19,23 @@ export class componentName extends Component {
       age,
       height
     };
-    this.state.name.length > 0 &&
-    this.state.age.length > 0 &&
-    this.state.height.length > 0
-      ? this.props.addSmurf(singleSmurf)
-      : alert('put a complete value');
+    if (
+      this.state.name.length > 0 &&
+      this.state.age.length > 0 &&
+      this.state.height.length > 0
+    ) {
+      this.clear();
+      this.props.addSmurf(singleSmurf);
+    } else {
+      alert('put a complete value');
+    }
+  };
+  clear = () => {
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    });
   };
 
   handleInput = event => {
@@ -34,9 +46,24 @@ export class componentName extends Component {
       <div>
         <h1>ADD FORM</h1>
         <form onSubmit={this.updateDatabase}>
-          <input type="text" placeholder="name" onChange={this.handleInput} />
-          <input type="text" placeholder="age" onChange={this.handleInput} />
-          <input type="text" placeholder="height" onChange={this.handleInput} />
+          <input
+            type="text"
+            placeholder="name"
+            onChange={this.handleInput}
+            value={this.state.name}
+          />
+          <input
+            type="text"
+            placeholder="age"
+            onChange={this.handleInput}
+            value={this.state.age}
+          />
+          <input
+            type="text"
+            placeholder="height"
+            onChange={this.handleInput}
+            value={this.state.height}
+          />
           <button onSubmit={this.updateDatabase}>Create a smurf</button>
         </form>
         <h1>END OF ADD FORM</h1>
