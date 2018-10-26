@@ -1,22 +1,85 @@
 import React, { Component } from 'react';
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import { connect } from 'react-redux';
+import { fetchSmurfs, addSmurf, deleteSmurf } from '../actions'
+import Smurf from './smurf';
+
+
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      age: null,
+      height: ''
+    }
+  }
+  componentDidMount() {
+    this.props.fetchSmurfs();
+  }
+  clickHandler = event => {
+    event.preventDefault();
+    console.log('click handler', this.state)
+    const { name, age, height } = this.state;
+    this.props.addSmurf({ name, age, height });
+    this.setState({ name: '', age: '', height: '' });
+  };
+  handleDelete=(event)=> {
+    const id = event.target.id;
+    event.preventDefault();
+    console.log(id)
+    this.props.deleteSmurf(id);
+  }
+  handleInputChange = event => this.setState({ 
+    [event.target.name]: event.target.value 
+  });
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <h1 className='main-header'>Welcome to Smurf Village</h1>
+        <form onSubmit={this.clickHandler} className='form'>
+          <h3 className='add-header'>Join the Smurfs</h3>
+          <input 
+            name='name' 
+            value={this.state.name}
+            placeholder='Name'
+            onChange={this.handleInputChange}></input>
+          <input 
+            type='number'
+            name='age' 
+            value={this.state.age}
+            placeholder='Age'
+            onChange={this.handleInputChange}></input>
+          <input 
+            name='height' 
+            value={this.state.height}
+            placeholder='Height'
+            onChange={this.handleInputChange}></input>
+          <button onClick={this.clickHandler}>Submit</button>
+        </form>  
+        <div className='smurfs-cards'> 
+          {this.props.smurfs.map((smurf)=> {
+            const id = smurf.id;
+            return (
+              <div className='smurf-card' key={id}>
+                <Smurf 
+                  id ={id} 
+                  smurf={smurf}/>
+                <button className='delete' id={id} onClick={this.handleDelete}>DELETE</button>
+              </div>
+            );
+          })} 
+        </div>      
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    fetching: state.fetching 
+  };
+};
+
+export default connect(mapStateToProps,{ fetchSmurfs, addSmurf, deleteSmurf })(App);
