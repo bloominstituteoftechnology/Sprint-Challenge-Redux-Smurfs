@@ -24,9 +24,9 @@ export const getSmurfs = () => dispatch => {
   // let's do some async stuff! Thanks react-thunk :)
   dispatch({ type: FETCHING_SMURFS });
   axios
-    .get('https://dog.ceo/api/breed/husky/images')
+    .get('http://localhost:3333/smurfs')
     .then(response => {
-      dispatch(console.log(response));
+      dispatch({ type: FETCHING_SMURFS_SUCCESS, payload: response.data });
     })
     .catch(error => {
       dispatch({ type: FETCHING_SMURFS_FAILURE, payload: error });
