@@ -17,9 +17,6 @@ import axios from 'axios';
 
 //-- Configuration -------------------------------
 const REMOTE_SERVER = 'http://localhost:3333';
-function remote(path) {
-    return `${REMOTE_SERVER}/${path}`;
-}
 
 //-- Action Types --------------------------------
 export const GET_SMURFS = 'GET_SMURFS';
@@ -29,25 +26,10 @@ export const FETCH_ERROR = 'ERROR';
 export const NOT_READY = 'NOT_READY';
 export const FOCUS_SMURF = 'FOCUS_SMURF';
 export const FOCUS_CANCEL = 'FOCUS_CANCEL';
+export const DELETE_SMURF = 'DELETE_SMURF';
 
 
 //== Action Generators =========================================================
-
-//-- GET_SMURFS - Agent requests list of all Smurfs
-export function getSmurfs() {
-    return function (dispatch) {
-        dispatch({type: FETCHING});
-        // Fail half the time, so as to show error
-        axios.get(remote('smurfs'))
-        .then(response => {
-            dispatch(smurfsResponse(response.data));
-        })
-        .catch(error => {
-            let errorMessage = `Error requesting data: ${error.response.status}`;
-            dispatch(fetchError(errorMessage));
-        });
-    };
-};
 
 //-- SMURFS_RESPONSE - Server replied with list of all smurfs
 export function smurfsResponse(smurfsData) {
@@ -57,18 +39,24 @@ export function smurfsResponse(smurfsData) {
     };
 };
 
+//-- GET_SMURFS - Agent requests list of all Smurfs
+export function getSmurfs() {
+    return function (dispatch) {
+        server.get('smurfs', null, dispatch)
+    };
+};
+
 //-- ADD_SMURF - Agent submits a new smurf
 export function addSmurf(smurfData) {
     return function (dispatch) {
-        dispatch({type: FETCHING});
-        axios.post(remote('smurfs'), smurfData)
-        .then(response => {
-            dispatch(smurfsResponse(response.data));
-        })
-        .catch(error => {
-            let errorMessage = `Error ${error.response.status}: ${error.response.data.Error}`;
-            dispatch(fetchError(errorMessage));
-        });
+        server.post('smurfs', smurfData, dispatch);
+    }
+}
+
+//-- DELETE_SMURF - Agent wants to delete a smurf
+export function deleteSmurf(id) {
+    return function (dispatch) {
+        server.delete(`smurfs/${id}`, null, dispatch)
     }
 }
 
@@ -79,6 +67,7 @@ export function focusSmurf(smurfId) {
         id: smurfId,
     };
 }
+
 //-- FOCUS_CANCEL - Agent wants to return to full list view
 export function focusCancel() {
     return {
@@ -101,4 +90,49 @@ export function notReady(error) {
         type: NOT_READY,
         error: error,
     };
+}
+
+
+//== Utilities =================================================================
+
+//-- Server (should probably be middleware) ------
+const server = {
+    // Configuration
+    address: REMOTE_SERVER,
+    // Http Methods
+    get(url, data, dispatch){
+        dispatch({type: FETCHING});
+        this.standardHandling(
+            axios.get(this.formatUrl(url), data),
+            dispatch,
+        );
+    },
+    post(url, data, dispatch){
+        dispatch({type: FETCHING});
+        this.standardHandling(
+            axios.post(this.formatUrl(url), data),
+            dispatch,
+        );
+    },
+    delete(url, data, dispatch){
+        dispatch({type: FETCHING});
+        this.standardHandling(
+            axios.delete(this.formatUrl(url), data),
+            dispatch,
+        );
+    },
+    // Utilities
+    standardHandling(axiosPromise, dispatch) {
+        axiosPromise
+        .then(response => {
+            dispatch(smurfsResponse(response.data));
+        })
+        .catch(error => {
+            let errorMessage = `Error ${error.response.status}: ${error.response.data.Error}`;
+            dispatch(fetchError(errorMessage));
+        });
+    },
+    formatUrl(path) {
+        return `${this.address}/${path}`;
+    }
 }

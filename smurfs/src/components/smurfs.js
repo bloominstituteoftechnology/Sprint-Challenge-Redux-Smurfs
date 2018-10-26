@@ -11,7 +11,7 @@
 //-- Dependencies --------------------------------
 import React from 'react';
 import {connect} from 'react-redux';
-import * as actions from '../actions';
+//import * as actions from '../actions';
 import SmurfList from './smurf-list.js';
 import SmurfForm from './smurf-form.js';
 import Error from './error.js';
@@ -21,11 +21,7 @@ import Error from './error.js';
 
 class Smurfs extends React.Component {
     
-    //-- Lifecycle -----------------------------------
-    constructor() {
-      super(...arguments);
-      this.state = {};
-    }
+    //-- Lifecycle -----------------------------------\
   
     //-- Rendering -----------------------------------
     render() {
@@ -51,19 +47,11 @@ class Smurfs extends React.Component {
 //-- Redux Coupling ------------------------------
 function mapStateToProps(state) {
     return {
-        smurfs: state.smurfs,
         error: state.error,
-        ready: !state.fetching,
-        focus: state.focusId,
     };
 }
 Smurfs = connect(mapStateToProps, {
-    getSmurfs: actions.getSmurfs,
-    focusSmurf: actions.focusSmurf,
-    focusCancel: actions.focusCancel,
-    deleteSmurf: actions.deleteSmurf,
-    /*notReady: actions.notReady,
-*/})(Smurfs);
+})(Smurfs);
 
 //-- Exporting -----------------------------------
 export default Smurfs;

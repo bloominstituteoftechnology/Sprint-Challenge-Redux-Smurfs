@@ -94,7 +94,7 @@ class SmurfForm extends React.Component {
 function mapStateToProps(state) {
     return {
         ready: !state.fetching,
-        focus: state.focusId,
+        focus: state.focus,
     };
 }
 SmurfForm = connect(mapStateToProps, {

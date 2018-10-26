@@ -32,7 +32,7 @@ class SmurfList extends React.Component {
         return (
             <div className={classText}>
                 {loadNotifier}
-                {this.focusFilter(this.props.smurfs, this.props.focus).map(smurf => (
+                {this.focusFilter().map(smurf => (
                     <Smurf
                         key={smurf.name}
                         smurf={smurf}
@@ -44,15 +44,24 @@ class SmurfList extends React.Component {
                     onClick={this.props.onCancel}
                     children="cancel"
                 />
-                <div className="smurf-list-delete">Delete</div>
+                <div
+                    className="smurf-list-delete"
+                    onClick={this.deleteSmurf}
+                    children="delete"
+                />
             </div>
         );
     }
 
     //-- Interaction ---------------------------------
-    focusFilter(smurfs, focusId) {
-        if(focusId === null){ return smurfs;}
-        smurfs.filter(smurf => smurf.id === focusId);
+    focusFilter = () => {
+        let smurfs = this.props.smurfs;
+        let focus = this.props.focus;
+        if(focus === null){ return smurfs;}
+        return smurfs.filter(smurf => smurf.id === focus);
+    }
+    deleteSmurf = () => {
+        this.props.onDelete(this.props.focus);
     }
 }
 
@@ -64,7 +73,7 @@ function mapStateToProps(state) {
     return {
         smurfs: state.smurfs,
         error: state.error,
-        focus: state.focusId,
+        focus: state.focus,
     };
 }
 SmurfList = connect(mapStateToProps, {

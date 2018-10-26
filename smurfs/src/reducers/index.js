@@ -23,16 +23,11 @@
 import * as actions from '../actions';
 
 //-- Initial Store State -------------------------
-/*const initialState = {
-    fetching: false,
-    smurfs: [],
-    error: null,
-};*/
 const initialState = {
     smurfs: [],
     fetching: false,
     error: null,
-    focusId: null,
+    focus: null,
 };
   
 //-- Route Actions -------------------------------
@@ -61,6 +56,7 @@ function handleSmurfsList(state, action) {
         fetching: false,
         smurfs: action.smurfs,
         error: null,
+        focus: null,
     };
 }
 function handleFetchError(state, action) {
@@ -79,6 +75,6 @@ function handleNotReady(state, action) {
 function handleFocus(state, action) {
     return {
         ...state,
-        focusId: action.id,
+        focus: action.id,
     };
 }

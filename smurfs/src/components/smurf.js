@@ -3,7 +3,7 @@
 import React from "react";
 
 //-- Smurf - Implementation & Export -------------
-export function Smurf(props) {
+export default function Smurf(props) {
     return (
         <div className='smurf' onClick={props.onClick} data-id={props.smurf.id}>
             <span>Name: {props.smurf.name}</span>
