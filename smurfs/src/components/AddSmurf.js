@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-
 class AddSmurf extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +16,7 @@ class AddSmurf extends Component {
     // add code to create the smurf using the api
     const { name, age, height } = this.state;
 
-  this.props.addSmurf({ name, age, height });
+    this.props.addSmurf({ name, age, height });
 
     this.setState({
       name: "",
@@ -32,7 +31,7 @@ class AddSmurf extends Component {
 
   render() {
     return (
-      <div className="SmurfAddForm">
+      <div className="smurfAddForm">
         <form onSubmit={this.addSmurf}>
           <input
             onChange={this.handleInputChange}
@@ -58,9 +57,5 @@ class AddSmurf extends Component {
     );
   }
 }
-
-
-
-
 
 export default AddSmurf;

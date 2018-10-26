@@ -14,7 +14,6 @@
    D - deleteSmurf
 */
 
-
 import axios from "axios";
 
 export const FETCHING = "FETCHING";

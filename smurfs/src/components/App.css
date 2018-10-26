@@ -20,6 +20,7 @@
      font-size: 100%;
      font: inherit;
      vertical-align: baseline;
+     text-align: center;
  }
  /* HTML5 display-role reset for older browsers */
  article, aside, details, figcaption, figure,
@@ -120,23 +121,30 @@
   display : flex;
   width : 1000px;
   padding: 30px 10px;
+  margin : 0 auto;
 }
 
-.friendAddForm{
+.smurfAddForm{
   width : 20%;
+ 
 }
 
-.friendAddForm input{
+.smurfAddForm input{
   margin-bottom : 5px;
 }
 
-.friendListContainer{
+.smurfListContainer{
   width : 80%;
   display : flex;
   flex-wrap: wrap;
 }
+.loaderContainer{
+    width : 80%;
+    margin : 0 auto;
 
-.friendDisplay{
+}
+
+.smurfDisplay{
   width : 30%;
   border : 1px solid black;
   margin : 10px;

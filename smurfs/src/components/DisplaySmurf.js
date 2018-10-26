@@ -1,6 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
-import { deleteSmurf } from "../actions";
+
 
 const DisplaySmurf = props => {
   return (
@@ -18,7 +17,5 @@ const DisplaySmurf = props => {
     </div>
   );
 };
-
-
 
 export default DisplaySmurf;
