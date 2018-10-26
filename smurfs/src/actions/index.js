@@ -41,7 +41,7 @@ export const postSmurf = (newSmurf) => dispatch => {
   console.log('Post Smurfs called');
   dispatch({ type: POSTING });
   axios
-    .get('http://localhost:3333/smurfs', newSmurf)
+    .post('http://localhost:3333/smurfs', newSmurf)
     .then(response => {
       dispatch({ type: POSTING_SUCCESS, payload: response.data })
     })
