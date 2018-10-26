@@ -20,23 +20,8 @@ import {
  }
 */
 
-const dummyData = [
-  {
-    id: 0,
-    name: 'Brainey',
-    age: 200,
-    height: '5cm'
-  },
-  {
-    id: 1,
-    name: 'Papa',
-    age: 400,
-    height: '8cm'
-  }
-]
-
 const initalState = {
-  smurfs: dummyData,
+  smurfs: [],
   fetchingSmurfs: false,
   smurfsFetched: false,
   error: null
