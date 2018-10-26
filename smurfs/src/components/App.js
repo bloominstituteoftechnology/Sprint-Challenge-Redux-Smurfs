@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./App.css";
-import {getSmurfs, addSmurf, deleteSmurf} from "../actions";
+import {getSmurfs, addSmurf, deleteSmurf, updateSmurf} from "../actions";
 import {connect} from "react-redux";
 
 /*
@@ -13,6 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isEditing: false,
       name: "",
       age: "",
       height: ""
@@ -24,13 +25,28 @@ class App extends Component {
   };
 
   changeHandler = e => {
+    console.log(e.target.value);
     this.setState({[e.target.name]: e.target.value});
   };
 
-  handleSubmit = (e, newSmurf) => {
+  handleSubmit = e => {
     e.preventDefault();
+    const {name, age, height} = this.state;
+    const newSmurf = {name, age, height};
     this.props.addSmurf(newSmurf);
     this.setState({name: "", age: "", height: ""});
+  };
+
+  updateInfo = (e, id) => {
+    e.preventDefault();
+    const {name, age, height} = this.state;
+    const newInfo = {name, age, height};
+
+    console.log(id, newInfo);
+    this.props.updateSmurf(id, newInfo);
+    this.setState(prevState => {
+      return {isEditing: !prevState.isEditing};
+    });
   };
 
   deleteSmurf = (e, id) => {
@@ -38,11 +54,19 @@ class App extends Component {
     this.props.deleteSmurf(id);
   };
 
+  toggleEdit = e => {
+    e.preventDefault();
+    this.setState(prevState => {
+      return {isEditing: !prevState.isEditing};
+    });
+    console.log(this.state.isEditing);
+  };
+
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <form onSubmit={e => this.handleSubmit(e, this.state)}>
+        <form onSubmit={e => this.handleSubmit(e)}>
           <input
             required
             type="text"
@@ -77,14 +101,28 @@ class App extends Component {
             {this.props.smurfs.map(smurf => {
               return (
                 <div key={smurf.id}>
-                  <h1>
-                    {smurf.name}{" "}
-                    <span>
-                      <button onClick={e => this.deleteSmurf(e, smurf.id)}>
-                        Delete
-                      </button>
-                    </span>
-                  </h1>
+                  {!this.state.isEditing ? (
+                    <h1>
+                      {smurf.name}{" "}
+                      <span>
+                        <button onClick={e => this.deleteSmurf(e, smurf.id)}>
+                          Delete
+                        </button>
+                        <button onClick={this.toggleEdit}>Edit</button>
+                      </span>
+                    </h1>
+                  ) : (
+                    <form onSubmit={e => this.updateInfo(e, smurf.id)}>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder={smurf.name}
+                        onChange={this.changeHandler}
+                      />
+                      <button>Submit</button>
+                      <button onClick={this.toggleEdit}>Cancel</button>
+                    </form>
+                  )}
                 </div>
               );
             })}
@@ -104,5 +142,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {getSmurfs, addSmurf, deleteSmurf}
+  {getSmurfs, addSmurf, deleteSmurf, updateSmurf}
 )(App);

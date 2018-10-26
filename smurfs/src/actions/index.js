@@ -9,6 +9,7 @@ export const FETCHING = "FETCHING";
 export const CREATING = "CREATING";
 export const FAILURE = "FAILURE";
 export const DELETE_SMURF = "DELETE_SMURF";
+export const UPDATE_SMURF = "UPDATE_SMURF";
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -32,6 +33,7 @@ export const getSmurfs = () => {
 
 export const addSmurf = newSmurf => {
   const promise = axios.post("http://localhost:3333/smurfs", newSmurf);
+  console.log(newSmurf);
   return function(dispatch) {
     dispatch({type: CREATING});
     promise
@@ -43,8 +45,17 @@ export const addSmurf = newSmurf => {
 export const deleteSmurf = id => {
   const promise = axios.delete(`http://localhost:3333/smurfs/${id}`);
   return function(dispatch) {
-    promise.then(response =>
-      dispatch({type: DELETE_SMURF, payload: response.data})
-    );
+    promise
+      .then(response => dispatch({type: DELETE_SMURF, payload: response.data}))
+      .catch(err => dispatch({type: FAILURE, payload: err}));
+  };
+};
+
+export const updateSmurf = (id, newInfo) => {
+  const promise = axios.put(`http://localhost:3333/smurfs/${id}`, newInfo);
+  return function(dispatch) {
+    promise
+      .then(response => dispatch({type: UPDATE_SMURF, payload: response.data}))
+      .catch(err => dispatch({type: FAILURE, payload: err}));
   };
 };
