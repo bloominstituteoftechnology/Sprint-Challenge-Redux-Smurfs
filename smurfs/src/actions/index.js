@@ -17,6 +17,20 @@ export const getSmurfs = () => dispatch => {
     })
 }
 
+export const createSmurf = smurf => dispatch => {
+  dispatch( {type: CREATING_SMURF });
+  axios
+  .post('http://localhost:3333/smurfs', smurf)
+  .then(({ data}) => {
+    dispatch({ type: CREATE_SUCCESS, payload: data });
+  })
+  .catch(error => {
+    dispatch({ type: ERROR, payload: error});
+  })
+}
+
+
+
 
 
 
