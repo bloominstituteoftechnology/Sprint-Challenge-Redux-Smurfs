@@ -3,13 +3,20 @@ import { connect } from "react-redux";
 import Smurfs from "../components/smurfs";
 import { getSmurfs } from "../actions";
 import AddSmurfForm from "./AddSmurfForm";
+import ReactLoading from "react-loading";
 
 class SmurfView extends Component {
   componentDidMount() {
     this.props.getSmurfs();
   }
   render() {
-    console.log(this.props.smurfs.smurfs);
+    if (this.props.fetching) {
+      return (
+        <div>
+          <ReactLoading type={"spin"} color={"#dddddd"} />
+        </div>
+      );
+    }
     return (
       <div>
         <AddSmurfForm />

@@ -44,11 +44,11 @@ export const createSmurf = smurf => dispatch => {
     });
 };
 
-export const updateSmurf = id => dispatch => {
+export const updateSmurf = (smurf, id) => dispatch => {
   axios
-    .put(`{url}/${id}`)
+    .put(`${url}/${id}`, smurf)
     .then(res => {
-      dispatch({ type: UPDATE_SMURF_SUCCESS, payload: id }); //maybe id isn't the right thing?
+      dispatch({ type: UPDATE_SMURF_SUCCESS, payload: res.data }); //maybe id isn't the right thing?
     })
     .catch(err => {
       console.log(err);

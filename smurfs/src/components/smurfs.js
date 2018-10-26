@@ -1,12 +1,12 @@
 import React from "react";
 import SmurfCard from "./SmurfCard";
+import { connect } from "react-redux";
 
 const Smurfs = props => {
-  console.log(props.smurfs);
   return (
-    <div>
+    <div className="smurf-card-container">
       {props.smurfs.map(smurf => {
-        return <SmurfCard key={smurf.name} smurf={smurf} />;
+        return <SmurfCard key={smurf.id} smurf={smurf} />;
       })}
     </div>
   );
