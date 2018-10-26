@@ -1,3 +1,46 @@
+import { FETCHING, FETCHED, ADDED, UPDATED, DELETED, ERROR } from '../actions';
+
+const initialState = {
+    fetching: false,
+    smurfs: [],
+    error: null
+};
+
+export default (state = initialState, action) => {
+    switch (action.type) {
+        case FETCHING:
+            return { ...state, fetching: true };
+        case FETCHED:
+            return {
+                ...state,
+                fetching: false,
+                smurfs: [...state.smurfs, ...action.payload]
+            };
+        case ADDED:
+            return {
+                ...state,
+                smurfs: [ ...action.payload]
+            };
+        case UPDATED:
+            return {
+                ...state,
+                smurfs: [ ...action.payload]
+            };
+        case DELETED:
+            return {
+                ...state,
+                smurfs: [ ...action.payload]
+            };
+        case ERROR:
+            return { 
+                ...state, 
+                fetching: false, 
+                error: action.payload 
+            };
+        default:
+            return state;
+    }
+};
 /*
   Be sure to import in all of the action types from `../actions`
 */

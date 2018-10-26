@@ -1,15 +1,54 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+export const FETCHING = 'FETCHING';
+export const FETCHED = 'FETCHED';
+export const ADDED = 'ADDED';
+export const UPDATED = 'UPDATED';
+export const DELETED = 'DELETED';
+export const ERROR = 'ERROR';
+const url = 'http://localhost:3333/smurfs'
+
+export const fetchSmurfs = () => dispatch => {
+    dispatch({ type: FETCHING });
+    axios
+        .get(url)
+        .then(response => {
+            dispatch({ type: FETCHED, payload: response.data });
+        })
+        .catch(error => {
+            dispatch({ type: ERROR, payload: error });
+        });
+};
+
+export const addSmurf = (newSmurf) => dispatch => {
+    axios
+        .post(url, newSmurf)
+        .then(response => {
+            dispatch({ type: ADDED, payload: response.data });
+        })
+        .catch(error => {
+            dispatch({ type: ERROR, payload: error });
+        });
+};
+
+export const updateSmurf = (editedSmurf) => dispatch => {
+    axios
+        .put(`${url}/${editedSmurf.id}`, editedSmurf)
+        .then(response => {
+            dispatch({ type: UPDATED, payload: response.data });
+        })
+        .catch(error => {
+            dispatch({ type: ERROR, payload: error });
+        });
+};
+
+export const deleteSmurf = (id) => dispatch => {
+    axios
+        .delete(`${url}/${id}`)
+        .then(response => {
+            dispatch({ type: DELETED, payload: response.data });
+        })
+        .catch(error => {
+            dispatch({ type: ERROR, payload: error });
+        });
+};
