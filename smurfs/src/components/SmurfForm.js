@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-import {} from '../actions'
+import {addSmurf} from '../actions'
 import Form from './Form'
 
 
-class FriendForm extends Component {
+class SmurfForm extends Component {
   constructor() {
     super();
     this.state = {
       name: "",
-      email: "",
+      height: "",
       age: ""
     };
   }
@@ -23,11 +23,11 @@ class FriendForm extends Component {
 
   submitHandler = e => {
       e.preventDefault()
-      let friendObj = {...this.state}
-      this.props.addFriend(friendObj)
+      let smurf = {...this.state}
+      this.props.addSmurf(smurf)
       this.setState({
         name: "",
-        email: "",
+        height: "",
         age: ""
       })
   }
@@ -39,4 +39,4 @@ class FriendForm extends Component {
   }
 }
 
-export default connect(null, {})(FriendForm);
+export default connect(null, {addSmurf})(SmurfForm);

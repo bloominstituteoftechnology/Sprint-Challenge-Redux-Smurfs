@@ -7,13 +7,23 @@ export const ADDING_SMURF = 'ADDING_SMURF'
 export const SMURF_ADDED = 'SMURF_ADDED'
 
 
+const URL = 'http://localhost:3333/smurfs'
+
 
 
 export const fetchSmurfs = () => dispatch =>{
   dispatch({type: FETCHING_SMURFS})
-  axios.get('http://localhost:3333/smurfs').then(({data}) => dispatch({type: SMURFS_FETCHED, payload: data }))
+  axios.get(URL).then(({data}) => dispatch({type: SMURFS_FETCHED, payload: data })).catch(err => {
+  dispatch({ type: COLOSSAL_SMURF_UP, payload: err });
+})
 }
 
+export const addSmurf = smurf => dispatch =>{
+  dispatch({type:ADDING_SMURF})
+  axios.post(URL, smurf).then(({data}) => dispatch({type:SMURF_ADDED, payload:data})).catch(err => {
+    dispatch({ type: COLOSSAL_SMURF_UP, payload: err });
+  })
+}
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.

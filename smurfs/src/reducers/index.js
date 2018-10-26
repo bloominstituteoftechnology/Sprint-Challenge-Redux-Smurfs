@@ -22,11 +22,11 @@ export const smurfReducer = (state = initialState, { type, payload }) => {
     case SMURFS_FETCHED:
       return {...state, fetchingSmurfs:false, smurfs:payload}
     case ADDING_SMURF:
-      return state;
+      return {...state, addingSmurf:true};
     case SMURF_ADDED:
-      return state;
+      return {...state, addingSmurf:false, smurfs:payload};
     case COLOSSAL_SMURF_UP:
-      return state;
+      return {...state, error:payload};
     default:
       return state;
   }

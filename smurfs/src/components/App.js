@@ -12,7 +12,7 @@ const AppContainer = styled.div`
     font-size: 85px;
     text-align: center;
     color: white;
-    text-shadow: 3px 3px 10px blue, -3px -3px 10px blue;
+    text-shadow: 5px 5px 20px blue, -5px -5px 20px blue;
     margin: 10px;
   }
 `;
