@@ -13,3 +13,5 @@
    U - updateSmurf
    D - deleteSmurf
 */
+export const FETCHING_SMURFS = "FETCHING_SMURFS";
+export const 
