@@ -5,6 +5,7 @@ import { getSmurfs } from "../actions";
 
 //Component Imports
 import SmurfList from './smurfList'
+import SmurfForm from './SmurfForm'
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -20,6 +21,7 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
+        <SmurfForm />
         <SmurfList smurfs={this.props.smurfList}/>
       </div>
     );

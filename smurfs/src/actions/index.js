@@ -32,3 +32,5 @@ export const getSmurfs = () => dispatch => {
     })
     .catch(error => alert(error))
 }
+
+// export const addSmurf 
