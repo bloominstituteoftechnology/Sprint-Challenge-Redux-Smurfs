@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { FETCH_SMURFS, ADD_SMURF, DELETE_SMURF } from './types';
+import { FETCH_SMURFS, ADD_SMURF, DELETE_SMURF, EDIT_SMURF } from './types';
 
 export const fetchSmurfs = () => async dispatch => {
   const res = await axios.get('http://localhost:3333/smurfs');
@@ -15,4 +15,9 @@ export const addSmurf = smurf => async dispatch => {
 export const deleteSmurf = id => async dispatch => {
   const res = await axios.delete(`http://localhost:3333/smurfs/${id}`);
   dispatch({ type: DELETE_SMURF, payload: res.data });
+};
+
+export const editSmurf = (id, smurf) => async dispatch => {
+  const res = await axios.put(`http://localhost:3333/smurfs/${id}`, smurf);
+  dispatch({ type: EDIT_SMURF, payload: res.data });
 };

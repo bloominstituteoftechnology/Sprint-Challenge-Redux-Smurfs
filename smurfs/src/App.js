@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 
-import { SmurfForm } from './components';
+import { SmurfEditForm, SmurfAddForm } from './components';
 import { SmurfsListView } from './views';
 
 const App = () => (
   <Fragment>
     <h1>SMURFS! 2.0 W/ Redux</h1>
-    <SmurfForm />
+    <SmurfAddForm />
+    <SmurfEditForm />
     <SmurfsListView />
   </Fragment>
 );
