@@ -1,7 +1,8 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING_SMURFS, FETCHING_SMURFS_SUCCESS, FETCHING_SMURFS_FAILURE } from '../actions';
+import { FETCHING_SMURFS, FETCHING_SMURFS_SUCCESS, FETCHING_SMURFS_FAILURE, 
+  ADD_SMURF, ADD_SMURF_SUCCESS, ADD_SMURF_FAILURE} from '../actions';
 
 
  //Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -25,6 +26,17 @@ import { FETCHING_SMURFS, FETCHING_SMURFS_SUCCESS, FETCHING_SMURFS_FAILURE } fro
     case FETCHING_SMURFS_FAILURE:
      return {...state, 
         fetchingSmurfs: false, 
+        error: action.payload};
+    case ADD_SMURF:
+      return {...state, 
+        addingSmurf: true};
+    case ADD_SMURF_SUCCESS:
+      return {...state,
+        addingSmurf: false,
+        smurfs: action.payload};
+    case ADD_SMURF_FAILURE:
+      return {...state, 
+        addingSmurf: false, 
         error: action.payload};
     default: 
       return state;

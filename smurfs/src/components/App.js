@@ -13,7 +13,7 @@ class App extends Component {
     super();
     this.state = {
       name: '',
-      age: null,
+      age: '',
       height: ''
     }
   };
@@ -22,29 +22,51 @@ class App extends Component {
     this.props.getSmurfs();
   }
 
+  changeHandler = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
   render() {
     if (this.props.fetchingSmurfs) {
-      <div>
+      return (<div>
         Slow your roll... We're fetching Smurfs.
-      </div>
+      </div>)
     } else {
-      this.props.smurfs.map(smurf => {
+      this.props.smurfs.map(smurf => (
         <div>
         <h2>{smurf.name}</h2>
         <h3>{smurf.age}</h3>
         <h3>{smurf.height}</h3>
         </div>
-      });
+      ))
     };
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <input 
           type="text"
+          placeholder="Enter Name"
           name="name"
-          //value={this.state.inputChange}
-          //onChange={this.changeHandler}
+          value={this.state.name} 
+          onChange={this.changeHandler}
         />
+        <input 
+          type="text"
+          placeholder="Enter Age"
+          name="age"
+          value={this.state.age} 
+          onChange={this.changeHandler}
+        />
+        <input 
+          type="text"
+          placeholder="Enter Height"
+          name="height"
+          value={this.state.height}
+          onChange={this.changeHandler}
+        />
+        <button onClick={() => this.props.addSmurf(this.state)}>Submit</button>
       </div>
     );
   }
@@ -52,7 +74,8 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   smurfs: state.smurfs,  //props also? 
-  fetchingSmurfs: state.fetchingSmurfs
+  fetchingSmurfs: state.fetchingSmurfs,
+  addingSmurf: state.smurfs
 })
 
 export default connect (mapStateToProps, {getSmurfs, addSmurf} )(App);
