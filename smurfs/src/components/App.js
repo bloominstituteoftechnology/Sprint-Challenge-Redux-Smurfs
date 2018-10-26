@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchSmurfs, addSmurf } from '../actions'
+import { fetchSmurfs, addSmurf, deleteSmurf } from '../actions'
 import Smurf from './smurf';
 /*
  to wire this component up you're going to need a few things.
@@ -28,10 +28,11 @@ class App extends Component {
     this.props.addSmurf({ name, age, height });
     this.setState({ name: '', age: null, height: '' });
   };
-  handleDelete=(event, id)=> {
+  handleDelete=(event)=> {
+    const id = event.target.id;
     event.preventDefault();
-    console.log('my id is ', id)
-    // this.props.deleteFriend(id);
+    console.log(id)
+    this.props.deleteSmurf(id);
   }
   handleInputChange = event => this.setState({ 
     [event.target.name]: event.target.value 
@@ -63,14 +64,13 @@ class App extends Component {
         {this.props.smurfs.map((smurf)=> {
           const id = smurf.id;
           return (
-            <div key={smurf.id}>
+            <div key={id}>
               <Smurf 
                 id ={id} 
                 smurf={smurf}/>
-              <button onClick={(id) => {this.state.handleDelete}}>DELETE</button>
+              <button id={id} onClick={this.handleDelete}>DELETE</button>
             </div>
           );
-
         })}      
       </div>
     );
@@ -85,4 +85,4 @@ const mapStateToProps = state => {
 };
 // our mapStateToProps needs to have two properties inherited from state
 // the characters and the fetching boolean
-export default connect(mapStateToProps,{ fetchSmurfs, addSmurf })(App);
+export default connect(mapStateToProps,{ fetchSmurfs, addSmurf, deleteSmurf })(App);
