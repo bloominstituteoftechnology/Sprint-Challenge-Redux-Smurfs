@@ -36,7 +36,7 @@ class CreateSmurfForm extends React.Component {
     }
 }
 const mapStateToProps = state => ({
-    friends: state.friends
+    smurfs: state.smurfs
 });
 
 export default connect(mapStateToProps, {addNewSmurf})(CreateSmurfForm);
