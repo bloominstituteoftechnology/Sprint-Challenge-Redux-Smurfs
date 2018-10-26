@@ -4,10 +4,11 @@
 
 import {
   FETCHING_SMURFS,
-  FETCHED_SMURF,
+  FETCHING_SMURFS_SUCCESS,
+  FETCHING_SMURFS_FAILURE,
   ADDING_SMURF,
-  ADD_SMURF,
-  ERROR
+  ADDING_SMURF_SUCCESS,
+  ADDING_SMURF_FAILURE
 } from "../actions";
 
 const initialState = {
@@ -27,23 +28,20 @@ const initialState = {
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-export const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
       return { ...state, fetchingSmurfs: true };
-    case FETCHED_SMURF:
+    case FETCHING_SMURFS_SUCCESS:
       return { ...state, smurfs: action.payload, fetchingSmurfs: false };
+    case FETCHING_SMURFS_FAILURE:
+      return { ...state, fetchingSmurfs: false, error: action.payload };
     case ADDING_SMURF:
       return { ...state, addingSmurf: true };
-    case ADD_SMURF:
+    case ADDING_SMURF_SUCCESS:
       return { ...state, smurfs: action.payload, addingSmurf: false };
-    case ERROR:
-      return {
-        ...state,
-        fetchingSmurfs: false,
-        addingSmurf: false,
-        error: action.payload
-      };
+    case ADDING_SMURF_FAILURE:
+      return { ...state, error: action.payload, addingSmurf: false };
     default:
       return state;
   }
