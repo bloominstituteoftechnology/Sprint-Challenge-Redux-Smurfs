@@ -1,29 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deleteSmurf } from '../actions';
+import { updating, deleteSmurf } from '../actions';
 import EditForm from "./EditForm";
 
 class Smurf extends Component {
     constructor() {
         super();
-        this.state = {
-            editing: false
-        }
-    }
-
-    toggleEdit = () => {
-        this.setState({
-            editing: !this.state.editing
-        })
     }
 
     deleteSmurf = event => {    
         let id = Number(event.target.id);
-        this.props.smurfs.map(smurf => {
-            if (smurf.id === id) {
-                this.props.deleteSmurf(id)
-            }
-        })
+        this.props.deleteSmurf(id)
     }
 
     render() {
@@ -34,10 +21,10 @@ class Smurf extends Component {
                 <div>Age: {age}</div>
                 <div>Height: {height}</div>
                 <div className='smurf-btns'>
-                    <div className='btn' onClick={this.toggleEdit}>edit</div>
+                    <div className='btn' onClick={() => this.props.updating()}>edit</div>
                     <div className='btn' id={id} onClick={this.deleteSmurf}>delete</div>
                 </div>
-                {this.state.editing ? <EditForm smurf={this.props.smurf}/> : <div/ >}
+                {this.props.editing === true ? <EditForm smurf={this.props.smurf}/> : <div/ >}
             </div>
         )
     }
@@ -46,7 +33,8 @@ class Smurf extends Component {
 const mapStateToProps = state => {
     return {
         smurfs: state.smurfs,
+        editing: state.editing
     };
 };
 
-export default connect(mapStateToProps, { deleteSmurf })(Smurf);
+export default connect(mapStateToProps, { updating, deleteSmurf })(Smurf);

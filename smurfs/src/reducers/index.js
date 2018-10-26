@@ -1,7 +1,8 @@
-import { FETCHING, FETCHED, ADDED, UPDATED, DELETED, ERROR } from '../actions';
+import { FETCHING, FETCHED, ADDED, UPDATING, UPDATED, DELETED, ERROR } from '../actions';
 
 const initialState = {
-    fetching: false,
+	fetching: false,
+	editing: false,
     smurfs: [],
     error: null
 };
@@ -20,10 +21,13 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 smurfs: [ ...action.payload]
-            };
+			};
+		case UPDATING:
+			return { ...state, editing: true };
         case UPDATED:
             return {
-                ...state,
+				...state,
+				editing: false,
                 smurfs: [ ...action.payload]
             };
         case DELETED:
@@ -34,7 +38,8 @@ export default (state = initialState, action) => {
         case ERROR:
             return { 
                 ...state, 
-                fetching: false, 
+				fetching: false,
+				editing: false,
                 error: action.payload 
             };
         default:

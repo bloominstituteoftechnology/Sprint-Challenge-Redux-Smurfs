@@ -30,23 +30,17 @@ class EditForm extends Component {
 
     editSmurf = event => {
         event.preventDefault();
-        let targetId = Number(event.target.id)
-        const { id, name, age, email } = this.state;
-        let editedSmurf = {id, name, age, email}
-
-        if(editedSmurf) {
-            this.props.smurfs.map(smurf => {
-                if (smurf.id === targetId) {
-                  this.props.updateSmurf(editedSmurf)
-                }
-            })
+        //let targetId = Number(event.target.id)
+        const { id, name, age, height } = this.state;
+        let editedSmurf = {id, name, age, height}
+        console.log(editedSmurf);
+        this.props.updateSmurf(editedSmurf)
             // this.setState(() => ({
             //     id: null,
             //     name: '',
             //     age: '',
-            //     email: '',
+            //     height: '',
             // }))
-        }
     }
 
     render() {

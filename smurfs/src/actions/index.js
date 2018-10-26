@@ -3,6 +3,7 @@ import axios from 'axios';
 export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 export const ADDED = 'ADDED';
+export const UPDATING = 'UPDATING';
 export const UPDATED = 'UPDATED';
 export const DELETED = 'DELETED';
 export const ERROR = 'ERROR';
@@ -30,6 +31,10 @@ export const addSmurf = (newSmurf) => dispatch => {
             dispatch({ type: ERROR, payload: error });
         });
 };
+
+export const updating = () => {
+  return { type: UPDATING };
+}
 
 export const updateSmurf = (editedSmurf) => dispatch => {
     axios
