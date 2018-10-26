@@ -21,3 +21,4 @@ export const ERROR = 'ERROR'
 */
 
 export { getSmurfs } from './getSmurfs'
+export { createSmurf } from './createSmurf'

@@ -2,7 +2,8 @@ import { combineReducers } from "redux";
 import { 
   FETCHINGSMURFS, 
   SMURFSFETCHED,
-  ERROR
+  ERROR,
+  ADDINGSMURF
 } from '../actions'
 /*
   Be sure to import in all of the action types from `../actions`
@@ -48,6 +49,11 @@ const smurfReducer = (state = initalState, action) => {
       return {
         ...state,
         smurfsFetched: true,
+        smurfs: action.data
+      }
+    case ADDINGSMURF:
+      return {
+        ...state,
         smurfs: action.data
       }
     case ERROR:

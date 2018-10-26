@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions'
-import { SmurfList } from '../components'
+import { 
+  getSmurfs,
+  createSmurf
+} from '../actions'
+import { 
+  SmurfList,
+  CreateSmurfForm
+} from '../components'
 
 class SmurfListView extends Component {
   constructor(props) {
@@ -14,6 +20,7 @@ class SmurfListView extends Component {
   render() { 
     return ( 
       <div className="SmurfListView">
+        <CreateSmurfForm createSmurf={this.props.createSmurf}/>
         <SmurfList smurfs={this.props.smurfs} /> 
       </div>
     );
@@ -30,6 +37,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    getSmurfs
+    getSmurfs,
+    createSmurf
   }
 )(SmurfListView);
