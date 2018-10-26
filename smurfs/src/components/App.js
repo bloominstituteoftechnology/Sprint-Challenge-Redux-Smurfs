@@ -14,8 +14,7 @@ class App extends Component {
 		this.state = {
 			name: '',
 			age: '',
-			height: '',
-			id: ''
+			height: ''
 		};
 	}
 	componentDidMount() {
@@ -33,11 +32,9 @@ class App extends Component {
 		e.preventDefault();
 		const { name, age, height } = this.state;
 		this.props.addSmurf({
-			smurf: {
-				name,
-				age,
-				height
-			}
+			name,
+			age,
+			height
 		});
 		this.setState({ name: '', age: '', height: '' });
 	};
@@ -51,12 +48,7 @@ class App extends Component {
 		const age = prompt('New Age?..');
 		const height = prompt('New Height?..');
 
-		this.props.updateSmurf({
-			[this.id]: id,
-			[this.name]: name,
-			[this.age]: age,
-			[this.height]: height
-		});
+		this.props.updateSmurf(id);
 	};
 
 	render() {

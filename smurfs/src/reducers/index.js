@@ -27,21 +27,18 @@ const smurfReducer = (state = initialState, action) => {
 			return {
 				...state,
 				fetchingSmurfs: false,
-				deletingSmurf: false,
 				smurfs: [ ...state.smurfs, ...action.payload ]
 			};
 		case ERROR:
 			return {
 				...state,
 				fetchingSmurfs: false,
-				deletingSmurf: false,
 				error: action.payload
 			};
 		case ADDING_SMURF:
 			return {
 				...state,
 				fetchingSmurfs: false,
-				deletingSmurf: false,
 				smurfs: action.payload
 			};
 		case DELETING_SMURF:
