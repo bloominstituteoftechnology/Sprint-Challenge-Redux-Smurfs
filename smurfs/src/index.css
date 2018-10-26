@@ -21,6 +21,8 @@ body {
     margin: 0 auto;
     padding: 1rem;
     border: solid black 1px;
+    display: flex;
+    flex-direction: column;
 }
 .smurfs h1 {
     font-family: sans-serif;
@@ -40,9 +42,10 @@ body {
 .smurfs form {
     display: flex;
     flex-direction: column;
-    margin: 0;
     padding: 0;
     margin: 1rem 0;
+    align-self: center;
+    width: 40rem;
 }
 .smurfs form > * {
     width: 100%;
@@ -51,7 +54,6 @@ body {
     font-size: 1.6rem;
     font-weight: bold;
     margin: 0;
-    font-family: monospace;
 } 
 
 /*-- Smurf List --------------------------------*/

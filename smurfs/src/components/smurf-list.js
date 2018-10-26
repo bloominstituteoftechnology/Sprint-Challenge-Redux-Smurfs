@@ -19,7 +19,6 @@ export function SmurfList(props) {
             {props.smurfs.map(smurf => (
                 <Smurf
                     key={smurf.name}
-                    focus={props.focus === smurf.id}
                     smurf={smurf}
                     onClick={props.onFocus}
                 />
@@ -30,12 +29,8 @@ export function SmurfList(props) {
 
 //-- Smurf - Implementation & Export -------------
 export function Smurf(props) {
-    let classText = 'smurf';
-    if(props.focus){
-        classText += ' smurf_focus';
-    }
     return (
-        <div className={classText} onClick={props.onClick} data-id={props.smurf.id}>
+        <div className='smurf' onClick={props.onClick} data-id={props.smurf.id}>
             <span>Name: {props.smurf.name}</span>
             <span>Age: {props.smurf.age}</span>
             <span>Height: {props.smurf.height}</span>

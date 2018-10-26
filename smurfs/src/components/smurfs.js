@@ -10,9 +10,11 @@
 
 //-- Dependencies --------------------------------
 import React, { Component } from 'react';
-import {SmurfList} from './smurf-list.js';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
+import {SmurfList} from './smurf-list.js';
+import SmurfForm from './smurf-form.js';
+import Error from './error.js';
 
 
 //== Component =================================================================
@@ -36,6 +38,10 @@ class Smurfs extends Component {
                     <h1>`SMURFS! 2.0 W/ Redux</h1>
                     <p>Welcome to your Redux version of Smurfs!</p>
                 </div>
+                <SmurfForm
+                    onSubmit={this.addSmurf}
+                />
+                <Error error={this.props.error} />
                 <SmurfList
                     loading={!this.props.ready}
                     smurfs={this.props.smurfs}
@@ -43,6 +49,17 @@ class Smurfs extends Component {
                 />
             </div>
         );
+    }
+
+    //-- Interaction ---------------------------------
+    addSmurf = SmurfData => {
+      if(!this.props.ready){
+        this.props.notReady('You cannot add a smurf right now');
+        return;
+      }
+      this.props.addSmurf(SmurfData);
+    }
+    focusSmurf = eventClick => {
     }
 }
 
@@ -53,14 +70,14 @@ class Smurfs extends Component {
 function mapStateToProps(state) {
     return {
         smurfs: state.smurfs,
-        //error: state.error,
+        error: state.error,
         ready: !state.fetching,
     };
 }
 Smurfs = connect(mapStateToProps, {
     getSmurfs: actions.getSmurfs,
-    /*addSmurf: actions.addSmurf,
-    notReady: actions.notReady,
+    addSmurf: actions.addSmurf,
+    /*notReady: actions.notReady,
 */})(Smurfs);
 
 //-- Exporting -----------------------------------
