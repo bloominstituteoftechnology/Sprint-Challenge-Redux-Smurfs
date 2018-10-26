@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const SMURF_FETCH_SUCCESS = "SMURF_FETCH_SUCCESS";
@@ -29,3 +29,23 @@ export const fetchSmurfs = () => dispatch => {
     });
 };
 
+export const addSmurf = ( name, age, height) => dispatch => {
+  console.log(name, age, height)
+  axios
+    .post("http://localhost:3333/smurfs", {
+      name: name,
+      age: age,
+      height: height
+    })
+    .then(() => {
+      dispatch({
+        type: ADD_SMURF,
+        name: name,
+        age: age,
+        height: height
+      });
+    })
+    .catch(error => {
+      console.dir(error);
+    });
+};
