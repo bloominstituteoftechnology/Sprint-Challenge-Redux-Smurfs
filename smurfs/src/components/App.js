@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Smurfs from "./Smurfs";
+import Smurfs from "../containers/SmurfsContainer";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 

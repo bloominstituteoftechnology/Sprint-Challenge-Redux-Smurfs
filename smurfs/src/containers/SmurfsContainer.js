@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getSmurfs, addSmurf } from "../actions";
-import Smurf from "./Smurf";
-import SmurfForm from "./SmurfForm";
+import Smurf from "../components/Smurf";
+import SmurfForm from "../components/SmurfForm";
 
 class Smurfs extends React.Component {
   constructor() {
