@@ -5,10 +5,10 @@ import './ViewStyle.css';
 function SmurfForm(props) {
   console.log(props.input.editId);
   return (
-    <form>
+    <form className="add-smurf">
       <h2>{props.input.editId ? 'Edit Smurf' : 'Add Smurf'}</h2>
-      <div>
-        <label>Name</label>
+      <div className="smurf-label">
+        <label className="smurf-detail">Name</label>
         <input
           name="name"
           type="text"
@@ -17,8 +17,8 @@ function SmurfForm(props) {
           onChange={props.handleChange}
         />
       </div>
-      <div>
-        <label>Age</label>
+      <div className="smurf-label">
+        <label className="smurf-detail">Age</label>
         <input
           name="age"
           type="text"
@@ -27,8 +27,8 @@ function SmurfForm(props) {
           onChange={props.handleChange}
         />
       </div>
-      <div>
-        <label>Height</label>
+      <div className="smurf-label">
+        <label className="smurf-detail">Height</label>
         <input
           name="height"
           type="text"
@@ -37,7 +37,7 @@ function SmurfForm(props) {
           onChange={props.handleChange}
         />
       </div>
-      <button onClick={props.handleClick}>
+      <button className="button" onClick={props.handleClick}>
         {props.input.editId ? 'Edit Smurf' : 'Add Smurf'}
       </button>
     </form>

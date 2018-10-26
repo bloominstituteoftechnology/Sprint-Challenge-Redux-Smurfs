@@ -43,7 +43,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Smurfs Village</h1>
+        <h1 className="smurf-header">Smurfs Village</h1>
         <div>
           {this.props.fetching ? (
             <h2>La la la-la la la</h2>

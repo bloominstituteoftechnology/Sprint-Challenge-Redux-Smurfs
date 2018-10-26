@@ -4,7 +4,7 @@ import './ViewStyle.css';
 
 function Smurf(props) {
   return (
-    <div>
+    <div className="smurf">
       <h2>{props.smurf.name}</h2>
       <p>{props.smurf.age} years old</p>
       <p>{props.smurf.height}</p>
