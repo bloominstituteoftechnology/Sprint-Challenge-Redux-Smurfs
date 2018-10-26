@@ -9,7 +9,7 @@ export const GOT_SMURFS = 'GOT_SMURFS';
 export const getSmurfs = () => dispatch => {
   return (
     axios
-      .get('https://localhost:3333/smurfs')
+      .get('http://localhost:3333/smurfs')
       .then(({ data }) => {
         dispatch({ type: GOT_SMURFS, payload: data })
       })
