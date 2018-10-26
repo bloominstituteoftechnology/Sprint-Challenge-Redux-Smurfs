@@ -13,7 +13,13 @@
    error: null
  }
 */
-
+import {
+  FETCH_COMPLETE,
+  FETCH_ERROR,
+  ADD_SMURF,
+  DELETE_SMURF,
+  UPDATE_SMURF
+} from '../actions';
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
@@ -21,3 +27,40 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+const initialState = {
+  smurfs: [],
+  fetchingSmurfs: false
+};
+
+export const mainReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_COMPLETE:
+      return {
+        ...state,
+        smurfs: action.payload,
+        fetchingSmurfs: !state.fetchingSmurfs
+      };
+    case FETCH_ERROR:
+      return {
+        ...state
+      };
+    case ADD_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload
+      };
+    case DELETE_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload
+      };
+    case UPDATE_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload
+      };
+    default:
+      return state;
+  }
+};
