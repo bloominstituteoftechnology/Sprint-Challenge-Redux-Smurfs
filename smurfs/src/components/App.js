@@ -3,6 +3,7 @@ import './App.css'
 import { connect } from 'react-redux'
 import { getSmurfs } from '../actions/index'
 import { addSmurf } from '../actions/index'
+import { deleteSmurf } from '../actions/index'
 
 class App extends Component {
     state = {
@@ -30,7 +31,9 @@ class App extends Component {
         this.props.addSmurf(this.state)
         window.location.reload()
     }
-
+    delete = id => {
+        this.props.deleteSmurf(id)
+    }
 
     render() {
         return (
@@ -55,6 +58,14 @@ class App extends Component {
                                             Height:
                                             {smurf.height}
                                         </li>
+                                        <button
+                                            key={smurf.id}
+                                            onClick={() =>
+                                                this.delete(smurf.id)
+                                            }
+                                        >
+                                            Delete
+                                        </button>
                                     </div>
                                 )
                             })}
@@ -97,10 +108,11 @@ const mapStateToProps = state => {
         error: state.error,
         gettingSmurfs: state.gettingSmurfs,
         addingSmurf: state.addingSmurf,
+        deletingSmurf: state.deletingSmurf,
     }
 }
 
 export default connect(
     mapStateToProps,
-    { getSmurfs, addSmurf }
+    { getSmurfs, addSmurf, deleteSmurf }
 )(App)

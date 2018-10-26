@@ -14,6 +14,7 @@ const initialState = {
     smurfs: [],
     gettingSmurfs: false,
     addingSmurf: false,
+    deletingSmurf: false,
 }
 
 export const rootReducer = (state = initialState, action) => {
