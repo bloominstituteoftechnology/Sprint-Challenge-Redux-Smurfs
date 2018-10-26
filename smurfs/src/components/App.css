@@ -2,27 +2,61 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.layout {
+  margin: 20px auto;
+  border: 0.5px solid black;
+  border-radius: 15px;
+  height: 350px;
+  width: 350px;
+  background: #63B2FE;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.labels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  color: white;
+  font-weight: bold;
 }
 
-.App-title {
-  font-size: 1.5em;
+.selected-smurf {
+  background-color: lightgray;
+    color: rgba(0,0,0,0.7);
+    box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+    height: 200px;
+    width: 300px;
+    margin: 30px 6.5%;
+    border-radius: 15px;
+    border: 0.5px solid darkgrey;
+    font-family: sans-serif;
 }
 
-.App-intro {
-  font-size: large;
+.close-button {
+  margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.selected-age {
+  margin: 6px 0;
+}
+
+.Container {
+  margin-top: 40px;
+  margin-left: 41%;
+  min-height: 100px;
+  border: 0.5px solid black;
+  width: 18%;
+  border-radius: 15px;
+  background: #62B2FF;
+}
+
+.submit-button {
+  margin-top: 15px;
+  height: 35px;
+  border-radius: 5px;
+  font-weight: bold;
+  background: white;
+}
+
+.smurf-list {
+  margin-right: 21%;
 }
