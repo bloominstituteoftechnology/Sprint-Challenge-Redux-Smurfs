@@ -6,7 +6,6 @@ class SmurfForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: null,
       name: "",
       age: null,
       height: ''

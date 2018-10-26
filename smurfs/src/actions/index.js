@@ -29,8 +29,8 @@ export const fetchSmurfs = () => dispatch => {
     });
 };
 
-export const addSmurf = ( name, age, height) => dispatch => {
-  console.log(name, age, height)
+export const addSmurf = (name, age, height) => dispatch => {
+  console.log(name, age, height);
   axios
     .post("http://localhost:3333/smurfs", {
       name: name,
@@ -44,6 +44,21 @@ export const addSmurf = ( name, age, height) => dispatch => {
         age: age,
         height: height
       });
+    })
+    .catch(error => {
+      console.dir(error);
+    });
+};
+
+export const editSmurf = (id, name, age, height) => {
+  axios
+    .put(`http://localhost:3333/smurfs/${id}`, {
+      name: name,
+      age: age,
+      height: height
+    })
+    .then(response => {
+      dispatch({ type: FETCHING_SMURFS, payload: response.data });
     })
     .catch(error => {
       console.dir(error);

@@ -43,7 +43,7 @@ export const rootReducer = (state = initialState, action) => {
     case ADD_SMURF:
       return {
         ...state,
-        smurfs: [ ...state.smurfs, { name: action.name, age: action.age, height: action.height }]
+        smurfs: [ ...state.smurfs, { id: action.id, name: action.name, age: action.age, height: action.height }]
       };
 
     default:
