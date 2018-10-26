@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 
 import SmurfList from './smurfList';
-import { getSmurfs,  addSmurf } from "../actions";
+import { getSmurfs,  addSmurf, deleteSmurf } from "../actions";
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -30,6 +30,11 @@ class App extends Component {
     })
   }
 
+  deleteSmurf = (id) => {
+   
+    this.props.deleteSmurf(id);
+  }
+
   addAnotherSmurf = () => {
 
     const { name, age, height} = this.state;
@@ -44,7 +49,7 @@ class App extends Component {
         <input onChange={this.changeHandler} name="name" value={this.state.name}></input>
         <input onChange={this.changeHandler} name="age"  value={this.state.age}></input>
         <input onChange={this.changeHandler} name="height"  value={this.state.height}></input>
-       <SmurfList smurfs={this.props.smurfs} />
+       <SmurfList smurfs={this.props.smurfs} delete={this.deleteSmurf} />
       </div>
     );
   }
@@ -60,5 +65,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { getSmurfs,
-    addSmurf }
+    addSmurf,
+    deleteSmurf }
 )(App)
