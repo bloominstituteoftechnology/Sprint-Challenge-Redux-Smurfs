@@ -24,8 +24,9 @@ export const ADD_SMURFS_FAILURE = 'ADD_SMURFS_FAILURE'
 
 const url = `http://localhost:3333/smurfs`
 
-export const fetchSmurfs = () => dispatch => {
-  dispatch ({ type: FETCH_SMURFS });
+export const fetchSmurfs = () => {
+  return dispatch => {
+      dispatch({ type: FETCH_SMURFS });
 
   axios 
       .get(url)
@@ -35,6 +36,7 @@ export const fetchSmurfs = () => dispatch => {
       .catch(error => {
           dispatch ({ type: FETCH_SMURFS_FAILURE, payload: error})
       });
+    };
 }
 
 

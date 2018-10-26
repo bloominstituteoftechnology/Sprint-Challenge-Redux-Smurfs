@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Smurf, AddNewSmurfForm } from '../components';
+import { AddNewSmurfForm, SmurfList } from '../components';
 import { fetchSmurfs, addSmurfs } from '../actions';
+import { smurfsReducer } from '../reducers/smurfsreducer';
 
 class SmurfsListView extends React.Component {
     componentDidMount() {
@@ -18,7 +19,8 @@ class SmurfsListView extends React.Component {
         return (
             <div>
                 <AddNewSmurfForm add = {this.props.addSmurfs}/>
-                {this.props.smurfs.map(smurfs => <Smurf key={smurfs.id} smurf={smurfs}/>)}
+                {/* <SmurfList smurfs={this.props.smurfs}/> */}
+                
             </div>
             
         )
@@ -27,9 +29,9 @@ class SmurfsListView extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        smurfs: state.smurfs,
+        smurfs: smurfsReducer.smurfs,
         fetchingSmurfs: state.fetchingSmurfs,
-        
+        addSmurfs: state.addSmurfs,
         error: state.error
     }
 }
@@ -38,5 +40,5 @@ export default connect (
     mapStateToProps,
     { fetchSmurfs,
       addSmurfs,
-    Smurf }
+     }
 )(SmurfsListView);
