@@ -29,7 +29,7 @@ class SmurfForm extends Component {
 
     render() {
         return (
-            <form>
+            <form className='smurfForm'>
                 <input
                     value={this.state.name}
                     name='name'
@@ -51,7 +51,7 @@ class SmurfForm extends Component {
                     placeholder='height'
                     onChange={this.handleChange}
                 />
-                <button onClick={this.handleAddSmurf}>Add friend</button>
+                <button onClick={this.handleAddSmurf}>Add Smurf</button>
 
 
 

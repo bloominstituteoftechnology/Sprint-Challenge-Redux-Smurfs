@@ -15,7 +15,7 @@ class Smurf extends Component {
 
     render() {
         return (
-            <div>
+            <div className='smurfs'>
                 <h2>Name: {this.props.smurf.name}</h2>
                 <p>Age: {this.props.smurf.age}</p>
                 <p>Height: {this.props.smurf.height}</p>

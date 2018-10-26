@@ -7,10 +7,11 @@ const SmurfList = props => {
     return (
         <div>
             <SmurfForm />
-            {props.smurfs.map(smurf => {
-                return <Smurf key={smurf.id} smurf={smurf} />
-            })}
-
+            <div className='smurfWraper'>
+                {props.smurfs.map(smurf => {
+                    return <Smurf key={smurf.id} smurf={smurf} />
+                })}
+            </div>
         </div>
     );
 };

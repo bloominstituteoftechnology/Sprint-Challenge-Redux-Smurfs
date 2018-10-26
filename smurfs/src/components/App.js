@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>SMURFS!</h1>
+      <img src='http://1.bp.blogspot.com/-k1NivVtbYbM/VDlFVnnxpkI/AAAAAAAABJg/HNd1Z4TS_I0/s1600/smurfs%2Bvillage%2Btitle.jpg'/>
         <SmurfList smurfs={this.props.smurfs} />
 
       </div>
