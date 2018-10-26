@@ -31,21 +31,28 @@ export const UPDATING_FAILURE = 'UPDATING_FAILURE';
    U - updateSmurf
    D - deleteSmurf
 */
-const url='http://localhost:3333';
+const url='http://localhost:3333/smurfs';
 
 export const fetchSmurfs = () => dispatch => {
   dispatch({type: FETCHING});
 axios.get(`${url}`)
 .then(response=>{
-console.log(response.data);
-  // dispatch({type: FETCHING_SUCCESS, payload:response.data})
+  dispatch({type: FETCHING_SUCCESS, payload:response.data})
 })
 .catch(error=>{
   dispatch({type: FETCHING_FAILURE, payload: error})
 })
 }
 
-//createSmurf
+export const addSmurf = smurf => dispatch => {
+  dispatch({type:CREATING});
+  axios.post(`${url}`, smurf)
+  .then(response => {
+    dispatch({type: CREATING_SUCCESS, payload:response.data})
+  })
+    .catch(error=>{dispatch({type:CREATING_FAILURE, payload: error})})
+  
+}
 
 //deleteSmurf
 
