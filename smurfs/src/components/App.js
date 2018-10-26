@@ -12,8 +12,8 @@ class App extends Component {
     this.props.getSmurfs();
   }
 
-  handleAddSmurf = ({ name, age, height }, e) => {
-    e.preventDefault();
+  handleAddSmurf = ({ name, age, height }) => {
+    // e.preventDefault();
     this.props.addSmurf({ name, age, height });
   };
 

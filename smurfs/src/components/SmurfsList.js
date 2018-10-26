@@ -4,7 +4,8 @@ import Smurf from './Smurf';
 class SmurfsList extends Component {
   render() {
     return (
-      <div>
+      <div className="smurf-wrapper">
+        <h1>Smurf Village</h1>
         {this.props.smurfs.map(smurf => (
           <Smurf smurf={smurf} key={smurf.name} />
         ))}
