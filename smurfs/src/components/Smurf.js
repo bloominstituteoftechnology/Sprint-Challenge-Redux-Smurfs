@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Smurf = ({ smurf }) => {
+const Smurf = ({ smurf, handleDeleteSmurf }) => {
   return (
     <div className="card">
       <h3>{smurf.name}</h3>
@@ -9,7 +9,7 @@ const Smurf = ({ smurf }) => {
       <div className="btns">
         <button
           className="btn btn-remove"
-          // onClick={() => props.deleteSmurf(props.id)}
+          onClick={() => handleDeleteSmurf(smurf.id)}
         >
           Remove
         </button>

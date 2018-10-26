@@ -7,7 +7,11 @@ class SmurfsList extends Component {
       <div className="smurf-wrapper">
         <h1>Smurf Village</h1>
         {this.props.smurfs.map(smurf => (
-          <Smurf smurf={smurf} key={smurf.name} />
+          <Smurf
+            smurf={smurf}
+            key={smurf.name}
+            handleDeleteSmurf={this.props.handleDeleteSmurf}
+          />
         ))}
       </div>
     );
