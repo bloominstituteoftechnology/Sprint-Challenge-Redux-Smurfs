@@ -64,7 +64,7 @@ export function addSmurf(smurfData) {
             dispatch(smurfsResponse(response.data));
         })
         .catch(error => {
-            let errorMessage = `Error submitting data: ${error.response.status}`;
+            let errorMessage = `Error ${error.response.status}: ${error.response.data.Error}`;
             dispatch(fetchError(errorMessage));
         });
     }

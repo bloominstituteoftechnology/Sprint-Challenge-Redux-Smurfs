@@ -45,7 +45,7 @@ export default class extends React.Component {
                     type="number"
                     onChange={this.handleInputChange}
                     placeholder="height"
-                    value={this.state.height}
+                    value={this.state.height || ''}
                     name="height"
                 />
                 <button type="submit">Submit</button>
