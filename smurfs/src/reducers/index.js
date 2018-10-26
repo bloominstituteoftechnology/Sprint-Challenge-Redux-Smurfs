@@ -1,4 +1,4 @@
-import { FETCHING, GET_SMURFS, ERR } from "../actions";
+import { FETCHING, GET_SMURFS, ERR, ADDING, CREATE_SMURF } from "../actions";
 
 /*
   Be sure to import in all of the action types from `../actions`
@@ -22,6 +22,10 @@ const rootReducer = (state = initialState, action) => {
     return {...state, smurfs: [...action.payload], fetchingSmurfs: false}
     case ERR:
     return {...state, fetchingSmurfs: false, error: action.payload}
+    case ADDING:
+    return {...state, addingSmurf: true}
+    case CREATE_SMURF:
+    return { ...state, smurfs: action.payload, addingSmurf: false };
     default:
     return state
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { connect } from "react-redux"
+import { createSmurf } from "../actions"
 class SmurfForm extends Component {
     constructor(props) {
         super(props);
@@ -9,6 +10,17 @@ class SmurfForm extends Component {
             height: '',
          }
     }
+
+    onChange = e => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    addSmurf = _ => {
+        const { name, age, height } = this.state;
+        this.props.createSmurf({name, age, height})
+        this.setState({ name: '', age: '', height: ''})
+    }
+
     render() { 
         return ( 
             <div>
@@ -33,10 +45,17 @@ class SmurfForm extends Component {
             value={this.state.height}
             onChange={this.onChange}
             />
-            <button onClick={this.addSmurf}>Add</button>
+            <button onClick={() => this.addSmurf()}>Add</button>
             </div>
          );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        err: state.error,
+        addingSmurf: state.addingSmurf
+    }
+}
  
-export default SmurfForm;
+export default connect(mapStateToProps, { createSmurf })(SmurfForm)

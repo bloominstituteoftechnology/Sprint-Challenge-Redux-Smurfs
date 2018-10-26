@@ -4,7 +4,8 @@ import axios from "axios"
 export const FETCHING = 'FETCHING';
 export const GET_SMURFS = 'GET_SMURFS';
 export const ERR = 'ERR';
-
+export const ADDING = 'ADDING';
+export const CREATE_SMURF = 'CREATE_SMURF'
 
 
 /* 
@@ -26,28 +27,17 @@ export const getSmurfs = () => {
   }
 }
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
-
-
-
-
-/*
- Your initial/default state for this project could *Although does not have to* look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
-   error: null
- }
-*/
+export const createSmurf = smurf => {
+  const promise = axios.post('http://localhost:3333/smurfs', smurf)
+  return dispatch => {
+    dispatch({type: ADDING})
+    promise
+    .then(({data}) => {
+      console.log('CREATE', data)
+      dispatch({type: CREATE_SMURF, payload: data})
+    })
+    .catch(err => {
+      dispatch({type: ERR, payload: err})
+    })
+  }
+}
