@@ -1,28 +1,140 @@
 .App {
   text-align: center;
+  font-family: 'Raleway', sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
+.smurf-card {
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 300px;
   padding: 20px;
-  color: white;
+  margin: 20px;
+  background-color: #eaf8fd;
+  font-size: 18px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.smurf-detail {
+  font-size: 18px;
+  margin: 2px auto;
 }
 
-.App-intro {
-  font-size: large;
+.village {
+  padding: 0;
+  margin: 40px auto 10px;
+  font-weight: 500;
+  font-size: 24px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.welcome {
+  font-size: 30px;
+  border-bottom: 4px double black;
+  padding-bottom: 8px;
+  margin: auto;
+  width: 370px;
+  font-weight: 500;
+}
+
+.smurfs-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 30px auto;
+}
+
+.add {
+  background-color: #eaf8fd;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 50px auto 30px;
+  padding: 20px;
+  width: 400px;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 15px;
+}
+
+.add-input {
+  font-size: 18px;
+  padding: 10px;
+  margin: 10px 0;
+  width: 300px;
+  box-shadow: none;
+}
+
+.add-submit {
+  font-size: 16px;
+  padding: 10px;
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 10px auto 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.add-submit:hover {
+  background-color: whitesmoke;
+}
+
+.smurf-btns {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.btn {
+  font-size: 16px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px 10px 8px;
+  margin: 5px 10px;
+  text-align: center;
+  width: 50px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: whitesmoke;
+}
+
+.smurf-img {
+  height: 275px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.edit-input {
+  font-size: 14px;
+  margin: 5px;
+  padding: 10px;
+  width: 200px;
+  box-shadow: none;
+}
+
+.edit-submit {
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 15px;
+  width: 100px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.edit-submit:hover {
+  background-color: whitesmoke;
 }
