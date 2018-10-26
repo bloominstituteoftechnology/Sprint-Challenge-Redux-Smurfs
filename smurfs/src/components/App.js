@@ -40,9 +40,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>SMURFS!</h1>
-        <form className='form'>
-          <h3>Add a Smurf</h3>
+        <h1 className='main-header'>Welcome to Smurf Village</h1>
+        <form onSubmit={this.clickHandler} className='form'>
+          <h3 className='add-header'>Join the Smurfs</h3>
           <input 
             name='name' 
             value={this.props.smurfs.name}
@@ -61,17 +61,19 @@ class App extends Component {
             onChange={this.handleInputChange}></input>
           <button onClick={this.clickHandler}>Submit</button>
         </form>  
-        {this.props.smurfs.map((smurf)=> {
-          const id = smurf.id;
-          return (
-            <div key={id}>
-              <Smurf 
-                id ={id} 
-                smurf={smurf}/>
-              <button id={id} onClick={this.handleDelete}>DELETE</button>
-            </div>
-          );
-        })}      
+        <div className='smurfs-cards'> 
+          {this.props.smurfs.map((smurf)=> {
+            const id = smurf.id;
+            return (
+              <div className='smurf-card' key={id}>
+                <Smurf 
+                  id ={id} 
+                  smurf={smurf}/>
+                <button className='delete' id={id} onClick={this.handleDelete}>DELETE</button>
+              </div>
+            );
+          })} 
+        </div>      
       </div>
     );
   }
