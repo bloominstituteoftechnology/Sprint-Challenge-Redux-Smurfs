@@ -15,14 +15,18 @@ class Smurf extends React.Component {
     this.setState(prevState => ({
       editing: !prevState.editing
     }))
+  }
 
+  delete = () => {
+    const id = this.props.smurf.id;
+    this.props.deleteSmurf(id); 
   }
   render(){
     return (
       <div className='smurf-container'>
       <div className='smurf-buttons'>
       <div className='edit-button button' onClick={this.toggleEdit}>Edit</div>
-      <div className='delete-button button'>Delete</div>
+      <div className='delete-button button' onClick={this.delete}>Delete</div>
       </div>
       <div className='smurf-card'>
       <h3>{this.props.smurf.name}</h3>

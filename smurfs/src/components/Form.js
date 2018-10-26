@@ -35,8 +35,7 @@ class Form extends React.Component {
         name: this.state.name,
         age: this.state.age,
         height: this.state.height,
-      }
-      console.log('edit submit', smurf); 
+      }; 
       this.props.submit(smurf);
       this.setState({
         id: null,
