@@ -37,22 +37,38 @@ export const smurfReducer = (state = initialState,action)=>{
         smurfs : action.payload,
         fetchingSmurfs : false,
       }
-    default : return state;
-  }
-}
 
-export const addNewSmurf = (state = initialState,action) => {
-  switch(action.type){
+      //Adding Smurf stuff
+
     case ADDING_SMURF : 
       return{...state,addingSmurf : true}
+
     case ADDED :
       return {
         ...state,
         smurfs : [...state.smurfs,action.payload],
-        addingSmurf : false 
+        addingSmurf : false,
+        added : true, 
       }
+
+
+
+    default : return state;
   }
 }
+
+// export const addNewSmurf = (state = initialState,action) => {
+//   switch(action.type){
+//     case ADDING_SMURF : 
+//       return{...state,addingSmurf : true}
+//     case ADDED :
+//       return {
+//         ...state,
+//         smurfs : [...state.smurfs,action.payload],
+//         addingSmurf : false 
+//       }
+//   }
+// }    I didn't feel like using combine reducers
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
