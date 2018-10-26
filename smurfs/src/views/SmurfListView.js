@@ -24,7 +24,6 @@ render() {
 }
 
 const mapStateToProps = state => {
-    console.log('this is my' + state);
     return {
         smurfs: state.smurfs.smurfs
     }
