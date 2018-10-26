@@ -33,9 +33,6 @@ class CreateSmurfForm extends Component {
       type: 'input',
       onChange: this.handleOnChange,
     }
-    if (this.state === this.initState) {
-      inputProps.value = ''
-    }
     return ( 
       <div className="Create-Smurf-Form">
         <form onSubmit={this.handleOnSubmit}>
