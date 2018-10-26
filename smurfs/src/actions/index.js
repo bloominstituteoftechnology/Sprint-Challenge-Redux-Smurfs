@@ -22,7 +22,7 @@ export const ERROR = 'ERROR';
    D - deleteSmurf
 */
 
-export export const getSmurfs = () => (dispatch) => {
+export const getSmurfs = () => (dispatch) => {
   dispatch({type: GETTING_SMURFS});
 
   axios.get('http://localhost:3333/smurfs')
