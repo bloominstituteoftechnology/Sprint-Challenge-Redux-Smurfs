@@ -52,15 +52,6 @@ export const getSmurfs = () => {
   };
 };
 
-// export const deleteSmurf= id => {
-//   const request = axios.delete(`http://localhost:3333/smurfs/${id}`);
-//   return function (dispatch) {
-//     dispatch({type:'DELETING'});
-//     request.then(data=>{dispatch({type:'DELETED',payload:data.data})})
-//     .catch(err=>dispatch({type:ERROR}));
-//   }
-// } 	
-
 export const deleteSmurf = id => {
   const request = axios.delete(`http://localhost:3333/smurfs/${id}`);
   return dispatch => {
