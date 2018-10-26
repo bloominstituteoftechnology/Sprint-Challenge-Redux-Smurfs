@@ -19,3 +19,4 @@ const SmurfList = props => {
 }
 
 export default SmurfList;
+

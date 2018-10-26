@@ -38,7 +38,7 @@ export class App extends Component {
     return (
       <div className="App">
         <SmurfForm onSubmit={this.onSubmit} handleInputChange={this.handleInputChange}/>
-        <SmurfList smurfs={this.props.smurfList}/>
+        <SmurfList fetchingSmurfs={this.props.fetchingSmurfs} smurfs={this.props.smurfList}/>
       </div>
     );
   }
@@ -50,6 +50,7 @@ const mapStateToProps = state => {
   return {
     smurfList : state.smurfs,
     newSmurf : state.newSmurf,
+    fetchingSmurfs : state.fetchingSmurfs,
   };
 };
 

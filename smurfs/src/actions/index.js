@@ -43,3 +43,7 @@ export const addSmurf = (newSmurf) => dispatch => {
   })
   .catch(error => alert(error));
 }
+
+export const deleteSmurf = id => dispatch => {
+  
+}
