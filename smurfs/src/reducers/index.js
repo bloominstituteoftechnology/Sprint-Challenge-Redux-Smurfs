@@ -13,7 +13,7 @@
    error: null
  }
 */
-import { FETCH_COMPLETE, FETCH_ERROR } from '../actions';
+import { FETCH_COMPLETE, FETCH_ERROR, ADD_SMURF } from '../actions';
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
@@ -42,6 +42,11 @@ export default (state = initialState, action) => {
     case FETCH_ERROR:
       return {
         ...state
+      };
+    case ADD_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload
       };
     default:
       return state;

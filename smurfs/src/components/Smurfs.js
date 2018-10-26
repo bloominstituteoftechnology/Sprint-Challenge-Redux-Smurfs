@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SmurfsList from './SmurfsList';
+import SmurfsForm from './SmurfsForm';
 
 class Smurfs extends Component {
   render() {
