@@ -4,10 +4,12 @@ import axios from 'axios';
   Be sure to export each action type so you can pull it into your reducer
 */
 export const GOT_SMURFS = 'GOT_SMURFS';
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 // export const ADD_SMURF = 'ADD_SMURF';
 
 
 export const getSmurfs = () => dispatch => {
+  dispatch({ type: FETCHING_SMURFS })
   return (
     axios
       .get('http://localhost:3333/smurfs')

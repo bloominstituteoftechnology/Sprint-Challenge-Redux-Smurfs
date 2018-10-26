@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //components & styling
+import Loading from './Loading';
 import SmurfList from './SmurfList';
 import SmurfForm from './SmurfForm';
 import './App.css';
@@ -18,7 +19,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfList smurfs={this.props.smurfs}/>
+        {this.props.fetchingSmurfs ? <Loading /> : <SmurfList smurfs={this.props.smurfs} />}
+        {/* <SmurfList smurfs={this.props.smurfs}/> */}
         <SmurfForm />
       </div>
     );
@@ -27,7 +29,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    smurfs: state.smurfs
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs
   }
 }
 export default connect(mapStateToProps, { getSmurfs })(App);
