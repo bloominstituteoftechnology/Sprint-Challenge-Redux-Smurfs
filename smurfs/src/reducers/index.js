@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { ADD_SMURF, ADD_SUCCESS, ADD_ERROR, FETCHING, FETCH_SUCCESS, FETCH_ERROR } from "../actions";
+import { ADD_SMURF, ADD_SUCCESS, ADD_ERROR, DELETE_SMURF, DELETE_SUCCESS, DELETE_ERROR, FETCHING, FETCH_SUCCESS, FETCH_ERROR } from "../actions";
 
 const initialState = {
   fetchingSmurfs: false,
@@ -56,6 +56,23 @@ export const villageReducer = (state = initialState, action) => {
         addingSmurf: false,
         error: action.payload
       }
+      case DELETE_SMURF:
+        return {
+          ...state,
+          deletingSmurf: true
+        }
+      case DELETE_SUCCESS:
+        return {
+          ...state,
+          deletingSmurf: false,
+          smurfs: action.payload
+        }
+      case DELETE_ERROR:
+        return {
+          ...state,
+          deletingSmurf: false,
+          error: action.payload
+        }
     default:
       return state;
   }
