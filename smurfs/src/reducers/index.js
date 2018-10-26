@@ -1,4 +1,7 @@
 import {
+  GET_SMURFS,
+  GET_SMURFS_FAILURE,
+  GET_SMURFS_SUCCESS,
   ADD_SMURF,
   ADD_SMURF_FAILURE,
   ADD_SMURF_SUCCESS,
@@ -21,7 +24,16 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  switch(action.case) {
+  switch(action.type) {
+    case GET_SMURFS : return {...state, fetchingSmurfs: true}
+    case GET_SMURFS_FAILURE : return {...state, fetchingSmurfs: false, error: action.payload}
+    case GET_SMURFS_SUCCESS : 
+      return {
+        ...state, 
+        fetchingSmurfs: false,
+        smurfs: action.payload
+      }
+
     case ADD_SMURF : return {...state, addingSmurf: true}
     case ADD_SMURF_FAILURE : return {...state, addingSmurf: false, error: action.payload}
     case ADD_SMURF_SUCCESS : 
