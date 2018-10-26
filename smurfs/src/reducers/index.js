@@ -34,8 +34,10 @@ export default function (state = initialState, action) {
       return { ...state, smurfs: [...action.payload], addingSmurf: false }
 
     case UPDATING_SMURF:
+      return { ...state }
 
     case DELETING_SMURF:
+      return { ...state }
 
     case ERROR:
       return { ...state, error: action.error }

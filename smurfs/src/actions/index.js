@@ -1,4 +1,3 @@
-import React from 'react'
 import axios from 'axios'
 
 export const FETCHING_SMURFS = 'FETCHING_SMURFS'
@@ -21,7 +20,6 @@ export const fetchSmurfs = () => {
         payload: response.data
       }))
       .catch(error => {
-        console.log(error)
         dispatch({ 
           type: error,
           error: error
@@ -38,7 +36,6 @@ export const addSmurf = smurf => {
     axios
      .post('http://localhost:3333/smurfs', smurf)
      .then(response => {
-       console.log(response)
        dispatch({
          type: ADDED_SMURF,
          payload: response.data
