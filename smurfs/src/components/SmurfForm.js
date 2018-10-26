@@ -57,7 +57,7 @@ import {addSmurf} from '../actions';
  const mapStateToProps = state => {
     return {
         error: state.error,
-        addingSmurf: state.addingSmurf
+        addingSmurf: state.addingSmurf,
     };
 };
  export default connect(mapStateToProps,{addSmurf})(SmurfForm);
