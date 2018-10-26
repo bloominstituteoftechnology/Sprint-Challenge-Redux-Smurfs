@@ -1,7 +1,7 @@
 import React, {Component} from 'react'; 
 import { connect } from 'react-redux'; 
 import { createSmurfs } from '../actions';
-import '../App.css';
+import './App.css';
 
 class SmurfForm extends Component {
     state={
