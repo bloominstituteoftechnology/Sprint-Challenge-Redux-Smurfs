@@ -1,5 +1,94 @@
+
+/*-- Global Reset ------------------------------*/
+html {
+    font-size: 62.5%;
+}
+html, body{
+    margin: 0;
+    padding: 0;
+}
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    font-size: 1.6rem;
+}
+* {
+    box-sizing: border-box;
+}
+
+/*-- Smurfs Container --------------------------*/
+.smurfs {
+    font-family: sans-serif;
+    width: 80rem;
+    margin: 0 auto;
+    padding: 1rem;
+    border: solid black 1px;
+}
+.smurfs h1 {
+    font-family: sans-serif;
+    color: #336699;
+    text-align: center;
+}
+
+/*-- Error Display -----------------------------*/
+.error {
+    background: #fee;
+    border: 1px solid red;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+/*-- Smurf Adding Form -------------------------*/
+.smurfs form {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    margin: 1rem 0;
+}
+.smurfs form > * {
+    width: 100%;
+}
+.smurfs form h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0;
+    font-family: monospace;
+} 
+
+/*-- Smurf List --------------------------------*/
+.smurf-list {
+    display: grid;
+    grid: auto-flow dense / repeat(3, 1fr);
+    flex-direction: column;
+    position: relative;
+}
+.smurf {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background: #eee;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    /* Above necessary to prevent resize on hover */
+}
+.smurf:hover {
+    border: 1px solid black;
+}
+.smurf.smurf_focus {
+    background: white;
+    border: 1px dotted grey;
+}
+.smurf-list_loading .smurf {
+    visibility: hidden;
+}
+.load-notifier {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
