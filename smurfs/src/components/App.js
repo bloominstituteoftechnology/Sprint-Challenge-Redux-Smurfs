@@ -18,6 +18,10 @@ export class App extends Component {
     this.props.getSmurfs();
   }
 
+  handleInputChange = e => {
+    this.setState({[event.target.name]:event.target.value})
+  }
+
   render() {
     return (
       <div className="App">
@@ -33,6 +37,7 @@ const mapStateToProps = state => {
   console.log("MAP STATE TO PROPS : ",state);
   return {
     smurfList : state.smurfs,
+    newSmurf : state.newSmurf,
   };
 };
 

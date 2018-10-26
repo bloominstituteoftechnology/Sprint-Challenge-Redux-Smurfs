@@ -15,6 +15,7 @@ import axios from 'axios';
 */
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const ADDING_SMURF = "ADDING_SMURF"
+export const ADDED = "ADDED"
 export const FETCHED = "FETCHED"
 
 const URL = "http://localhost:3333/smurfs";
@@ -33,4 +34,12 @@ export const getSmurfs = () => dispatch => {
     .catch(error => alert(error))
 }
 
-// export const addSmurf 
+export const addSmurf = (newSmurf) => dispatch => {
+  dispatch({ type : ADDING_SMURF });
+
+  axios.post(URL,newSmurf)
+  .then(response => {
+    dispatch({type : ADDED, payload : response.data})
+  })
+  .catch(error => alert(error));
+}
