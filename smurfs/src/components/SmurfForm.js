@@ -7,7 +7,7 @@ const SmurfForm = ({
   showUpdateForm
 }) => {
   return (
-    <form>
+    <form onSubmit={handleOnClick}>
       <input
         className="input"
         value={newSmurf.name}
@@ -32,7 +32,7 @@ const SmurfForm = ({
         placeholder="Height"
         onChange={handleInputChange}
       />
-      <button onClick={handleOnClick} type="button">
+      <button onClick={handleOnClick} type="submit">
         {showUpdateForm ? "Submit Update" : "Submit New Smurf"}
       </button>
     </form>
