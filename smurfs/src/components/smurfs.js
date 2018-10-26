@@ -12,7 +12,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
-import {SmurfList} from './smurf-list.js';
+import SmurfList from './smurf-list.js';
 import SmurfForm from './smurf-form.js';
 import Error from './error.js';
 
@@ -26,9 +26,6 @@ class Smurfs extends React.Component {
       super(...arguments);
       this.state = {};
     }
-    componentDidMount() {
-      this.props.getSmurfs();
-    }
   
     //-- Rendering -----------------------------------
     render() {
@@ -40,13 +37,7 @@ class Smurfs extends React.Component {
                 </div>
                 <SmurfForm />
                 <Error error={this.props.error} />
-                <SmurfList
-                    loading={!this.props.ready}
-                    smurfs={this.props.smurfs}
-                    focus={this.props.focus}
-                    onFocus={this.props.focusSmurf}
-                    onCancel={this.props.focusCancel}
-                />
+                <SmurfList />
             </div>
         );
     }
@@ -70,6 +61,7 @@ Smurfs = connect(mapStateToProps, {
     getSmurfs: actions.getSmurfs,
     focusSmurf: actions.focusSmurf,
     focusCancel: actions.focusCancel,
+    deleteSmurf: actions.deleteSmurf,
     /*notReady: actions.notReady,
 */})(Smurfs);
 

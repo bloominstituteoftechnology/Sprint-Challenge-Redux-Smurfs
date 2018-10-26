@@ -1,54 +1,79 @@
 
 
-//== Presentational Components for Displaying Smurfs List ======================
+//== SmurfList =================================================================
 
 //-- Dependencies --------------------------------
-import React from "react";
+import React from 'react';
+import {connect} from 'react-redux';
+import * as actions from '../actions';
+import Smurf from './smurf.js';
 
-//-- SmurfList Component -------------------------
-export function SmurfList(props) {
-    let loadNotifier;
-    let classText = 'smurf-list';
-    if(props.loading){
-        loadNotifier = (<div className="load-notifier">(Loading)</div>);
-        classText += ' smurf-list_loading';
+
+//== Component =================================================================
+
+class SmurfList extends React.Component {
+
+    //-- Lifecycle -----------------------------------
+    componentDidMount() {
+        this.props.getSmurfs();
     }
-    if(props.focus !== null){
-        classText += ' smurf-list_focus';
-    }
-    return (
-        <div className={classText}>
-            {loadNotifier}
-            {props.smurfs.filter(smurf => smurfFocusFilter(smurf, props.focus)).map(smurf => (
-                <Smurf
-                    key={smurf.name}
-                    smurf={smurf}
-                    onClick={() => props.onFocus(smurf.id)}
+
+    //-- Rendering -----------------------------------
+    render() {
+        let loadNotifier;
+        let classText = 'smurf-list';
+        if(this.props.loading){
+            loadNotifier = (<div className="load-notifier">(Loading)</div>);
+            classText += ' smurf-list_loading';
+        }
+        if(this.props.focus !== null){
+            classText += ' smurf-list_focus';
+        }
+        return (
+            <div className={classText}>
+                {loadNotifier}
+                {this.focusFilter(this.props.smurfs, this.props.focus).map(smurf => (
+                    <Smurf
+                        key={smurf.name}
+                        smurf={smurf}
+                        onClick={() => this.props.onFocus(smurf.id)}
+                    />
+                ))}
+                <div
+                    className="smurf-list-cancel"
+                    onClick={this.props.onCancel}
+                    children="cancel"
                 />
-            ))}
-            <div
-                className="smurf-list-cancel"
-                onClick={props.onCancel}
-                children="cancel"
-            />
-            <div className="smurf-list-delete">Delete</div>
-        </div>
-    );
+                <div className="smurf-list-delete">Delete</div>
+            </div>
+        );
+    }
+
+    //-- Interaction ---------------------------------
+    focusFilter(smurfs, focusId) {
+        if(focusId === null){ return smurfs;}
+        smurfs.filter(smurf => smurf.id === focusId);
+    }
 }
 
-//-- Smurf - Implementation & Export -------------
-export function Smurf(props) {
-    return (
-        <div className='smurf' onClick={props.onClick} data-id={props.smurf.id}>
-            <span>Name: {props.smurf.name}</span>
-            <span>Age: {props.smurf.age}</span>
-            <span>Height: {props.smurf.height}</span>
-        </div>
-    );
-}
 
-//-- Interaction Utilities -----------------------
-function smurfFocusFilter(smurf, focusId) {
-    if(focusId === null){ return true;}
-    return smurf.id === focusId;
+//== Export, and Redux Preparation =============================================
+
+//-- Redux Coupling ------------------------------
+function mapStateToProps(state) {
+    return {
+        smurfs: state.smurfs,
+        error: state.error,
+        focus: state.focusId,
+    };
 }
+SmurfList = connect(mapStateToProps, {
+    getSmurfs: actions.getSmurfs,
+    onFocus: actions.focusSmurf,
+    onCancel: actions.focusCancel,
+    onDelete: actions.deleteSmurf,
+    /*notReady: actions.notReady,
+*/})(SmurfList);
+
+//-- Exporting -----------------------------------
+export default SmurfList;
