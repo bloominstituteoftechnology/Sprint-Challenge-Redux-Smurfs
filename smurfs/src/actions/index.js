@@ -3,6 +3,8 @@ import axios from 'axios';
 export const ERROR ='ERROR';
 export const GETTING_SMURFS = 'GETTING_SMURFS';
 export const SMURF_SUCCESS = 'SMURF_SUCCESS';
+export const CREATING_SMURF = 'CREATING_SMURF';
+export const CREATE_SUCCESS = 'CREATE_SUCCESS';
 
 export const getSmurfs = () => dispatch => {
     dispatch( {type: GETTING_SMURFS} );
