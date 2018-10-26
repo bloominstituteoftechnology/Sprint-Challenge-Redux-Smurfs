@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import  Smurfs  from "../components/smurfs";
+import Smurfs from "../components/smurfs";
 import { getSmurfs } from "../actions";
 
 class SmurfView extends Component {
@@ -8,8 +8,12 @@ class SmurfView extends Component {
     this.props.getSmurfs();
   }
   render() {
-    console.log(this.props.smurfs);
-    return <div>{/* <Smurfs smurfs={this.props.smurfs} /> */}</div>;
+    console.log(this.props.smurfs.smurfs);
+    return (
+      <div>
+        <Smurfs smurfs={this.props.smurfs.smurfs} />
+      </div>
+    );
   }
 }
 
