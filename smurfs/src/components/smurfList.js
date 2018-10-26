@@ -2,14 +2,15 @@ import React from 'react';
 import Smurf from './smurf';
 import SmurfForm from './smurfForm';
 
-const SmurfList= props=>{
+const SmurfList = props => {
     console.log(props);
-    return(
+    return (
         <div>
-        {props.smurfs.map(smurf=>{
-            return <Smurf key={smurf.id} smurf={smurf} />
-        })}
-        <SmurfForm />
+            <SmurfForm />
+            {props.smurfs.map(smurf => {
+                return <Smurf key={smurf.id} smurf={smurf} />
+            })}
+
         </div>
     );
 };

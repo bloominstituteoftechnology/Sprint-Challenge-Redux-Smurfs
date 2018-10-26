@@ -4,33 +4,33 @@ import { addSmurf } from '../actions';
 
 
 
-class SmurfForm extends Component{
-    state={
-        name:'',
-        age:'',
-        height:'',
+class SmurfForm extends Component {
+    state = {
+        name: '',
+        age: '',
+        height: '',
     }
 
-    handleChange= event=>{
-        this.setState({[event.target.name] : event.target.value})
+    handleChange = event => {
+        this.setState({ [event.target.name]: event.target.value })
     };
 
-    handleAddSmurf = event =>{
+    handleAddSmurf = event => {
         event.preventDefault();
-        const newSmurf={
+        const newSmurf = {
             name: this.state.name,
-            age:this.state.age,
+            age: this.state.age,
             height: this.state.height
         }
         this.props.addSmurf(newSmurf);
-        this.setState({ name: '', age: '', height: ''});
+        this.setState({ name: '', age: '', height: '' });
     }
 
 
-    render(){
-        return(
+    render() {
+        return (
             <form>
-                 <input
+                <input
                     value={this.state.name}
                     name='name'
                     type='text'
@@ -67,4 +67,4 @@ class SmurfForm extends Component{
 
 
 
-export default connect(null, { addSmurf }) (SmurfForm);
+export default connect(null, { addSmurf })(SmurfForm);
