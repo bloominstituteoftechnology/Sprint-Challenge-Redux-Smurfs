@@ -13,16 +13,25 @@ export function SmurfList(props) {
         loadNotifier = (<div className="load-notifier">(Loading)</div>);
         classText += ' smurf-list_loading';
     }
+    if(props.focus !== null){
+        classText += ' smurf-list_focus';
+    }
     return (
         <div className={classText}>
             {loadNotifier}
-            {props.smurfs.map(smurf => (
+            {props.smurfs.filter(smurf => smurfFocusFilter(smurf, props.focus)).map(smurf => (
                 <Smurf
                     key={smurf.name}
                     smurf={smurf}
-                    onClick={props.onFocus}
+                    onClick={() => props.onFocus(smurf.id)}
                 />
             ))}
+            <div
+                className="smurf-list-cancel"
+                onClick={props.onCancel}
+                children="cancel"
+            />
+            <div className="smurf-list-delete">Delete</div>
         </div>
     );
 }
@@ -36,4 +45,10 @@ export function Smurf(props) {
             <span>Height: {props.smurf.height}</span>
         </div>
     );
+}
+
+//-- Interaction Utilities -----------------------
+function smurfFocusFilter(smurf, focusId) {
+    if(focusId === null){ return true;}
+    return smurf.id === focusId;
 }

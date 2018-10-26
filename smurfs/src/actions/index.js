@@ -27,6 +27,8 @@ export const SMURFS_RESPONSE = 'SMURFS_RESPONSE';
 export const FETCHING = 'FETCHING';
 export const FETCH_ERROR = 'ERROR';
 export const NOT_READY = 'NOT_READY';
+export const FOCUS_SMURF = 'FOCUS_SMURF';
+export const FOCUS_CANCEL = 'FOCUS_CANCEL';
 
 
 //== Action Generators =========================================================
@@ -68,6 +70,21 @@ export function addSmurf(smurfData) {
             dispatch(fetchError(errorMessage));
         });
     }
+}
+
+//-- FOCUS_SMURF - Agent wants to focus on one smurf for editing
+export function focusSmurf(smurfId) {
+    return {
+        type: FOCUS_SMURF,
+        id: smurfId,
+    };
+}
+//-- FOCUS_CANCEL - Agent wants to return to full list view
+export function focusCancel() {
+    return {
+        type: FOCUS_CANCEL,
+        id: null,
+    };
 }
 
 //-- FETCH_ERROR - Server returned with error state

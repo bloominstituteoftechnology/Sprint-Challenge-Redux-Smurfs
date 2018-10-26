@@ -9,7 +9,7 @@
 */
 
 //-- Dependencies --------------------------------
-import React, { Component } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
 import {SmurfList} from './smurf-list.js';
@@ -19,7 +19,7 @@ import Error from './error.js';
 
 //== Component =================================================================
 
-class Smurfs extends Component {
+class Smurfs extends React.Component {
     
     //-- Lifecycle -----------------------------------
     constructor() {
@@ -38,30 +38,20 @@ class Smurfs extends Component {
                     <h1>`SMURFS! 2.0 W/ Redux</h1>
                     <p>Welcome to your Redux version of Smurfs!</p>
                 </div>
-                <SmurfForm
-                    onSubmit={this.addSmurf}
-                />
+                <SmurfForm />
                 <Error error={this.props.error} />
                 <SmurfList
                     loading={!this.props.ready}
                     smurfs={this.props.smurfs}
-                    onFocus={this.focusSmurf}
+                    focus={this.props.focus}
+                    onFocus={this.props.focusSmurf}
+                    onCancel={this.props.focusCancel}
                 />
             </div>
         );
     }
 
     //-- Interaction ---------------------------------
-    addSmurf = SmurfData => {
-      if(!this.props.ready){
-        this.props.notReady('You cannot add a smurf right now');
-        return;
-      }
-      this.props.addSmurf(SmurfData);
-    }
-    focusSmurf = eventClick => {
-        //eventClick.currentTarget.
-    }
 }
 
 
@@ -73,14 +63,15 @@ function mapStateToProps(state) {
         smurfs: state.smurfs,
         error: state.error,
         ready: !state.fetching,
+        focus: state.focusId,
     };
 }
 Smurfs = connect(mapStateToProps, {
     getSmurfs: actions.getSmurfs,
-    addSmurf: actions.addSmurf,
+    focusSmurf: actions.focusSmurf,
+    focusCancel: actions.focusCancel,
     /*notReady: actions.notReady,
 */})(Smurfs);
 
 //-- Exporting -----------------------------------
 export default Smurfs;
-  

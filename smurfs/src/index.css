@@ -63,7 +63,7 @@ body {
     flex-direction: column;
     position: relative;
 }
-.smurf {
+.smurf-list > * {
     display: flex;
     flex-direction: column;
     margin: 0.5rem;
@@ -71,15 +71,18 @@ body {
     background: #eee;
     border-radius: 0.5rem;
     cursor: pointer;
-    border: 1px solid transparent;
+    border: 3px solid transparent;
+    background: #369;
+    color: white;
+    font-weight: bold;
     /* Above necessary to prevent resize on hover */
 }
-.smurf:hover {
-    border: 1px solid black;
+.smurf-list > *:hover {
+    border: 3px solid black;
 }
 .smurf.smurf_focus {
     background: white;
-    border: 1px dotted grey;
+    border: 3px dotted grey;
 }
 .smurf-list_loading .smurf {
     visibility: hidden;
@@ -93,4 +96,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.smurf-list-cancel,
+.smurf-list-delete {
+    display: none;
+}
+.smurf-list_focus .smurf-list-cancel,
+.smurf-list_focus .smurf-list-delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+.smurf-list-cancel {}
+.smurf-list-delete {
+    background: #600;
 }

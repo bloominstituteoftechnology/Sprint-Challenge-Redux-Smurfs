@@ -1,12 +1,18 @@
 
 
-//== SmurfForm Component =======================================================
+//== SmurfForm =================================================================
 
 //-- Dependencies --------------------------------
-import React from "react";
+import React from 'react';
+import {connect} from 'react-redux';
+import * as actions from '../actions';
 
-//-- Lifecycle -----------------------------------
-export default class extends React.Component {
+
+//== Component =================================================================
+
+class SmurfForm extends React.Component {
+
+    //-- Lifecycle -----------------------------------
     constructor() {
         super(...arguments);
         this.state = {
@@ -16,14 +22,9 @@ export default class extends React.Component {
         }    
     }
 
-//-- Rendering -----------------------------------
+    //-- Rendering -----------------------------------
     render() {
-        let header;
-        if(!this.props.update){
-            header = <h2>Add Smurf:</h2>
-        } else{
-            header = <h2>Update Smurf:</h2>
-        }
+        let header = <h2>Add Smurf:</h2>;
         return (
             <form onSubmit={this.handleSubmit}>
                 {header}
@@ -53,24 +54,31 @@ export default class extends React.Component {
         );
     }
 
-//-- Interaction ---------------------------------
+    //-- Interaction ---------------------------------
     handleInputChange = changeEvent => {
         this.setState({
             [changeEvent.target.name]: changeEvent.target.value 
         });
     }
     handleSubmit = submitEvent => {
+        // Prevent page refresh
         submitEvent.preventDefault();
+        // Cancel if UI isn't ready
+        if(!this.props.ready){
+          this.props.notReady('You cannot add a smurf right now');
+          return;
+        }
+        // Generate smurf data and send to server
         let smurfData = {
             name: this.state.name,
             age: Number(this.state.age),
             height: this.state.height,
         };
         this.clearState();
-        this.props.onSubmit(smurfData);
+        this.props.addSmurf(smurfData);   
     }
 
-//-- Utility Methods -----------------------------
+    //-- Utility Methods -----------------------------
     clearState() {
         this.setState({
             name: '',
@@ -79,3 +87,19 @@ export default class extends React.Component {
         });
     }
 }
+  
+//== Export, and Redux Preparation =============================================
+
+//-- Redux Coupling ------------------------------
+function mapStateToProps(state) {
+    return {
+        ready: !state.fetching,
+        focus: state.focusId,
+    };
+}
+SmurfForm = connect(mapStateToProps, {
+    addSmurf: actions.addSmurf,
+})(SmurfForm);
+
+//-- Exporting -----------------------------------
+export default SmurfForm;

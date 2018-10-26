@@ -30,11 +30,9 @@ import * as actions from '../actions';
 };*/
 const initialState = {
     smurfs: [],
-    fetchingSmurfs: false,
-    addingSmurf: false,
-    updatingSmurf: false,
-    deletingSmurf: false,
+    fetching: false,
     error: null,
+    focusId: null,
 };
   
 //-- Route Actions -------------------------------
@@ -44,6 +42,8 @@ export default function (state = initialState, action){
         case actions.FETCH_ERROR    : return handleFetchError(state, action);
         case actions.FETCHING       : return handleFetching  (state, action);
         case actions.SMURFS_RESPONSE: return handleSmurfsList(state, action);
+        case actions.FOCUS_CANCEL   : /* Fall Through */
+        case actions.FOCUS_SMURF    : return handleFocus     (state, action);
         default                     : return                  state         ;
     }
 };
@@ -57,6 +57,7 @@ function handleFetching(state, action) {
 }
 function handleSmurfsList(state, action) {
     return {
+        ...state,
         fetching: false,
         smurfs: action.smurfs,
         error: null,
@@ -67,11 +68,17 @@ function handleFetchError(state, action) {
         ...state,
         fetching: false,
         error: action.error,
-    }
+    };
 }
 function handleNotReady(state, action) {
     return {
         ...state,
         error: action.error,
-    }
+    };
+}
+function handleFocus(state, action) {
+    return {
+        ...state,
+        focusId: action.id,
+    };
 }
