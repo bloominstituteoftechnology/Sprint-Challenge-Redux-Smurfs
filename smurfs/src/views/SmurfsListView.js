@@ -1,9 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Route, withRouter } from "react-router-dom";
+
 import Smurfs from "../components/Smurfs";
 import SmurfForm from "../components/SmurfForm";
+import Header from "../components/Header";
 import { fetchingSmurfs, addSmurf, deleteSmurf } from "../actions";
-
+//
 class SmurfsListView extends React.Component {
   componentDidMount() {
     this.props.fetchingSmurfs();
@@ -24,14 +27,30 @@ class SmurfsListView extends React.Component {
     } else {
       return (
         <div>
-          <Smurfs
-            smurfs={this.props.smurfs}
-            deleteSmurf={this.props.deleteSmurf}
+          <Route path="/" component={Header} />
+
+          <Route
+            exact
+            path="/village"
+            render={props => (
+              <Smurfs
+                {...props}
+                smurfs={this.props.smurfs}
+                deleteSmurf={this.props.deleteSmurf}
+              />
+            )}
           />
 
-          <SmurfForm
-            smurfs={this.props.smurfs}
-            addSmurf={this.props.addSmurf}
+          <Route
+            exact
+            path="/smurf-form"
+            render={props => (
+              <SmurfForm
+                {...props}
+                smurfs={this.props.smurfs}
+                addSmurf={this.props.addSmurf}
+              />
+            )}
           />
         </div>
       );
@@ -49,11 +68,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    fetchingSmurfs,
-    addSmurf,
-    deleteSmurf
-  }
-)(SmurfsListView);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    {
+      fetchingSmurfs,
+      addSmurf,
+      deleteSmurf
+    }
+  )(SmurfsListView)
+);
