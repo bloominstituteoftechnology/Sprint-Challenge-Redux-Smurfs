@@ -72,7 +72,7 @@ export const updateSmurf = (id, update) => {
     return dispatch => {
         dispatch({ type: UPDATE_SMURF })
         axios
-            .put(`http://localhost:3333/smurfs/:${id}`, update)
+            .put(`http://localhost:3333/smurfs/${id}`, update)
             .then(res => {
                 dispatch({
                     type: UPDATE_SMURF_SUCCESS,
