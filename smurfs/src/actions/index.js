@@ -3,9 +3,11 @@
   Be sure to export each action type so you can pull it into your reducer
 */
 export const FETCHINGSMURFS = 'FETCHINGSMURFS'
+export const SMURFSFETCHED = 'SMURFSFETCHED' 
 export const ADDINGSMURF = "ADDINGSMURF"
 export const UPDATINGSMURF = "UPDATINGSMURF"
 export const DELETINGSMURF = "DELETINGSMURF"
+export const ERROR = 'ERROR'
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -17,3 +19,5 @@ export const DELETINGSMURF = "DELETINGSMURF"
    U - updateSmurf
    D - deleteSmurf
 */
+
+export { getSmurfs } from './getSmurfs'

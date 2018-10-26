@@ -27,4 +27,3 @@ Smurf.defaultProps = {
 };
 
 export default Smurf;
-

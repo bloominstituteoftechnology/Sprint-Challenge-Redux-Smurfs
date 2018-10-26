@@ -1,5 +1,9 @@
 import { combineReducers } from "redux";
-
+import { 
+  FETCHINGSMURFS, 
+  SMURFSFETCHED,
+  ERROR
+} from '../actions'
 /*
   Be sure to import in all of the action types from `../actions`
 */
@@ -34,6 +38,7 @@ const dummyData = [
 const initalState = {
   smurfs: dummyData,
   fetchingSmurfs: false,
+  smurfsFetched: false,
   error: null
 }
 
@@ -47,7 +52,21 @@ const initalState = {
 const smurfReducer = (state = initalState, action) => {
 
   switch (action.type) {
-
+    case FETCHINGSMURFS:
+      return {
+        ...state,
+        smurfs: state.smurfs,
+        fetchingSmurfs: true
+      }
+    case SMURFSFETCHED:
+      console.log(SMURFSFETCHED, action)
+      return {
+        ...state,
+        smurfsFetched: true,
+        smurfs: action.data
+      }
+    case ERROR:
+      return state
     default:
       return state;
   }
