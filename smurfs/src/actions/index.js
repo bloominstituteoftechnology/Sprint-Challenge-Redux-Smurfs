@@ -38,7 +38,7 @@ export const fetchSmurfs = () => dispatch => {
 }
 
 
-export const addSmirfs = smurf => dispatch => {
+export const addSmurfs = smurf => dispatch => {
   dispatch ({ type: ADD_SMURFS });
   axios   
       .post(url,smurf)
