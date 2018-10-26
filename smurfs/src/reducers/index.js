@@ -7,7 +7,8 @@ import {
   FETCHING_SMURFS_SUCCESS,
   FETCHING_SMURFS_FAILURE,
   ADDING_SMURF_SUCCESS,
-  ADDING_SMURF_FAILURE
+  ADDING_SMURF_FAILURE,
+  DELETING_SMURF_SUCCESS
 } from '../actions/index';
 
 /*
@@ -53,6 +54,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         error: 'Smurf creation failed.'
+      };
+    case DELETING_SMURF_SUCCESS:
+      return {
+        ...state,
+        smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload)
       };
 
     default:
