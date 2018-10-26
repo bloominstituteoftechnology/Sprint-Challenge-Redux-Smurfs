@@ -1,28 +1,79 @@
 .App {
   text-align: center;
+  background: -webkit-linear-gradient(
+    to right,
+    #c4e0e5,
+    #4ca1af
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #c4e0e5,
+    #4ca1af
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  display: flex;
+  justify-content: center;
+  height: 100vh;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+@import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Source+Code+Pro");
+
+.headline {
+  font-family: Architects Daughter;
+  font-size: 25px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.smurf {
+  width: 50vw;
+  border: 3px solid white;
+  margin: 20px;
+  padding: 10px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.smurf__row {
+  display: flex;
+  align-items: center;
+  font-family: Source Code Pro;
 }
 
-.App-intro {
-  font-size: large;
+.smurf__specification {
+  text-transform: uppercase;
+  font-size: 30px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.smurf__detail {
+  margin-left: 15px;
+}
+
+.smurf__form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.smurf__input {
+  height: 40px;
+  width: 200px;
+  margin: 20px;
+  text-transform: uppercase;
+  border: 1px solid black;
+}
+
+.smurf__submit {
+  text-transform: uppercase;
+  height: 75px;
+  width: 200px;
+  font-family: Source Code Pro;
+  font-size: 18px;
+  letter-spacing: 4px;
+}
+
+.smurf__img {
+  height: 40%;
+  width: 40%;
+  justify-self: center;
+  align-self: center;
+  margin-top: 40px;
 }
