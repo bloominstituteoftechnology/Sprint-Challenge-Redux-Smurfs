@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.state = {
       name: '',
-      age: 100,
+      age: '',
       height: '',
     }
   }
