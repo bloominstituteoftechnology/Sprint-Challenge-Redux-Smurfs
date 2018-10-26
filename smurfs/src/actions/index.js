@@ -7,6 +7,10 @@ export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const FETCHING_SMURFS_SUCC = "FETCHING_SMURFS_SUCC";
 export const FETCHING_SMURFS_FAIL = "FETCHING_SMURFS_FAIL";
 
+export const ADDING_SMURF = 'ADDING_SMURF';
+export const ADDED_SMURF_SUCC = 'ADDED_SMURF_SUCC';
+export const ADDED_SMURF_FAIL = 'ADDED_SMURF_FAIL';
+
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -29,3 +33,17 @@ export const fetchSmurfs = () => dispatch => {
       dispatch({ type:FETCHING_SMURFS_FAIL, payload: error})
     })
 }
+
+export const addSmurf = smurf => {
+  return dispatch => {
+    dispatch({ type: ADDING_SMURF });
+    axios
+      .post('http://localhost:3333/smurfs', smurf)
+      .then(response => {
+        dispatch({ type: ADDED_SMURF_SUCC, payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: ADDED_SMURF_FAIL, payload: error });
+      });
+  };
+};

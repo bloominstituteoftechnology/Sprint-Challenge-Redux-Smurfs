@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING_SMURFS, FETCHING_SMURFS_SUCC, FETCHING_SMURFS_FAIL} from '../actions'
+import { FETCHING_SMURFS, FETCHING_SMURFS_SUCC, FETCHING_SMURFS_FAIL, ADDING_SMURF, ADDED_SMURF_SUCC, ADDED_SMURF_FAIL} from '../actions'
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -40,6 +40,14 @@ export const smurfsReducer = (state = initialState, action) => {
             ]}
         case FETCHING_SMURFS_FAIL:
             return {...state, fetchingSmurfs: false, error: action.payload}
+        case ADDING_SMURF:
+            return {...state, addingSmurf: true}
+        case ADDED_SMURF_SUCC:
+            return {...state, addingSmurf: false, smurfs: [
+                ...action.payload
+            ]}
+        case ADDED_SMURF_FAIL:
+            return {...state, addingSmurf: false, error: action.payload}
         default:
             return state;
     }
