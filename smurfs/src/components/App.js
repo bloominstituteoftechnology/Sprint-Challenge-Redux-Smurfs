@@ -3,6 +3,7 @@ import "./App.css";
 import { fetchSmurfs } from "../actions/index";
 import { connect } from "react-redux";
 import SmurfList from "./SmurfList";
+import AddSmurfForm from "./AddSmurf";
 
 /*
  to wire this component up you're going to need a few things.
@@ -18,7 +19,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>testing</h1>
+        <h1>v a p o r s m u r f</h1>
+
+        <AddSmurfForm />
+
         {/* map over smurfs with list component  */}
         <SmurfList smurfs={this.props.smurfs} />
       </div>
