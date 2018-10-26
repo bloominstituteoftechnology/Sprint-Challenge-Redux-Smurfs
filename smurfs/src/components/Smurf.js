@@ -2,7 +2,7 @@ import React from 'react';
 
 const Smurf = props => {
     return (
-        <p>{props.smurf.name}</p>
+        <p>Name: {props.smurf.name}, Age: {props.smurf.age}, Height: {props.smurf.height}</p>
     );
 }
  

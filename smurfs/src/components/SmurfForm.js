@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { addSmurf } from '../actions';
 
 class SmurfForm extends React.Component {
     constructor() {
@@ -19,8 +22,9 @@ class SmurfForm extends React.Component {
             let newSmurf = {
                 name: this.state.name,
                 age: this.state.age,
-                height: this.state.height
+                height: this.state.height + 'cm'
             }
+            this.props.addSmurf(newSmurf)
         }
         this.setState({
             name: '',
@@ -51,7 +55,7 @@ class SmurfForm extends React.Component {
                     />
                     <input
                         onChange={this.handleChange}
-                        placeholder='Height'
+                        placeholder='Height in cm'
                         value={this.state.height}
                         name='height'
                     />
@@ -61,5 +65,5 @@ class SmurfForm extends React.Component {
         );
     }
 }
- 
-export default SmurfForm;
+
+export default connect(null, { addSmurf })(SmurfForm);
