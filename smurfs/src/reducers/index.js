@@ -2,7 +2,7 @@ import { FETCHING, FETCHED, ADDED, UPDATING, UPDATED, DELETED, ERROR } from '../
 
 const initialState = {
 	fetching: false,
-	editing: false,
+	editingId: null,
     smurfs: [],
     error: null
 };
@@ -23,11 +23,14 @@ export default (state = initialState, action) => {
                 smurfs: [ ...action.payload]
 			};
 		case UPDATING:
-			return { ...state, editing: true };
+			return { 
+				...state, 
+				editingId: action.payload
+			};
         case UPDATED:
             return {
 				...state,
-				editing: false,
+				editingId: null,
                 smurfs: [ ...action.payload]
             };
         case DELETED:
@@ -39,7 +42,7 @@ export default (state = initialState, action) => {
             return { 
                 ...state, 
 				fetching: false,
-				editing: false,
+				editingId: null,
                 error: action.payload 
             };
         default:

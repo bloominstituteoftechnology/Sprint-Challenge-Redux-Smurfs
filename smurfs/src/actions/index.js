@@ -32,8 +32,8 @@ export const addSmurf = (newSmurf) => dispatch => {
         });
 };
 
-export const updating = () => {
-  return { type: UPDATING };
+export const updating = (id) => dispatch => {
+  dispatch({ type: UPDATING, payload: id });
 }
 
 export const updateSmurf = (editedSmurf) => dispatch => {

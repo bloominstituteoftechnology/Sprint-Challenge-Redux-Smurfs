@@ -21,10 +21,10 @@ class Smurf extends Component {
                 <div>Age: {age}</div>
                 <div>Height: {height}</div>
                 <div className='smurf-btns'>
-                    <div className='btn' onClick={() => this.props.updating()}>edit</div>
+                    <div className='btn' onClick={() => this.props.updating(id)}>edit</div>
                     <div className='btn' id={id} onClick={this.deleteSmurf}>delete</div>
                 </div>
-                {this.props.editing === true ? <EditForm smurf={this.props.smurf}/> : <img className='smurf-img' src={require('../images/smurf.png')} alt='Smurf'/>}
+                {this.props.editingId === id ? <EditForm smurf={this.props.smurf}/> : <img className='smurf-img' src={require('../images/smurf.png')} alt='Smurf'/>}
             </div>
         )
     }
@@ -33,7 +33,7 @@ class Smurf extends Component {
 const mapStateToProps = state => {
     return {
         smurfs: state.smurfs,
-        editing: state.editing
+        editingId: state.editingId
     };
 };
 
