@@ -6,6 +6,9 @@ export const FETCHING_SMURFS_FAILURE = "FETCHING_SMURFS_FAILURE";
 export const ADD_SMURF = "ADD_SMURF";
 export const ADD_SMURF_SUCCESS = "ADD_SMURF_SUCCESS";
 export const ADD_SMURF_FAILURE = "ADD_SMURF_FAILURE";
+export const DELETE_SMURF = "DELETE_SMURF";
+export const DELETE_SMURF_SUCCESS = "DELETE_SMURF_SUCCESS";
+export const DELETE_SMURF_FAILURE = "DELETE_SMURF_FAILURE";
 
 const server = `http://localhost:3333/smurfs`;
 
@@ -45,23 +48,23 @@ export const addSmurf = smurf => dispatch => {
     });
 };
 
-// export const deleteFriend = id => dispatch => {
-//   dispatch({ type: DELETE_FRIEND });
-//   axios
-//     .delete(`${server}/${id}`)
-//     .then(response => {
-//       dispatch({
-//         type: DELETE_FRIEND_SUCCESS,
-//         payload: response.data
-//       });
-//     })
-//     .catch(error => {
-//       dispatch({
-//         type: DELETE_FRIEND_FAILURE,
-//         payload: error
-//       });
-//     });
-// };
+export const deleteSmurf = id => dispatch => {
+  dispatch({ type: DELETE_SMURF });
+  axios
+    .delete(`${server}/${id}`)
+    .then(response => {
+      dispatch({
+        type: DELETE_SMURF_SUCCESS,
+        payload: response.data
+      });
+    })
+    .catch(error => {
+      dispatch({
+        type: DELETE_SMURF_FAILURE,
+        payload: error
+      });
+    });
+};
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
