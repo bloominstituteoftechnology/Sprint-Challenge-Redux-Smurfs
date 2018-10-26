@@ -1,5 +1,4 @@
 import React from 'react';
-import smurfReducer from '../reducers';
 
 const Smurf = props => {
     return (
