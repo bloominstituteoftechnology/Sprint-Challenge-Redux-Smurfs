@@ -1,3 +1,6 @@
+import axios from "axios"
+
+
 export const FETCHING = 'FETCHING';
 export const GET_SMURFS = 'GET_SMURFS';
 export const ERR = 'ERR';
