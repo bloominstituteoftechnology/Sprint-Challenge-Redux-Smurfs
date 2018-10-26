@@ -11,15 +11,17 @@ const StyledForm = styled.form`
   margin: 15px;
   box-sizing: border-box;
   box-shadow: 1px 1px 15px blue, -1px -1px 15px blue;
+  flex-direction: ${props => props.card ? 'column': 'row'};
+  width: ${props => props.card ? '150px': 'inherit'};
   input {
     background: #0000ffa6;
     border: none;
     margin:  5px;
     border-radius: 10px;
-    padding: 2px 10px;
+    padding: ${props => props.card ? '2px 0': '2px 10px'};
     font-weight: bold;
     color: white;
-    text-align:center;
+    text-align:center; 
     ::placeholder{
         color:#ffffffa6
     }
@@ -30,7 +32,7 @@ const StyledForm = styled.form`
   button {
     border-radius: 10px;
     margin:  5px ;
-    padding: 2px 45px;
+    padding: ${props => props.card ? '2px 0': '2px 45px'};
     background: #ffffff;
     box-shadow: 1px 1px 15px lightblue, -1px -1px 15px lightblue;
     border-style: none;
@@ -44,7 +46,7 @@ const StyledForm = styled.form`
 const Form = props =>{
 
 return (
-    <StyledForm onSubmit={props.submitHandler}>
+    <StyledForm card={props.card} onSubmit={props.submitHandler}>
       <input
         type="text"
         name='name'
@@ -66,7 +68,7 @@ return (
         onChange={props.changeHandler}
         placeholder='Smurf age'
       />
-      <button type='submit' children={props.card ? 'Update Smurf': 'Add Smurf'}>
+      <button type='submit' children={props.card ? 'Update': 'Add Smurf'}>
     
       </button>
     </StyledForm>

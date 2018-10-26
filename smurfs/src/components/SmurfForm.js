@@ -39,4 +39,4 @@ class SmurfForm extends Component {
   }
 }
 
-export default connect(null, {addSmurf})(SmurfForm);
+export default connect(null, {addSmurf})(SmurfForm); 

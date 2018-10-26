@@ -6,7 +6,9 @@ export const COLOSSAL_SMURF_UP = "COLOSSAL_SMURF_UP";
 export const ADDING_SMURF = "ADDING_SMURF";
 export const SMURF_ADDED = "SMURF_ADDED";
 export const DELETING_SMURF = 'DELETING_SMURF';
-export const SMURF_DELETED = 'SMURF_DELETED'
+export const SMURF_DELETED = 'SMURF_DELETED';
+export const UPDATING_SMURF = 'UPDATING_SMURF';
+export const SMURF_UPDATED = 'SMURF_UPDATED';
 
 const URL = "http://localhost:3333/smurfs";
 
@@ -41,13 +43,16 @@ export const deleteSmurf = smurfID => dispatch => {
       dispatch({ type: COLOSSAL_SMURF_UP, payload: err });
     });
 };
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+
+
+export const updateSmurf = smurfObj => dispatch => {
+  dispatch({ type: UPDATING_SMURF });
+  axios
+    .put(`${URL}/${smurfObj.id}`, smurfObj)
+    .then(({data}) => {
+      dispatch({ type: SMURF_UPDATED, payload: data });
+    })
+    .catch(err => {
+      dispatch({ type: COLOSSAL_SMURF_UP, payload: err });
+    });
+};

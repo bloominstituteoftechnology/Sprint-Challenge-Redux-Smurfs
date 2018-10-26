@@ -1,8 +1,7 @@
 import React from "react";
-import "./App.css";
 import styled from "styled-components";
 import SmurfForm from "./SmurfForm";
-import SmurfDisplay from './SmurfDisplay'
+import SmurfDisplay from "./SmurfDisplay";
 
 const AppContainer = styled.div`
   width: 90%;
@@ -21,9 +20,8 @@ const App = () => {
   return (
     <AppContainer>
       <h1>Smurf Village</h1>
-      <SmurfForm></SmurfForm>
-      <SmurfDisplay></SmurfDisplay>
-      
+      <SmurfForm />
+      <SmurfDisplay />
     </AppContainer>
   );
 };

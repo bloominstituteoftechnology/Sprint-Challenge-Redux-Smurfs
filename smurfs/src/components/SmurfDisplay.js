@@ -18,7 +18,7 @@ const StyledSmurfsContainer = styled.div`
 `;
 
 class SmurfDisplay extends Component {
-  componentDidMount() {
+  componentDidMount() { 
     this.props.fetchSmurfs();
   }
   render() {
