@@ -40,6 +40,18 @@ export const deleteSmurf = (id) => dispatch => {
     })
 }
 
+export const updateSmurf = (smurf) => dispatch => {
+  dispatch({type: FETCHING_SMURFS });
+  axios
+    .put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+    .then(res => {
+      dispatch({type: FETCHING_SMURFS_SUCCESS, payload: res.data})
+    })
+    .catch(error => {
+      dispatch({type: FETCHING_SMURFS_FAILURE, payload: error})
+    })
+}
+
 /*
   For this project you'll need at least 2 action creators for the main portion
    and 2 more for the stretch problem.

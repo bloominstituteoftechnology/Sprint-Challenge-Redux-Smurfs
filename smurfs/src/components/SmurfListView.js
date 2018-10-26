@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchSmurfs, addSmurf, deleteSmurf } from "../actions";
+import { fetchSmurfs, addSmurf, deleteSmurf, updateSmurf } from "../actions";
 import Smurfs from "./Smurfs";
 import CreateSmurfForm from "./CreateSmurfForm";
 import DeleteSmurfForm from "./DeleteSmurfForm";
+import UpdateSmurfForm from "./UpdateSmurfForm";
 
 class SmurfListView extends React.Component {
     componentDidMount() {
@@ -22,6 +23,7 @@ class SmurfListView extends React.Component {
                 <Smurfs smurfs={this.props.smurfs} />
                 <CreateSmurfForm addSmurf={this.props.addSmurf} />
                 <DeleteSmurfForm deleteSmurf={this.props.deleteSmurf}/>
+                <UpdateSmurfForm updateSmurf={this.props.updateSmurf}/>
             </div>
         );
     }
@@ -37,5 +39,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { fetchSmurfs, addSmurf, deleteSmurf }
+    { fetchSmurfs, addSmurf, deleteSmurf, updateSmurf }
 )(SmurfListView);
