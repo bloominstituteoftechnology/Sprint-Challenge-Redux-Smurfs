@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import  { fetchingSmurfs } from '../actions';
+import  { fetchingSmurfs, addSmurf } from '../actions';
 import { connect } from 'react-redux';
 
 /*
@@ -13,7 +13,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      newSmurf: ''
+      name: '' ,
+      age: '',
+      height: ''
     }
   }
   componentDidMount() {
@@ -27,8 +29,10 @@ class App extends Component {
   }
 
   handleAddNewSmurf = event => {
-    event.preventDefault();
-    this.props.addingSmurf(this.state.newSmurf, addingSmurf: false)
+    const { name, age, height } = this.state;
+    addSmurf({ name, age, height});
+    this.setState({ name: '', age: '', height: ''})
+    
   }
   render() {
     if(this.props.fetchingSmurfs) {
@@ -43,39 +47,42 @@ class App extends Component {
               <p>Name: {smurf.name}</p>
               <p>Age: {smurf.age}</p>
               <p>Height: {smurf.height}</p>
-              
-              <form onSubmit = { this.handleAddNewTodo }>
+            </div>
+          )
+        })
+      }
+              <form onSubmit = { () => this.handleAddNewSmurf() }>
 
               <input
                 type = "text"
                 placeholder = "Smurf Name"
-                value = { this.state.newSmurf }
+                value = {this.state.name}
                 name = "name"
-                onChange = { this.handleSmurfInput } 
+                onChange = {this.handleSmurfInput} 
               />
               <input 
                 type="text"
                 placeholder="Age"
-                value={this.state.newSmurf}
+                value={this.state.age}
                 name="age"
                 onChange={this.handleSmurfInput}
               />
               <input 
                 type="text"
                 placeholder="Height"
-                value={this.state.newSmurf}
+                value={this.state.height}
                 name="height"
-                onChange={this.state.newSMurf}
+                onChange={this.handleSmurfInput}
               />
 
-          <button onClick = { this.handleAddNewSmurf }>Add Smurf</button>
+          <button onClick={ () => this.handleAddNewSmurf()}>Add Smurf</button>
         </form>
               
             </div>
           )
-        })}
-      </div>
-    );
+      
+     
+   
   }
 }
 

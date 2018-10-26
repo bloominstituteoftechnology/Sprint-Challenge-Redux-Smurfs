@@ -40,7 +40,7 @@ const initialState = {
     case ADDING_SMURF:
       return {...state, addingSmurf: true}
     case ADD_SMURF:
-      return {...state, smurfs: action.payload, addingSmurf: false}
+      return {...state, smurfs: [...state.smurfs, ...action.payload], addingSmurf: false}
     case SMURF_FAILURE:
       return {...state, fetchingSmurfs: false, error: action.payload}
     default:

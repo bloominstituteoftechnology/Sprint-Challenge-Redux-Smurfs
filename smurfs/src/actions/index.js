@@ -33,13 +33,13 @@ export const fetchingSmurfs = () => {
   }
 }
 
-export const addSMurf = smurf => {
+export const addSmurf = smurf => {
   const newSmurf = axios.post('http://localhost:3333/smurfs', smurf);
   return dispatch => {
     dispatch({ type: ADDING_SMURF })
     newSmurf
-      .then(({ data }) => {
-        dispatch({ type: ADD_SMURF, payload: data })
+      .then(response  => {
+        dispatch({ type: ADD_SMURF, payload: response.data })
       })
       .catch( error => {
         dispatch({ type: SMURF_FAILURE, payload: error})
