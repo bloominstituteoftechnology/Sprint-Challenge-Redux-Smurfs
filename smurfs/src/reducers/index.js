@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING_SMURFS, FETCHED_SMURFS, ERROR, ADDING_SMURF } from '../actions';
+import { FETCHING_SMURFS, FETCHED_SMURFS, ERROR, ADDING_SMURF, DELETING_SMURF } from '../actions';
 import { combineReducers } from 'redux';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -38,6 +38,13 @@ const smurfReducer = (state = initialState, action) => {
 			return {
 				...state,
 				fetchingState: false,
+				smurfs: action.payload
+			};
+		case DELETING_SMURF:
+			return {
+				...state,
+				fetchingState: false,
+				deletingSmurf: true,
 				smurfs: action.payload
 			};
 		default:
