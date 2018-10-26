@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import {connect} from 'react-redux';
+import {deleteSmurf} from '../actions'
 
 const SmurfCard = styled.div`
   display: flex;
@@ -10,16 +12,23 @@ const SmurfCard = styled.div`
   margin: 15px;
   box-sizing: border-box;
   box-shadow: 1px 1px 15px blue, -1px -1px 15px blue;
+  position: relative;
   h2, h5 {
     text-align: center;
     padding: 0;
     margin: 5px 0;
     color: white;
-    text-shadow: 5px 5px 10px blue, -5px -5px 10px blue;
+    text-shadow: 5px 5px 10px blue, -5px -5px 10px blue,-5px 5px 10px blue, 5px -5px 10px blue;
   }
   img {
     width: 100px;
     height: auto;
+  }
+  div{
+      position:absolute;
+      top: 1px;
+      right: 5px;
+      cursor:pointer;
   }
 `;
 
@@ -57,9 +66,10 @@ class Smurf extends Component {
         <img src={require(`../assets/${img}`)} alt="" /> 
         <h5>age: {this.props.smurf.age}</h5>
         <h5>height: {this.props.smurf.height}</h5>
+        <div onClick={()=>this.props.deleteSmurf(this.props.smurf.id)}><h5>X</h5></div>
       </SmurfCard>
     );
   }
 }
 
-export default Smurf;
+export default connect(null, {deleteSmurf})(Smurf);

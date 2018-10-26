@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Smurf from "./Smurf";
 const StyledSmurfsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width:85%;
   margin: 0 auto;
   flex-direction: row-reverse;

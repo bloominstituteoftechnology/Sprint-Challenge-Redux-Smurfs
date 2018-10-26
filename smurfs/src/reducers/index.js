@@ -3,7 +3,9 @@ import {
   SMURFS_FETCHED,
   ADDING_SMURF,
   SMURF_ADDED,
-  COLOSSAL_SMURF_UP
+  COLOSSAL_SMURF_UP,
+  DELETING_SMURF,
+  SMURF_DELETED
 } from "../actions";
 
 const initialState = {
@@ -27,6 +29,10 @@ export const smurfReducer = (state = initialState, { type, payload }) => {
       return {...state, addingSmurf:false, smurfs:payload};
     case COLOSSAL_SMURF_UP:
       return {...state, error:payload};
+    case DELETING_SMURF:
+    return {...state, deletingSmurf:true};
+    case SMURF_DELETED:
+    return {...state, deletingSmurf:false, smurfs:payload}
     default:
       return state;
   }
