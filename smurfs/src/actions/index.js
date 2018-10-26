@@ -7,6 +7,7 @@ import axios from 'axios';
 export const FETCH_COMPLETE = 'FETCH_COMPLETE';
 export const FETCH_ERROR = 'FETCH_ERROR';
 export const ADD_SMURF = 'ADD_SMURF';
+export const DELETE_SMURF = 'DELETE_SMURF';
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -31,5 +32,11 @@ export const addSmurf = smurf => dispatch => {
   axios
     .post(url, smurf)
     .then(res => dispatch({ type: ADD_SMURF, payload: res.data }))
+    .catch(err => console.log(err));
+};
+export const deleteSmurf = id => dispatch => {
+  axios
+    .delete(`http://localhost:3333/smurfs/${id}`)
+    .then(res => dispatch({ type: DELETE_SMURF, payload: res.data }))
     .catch(err => console.log(err));
 };
