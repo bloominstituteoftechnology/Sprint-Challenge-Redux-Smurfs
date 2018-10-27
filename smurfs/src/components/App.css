@@ -36,3 +36,11 @@ li {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+input {
+  padding: 5px;
+}
+
+button {
+  padding: 5px 20px;
+}
