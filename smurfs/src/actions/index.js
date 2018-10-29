@@ -47,7 +47,7 @@ export const getSmurfs = () => dispatch => {
     });
 };
 
-export const addingSmurf = smurf => dispatch => {
+export const addSmurf = smurf => dispatch => {
   axios
     .post(url, smurf)
     .then(res => {

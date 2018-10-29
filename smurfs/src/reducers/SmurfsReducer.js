@@ -28,7 +28,7 @@ import {
 
 const initialState = {
   smurfs: [],
-  fetchingSmurfs: false,
+  fetching: false,
   // addingSmurf: false,
   // updatingSmurf: false,
   // deletingSmurf: false,
@@ -38,12 +38,12 @@ const initialState = {
 export const smurfsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
-      return {...state, fetchingSmurfs: true};
+      return {...state, fetching: true};
     case FETCHING_SMURFS_FAILURE:
-      return {...state, fetchingSmurfs: false, error: "Not Smurfy"};
+      return {...state, fetching: false, error: "Not Smurfy"};
     case FETCHING_SMURFS_SUCCESS:
       console.log(action.payload);
-      return {...state, smurfs: [...action.payload], fetchingSmurfs: false};
+      return {...state, smurfs: [...action.payload], fetching: false};
     case ADDING_SMURF_SUCCESS:
       return {...state, smurfs: [...state.smurfs, action.payload]};
     case DELETING_SMURF_SUCCESS:

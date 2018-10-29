@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { addingSmurf } from "../actions";
+import { addSmurf } from "../actions";
 import Form from "./Form";
 
 class SmurfCreator extends React.Component {
@@ -18,7 +18,7 @@ class SmurfCreator extends React.Component {
   };
 
   createSmurf = () => {
-    this.props.addingSmurf(this.state);
+    this.props.addSmurf(this.state);
   };
 
   render() {
@@ -35,5 +35,5 @@ class SmurfCreator extends React.Component {
 
 export default connect(
   null,
-  { addingSmurf }
+  { addSmurf }
 )(SmurfCreator);

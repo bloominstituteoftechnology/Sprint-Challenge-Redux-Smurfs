@@ -2,12 +2,23 @@ import React from 'react';
 
 import Smurf from "./Smurf";
 
+// const SmurfList = props => {
+//   console.log(props)
+//   return (
+//     <ul>
+//       {props.smurfettes.map(smurf => {
+//         return <Smurf key={smurf.name} smurf={smurf} />;
+//       })}
+//     </ul>
+//   );
+// };
+
 const SmurfList = props => {
-  console.log(props)
+  console.log('SmurfList props:', props)
   return (
     <ul>
-      {props.smurfettes.map(smurf => {
-        return <Smurf key={smurf.name} smurf={smurf} />;
+      {props.smurfs.map(smurf => {
+        return <Smurf key={smurf.name} smurf={smurf} />
       })}
     </ul>
   );
