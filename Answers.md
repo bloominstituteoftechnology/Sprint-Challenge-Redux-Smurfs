@@ -1,6 +1,6 @@
 1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
 
-.map .reduce .filter -> they modify and clone but not create new objects.
+.map() .reduce() .filter() -> they modify and clone but not create new objects.
 
 1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 
