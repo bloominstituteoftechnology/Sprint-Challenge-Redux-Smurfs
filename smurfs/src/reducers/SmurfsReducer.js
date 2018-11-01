@@ -43,9 +43,17 @@ export const smurfsReducer = (state = initialState, action) => {
       return {...state, fetching: false, error: "Not Smurfy"};
     case FETCHING_SMURFS_SUCCESS:
       console.log(action.payload);
-      return {...state, smurfs: [...action.payload], fetching: false};
+      return {
+        ...state, 
+        smurfs: [...state.smurfs, ...action.payload], // added ...state.smurfs
+        fetching: false
+      };
     case ADDING_SMURF_SUCCESS:
-      return {...state, smurfs: [...state.smurfs, action.payload]};
+      return {
+        ...state, 
+        // smurfs: [...state.smurfs, action.payload]
+        smurfs: [...action.payload]
+      };
     case DELETING_SMURF_SUCCESS:
       return {
         ...state,

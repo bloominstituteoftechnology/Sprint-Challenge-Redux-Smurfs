@@ -31,10 +31,10 @@ export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCHING_SMURFS });
   axios
     .get(url)
-    .then(({ smurfs }) => {
+    .then(response => {
       dispatch({
         type: FETCHING_SMURFS_SUCCESS,
-        payload: smurfs.data
+        payload: response.data
       });
     })
     .catch(err => {
@@ -50,8 +50,8 @@ export const getSmurfs = () => dispatch => {
 export const addSmurf = smurf => dispatch => {
   axios
     .post(url, smurf)
-    .then(res => {
-      dispatch({ type: ADDING_SMURF_SUCCESS, payload: res.data });
+    .then(response => {
+      dispatch({ type: ADDING_SMURF_SUCCESS, payload: response.data });
     })
     .catch(err => {
       console.log(err);
@@ -67,7 +67,7 @@ export const clearError = () => dispatch => {
 export const deletingSmurf = id => dispatch => {
   axios
     .delete(`${url}/${id}`)
-    .then(res => {
+    .then(response => {
       dispatch({ type: DELETING_SMURF_SUCCESS, payload: id });
     })
     .catch(err => {
