@@ -16,7 +16,7 @@ class SmurfListView extends React.Component {
 
   render() {
     if (this.props.fetching) {
-      <h2>Fetching only smurfy smurfs...</h2>;
+      return <h2>Fetching only smurfy smurfs...</h2>;
     }
     return (
       <div className="SmurfList_wrapper">
