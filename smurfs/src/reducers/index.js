@@ -1,3 +1,69 @@
+import { combineReducers } from "redux";
+import { smurfsReducer } from "./SmurfsReducer";
+import {
+  FETCHING_SMURF,
+  FETCHED_SMURF,
+  DELETE_SMURF,
+  SUBMIT_SMURF,
+  EDIT_SMURF
+} from "../actions";
+
+export default combineReducers({
+  smurfsReducer
+});
+
+const initialState = {
+  smurfs: [],
+  isFetching: false,
+  isFetched: false
+};
+
+export const smurfReducer = (state = initialState, { type, smurfs, id }) => {
+  switch (type) {
+    case FETCHING_SMURF:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case FETCHED_SMURF:
+      return {
+        ...state,
+        isFetching: false,
+        isFetched: true,
+        smurfs
+      };
+    case DELETE_SMURF:
+      return {
+        ...state,
+        isFetching: false,
+        isFetched: true,
+        smurfs
+      };
+    case SUBMIT_SMURF:
+      return {
+        ...state,
+        isFetching: false,
+        isFetched: true,
+        smurfs
+      };
+    case EDIT_SMURF:
+      const index = smurfs.findIndex(smurf => smurf.id === id);
+      return {
+        ...state,
+        smurfs: [
+          ...smurfs.slice(0, index),
+          (smurfs[index] = {
+            ...smurfs[index],
+            isEditing: true
+          }),
+          ...smurfs.slice(index + 1)
+        ]
+      };
+    default:
+      return state;
+  }
+};
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
