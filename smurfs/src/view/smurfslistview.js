@@ -19,7 +19,7 @@ class SmurfsListView extends React.Component {
         return (
             <div>
                 <AddNewSmurfForm add = {this.props.addSmurfs}/>
-                {/* <SmurfList smurfs={this.props.smurfs}/> */}
+                <SmurfList smurfs={this.props.smurfs}/>
                 
             </div>
             
@@ -27,17 +27,19 @@ class SmurfsListView extends React.Component {
     }
 }
 
+
 const mapStateToProps = state => {
+    const { smurfsReducer } = state;
     return {
         smurfs: smurfsReducer.smurfs,
-        fetchingSmurfs: state.fetchingSmurfs,
-        addSmurfs: state.addSmurfs,
-        error: state.error
+        fetchingSmurfs: smurfsReducer.fetchingSmurfs,
+        addSmurfs: smurfsReducer.addSmurfs,
+        error: smurfsReducer.error
     }
 }
 
 export default connect (
-    mapStateToProps,
+   mapStateToProps,
     { fetchSmurfs,
       addSmurfs,
      }
