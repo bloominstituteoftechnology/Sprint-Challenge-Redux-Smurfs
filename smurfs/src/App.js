@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 import { connect } from "react-redux";
 import CreateSmurfForm from "./components/CreateSmurfForm";
 import { fetching_smurf, deleteSmurf, editSmurf } from "./actions";
@@ -24,20 +24,18 @@ class App extends Component {
             return smurf.Editing ? (
               <EditSmurfForm key={smurf.id} />
             ) : (
-                <div key={smurf.id}>
-                  <div>{smurf.name}</div>
-                  <div>{smurf.age}</div>
-                  <div>{smurf.height} </div>
-                  <button onClick={() => this.props.deleteSmurf(smurf.id)}>
-                    Delete
-                  </button>
-                  <button
-                    onClick={() => this.props.editSmurf(smurf.id, smurfs)}
-                  >
-                    Edit
-                  </button>
-                </div>
-              );
+              <div key={smurf.id}>
+                <div>{smurf.name}</div>
+                <div>{smurf.age}</div>
+                <div>{smurf.height} </div>
+                <button onClick={() => this.props.deleteSmurf(smurf.id)}>
+                  Delete
+                </button>
+                <button onClick={() => this.props.editSmurf(smurf.id, smurfs)}>
+                  Edit
+                </button>
+              </div>
+            );
           })}
       </div>
     );
@@ -48,10 +46,11 @@ const mapStateToProps = state => {
   const { smurfsReducer } = state;
   return smurfsReducer;
 };
-export default connect(mapStateToProps, {
-  fetching_smurf,
-  deleteSmurf,
-  editSmurf
-})(App);
-                  
-      
+export default connect(
+  mapStateToProps,
+  {
+    fetching_smurf,
+    deleteSmurf,
+    editSmurf
+  }
+)(App);

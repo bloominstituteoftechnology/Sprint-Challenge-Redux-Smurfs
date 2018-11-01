@@ -1,11 +1,16 @@
-import { combineReducers } from 'redux';
-import { smurfsReducer } from './SmurfsReducer';
-import { FETCHING_SMURF, FETCHED_SMURF, DELETE_SMURF, SUBMIT_SMURF, EDIT_SMURF } from "../actions";
+import { combineReducers } from "redux";
+import { smurfsReducer } from "./SmurfsReducer";
+import {
+  FETCHING_SMURF,
+  FETCHED_SMURF,
+  DELETE_SMURF,
+  SUBMIT_SMURF,
+  EDIT_SMURF
+} from "../actions";
 
 export default combineReducers({
   smurfsReducer
 });
-
 
 const initialState = {
   smurfs: [],

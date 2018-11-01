@@ -6,8 +6,6 @@ export const DELETE_SMURF = "DELETE_SMURF";
 export const SUBMIT_SMURF = "SUBMIT_SMURF";
 export const EDIT_SMURF = "EDIT_SMURF";
 
-
-
 export const fetching_smurf = () => {
   const getInfo = axios.get("http://localhost:3333/api/smurfs");
   return dispatch => {
