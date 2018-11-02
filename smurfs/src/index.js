@@ -6,10 +6,11 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from /* You need some sort of reducer */ './reducers';
+import rootReducer from './reducers'; /* You need some sort of reducer */ 
 
 const store = createStore(
-  rootReducer, // this is the most basic reducer. A function that returns and object. Replace it.
+  // this is the most basic reducer. A function that returns and object. Replace it.
+  rootReducer, 
   applyMiddleware(thunk, logger)
 );
 
