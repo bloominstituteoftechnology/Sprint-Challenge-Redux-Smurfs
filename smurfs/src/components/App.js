@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import logo from "../logo.svg";
+// import logo from "../logo.svg";
 import "./App.css";
 import { fetchSmurfs } from "../actions";
 import { addNewSmurf } from "../actions";
@@ -16,16 +16,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.fetchingSmurfs ? (
-          <img src={logo} className="App-logo" alt="logo" />
-        ) : (
           <div className="smurf-village-wrapper">
-            <h1>Welcome to Smurf Village!</h1>
+            <h1>Smurf Village</h1>
             <SmurfForm />
-            <h2>Smurf Residents:</h2>
             <Smurfs {...this.props} />
           </div>
-        )}
       </div>
     );
   }

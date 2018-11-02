@@ -32,7 +32,7 @@ export const smurfsReducer = (state = initialState, action) => {
         smurfsFetched: true
         });
     case ERROR:
-        eturn Object.assign({}, state, {
+        return Object.assign({}, state, {
         fetchingSmurfs: false,
         error: action.payload
         });
