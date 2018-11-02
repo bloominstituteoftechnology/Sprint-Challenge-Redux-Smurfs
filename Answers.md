@@ -20,7 +20,7 @@ Your application state is global, and your component state is local.
 Middleware is some code you can put between the framework receiving a request, and the framework generating a response.
 
 5.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-Redux Thunk is a middleware that lets you call action creators that return a function instead of an action object. 
+Redux Thunk is a middleware that lets you call action creators that return a function instead of an action object. Can be used to delay the dispatch of the action.
 
 
-6.  Which `react-redux` method links up our `components` with our `redux store`?
+6.  Which `react-redux` method links up our `components` with our `redux store`? Connect
