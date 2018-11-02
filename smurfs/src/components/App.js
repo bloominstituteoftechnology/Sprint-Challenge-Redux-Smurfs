@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from "react-redux";
 import { fetchSmurfs } from "../actions";
-import SmurfForm from "./Form";
+import SmurfForm from "./SmurfForm";
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchSmurfs();
-  }
-
+    this.props.fetchSmurfs()
+}
+  
   render() {
     return (
       <div className="App">
@@ -23,12 +23,12 @@ class App extends Component {
                   <h2> Name: {smurfs.name}</h2>
                   <p>Age: {smurfs.age}</p>
                   <p>Height: {smurfs.height}</p>
-                  </div>
+                </div>
               );
             })}
           </div>
         )}
-        <SmurfForm />
+        <SmurfForm  addSmurf={this.addSmurfs}/>
       </div>
     );
   }

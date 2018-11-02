@@ -8,27 +8,34 @@ import {
   const initialState = {
     smurfs: [],
     fetchingSmurfs: false,
-    fetchedSmurfs: false,
+    // fetchedSmurfs: false,
     // addingSmurf: false,
-    addedSmurf: false,
+    // addedSmurf: false,
     error: null
   }
 
   export const smurfsReducer = (state = initialState, action) => {
     switch (action.type) {
       case FETCHING:
-        return { ...state, fetchingSmurfs: true };
+        return { 
+          ...state, 
+          fetchingSmurfs: true };
       case FETCHED:
         return {
           ...state,
           fetchingSmurfs: false,
-          fetchedSmurfs: true,
-          smurfs: action.payload
+          smurfs: [...state.smurfs, ...action.payload]
         };
       case ADD:
-        return { ...state, fetchingSmurfs: false, addedSmurf: true };
+        return { 
+          ...state, 
+          fetchingSmurfs: false, 
+          smurfs: action.payload
+        }
       case ERROR:
-        return { ...state, error: action.payload };
+        return { 
+          ...state, 
+          error: action.payload };
       default:
         return state;
     }

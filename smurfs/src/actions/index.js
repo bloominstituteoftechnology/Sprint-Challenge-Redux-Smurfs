@@ -6,13 +6,13 @@ export const ERROR = "ERROR";
 export const ADD = "ADD";
 
 
-const url = 'http://localhost:3333/smurfs';
+const URL = 'http://localhost:3333/smurfs';
 
 export const fetchSmurfs = () => {
   return dispatch => {
     dispatch({ type: FETCHING });
     axios
-      .get(url)
+      .get(`${URL}`)
       .then(response => {
         dispatch({ type: FETCHED, payload: response.data });
       })
@@ -21,9 +21,9 @@ export const fetchSmurfs = () => {
       });
   };
 };
-export const addSmurfs = smurf => dispatch => {
+export const addSmurf = (smurf) => dispatch => {
   axios
-      .post(url, smurf)
+      .post(`${URL}`, smurf)
       .then(response => {
         dispatch({ type: ADD, payload: response.data })
       })
