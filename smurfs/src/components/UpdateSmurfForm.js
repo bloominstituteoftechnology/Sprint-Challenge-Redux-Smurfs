@@ -44,6 +44,7 @@ class UpdateSmurfForm extends Component {
           value={this.state.height}
         />
         <button>Submit</button>
+        
       </form>
     );
   }
