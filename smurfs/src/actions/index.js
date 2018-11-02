@@ -4,6 +4,7 @@ export const FETCHING = "FETCHING";
 export const FETCHED = "FETCHED";
 export const ERROR = "ERROR";
 export const ADD = "ADD";
+export const ADDING = "ADDING";
 
 
 const URL = 'http://localhost:3333/smurfs';
@@ -21,7 +22,9 @@ export const fetchSmurfs = () => {
       });
   };
 };
-export const addSmurf = (smurf) => dispatch => {
+export const addSmurf = (smurf)  => {
+  return dispatch => {
+    dispatch({ type: ADDING });
   axios
       .post(`${URL}`, smurf)
       .then(response => {
@@ -31,3 +34,4 @@ export const addSmurf = (smurf) => dispatch => {
         dispatch({ type: ERROR, payload: err });
       });
   };
+};

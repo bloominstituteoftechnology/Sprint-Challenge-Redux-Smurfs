@@ -16,12 +16,11 @@ class SmurfForm extends Component {
         this.setState({ [event.target.name]: event.target.value })
     }
     addSmurfs = () => {
-        const { name, age, height } = this.state;
+        // const { name, age, height } = this.state;
         this.props.addSmurf({
-            name,
-            age,
-            height
-        });
+          name: this.state.name,
+          age: this.state.age,
+          height:this.state.height });
         this.setState({ name: '', age: '', height: '' });
     };
             
@@ -69,10 +68,7 @@ const mapStateToProps = state => {}
 
 export default connect(
     mapStateToProps,
-    {
-      addSmurf,
-      
-    }
+    { addSmurf }
   )(SmurfForm);
 
 

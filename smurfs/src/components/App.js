@@ -28,7 +28,7 @@ class App extends Component {
             })}
           </div>
         )}
-        <SmurfForm  addSmurf={this.addSmurfs}/>
+        <SmurfForm />
       </div>
     );
   }

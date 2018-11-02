@@ -2,14 +2,15 @@ import {
   ERROR, 
   FETCHING, 
   FETCHED, 
-  ADD } 
+  ADDING,
+  ADD
+} 
   from "../actions";
 
   const initialState = {
     smurfs: [],
     fetchingSmurfs: false,
-    // fetchedSmurfs: false,
-    // addingSmurf: false,
+    addingSmurf: false,
     // addedSmurf: false,
     error: null
   }
@@ -26,11 +27,15 @@ import {
           fetchingSmurfs: false,
           smurfs: [...state.smurfs, ...action.payload]
         };
+        case ADDING:
+        return { 
+          ...state, 
+          addingSmurf: true };
       case ADD:
         return { 
           ...state, 
-          fetchingSmurfs: false, 
-          smurfs: action.payload
+          addingSmurf: false,
+       
         }
       case ERROR:
         return { 
