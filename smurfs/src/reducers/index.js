@@ -1,3 +1,7 @@
+import { 
+  FETCHING_SMURFS, 
+  FETCHING_SMURFS_SUCCESS, 
+  FETCHING_SMURFS_FAIL } from '../actions';
 /*
   Be sure to import in all of the action types from `../actions`
 */
@@ -23,7 +27,16 @@ const initialState = {
 */
 export default (state = initialState, action) => {
   swtich (action.type) {
-    default:
-      return state;
+    case FETCHING_SMURFS:
+      return Object.assign({}, state, {
+        fetchingSmurfs: true,
+      });
+    case FETCHING_SMURFS_SUCCESS:
+      return Object.assign({}, state, {
+        fetchingSmurfs: false,
+        smurfs: action.payload
+      })
+      default:
+        return state;
+    } 
   }
-}
