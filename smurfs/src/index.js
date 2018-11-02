@@ -8,6 +8,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import  { smurfsReducer } from './reducers';
 
+// 1. The general flow of steps will be to create your store, 2. create your reducers, create your containers, and then create the action creators.
+
+
 const store = createStore(
   smurfsReducer
 )
