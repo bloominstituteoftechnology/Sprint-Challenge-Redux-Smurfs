@@ -6,7 +6,12 @@ import EditForm from './EditForm';
 class Smurf extends Component {
   constructor() {
     super();
-    
+    this.state = {
+      id:'',
+      name:'',
+      age:'',
+      height:''
+    }
   }
 
   deleteSmurf = event => {
@@ -17,13 +22,13 @@ class Smurf extends Component {
   render() {
     return (
       <div className="smurf-card">
-        <div className="smurf-detail">Name: {name}</div>
-        <div className="smurf-detail">Age: {age}</div>
-        <div className="smurf-detail">Height: {height}</div>
+        {/* <div className="smurf-detail">Name: {this.state.name}</div>
+        <div className="smurf-detail">Age: {this.state.age}</div>
+        <div className="smurf-detail">Height: {this.state.height}</div>
       <div className='smurf-btns'>
-        <div className='btn' onClick={() => this.props.updating(id)}>edit</div>
-        <div className='btn' id={id} onClick={this.deleteSmurf}>delete</div>
-      </div>
+        <button className='btn' onClick={() => this.props.updating(this.props.id)}>edit</button>
+        <button className='btn' id={this.props.id} onClick={this.deleteSmurf}>delete</button>
+      </div> */}
       <EditForm smurf={this.props.smurf}/>
     </div>
     )
