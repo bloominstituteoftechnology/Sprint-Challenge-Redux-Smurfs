@@ -5,6 +5,8 @@ export const GET_SMURFS = 'GET_SMURFS';
 export const GETTING_SMURFS = 'GETTING_SMURFS';
 export const CREATE_SMURF = 'CREATE_SMURF';
 export const CREATING_SMURF = 'CREATING_SMURF';
+export const SINGLE_SMURF = 'SINGLE_SMURF';
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.

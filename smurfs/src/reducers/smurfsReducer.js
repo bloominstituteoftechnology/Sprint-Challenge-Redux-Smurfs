@@ -6,11 +6,11 @@ export const smurfsReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GETTING_SMURFS:
 
-    case actionTypes.GET_FRIENDS:
+    case actionTypes.GET_SMURFS:
 
-    case actionTypes.CREATING_FRIEND:
+    case actionTypes.CREATING_SMURF:
 
-    case actionTypes.CREATE_FRIEND:
+    case actionTypes.CREATE_SMURF:
 
     case actionTypes.ERROR:
       return {};

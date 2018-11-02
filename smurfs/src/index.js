@@ -6,7 +6,8 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import smurfReducer './reducers';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import smurfReducer from './reducers';
 
 const store = createStore(
   smurfReducer, // this is the most basic reducer. A function that returns and object. Replace it.
@@ -15,7 +16,11 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <Route exact path='/'component={App} />
+      {/* <Route path='/:postId' component={SelectedSmurf} />   */}
+      {/* <Route path='/add_smurf' component={SmurfForm} /> */}
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
