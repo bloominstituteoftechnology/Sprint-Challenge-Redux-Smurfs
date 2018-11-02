@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateSmurf } from "../actions/index";
 
+
 class UpdateSmurfForm extends Component {
   state = {
     name: "",

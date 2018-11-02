@@ -1,9 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggleUpdateSmurf } from "../actions/index";
+import { toggleUpdateSmurf, deleteSmurf, toggleSmurf  } from "../actions/index";
 import UpdateSmurfForm from "./UpdateSmurfForm";
 
 const SelectedSmurf = function(props) {
+    // deleteSmurf = () => {
+    //     this.props.deleteSmurf();
+    //   };
   return (
     <div>
       <h4>{props.selected.name}</h4>
@@ -11,6 +14,8 @@ const SelectedSmurf = function(props) {
       <div>{props.selected.height}</div>
       <div>{props.selected.age}</div>
       <button onClick={() => props.toggleUpdateSmurf()}>Update</button>
+      
+      <button onClick={() => props.deleteSmurf()}>Delete Smurf</button>
       {props.showUpdate ? <UpdateSmurfForm id={props.selected.id} /> : null}
     </div>
   );
@@ -25,5 +30,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { toggleUpdateSmurf }
+  { toggleUpdateSmurf, deleteSmurf, toggleSmurf }
 )(SelectedSmurf);

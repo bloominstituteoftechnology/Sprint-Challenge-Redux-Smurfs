@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addSmurf } from "../actions";
+import { addSmurf, deleteSmurf, toggleSmurf } from "../actions";
 
 class SmurfForm extends Component {
   state = {
@@ -18,6 +18,8 @@ class SmurfForm extends Component {
     this.props.addSmurf({ name, age, height });
     this.setState({ name: "", age: "", height: "" });
   };
+
+
 
   render() {
     return (
@@ -58,5 +60,5 @@ const mapStateToProps = state => {};
 
 export default connect(
   mapStateToProps,
-  { addSmurf }
+  { addSmurf, deleteSmurf, toggleSmurf  }
 )(SmurfForm);

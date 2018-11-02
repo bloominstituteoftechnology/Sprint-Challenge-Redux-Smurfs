@@ -11,6 +11,9 @@ export const singleSmurfReducer = (state = initialState, action) => {
       return { ...state, smurfSelected: action.payload };
     case actionTypes.TOGGLE_UPDATE_SMURF:
       return { ...state, showUpdate: !state.showUpdate };
+    //   case actionTypes.DELETE_SMURF:
+    //   return {smurfs: state.smurfs.filter(item => !item.showUpdate)}
+
     default:
       return state;
   }

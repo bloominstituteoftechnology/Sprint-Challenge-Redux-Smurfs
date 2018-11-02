@@ -3,7 +3,7 @@ import "./App.css";
 
 import SelectedSmurf from "./SelectedSmurf";
 import { connect } from "react-redux";
-import { updateSingleSmurf } from "../actions";
+import { updateSingleSmurf, deleteSmurf, toggleSmurf } from "../actions";
 // import UpdateFriendForm from "./UpdateFriendForm";
 
 class Smurfs extends Component {
@@ -18,7 +18,7 @@ class Smurfs extends Component {
           {this.props.smurfs.map(smurf => {
             return (
               <li onClick={() => this.handleShowSmurf(smurf)}>
-                {smurf.name}
+                <span>{smurf.name}</span>
               </li>
             );
           })}
@@ -44,6 +44,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    updateSingleSmurf
+    updateSingleSmurf, deleteSmurf, toggleSmurf
   }
 )(Smurfs);
