@@ -19,13 +19,13 @@ export const reducer = (state = initialState, action) => {
     case GET_SMURFS:
       return {
         ...state,
-        isFetching: true
+        gettingSmurfs: true
       };
     case GET_SMURFS_SUCCESS:
       return {
         ...state,
-        smurfs: [...state.smurfs, ...action.payload],
-        isFetching: false
+        smurfs: [...action.payload],
+        gettingSmurfs: false
       };
     case GET_SMURFS_FAILURE:
       return {
