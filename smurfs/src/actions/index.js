@@ -56,9 +56,11 @@ export const updateSmurf = (id, body) => {
      }
    }
 
-  export const updateSingleSmurf = () => {
+  export const updateSingleSmurf = smurf => {
     return {
-      type: SINGLE_SMURF
+      type: SINGLE_SMURF,
+      payload: smurf
+
     }
   }
 
