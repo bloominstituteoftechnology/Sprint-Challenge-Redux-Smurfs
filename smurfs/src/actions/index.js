@@ -21,5 +21,21 @@ export const SINGLE_SMURF = 'SINGLE_SMURF';
 const URL = 'http://localhost:3333'
 
 export const getSmurfs = () => {
-  const smurfs = axios.get(`${URL}`);
+  const smurfs = axios.get(`${URL}/smurfs`);
+  return dispatch => {
+    dispatch({ type: GETTING_SMURFS });
+    smurfs
+      .then(response => {
+        dispatch({ 
+          type: GET_SMURFS, 
+          payload: response.data
+        })
+      })
+      .catch(error => {
+        dispatch({ 
+          type: ERROR, 
+          payload: error
+        });
+      });
+  }
 }
