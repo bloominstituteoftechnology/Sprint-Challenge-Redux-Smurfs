@@ -1,7 +1,11 @@
 import { 
   FETCHING_SMURFS, 
   FETCHING_SMURFS_SUCCESS, 
-  FETCHING_SMURFS_FAIL } from '../actions';
+  FETCHING_SMURFS_FAIL,
+  CREATE_SMURF,
+  CREATE_SMURF_FAIL,
+  CREATE_SMURF_SUCCESS
+} from '../actions';
 /*
   Be sure to import in all of the action types from `../actions`
 */
@@ -15,7 +19,7 @@ const initialState = {
    // updatingSmurf: false,
    // deletingSmurf: false,
    error: null
- }
+ };
 
 
 /*
@@ -26,8 +30,8 @@ const initialState = {
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 export default (state = initialState, action) => {
-  swtich (action.type) {
-    case FETCHING_SMURFS:
+  switch (action.type) {
+    case FETCHING_SMURFS: 
       return Object.assign({}, state, {
         fetchingSmurfs: true,
       });
@@ -35,8 +39,18 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         smurfs: action.payload
+      });
+    case FETCHING_SMURFS_FAIL: {
+      return Object.assign({}, state, {
+        fetchingSmurfs: false,
+        error: action.payload
       })
-      default:
-        return state;
-    } 
+    }
+    case CREATE_SMURF:
+      return Object.assign({}, state, {
+        addingSmurf: true
+      })
+    default:
+      return state;
+    }
   }
