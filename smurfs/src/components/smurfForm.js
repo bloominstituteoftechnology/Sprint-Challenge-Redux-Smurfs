@@ -14,14 +14,17 @@ class SmurfForm extends Component {
   };
 
   handleAddSmurf = () => {
-    const { name, age, height } = this.state;
-    this.props.addSmurf({ name, age, height });
+    //const { name, age, height } = this.state;
+    this.props.addSmurf({ 
+      name: this.state.name, 
+      age: this.state.age, 
+      height:this.state.height });
     this.setState({ name: "", age: "", height: "" });
   };
 
   render() {
     return (
-      <form className="Column-Layout">
+      <form className="smurfForm" onSubmit={this.handleAddSmurf}>
         <input
           className="input"
           value={this.state.name}
@@ -46,7 +49,7 @@ class SmurfForm extends Component {
           placeholder="height"
           onChange={this.handleInputChange}
         />
-        <button onClick={() => this.handleAddSmurf()} type="button">
+        <button type="submit">
           Add New Friend
         </button>
       </form>
