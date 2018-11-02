@@ -46,13 +46,10 @@ export const smurfsReducer = (state = initialState, action) => {
         smurfs: action.payload
         };
     case ADD_SMURF_ERROR:
-        console.log(action.payload);
         return { ...state, addingSmurf: false, error: action.payload };
     case DELETING_SMURF:
-        console.log(action.payload);
         return { ...state, deletedSmurf: false, deletingSmurf: true };
     case DELETED_SMURF:
-        console.log(action.payload);
         return {
         ...state,
         deletingSmurf: false,
@@ -60,7 +57,6 @@ export const smurfsReducer = (state = initialState, action) => {
         smurfs: action.payload
         };
     case DELETE_ERROR:
-        console.log(action.payload);
         return { ...state, deletingSmurf: false, error: action.payload };
 
     default:
