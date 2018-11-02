@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-//import { updateSingleFriend } from "../actions";
+import Smurf from './Smurf'
 
 class Smurfs extends Component {
-  handleShowSmurf = smurf => {
-    //this.props.updateSingleSmurf(smurf);
-  };
 
   render() {
     return (
@@ -14,8 +11,10 @@ class Smurfs extends Component {
         <ul>
           {this.props.smurfs.map(smurf => {
             return (
-              <li onClick={() => this.handleShowSmurf(smurf)}>
-                {smurf.name}
+              <li>
+                {smurf.name}<br/>
+                {smurf.age}<br/>
+                {smurf.height}
               </li>
             );
           })}
@@ -31,9 +30,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    //updateSingleSmurf
-  }
-)(Smurfs);
+export default Smurfs;
