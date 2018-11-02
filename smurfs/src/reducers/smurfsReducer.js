@@ -3,6 +3,7 @@ import * as actionTypes from '../actions';
 const initialState = {
   smurfs: [],
   gettingSmurfs: false,
+  creatingSmurf: false,
   error: null
 };
 
@@ -20,7 +21,11 @@ export const smurfsReducer = (state = initialState, action) => {
         gettingSmurfs: false
       }
     case actionTypes.CREATING_SMURF:
-
+      return {
+        ...state,
+        smurfs: action.payload,
+        creatingSmurf: false
+      }
     case actionTypes.CREATE_SMURF:
 
     case actionTypes.ERROR:

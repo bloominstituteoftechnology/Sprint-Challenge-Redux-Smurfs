@@ -32,11 +32,13 @@ class App extends Component {
           </NavLink>
         </div>
         {this.props.error ? <h3>Error fetching Smurfs</h3>: null}
+       
         <Route 
           exact path='/smurfs'
           render={props => (
            <Smurfs 
-            {...props} />
+            {...props}
+            smurfs={this.props.smurfs} />
           )}/>
         <Route
           exact path='/smurf-form'
@@ -52,9 +54,9 @@ class App extends Component {
 const mapStateToProps = state => {
    const {smurfsReducer} = state;
    return{
-     friends: smurfsReducer.friends,
+     smurfs: smurfsReducer.smurfs,
      error: smurfsReducer.error,
-     gettingFriends: smurfsReducer.gettingFriends
+     gettingSmurfs: smurfsReducer.gettingSmurfs
    }
 };
 

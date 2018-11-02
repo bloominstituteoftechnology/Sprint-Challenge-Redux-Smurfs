@@ -18,10 +18,10 @@ export const SINGLE_SMURF = 'SINGLE_SMURF';
    D - deleteSmurf
 */
 
-const URL = 'http://localhost:3333'
+const URL = 'http://localhost:3333/smurfs'
 
 export const getSmurfs = () => {
-  const smurfs = axios.get(`${URL}/smurfs`);
+  const smurfs = axios.get(`${URL}`);
   return dispatch => {
     dispatch({ type: GETTING_SMURFS });
     smurfs
@@ -37,5 +37,12 @@ export const getSmurfs = () => {
           payload: error
         });
       });
+  }
+}
+
+export const createSmurf = smurf => {
+  const newSmurf = axios.post(`${URL}`, smurf);
+  return dispatch => {
+    dispatch
   }
 }
