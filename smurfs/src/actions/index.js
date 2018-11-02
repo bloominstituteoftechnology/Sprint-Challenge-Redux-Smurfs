@@ -20,18 +20,18 @@ export function getSmurfs() {
       })
   }
 }
-// export function addSmurf(smurf) {
-//   return function(dispatch) {
-//     dispatch({ type: CREATE_SMURF });
-//     axios.post('localhost:3333/smurfs')
-//       .then(response => {
-//         dispatch({ type: CREATE_SMURF_SUCCESS, payload: response.data });
-//       })
-//       .catch(error => {
-//         dispatch({ type: CREATE_SMURF_FAIL, payload: error })
-//       })
-//   }
-// }
+export function addSmurf(smurf) {
+  return function(dispatch) {
+    dispatch({ type: CREATE_SMURF });
+    axios.post('http://localhost:3333/smurfs', smurf)
+      .then(response => {
+        dispatch({ type: CREATE_SMURF_SUCCESS, payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: CREATE_SMURF_FAIL, payload: error })
+      })
+  }
+}
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer

@@ -38,7 +38,7 @@ export default (state = initialState, action) => {
     case FETCHING_SMURFS_SUCCESS:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
-        smurfs: action.payload
+        smurfs: action.payload,
       });
     case FETCHING_SMURFS_FAIL: {
       return Object.assign({}, state, {
@@ -49,6 +49,16 @@ export default (state = initialState, action) => {
     case CREATE_SMURF:
       return Object.assign({}, state, {
         addingSmurf: true
+      })
+    case CREATE_SMURF_SUCCESS:
+      return Object.assign({}, state, {
+        addingSmurf: false,
+        smurfs: action.payload
+      })
+    case CREATE_SMURF_FAIL:
+      return Object.assign({}, state, {
+        addingSmurf: false,
+        error: action.payload
       })
     default:
       return state;
