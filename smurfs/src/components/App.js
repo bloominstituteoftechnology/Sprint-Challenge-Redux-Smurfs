@@ -33,13 +33,17 @@ class App extends Component {
         </div>
         {this.props.error ? <h3>Error fetching Smurfs</h3>: null}
         <Route 
-          exact path='/smurfs' 
-          component={Smurfs} 
-        />
+          exact path='/smurfs'
+          render={props => (
+           <Smurfs 
+            {...props} />
+          )}/>
         <Route
-          path='/smurf-form'
-          component={SmurfForm} 
-        />
+          exact path='/smurf-form'
+          render={props => (
+           <SmurfForm
+            {...props} />
+          )}/>
       </div>
     );
   }

@@ -6,8 +6,10 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, IndexRoute, Route } from 'react-router-dom';
 import rootReducer from './reducers';
+import SelectedSmurf from './components/SelectedSmurf';
+import Smurfs from './components/Smurfs';
 
 
 const store = createStore(
@@ -18,7 +20,8 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <App />
+      <Route path='/'component={App}>
+      </Route>
     </Router>
   </Provider>,
   document.getElementById('root')

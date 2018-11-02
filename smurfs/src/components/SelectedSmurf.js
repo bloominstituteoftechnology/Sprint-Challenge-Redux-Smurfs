@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function SelectedSmurf(props) {
-  return <div />;
+  return <h2>Selected Smurf</h2>;
 }
