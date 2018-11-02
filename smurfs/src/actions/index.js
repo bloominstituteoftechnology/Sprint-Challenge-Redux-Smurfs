@@ -10,6 +10,7 @@ export const TOGGLE_UPDATE_SMURF = 'TOGGLE_UPDATE_SMURF';
 export const UPDATE_SMURF = 'UPDATE_SMURF';
 export const UPDATING_SMURF = 'UPDATING_SMURF';
 export const DELETE_SMURF = 'DELETE_SMURF';
+export const DELETING_SMURF = 'DELETING_SMURF';
 export const TOGGLE_SMURF = 'TOGGLE_SMURF';
 
 const URL = "http://localhost:3333/smurfs";

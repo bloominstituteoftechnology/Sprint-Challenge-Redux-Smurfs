@@ -14,7 +14,7 @@ const SelectedSmurf = function(props) {
       <div>{props.selected.height}</div>
       <div>{props.selected.age}</div>
       <button onClick={() => props.toggleUpdateSmurf()}>Update</button>
-      
+      <button onClick={()=> props.toggleSmurf()}>Click Me Then Delete</button>
       <button onClick={() => props.deleteSmurf()}>Delete Smurf</button>
       {props.showUpdate ? <UpdateSmurfForm id={props.selected.id} /> : null}
     </div>

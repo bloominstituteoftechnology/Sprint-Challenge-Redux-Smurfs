@@ -29,18 +29,13 @@ export const smurfsReducer = (state = initialState, action) => {
         gettingSmurf: false,
         error: action.payload
       };
-      case actionTypes.TOGGLE_SMURF:
-            return {
-                ...state,
-                smurfs: state.smurfs.map((item, index) => {
-                    if (index === action.payload){
-                        return { ...item, deletingSmurf: !item.deletingSmurf };
 
-                    } else { return item };
-                })
-            };
+      case actionTypes.TOGGLE_SMURF:
+      return { ...state, deletingSmurf: true };
+
       case actionTypes.DELETE_SMURF:
-      return {smurfs: state.smurfs.filter(item => !item.deletingSmurf)}
+      return {smurfs: state.smurfs.filter(item => item.deletingSmurf: true)}
+
     default:
       return state;
   }

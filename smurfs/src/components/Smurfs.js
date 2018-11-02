@@ -18,7 +18,7 @@ class Smurfs extends Component {
           {this.props.smurfs.map(smurf => {
             return (
               <li onClick={() => this.handleShowSmurf(smurf)}>
-                <span>{smurf.name}</span>
+                {smurf.name}
               </li>
             );
           })}
