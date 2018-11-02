@@ -19,12 +19,19 @@ class App extends Component {
   }
 
   render() {
+    if (this.props.fetchingSmurfs) {
+      return <h3>finding your smurfs...</h3>
+    }
     return (
       <div className="App">
         <div className='Smurf-List'>
         {this.props.smurfs.map(smurf => {
           return (
-            <div>{smurf.name}</div>
+          <ul>
+            <strong>{smurf.name} Smurf</strong>
+            <div><em>{smurf.age} years old</em></div>
+            <div>{smurf.height}</div>
+          </ul>
           )
         })}
         </div>
