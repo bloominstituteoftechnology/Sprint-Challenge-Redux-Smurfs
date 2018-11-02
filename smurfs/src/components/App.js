@@ -6,7 +6,7 @@ import SmurfForm from "./Form";
 
 class App extends Component {
   componentDidMount() {
-    this.props.getSmurfs();
+    this.props.fetchSmurfs();
   }
 
   render() {
