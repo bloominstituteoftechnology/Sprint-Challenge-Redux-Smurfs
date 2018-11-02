@@ -1,7 +1,12 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCH_SMURFS, SUCCESS_FETCH, FAILURE } from "../actions";
+import { FETCH_SMURFS, 
+        SUCCESS_FETCH, 
+        FAILURE,
+        ADD_SMURF,
+        SUCCESS_ADD,
+        ADD_FAILURE } from "../actions";
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -37,10 +42,11 @@ export const smurfReducer = (state=initialState, action) => {
       };
 
     case SUCCESS_FETCH:
+    console.log(state.smurfs, action.payload)
       return {
         ...state,
         fetchingSmurfs: false,
-        smurfs:[...state.smurfs, ...action.payload]
+        smurfs: [...state.smurfs, ...action.payload]
       };
 
     case FAILURE:
@@ -48,6 +54,25 @@ export const smurfReducer = (state=initialState, action) => {
         ...state,
         fetchingSmurfs: false,
         error: action.payload,
+      };
+    
+    case ADD_SMURF:
+      return {
+        ...state,
+        addSmurf: true
+      }
+    
+    case SUCCESS_ADD:
+      return {
+        ...state,
+        addSmurf: false
+      }
+    
+    case ADD_FAILURE:
+      return {
+        ...state,
+        addSmurf: false,
+        error: action.payload
       }
     default:
       return state;
