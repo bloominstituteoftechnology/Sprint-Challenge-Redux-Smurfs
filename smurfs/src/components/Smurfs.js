@@ -12,9 +12,9 @@ class Smurfs extends React.Component {
       <div>  
         <h1>Smurf Village</h1>
         <ul className='smurfList' >
-          {this.props.smurfs.map( smurf => {
+          {this.props.smurfs.map( (smurf,i) => {
             return(
-              <li>
+              <li key={i} i={i}>
                 {smurf.name}
               </li>
             )

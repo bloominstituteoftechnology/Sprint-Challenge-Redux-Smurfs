@@ -11,9 +11,17 @@ class SmurfForm extends React.Component {
     height: '',
   }
 
-  handleInputChange = event => {};
+  handleInputChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  };
 
-  handleAddSmurf = () => {};
+  handleAddSmurf = () => {
+    const { name, age, height } = this.state;
+    createSmurf({ name, age, height });
+    this.setState({ name: '', age: '', height: ''});
+  };
 
   render() {
     return (
