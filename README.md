@@ -34,10 +34,10 @@ src
   - actions
     - index.js
 ```
-
-* **Open** `src/index.js` to make sure that your app is ready to roll with the proper middleware.
-* **cd** into `smurfs` and run `yarn` or `npm install` to retrieve the client side dependencies.
-* **RUN** `yarn start` or `npm start` to fire up your React application. There ought to be a pretty little message awaiting you welcoming you to the app. `Follow` the prompting.
+<!-- 
+* **Open** `src/index.js` to make sure that your app is ready to roll with the proper middleware. -->
+<!-- * **cd** into `smurfs` and run `yarn` or `npm install` to retrieve the client side dependencies. -->
+<!-- * **RUN** `yarn start` or `npm start` to fire up your React application. There ought to be a pretty little message awaiting you welcoming you to the app. `Follow` the prompting. -->
 
 ## Project Description
 
@@ -57,7 +57,7 @@ return dispatch => {
     dispatch({ type: ANOTHER_ACTION_TYPE, payload: data });
   });
 };
-```
+
 
 * Your response from the server should be an array of smurfs.
 
@@ -106,7 +106,7 @@ return dispatch => {
   }
 ];
 ```
-
+<!-- 
 ## STRETCH PROBLEM
 
 * The following two endpoints are here for you if you'd like to push yourselves a little further.
@@ -156,4 +156,4 @@ output: [
     id: 1
   }
 ];
-```
+``` -->

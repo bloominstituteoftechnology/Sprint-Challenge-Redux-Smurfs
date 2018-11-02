@@ -22,4 +22,4 @@ Which method do we use to create a new object while extending the properties of 
 How does it change our `action-creators`?
 <!-- Dispatches multiple action from a single action creator. -->
 6.  Which `react-redux` method links up our `components` with our `redux store`?
-<!-- Provider -->
+<!-- Connect -->
