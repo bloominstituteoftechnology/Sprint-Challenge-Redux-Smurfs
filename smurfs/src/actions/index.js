@@ -21,16 +21,13 @@ export const fetchSmurfs = () => {
       });
   };
 };
-export const addSmurfs = smurf => {
-  return dispatch => {
-    dispatch({ type: ADD });
-    axios
+export const addSmurfs = smurf => dispatch => {
+  axios
       .post(url, smurf)
-      .then(() => {
-        dispatch(fetchSmurfs());
+      .then(response => {
+        dispatch({ type: ADD, payload: response.data })
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
       });
   };
-};

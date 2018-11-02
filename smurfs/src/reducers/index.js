@@ -9,7 +9,7 @@ import {
     smurfs: [],
     fetchingSmurfs: false,
     fetchedSmurfs: false,
-    addingSmurf: false,
+    // addingSmurf: false,
     addedSmurf: false,
     error: null
   }

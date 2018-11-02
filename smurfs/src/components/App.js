@@ -19,11 +19,11 @@ class App extends Component {
           <div>
             {this.props.smurfs.map(smurfs => {
               return (
-                <li key={smurfs.index}>
-                  Name: {smurfs.name}, <br />
-                  Age: {smurfs.age}, <br />
-                  Height: {smurfs.height}, <br />
-                </li>
+                <div key={smurfs.index}>
+                  <h2> Name: {smurfs.name}</h2>
+                  <p>Age: {smurfs.age}</p>
+                  <p>Height: {smurfs.height}</p>
+                  </div>
               );
             })}
           </div>
