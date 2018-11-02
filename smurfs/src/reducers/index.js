@@ -35,7 +35,7 @@ const initialState = {
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-export default (state = initialState, action) => {
+export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
       return Object.assign({}, state, { 
