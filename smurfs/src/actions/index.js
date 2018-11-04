@@ -6,7 +6,9 @@ export const GETTING_SMURFS = 'GETTING_SMURFS';
 export const CREATE_SMURF = 'CREATE_SMURF';
 export const CREATING_SMURF = 'CREATING_SMURF';
 export const SINGLE_SMURF = 'SINGLE_SMURF';
-
+export const TOGGLE_UPDATE_SMURF = 'TOGGLE_UPDATE_SMURF';
+export const UPDATING_SMURF = 'UPDATING_SMURF';
+export const UPDATE_SMURF = 'UPDATE_SMURF';
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -51,5 +53,32 @@ export const createSmurf = smurf => {
     .catch(error => {
       dispatch({ type: ERROR, payload: error })
     });
-  }
-}
+  };
+};
+
+export const updateSingleSmurf = smurf => {
+  return {
+    type: SINGLE_SMURF,
+    payload: smurf
+  };
+};
+
+export const updateSmurf = (id, body) => {
+  const updatedSmurf = axios.put(`${URL}/smurfs/${id}`, body);
+  return dispatch => {
+    dispatch({ type: UPDATING_SMURF });
+    updatedSmurf
+      .then(({ data }) => {
+        dispatch({ type: UPDATE_SMURF, payload: data });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error });
+      });
+  };
+};
+
+export const toggleShowUpdate = () => {
+  return {
+    type: TOGGLE_UPDATE_SMURF
+  };
+};

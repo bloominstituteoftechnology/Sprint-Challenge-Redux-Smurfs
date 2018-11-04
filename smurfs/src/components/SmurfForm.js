@@ -67,4 +67,9 @@ class SmurfForm extends React.Component {
   }
 }
 
-export default SmurfForm;
+const mapStateToProps = state => {};
+
+export default connect(
+  mapStateToProps,
+  { createSmurf }
+)(SmurfForm);
