@@ -7,7 +7,7 @@ import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import smurfsReducer from './reducers';
-// import {fetchSmurfs} from './components/actions';
+import {fetchSmurfs} from './components/actions';
 
 
 const store = createStore({ smurfsReducer }, applyMiddleware(thunk, logger));

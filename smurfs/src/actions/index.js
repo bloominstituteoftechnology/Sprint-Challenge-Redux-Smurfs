@@ -16,7 +16,6 @@
 
 
 import axios from "axios";
-
 export const FETCHED = "FETCHED";
 export const FETCHING = "FETCHING";
 export const POSTING = "POSTING";
