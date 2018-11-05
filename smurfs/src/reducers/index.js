@@ -40,7 +40,12 @@ const smurfsReducer = (state = initialState, action) => {
         fetchingSmurfs: false,
         smurfsFetched: true
       });
-     default:
+     case ERROR:
+     return Object.assign(),state,{
+      error: "Data fetch failed"
+     };
+     
+      default:
       return state;
   }
 };
