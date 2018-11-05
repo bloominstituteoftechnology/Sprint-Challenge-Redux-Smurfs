@@ -45,27 +45,27 @@
 
 .smurfList {
   background-color: rgb(190, 190, 245);
-  width: 30%;
   min-width: 150px;
   padding: 5px;
   margin: 5px;
   -webkit-box-shadow: 5px 5px 15px 5px #000000; 
   box-shadow: 5px 5px 15px 5px #270683;
   border-radius:15%;
+  
 }
 
 ul {
   display: flex;
   font-family: cursive;
   letter-spacing: 1px;
-  font-size: 20px;
+  font-size: 1.4rem;
   font-weight: bold;
   flex-direction: column;
   list-style-type:none;
 }
 
 .smurfListName {
-  padding: 10px;
+  padding: 10px 30px;
 }
 
 .smurfListName:hover {
