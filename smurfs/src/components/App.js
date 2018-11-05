@@ -20,16 +20,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>SMURFS! 2.0 W/ Redux</h1>
-        </header>
-        <div className="navbar">
-          <NavLink to='/smurfs'>
-            <h3>Visit Smurf Village</h3>
-          </NavLink>
-          <NavLink to='/smurf-form'>
-            <h3>Add Smurf!</h3>
-          </NavLink>
+        <div className='topBar'>
+          <header className="App-header">
+            <h1>SMURFS! 2.0 W/ Redux</h1>
+          </header>
+          <div className="navbar">
+            <NavLink to='/smurfs'>
+              <h3>Visit Smurf Village</h3>
+            </NavLink>
+            <NavLink to='/smurf-form'>
+              <h3>Add Smurf!</h3>
+            </NavLink>
+          </div>
         </div>
         {this.props.error ? <h3>Error fetching Smurfs</h3>: null}
        
