@@ -1,18 +1,12 @@
-import React from 'react';
+import React from "react";
 import Smurf from "./Smurf";
 
-const SmurfsList = ( props ) =>
-{
-  return(
-    <div>
-      {
-        props.smurfs.map( ( smurf, index ) =>
-        {
-          return( <Smurf smurf = { smurf } key = { index }/> )
-        })
-      }
-    </div>
-  )
-}
+const SmurfList = props => (
+  <div className="smurfs">
+    {props.smurfs.map(smurf => (
+      <Smurf smurf={smurf} key={smurf.id} />
+    ))}
+  </div>
+);
 
-export default SmurfsList;
+export default SmurfList;

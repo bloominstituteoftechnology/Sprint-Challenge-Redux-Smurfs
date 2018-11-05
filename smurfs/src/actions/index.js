@@ -4,11 +4,13 @@
 */
 import axios from "axios";
 
-export const FETCHING_SMURFS = "FETCHING_SMURFS";
-export const GETTING_SMURFS = "GETTING_SMURFS;"
+export const FETCHING = "FETCHING";
+export const FETCHING_SUCCESS = "FETCHING_SUCCESS";
+export const FETCHING_FAILURE = "FETCHING_FAILURE";
+
 export const ADDING = "ADDING";
-export const ADDING_SMURFS = "ADDING_SMURFS";
-export const FAILURE = "FAILURE";
+export const ADDING_SUCCESS = "ADDING_SUCCESS";
+export const ADDING_FAILURE = "ADDING_FAILURE";
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -21,20 +23,19 @@ export const FAILURE = "FAILURE";
    D - deleteSmurf
 */
 
-export const fetchSmurfs = () => ( dispatch ) =>
-{
-  dispatch( { type: FETCHING_SMURFS } );
+export const fetchSmurfs = () => dispatch => {
+  dispatch({ type: FETCHING });
   axios
-    .get( "http://localhost:3333/smurfs" )
-    .then( ( r ) => dispatch( { type: GETTING_SMURFS, payload: r.data } ) )
-    .catch( ( error ) => dispatch( { type: FAILURE, payload: error } ) );
-}
+    .get("http://localhost:3333/smurfs")
+    .then(res => dispatch({ type: FETCHING_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: FETCHING_FAILURE, payload: err }));
+};
 
-export const addSmurf = ( smurf ) => ( dispatch ) =>
-{
-  dispatch( { type: ADDING } );
+
+export const addSmurf = smurf => dispatch => {
+  dispatch({ type: ADDING });
   axios
-    .post( "http://localhost:3333/smurfs", smurf )
-    .then( ( r ) => dispatch( { type: ADDING_SMURFS, payload: r.data } ) )
-    .catch( ( error ) => dispatch( { type: FAILURE, payload: error  } ) ); 
-}
+    .post("http://localhost:3333/smurfs", smurf)
+    .then(res => dispatch({ type: ADDING_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: ADDING_FAILURE, payload: err }));
+};
