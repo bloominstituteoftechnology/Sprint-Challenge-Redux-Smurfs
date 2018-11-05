@@ -1,10 +1,31 @@
 .selectedSmurf {
+  display: flex;
   background-color: rgb(190, 190, 245);
-  width: 30%;
   min-width: 150px;
   padding: 5px;
   margin: 5px;
   -webkit-box-shadow: 5px 5px 15px 5px #000000; 
   box-shadow: 5px 5px 15px 5px #270683;
   border-radius:15%;
+  font-size: 1.2rem;
+  font-family: cursive;
+  font-weight: bold;
+}
+
+.nameAndX {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+}
+.avatarBox:hover {
+  cursor: pointer;
+}
+img {
+  width: 80%;
+  height: auto
+}
+
+.avatar { 
+  font-size: .8rem;
+  margin-top: -4px;
 }

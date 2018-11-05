@@ -3,6 +3,7 @@ import './App.css';
 import SelectedSmurf from './SelectedSmurf';
 import { connect } from 'react-redux';
 import { createSmurf } from '../actions';
+import './SmurfForm.css';
 
 class SmurfForm extends React.Component {
   state = {
