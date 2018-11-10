@@ -23,10 +23,13 @@ componentDidMount() {
         {!this.props.fetchingSmurfs && this.props.smurfs.length ?
             <ul>
               {this.props.smurfs.map(smurf => {
-                return
-                <li>
-                  <p>{smurf.name}</p>
+                return (
+                  <li>
+                  <h2>Name: {smurf.name}</h2>
+                  <p>Age: {smurf.age}</p>
+                  <p>Hieght: {smurf.height}</p>
                 </li> 
+                )
               })}
             </ul> : null}
 
