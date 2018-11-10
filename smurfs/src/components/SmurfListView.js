@@ -13,21 +13,13 @@ class SmurfListView extends React.Component {
   componentDidMount() {
     // call our action
     this.props.getSmurfs()
-    console.log("smurfs", this.props.smurfs)
   }
 
   render() {
     if (this.props.loading) {
-      <h1>LOADING</h1> 
+      <h1>LOADING</h1>
     }
     return (<div>
-
-      {/* {
-        this.props.error !== ''
-          ? <h1>{this.props.error}</h1>
-          : null
-      } */}
-
        <SmurfList smurfs={this.props.smurfs} />
     </div>);
   }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import {createSmurf} from "../actions";
 
-class createSmurf extends Component {
+class CreateSmurf extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -29,7 +29,7 @@ class createSmurf extends Component {
         <input type="text" name="name" value={this.state.name} onChange={this.inputHandler} placeholder="Name"/>
         <input type="text" name="age" value={this.state.age} onChange={this.inputHandler} placeholder="age"/>
         <input type="text" name="height" value={this.state.height} onChange={this.inputHandler} placeholder="height"/>
-\    <button type="submit">Update</button>
+   <button type="submit">Update</button>
       </form>
     )
   }
@@ -38,4 +38,4 @@ const mapStateToProps = state => {
   return {}
 }
 
-export default connect(mapStateToProps, { createSmurf })(CreateSmurf);
+export default connect(mapStateToProps, { createSmurf }) (CreateSmurf);
