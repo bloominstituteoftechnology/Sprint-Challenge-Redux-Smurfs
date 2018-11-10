@@ -26,7 +26,7 @@ export const addSmurf = (newSmurf) => {
         dispatch({type: GET_SMURFS, smurfs: response.data})
       })
       .catch(err => {
-        dispatch({type: ERROR_MESSGE, errorMessage: "The Village unanimously rejected this Smurf."})
+        dispatch({type: ERROR_MESSAGE, errorMessage: "The Village unanimously rejected this Smurf."})
       })
   }
 }
