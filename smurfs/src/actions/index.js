@@ -64,3 +64,18 @@ export const deleteSmurf = id => {
   }
 }
 
+//PUT
+export const updateSmurf = theupdatedSmurf => {
+  return (dispatch) => {
+    dispatch({ type: LOADING })
+    axios
+      .put(`http://localhost:3333/smurfs/${theupdatedSmurf.id}`, theupdatedSmurf)
+      .then(response => {
+        dispatch({ type: SUCCESS, smurfs: response.data })
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, errorMessage: "Trouble Updating Smurf"})
+      })
+  }
+}
+
