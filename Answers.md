@@ -45,6 +45,9 @@
     * Component state is the state that React let's us use on a class component. This is generally used for states that don't need to be nested too deep like passing an array of objects to another component or holding user input. This is preferred to be used when there is not a lot of nesting going on in your components making it easy to figure out.
 
 1.  What is middleware?
+
+    * Middleware is a piece of code that is like a bridge between 2 different code bases
+
 1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 1.  Which `react-redux` method links up our `components` with our `redux store`?
 
