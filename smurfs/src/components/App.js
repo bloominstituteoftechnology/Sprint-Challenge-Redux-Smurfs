@@ -36,6 +36,33 @@ class App extends Component {
         <div>Have fun!</div>
 
 
+        <input
+          type = 'text'
+          placeholder = 'Smurf name'
+          name = 'name'
+          value = {name}
+
+        />
+
+        <input
+          type = 'text'
+          placeholder= 'Smurf age'
+          name = 'age'
+          value = {age}
+
+        />
+
+        <input
+          type = 'text'
+          placeholder = 'Smurf height'
+          name = 'height'
+          value = {height}
+          
+        />
+
+
+
+
         {
           !fetchingSmurfs && smurfs.length ?
             <ul>
