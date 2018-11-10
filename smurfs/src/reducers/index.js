@@ -4,14 +4,14 @@
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
-   error: null
- }
+  {
+    smurfs: [],
+    fetchingSmurfs: false
+    addingSmurf: false
+    updatingSmurf: false
+    deletingSmurf: false
+    error: null
+  }  
 */
 
 /*
