@@ -42,4 +42,24 @@ export const getSmurfs = () => {
 };
 
 //POST
-export const addSmurf = () => {};
+export const addSmurf = newSmurf => {
+  console.log('addSmurf executed');
+  return dispatch => {
+    dispatch({ type: FETCHING });
+    axios
+      .post('http://localhost:3333/smurfs', newSmurf)
+      .then(response => {
+        console.log(response);
+        dispatch({
+          type: SUCCESS,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: FAIL,
+          payload: 'Failed to load data'
+        });
+      });
+  };
+};
