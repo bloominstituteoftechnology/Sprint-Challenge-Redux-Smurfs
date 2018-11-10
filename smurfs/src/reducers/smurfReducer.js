@@ -1,6 +1,6 @@
 
 
-import {GATHERING, SUCCESS, ERROR} from 'react-redux'
+import {GATHERING, SUCCESS, ERROR} from '../actions'
 /*
   Be sure to import in all of the action types from `../actions`
 */
@@ -15,9 +15,9 @@ const initialState = {
   error: null,
 }
 
-export default (state = initialState, actions) => {
+export default (state = initialState, action) => {
 
-    switch(actions.type) {
+    switch(action.type) {
         case GATHERING:
         return Object.assign({}, state, {gatheringSmurfs: true})
         case SUCCESS:
