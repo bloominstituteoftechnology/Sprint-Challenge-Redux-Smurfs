@@ -1,23 +1,34 @@
 import React from "react"
+import {connect} from "react-redux";
+import {getSmurfs} from "../actions/index";
+import Smurf from "./Smurf"
 
-export default class SmurfList extends React.Component {
-   constructor(){
-      super()
-      this.state = {
-
-      }
-   }
+class SmurfList extends React.Component {
    componentDidMount() {
-      
+      this.props.getSmurfs()
    }
    render(){
+      
       return (
          <div>
-         <h1>SMURFS! 2.0 W/ Redux</h1>
-         <div>Welcome to your Redux version of Smurfs!</div>
-         <div>Start inside of your `src/index.js` file!</div>
-         <div>Have fun!</div>
-        </div>
+            <h1>SMURFS! 2.0 W/ Redux</h1>
+            {this.props.loading ? <h2> Loading Smurfs...</h2> : null}
+            {this.props.error !== null ? <h2>{this.props.error}</h2> : null}
+            {this.props.smurfs.length > 0 ? <h2>Welcome to Smurf Village!</h2> : null}
+            {this.props.smurfs.map(smurf => {
+               return <Smurf key={smurf.name} smurf={smurf} />
+            })}
+         </div>
       )
    }
 }
+
+const mapState = state => {
+   return {
+      smurfs: state.smurfs,
+      loading: state.loading,
+      error: state.error
+   }
+}
+
+export default connect(mapState, {getSmurfs})(SmurfList)

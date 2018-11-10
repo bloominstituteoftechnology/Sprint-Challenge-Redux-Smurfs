@@ -13,11 +13,16 @@ export const getSmurfs = () => {
     dispatch({type: LOADING})
     axios.get(`http://localhost:3333/smurfs`)
       .then(response => {
-        console.log(response)
-        dispatch({type: SUCCESS})
+        dispatch({
+          type: SUCCESS,
+          payload: response.data
+        })
       })
       .catch(err => {
-        dispatch({type: FAIL})
+        dispatch({
+          type: FAIL,
+          payload: "Oh No! The Smurfs are hiding. Please try again"
+        })
       })
   }
 }

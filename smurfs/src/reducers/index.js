@@ -26,6 +26,18 @@ const rootReducer = (state = initialState, action) => {
   switch(action.type) {
     case LOADING:
       return Object.assign({}, state, {loading: true})
+    case SUCCESS:
+      return Object.assign({}, state, {
+        smurfs: action.payload,
+        loading: false,
+        error: null
+      })
+    case FAIL:
+      return Object.assign({}, state, {
+        smurfs: [],
+        loading: false,
+        error: action.payload
+      })
     default:
       return state
   }
