@@ -5,6 +5,7 @@
 import axios from 'axios'
 export const GET_SMURFS = 'GET_SMURFS'
 export const LOADING = 'loading'
+export const ADD_SMURF = "ADD_SMURF"
 export const DELETE_SMURFS = 'DELETE_SMURFS'
 export const ERROR = 'ERROR'
 

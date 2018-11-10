@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import {createSmurf} from '../actions/'
+import {addSmurf} from '../actions/'
 
-class CreateSmurf extends Component {
+class AddSmurf extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -19,7 +19,7 @@ class CreateSmurf extends Component {
 
     submitHandler = (e) => {
         e.preventDefault()
-        this.props.createSmurf(this.state)
+        this.props.addSmurf(this.state)
     }
 
     render(){
@@ -34,4 +34,9 @@ class CreateSmurf extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {}
+  }
+  
+export default connect(mapStateToProps, {AddSmurf: AddSmurf})(AddSmurf)
 
