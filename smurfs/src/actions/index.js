@@ -38,6 +38,16 @@ export const fetchingSmurfs = () => {
 export const createSmurf = smurfData => {
   return dispatch => {
     dispatch({ type: LOADING, payload: smurfData });
-    // axios.get
+    axios
+      .post(`http://localhost:3333/smurfs`, smurfData)
+      .then(response => {
+        dispatch({ type: SUCCESS, payload: response.data });
+      })
+      .catch(err =>
+        dispatch({
+          type: ERROR,
+          payload: `Smurf! We didn't smurf that. Can you smurf again? => ${err}`
+        })
+      );
   };
 };

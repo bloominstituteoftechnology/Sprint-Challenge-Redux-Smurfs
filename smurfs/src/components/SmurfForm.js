@@ -81,6 +81,6 @@ class SmurfForm extends React.Component {
 }
 
 export default connect(
-  () => {},
+  () => ({}),
   { createSmurf }
 )(SmurfForm);
