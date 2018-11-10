@@ -42,10 +42,12 @@ export default ( state = initialState, action ) => {
         error: null
       });
 
+    case CREATING:
+      return Object.assign( {}, state, {adding: true} );
+
     case ERROR:
       return Object.assign( {}, {error: action.errMsg, loading: false});
 
-    case CREATING:
     case DELETING:
     default:
       return state;
