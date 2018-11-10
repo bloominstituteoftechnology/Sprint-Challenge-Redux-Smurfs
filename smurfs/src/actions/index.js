@@ -5,7 +5,7 @@
 import axios from 'axios';
 
 export const GETTING_SMURF = 'GETTING_SMURF';
-export const SMURFS_RECIEVED = 'SMURFS_RECIEVED';
+export const SMURFS_RECEIVED = 'SMURFS_RECIEVED';
 export const ERROR = 'ERROR';
 export const CREATING_SMURF = 'CREATING_SMURF';
 export const CREATED_SMURF = 'CREATED_SMURF';
