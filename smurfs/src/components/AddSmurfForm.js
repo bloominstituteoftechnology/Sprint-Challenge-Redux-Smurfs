@@ -45,7 +45,7 @@ class AddSmurfForm extends React.Component {
           value={this.state.height}
           onChange={this.inputHandler}
         />
-        <button type="submit">Add Smurf!</button>
+        <button type="submit" className="add-smurf-button">Add Smurf!</button>
       </form>
     )
   }
