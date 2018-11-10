@@ -7,6 +7,8 @@
 
 ## Start by forking and cloning this repository.
 
+- [x] Fork and clone.
+
 ## Questions - Self Study - You can exercise your Google-Fu for this and any other _Sprint Challenge_ in the future.
 
 1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
