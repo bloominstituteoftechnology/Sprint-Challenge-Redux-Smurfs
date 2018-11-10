@@ -42,8 +42,7 @@ export const addSmurf = newSmurf => dispatch => {
     .post(`${URL}/smurfs`, newSmurf)
     .then(response => {
       console.log(response.data)
-      dispatch({ type: ADD_SMURF, payload: response.data })
-
+      dispatch({ type: ADD_SMURF, payload: response.data})
     }
     )
     .catch(err => {
