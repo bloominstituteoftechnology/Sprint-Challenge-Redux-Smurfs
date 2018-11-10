@@ -23,7 +23,8 @@ export const getSmurfs = () =>{
 
     axios.get('http://localhost:3333/smurfs')
     .then(response =>{
-      console.log(response);
+      // console.log('get response ',response);
+      dispatch({type: SUCCESS, payload: response.data})
     })
     .catch(err =>{
       dispatch({type: ERROR, payload: 'Unable to retrieve smurfs'})
