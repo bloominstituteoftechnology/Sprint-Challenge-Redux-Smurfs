@@ -32,3 +32,17 @@ export const getSmurfs = () => {
 }
 
 //POST newsmurf action here
+
+export const createSmurf = (newSmurf) =>{
+  return (dispatch) => {
+    dispatch({type: LOADING})
+    axios
+      .post('http://localhost:3333/smurfs', newSmurf)
+      .then(response => {
+        dispatch({type: GET_SMURFS, smurfs: respose.data})
+      })
+      .catch( err => {
+        dispatch({type: ERROR, errorMessage: "Couldn't create a new smurf"})
+      })
+  }
+}
