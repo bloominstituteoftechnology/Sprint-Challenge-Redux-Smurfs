@@ -26,3 +26,14 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.navBar{
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.villageimg{
+  width: 100%;
+  height: auto;
+}
