@@ -11,7 +11,7 @@ import {
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
 const initialState = {
     smurfs: [],
-    // fetchingSmurfs: false
+    fetchingSmurfs: false,
     // addingSmurf: false
     // not worrying about this YET as it's a stretch goal
     // updatingSmurf: false

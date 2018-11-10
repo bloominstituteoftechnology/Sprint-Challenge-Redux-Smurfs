@@ -14,11 +14,27 @@ class App extends Component {
 
 componentDidMount() {
   this.props.getSmurfs();
+    // state = {
+    //   name: '',
+    //   age: '',
+    //   height: ''
+    // }
 }
 
   render() {
     return (
       <div className="App">
+
+      {/* 
+      <form onSubmit={}>
+        <input type="text" name="name" value={this.state.name} placeholder={Enter name...} onChange={} />
+        <input type="text" name="age" value={this.state.age} placeholder={Enter age...} onChange={} />
+        <input type="text" name="height" value={this.state.name} placeholder={Enter height...} onChange={} /> 
+        <button type="submit">Add Smurf</button>
+      </form>
+    */}
+
+
         {this.props.fetchingSmurfs ? <h2>Loading...</h2> : null }
         {!this.props.fetchingSmurfs && this.props.smurfs.length ?
             <ul>
