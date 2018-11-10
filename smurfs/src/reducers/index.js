@@ -1,4 +1,11 @@
-import { GET_SMURFS, POST_SMURF, PUT_SMURF, SUCCESS, ERROR } from '../actions';
+import {
+  GET_SMURFS,
+  POST_SMURF,
+  PUT_SMURF,
+  DELETE_SMURF,
+  SUCCESS,
+  ERROR,
+} from '../actions';
 
 const initialState = {
   smurfs: [],
@@ -11,6 +18,7 @@ export default (state = initialState, action) => {
     case GET_SMURFS:
     case POST_SMURF:
     case PUT_SMURF:
+    case DELETE_SMURF:
       return Object.assign({}, state, { loading: true });
     case SUCCESS:
       return Object.assign({}, state, {
