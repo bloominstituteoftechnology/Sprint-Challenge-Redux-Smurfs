@@ -47,3 +47,9 @@
 1.  What is middleware?
 1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 1.  Which `react-redux` method links up our `components` with our `redux store`?
+
+    * The method to connect our components to the redux store is connect and we import it on each component. We set up our component this way
+
+    ```
+    export default connect(mapStateToProps)(Component);
+    ```
