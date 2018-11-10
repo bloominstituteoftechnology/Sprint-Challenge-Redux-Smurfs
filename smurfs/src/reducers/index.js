@@ -15,7 +15,7 @@ export default function (state = initialState, action){
         case actions.FETCH_ERROR    : return handleFetchError(state, action);
         case actions.FETCHING       : return handleFetching  (state, action);
         case actions.SMURFS_RESPONSE: return handleSmurfsList(state, action);
-        case actions.FOCUS_CANCEL   : 
+        case actions.FOCUS_CANCEL   : /* Fall Through */
         case actions.FOCUS_SMURF    : return handleFocus     (state, action);
         default                     : return                  state         ;
     }
