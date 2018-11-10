@@ -1,6 +1,4 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import {LOADING, ERROR, GET_SMURFS} from '../actions/index'
 
 const initialState = {
 smurfs : [],
@@ -9,24 +7,19 @@ loading: false
 
 };
 
-
 export default (state = initialState, action) =>{
   switch(action.type){
+    case LOADING:
+    return Object.assign({}, state, {loading:true})
+    case GET_SMURFS:
+    return Object.assign({}, state, {smurfs: action.smurfs, loading: false, error:''})
+    case ERROR:
+    return Object.assign({},state,{error: action.errorMesage, loading: false})
     default:
       return state;
   }
 }
-/*
- Your initial/default state for this project could *Although does not have to* look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
-   error: null
- }
-*/
+
 
 
 
