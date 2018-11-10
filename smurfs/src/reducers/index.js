@@ -19,9 +19,9 @@ import { LOADING, SUCCESS, ERROR } from '../actions/index';
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
-  addingSmurf: false,
-  updatingSmurf: false,
-  deletingSmurf: false,
+  // addingSmurf: false,
+  // updatingSmurf: false,
+  // deletingSmurf: false,
   error: null
 }
 
@@ -47,7 +47,7 @@ const rootReducer = (state = initialState, action) => {
     case ERROR:
       return Object.assign({}, state, {
         error: action.payload
-      })
+      })  
     default:
       return state
   }
