@@ -7,7 +7,7 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 import { connect } from 'react-redux';
-import { getSmurfsAction, addSmurfAction } from '../actions'
+import { getSmurfsAction, addSmurfAction, updateSmurfAction, deleteSmurfAction } from '../actions'
 
 class App extends Component {
   constructor(props){
@@ -43,7 +43,17 @@ class App extends Component {
       });
     }
   }
-  handle
+  handleUpdateSmurf = e => {
+    e.preventDefault();
+    // console.log(e.target.parentNode.id)
+    const updateSmurfInputs = document.querySelectorAll('.update-smurf-inputs');
+    if(updateSmurfInputs[0].value && updateSmurfInputs[1].value && updateSmurfInputs[2].value !== ''){
+      this.props.updateSmurfAction(this.state.updateSmurfName, this.state.updateSmurfAge, this.state.updateSmurfHeight, e.target.parentNode.id)
+    }
+  }
+  handleDeleteSmurf = e => {
+    this.props.deleteSmurfAction(e.target.parentNode.id);
+  }
 
   render() {
     return (
@@ -59,17 +69,17 @@ class App extends Component {
         <div className='smurfs-list'>
           {this.props.smurfs.map((x, index) => {
             return (
-              <div key={index + 1} id={index + 1} className='each-smurf'>
+              <div key={x.id} id={x.id} className='each-smurf'>
                 <p>Name: {x.name}</p>
                 <p>Age: {x.age}</p>
                 <p>Height: {x.height}</p>
-                <form>
+                <form onSubmit={this.handleUpdateSmurf}>
                   <input className='update-smurf-inputs' name='updateSmurfName' placeholder='name' onChange={this.handleInputChange}></input>
                   <input className='update-smurf-inputs' name='updateSmurfAge' placeholder='age' onChange={this.handleInputChange}></input>
                   <input className='update-smurf-inputs' name='updateSmurfHeight' placeholder='height' onChange={this.handleInputChange}></input>
                   <button>Update Smurf:</button>
                 </form>
-                <button>Delete Smurf:</button>
+                <button onClick={this.handleDeleteSmurf}>Delete Smurf:</button>
               </div>
             )
           })}
@@ -91,4 +101,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {getSmurfsAction, addSmurfAction })(App);
+export default connect(mapStateToProps, {getSmurfsAction, addSmurfAction, updateSmurfAction, deleteSmurfAction })(App);

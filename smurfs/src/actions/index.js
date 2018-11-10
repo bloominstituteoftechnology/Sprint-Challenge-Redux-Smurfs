@@ -48,7 +48,7 @@ export const addSmurfAction = (nameValue, ageValue, heightValue) => {
     axios
       .post('http://localhost:3333/smurfs', {
         name: nameValue,
-        age: ageValue,
+        age: parseInt(ageValue, 10),
         height: heightValue,
       })
       .then(response => {
@@ -63,6 +63,56 @@ export const addSmurfAction = (nameValue, ageValue, heightValue) => {
         dispatch({
           type: ERROR,
           payload: 'Unable to add new Smurf. Please refresh page and try again.',
+        })
+      })
+  }
+}
+export const updateSmurfAction = (nameValue, ageValue, heightValue, idValue) => {
+  return dispatch => {
+    dispatch({
+      type: UPDATING,
+    })
+    axios
+      .put(`http://localhost:3333/smurfs/${idValue}`, {
+        name: nameValue,
+        age: parseInt(ageValue, 10),
+        height: heightValue,
+      })
+      .then(response => {
+        console.log(response);
+        dispatch({
+          type: COMPLETE,
+          payload: response.data,
+        })
+      })
+      .catch(error => {
+        console.log(error);
+        dispatch({
+          type: ERROR,
+          payload: 'Unable to update this Smurf. Please refresh the page and try again.',
+        })
+      })
+  }
+}
+export const deleteSmurfAction = (idValue) => {
+  return dispatch => {
+    dispatch({
+      type: DELETING,
+    })
+    axios
+      .delete(`http://localhost:3333/smurfs/${idValue}`)
+      .then(response => {
+        console.log(response);
+        dispatch({
+          type: COMPLETE,
+          payload: response.data,
+        })
+      })
+      .catch(error => {
+        console.log(error);
+        dispatch({
+          type: ERROR,
+          payload: 'Unable to delete the smurf, Please try again',
         })
       })
   }

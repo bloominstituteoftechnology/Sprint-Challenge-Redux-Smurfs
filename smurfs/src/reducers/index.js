@@ -39,6 +39,26 @@ export default (state = initialState, action) => {
         updatingSmurf: false,
         deletingSmurf: false,
       })
+    case ERROR:
+      return Object.assign({}. state, {
+        fetchingSmurfs: false,
+        error: action.payload,
+      })
+    case ADDING:
+      return Object.assign({}, state, {
+        addingSmurf: true,
+        smurfsLoaded: false,
+      })
+    case UPDATING:
+      return Object.assign({}, state, {
+        smurfsLoaded: false,
+        updatingSmurf: true,
+      })
+    case DELETING:
+      return Object.assign({}, state, {
+        smurfsLoaded: false,
+        deletingSmurf: true,
+      })
     default:
       return state
   }
