@@ -7,6 +7,8 @@ import axios from 'axios'
 export const GET_SMURFS = 'GET_SMURFS'
 export const LOADING = 'loading'
 export const DELETE_SMURFS = 'DELETE_SMURFS'
+export const UPDATE_SMURFS = 'UPDATE_SMURFS'
+export const ERROR = "ERROR"
 
 export const getSmurfs = () => {
   return(dispatch) => {
