@@ -10,9 +10,11 @@ class SmurfList extends Component {
 
   }
   render() {
+    if (this.props.loading === true) return <h1>Loading</h1>
+    if (this.props.error === true) return <h1>{this.props.error}</h1>
     return (
       <div>
-        <h1>Redux Smurfs</h1>
+      <h1>Redux Smurfs</h1>
         {this.props.smurfs.map((smurf) => {
         return(
         <p key={smurf.id}>Name: {smurf.name}, Age: {smurf.age}, Height: {smurf.height}</p>)
@@ -25,7 +27,7 @@ class SmurfList extends Component {
 const mapStateToProps = (state) => {
   return {
     smurfs: state.smurfs,
-    error: state.erorr,
+    error: state.error,
     loading: state.loading
   }
 }
