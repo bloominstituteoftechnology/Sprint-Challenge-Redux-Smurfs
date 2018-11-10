@@ -10,7 +10,6 @@ export const getSmurfs = () => {
     dispatch({ type: LOADING })
     axios.get('http://localhost:3333/smurfs')
       .then(response => {
-        console.log(response)
         dispatch({ type: SUCCESS, smurfs: response.data })
       })
       .catch(err => {

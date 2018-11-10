@@ -5,9 +5,6 @@ import { LOADING, SUCCESS, FAILURE } from '../actions/index';
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
-  addingSmurf: false,
-  updatingSmurf: false,
-  deletingSmurf: false,
   error: null,
 }
 

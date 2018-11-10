@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { deleteSmurf } from '../actions/index';
 
 const Smurf = props => {
@@ -15,6 +16,7 @@ const Smurf = props => {
       <p>{smurf.name}</p>
       <p>{smurf.age} years young</p>
       <p>{smurf.height}</p>
+      <Link to={`/${smurf.id}`}>Update</Link>
     </div>
   )
 }
