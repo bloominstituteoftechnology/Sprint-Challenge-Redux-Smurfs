@@ -7,7 +7,7 @@ export const ERROR = 'ERROR';
 
 export const getSmurf = smurfs => {
   return dispatch => {
-    dispatch({ type: LOADING })
+    dispatch({ type: LOADING });
       axios
         .get('http://localhost:3333/smurfs')
         .then(response => {
@@ -20,6 +20,18 @@ export const getSmurf = smurfs => {
         .catch(err => {
           dispatch({ type: ERROR, payload: 'Error getting smurfs'})
         })
+  }
+}
+
+export const addSmurf = smurf => {
+  return dispatch => {
+    dispatch({ type: LOADING });
+    axios
+      .get('http://localhost:3333/smurfs', {...smurf})
+      .then()
+      .catch(err => {
+        dipatch({ type: ERROR, payload: 'error adding smurf'})
+      })
   }
 }
 

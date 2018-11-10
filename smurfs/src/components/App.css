@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 
 .App-logo {
@@ -25,4 +28,19 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.smurf {
+  display: flex;
+  flex-direction: column;
+  background: lightblue;
+  width: 200px;
+  border: 1px solid black;
+  
+}
+
+.smurfContainer {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }

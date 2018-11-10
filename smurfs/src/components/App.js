@@ -11,6 +11,7 @@ class App extends Component {
   componentDidMount() {
     this.props.getSmurf();
   }
+
   render() {
     return (
       <div className="App">

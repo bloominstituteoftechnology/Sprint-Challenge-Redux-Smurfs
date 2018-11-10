@@ -17,11 +17,14 @@ export const rootReducer = (state = initialState, action) => {
       return Object.assign({}, state, { loading: true, error: null });
     
     case GET_SMURF:
-      // return Object.assign({}, state, { smurfs: action.payload, loading: false, error: null });
-      return state;
+      return Object.assign({}, state, {
+        smurfs: action.payload 
+      });
 
     case ERROR:
       return Object.assign({}, state, { error: action.payload, loading: false })
+    default:
+      return state;
   }
 }
 
