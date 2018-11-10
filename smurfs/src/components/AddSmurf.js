@@ -6,7 +6,7 @@ import { addSmurf } from '../actions/index'
 
 class AddSmurf extends Component {
 
-    constructor: (props) {
+    constructor (props) {
         super(props)
         this.state = {
             name: '',
