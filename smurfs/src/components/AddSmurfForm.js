@@ -17,24 +17,9 @@ class AddSmurfForm extends React.Component {
 
   handleInput = event => {
     event.preventDefault()
-    let newInput = event.target.value
-    if (event.target.id === "input-name") {
-      this.setState({
-        name: newInput
-      })
-    }
-
-    if (event.target.id === "input-age") {
-      this.setState({
-        age: newInput
-      })
-    }
-
-    if (event.target.id === "input-height") {
-      this.setState({
-        height: newInput
-      })
-    }
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
 
   handleSubmit = event => {
@@ -65,21 +50,21 @@ class AddSmurfForm extends React.Component {
           <input
             type="text"
             placeholder="Name"
-            id="input-name"
+            name="name"
             onChange={this.handleInput}
             value={this.state.name}
           />
           <input
             type="number"
             placeholder="Age"
-            id="input-age"
+            name="age"
             onChange={this.handleInput}
             value={this.state.age}
           />
           <input
             type="text"
             placeholder="Height"
-            id="input-height"
+            name="height"
             onChange={this.handleInput}
             value={this.state.height}
           />
