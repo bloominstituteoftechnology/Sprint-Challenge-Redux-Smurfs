@@ -2,6 +2,7 @@ import axios from 'axios';
 export const GET_SMURFS = "GET_SMURFS";
 export const ERROR = "ERROR";
 export const LOADING = "LOADING";
+export const LOADINGSMURF = "LOADING";
 
 
 export const getSmurfs = () => {
