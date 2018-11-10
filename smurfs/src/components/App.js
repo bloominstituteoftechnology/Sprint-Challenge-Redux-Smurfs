@@ -18,7 +18,7 @@ class App extends React.Component {
     else {
     return (
       <div className="App">
-        <Form />
+        <Form type='Add Smurf'/>
         {this.props.smurfs.map(smurf => {
           return <SmurfCard key={smurf.name + smurf.height} smurf={smurf} />
         })}

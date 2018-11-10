@@ -46,10 +46,10 @@ export const deleteSmurf = smurfId => {
   }
 }
 
-export const updateSmurf = smurfId => {
+export const updateSmurf = (smurfId, smurfObj) => {
   return dispatch => {
     dispatch({type: UPDATE_SMURF});
-    axios.put(`http://localhost:3333/smurfs/${smurfId}`)
+    axios.put(`http://localhost:3333/smurfs/${smurfId}`, smurfObj)
     .then(response => {
       dispatch({type: SUCCESS, payload: response.data});
     })
