@@ -26,7 +26,7 @@ export const smurfin = (state = intialState, action) => {
         case FETCH_SMURFS:
             return { ...state, smurfs: action.payload, loading: false }
         case ADD_SMURF:
-            return { ...state, addingSmurf: true }
+            return { ...state, smurfs: action.payload, addingSmurf: true, loading: false }
         case UPDATE_SMURF:
             return { ...state, updatingSmurf: true }
         case DELETE_SMURF:

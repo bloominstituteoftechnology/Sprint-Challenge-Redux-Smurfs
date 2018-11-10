@@ -41,7 +41,9 @@ export const addSmurf = newSmurf => dispatch => {
   axios
     .post(`${URL}/smurfs`, newSmurf)
     .then(response => {
-       console.log(response.data)
+      console.log(response.data)
+      dispatch({ type: ADD_SMURF, payload: response.data })
+
     }
     )
     .catch(err => {
