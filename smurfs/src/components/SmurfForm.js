@@ -8,7 +8,11 @@ const SmurfForm = ({ dispatch }) => {
     <form
       onSubmit={e => {
         e.preventDefault();
-        dispatch(addSmurf(name.value, age.value, height.value));
+        dispatch(addSmurf({
+          name: name.value,
+          age: age.value,
+          height: height.value
+        }));
         name.value, age.value, height.value = "";
       }}>
       <input
