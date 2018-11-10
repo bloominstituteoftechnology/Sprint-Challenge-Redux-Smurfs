@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const GET_SMURFS = 'GET_SMURFS';
+export const POST_SMURF = 'POST_SMURF';
 export const SUCCESS = 'SUCCESS';
 export const ERROR = 'ERROR';
 
@@ -8,6 +9,18 @@ export const getSmurfs = () => dispatch => {
   dispatch({ type: GET_SMURFS });
   axios
     .get('http://localhost:3333/smurfs')
+    .then(response => {
+      dispatch({ type: SUCCESS, smurfs: response.data });
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, error: err });
+    });
+};
+
+export const addSmurf = smurf => dispatch => {
+  dispatch({ type: POST_SMURF });
+  axios
+    .post('http://localhost:3333/smurfs', smurf)
     .then(response => {
       dispatch({ type: SUCCESS, smurfs: response.data });
     })

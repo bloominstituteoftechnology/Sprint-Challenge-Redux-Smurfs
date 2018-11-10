@@ -1,4 +1,4 @@
-import { GET_SMURFS, SUCCESS, ERROR } from '../actions';
+import { GET_SMURFS, POST_SMURF, SUCCESS, ERROR } from '../actions';
 
 const initialState = {
   smurfs: [],
@@ -9,6 +9,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_SMURFS:
+    case POST_SMURF:
       return Object.assign({}, state, { loading: true });
     case SUCCESS:
       return Object.assign({}, state, {
