@@ -59,3 +59,23 @@ export const addSmurf = (newSmurf) => {
       })
   }
 }
+
+export const deleteSmurf = (id) => {
+  return dispatch => {
+    dispatch({ type: LOADING })
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(response => {
+        dispatch({
+          type: SUCCESS,
+          payload: response.data
+        })
+      })
+      .catch(err => {
+        dispatch({
+          type: ERROR,
+          payload: err
+        })
+      })
+  }
+}
