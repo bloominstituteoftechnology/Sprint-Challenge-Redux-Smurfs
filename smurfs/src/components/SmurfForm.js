@@ -18,6 +18,7 @@ class SmurfForm extends React.Component {
   submitHandler = e => {
     e.preventDefault()
     this.props.createSmurf(this.state)
+    this.setState({name: '', age: '', height: ''})
   }
 
   render(){

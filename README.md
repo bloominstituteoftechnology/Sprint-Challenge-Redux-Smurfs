@@ -127,6 +127,8 @@ return dispatch => {
 
 ### PUT '/smurfs/123', where 123 is the Id of the smurf you want to modify
 
+- [ ] Update smurf on server and display new smurf list
+
 * For this endpoint to work, you'll need an `id` added to the URL, and at least one field to update on the Smurf object. `name` `age` `height`.
 * Example:
 
@@ -154,6 +156,8 @@ output:
 ```
 
 ### DELETE '/smurfs/123', where 123 is the Id of the smurf you want to remove
+
+- [ ] Delete smurf from server and display new smurf list
 
 * For this endpoint to work, all you need is an id sent up as part of the request url.
 
