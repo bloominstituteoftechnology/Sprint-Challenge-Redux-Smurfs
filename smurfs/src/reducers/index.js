@@ -1,6 +1,4 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import { LOADING, GET_SMURFS, ERROR } from '../actions';
 
  const initialState = {
    smurfs: [],
@@ -13,6 +11,12 @@
 
 export default (state = initialState, action) => {
   switch(action.type) {
+    case LOADING:
+        return {...state, fetchingSmurfs: true};
+    case GET_SMURFS:
+        return {...state, smurfs: action.friends, fetchingSmurfs: false};
+    case ERROR:
+      return {...state, error: action.errorMessage, fetchingSmurfs: false}; 
     default:
       return state;
   }
