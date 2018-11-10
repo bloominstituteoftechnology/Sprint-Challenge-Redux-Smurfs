@@ -56,7 +56,6 @@ class SmurfForm extends Component {
         </span>
         <br />
         <button type='submit'>Submit</button>
-        {this.props.addingSmurf ? <p>Adding a smurf...</p> : null}
       </form>
     );
   }

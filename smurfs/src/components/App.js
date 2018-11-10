@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions';
+import { getSmurfs, deleteSmurf } from '../actions';
 
 import SmurfForm from './smurfForm/';
 /*
@@ -15,6 +15,11 @@ class App extends Component {
   componentDidMount() {
       return this.props.getSmurfs();
   }
+  deleteSmurf = (e) => {
+    e.preventDefault();
+    const smurfID = e.target.id;
+    return this.props.deleteSmurf(smurfID)
+  }
   render() {
     return (
       <div className="App">
@@ -23,9 +28,13 @@ class App extends Component {
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
         <h1>The Village</h1>
-        {this.props.fetchingSmurfs ? <p>Loading Village...</p> : null }
+        {this.props.fetchingSmurfs ? <p className='CRUD-info'>Loading Village...</p> : null }
+        {this.props.deletingSmurf ? <p className='CRUD-info'>Sacrificing Smurf...</p> : null }
+        {this.props.addingSmurf ? <p className='CRUD-info'>Adding a smurf...</p> : null}
         {this.props.smurfs.map(smurf => {
           return (<section key={smurf.id}>
+            <span className='close' id={smurf.id}
+                  onClick={this.deleteSmurf}>X</span>
             <p>{smurf.name}</p>
             <p>Age: {smurf.age}</p>
             <p>Height: {smurf.height}</p>
@@ -42,8 +51,10 @@ const mapStateToProps = state => {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
     fetched: state.fetched,
-    error: state.error
+    error: state.error,
+    deletingSmurf: state.deletingSmurf,
+    addingSmurf: state.addingSmurf
   }
 }
 
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs, deleteSmurf })(App);
