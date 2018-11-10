@@ -1,3 +1,5 @@
+# Init Commit
+
 # Assessing your Redux Fu
 
 * The objective of this challenge is to get you used to answering a few questions about `Redux/Immutability` that are commonly asked in interviews.
