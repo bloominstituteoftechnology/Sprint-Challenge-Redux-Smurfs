@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-// Will need to import GET action here.
+// Actions:
+
+// Components:
+import Smurf from './Smurf';
 
 class Smurfs extends Component {
   constructor(props) {
@@ -14,7 +17,10 @@ class Smurfs extends Component {
 
   render() {
     return(
-      <div>Smurfs List</div>
+      <div>
+        <div>Smurfs List</div>
+        <Smurf />
+      </div>
     );
   };
 };
