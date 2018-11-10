@@ -16,7 +16,7 @@ let smurfs = [
   {
     name: 'Brainey',
     age: 200,
-    height: '5cm',
+    height: 5,
     id: 0
   }
 ];
@@ -68,11 +68,11 @@ server.put('/smurfs/:id', (req, res) => {
 
 server.delete('/smurfs/:id', (req, res) => {
   const { id } = req.params;
-  const foundSmurf = smurfs.find(smurf => smurf.id == id);
+  const foundSmurf = smurfs.find(smurf => smurf.id === id);
 
   if (foundSmurf) {
     const SmurfRemoved = { ...foundSmurf };
-    smurfs = smurfs.filter(smurf => smurf.id != id);
+    smurfs = smurfs.filter(smurf => smurf !== SmurfRemoved);
     res.status(200).json(smurfs);
   } else {
     sendUserError('No smurf by that ID exists in the smurf DB', res);
