@@ -33,6 +33,8 @@ const initialState = {
 export default ( state = initialState, action ) => {
   switch( action.type ) {
     case FETCHING:
+      return Object.assign( {}, state, {fetching: true} );
+
     case UPDATING:
     case CREATING:
     case DELETING:

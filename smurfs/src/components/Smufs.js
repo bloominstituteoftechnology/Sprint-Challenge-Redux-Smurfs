@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Actions:
+import { getSmurfs } from '../actions';
 
 // Components:
 import Smurf from './Smurf';
@@ -12,7 +13,9 @@ class Smurfs extends Component {
   };
 
   // Load Smurfs once mounted:
-  componentDidMount() {};
+  componentDidMount() {
+    this.props.getSmurfs();
+  };
 
 
   render() {
@@ -26,7 +29,22 @@ class Smurfs extends Component {
 };
 
 // Pull in info to pass on as props:
-const mapStateToProps = (state) => {};
+// const initialState = {
+//   smurfs: [],
+//   fetching: false,
+//   adding: false,
+//   updating: false,
+//   deleting: false,
+//   error: null
+// };
+const mapStateToProps = (state) => {
+  return {
+    smurfs: state.smurfs,
+    fetching: state.fetching,
+    error: state.error
+  };
+};
+
 
 // Finish the connection by passing to connect:
-export default connect(mapStateToProps, {})(Smurfs);
+export default connect(mapStateToProps, { getSmurfs })(Smurfs);

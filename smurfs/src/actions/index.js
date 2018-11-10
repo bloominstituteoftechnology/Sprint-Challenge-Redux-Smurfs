@@ -25,7 +25,18 @@ export const ERROR    = 'ERROR';
 // Assigning all of these as empty functions for now, just to have them defined.
 
 // GET the smurfs from the API data:
-export const getSmurfs = () => {};
+export const getSmurfs = () => {
+  return (dispatch) => {
+    dispatch( {type: FETCHING } )
+    axios.get('http://localhost:3333/smurfs')
+      .then( (response) => {
+        dispatch( {type: UPDATING, smurfs: response.data} )
+      } )
+      .catch( (err) => {
+        dispatch( {type: ERROR, errMsg: "There was a problem! The Smurfs could not get past Gargamel!" })
+      });
+  };
+};
 
 // POST to add a new smurf to the API:
 export const addSmurf = () => {};
