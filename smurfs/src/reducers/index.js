@@ -1,6 +1,13 @@
 import { FETCH_SMURFS, FETCHED_SMURFS, ADD_SMURF, ADDED_SMURF, ERROR} from "../actions";
 
- export default (state = initialState, action) => {
+const initialState = {
+  smurfs: [],
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  error: null
+}
+
+ export const rootReducer = (state = initialState, action) => {
   switch(action.type) {
      case FETCH_SMURFS:
       return {...state, fetchingSmurfs: true};
