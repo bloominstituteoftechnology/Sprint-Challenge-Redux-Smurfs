@@ -3,6 +3,7 @@ import './App.css';
 
 // Components:
 import Smurfs from './Smufs';
+import AddSmurf from './AddSmurf';
 
 /*
  to wire this component up you're going to need a few things.
@@ -18,6 +19,7 @@ const App = () => {
       <h1>SMURFS! 2.0 W/ Redux</h1>
       <div>The Smurfiest of Smurfs!</div>
       <Smurfs />
+      <AddSmurf />
     </div>
   );
 }
