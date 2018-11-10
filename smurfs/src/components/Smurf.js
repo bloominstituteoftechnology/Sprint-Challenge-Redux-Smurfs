@@ -16,6 +16,7 @@ const Smurf = props => {
             <h3>Name: {smurf.name}</h3>
             <h4>Age: {smurf.age}</h4>
             <h4>Height: {smurf.height}</h4>
+            <h4>Id: {smurf.id}</h4>
             <Link to={`/update/${smurf.id}`}>Update</Link>
         </div>
     )

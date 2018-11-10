@@ -71,21 +71,19 @@ export const deleteSmurf = (id) => {
 
 export const updateSmurf = (updatedSmurf) => {
   return (dispatch) => {
-    dispatch({ type: FETCHING });
+    dispatch({ type: FETCHING })
     axios.put(`http://localhost:3333/smurfs/${updatedSmurf.id}`, updatedSmurf)
-    .then( response => {
-      dispatch({
-        type: FETCHING_SMURFS,
-        smurfs: response.data,
-      });
-    })
-
-    .catch( error => {
-      dispatch({
-        type: ERROR,
-        errorMessage: 'Trouble updating Smurf',
+      .then( response => {
+        dispatch({ 
+          type: FETCHING_SMURFS,
+          smurfs: response.data})
       })
-    })
+      .catch( error => {
+        dispatch({
+          type: ERROR,
+          errorMessage: "Trouble updating Smurf",
+        })
+      })
   }
 }
 /*

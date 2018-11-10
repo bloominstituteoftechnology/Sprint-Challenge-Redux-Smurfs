@@ -1,24 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addingSmurf } from '../actions';
+import { updateSmurf } from '../actions';
 
-class AddSmurf extends React.Component {
+class UpdateSmurf extends React.Component {
     constructor(props) {
-        super(props);
-        this.state = {
+        super(props)
+        this.state ={
             name: '',
-            age: null,
-            height: null,
+            age: '',
+            height: '',
         }
     }
 
+    componentDidMount() {
+        const {smurfs, match } = this.props
+        const smurf = smurfs.find( item => item.id === Number(match.params.id))
+        this.setState(smurf)
+    }
+
     inputHandler = event => {
-        this.setState({[event.target.name]: event.target.value})
-      }
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
 
     submitHandler = (event) => {
-        event.preventDefault();
-        this.props.addingSmurf(this.state)
+        event.preventDefault()
+        this.props.updateSmurf(this.state)
     }
 
     render() {
@@ -34,7 +42,9 @@ class AddSmurf extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {}
+    return {
+        smurfs: state.smurfs
+    }
 }
 
-export default connect (mapStateToProps, {addingSmurf: addingSmurf})(AddSmurf);
+export default connect(mapStateToProps, { updateSmurf })(UpdateSmurf)
