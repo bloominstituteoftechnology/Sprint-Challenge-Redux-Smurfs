@@ -1,4 +1,5 @@
 1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
+      Array methods --> filter(), map(), reduce() [This is ok], slice() methods can return new arrays without modifying the original arrays. The spread operator and Object.assign() methods are useful to create a new objects.
 1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
 1.  What is middleware?
