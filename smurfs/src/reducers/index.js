@@ -1,4 +1,4 @@
-import { ADD_SMURF, GET_SMURF, LOADING, ERROR } from '../actions/index';
+import { ADD_SMURF, GET_SMURF, LOADING, ERROR, DELETE_SMURF, UPDATE_SMURF, UPDATE_FORM } from '../actions/index';
 
 
  const initialState = {
@@ -28,7 +28,25 @@ export const rootReducer = (state = initialState, action) => {
       smurfs: action.payload,
       loading: false,
       error: null
-    })
+    });
+
+    case DELETE_SMURF:
+      return Object.assign({}, state, {
+        smurfs: action.payload,
+        loading: false,
+        error: null
+      });
+    
+    case UPDATE_FORM:
+      return Object.assign({}, state, {updatingSmurf: true})
+
+    case UPDATE_SMURF:
+      return Object.assign({}, state, {
+        smurfs: action.payload,
+        loading: false,
+        error: false,
+        updatingSmurf: false
+      })
 
     case ERROR:
       return Object.assign({}, state, { error: action.payload, loading: false })
