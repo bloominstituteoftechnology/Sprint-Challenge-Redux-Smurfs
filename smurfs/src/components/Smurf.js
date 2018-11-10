@@ -12,7 +12,9 @@ return (
     <p className="close-button" onClick={clickHandler}>
         x
     </p>
-    <h2>{smurf.name}</h2>
+        <h2>{smurf.name}</h2>
+        <p>Smurf's age:{smurf.age}</p>
+        <p>And smurfs' height:{smurf.height}</p>
     </div>
 );
 };
