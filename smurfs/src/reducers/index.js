@@ -43,7 +43,15 @@ const smurfReducer = (state = initState, action) => {
         addingSmurf: false
       }
     case DELETING:
+      return {
+        ...state,
+        smurfDeleted: false
+      }
     case DELETED:
+      return {
+        ...state,
+        smurfDeleted: true
+      }
     default:
       return state
   }
