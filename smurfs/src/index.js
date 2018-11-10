@@ -10,6 +10,7 @@ import rootReducer from './reducers';
 
 const store = createStore(
   rootReducer, // this is the most basic reducer. A function that returns and object. Replace it.
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk, logger)
 );
 
