@@ -20,6 +20,23 @@ export const ERROR = 'ERROR';
    D - deleteSmurf
 */
 
+// C - addSmurf
+
+export const addSmurf = (addedSmurf) => {
+  return (dispatch) => {
+    dispatch({type: FETCHING});
+    axios
+      .post(`http://localhost:3333/smurfs`, addedSmurf)
+      .then(response => {
+        dispatch({type: GET_SMURFS, smurfs: response.data})
+      })
+      .catch(err => {
+        dispatch({type: ERROR, error: `Oh no! We couldn't add the Smurf!`})
+      });
+  }
+}
+
+
 // R - getSmurfs
 
 export const getSmurfs = () => {

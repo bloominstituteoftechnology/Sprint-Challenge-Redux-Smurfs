@@ -7,7 +7,8 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 
-import SmurfList from './SmurfList.js'
+import SmurfList from './SmurfList.js';
+import SmurfForm from './SmurfForm.js';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <SmurfList />
+        <SmurfForm />
       </div>
     );
   }
