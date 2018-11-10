@@ -14,6 +14,25 @@
  }
 */
 
+import {LOADING, SUCCESS, FAIL} from "../actions"
+
+const initialState = {
+  smurfs: [],
+  loading: false,
+  error: null
+}
+
+const rootReducer = (state = initialState, action) => {
+  switch(action.type) {
+    case LOADING:
+      return Object.assign({}, state, {loading: true})
+    default:
+      return state
+  }
+}
+
+export default rootReducer
+
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
