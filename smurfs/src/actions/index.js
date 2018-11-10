@@ -49,3 +49,20 @@ export const addSmurf = newSmurf => dispatch => {
       dispatch({type: ERROR, payload: err.errorMessage})
     });
 };
+
+export const deleteSmurf = (id) => {
+
+  return dispatch => 
+    dispatch({ type: LOADING });
+  axios
+    .delete(`http://localhost:3333/smurfs`, newSmurf)
+    .then(response => {
+      console.log(response.data)
+      dispatch({ type: DELETE_SMURF, payload: response.data })
+
+    }
+    )
+    .catch(err => {
+      dispatch({type: ERROR, payload: err.errorMessage})
+    });
+};
