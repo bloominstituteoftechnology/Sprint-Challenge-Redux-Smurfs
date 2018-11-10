@@ -49,6 +49,9 @@
     * Middleware is a piece of code that is like a bridge between 2 different code bases
 
 1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+    * Redux thunk is middleware that hijacks our actions and let us fire actions when we want them to be fired. It's very useful when we are doing API calls because if we don't have something like thunk we might fire an action before receiving the data and it might give rendering issues because data is not there.
+
 1.  Which `react-redux` method links up our `components` with our `redux store`?
 
     * The method to connect our components to the redux store is connect and we import it on each component. We set up our component this way
