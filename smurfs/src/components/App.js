@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 import './App.css';
-import {getSmurfs} from '../actions/smurfActions'
+import {getSmurfs, addSmurf} from '../actions/smurfActions'
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -16,7 +16,8 @@ class App extends Component {
     this.state = {
       name: '',
       age: '',
-      height: ''
+      height: '',
+      buttonDisabled: true
     }
 
   }
@@ -27,18 +28,29 @@ class App extends Component {
 
   changeHandler = (e) =>{
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      buttonDisabled: false
     })
+
   }
 
   clickHandler = (e) =>{
     e.preventDefault();
 
+    //create new smurf
+    const {buttonDisabled,...newSmurf} = this.state
+    this.props.addSmurf(newSmurf)
+
+    this.setState({
+      name: '',
+      age: '',
+      height: '',
+      buttonDisabled: true
+    })
+
   }
 
   render() {
-    console.log('this.props', this.props);
-    console.log(this.props.error);
     return (
       <div className="App">
         {this.props.loading ? <h1>Loading...</h1> : null}
@@ -52,7 +64,7 @@ class App extends Component {
           <input type="text" name="age" value={this.state.age} onChange={this.changeHandler}/>
           <label htmlFor="height">Height: </label>
           <input type="text" name="height" value={this.state.height} onChange={this.changeHandler}/>
-          <button type="submit">Add Smurf!</button>
+          <button type="submit" disabled={this.state.buttonDisabled}>Add Smurf!</button>
         </form>
 
         {this.props.smurfs.length !== 0 
@@ -79,4 +91,11 @@ const mapStateToProps = state =>{
   }
 }
 
-export default connect(mapStateToProps, {getSmurfs})(App);
+const mapDispatchToProps = {
+  getSmurfs, 
+  addSmurf
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

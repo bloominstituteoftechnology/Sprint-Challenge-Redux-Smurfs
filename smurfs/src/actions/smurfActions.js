@@ -31,3 +31,20 @@ export const getSmurfs = () =>{
     })
   }
 }
+
+export const addSmurf = (newSmurf) =>{
+  return (dispatch) =>{
+    dispatch({type: LOADING})
+
+    axios.post('http://localhost:3333/smurfs', newSmurf)
+    .then(response => {
+      dispatch({type: SUCCESS, payload: response.data})
+    })
+    .catch(err =>{
+      dispatch({type: ERROR, payload: 'Unable to create a new smurf'})
+    })
+
+
+  }
+  
+}
