@@ -29,7 +29,7 @@ export const smurf = (state = intialState, action) => {
         case UPDATE_SMURF:
             return { ...state, updatingSmurf: true }
         case DELETE_SMURF:
-            return { ...state, deletingSmurf: true }
+            return { ...state, deletingSmurf: action.payload, loading: false, error: '' }
         case ERROR:
             return { ...state, error: action.payload, loading: false }
         default:

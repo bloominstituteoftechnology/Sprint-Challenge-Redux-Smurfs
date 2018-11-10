@@ -50,14 +50,11 @@ export const addSmurf = newSmurf => dispatch => {
     });
 };
 
-export const deleteSmurf = (id) => {
-
-  return dispatch => 
-    dispatch({ type: LOADING });
+export const deleteSmurf = (id) => dispatch => {
+  dispatch({ type: LOADING });
   axios
-    .delete(`http://localhost:3333/smurfs`, newSmurf)
+    .delete(`http://localhost:3333/smurfs/${id}`)
     .then(response => {
-      console.log(response.data)
       dispatch({ type: DELETE_SMURF, payload: response.data })
 
     }
