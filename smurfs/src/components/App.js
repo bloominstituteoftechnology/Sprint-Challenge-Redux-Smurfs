@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
 import './App.css';
+import '../index.css';
 import { Route } from 'react-router-dom';
 import Smurfs from './Smurfs';
 import SmurfForm from './SmurfForm';

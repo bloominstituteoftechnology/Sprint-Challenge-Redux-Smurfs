@@ -17,6 +17,7 @@ class Smurfs extends Component {
             )
     }
     return (
+      console.log(this.props.smurfs),
       <div className="Smurfs">
         <NavLink className="main-link link" to='smurf-form'>
           <p>Click Here To Add Smurfs</p>

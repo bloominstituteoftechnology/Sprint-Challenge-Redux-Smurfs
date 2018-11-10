@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
+import { Button } from 'reactstrap/lib';
 import { updateSmurf } from '../actions/index';
 import smurfvillage from './smurfs-village.jpg'
 import '../index.css'
@@ -57,12 +58,12 @@ class SmurfCard extends Component {
                             placeholder="height"
                             name="height"
                         />
-                        <button type="submit">Update your Smurf</button>
+                        <Button outline color="primary" type="submit">Update your Smurf</Button>
                     </form>
                 </div>
                 <div className="Smurf">
                     <h3>{smurf.name}</h3>
-                    <strong>{smurf.height}in tall</strong>
+                    <strong>{smurf.height} tall</strong>
                     <p>{smurf.age} smurf years old</p>
                 </div>
                 <img src={smurfvillage} alt='village' />

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 import { addSmurf } from '../actions/index';
+import { Button } from 'reactstrap/lib';
 import smurfpic from './smurfs.jpeg'
 import '../index.css'
 class SmurfForm extends Component {
@@ -53,7 +54,7 @@ class SmurfForm extends Component {
             value={this.state.height}
             name="height"
           />
-          <button type="submit">Add to the village</button>
+          <Button outline color="primary" type="submit">Add to the village</Button>
         </form>
         <img src={smurfpic} alt='smurffamily'/>
       </div>
