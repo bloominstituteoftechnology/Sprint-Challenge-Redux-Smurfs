@@ -34,3 +34,17 @@ export const getSmurfs = () => {
   }
 }
 
+//POST
+export const addSmurf = smurf => {
+  return (dispatch) => {
+    dispatch({ type: LOADING })
+    axios
+      .post(`http://localhost:3333/smurfs`, smurf)
+      .then(response => {
+        dispatch({ type: SUCCESS, smurfs: response.data })
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, errorMessage: "Trouble Adding Smurf"})
+      })
+  }
+}
