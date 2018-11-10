@@ -1,19 +1,34 @@
+import {LOADING , SUCCESS, NEWSMURF} from '../actions/index';
 /*
   Be sure to import in all of the action types from `../actions`
 */
 
-/*
- Your initial/default state for this project could *Although does not have to* look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
-   error: null
- }
-*/
 
+//  Your initial/default state for this project could *Although does not have to* look a lot like this
+ 
+ const initialState = {
+   smurfs: [],
+  //  fetchingSmurfs: false,
+  //  addingSmurf: false,
+  //  updatingSmurf: false,
+  //  deletingSmurf: false,
+  //  error: null,
+  }
+
+const rootReducer = (state = initialState, action) => {
+  switch(action.type) {
+      case LOADING: 
+        return Object.assign({}, state, {fetching: true});
+      case SUCCESS:
+        return Object.assign({}, ...state, {smurfs: action.payload});
+      case NEWSMURF:
+        return Object.assign({}, ...state, {smurfs: action.payload, id: state.length + 1});
+      default: return state;
+  }
+  
+}
+
+export default rootReducer;
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
