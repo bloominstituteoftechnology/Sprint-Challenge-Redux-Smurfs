@@ -68,3 +68,19 @@ export const updateSmurf = (id, updatedAge) => {
       });
   }
 }
+
+// D - deleteSmurf
+
+export const deleteSmurf = (id) => {
+  return(dispatch) => {
+    dispatch({type: FETCHING});
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(response => {
+        dispatch({type: GET_SMURFS, smurfs: response.data})
+      })
+      .catch(err => {
+        dispatch({type: ERROR, error: `Oh no! We couldn't delete the Smurf!`})
+      });  
+  }
+}

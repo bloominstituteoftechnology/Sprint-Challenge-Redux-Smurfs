@@ -29,30 +29,33 @@ class SmurfForm extends Component {
 
     render(){
         return(
-            <form onSubmit={this.submitHandler}>
-                <input
-                    type='text'
-                    name='name'
-                    value={this.state.name}
-                    onChange={this.inputHandler}
-                    placeholder='Smurf name'
-                />
-                <input
-                    type='text'
-                    name='age'
-                    value={this.state.age}
-                    onChange={this.inputHandler}
-                    placeholder='Smurf age'
-                />
-                <input
-                    type='text'
-                    name='height'
-                    value={this.state.height}
-                    onChange={this.inputHandler}
-                    placeholder='Smurf height'
-                />
-                <button type='submit'>Add Smurf!</button>
-            </form>
+            <div>
+                <h2>Add a Smurf!</h2>
+                <form onSubmit={this.submitHandler}>
+                    <input
+                        type='text'
+                        name='name'
+                        value={this.state.name}
+                        onChange={this.inputHandler}
+                        placeholder='Smurf name'
+                    />
+                    <input
+                        type='text'
+                        name='age'
+                        value={this.state.age}
+                        onChange={this.inputHandler}
+                        placeholder='Smurf age'
+                    />
+                    <input
+                        type='text'
+                        name='height'
+                        value={this.state.height}
+                        onChange={this.inputHandler}
+                        placeholder='Smurf height'
+                    />
+                    <button type='submit'>Add Smurf!</button>
+                </form>
+            </div>
         )
     }
 }
