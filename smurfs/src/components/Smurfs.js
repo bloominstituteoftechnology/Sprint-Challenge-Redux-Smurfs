@@ -5,9 +5,8 @@ import { connect } from "react-redux";
 const Smurfs = props => {
   return (
     <div className="smurfs">
-      <h1> Villagers </h1>{" "}
+      <h1> Villagers </h1>
       <ul>
-        {" "}
         {props.smurfs.map(smurf => {
           return (
             <Smurf
@@ -18,8 +17,8 @@ const Smurfs = props => {
               key={smurf.id}
             />
           );
-        })}{" "}
-      </ul>{" "}
+        })}
+      </ul>
     </div>
   );
 };
