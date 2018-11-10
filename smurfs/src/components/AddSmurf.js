@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Actions:
+import { addSmurf } from '../actions';
 
 class AddSmurf extends Component {
   constructor(props) {
@@ -23,8 +24,14 @@ class AddSmurf extends Component {
   // Handler for submitting the form to add a new smurf.
   handleSubmit = (event) => {
     event.preventDefault();
-    // addSmurf
-    // setState
+    this.props.addSmurf(this.state);
+
+    // Reset local State to empty values.
+    this.setState({
+      name: '',
+      age: 0,
+      height: ''
+    });
   };
 
   /* Display the form:
@@ -38,9 +45,9 @@ class AddSmurf extends Component {
       <div classname='smurfForm'>
         {(<form onSubmit={this.handleSubmit}>
           <input name='name' value={this.state.name} onChange={this.handleInput} placeholder='Name' />
-          <input type='number' 
-            value={this.state.age > 0 ? this.state.age : ''} 
-            onChange={this.handleInput} placeholder='Age' 
+          <input name='age' type='number' 
+            value={this.state.age > 0 ? this.state.age : null } 
+            min='0' max='2000' onChange={this.handleInput} placeholder='Age' 
           />
           <input name='height' value={this.state.height} onChange={this.handleInput} placeholder='Height' />
           <button type='submit'>Add Smurf</button>
@@ -50,10 +57,20 @@ class AddSmurf extends Component {
   };
 };
 
-// Map state
+// Pull in info to pass on as props:
+// const initialState = {
+//   smurfs: [],
+//   fetching: false,
+//   adding: false,
+//   updating: false,
+//   deleting: false,
+//   error: null
+// };
 const mapStateToProps = (state) => { 
-  return {}
+  return {
+    adding: state.adding
+  }
 };
 
 // Connect it all together
-export default connect( mapStateToProps, {})(AddSmurf);
+export default connect( mapStateToProps, { addSmurf })(AddSmurf);
