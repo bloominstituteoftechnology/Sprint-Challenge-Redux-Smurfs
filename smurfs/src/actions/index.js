@@ -44,27 +44,25 @@ export const getSmurfsAction = () => {
 }
 export const addSmurfAction = (nameValue, ageValue, heightValue) => {
   return dispatch => {
-    dispatch({
-      type: ADDING
-    })
+    dispatch({ type: ADDING });
     axios
       .post('http://localhost:3333/smurfs', {
         name: nameValue,
         age: ageValue,
-        heiight: heightValue,
-      }
+        height: heightValue,
+      })
       .then(response => {
         console.log(response);
         dispatch({
           type: COMPLETE,
-          payload: response.data
+          payload: response.data,
         })
       })
       .catch(error => {
         console.log(error);
         dispatch({
           type: ERROR,
-          payload: 'Unable to add new Smurf. Please refresh page and try again.'
+          payload: 'Unable to add new Smurf. Please refresh page and try again.',
         })
       })
   }
