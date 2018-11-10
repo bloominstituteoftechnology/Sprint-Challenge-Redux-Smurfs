@@ -23,6 +23,7 @@ class SmurfForm extends React.Component {
         this.props.addSmurf(this.state);
     }
 
+
     render(){
         return(
             <div>

@@ -36,9 +36,6 @@ export const rootReducer = (state = initialState, action) => {
         loading: false,
         error: null
       });
-    
-    case UPDATE_FORM:
-      return Object.assign({}, state, {updatingSmurf: true})
 
     case UPDATE_SMURF:
       return Object.assign({}, state, {

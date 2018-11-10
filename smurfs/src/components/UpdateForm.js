@@ -21,6 +21,7 @@ class UpdateForm extends React.Component {
     submitHandler = (e) => {
         e.preventDefault();
         this.props.updateSmurf(this.props.id, this.state.name, this.state.age, this.state.height);
+        this.props.closeUpdateForm()
     }
 
 

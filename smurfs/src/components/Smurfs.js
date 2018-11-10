@@ -30,7 +30,8 @@ class Smurfs extends React.Component {
 const mapStateToProps = state => {
     console.log(state.smurfs)
     return {
-        smurfs: state.smurfs
+        smurfs: state.smurfs,
+        updateSmurfs: state.updatingSmurf
     }
 };
 

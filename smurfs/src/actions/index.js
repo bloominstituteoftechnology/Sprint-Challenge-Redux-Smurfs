@@ -61,11 +61,6 @@ export const deleteSmurf = id => {
   }
 };
 
-export const openUpdateForm = () => {
-  return dispatch => {
-    ({ type: UPDATE_FORM })
-  }
-}
 
 export const updateSmurf = (id, name, age, height) => {
   return dispatch => {
