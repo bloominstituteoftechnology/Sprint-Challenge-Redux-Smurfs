@@ -2,17 +2,15 @@
   Be sure to import in all of the action types from `../actions`
 */
 
-/*
- Your initial/default state for this project could *Although does not have to* look a lot like this
- {
+ const initialState = {
    smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
+   fetchingSmurfs: false,
+   addingSmurf: false,
+   updatingSmurf: false,
+   deletingSmurf: false,
    error: null
  }
-*/
+
 
 /*
   You'll only need one smurf reducer for this project.
@@ -21,3 +19,10 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+export default (state = initialState, action) => {
+  switch(action.type) {
+    default:
+      return state;
+  }
+}
