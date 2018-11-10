@@ -1,13 +1,11 @@
-import React from 'react';
+import React from 'react'
+import { smurfReducer } from '../reducers/smurfReducer';
 
 const Smurf = ({smurf}) => {
 
-
     return (
-        <div key={smurf.age} className='smurf-card'>
-            <h2>{smurf.name}</h2>
-            <h2>{smurf.age}</h2>
-            <h2>{smurf.height}</h2>
+        <div className='smurf-card'>
+        {smurf.name}
         </div>
     )
 }

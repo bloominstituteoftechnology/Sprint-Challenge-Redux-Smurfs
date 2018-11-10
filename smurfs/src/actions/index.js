@@ -1,37 +1,13 @@
-/* 
+/*
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
-
 import axios from 'axios'
 export const GET_SMURFS = 'GET_SMURFS'
 export const LOADING = 'loading'
 export const DELETE_SMURFS = 'DELETE_SMURFS'
-export const UPDATE_SMURFS = 'UPDATE_SMURFS'
-export const ERROR = "ERROR"
+export const ERROR = 'ERROR'
 
-export const getSmurfs = () => {
-  return(dispatch) => {
-    dispatch({type: LOADING})
-    axios.get(`http://localhost:3333/smurfs/`)
-    .then(response => {
-      dispatch({type: GET_SMURFS, payload: response.data})
-    })
-    .catch(err => {
-      dispatch({type: Error, payload: err.errorMessage})
-    })
-  }
-}
-
-// export const deleteSmurf = (age) => {
-//   return (dispatch) => {
-//     dispatch({type: LOADING})
-//     axios.delete(`http://localhost:3333/smurfs/${age}`)
-//     .then(response => {
-//       dispatch({type: DELETE_SMURFS, smurfs: response.data})
-//     })
-//   }
-// }
 
 
 /*
@@ -44,3 +20,16 @@ export const getSmurfs = () => {
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const getSmurfs = () => dispatch => {
+  dispatch({ type: LOADING })
+  axios
+    .get(`http://localhost:3333/smurfs`)
+    .then(response => {
+      console.log(response.data)
+      dispatch({ type:GET_SMURFS, payload: response.data})
+    })
+    .catch(err => {
+      dispatch({ type: ERROR , payload: err.errorMessage})
+    })
+}

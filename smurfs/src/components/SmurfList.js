@@ -1,27 +1,32 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import Smurf from './Smurf';
-import {getSmurfs} from '../actions/index'
-
+import React from 'react';
+import {getSmurfs} from '../actions/index';
+import Smurf from './Smurf'
+import {connect} from 'react-redux'
 
 class SmurfList extends React.Component {
-    componentDidMount(){
-        this.props.getSmurfs()
+     constructor(props){
+        super(props)
     }
 
-    render(){
-        return(
-            <div>
-                {this.props.smurfs.map(smurf =>
-                    <Smurf smurf={smurf} />)}
-            </div>
-        )
+    componentDidMount(){
+        this.props.getSmurfs();
     }
+
+    render() {
+      return (
+        <div>
+            {this.props.loading ? <h1>Finding smurfs</h1> : null}
+            {this.props.error !== '' ? <h1>{this.props.error}</h1> : null}
+            {this.props.smurfs.map(smurf =>
+                <Smurf smurf={smurf} key={smurf.id}/>)}
+        </div>
+    )
+  }
 }
 
 const mapStateToProps = state => {
     return {
-        smurfs: state.smurfs
+        smurfs: state.smurfReducer.smurfs
     }
 }
 
