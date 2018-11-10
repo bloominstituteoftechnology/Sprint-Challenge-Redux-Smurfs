@@ -1,9 +1,16 @@
 .App {
   text-align: center;
+  width: 600px;
+  margin: auto;
 }
 
 /* Baby smurf blue, hex code #62cdfd 
    Smurf blue: #88CCFF */
+.smurfsList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .smurfData {
   display: flex;
