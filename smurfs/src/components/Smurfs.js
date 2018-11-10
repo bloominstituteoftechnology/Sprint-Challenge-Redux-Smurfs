@@ -6,7 +6,7 @@ class Smurfs extends Component {
         return(
             <div>
             {this.props.smurfs.map((smurf, index) =>  {
-                return <Smurf key={index} smurf={smurf} />
+                return <Smurf removeSmurf={this.props.removeSmurf} key={index} smurf={smurf} />
             })}
             </div>
         )

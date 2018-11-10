@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 class Smurf extends Component {
     render()    {
         console.log(this.props)
-        const { name, age, height} = this.props.smurf
+        const { name, age, height, id} = this.props.smurf
         return(
             <div>
-            {`${name} ${age} ${height}`}
+                {`${name} ${height} ${age}`}
+                <div onClick={()    =>  this.props.removeSmurf(id)}>X</div>
             </div>
         )
     }

@@ -34,7 +34,7 @@ export const addSmurf = (smurf) =>  {
 export const removeSmurf = (id)    =>  {
     return dispatch =>  {
         dispatch({ type: FETCHING });
-        axios.delete(`http://localhost:5000/api/friends/${id}`)
+        axios.delete(`http://localhost:3333/smurfs/${id}`)
         .then(({data})  =>  {
             dispatch({ type: SUCCESS, payload: data});
         })

@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.fetching === true ? (<h1>LOADING</h1>) : <Smurfs addSmurf={this.props.addSmurf} removeSmurf={this.props.removeSmurf} smurfs={this.props.smurfs}/>}
+        {this.props.fetching === true ? (<h1>LOADING</h1>) : <Smurfs removeSmurf={this.props.removeSmurf} smurfs={this.props.smurfs}/>}
         <Forms addSmurf={this.props.addSmurf}/>
       </div>
     );
