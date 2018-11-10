@@ -31,7 +31,9 @@ import CreateSmurf from './CreateSmurf'
 const App = props => {
   return (
     <div className="App">
-      <NavLink to="/create">Create</NavLink>
+
+    <h1> Smurf Village</h1>
+      <NavLink to="/create">Create-A-Smurf</NavLink>
 
       <Route path="/create" component={CreateSmurf} />
 
