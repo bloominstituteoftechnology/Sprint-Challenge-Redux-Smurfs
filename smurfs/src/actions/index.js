@@ -35,6 +35,7 @@ export const getSmurfs = () => {
     dispatch({type: LOADING});
     axios.get(apiRoute)
       .then(res => {
+        console.log(res.data)
         dispatch({type: GET_SMURFS, smurfs: res.data});
       })
       .catch(err => {
