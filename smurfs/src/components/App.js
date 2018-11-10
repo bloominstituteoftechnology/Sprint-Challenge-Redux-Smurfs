@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -8,6 +9,8 @@ import './App.css';
  */
 class App extends Component {
   render() {
+      console.log(this.props);
+  
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -19,4 +22,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = () => {
+  return {}
+}
+
+export default connect(mapStateToProps)(App);
