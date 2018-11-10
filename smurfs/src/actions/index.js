@@ -18,14 +18,32 @@ export const fetchingSmurfs = () => dispatch => {
     .then( response => {
       dispatch({
         type: FETCHING_SMURFS,
-        payload: response.data.results,
+        payload: response.data,
       });
     })
 
     .catch(error => {
       dispatch({
         type: ERROR,
-        payload: error.errorMessage,
+        payload: error,
+      });
+    });
+};
+
+export const addingSmurf = newSmurf => dispatch => {
+  dispatch({ type: FETCHING });
+  axios.get('http://localhost:3333/smurfs', newSmurf)
+    .then( response => {
+      dispatch({
+        type: ADDING_SMURF,
+        payload: response.data,
+      });
+    })
+
+    .catch(error => {
+      dispatch({
+        type: ERROR,
+        payload: error,
       });
     });
 };
