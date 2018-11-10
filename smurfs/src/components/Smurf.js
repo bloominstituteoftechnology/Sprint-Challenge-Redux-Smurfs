@@ -11,7 +11,7 @@ const Smurf = props => {
   }
 
   return (
-    <div key={smurf.id}>
+    <div key={smurf.id} className="smurf">
       <p onClick={clickHandler}>X</p>
       <p>{smurf.name}</p>
       <p>{smurf.age} years young</p>

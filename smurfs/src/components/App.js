@@ -17,8 +17,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <AddSmurfForm />
-        <SmurfsList />
+        <div className="smurf-village">
+          <AddSmurfForm />
+          <SmurfsList />
+        </div>
         <Route path="/:id" component={UpdateSmurfForm} />
       </div>
     );

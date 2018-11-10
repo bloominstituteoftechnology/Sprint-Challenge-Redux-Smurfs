@@ -29,7 +29,7 @@ class updateSmurfForm extends React.Component {
 
   render(){
     return (
-      <form onSubmit={this.submitHandler}>
+      <form onSubmit={this.submitHandler} className="update-form">
         <input type="text" name="name" value={this.state.name} onChange={this.inputHandler}/>
         <input type="text" name="age" value={this.state.age} onChange={this.inputHandler}/>
         <input type="text" name="height" value={this.state.height} onChange={this.inputHandler}/>

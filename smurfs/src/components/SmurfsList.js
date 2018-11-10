@@ -11,7 +11,7 @@ class SmurfsList extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="smurf-list">
         {this.props.loading ? <h1>Loading...</h1> : null}
 
         {this.props.error !== '' ? <h1>{this.props.error}</h1> : null}
