@@ -47,7 +47,7 @@ export const updateSmurf = (updatedSmurf) => {
 export const deleteSmurf = (id) => {
   return(dispatch) => {
     dispatch({type: LOADING})
-    axios.delete(`http:localhost:3333:smurfs/${id}`)
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
       .then(response => {
         dispatch({type: GET_SMURFS, smurfs: response.data })
       })
