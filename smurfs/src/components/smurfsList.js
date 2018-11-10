@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { fetchSmurfs } from '../actions/index';
+import { fetchSmurfs, addSmurf } from '../actions/index';
 import { Form, FormGroup, Input, Button } from 'reactstrap';
 
 import Smurf from './smurf';
@@ -23,6 +23,19 @@ class SmurfsList extends React.Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
+    submitSmurf = (e) =>{
+        e.preventDefault();
+        const {name, age, height } = this.state;
+        const newSmurf = { name, age, height }
+        this.props.addSmurf(newSmurf)
+        this.setState({
+            name:'',
+            age: '',
+            height: ''
+        })
+
+    }
+
 
     
     render(){
@@ -38,7 +51,7 @@ class SmurfsList extends React.Component {
                     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                         <Input type="text" name="height"  placeholder="Height" value={this.state.height} onChange={this.inputHandler} />
                     </FormGroup>
-                    <Button>Add Smurf</Button>
+                    <Button onClick={this.submitSmurf}>Add Smurf</Button>
                 </Form>
  
                 {this.props.smurfs.map(item=> 
@@ -53,4 +66,4 @@ const mapStateToProps = state =>{
         smurfs: state.smurfs
     }
 }
-export default connect(mapStateToProps, { fetchSmurfs })(SmurfsList);
+export default connect(mapStateToProps, { fetchSmurfs, addSmurf })(SmurfsList);

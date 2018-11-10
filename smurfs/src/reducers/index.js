@@ -1,4 +1,4 @@
-import { LOADING, ADD_SUCCESS, FAILURE } from '../actions/index';
+import { LOADING, SUCCESS, FAILURE } from '../actions/index';
 
  const initialState = {
    smurfs: [],
@@ -13,7 +13,7 @@ export default (state = initialState, action)=>{
    case LOADING:
       return {...state, loading:true, loadingMsg:[action.payload]}
 
-    case ADD_SUCCESS:
+    case SUCCESS:
       return {...state, smurfs:[...action.payload], loading: false}
 
     case FAILURE:
