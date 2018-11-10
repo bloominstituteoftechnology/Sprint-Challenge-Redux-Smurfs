@@ -1,4 +1,4 @@
-import {LOADING , SUCCESS} from '../actions/index';
+import {LOADING , SUCCESS, NEWSMURF} from '../actions/index';
 /*
   Be sure to import in all of the action types from `../actions`
 */
@@ -21,7 +21,8 @@ const rootReducer = (state = initialState, action) => {
         return Object.assign({}, state, {fetching: true});
       case SUCCESS:
         return Object.assign({}, ...state, {smurfs: action.payload});
-     
+      case NEWSMURF:
+        return Object.assign({}, ...state, {smurfs: action.payload, id: state.length + 1});
       default: return state;
   }
   

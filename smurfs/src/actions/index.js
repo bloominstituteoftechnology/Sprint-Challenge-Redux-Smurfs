@@ -6,6 +6,7 @@ import axios from 'axios';
 */
 export const LOADING = 'LOADING';
 export const SUCCESS = 'SUCCESS';
+export const NEWSMURF = 'NEWSMURF';
 export const ERROR = 'ERROR';
 
 /*
@@ -25,6 +26,18 @@ export const getSmurfs = () => {
     axios.get(`http://localhost:3333/smurfs`)
     .then( response => {
         dispatch({type: SUCCESS, payload: response.data, fetching: false})
+    })
+    .catch (err => {
+      dispatch({type: ERROR, errorMessage: "Can not find smurfs"})
+    })
+  }
+}
+
+export const addSmurf = (newSmurf) => {
+  return (dispatch) => {
+    axios.post(`http://localhost:3333/smurfs`, newSmurf)
+    .then( response => {
+      dispatch({type: NEWSMURF, payload: response.data, fetching: false })
     })
     .catch (err => {
       dispatch({type: ERROR, errorMessage: "Can not find smurfs"})
