@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import { addSmurf } from "../actions/index";
 
 const formStyle = {
-    width: '50%',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
     margin: '10px auto'
 }
 
