@@ -85,8 +85,8 @@ return dispatch => {
 
 ### POST '/smurfs'
 
-- [] Create form to add smurfs
-- [] Send new smurf to server and display new smurf list
+- [x] Create form to add smurfs
+- [x] Send new smurf to server and display new smurf list
 
 * To add a smurf to the Smurf DB you'll need all three fields. `name`, `age`, and `height`.
 * Example:

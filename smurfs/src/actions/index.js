@@ -30,3 +30,16 @@ export const getSmurfs = () => {
       })
   }
 }
+
+export const createSmurf = (smurf) => {
+  return (dispatch) => {
+    dispatch({type: LOADING});
+    axios.post('http://localhost:3333/smurfs', smurf)
+      .then( response => {
+        dispatch({type: SUCCESS, smurfs: response.data});
+      })
+      .catch( err => {
+        dispatch({type: ERROR, errorMessage: "Unable to create smurf"});
+      })
+  }
+}
