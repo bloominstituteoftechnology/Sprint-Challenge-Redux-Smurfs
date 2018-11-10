@@ -17,7 +17,6 @@ import { LOADING, GET_SMURFS, ERROR } from '../actions/index'
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
-  addingSmurf: false,
   error: null
 }
 
