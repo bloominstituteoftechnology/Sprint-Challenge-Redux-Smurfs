@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
     case LOADING:
         return {...state, fetchingSmurfs: true};
     case GET_SMURFS:
-        return {...state, smurfs: action.friends, fetchingSmurfs: false};
+        return {...state, smurfs: action.smurfs, fetchingSmurfs: false};
     case ERROR:
       return {...state, error: action.errorMessage, fetchingSmurfs: false}; 
     default:
