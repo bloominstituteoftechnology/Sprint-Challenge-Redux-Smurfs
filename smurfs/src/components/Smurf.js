@@ -4,21 +4,21 @@ import { connect } from 'react-redux'
 import { deleteSmurf } from '../actions/index'
 
 const Smurf = props => {
-  const { Smurf, deleteSmurf } = props
+  const { smurf, deleteSmurf } = props
 
   const clickHandler = () => {
-    deleteSmurf(Smurf.id)
+    deleteSmurf(smurf.id)
   }
 
   return (
-    <div key={avenger.id} className="avenger-card">
+    <div key={smurf.id} className="smurf-info">
       <p className="close-button" onClick={clickHandler}>X</p>
       <Link to={`/smurfs/${smurf.id}`}>
-        <h3>{Smurf.name}</h3>
+        <h3>{smurf.name}</h3>
       </ Link>
-      <strong>{Smurf.height} tall</strong>
-      <p>{Smurf.age} smurf years old</p>
-      <Link to={`/update/${Smurf.id}`}>Update</Link>
+      <strong>{smurf.height} tall</strong>
+      <p>{smurf.age} smurf years old</p>
+      <Link to={`/update/${smurf.id}`}>Update</Link>
     </div>
   )
 }

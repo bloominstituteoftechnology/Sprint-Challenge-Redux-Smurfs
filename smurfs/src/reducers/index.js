@@ -15,13 +15,14 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { fetchingSmurfs: true });
     case GET_SMURFS:
       return Object.assign({}, state, {
-        smurfs: [...state.smurfs, ...action.payload],
-        fetchingSmurfs: false
+        smurfs: action.payload,
+        fetchingSmurfs: false,
+        error: null
       });
     case ERROR:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
-        error: "Ya gone did smurfed!..."
+        error: action.error
       });
     default:
       return state;

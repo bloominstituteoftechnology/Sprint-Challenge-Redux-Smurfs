@@ -20,7 +20,7 @@ class Village extends Component {
 
         { this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
 
-        { this.props.smurfs.map( Smurf => <Smurf Smurf={Smurf} key={Smurf.id}/> ) } 
+        { this.props.smurfs.map( smurf => <Smurf smurf={smurf} key={smurf.id}/> ) } 
       </div>
     )
   }

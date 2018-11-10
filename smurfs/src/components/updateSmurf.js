@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { updateSmurf } from '../actions/index'
 
-class updateSmurf extends Component {
+class UpdateSmurf extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -41,7 +41,7 @@ class updateSmurf extends Component {
 
 const mapStateToProps = state => {
   return {
-    avengers: state.smurfs
+    smurfs: state.smurfs
   }
 }
-export default connect(mapStateToProps, { updateSmurf })(updateSmurf)
+export default connect(mapStateToProps, { updateSmurf })(UpdateSmurf)
