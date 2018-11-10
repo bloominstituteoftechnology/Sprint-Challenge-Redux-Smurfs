@@ -19,4 +19,8 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  smurfs
+}
+
 export default App;
