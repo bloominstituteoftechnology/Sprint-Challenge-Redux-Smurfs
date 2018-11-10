@@ -17,15 +17,11 @@ class App extends Component {
           <Link to="/create">Add a Smurf</Link>
         </nav>
 
-        <Route path="/create" component={AddSmurf} />
+        <Route path="/create" render={ props => <div><AddSmurf/> <SmurfList /></div>} />
         <Route exact path="/" component={Home} />
-        <Route path="/smurfs" component={SmurfList} />
+        <Route exact path="/smurfs" component={SmurfList} />
         <Route path="/smurfs/:id" render={ props => <SmurfProfile {...props} /> } />
 
-
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
       </div>
     );
   }

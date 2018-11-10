@@ -9,7 +9,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import Reducer from './reducers/index';
 
-const middleware = applyMiddleware(thunk);
+const middleware = applyMiddleware(logger, thunk);
 const store = createStore(Reducer, middleware);
 
 ReactDOM.render(
