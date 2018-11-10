@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const SmurfCard = styled.div`
     border: 1px solid black;
     width: 250px;
-    margin: 0 10px;
+    margin: 10px 10px;
 `
 
 function Smurf(props) {
