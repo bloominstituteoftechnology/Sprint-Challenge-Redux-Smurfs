@@ -15,17 +15,62 @@ const initialState = {
   smurfs : [],
   fetchingSmurfs: false,
   addingSmurf: false,
-  updatingSmurf: false,
+  //updatingSmurf: false,
   deletingSmurf: false,
   error: null,
 }
 
-export const smurfReducer = (state = initialState, action) =>{
+const smurfReducer = (state = initialState, action) =>{
   switch(action.type){
-    case SMURF_LOADING:
+    case GET_SMURF_LOADING:
       return Object.assign({}, state, {
         ...state,
         fetchingSmurfs:true,
       })
+    case GET_SMURF_SUCCESS:
+      return Object.assign({}, state, {
+        ...state,
+        fetchingSmurfs:false,
+        smurfs: action.payload,
+      }) 
+    case GET_SMURF_FAILURE:
+      return Object.assign({},state, {
+        ...state,
+        error:action.payload,
+      }) 
+      case ADD_SMURF_LOADING:
+      return Object.assign({}, state, {
+        ...state,
+        addingSmurf:true,
+      })
+    case ADD_SMURF_SUCCESS:
+      return Object.assign({}, state, {
+        ...state,
+        addingSmurf:false,
+        smurfs: action.payload,
+      }) 
+    case ADD_SMURF_FAILURE:
+      return Object.assign({},state, {
+        ...state,
+        error:action.payload,
+      })  
+      case DELETE_SMURF_LOADING:
+      return Object.assign({}, state, {
+        ...state,
+        deletingSmurf:true,
+      })
+    case DELETE_SMURF_SUCCESS:
+      return Object.assign({}, state, {
+        ...state,
+        deletingSmurf:false,
+        smurfs: action.payload,
+      }) 
+    case DELETE_SMURF_FAILURE:
+      return Object.assign({},state, {
+        ...state,
+        error:action.payload,
+      })    
   }
 }
+
+export default smurfReducer;
