@@ -35,7 +35,7 @@ export const getSmurfs = () => {
       .catch(err => {
         dispatch({
           type: FAIL,
-          payload: 'Failed to load data'
+          payload: err
         });
       });
   };
@@ -56,9 +56,35 @@ export const addSmurf = newSmurf => {
         });
       })
       .catch(err => {
+        // console.log('error is: ', err);
         dispatch({
           type: FAIL,
-          payload: 'Failed to load data'
+          payload:
+            'Failed to add new smurf. Please make sure a name, age and height are entered'
+        });
+      });
+  };
+};
+
+//DELETE
+export const deleteSmurf = smurfId => {
+  // console.log(smurfId);
+  return dispatch => {
+    dispatch({ type: FETCHING });
+    axios
+      .delete(`http://localhost:3333/smurfs/${smurfId}`)
+      .then(response => {
+        console.log(response);
+        dispatch({
+          type: SUCCESS,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        // console.log('error is: ', err);
+        dispatch({
+          type: FAIL,
+          payload: 'Failed to delete'
         });
       });
   };

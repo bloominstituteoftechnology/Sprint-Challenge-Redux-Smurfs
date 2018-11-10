@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions/index';
+import { getSmurfs, deleteSmurf } from '../actions/index';
 import NewSmurfForm from './NewSmurfForm';
 /*
  to wire this component up you're going to need a few things.
@@ -14,6 +14,11 @@ class App extends Component {
   componentDidMount() {
     this.props.getSmurfs();
   }
+
+  handleDelete = e => {
+    console.log(e.target.parentNode.id);
+    this.props.deleteSmurf(e.target.parentNode.id);
+  };
 
   render() {
     if (this.props.fetching) {
@@ -37,10 +42,13 @@ class App extends Component {
           <div>
             {this.props.smurfs.map(smurf => {
               return (
-                <div key={smurf.id} className="smurf">
+                <div key={smurf.id} className="smurf" id={smurf.id}>
                   <p>Name: {smurf.name}</p>
                   <p>Age: {smurf.age}</p>
                   <p>Height: {smurf.height}</p>
+                  <p className="delete" onClick={this.handleDelete}>
+                    Delete
+                  </p>
                 </div>
               );
             })}
@@ -61,5 +69,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getSmurfs }
+  { getSmurfs, deleteSmurf }
 )(App);
