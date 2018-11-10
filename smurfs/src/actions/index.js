@@ -2,9 +2,6 @@ import axios from 'axios';
 
 export const FETCHING = 'FETCHING';
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
-export const ADDING_SMURF = 'ADDING_SMURF';
-export const DELETING_SMURF = 'DELETING_SMURF';
-export const UPDATING_SMURF = 'UPDATING_SMURF';
 export const ERROR = 'ERROR';
 
 /* 
@@ -12,41 +9,85 @@ export const ERROR = 'ERROR';
   Be sure to export each action type so you can pull it into your reducer
 */
 
-export const fetchingSmurfs = () => dispatch => {
-  dispatch({ type: FETCHING });
-  axios.get('http://localhost:3333/smurfs')
+export const fetchingSmurfs = () => {
+  return (dispatch) => {
+    dispatch({ type: FETCHING })
+    axios.get('http://localhost:3333/smurfs')
+      .then( response => {
+        dispatch({
+          type: FETCHING_SMURFS,
+          smurfs: response.data,
+        })
+      })
+
+      .catch( error => {
+        dispatch({
+          type: ERROR,
+          errorMessage: 'Trouble finding Smurfs, please try again later',
+        })
+      })
+  }
+}
+
+export const addingSmurf = (newSmurf) => {
+  return (dispatch) => {
+    dispatch({ type: FETCHING });
+    axios.post('http://localhost:3333/smurfs', newSmurf)
+      .then( response => {
+        dispatch({
+          type: FETCHING_SMURFS,
+          smurfs: response.data,
+        });
+      })
+
+      .catch( error => {
+        dispatch({
+          type: ERROR,
+          errorMessage: 'Trouble creating new Smurf, please try again later',
+        });
+      });
+  }
+};
+
+export const deleteSmurf = (id) => {
+  return (dispatch) => {
+    dispatch({ type: FETCHING });
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
     .then( response => {
       dispatch({
         type: FETCHING_SMURFS,
-        payload: response.data,
+        smurfs: response.data,
       });
     })
 
-    .catch(error => {
+    .catch( error => {
       dispatch({
         type: ERROR,
-        payload: error,
-      });
-    });
-};
+        errorMessage: 'Trouble deleting Smurf',
+      })
+    })
+  }
+}
 
-export const addingSmurf = newSmurf => dispatch => {
-  dispatch({ type: FETCHING });
-  axios.get('http://localhost:3333/smurfs', newSmurf)
+export const updateSmurf = (updatedSmurf) => {
+  return (dispatch) => {
+    dispatch({ type: FETCHING });
+    axios.put(`http://localhost:3333/smurfs/${updatedSmurf.id}`, updatedSmurf)
     .then( response => {
       dispatch({
-        type: ADDING_SMURF,
-        payload: response.data,
+        type: FETCHING_SMURFS,
+        smurfs: response.data,
       });
     })
 
-    .catch(error => {
+    .catch( error => {
       dispatch({
         type: ERROR,
-        payload: error,
-      });
-    });
-};
+        errorMessage: 'Trouble updating Smurf',
+      })
+    })
+  }
+}
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.

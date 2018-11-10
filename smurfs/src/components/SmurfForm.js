@@ -8,7 +8,7 @@ class AddSmurf extends React.Component {
         this.state = {
             name: '',
             age: '',
-            size: '',
+            height: '',
         }
     }
 
@@ -27,7 +27,7 @@ class AddSmurf extends React.Component {
             <form onSubmit={this.submitHandler}>
                 <input type='text' name='name' placeholder='Enter Smurf Name' value= 'this.state.name' onClick={this.inputHandler} />
                 <input type='number' name='age' placeholder='Enter Smurf Age' value='this.state.age' onClick={this.inputHandler} />
-                <input type='number' name='size' placeholder='Enter Smurf Size' value='this.state.size' onClick={this.inputHandler} />
+                <input type='text' name='height' placeholder='Enter Smurf Height' value='this.state.height' onClick={this.inputHandler} />
                 <button type='submit'>Submit</button>
             </form>
         )

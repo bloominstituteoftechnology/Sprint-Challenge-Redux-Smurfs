@@ -6,14 +6,17 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { smurfReducer } from  './reducers';
+import smurfReducer from  './reducers';
+import { BrowserRouter as Router } from 'react-router-dom'
 
 const middleware = applyMiddleware(thunk, logger);
 const store = createStore(smurfReducer, middleware)
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

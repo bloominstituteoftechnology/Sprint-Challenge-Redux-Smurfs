@@ -12,10 +12,10 @@ class SmurfList extends React.Component {
     render() {
         return (
             <div>
-                {this.props.fetching ? <h2>Fetching Data. Please Wait</h2> : null };
-                {this.props.error !== '' ? <h2>{this.props.error}</h2>: '' };
+                {this.props.fetching ? <h2>Fetching Data. Please Wait</h2> : null }
+                {this.props.error !== '' ? <h2>{this.props.error}</h2>: '' }
                 {this.props.smurfs.map(smurf => 
-                    <Smurf smurf={smurf} key={smurf.id + smurf.name}/>)}
+                    <Smurf smurf={smurf} key={smurf.id} />)}
             </div>
         )
     }
@@ -23,9 +23,9 @@ class SmurfList extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        smurfs: state.smurfReducer.smurfs,
-        fetching: state.smurfReducer.fetching,
-        error: state.smurfReducer.error,
+        smurfs: state.smurfs,
+        fetching: state.fetching,
+        error: state.error,
     }
 }
 

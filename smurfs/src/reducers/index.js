@@ -1,4 +1,4 @@
-import { FETCHING, FETCHING_SMURFS, ADDING_SMURF, DELETING_SMURF, UPDATING_SMURF, ERROR } from '../actions';
+import { FETCHING, FETCHING_SMURFS, ERROR } from '../actions';
 /*
 	Be sure to import in all of the action types from `../actions`
 */
@@ -6,32 +6,19 @@ import { FETCHING, FETCHING_SMURFS, ADDING_SMURF, DELETING_SMURF, UPDATING_SMURF
 const initialState = {
 	smurfs: [],
 	fetching: false,
-	fetchingSmurfs: false,
-	addingSmurf: false,
-	updatingSmurf: false,
-	deletingSmurf: false,
-	error: null,
+	error: '',
 }
 
-export const smurfReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
 	switch (action.type) {
 		case FETCHING:
 			return Object.assign({}, state, {fetching: true });
 		
 		case FETCHING_SMURFS:
-			return Object.assign({}, state, { smurfs: action.payload, fetching: false });
-
-		case ADDING_SMURF:
-			return Object.assign({}, state, { addingSmurf: true });
-
-		case DELETING_SMURF:
-			return Object.assign({}, state, { deletingSmurf: true });
-
-		case UPDATING_SMURF:
-			return Object.assign({}, state, { updatingSmurf: true });
+			return Object.assign({}, state, { smurfs: action.smurfs, fetching: false, error: '' });
 
 		case ERROR:
-			return Object.assign({}, state, { error: action.payload, fetching: false });
+			return Object.assign({}, state, { error: action.errorMessage, fetching: false });
 
 		default:
 			return state;
