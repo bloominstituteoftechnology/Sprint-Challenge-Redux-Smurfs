@@ -3,6 +3,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { deleteSmurf } from '../actions'
 
+import { Link } from 'react-router-dom'
+
 const SmurfPage = props => {
     const id = props.smurf.id;
 
@@ -19,6 +21,7 @@ const SmurfPage = props => {
             <p> Height: {props.smurf.height} </p>
             <p> ID: {props.smurf.id} </p>
             <div style={{cursor: "pointer"}} onClick={handleDelete}> Delete </div>
+            <Link to={`/update/${props.smurf.id}`}>Update</Link>
         </div>
     )
 }

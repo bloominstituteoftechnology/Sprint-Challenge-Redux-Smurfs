@@ -3,6 +3,9 @@ import './App.css';
 
 import SmurfsList from './SmurfsList';
 import CreateSmurf from './CreateSmurf';
+import UpdateSmurf from './UpdateSmurf';
+
+import { Route, NavLink } from 'react-router-dom'
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -15,9 +18,12 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-        <CreateSmurf />
+
+        <NavLink to="/create"> Create Smurf! </NavLink>
+        <Route path="/create" component={CreateSmurf} />
+        <Route path="/update/:id" component={UpdateSmurf} />
+        
+        {/* <CreateSmurf /> */}
         <SmurfsList /> 
       </div>
     );

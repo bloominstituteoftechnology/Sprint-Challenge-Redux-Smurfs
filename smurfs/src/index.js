@@ -8,6 +8,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 
+import { BrowserRouter as Router } from 'react-router-dom'
+
 /* You need some sort of reducer */
 
 const store = createStore(
@@ -17,7 +19,9 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
