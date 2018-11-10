@@ -24,16 +24,16 @@ export default (previousState = initialState, action) => {
         {fetchingSmurfs: false, addingSmurf: false, updatingSmurf: false, deletingSmurf: false, error: action.payload});
 
     case ADD_SMURF:
-      return [...previousState, 
-        {fetchingSmurfs: false, addingSmurf: true, updatingSmurf: false, deletingSmurf: false, error: null}];
+      return Object.assign({}, previousState, 
+        {fetchingSmurfs: true, addingSmurf: true, updatingSmurf: false, deletingSmurf: false, error: null});
     
     case DELETE_SMURF:
-      return [...previousState,
-        {fetchingSmurfs: false, addingSmurf: false, updatingSmurf: false, deletingSmurf: true, error: null}];
+      return Object.assign({}, previousState,
+        {fetchingSmurfs: true, addingSmurf: false, updatingSmurf: false, deletingSmurf: true, error: null});
 
     case UPDATE_SMURF:
-      return [...previousState,
-        {fetchingSmurfs: false, addingSmurf: false, updatingSmurf: true, deletingSmurf: false, error: null}];
+      return Object.assign({}, previousState,
+        {fetchingSmurfs: true, addingSmurf: false, updatingSmurf: true, deletingSmurf: false, error: null});
 
     default: 
       return previousState;

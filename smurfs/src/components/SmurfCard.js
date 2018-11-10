@@ -1,11 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import {deleteSmurf} from '../actions/index';
+
 const SmurfCard = props => {
     const callDeleteSmurf = e => {
         e.preventDefault();
-        
+        props.deleteSmurf(props.smurf.id);
     }
+
+    // Added an id to Brainey in the server to fix him.
     return (
         <div className='smurf-card'>
             <button onClick={callDeleteSmurf}>Delete</button>
@@ -19,4 +23,4 @@ const SmurfCard = props => {
 const mapStateToProps = state => {
     return {}
 }
-export default connect(mapStateToProps)(SmurfCard);
+export default connect(mapStateToProps, {deleteSmurf})(SmurfCard);
