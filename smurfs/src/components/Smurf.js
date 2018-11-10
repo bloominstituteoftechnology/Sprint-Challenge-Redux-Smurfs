@@ -1,12 +1,25 @@
-import React from 'react'
-import { smurfin } from '../reducers/smurfin';
+import React from "react";
+import {connect} from 'react-redux'
+import {deleteSmurf} from '../actions/index'
 
- const Smurf = props => {
-     return (
-        <div key = {smurfin.id} className='smurf-card'>
-            <h2> {smurfin.name} </h2>
-        </div>
-    )
-}
+const Smurf = ({ smurf, deleteSmurf }) => {
 
- export default Smurf 
+    const clickHandler = () => {
+        deleteSmurf (smurf.id)
+    }
+    
+return (
+    <div key={smurf.id} className="smurf-card">
+    <p className="close-button" onClick={clickHandler}>
+        x
+    </p>
+        <h2>{smurf.name}</h2>
+        <p>Smurf's age:{smurf.age}</p>
+        <p>And smurfs' height:{smurf.height}</p>
+    </div>
+);
+};
+
+const mapStateToProps = () =>({})
+
+export default connect(mapStateToProps, {deleteSmurf})(Smurf);
