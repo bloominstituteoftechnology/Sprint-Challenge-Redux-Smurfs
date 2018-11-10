@@ -40,3 +40,16 @@ export const addSmurf = (newSmurf) =>{
 
  }
 }
+export const deleteSmurf = (id) =>{
+  return dispatch=>{
+    dispatch({ type: LOADING, payload: 'Bye Felica!'})
+    axios
+       .delete(`http://localhost:3333/smurfs/${id}`)
+       .then(response=>{
+         dispatch({ type: SUCCESS, payload: response.data })
+       })
+       .catch(err=>{
+         dispatch({ type: FAILURE, payload: 'This smurf wont leave'})
+       })
+  }
+}

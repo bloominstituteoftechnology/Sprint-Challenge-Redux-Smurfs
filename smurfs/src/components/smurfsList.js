@@ -25,17 +25,16 @@ class SmurfsList extends React.Component {
 
     submitSmurf = (e) =>{
         e.preventDefault();
-        const {name, age, height } = this.state;
-        const newSmurf = { name, age, height }
+        const newSmurf = { name: this.state.name,
+             age: this.state.age,
+              height: this.state.height }
         this.props.addSmurf(newSmurf)
         this.setState({
             name:'',
             age: '',
             height: ''
         })
-
     }
-
 
     
     render(){
@@ -54,7 +53,7 @@ class SmurfsList extends React.Component {
                     <Button onClick={this.submitSmurf}>Add Smurf</Button>
                 </Form>
  
-                {this.props.smurfs.map(item=> 
+                {this.props.smurfs.map(item => 
                     <Smurf key={item.id} smurf={item} />
                 )}
             </div>
