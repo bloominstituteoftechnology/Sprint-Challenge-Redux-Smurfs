@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-
+import './App.css'
 class Smurf extends Component {
     render() {
       return (
-        <div className="App">
+        <div className="smurf">
           <h2> {this.props.name} </h2>
-          <p> {this.props.age} </p>
-          <p> {this.props.height} </p>
+          <h4> {this.props.age} smurf years </h4>
+          <h4> {this.props.height} inches </h4>
         </div>
       );
     }

@@ -22,6 +22,14 @@
   font-size: large;
 }
 
+.smurf {
+  background-color: #062491;
+  color: white;
+  padding: 20px;
+  width: 200px;
+  margin: 20px;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
