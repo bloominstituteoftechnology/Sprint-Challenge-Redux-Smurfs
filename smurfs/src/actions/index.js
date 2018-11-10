@@ -3,6 +3,35 @@
   Be sure to export each action type so you can pull it into your reducer
 */
 
+import axios from 'axios'
+export const GET_SMURFS = 'GET_SMURFS'
+export const LOADING = 'loading'
+export const DELETE_SMURFS = 'DELETE_SMURFS'
+
+export const getSmurfs = () => {
+  return(dispatch) => {
+    dispatch({type: LOADING})
+    axios.get(`http://localhost:3333/smurfs/`)
+    .then(response => {
+      dispatch({type: GET_SMURFS, payload: response.data})
+    })
+    .catch(err => {
+      dispatch({type: Error, payload: err.errorMessage})
+    })
+  }
+}
+
+// export const deleteSmurf = (age) => {
+//   return (dispatch) => {
+//     dispatch({type: LOADING})
+//     axios.delete(`http://localhost:3333/smurfs/${age}`)
+//     .then(response => {
+//       dispatch({type: DELETE_SMURFS, smurfs: response.data})
+//     })
+//   }
+// }
+
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
