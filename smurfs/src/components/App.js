@@ -4,6 +4,7 @@ import './App.css';
 
 import { getSmurfs } from '../actions';
 import Smurf from './Smurf';
+import AddSmurfForm from './AddSmurfForm';
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
         <div>Have fun!</div>
         { this.props.fetchingSmurfs ? <h2>Loading</h2> : null }
         { this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
+        <AddSmurfForm />
         { this.props.smurfs.map( (smurf, i) => <Smurf smurf={smurf} key={i} /> ) }
       </div>
     );

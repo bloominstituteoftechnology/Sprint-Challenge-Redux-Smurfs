@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addSmurf } from '../actions/friendsActions';
+import { addSmurf } from '../actions';
 
 class AddSmurfForm extends Component {
     constructor() {
