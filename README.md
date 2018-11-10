@@ -56,6 +56,8 @@ src
 
 ### GET '/smurfs'
 
+- [x] Get smurfs from the server and display
+
 * To retrieve an array all the smurfs in the Smurf DB simply write a get to the endpoint `'/smurfs'`.
 * Because `Redux-Thunk` is wired up as a middleware for this project. Be sure to utilize thunks when appropriate:
 
@@ -82,6 +84,9 @@ return dispatch => {
 ```
 
 ### POST '/smurfs'
+
+- [] Create form to add smurfs
+- [] Send new smurf to server and display new smurf list
 
 * To add a smurf to the Smurf DB you'll need all three fields. `name`, `age`, and `height`.
 * Example:
