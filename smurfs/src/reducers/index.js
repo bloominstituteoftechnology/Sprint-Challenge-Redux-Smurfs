@@ -18,8 +18,17 @@ export const rootReducer = (state = initialState, action) => {
     
     case GET_SMURF:
       return Object.assign({}, state, {
-        smurfs: action.payload 
+        smurfs: action.payload,
+        loading: false,
+        error: null 
       });
+
+    case ADD_SMURF:
+    return Object.assign({}, state, {
+      smurfs: action.payload,
+      loading: false,
+      error: null
+    })
 
     case ERROR:
       return Object.assign({}, state, { error: action.payload, loading: false })

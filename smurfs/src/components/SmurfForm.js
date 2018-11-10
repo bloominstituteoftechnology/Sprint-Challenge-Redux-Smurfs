@@ -20,7 +20,7 @@ class SmurfForm extends React.Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        this.props.saveFriend(this.state);
+        this.props.addSmurf(this.state);
     }
 
     render(){
