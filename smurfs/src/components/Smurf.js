@@ -14,7 +14,7 @@ const Smurf = props => {
       <p onClick={clickHandler}>X</p>
       <p>{smurf.name}</p>
       <p>{smurf.age} years young</p>
-      <p>{smurf.height} cm tall</p>
+      <p>{smurf.height}</p>
     </div>
   )
 }
