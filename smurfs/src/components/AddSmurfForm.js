@@ -18,23 +18,23 @@ class AddSmurfForm extends Component {
     }
   
     submitHandler = (event) => {
-    //   event.preventDefault();
+      event.preventDefault();
       this.props.addSmurf(this.state);
     }
   
     render() {
       return (
-        <div className="form-container" onSubmit={this.submitHandler}>
+        <form className="form-container" onSubmit={this.submitHandler}>
           <input name="name" value={this.state.name} onChange={this.inputHandler} placeholder=" Name" />
           <input name="age" value={this.state.age} onChange={this.inputHandler} placeholder=" Age" />
           <input name="height" value={this.state.height} onChange={this.inputHandler} placeholder=" Height" />
           <button type="submit">Add Smurf</button>
-        </div>
+        </form>
       );
     }
   };
   
-  const mapStateToProps = state => {
+  const mapStateToProps = () => {
     return {}
   }
   
