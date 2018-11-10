@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from 'react-redux'
 import {deleteSmurf} from '../actions/index'
+import {Link } from 'react-router-dom'
 
 const Smurf = ({ smurf, deleteSmurf }) => {
 
@@ -15,6 +16,7 @@ return (
         <h2>{smurf.name}</h2>
         <p>Smurf's age:{smurf.age}</p>
         <p>And smurfs' height:{smurf.height}</p>
+        <Link to={`/update/${smurf.id}`} style={{ textDecoration: 'none', color: 'orangered', cursor: 'pointer' }}>Update</Link>
     </div>
 );
 };
