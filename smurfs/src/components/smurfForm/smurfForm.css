@@ -1,0 +1,9 @@
+.smurf-form span {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.smurf-input {
+  width: 200px;
+}
