@@ -4,6 +4,15 @@ import AddSmurf from "./AddSmurf";
 import Smurf from "./Smurf";
 import { getSmurfs } from "../actions/index";
 
+const Wrapper = {
+  width: '90%',
+  margin: '10px auto',
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  alignItems: 'center'
+}
+
 
 export class Village extends React.Component {
   componentDidMount() {
@@ -16,9 +25,9 @@ export class Village extends React.Component {
           {!this.props.loading && this.props.error === '' ?<AddSmurf /> : null}
           {this.props.loading ? <h1>Loading Village...</h1> : null}
           {this.props.error !== "" ? <h1>{this.props.error}</h1> : null}
-          {this.props.smurfs.map(smurf => (
+          <div style={Wrapper}>{this.props.smurfs.map(smurf => (
             <Smurf key={smurf.id} smurf={smurf} />
-          ))}
+          ))}</div>
           
         </div>
     );
