@@ -52,3 +52,19 @@ export const getSmurfs = () => {
       });
   }
 }
+
+// U - updateSmurf
+
+export const updateSmurf = (id, updatedAge) => {
+  return (dispatch) => {
+    dispatch({type: FETCHING});
+    axios
+      .put(`http://localhost:3333/smurfs/${id}`, updatedAge)
+      .then(response => {
+        dispatch({type: GET_SMURFS, smurfs: response.data})
+      })
+      .catch(err => {
+        dispatch({type: ERROR, error: `Oh no! We couldn't update the Smurf!`})
+      });
+  }
+}
