@@ -3,13 +3,14 @@ import {connect} from "react-redux";
 import {getSmurfs} from "../actions/index";
 import Smurf from "./Smurf"
 import AddSmurfForm from "./AddSmurfForm"
+import UpdateSmurfForm from "./UpdateSmurfForm"
 
 class SmurfList extends React.Component {
    componentDidMount() {
       this.props.getSmurfs()
    }
+
    render(){
-      
       return (
          <div>
             <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -20,6 +21,7 @@ class SmurfList extends React.Component {
                return <Smurf key={smurf.name} smurf={smurf} />
             })}
             <AddSmurfForm />
+            <UpdateSmurfForm />
          </div>
       )
    }

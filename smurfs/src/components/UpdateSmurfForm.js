@@ -1,8 +1,8 @@
 import React from "react";
 import {connect} from "react-redux"
-import {addSmurf} from "../actions"
+import {updateSmurf} from "../actions"
 
-class AddSmurf extends React.Component {
+class UpdateSmurf extends React.Component {
    constructor(){
       super()
       this.state = {
@@ -11,10 +11,7 @@ class AddSmurf extends React.Component {
          height: "",
       }
    }
-   
-   componentDidMount(){
-      //I'm not exactly sure how to update and delete without using match.params and I'm hungry, so I'll stop with the basic goals at 1:59
-   }
+
    inputHandler = (e) => {
       this.setState({[e.target.name]: e.target.value})
    }
@@ -62,4 +59,4 @@ const mapState = state => {
    return {}
 }
 
-export default connect(mapState, {addSmurf})(AddSmurf)
+export default connect(mapState, {updateSmurf})(UpdateSmurf)
