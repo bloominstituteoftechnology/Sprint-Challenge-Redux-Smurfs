@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-
+import {LOADING, ERROR, SUCCESS } from '../actions';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -13,6 +13,30 @@
    error: null
  }
 */
+const initialState = {
+  smurfs: [],
+  loading: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
+  error: null,
+  name: "Tom helping me"
+}
+export default(previousState = initialState, action) => {
+   switch(action.type) {
+          case LOADING:
+           return Object.assign({}, previousState, {loading:true}) 
+           
+          case ERROR:
+            return Object.assign({}, previousState, {error:action.payload, loading:false})
+          
+          case SUCCESS:
+            return Object.assign({}, previousState, {smurfs:action.payload, loading:false})  
+
+          default:
+            return previousState  
+   }
+}
 
 /*
   You'll only need one smurf reducer for this project.
