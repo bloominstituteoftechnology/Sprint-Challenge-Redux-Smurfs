@@ -39,7 +39,7 @@ export const createSmurf = (newSmurf) =>{
     axios
       .post('http://localhost:3333/smurfs', newSmurf)
       .then(response => {
-        dispatch({type: GET_SMURFS, smurfs: respose.data})
+        dispatch({type: GET_SMURFS, smurfs: response.data})
       })
       .catch( err => {
         dispatch({type: ERROR, errorMessage: "Couldn't create a new smurf"})
