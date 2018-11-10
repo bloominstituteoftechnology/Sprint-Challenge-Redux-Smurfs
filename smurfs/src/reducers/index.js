@@ -9,19 +9,19 @@ const initialState = {
    error: null
 };
 
-export default rootReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING:
       return Object.assign({}, state, { fetchingSmurfs: true });
     case GET_SMURFS:
       return Object.assign({}, state, {
-        smurfs: [...state.characters, ...action.payload],
-        fetching: false
+        smurfs: [...state.smurfs, ...action.payload],
+        fetchingSmurfs: false
       });
     case ERROR:
       return Object.assign({}, state, {
         fetchingSmurfs: false,
-        error: "Do or do not... you did not."
+        error: "Ya gone did smurfed!..."
       });
     default:
       return state;

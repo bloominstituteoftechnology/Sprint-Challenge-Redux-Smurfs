@@ -10,10 +10,10 @@ export const getSmurfs = () => {
     axios
       .get('http://localhost:3333/smurfs')
       .then( response => {
-        dispatch({type: GET_SMURFS, smurfs: response.data})
+        dispatch({type: GET_SMURFS, payload: response.data})
       })
       .catch( err => {
-        dispatch({type: ERROR, errorMessage: "Ya gone did smurfed!"})
+        dispatch({type: ERROR, error: "Ya gone did smurfed!"})
       })
   }
 }
@@ -28,7 +28,7 @@ export const addSmurf = (newSmurf) => {
         dispatch({type: GET_SMURFS, smurfs: response.data})
       })
       .catch( err => {
-        dispatch({type: ERROR, errorMessage: "Ya gone did smurfed! Name/Age/Height are all required to create a smurf in the smurf DB."})
+        dispatch({type: ERROR, error: "Ya gone did smurfed! Name/Age/Height are all required to create a smurf in the smurf DB."})
       })
   }
 } 
@@ -43,7 +43,7 @@ export const deleteSmurf = (id) => {
         dispatch({ type: GET_SMURFS, smurfs: response.data })
       })
       .catch( err => {
-        dispatch({type: ERROR, errorMessage: "No smurf by that ID exists in the smurf DB"})
+        dispatch({type: ERROR, error: "No smurf by that ID exists in the smurf DB"})
       })
 
   }
@@ -59,7 +59,7 @@ export const updateSmurf = (updatedSmurf) => {
         dispatch({ type: GET_SMURFS, smurfs: response.data})
       })
       .catch( err => {
-        dispatch({type: ERROR, errorMessage: "Ya gone did smurfed! Name/Age/Height are all required to create a smurf in the smurf DB."})
+        dispatch({type: ERROR, error: "Ya gone did smurfed! Name/Age/Height are all required to create a smurf in the smurf DB."})
       } )
   }
 }
