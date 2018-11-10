@@ -74,7 +74,7 @@ class SmurfForm extends React.Component {
             />
           </Col>
         </FormGroup>
-        <Button>Submit</Button>
+        <Button color="success" >Submit</Button>
       </Form>
     );
   }

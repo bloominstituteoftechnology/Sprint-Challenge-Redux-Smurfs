@@ -1,4 +1,8 @@
 import React from 'react';
+import { Button} from 'reactstrap';
+import {connect} from 'react-redux';
+
+import { deleteSmurf } from '../actions/index';
 
 const Smurf = (props) => {
     return (
@@ -6,9 +10,9 @@ const Smurf = (props) => {
             <h3>Smurf: {props.smurf.name} </h3>
             <p>Age: {props.smurf.age} smurfs old</p>
             <p>Height: {props.smurf.height} </p> 
-            <p>ID: {props.smurf.id} </p>
+            <Button color='danger' onClick={() => props.deleteSmurf(props.smurf.id)} >Delete</Button>
         </div>
     )
 }
 
-export default Smurf;
+export default connect(() => ({}), { deleteSmurf })(Smurf);
