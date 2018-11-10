@@ -59,24 +59,6 @@ export const createSmurf = (newSmurf) => {
   } 
 
 
-/* export const deleteSmurf = id => {
-  const deletedSmurf = axios.delete(`${URL}/delete`, {
-    data: { id }
-  });
-  return dispatch => {
-    dispatch({ type: DELETING_SMURF });
-    deletedSmurf
-      .then(({ data }) => {
-        dispatch({ type: DELETE_SMURF, payload: data });
-        dispatch({ type: SINGLE_SMURF, payload: {} });
-      })
-      .catch(err => {
-        dispatch({ type: ERROR, payload: err });
-      });
-  };
-}; */
-
-
 export const deleteSmurf = id => {
     return (dispatch) => {
       dispatch({type: DELETING_SMURF})
