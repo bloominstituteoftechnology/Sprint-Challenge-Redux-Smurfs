@@ -8,6 +8,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import smurfReducer from './reducers/index';
 
+
 const store = createStore(
   smurfReducer, // this is the most basic reducer. A function that returns and object. Replace it.
   applyMiddleware(logger, thunk/* be sure to throw in the proper middlewares here*/)
