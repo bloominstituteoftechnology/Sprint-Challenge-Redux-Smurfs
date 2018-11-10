@@ -1,3 +1,7 @@
+import {
+    bindActionCreators
+} from "../../node_modules/redux";
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
@@ -11,6 +15,7 @@
    updatingSmurf: false
    deletingSmurf: false
    error: null
+   message: ''
  }
 */
 
@@ -21,3 +26,8 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+
+message: ''
+
+during fetch display message.
