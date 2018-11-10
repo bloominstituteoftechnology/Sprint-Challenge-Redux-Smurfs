@@ -65,4 +65,13 @@ export const deleteSmurf = id => dispatch => {
   })
 }
 
-//updateSmurf
+export const updateSmurf = (id, smurf) => dispatch =>{
+  dispatch({type:UPDATING});
+  axios.put(`${url}/${id}`, smurf)
+  .then(response=>{
+    dispatch({type:UPDATING_SUCCESS, payload:response.data})
+  })
+  .catch(error=>{
+    dispatch({type:UPDATING_FAILURE, payload:error})
+  })
+}

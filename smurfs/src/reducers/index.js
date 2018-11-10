@@ -62,7 +62,12 @@ import {FETCHING,
       case DELETING_FAILURE:
       return {...state, deleting:false, error:action.payload};
   
-      //write updating cases here
+      case UPDATING:
+      return {...state, updating:true};
+      case UPDATING_SUCCESS:
+      return {...state, updating:false, smurfs:[...action.payload]};
+      case UPDATING_FAILURE:
+      return {...state, updating:false, error:action.payload};
   
       default:
       return state;
