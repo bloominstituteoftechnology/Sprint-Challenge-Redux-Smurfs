@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
 import EditSmurfForm from './EditSmurfForm';
+import { deleteSmurf } from '../actions';
 
 class Smurf extends Component {
     constructor(props) {
@@ -17,6 +19,10 @@ class Smurf extends Component {
         }));
     }
 
+    deleteSmurfButton = (id) => {
+        this.props.deleteSmurf(id);
+    }
+
     render() {
         return (
             <ul>
@@ -24,6 +30,7 @@ class Smurf extends Component {
                 <li>{this.props.smurf.age}</li>
                 <li>{this.props.smurf.height}</li>
                 <button onClick={() => this.toggleEditForm()}>Edit</button>
+                <button onClick={() => this.deleteSmurfButton(this.props.smurf.id)}>Delete</button>
                 { 
                     this.state.updatingSmurf ? 
                         <EditSmurfForm 
@@ -40,4 +47,8 @@ class Smurf extends Component {
     }
 }
 
-export default Smurf;
+const mapStateToProps = state => {
+    return {}
+}
+
+export default connect(mapStateToProps, { deleteSmurf })(Smurf);

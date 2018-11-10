@@ -59,3 +59,16 @@ export const updateSmurf = (smurf) => {
     })
   }
 }
+
+export const deleteSmurf = (id) => {
+  return (dispatch) => {
+    dispatch({type: LOADING});
+    axios.delete(`${apiRoute}/${id}`)
+    .then(res => {
+      dispatch({type: GET_SMURFS, smurfs: res.data});
+    })
+    .catch(err => {
+      dispatch({type: ERROR, errorMessage: 'Trouble retreiving smurfs'});
+    })
+  }
+}
