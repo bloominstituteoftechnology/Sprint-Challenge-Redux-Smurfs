@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+ul {
+  display: flex; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+  align-items: center;
+  flex-direction: column; 
+  margin-right: 2%; 
+}
+
 li {
   margin: 30px auto; 
   list-style: none; 
@@ -10,9 +19,11 @@ li {
   padding: 5px; 
   border-radius: 10px; 
   background-color: teal; 
+  color: aqua; 
 }
 
 .Form {
+  border-radius: 10px; 
   display: flex; 
   flex-direction: column; 
   width: 300px; 
@@ -27,4 +38,31 @@ input{
   margin-bottom: 10px; 
 }
 
+.selected-smurf{
+  border: 1px solid teal; 
+  border-radius: 10px; 
+  width: 300px; 
+  margin: 10px auto; 
+  transform: translate(10px, 0px); 
+  padding: 5px; 
+  background-color: rgb(0, 102, 255); 
+  font-weight: 600; 
+}
+
+.divider{
+  margin: 9px auto; 
+}
+
+h4{
+  text-decoration: underline; 
+}
+
+.hide-smurf{
+  color: violet; 
+  text-decoration: underline; 
+}
+
+.update-button{
+  margin: 9px auto; 
+}
 

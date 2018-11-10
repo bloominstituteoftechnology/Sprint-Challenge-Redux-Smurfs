@@ -16,7 +16,7 @@ import { updateSingleSmurf } from "../actions";
           {this.props.smurfs.map(smurf => {
             return (
               <li onClick={() => this.handleShowSmurf(smurf)}>
-                {smurf.name}
+                Click to view: {smurf.name}
               </li>
             );
           })}
