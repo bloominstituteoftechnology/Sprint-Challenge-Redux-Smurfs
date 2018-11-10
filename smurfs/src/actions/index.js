@@ -41,7 +41,7 @@ export const newSmurf = (newSmurf) => {
             .then(response => {
                 dispatch({
                     type: FOUND_SMURFS,
-                    payload: response.data.smurfs
+                    payload: response.data
                 })
             })
             .catch((err) => {

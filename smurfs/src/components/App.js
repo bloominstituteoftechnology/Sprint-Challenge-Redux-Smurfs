@@ -3,7 +3,6 @@ import "./App.css";
 import SmurfForm from "./SmurfForm";
 import Smurfs from "./Smurfs";
 import SmurfNav from "./SmurfNav";
-import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { getSmurfs } from "../actions";
 
@@ -35,8 +34,8 @@ class App extends Component {
       return (
         <div className="App">
           <SmurfNav />
-          <Route exact path="/" component={Smurfs} />
-          <Route path="/smurf-form" component={SmurfForm} />
+          <Smurfs />
+          <SmurfForm />
         </div>
       );
     }

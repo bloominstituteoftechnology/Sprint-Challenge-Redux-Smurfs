@@ -17,9 +17,37 @@
     justify-content: center;
     background-color: #88CCFF;
     width: 100%;
+    color: white;
 }
 
 .nav p {
     margin-left: 60px;
     margin-right: 60px;
+}
+
+.smurf-form {
+    margin-top: 50px;
+}
+
+.smurfs {
+    margin-top: 25px;
+}
+
+.smurf-form input {
+    padding: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.submit {
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #88CCFF;
 }
