@@ -3,11 +3,10 @@ import React from 'react'
 
 
 
-const Smurf = props => {
-
+const Smurf = ({smurf}) => {
     return (
-        <div className='smurf-card'>
-
+        <div key={smurf.id} className='smurf-card'>
+            <h2>{smurf.name}</h2>
         </div>
     )
 }

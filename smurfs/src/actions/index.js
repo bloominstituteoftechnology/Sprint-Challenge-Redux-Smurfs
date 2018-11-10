@@ -10,7 +10,7 @@ export const ADD_SMURF = 'ADD_SMURF'
 export const DELETE_SMURF = 'DELETE_SMURF'
 export const UPDATE_SMURF = 'UPDATE_SMURF'
 
-const URL = 'http://localhost:3333/'
+// const URL = 'http://localhost:3333/'
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -26,10 +26,10 @@ const URL = 'http://localhost:3333/'
 export const fetchSmurfs = () => dispatch => {
   dispatch({ type: LOADING })
   axios
-    .get(`${URL}/smurfs`)
+    .get('http://localhost:3333/smurfs')
     .then(response => {
       console.log(response.data)
-      // dispatch({ type:FETCH_SMURFS, payload: response.data})
+      dispatch({ type:FETCH_SMURFS, payload: response.data})
     })
     .catch(err => {
       dispatch({ type: ERROR , payload: err.errorMessage})
