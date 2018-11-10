@@ -2,7 +2,10 @@
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
-
+import axios from 'axios'
+export const GET_SMURFS = "GET_SMURFS"
+export const LOADING = "LOADING"
+export const ERROR = "ERROR"
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -13,3 +16,19 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const getSmurfs = () => {
+  return(dispatch) => {
+    dispatch({type: LOADING})
+    axios
+      .get('http://localhost:3333/smurfs')
+      .then(response => {
+        dispatch({type: GET_SMURFS, smurfs: responsedata})
+      })
+      .catch( err => {
+        dispatcj({type: ERROR, errorMESSAGE:"Couldn't find the smurfs"})
+      })
+  }
+}
+
+//POST newsmurf action here
