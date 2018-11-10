@@ -12,11 +12,28 @@ import {getSmurfs} from '../actions/smurfActions'
 class App extends Component {
   constructor(props){
     super(props);
+    
+    this.state = {
+      name: '',
+      age: '',
+      height: ''
+    }
 
   }
 
   componentDidMount(){
     this.props.getSmurfs()
+  }
+
+  changeHandler = (e) =>{
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  clickHandler = (e) =>{
+    e.preventDefault();
+
   }
 
   render() {
@@ -28,11 +45,19 @@ class App extends Component {
 
         {this.props.error !== null ? <h1>{this.props.error}</h1> : null}
 
+        <form onSubmit={this.clickHandler}>
+          <label htmlFor="name">Name: </label>
+          <input type="text" name="name" value={this.state.name} onChange={this.changeHandler}/>
+          <label htmlFor="age">Age: </label>
+          <input type="text" name="age" value={this.state.age} onChange={this.changeHandler}/>
+          <label htmlFor="height">Height: </label>
+          <input type="text" name="height" value={this.state.height} onChange={this.changeHandler}/>
+          <button type="submit">Add Smurf!</button>
+        </form>
+
         {this.props.smurfs.length !== 0 
         ? this.props.smurfs.map(smurf =>{
-          
-
-          return <div className="smurfCard" key={smurf.name}>
+          return <div className="smurfCard" key={smurf.id}>
             <h1>{smurf.name}</h1>
             <p>{smurf.age}</p>
             <p>{smurf.height}</p>
