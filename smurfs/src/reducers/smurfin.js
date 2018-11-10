@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-
+import { LOADING, FETCH_SMURFS, ADD_SMURF, UPDATE_SMURF, DELETE_SMURF, ERROR } from '../actions'
 import { combineReducers } from 'redux';
 import { smurfin } from './smurfin';
 
@@ -24,7 +24,7 @@ export const smurfin = (state = intialState, action) => {
        case LOADING:
            return { ...state, loading: true }
        case FETCH_SMURFS:
-           return { ...state, smurfs: action.payload, laoding: false }
+           return { ...state, smurfs: action.payload, loading: false }
        case ADD_SMURF:
            return { ...state, addingSmurf: true }
        case UPDATE_SMURF:
