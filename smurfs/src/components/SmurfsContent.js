@@ -5,7 +5,7 @@ import { getSmurfs } from '../actions';
 
 import SmurfsList from './SmurfsList';
 
-class SmurfsContent extends React {
+class SmurfsContent extends Component {
   constructor() {
     super();
   }
