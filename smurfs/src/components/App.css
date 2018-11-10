@@ -26,3 +26,47 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.app {
+  margin: 0 auto;
+}
+
+.smurf-village {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.update-form {
+  padding-top: 10px;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+button:hover {
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+.add-smurf-button {
+  align-self: center;
+  margin-top: 3px;
+  width: 83px;
+  height: 25px;
+}
+
+.x:hover {
+  cursor: pointer;
+}
