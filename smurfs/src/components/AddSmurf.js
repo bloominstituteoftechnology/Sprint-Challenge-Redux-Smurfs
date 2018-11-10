@@ -2,6 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { addSmurf } from "../actions/index";
 
+const formStyle = {
+    width: '50%',
+    margin: '10px auto'
+}
+
+const inputStyle = {
+    margin: '5px'
+}
+
 export class AddSmurf extends React.Component {
   constructor(props) {
     super(props);
@@ -20,8 +29,9 @@ export class AddSmurf extends React.Component {
   };
    render() {
       return (
-        <form onSubmit={this.submitSmurf}>
+        <form style={formStyle} onSubmit={this.submitSmurf}>
           <input
+            style={inputStyle}
             type="text"
             name="name"
             value={this.state.name}
@@ -29,6 +39,7 @@ export class AddSmurf extends React.Component {
             placeholder="Name"
           />
           <input
+            style={inputStyle}
             type="number"
             name="age"
             value={this.state.age}
@@ -36,6 +47,7 @@ export class AddSmurf extends React.Component {
             placeholder="Age"
           />
           <input
+            style={inputStyle}
             type="text"
             name="height"
             value={this.state.height}

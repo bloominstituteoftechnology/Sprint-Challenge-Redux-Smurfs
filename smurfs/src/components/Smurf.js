@@ -3,83 +3,97 @@ import { connect } from "react-redux";
 
 import { deleteSmurf, updateSmurf } from "../actions/index";
 
+const style = {
+    display: "none"
+  };
+  
+const pointer = {
+    cursor: "pointer",
+    userSelect: "none"
+  };
+
+const redx = {
+    backgroundColor: 'white',
+    border: '1px solid black',
+    height: '20px',
+    width: '20px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    float: 'right',
+    color: 'tomato',
+    borderRadius: '50%',
+    cursor: 'pointer'
+}
+
+const smurfStyle = {
+    backgroundColor: 'tomato',
+    color: 'white',
+    width: '50%',
+    margin: '10px auto',
+    borderRadius: '10px',
+    padding: '10px'
+}
+
+
+  
+
 export class Smurf extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      clicked: false,
       name: this.props.smurf.name,
       age: this.props.smurf.age,
-      height: this.props.smurf.email,
+      height: this.props.smurf.height,
       id: this.props.smurf.id
     };
   }
 
-  inputHandler = e => {
+inputHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
-  };
+}
 
   updateSmurfHandler = e => {
     e.preventDefault();
     this.props.updateSmurf(this.state);
     this.setState({...this.state, clicked: false})
+    e.target.parentNode.style.display = "none";
   };
 
-  updateOpener = () => {
-    this.setState({...this.state, clicked: true });
+  doubleClick = event => {
+    event.target.nextSibling.style.display = "block";
+    event.target.nextSibling.firstChild.focus();
   };
 
   render() {
     const { smurf, deleteSmurf } = this.props;
-    if (this.state.clicked) {
       return (
-          <div>
-          <div>
-            <h2>{smurf.name}</h2>
-            <p>Age: {smurf.age}</p>
-            <p>Height: {smurf.height}</p>
-          </div>
-          <form onSubmit={this.updateSmurfHandler}>
-            <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              onChange={this.inputHandler}
-              placeholder="Name"
-            />
-            <input
-              type="number"
-              name="age"
-              value={this.state.age}
-              onChange={this.inputHandler}
-              placeholder="Age"
-            />
-            <input
-              type="text"
-              name="height"
-              value={this.state.height}
-              onChange={this.inputHandler}
-              placeholder="Height"
-            />
-            <button type="submit">Submit Changes</button>
-          </form>
+          <div style={smurfStyle}>
+            <div style={redx} onClick={() => deleteSmurf(smurf.id)}>X</div>            
+            <h1 id="name" onDoubleClick={this.doubleClick} style={pointer}>
+            {this.state.name}</h1>
+            <form onSubmit={this.updateSmurfHandler} style={style}>
+            <input onChange={this.inputHandler} id="nameInput" name="name" />
+            <button onClick={this.updateSmurfHandler}>Change</button>
+            </form>
+            <p id="age" onDoubleClick={this.doubleClick} style={pointer}>
+            Age: {this.state.age}</p>
+            <form onSubmit={this.updateSmurfHandler} style={style}>
+            <input onChange={this.inputHandler} id="nameInput" name="age" />
+            <button onClick={this.updateSmurfHandler}>Change</button>
+            </form>
+            <p id="height" onDoubleClick={this.doubleClick} style={pointer}>
+            Height: {this.state.height}</p>
+            <form onSubmit={this.updateSmurfHandler} style={style}>
+            <input onChange={this.inputHandler} id="nameInput" name="height" />
+            <button onClick={this.updateSmurfHandler}>Change</button>
+            </form>
           </div>
       );
-    } else {
-      return (
-        <div>
-          <h2>{smurf.name}</h2>
-          <p>Age: {smurf.age}</p>
-          <p>Height: {smurf.height}</p>
-          <button onClick={() => deleteSmurf(smurf.id)}>
-            Delete {smurf.name}
-          </button>
-          <button onClick={this.updateOpener}>Update {smurf.name}</button>
-        </div>
-      );
-    }
+    } 
   }
-}
+  
+
 
 const mapStateToProps = () => ({});
 

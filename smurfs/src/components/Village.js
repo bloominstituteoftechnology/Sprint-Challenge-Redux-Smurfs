@@ -12,12 +12,13 @@ export class Village extends React.Component {
    render() {
     return (
         <div>
+          {!this.props.loading && this.props.error === '' ?<AddSmurf /> : null}
           {this.props.loading ? <h1>Loading Village...</h1> : null}
           {this.props.error !== "" ? <h1>{this.props.error}</h1> : null}
           {this.props.smurfs.map(smurf => (
             <Smurf key={smurf.id} smurf={smurf} />
           ))}
-          {!this.props.loading && this.props.error === '' ?<AddSmurf /> : null}
+          
         </div>
     );
   }
