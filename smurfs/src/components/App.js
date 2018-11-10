@@ -21,6 +21,12 @@ class App extends Component {
     this.props.getSmurfs();
   }
 
+
+  changeHandler = ev =>{
+    this.setState ({ [ev.target.name]: ev.target.value});
+
+  };
+
   render() {
 
       const {name, age, height} = this.state;
@@ -41,7 +47,7 @@ class App extends Component {
           placeholder = 'Smurf name'
           name = 'name'
           value = {name}
-
+          onChange = {this.changeHandler}
         />
 
         <input
@@ -49,7 +55,7 @@ class App extends Component {
           placeholder= 'Smurf age'
           name = 'age'
           value = {age}
-
+          onChange = {this.changeHandler}
         />
 
         <input
@@ -57,20 +63,21 @@ class App extends Component {
           placeholder = 'Smurf height'
           name = 'height'
           value = {height}
-          
+          onChange = {this.changeHandler}
         />
 
-
+        <button
+          onClick = {() => addSmurf({ name, age, height })}>Add Smurf</button>
 
 
         {
           !fetchingSmurfs && smurfs.length ?
             <ul>
               {smurfs.map(smurf => (
-                <li>
-                  <h1>{smurf.name}</h1>
-                  <h2>{smurf.age}</h2>
-                  <h2>{smurf.height}</h2>
+                <li key = {smurf.id}>
+                  <h4>{smurf.name}</h4>
+                  <h5>{smurf.age}</h5>
+                  <h5>{smurf.height}</h5>
                 </li>
               ))}
             </ul>:
@@ -91,4 +98,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, {addSmurf, getSmurfs}) (App);
+export default connect(mapStateToProps, {getSmurfs, addSmurf}) (App);
