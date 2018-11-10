@@ -11,7 +11,7 @@ const SmurfForm = ({ dispatch }) => {
         dispatch(addSmurf({
           name: name.value,
           age: age.value,
-          height: height.value
+          height: height.value,
         }));
         name.value, age.value, height.value = "";
       }}>

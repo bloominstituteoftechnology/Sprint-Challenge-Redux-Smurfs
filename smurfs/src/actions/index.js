@@ -3,7 +3,6 @@ import axios from "axios";
 export const FETCHING = "FETCHING";
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";
-export const ADDING = "ADDING"
 
 export const fetchSmurfs = () => {
   return dispatch => {
@@ -42,13 +41,6 @@ export const addSmurf = (newSmurf) => {
         })
       })
   }
-  // return {
-  //   type: ADDING,
-  //   id: smurfID++,
-  //   name: name,
-  //   age: age,
-  //   height: height
-  // };
 };
 
 /*

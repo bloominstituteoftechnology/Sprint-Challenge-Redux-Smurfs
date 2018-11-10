@@ -1,4 +1,4 @@
-import { FETCHING, SUCCESS, FAILURE, ADDING } from "../actions";
+import { FETCHING, SUCCESS, FAILURE } from "../actions";
 
 const initialState = {
   smurfs: [],
@@ -17,18 +17,6 @@ export default (state = initialState, action) => {
       return { ...state, smurfs: action.payload, fetchingSmurfs: false }
     case FAILURE:
       return { ...state, error: action.payload, smurfs: [] }
-    case ADDING:
-      return {...state,
-        smurfs: [
-          ...state.smurfs,
-          {
-            id: action.id,
-            name: action.name,
-            age: action.age,
-            height:action.height
-          }
-        ]
-      };
     default:
       return state
   }
