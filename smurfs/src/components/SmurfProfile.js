@@ -33,7 +33,7 @@ class SmurfProfile extends React.Component {
                 <h1>{this.state.smurf.name}</h1>
                 <p>Age: {this.state.smurf.age}</p>
                 <p>Height: {this.state.smurf.height}</p>
-                <button>Update Smurf</button>
+                <Link to={`/smurfs/${this.state.smurf.id}/update`}><button>Update Smurf</button></Link>
                 <Link to="/smurfs"><button onClick={this.deleter}>Kick Out {this.state.smurf.name}</button></Link>
             </div>
         )

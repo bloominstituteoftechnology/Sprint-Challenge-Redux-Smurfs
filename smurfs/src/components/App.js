@@ -5,6 +5,7 @@ import SmurfList from './SmurfList';
 import Home from './Home';
 import AddSmurf from './AddSmurf';
 import SmurfProfile from './SmurfProfile';
+import UpdateSmurf from './UpdateSmurf';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/smurfs" component={SmurfList} />
         <Route path="/smurfs/:id" render={ props => <SmurfProfile {...props} /> } />
+        <Route path="/smurfs/:id/update" component={UpdateSmurf} />
 
       </div>
     );
