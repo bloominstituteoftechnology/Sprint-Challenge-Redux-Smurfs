@@ -36,9 +36,17 @@ export default ( state = initialState, action ) => {
       return Object.assign( {}, state, {fetching: true} );
 
     case UPDATING:
+      return Object.assign( {}, state, {
+        smurfs: action.smurfs,
+        fetching: false,
+        error: null
+      });
+
+    case ERROR:
+      return Object.assign( {}, {error: action.errMsg, loading: false});
+
     case CREATING:
     case DELETING:
-    case ERROR:
     default:
       return state;
   }
