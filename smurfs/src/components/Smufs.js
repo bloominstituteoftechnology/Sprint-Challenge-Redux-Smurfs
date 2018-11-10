@@ -23,7 +23,9 @@ class Smurfs extends Component {
       <div className='smurfsList'>
         { this.props.fetching ? <h1 className='fullAlert'>The Smurfs are on their way...</h1> : null }
         { this.props.error !== null ? <h1 className='fullAlert'>{this.props.error}</h1> : null }
-        <Smurf />
+        { this.props.smurfs.map( (smurf) =>
+          <Smurf smurf={smurf} key={smurf.id} />
+        )}
       </div>
     );
   };
