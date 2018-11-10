@@ -2,8 +2,6 @@ import axios from 'axios';
 export const GET_SMURFS = "GET_SMURFS";
 export const ERROR = "ERROR";
 export const LOADING = "LOADING";
-export const LOADINGSMURF = "LOADING";
-
 
 export const getSmurfs = () => {
 
@@ -22,12 +20,12 @@ export const getSmurfs = () => {
       });
   };
 };
-export const addSmurf = (newfriend) => {
+export const addSmurf = (smurf) => {
 
   return dispatch => {
     dispatch({ type: LOADING });
     axios
-      .post('http://localhost:3333/smurfs', newfriend)
+      .post('http://localhost:3333/smurfs', smurf)
       .then(response => {
         dispatch({
           type: GET_SMURFS,

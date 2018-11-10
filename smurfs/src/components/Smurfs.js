@@ -14,10 +14,9 @@ class Smurfs extends Component {
     if (this.props.loading) {
       return (
         <p>Loading Smurfs</p>
-            )
+      )
     }
     return (
-      console.log(this.props.smurfs),
       <div className="Smurfs">
         <NavLink className="main-link link" to='smurf-form'>
           <p>Click Here To Add Smurfs</p>

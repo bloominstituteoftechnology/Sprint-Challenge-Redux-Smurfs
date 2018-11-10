@@ -26,7 +26,6 @@ html,body {
 .SmurfForm{
   margin:10px auto;
 }
-.card{
+.smurfCard{
 background-color: #88CCFF;
-border: 1px solid red;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
-import { Button } from 'reactstrap/lib';
+import { Button } from 'reactstrap';
 import { updateSmurf } from '../actions/index';
 import smurfvillage from './smurfs-village.jpg'
 import '../index.css'
@@ -15,7 +15,11 @@ class SmurfCard extends Component {
             height: '',
         };
     }
-
+    componentDidMount() {
+        const id = this.props.match.params.id;
+        const smurf = this.props.smurfs.find(smurf => `${smurf.id}` === id);
+        this.setState(smurf)
+    }
     changeHandler = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -37,7 +41,7 @@ class SmurfCard extends Component {
             return "Loading Smurf"
         }
         return (
-            <div className="card">
+            <div className="smurfCard">
                 <div>
                     <NavLink className="link" to='/'>
                         <p>Click Here To Go Back To Smurf Village.</p>
@@ -46,16 +50,19 @@ class SmurfCard extends Component {
                         <input
                             onChange={this.changeHandler}
                             placeholder="name"
+                            value={this.state.name}
                             name="name"
                         />
                         <input
                             onChange={this.changeHandler}
                             placeholder="age"
+                            value={this.state.age}
                             name="age"
                         />
                         <input
                             onChange={this.changeHandler}
                             placeholder="height"
+                            value={this.state.height}
                             name="height"
                         />
                         <Button outline color="primary" type="submit">Update your Smurf</Button>
