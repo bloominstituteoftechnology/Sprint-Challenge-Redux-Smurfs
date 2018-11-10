@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addSmurf } from '../actions';
+import { updateSmurf } from '../actions';
 
-class AddSmurfForm extends Component {
+class EditSmurfForm extends Component {
     constructor() {
         super();
         this.state = {
             name: '',
             age: 0,
-            height: ''
+            height: '',
+            id: 0
         }
+    }
+
+    componentDidMount() {
+        this.setState({
+            name: this.props.name,
+            age: this.props.age,
+            height: this.props.height,
+            id: this.props.id
+        });
     }
 
     inputHandler = e => {
@@ -19,13 +29,12 @@ class AddSmurfForm extends Component {
     
     submitHandler = (e) => {
         e.preventDefault()
-        this.props.addSmurf(this.state)
+        this.props.updateSmurf(this.state)
      }
 
     render() {
         return (
             <form onSubmit={this.submitHandler}>
-                <h2>Add Smurf</h2>
                 <input type="text" name="name" value={this.state.name} onChange={this.inputHandler} placeholder="Name"/>
                 <input type="text" name="age" value={this.state.age} onChange={this.inputHandler} placeholder="Age"/>
                 <input type="text" name="height" value={this.state.height} onChange={this.inputHandler} placeholder="Height"/>
@@ -39,4 +48,4 @@ const mapStateToProps = state => {
     return {}
 }
 
-export default connect(mapStateToProps, { addSmurf })(AddSmurfForm);
+export default connect(mapStateToProps, { updateSmurf })(EditSmurfForm);

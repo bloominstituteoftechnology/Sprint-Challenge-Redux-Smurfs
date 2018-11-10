@@ -22,7 +22,8 @@ class App extends Component {
         { this.props.fetchingSmurfs ? <h2>Loading</h2> : null }
         { this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
         <AddSmurfForm />
-        { this.props.smurfs.map( (smurf, i) => <Smurf smurf={smurf} key={i} /> ) }
+        <h2>Smurf Village List</h2>
+        { this.props.smurfs.map( (smurf, i) => <Smurf smurf={smurf} key={smurf.id} /> ) }
       </div>
     );
   }
@@ -31,7 +32,7 @@ class App extends Component {
 const mapStateToProps = state => ({
   smurfs: state.smurfs,
   error: state.error,
-  fetchingSmurfs: state.fetchingSmurfs,
+  fetchingSmurfs: state.fetchingSmurfs
 });
 
 export default connect(mapStateToProps, { getSmurfs })(App);
