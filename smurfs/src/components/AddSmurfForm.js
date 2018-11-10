@@ -30,14 +30,14 @@ createSmurf= event => {
             height:''
         })
     } else {
-        alert ('Finish filling out all fields before submitting this form')
+        alert ('Fill out all fields before submitting this form')
     }
 }
 
 render () {
     return (
         <div>
-            <h1>Smuuuuuurfs</h1>
+            <h1>Smurfs</h1>
             <form className="add-smurf-form" onSubmit={this.createSmurf}>
 <input
 type='text'
@@ -60,7 +60,7 @@ value={this.state.height}
 name="height"
 onChange={event=>this.changeHandler(event.target.name, event.target.value)}
 />
-<button type='submit'>Add smurf to village</button>
+<button type='submit'>Add a smurf to the village</button>
             </form>
         </div>
     )

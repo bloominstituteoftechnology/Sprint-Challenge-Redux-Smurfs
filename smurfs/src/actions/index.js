@@ -54,7 +54,15 @@ export const addSmurf = smurf => dispatch => {
   
 }
 
-//deleteSmurf
+export const deleteSmurf = id => dispatch => {
+  dispatch({type:DELETING});
+  axios.delete(`${url}/${id}`)
+  .then(response=>{
+    dispatch({type:DELETING_SUCCESS, payload:response.data})
+  })
+  .catch(error =>{
+    dispatch({type:DELETING_FAILURE, payload:error})
+  })
+}
 
 //updateSmurf
-

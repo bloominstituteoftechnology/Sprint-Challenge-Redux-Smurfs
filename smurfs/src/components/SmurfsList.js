@@ -11,7 +11,7 @@ class SmurfsList extends React.Component {
 
     render (){
         if (this.props.fetching) {
-            return <h1>Please wait while we load your smurfs...</h1>
+            return <h1>Please wait while we load smurfs...</h1>
         }
         return (
             <div className="smurf-list-wrapper">
