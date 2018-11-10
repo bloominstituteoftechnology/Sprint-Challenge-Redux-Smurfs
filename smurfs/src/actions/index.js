@@ -23,10 +23,10 @@ export const getSmurfs = () => {
     axios
       .get('http://localhost:3333/smurfs')
       .then(response => {
-        dispatch({type: GET_SMURFS, smurfs: responsedata})
+        dispatch({type: GET_SMURFS, smurfs: response.data})
       })
       .catch( err => {
-        dispatcj({type: ERROR, errorMESSAGE:"Couldn't find the smurfs"})
+        dispatch({type: ERROR, errorMESSAGE:"Couldn't find the smurfs"})
       })
   }
 }
