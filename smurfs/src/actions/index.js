@@ -8,7 +8,7 @@ export const FAILURE = 'FAILURE';
 export const getSmurfs = () => {
   return dispatch => {
     dispatch({ type: LOADING })
-    axios.get('http://localhost:3333')
+    axios.get('http://localhost:3333/smurfs')
       .then(response => {
         console.log(response)
         dispatch({ type: SUCCESS, smurfs: response.data })
