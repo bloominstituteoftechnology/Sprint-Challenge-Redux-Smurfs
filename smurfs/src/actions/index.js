@@ -43,3 +43,16 @@ export const createSmurf = (smurf) => {
       })
   }
 }
+
+export const deleteSmurf = (id) => {
+  return (dispatch) => {
+    dispatch({type: LOADING});
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
+      .then( response => {
+        dispatch({type: SUCCESS, smurfs: response.data});
+      })
+      .catch( err => {
+        dispatch({type: ERROR, errorMessage: "Unable to delete smurf"});
+      })
+  }
+}

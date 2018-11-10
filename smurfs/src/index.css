@@ -3,3 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.delete-button {
+  background: red;
+  border: 1px solid darkred;
+  padding: 5px 10px;
+  cursor: pointer;
+}
