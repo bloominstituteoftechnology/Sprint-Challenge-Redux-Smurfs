@@ -46,7 +46,7 @@ export default (state = initialState, action) => {
 
     case SMURF_CREATED:
       return Object.assign({}, state, {addingSmurf: false, error: null});
-      
+
     case CREATION_ERROR:
       return Object.assign({}, state, {addingSmurf: false, error: action.payload});
 

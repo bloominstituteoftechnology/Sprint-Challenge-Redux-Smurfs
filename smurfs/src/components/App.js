@@ -21,30 +21,47 @@ class App extends Component {
     this.props.getSmurfs();
   }
 
-
-
-
-
-
-
-
   render() {
-    return (
 
       const {name, age, height} = this.state;
       const {addSmurf, fetchingSmurfs, smurfs} = this.props;
 
 
-
+    return (
 
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+
+
+        {
+          !fetchingSmurfs && smurfs.length ?
+            <ul>
+              {smurfs.map(smurf => (
+                <li>
+                  <h1>{smurf.name}</h1>
+                  <h2>{smurf.age}</h2>
+                  <h2>{smurf.height}</h2>
+                </li>
+              ))}
+            </ul>:
+            null
+        }
+
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  smurfs: state.smurfs,
+  fetching: state.fetchingSmurfs,
+  addingSmurf: state.addingSmurf,
+  error: state.error
+
+});
+
+
+export default connect(mapStateToProps, {addSmurf, getSmurfs}) (App);
