@@ -26,7 +26,7 @@ export const getSmurf = () => (dispatch) =>{
 export const addSmurf = (newSmurf) => (dispatch) =>{
   dispatch({type:ADD_SMURF_LOADING})
     axios
-      .get('http://localhost:3333/smurfs', newSmurf)
+      .post('http://localhost:3333/smurfs', newSmurf)
         .then(response =>{
           dispatch({type:ADD_SMURF_SUCCESS, payload: response.data})
         })

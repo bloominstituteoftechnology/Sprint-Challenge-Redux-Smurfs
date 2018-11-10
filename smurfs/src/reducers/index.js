@@ -69,7 +69,9 @@ const smurfReducer = (state = initialState, action) =>{
       return Object.assign({},state, {
         ...state,
         error:action.payload,
-      })    
+      })  
+    default :
+      return state    
   }
 }
 
