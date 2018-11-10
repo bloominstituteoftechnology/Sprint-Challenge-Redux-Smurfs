@@ -7,3 +7,4 @@ const Smurf = props =>{
         </div>
     )
 }
+export default Smurf;

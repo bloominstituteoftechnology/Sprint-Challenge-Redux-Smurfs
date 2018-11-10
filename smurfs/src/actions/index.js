@@ -18,7 +18,7 @@ export const fetchSmurfs = () =>{
     dispatch({ type: LOADING, payload: `Hold tight we trying to grab those slippery buggers....`});
     axios
       .get('http://localhost:3333/smurfs')
-      .then(respose =>{
+      .then(response =>{
         dispatch({ type: ADD_SUCCESS, payload: response.data })
       })
       .catch(err =>{

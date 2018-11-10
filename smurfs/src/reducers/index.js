@@ -1,22 +1,25 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
-
+import { LOADING, ADD_SUCCESS, FAILURE } from '../actions/index';
 
  const initialState = {
    smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
+   loading: true,
+   loadingMsg:null,
    error: null
  }
 
 
 export default (state = initialState, action)=>{
   switch(action.type){
-   
-    
+   case LOADING:
+      return {...state, loading:true, loadingMsg:[action.payload]}
+
+    case ADD_SUCCESS:
+      return {...state, smurfs:[...action.payload], loading: false}
+
+    case FAILURE:
+     return {...state, error:[action.payload]}
+
+
    
     default:
     return state;
