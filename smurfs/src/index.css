@@ -2,4 +2,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-family: 'KoHo', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Lora', serif;
+  font-family: 'PT Serif', serif;
+  color: #fff;
+  background: url('https://hdqwalls.com/download/2017-smurfs-the-lost-village-img-2048x1152.jpg')no-repeat center center fixed;
+  background-size: 100% 100%;
 }
