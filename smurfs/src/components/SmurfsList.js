@@ -5,8 +5,12 @@ class SmurfsList extends Component {
   render() {
     return (
       <div>
+        <h1>SMURF VILLAGE</h1>
         {this.props.smurfs.map(smurf => (
-          <Smurf smurf={smurf} key={smurf.id} />
+          <Smurf smurf={smurf} 
+          key={smurf.id}
+          handleDeleteSmurf={this.props.handleDeleteSmurf}
+         />
         ))}
       </div>
     );
