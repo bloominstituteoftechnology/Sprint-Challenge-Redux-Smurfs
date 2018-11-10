@@ -12,6 +12,7 @@ export class Village extends React.Component {
    render() {
     return (
         <div>
+          <h1>Smurf Village</h1>
           {!this.props.loading && this.props.error === '' ?<AddSmurf /> : null}
           {this.props.loading ? <h1>Loading Village...</h1> : null}
           {this.props.error !== "" ? <h1>{this.props.error}</h1> : null}

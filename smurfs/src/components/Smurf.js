@@ -26,13 +26,22 @@ const redx = {
     cursor: 'pointer'
 }
 
+
 const smurfStyle = {
-    backgroundColor: 'tomato',
-    color: 'white',
-    width: '50%',
-    margin: '10px auto',
-    borderRadius: '10px',
-    padding: '10px'
+    width: '300px',
+    height: '300px',
+    backgroundColor: 'white',
+    border: '1px solid black',
+    borderRadius: '50%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    boxShadow: '3px 3px 6px grey',
+    backgroundImage: 'radial-gradient(#FF63477F 50%, transparent 51%), radial-gradient(#FF63477F 30%, transparent 31%)',
+    backgroundSize: '60px 60px',
+    backgroundPosition: '0 0, 30px 30px',
+    margin: '10px auto'
 }
 
 
@@ -70,8 +79,8 @@ inputHandler = e => {
       return (
           <div style={smurfStyle}>
             <div style={redx} onClick={() => deleteSmurf(smurf.id)}>X</div>            
-            <h1 id="name" onDoubleClick={this.doubleClick} style={pointer}>
-            {this.state.name}</h1>
+            <h2 id="name" onDoubleClick={this.doubleClick} style={pointer}>
+            {this.state.name}</h2>
             <form onSubmit={this.updateSmurfHandler} style={style}>
             <input onChange={this.inputHandler} id="nameInput" name="name" />
             <button onClick={this.updateSmurfHandler}>Change</button>
@@ -89,6 +98,7 @@ inputHandler = e => {
             <button onClick={this.updateSmurfHandler}>Change</button>
             </form>
           </div>
+
       );
     } 
   }

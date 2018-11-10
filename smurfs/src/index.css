@@ -4,3 +4,13 @@ body {
   font-family: sans-serif;
   background-color: lightskyblue;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+
+h1 {
+  font-family: 'Luckiest Guy', cursive;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  font-size: 48px;
+  text-align: center;
+}
