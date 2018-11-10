@@ -12,7 +12,7 @@
 
     ***reducers** - these are pure functions that accept the current state within the store as well as an action. The reducers make the actual change to the state within the store. The change of state is based upon the action type that is passed into it.*
 
-    ***store** - The store is the 'brains' of redux.  The store contains the current state of the application.  It also contains methods that allow redux to perform its tasks. The main methods are getState(), dispatch(), and subscribe().*
+    ***store** - The store is the 'brains' of redux.  The store contains the current state of the application. It is known as a single source of truth because it is the singular location that tells the true, current state of the application.  It also contains methods that allow redux to perform its tasks. The main methods are getState(), dispatch(), and subscribe().*
 
 3.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
 
