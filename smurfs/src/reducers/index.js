@@ -1,7 +1,24 @@
+
+
+import {LOADING, SUCCESS, ERROR} from 'react-redux'
 /*
   Be sure to import in all of the action types from `../actions`
 */
 
+
+const initialState = {
+  smurfs: [],
+  gatheringSmurfs: false,
+  newSmurf: false,
+  updateSmurf: false,
+  smurfIsGone: false,
+  error: null,
+}
+
+export default (state = initialState, actions) {
+
+  
+}
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
