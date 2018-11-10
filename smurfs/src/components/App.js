@@ -1,16 +1,24 @@
-import React, { Component } from 'react';
-import './App.css';
-import { connect } from 'react-redux';
-import { getSmurfs } from '../actions';
-import SmurfList from './SmurfsList';
+import React, { Component } from "react";
+import "./App.css";
+import { connect } from "react-redux";
+import { getSmurfs, addSmurf } from "../actions";
+import SmurfList from "./SmurfsList";
+import Form from './Form';
 
 class App extends Component {
   componentDidMount() {
     this.props.getSmurfs();
   }
+
+  handleAddSmurf = ({ name, age, height }, e) => {
+    e.preventDefault();
+    this.props.addSmurf({ name, age, height });
+  };
+
   render() {
     return (
       <div className="App">
+        <Form handleAddSmurf={this.handleAddSmurf} />
         {this.props.fetchingSmurfs ? (
           <div>Loading...</div>
         ) : (
@@ -31,5 +39,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getSmurfs }
+  { getSmurfs, addSmurf }
 )(App);
