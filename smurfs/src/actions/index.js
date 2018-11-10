@@ -56,9 +56,10 @@ export const TOGGLE_SMURF = 'TOGGLE_SMURF';
        }
      }
 
-     export const updateSingleSmurf = () => {
+     export const updateSingleSmurf = smurf => {
       return {
-        type: SINGLE_SMURF
+        type: SINGLE_SMURF,
+        payload: smurf
       }
     }
 
@@ -73,7 +74,7 @@ export const TOGGLE_SMURF = 'TOGGLE_SMURF';
         type: DELETE_SMURF
       }
     }
-    
+
      export const toggleSmurf = index => {
       return {
         type: TOGGLE_SMURF,
