@@ -25,7 +25,7 @@ export const getSmurfs = () => {
         console.log(response);
         dispatch({
           type: SUCCESS,
-          payload: response.data
+          payload: response.data.smurfs
         });
       })
       .catch(err => {
