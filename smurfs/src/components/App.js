@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Router, NavLink } from 'react-router-dom'
+
 import logo from './D2rdroid1.png';
 import './App.css';
 /*
@@ -7,6 +9,8 @@ import './App.css';
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
+importFriendsList from '.'
+
 class App extends Component {
   render() {
     return (
