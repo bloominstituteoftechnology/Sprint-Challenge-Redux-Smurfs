@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import { BrowserRouter as Router} from 'react-router-dom';
-import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import store from './store';
 import /* You need some sort of reducer */ './reducers';

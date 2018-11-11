@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Smurf from './Smurf';
-import SmurfForm from './SmurfForm';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getSmurfs } from '../actions';
@@ -13,7 +12,7 @@ componentDidMount() {
 }
 
 
-deleteSmurf = id => {
+delete = id => {
   this.props.deleteSmurf(id);
 };
 
@@ -32,7 +31,7 @@ deleteSmurf = id => {
                 height={smurf.height}
                 key={smurf.id}
               />
-              < i className="fas fa-trash mb-3" style={{cursor: 'pointer', color: '#428bca', fontSize: '28px'}} id={smurf.id} onClick={this.deleteSmurf}></ i>
+              < i className="fas fa-trash mb-3" style={{cursor: 'pointer', color: '#428bca', fontSize: '28px'}} id={smurf.id} onClick={this.delete}></ i>
               </div>
             );
           })}
