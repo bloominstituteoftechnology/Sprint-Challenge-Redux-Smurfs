@@ -19,7 +19,12 @@ class SmurfForm extends Component {
     
     submitHander = e => {
         e.preventDefault();
-        this.props.addSmurfs(this.state)
+        this.props.addSmurfs(this.state);
+        this.setState({
+            name:"",
+            age: "",
+            height:""
+        })
     }
     render() {
         return (

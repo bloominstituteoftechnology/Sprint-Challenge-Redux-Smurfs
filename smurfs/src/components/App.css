@@ -61,3 +61,14 @@ input {
 input[type="submit"] {
   width: 30%;
 }
+
+.update {
+   display:flex;
+   justify-content: space-around;
+}
+
+ .button {
+   padding: 2px 7px;
+   background: red;
+   color: yellow;
+ }
