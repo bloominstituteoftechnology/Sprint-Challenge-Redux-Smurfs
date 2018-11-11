@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { addSmurf } from '../actions';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 class SmurfForm extends Component {
   constructor(props) {
@@ -62,4 +66,8 @@ class SmurfForm extends Component {
   }
 }
 
-export default SmurfForm;
+SmurfForm.PropTypes = {
+  addSmurf: PropTypes.func.isRequired
+}
+
+export default connect (null, { addSmurf }) (SmurfForm);

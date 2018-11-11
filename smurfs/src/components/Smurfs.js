@@ -1,36 +1,19 @@
 import React, { Component } from 'react';
 import Smurf from './Smurf';
 import SmurfForm from './SmurfForm';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getSmurfs, deleteSmurf } from '../actions';
 
 class Smurfs extends Component {
 
- constructor() {
-   super();
-  this.state= {
-    smurfs: [],
-  };
- }
-
-  componentDidMount() {
-    axios
-    .get('http://localhost:3333/smurfs')
-    .then(response => this.setState({smurfs: response.data}))
+componentDidMount() {
+    this.props.getSmurfs();
 }
 
 
-deleteSmurf = event => {
-  event.preventDefault();
-  // add code to create the smurf using the api
-  let smurfId = event.target.id;
-  axios
-    .delete(`http://localhost:3333/smurfs/${smurfId}`, this.state.smurfs)
-    .then(response => {
-      this.setState({
-        smurf: response.data
-      });
-      window.location.reload();
-    });
+deleteSmurf = id => {
+  this.props.deleteSmurf(id);
 };
 
   render() {
@@ -38,7 +21,7 @@ deleteSmurf = event => {
       <div className="Smurfs">
         <h1 className="Heading mt-3">Smurf Village</h1>
         <ul>
-          {this.state.smurfs.map(smurf => {
+          {this.props.smurfs.map(smurf => {
             return (
               <div>
               <Smurf
@@ -48,7 +31,7 @@ deleteSmurf = event => {
                 height={smurf.height}
                 key={smurf.id}
               />
-              < i className="fas fa-trash mb-3" style={{cursor:'pointer', color: '#428bca'}} id={smurf.id} onClick={this.deleteSmurf}></i>
+              < i className="fas fa-trash mb-3" style={{cursor: 'pointer', color: '#428bca', fontSize: '28px'}} id={smurf.id} onClick={this.deleteSmurf}></ i>
               </div>
             );
           })}
@@ -62,4 +45,16 @@ Smurf.defaultProps = {
  smurfs: [],
 };
 
-export default Smurfs;
+Smurfs.PropTypes = {
+  smurfs: PropTypes.array.isRequired,
+  getSmurfs: PropTypes.func.isRequired,
+  deleteSmurf: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  smurfs: state.smurf.smurfs
+});
+
+// created an action file in index.js in actions folder that contain dispatchs to props
+
+export default connect (mapStateToProps, {getSmurfs, deleteSmurf})(Smurfs);

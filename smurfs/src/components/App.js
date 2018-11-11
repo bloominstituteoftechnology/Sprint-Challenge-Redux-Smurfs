@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Navbar branding ="Smurfs"/>
+      <Navbar branding ="Redux Smurfs"/>
       <SmurfForm />
       <div className="container">
         <switch>
