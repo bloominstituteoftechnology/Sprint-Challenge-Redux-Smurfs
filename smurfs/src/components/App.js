@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, withRouter } from 'react-router-dom';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 
@@ -58,4 +58,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(()=>{return{}}, {getSmurfs} )(App);
+export default withRouter(connect(()=>{return{}}, {getSmurfs} )(App));

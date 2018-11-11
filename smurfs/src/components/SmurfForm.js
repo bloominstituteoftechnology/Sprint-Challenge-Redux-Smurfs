@@ -61,4 +61,4 @@ class SmurfForm extends Component {
     }
 }
 
-export default connect(()=>{return{}}, {addSmurf})(SmurfForm)
+export default connect(()=>{return{}}, {addSmurf})(SmurfForm);
