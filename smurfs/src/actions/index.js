@@ -1,3 +1,48 @@
+
+import axios from 'axios'
+export const GATHERING = 'GATHERING'
+export const SUCCESS = 'SUCCESS'
+export const ERROR = 'ERROR'
+export const NEW = 'NEW'
+export const UPDATE = 'UPDATE'
+export const GONE = 'GONE'
+
+
+export const getSmurfs = () => {
+
+  return (dispatch) => {
+        dispatch ({type: GATHERING})
+        axios.get('http://localhost:3333/smurfs')
+        .then(response => {
+          dispatch({type: SUCCESS, smurfs: response.data})})
+        .catch(err => {
+          dispatch({type: ERROR, errorMessage: 'Smurfs are almost extinct! This Smurf village has population 0, try another village!'})
+        })
+  }
+
+}
+
+export const newSmurf = (smurf) => {
+  return (dispatch) => {
+    dispatch ({type: GATHERING})
+    axios.post('http://localhost:3333/smurfs', smurf)
+    .then(response => {
+      dispatch({type: NEW, smurfs: response.data})})
+      .catch(err => {dispatch({type:ERROR, errorMessage: 'Smurf did not pass background check.'})
+    })
+  }
+  }
+
+  export const smurfGone = (id) => {
+    return (dispatch) => {
+      dispatch ({type: GATHERING})
+        axios.delete(`http://localhost:3333/smurfs/${id}`)
+        .then( response => {
+          dispatch({type:GONE, smurfs: response.data})})
+        .catch ( err => {dispatch({type:ERROR, errorMessage: 'This smurf is hard to get rid of!'})
+      })
+    }
+  }
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer

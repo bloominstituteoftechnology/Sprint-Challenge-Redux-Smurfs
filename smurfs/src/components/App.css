@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -22,7 +23,51 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.smurf {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: radial-gradient( #178FBF,#178FBF, #178FBF, transparent, transparent);
+  color: white;
+  padding: 20px;
+  width: 250px;
+  margin: 20px;
+}
+
+.village {
+  background-image: url('https://www.topbestalternatives.com/wp-content/uploads/2017/11/smurfs-village.jpg');
+  background-size: cover;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  background:white;
+  width:50px;
+  border-radius: 50%;
+  color: red;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  width: 1280px;
+  padding-bottom: 20px;
+
+background-color: white;}
+
+.empty {
+  height: 250px;
+}
+
+h2,h4 {
+  margin: 10px;
+}
+
+h1 {
+  margin: 0;
 }
