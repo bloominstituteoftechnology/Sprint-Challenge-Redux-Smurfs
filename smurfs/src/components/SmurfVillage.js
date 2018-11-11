@@ -14,9 +14,16 @@ class SmurfVillage extends Component {
     }
 
     render() {
+        const villageOrder = this.props.smurfs.sort( (a,b) => {
+            if (a.name>b.name) {return 1}
+            if (a.name<b.name) {return -1}
+            return 0;
+        }
+
+        ) 
       return (
         <div className="village">
-          {this.props.smurfs.map( smurf => <Smurf key={smurf.id} name={smurf.name} age={smurf.age} height={smurf.height} /> )}
+          {villageOrder.map( smurf => <Smurf smurf={smurf} ID={smurf.id} name={smurf.name} age={smurf.age} height={smurf.height} /> )}
         </div>
       );
     }

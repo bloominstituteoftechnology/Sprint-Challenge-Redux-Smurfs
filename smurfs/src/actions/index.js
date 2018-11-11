@@ -32,6 +32,17 @@ export const newSmurf = (smurf) => {
     })
   }
   }
+
+  export const smurfGone = (id) => {
+    return (dispatch) => {
+      dispatch ({type: GATHERING})
+        axios.delete(`http://localhost:3333/smurfs/${id}`)
+        .then( response => {
+          dispatch({type:GONE, smurfs: response.data})})
+        .catch ( err => {dispatch({type:ERROR, errorMessage: 'This smurf is hard to get rid of!'})
+      })
+    }
+  }
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer

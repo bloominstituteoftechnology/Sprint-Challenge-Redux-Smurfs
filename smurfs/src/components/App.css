@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -35,7 +36,20 @@
   background-size: cover;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.button {
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  width: 1280px;
+  padding-bottom: 20px;
+
+background-color: white;}
+
+.empty {
+  height: 250px;
 }

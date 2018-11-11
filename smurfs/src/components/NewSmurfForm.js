@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import {newSmurf} from '../actions'
+
 class NewSmurfForm extends Component {
 
     constructor (props) {
@@ -28,11 +29,12 @@ class NewSmurfForm extends Component {
         console.log(event)
 
         this.props.newSmurf(this.state)
+        this.setState({name: '', age: '',height: '',})
     }
 
     render() {
       return (
-        <div className="App">
+        <div className="form">
         <h2>New Smurf Citizen Registration</h2>
         <form>
             <p>Name: <input onChange={this.inputHandler} value={this.state.name} data-property='name' type='text'></input></p>
