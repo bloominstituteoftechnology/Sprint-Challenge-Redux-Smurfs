@@ -9,7 +9,9 @@ import './App.css';
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
-importFriendsList from '.'
+import SmurfsList from './SmurfsList'
+import CreateSmurfForm from './CreateSmurfForm'
+import UpdateSmurf from './UpdateSmurfForm'
 
 class App extends Component {
   render() {
@@ -28,7 +30,8 @@ class App extends Component {
             >
             About David
           </a>
-            <div>Start inside of your `src/index.js` file!</div>
+            <div>To add a Smurf fill in the form below and click the 'Add Smurf' button</div>
+            <CreateSmurfForm />
       </div>
     );
   }

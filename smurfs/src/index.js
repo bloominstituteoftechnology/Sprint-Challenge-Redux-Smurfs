@@ -5,11 +5,11 @@ import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import SmurfsReducer from './reducers/smurfsReducer';
 
 import './index.css';
 import App from './components/App';
 /* You need some sort of reducer */;
-import SmurfsReducer from './reducers/smurfsReducer';
 
 const middleware = applyMiddleware(thunk, logger)
 // const store = createStore(
