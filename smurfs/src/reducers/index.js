@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import {LOADING, ERROR, SUCCESS, ADD_SMURF, DELETE_SMURF } from '../actions';
+import {LOADING, ERROR, SUCCESS, ADD_SMURF, DELETE_SMURF, UPDATE_SMURF } from '../actions';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -22,6 +22,7 @@ const initialState = {
   error: null,
   name: "Tom helping me"
 }
+const length = initialState.smurfs.length;
 export default(previousState = initialState, action) => {
    switch(action.type) {
       case LOADING:
@@ -35,6 +36,9 @@ export default(previousState = initialState, action) => {
       
       case DELETE_SMURF:
         return Object.assign({}, previousState, {smurfs:action.payload, deletingSmurf:true, loading:false})  
+      
+      case UPDATE_SMURF:
+        return Object.assign({}, previousState, {smurfs:action.payload, updatingSmurf:true, loading:false})
         
       case ERROR:
         return Object.assign({}, previousState, {error:action.payload, loading:false})
