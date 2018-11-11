@@ -14,11 +14,13 @@ i {
   margin-right: 10px;
 }
 
-a {
+#navlink {
   color: white;
   font-weight: bolder
 }
-
+#navlink:hover {
+  color: black
+}
 img {
 height: 450px;
 width: 900px
@@ -27,3 +29,4 @@ width: 900px
 .fa-info-circle {
   margin-right: 0;
 }
+

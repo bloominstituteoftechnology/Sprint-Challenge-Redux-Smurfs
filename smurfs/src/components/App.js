@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { getSmurfs } from '../actions/index';
 import Smurfs from '../components/Smurfs';
 import SmurfForm from '../components/SmurfForm';
+import SmurfProfile from '../components/SmurfProfile';
 
 class App extends Component {
   constructor(props) {
@@ -30,21 +31,30 @@ class App extends Component {
                               <Collapse isOpen={!this.state.collapsed} navbar>
                                   <Nav navbar>
                                       <NavItem>
-                                          <NavLink to="/" onClick={this.toggleNavbar}>Smurfs Village</NavLink>
+                                          <NavLink id='navlink' to="/" onClick={this.toggleNavbar}>Smurfs Village</NavLink>
                                       </NavItem>
                                       <NavItem>
-                                          <NavLink to="/smurf-form" onClick={this.toggleNavbar}>Add New Smurf</NavLink>
+                                          <NavLink id='navlink' to="/smurf-form" onClick={this.toggleNavbar}>Add New Smurf</NavLink>
                                       </NavItem>
                                   </Nav>
                               </Collapse>
-                          </Navbar>
+                          </Navbar>                          
+                          {this.props.loading ? <h1>Weare looking the smurfs in the village for you...</h1> : null}
+                          {this.props.error ? <h2>{this.props.error}</h2> : null}
                           <Route exact path="/" render={props => <Smurfs {...props} />} />
                           <Route path="/smurf-form" render={props => <SmurfForm {...props} />} />
-                          {/* <Route path="/:id" render={props => <SmurfProfile {...props} />} /> */}
+                          <Route path="/:id" render={props => <SmurfProfile {...props} />} />
                       </Col>
                   </Row>
               </Container>  
           </div>
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    loading: state.loading,
+    error: state.error
   }
 }
 
