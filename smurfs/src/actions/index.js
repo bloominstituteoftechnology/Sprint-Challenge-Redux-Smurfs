@@ -4,13 +4,13 @@
 */
   import axios from 'axios';
 
-  export const FETCHING = 'FETCHING';
   export const LOADING = 'LOADING';
   export const ERROR = 'ERROR';
-  export const ADD_SMURF = 'ADD_SMURF';
   export const SUCCESS = 'SUCCESS';
-  export const UPDATE_SMURF = 'UPDATE_SMURF';
+  export const ADD_SMURF = 'ADD_SMURF';
   export const DELETE_SMURF = 'DELETE_SMURF';
+  export const UPDATE_SMURF = 'UPDATE_SMURF';
+  
 
   export const getSmurfs = () => {
      return (dispatch) => {
@@ -31,7 +31,7 @@
          dispatch({type: LOADING})
          axios.post('http://localhost:3333/smurfs', newSmurf)
               .then( response => {
-                  dispatch({type:SUCCESS, payload: response.data})
+                  dispatch({type:ADD_SMURF, payload: response.data})
               })
               .catch( error => {
                   dispatch({type: ERROR, payload: "Unable to add smurf"})
@@ -44,7 +44,7 @@
             dispatch({type: LOADING})
             axios.delete(`http://localhost:3333/smurfs/${id}`)
                  .then( response => {
-                     dispatch({type:SUCCESS, payload: response.data})
+                     dispatch({type:DELETE_SMURF, payload: response.data})
                  })
                  .catch( error => {
                   dispatch({type: ERROR, payload: "Unable to delete smurf"})

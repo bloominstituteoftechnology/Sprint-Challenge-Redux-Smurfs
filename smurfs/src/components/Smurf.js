@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { deleteSmurf } from '../actions';
+import { deleteSmurfs } from '../actions';
 
 
 const Smurf = (props) => {
