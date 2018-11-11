@@ -8,6 +8,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers/index';
 import { BrowserRouter as Router } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <Provider store={createStore(reducer, applyMiddleware(logger, thunk))}>

@@ -24,7 +24,7 @@ export const getSmurfs = () => {
   }
 }
 
-export const addSmurfs = smurf => {
+export const addSmurf = smurf => {
   return dispatch => {
     dispatch({type: LOADING})
     axios
@@ -44,7 +44,7 @@ export const addSmurfs = smurf => {
   }
 }
 
-export const updateSmurfs = (id, smurf) => {
+export const updateSmurf = (smurf, id) => {
   return dispatch => {
     dispatch({type: LOADING})
     axios
@@ -64,7 +64,7 @@ export const updateSmurfs = (id, smurf) => {
   }
 }
 
-export const deleteSmurfs = id => {
+export const deleteSmurf = id => {
   return dispatch => {
     dispatch({type: LOADING})
     axios
