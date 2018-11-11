@@ -23,11 +23,16 @@
 }
 
 .smurf {
-  background-color: #062491;
+  background: radial-gradient( #178FBF,#178FBF, #178FBF, transparent, transparent);
   color: white;
   padding: 20px;
-  width: 200px;
+  width: 250px;
   margin: 20px;
+}
+
+.village {
+  background-image: url('https://www.topbestalternatives.com/wp-content/uploads/2017/11/smurfs-village.jpg');
+  background-size: cover;
 }
 
 @keyframes App-logo-spin {

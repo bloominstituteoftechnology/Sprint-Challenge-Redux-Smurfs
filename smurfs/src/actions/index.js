@@ -21,6 +21,17 @@ export const getSmurfs = () => {
   }
 
 }
+
+export const newSmurf = (smurf) => {
+  return (dispatch) => {
+    dispatch ({type: GATHERING})
+    axios.post('http://localhost:3333/smurfs', smurf)
+    .then(response => {
+      dispatch({type: NEW, smurfs: response.data})})
+      .catch(err => {dispatch({type:ERROR, errorMessage: 'Smurf did not pass background check.'})
+    })
+  }
+  }
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer

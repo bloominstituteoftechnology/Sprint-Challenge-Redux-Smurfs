@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Smurf from './Smurf'
 import {connect} from 'react-redux'
 import {getSmurfs} from '../actions'
+import './App.css'
 
 class SmurfVillage extends Component {
     constructor(props) {
@@ -14,8 +15,8 @@ class SmurfVillage extends Component {
 
     render() {
       return (
-        <div className="App">
-          {this.props.smurfs.map( smurf => <Smurf name={smurf.name} age={smurf.age} height={smurf.height} /> )}
+        <div className="village">
+          {this.props.smurfs.map( smurf => <Smurf key={smurf.id} name={smurf.name} age={smurf.age} height={smurf.height} /> )}
         </div>
       );
     }
@@ -26,7 +27,6 @@ class SmurfVillage extends Component {
         smurfs: state.smurfs,
         gatheringSmurfs: state.gatheringSmurfs,
         error: state.error,
-
       }
   }
   

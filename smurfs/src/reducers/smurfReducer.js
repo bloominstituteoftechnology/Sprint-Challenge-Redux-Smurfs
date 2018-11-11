@@ -1,6 +1,6 @@
 
 
-import {GATHERING, SUCCESS, ERROR} from '../actions'
+import {GATHERING, SUCCESS, NEW, ERROR} from '../actions'
 /*
   Be sure to import in all of the action types from `../actions`
 */
@@ -9,7 +9,7 @@ import {GATHERING, SUCCESS, ERROR} from '../actions'
 const initialState = {
   smurfs: [],
   gatheringSmurfs: false,
-  newSmurf: false,
+  newCitizen: false,
   updateSmurf: false,
   smurfIsGone: false,
   error: null,
@@ -22,6 +22,8 @@ export default (state = initialState, action) => {
         return Object.assign({}, state, {gatheringSmurfs: true})
         case SUCCESS:
         return Object.assign({}, state, {smurfs: action.smurfs, gatheringSmurfs:false, error:null})
+        case NEW:
+        return Object.assign({}, state, {smurfs: action.smurfs, gatheringSmurfs:false, error: null, newCitizen: true})
         case ERROR:
         return Object.assign({}, state, {error: action.errorMessage, gatheringSmurfs:false})
         default:

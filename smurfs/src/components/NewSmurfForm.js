@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
+import {newSmurf} from '../actions'
 class NewSmurfForm extends Component {
 
-    constructor () {
-      super();
+    constructor (props) {
+      super(props);
   
       this.state = {
   
@@ -16,13 +18,19 @@ class NewSmurfForm extends Component {
     inputHandler = (event) => {
         let value = event.target.value;
         let property = event.target.dataset.property;
-        console.log(property)
         this.setState({
                 [property]: value,
         })
     }
+
+    submitHandler = (event) => {
+        event.preventDefault()
+        console.log(event)
+
+        this.props.newSmurf(this.state)
+    }
+
     render() {
-        console.log(this.state.email)
       return (
         <div className="App">
         <h2>New Smurf Citizen Registration</h2>
@@ -30,10 +38,16 @@ class NewSmurfForm extends Component {
             <p>Name: <input onChange={this.inputHandler} value={this.state.name} data-property='name' type='text'></input></p>
             <p>Age:  <input onChange={this.inputHandler} value={this.state.age} data-property='age' type='text'></input></p>
             <p>Height: <input onChange={this.inputHandler} value={this.state.height} data-property='height' type='text'></input></p>
+            <button onClick={this.submitHandler}> Register </button>
         </form>
         </div>
       );
     }
   }
 
-  export default NewSmurfForm
+  const mapStateToProps = state => {
+
+    return {}
+}
+
+  export default connect(mapStateToProps, {newSmurf}) (NewSmurfForm)
