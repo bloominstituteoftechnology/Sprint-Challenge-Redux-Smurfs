@@ -24,6 +24,10 @@
 }
 
 .smurf {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   background: radial-gradient( #178FBF,#178FBF, #178FBF, transparent, transparent);
   color: white;
   padding: 20px;
@@ -37,7 +41,13 @@
 }
 
 .button {
+  display: flex;
+  justify-content: center;
   cursor: pointer;
+  background:white;
+  width:50px;
+  border-radius: 50%;
+  color: red;
 }
 
 .form {
@@ -52,4 +62,12 @@ background-color: white;}
 
 .empty {
   height: 250px;
+}
+
+h2,h4 {
+  margin: 10px;
+}
+
+h1 {
+  margin: 0;
 }
