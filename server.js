@@ -14,20 +14,35 @@ const sendUserError = (msg, res) => {
 
 let smurfs = [
   {
+    id: 1,
     name: 'Brainey',
     age: 200,
     height: '5cm'
   },
   {
-    name: 'Venky',
-    age: 200,
-    height: '5cm'
+    id: 2,
+    name: 'Grumpy',
+    age: 190,
+    height: '8cm'
+  },
+  {
+    id: 3,
+    name: 'Sleepy',
+    age: 100,
+    height: '2cm'
+  },
+  {
+    id: 4,
+    name: 'Smurfette',
+    age: 80,
+    height: '15cm'
   }
 ];
+
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
-let smurfId = 0;
+let smurfId = smurfs.length + 1;
 
 server.post('/smurfs', (req, res) => {
   const { name, age, height } = req.body;
@@ -51,6 +66,16 @@ server.post('/smurfs', (req, res) => {
   smurfs.push(newSmurf);
   smurfId++;
   res.json(smurfs);
+});
+
+server.get('/smurfs/:id', (req, res) => {
+  const smurf = smurfs.find(f => f.id == req.params.id);
+
+  if (smurf) {
+    res.status(200).json(smurf);
+  } else {
+    res.status(404).send({ msg: 'Smurf not found' });
+  }
 });
 
 server.put('/smurfs/:id', (req, res) => {
