@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import {loadSmurfs } from '../actions/smurfsActions'
+import { loadSmurfs } from '../actions/smurfsActions'
 import Smurf from './Smurf'
+import CreateSmurfForm from './CreateSmurfForm';
 
 class SmurfsList extends Component {
   constructor(props){
@@ -21,7 +22,6 @@ class SmurfsList extends Component {
         { this.props.error !== '' ? <h1> {this.props.error}</h1> : null }
 
         { this.props.smurfs.map( smurf => <Smurf smurf={smurf} key={smurf.id}/>)}
-
       </div>
     )
   }

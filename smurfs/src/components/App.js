@@ -32,6 +32,7 @@ class App extends Component {
           </a>
             <div>To add a Smurf fill in the form below and click the 'Add Smurf' button</div>
             <CreateSmurfForm />
+            <SmurfsList />
       </div>
     );
   }

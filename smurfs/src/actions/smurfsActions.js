@@ -80,3 +80,22 @@ export const updateSmurf = updatedSmurf => {
       });
   };
 };
+
+export const updateSmurfForm = updatedSmurf => {
+  return dispatch => {
+    dispatch({ type: LOADING });
+    axios
+      .put(`http://localhost:5000/smurfs/${updatedSmurf.id}`)
+      .then(response => {
+        dispatch({ type: LOAD_SMURFS, smurfs: response.data });
+      })
+      .catch(err => {
+        dispatch({
+          type: ERROR,
+          errorMessage:
+            "Wow, I can't believe your smurf didn't update!  Should I take another shot?",
+        });
+      });
+  };
+};
+

@@ -14,9 +14,9 @@ const Smurf = props => {
     <div key={smurf.id} className="smurf-card">
       <p className="close-button" onClick={clickHandler}>X</p>
       <h2>{smurf.name}</h2>
-      <h4>{smurf.nickname}</h4>
-      <p>{smurf.description}</p>
-      <img src={smurf.img} />
+      <h4>{smurf.age}</h4>
+      <p>{smurf.height}</p>
+      <img src={smurf.img} alt="Smurf" />
       <Link to={`/update/${smurf.id}`}>Update</Link>
     </div>
   )

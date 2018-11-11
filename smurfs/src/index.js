@@ -21,10 +21,10 @@ const store = createStore(SmurfsReducer, middleware);
 ReactDOM.render(
   <Provider store={store}>
 
+  {/*  // Router is optional and not used see margin notes to implement read margin note below
+   ☞ 2e2236a9-cd75-4658-a3c6-9119bf083e84 */}
     <App />
   </Provider>,
   document.getElementById('root')
   );
   
-  // Router is optional and not used see margin notes to implement read margin note below
-{/* ☞ 2e2236a9-cd75-4658-a3c6-9119bf083e84 */}
