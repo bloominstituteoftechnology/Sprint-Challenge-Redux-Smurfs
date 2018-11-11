@@ -1,0 +1,22 @@
+.smurf-form {
+    margin: 20px;
+  }
+  
+  .smurf-input {
+    width: 200px;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+    padding-left: 5px;
+  }
+
+  .smurf-form-text{
+      margin-right: 10px;
+      position: relative;
+      top: 4px;
+  }
+
+  .form-input-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
