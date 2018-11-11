@@ -23,8 +23,6 @@ export default function(state = initialState, action)  {
                 ...state,
                 smurfs: [action.payload, ...state.friends]
             }
-
-
         default:
 
             return state;

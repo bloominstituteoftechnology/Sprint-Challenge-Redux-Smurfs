@@ -3,7 +3,8 @@ import Smurf from './Smurf';
 import SmurfForm from './SmurfForm';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getSmurfs, deleteSmurf } from '../actions';
+import { getSmurfs } from '../actions';
+import { deleteSmurf } from '../actions';
 
 class Smurfs extends Component {
 
