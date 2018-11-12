@@ -8,7 +8,6 @@ import thunk from 'redux-thunk';
 
 import rootReducer from './reducers';
 import App from './components/App';
-import './index.css';
 
 ReactDOM.render(
   <Provider store={createStore(rootReducer, applyMiddleware(logger, thunk))}>

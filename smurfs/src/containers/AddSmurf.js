@@ -28,7 +28,7 @@ class AddSmurf extends Component {
   render() {
     const { name, age, height } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="add-smurf" onSubmit={this.handleSubmit}>
         <input
           name="name"
           type="text"

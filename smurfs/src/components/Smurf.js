@@ -13,16 +13,14 @@ const Smurf = props => {
   const { id, name, age, height } = props.smurf;
   return (
     <div className="smurf">
-      <div
-        style={{ color: 'red', cursor: 'pointer', fontWeight: 'bold' }}
-        onClick={handleClick}
-      >
+      <div className="delete-smurf" onClick={handleClick}>
         X
       </div>
-      <h1>{name}</h1>
+      <Link to={`/update/${id}`}>
+        <h1>{name}</h1>
+      </Link>
       <h2>{age}</h2>
       <h2>{height}</h2>
-      <Link to={`/update/${id}`}>Update Smurf</Link>
     </div>
   );
 };
