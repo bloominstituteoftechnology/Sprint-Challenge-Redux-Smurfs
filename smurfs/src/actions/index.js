@@ -15,3 +15,16 @@ export const getSmurfs = () => {
         })
     }
 }
+
+export const addSmurf = (newSmurf) => {
+    return (dispatch) => {
+        dispatch({type: GETTING_SMURFS})
+        axios.post(`http://localhost:3333/smurfs`, newSmurf)
+        .then(response => {
+            dispatch({type:GET_SMURFS, smurfs: response.data})
+        })
+        .catch(err => {
+            dispatch({type:ERROR, errorMessage: "could not create smurf"})
+        })
+    }
+}
