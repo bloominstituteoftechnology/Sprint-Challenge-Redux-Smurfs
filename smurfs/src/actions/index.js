@@ -33,7 +33,7 @@ export const getSmurfs = () => {
 
 export const createSmurf = (smurf) => {
   return (dispatch) => {
-    dispatch({type: LOADING});
+    // dispatch({type: LOADING});
     axios.post('http://localhost:3333/smurfs', smurf)
       .then( response => {
         dispatch({type: SUCCESS, smurfs: response.data});
@@ -46,7 +46,7 @@ export const createSmurf = (smurf) => {
 
 export const deleteSmurf = (id) => {
   return (dispatch) => {
-    dispatch({type: LOADING});
+    // dispatch({type: LOADING});
     axios.delete(`http://localhost:3333/smurfs/${id}`)
       .then( response => {
         dispatch({type: SUCCESS, smurfs: response.data});

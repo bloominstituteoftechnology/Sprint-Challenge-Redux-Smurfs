@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 import { getSmurfs } from '../actions'
-import Smurf from './Smurf'
+import SmurfRow from './SmurfRow'
 
 class SmurfList extends React.Component {
     componentDidMount() {
@@ -11,11 +11,22 @@ class SmurfList extends React.Component {
 
     render() {
         return (
-            <div>
-                { this.props.loading ? <h1>Loading...</h1> : null }
-                { this.props.error !== null ? <h1>{this.props.error}</h1> : null }
-                { this.props.smurfs.map(smurf => <Smurf smurf={smurf} key={smurf.id}/> ) } 
-            </div>
+            <table className="smurf-list">
+                <thead>
+                <tr className="smurf-row">
+                    <th>ID</th>
+                    <th>NAME</th> 
+                    <th>AGE</th>
+                    <th>HEIGHT</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                    { this.props.loading ? <h1>Loading...</h1> : null }
+                    { this.props.error !== null ? <h1>{this.props.error}</h1> : null }
+                    { this.props.smurfs.map(smurf => <SmurfRow smurf={smurf} key={smurf.id}/> ) } 
+                </tbody>
+            </table>
         )
     }
 }
