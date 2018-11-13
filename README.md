@@ -7,7 +7,11 @@
 
 ## Start by forking and cloning this repository.
 
+- [x] Fork and clone.
+
 ## Questions - Self Study - You can exercise your Google-Fu for this and any other _Sprint Challenge_ in the future.
+
+- [x] Answer questions.
 
 1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
 1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
@@ -18,11 +22,16 @@
 
 ## Initializing Project - READ THIS CAREFULLY, you have two apps here. A server, and a client.
 
+- [x] Set up server and get it running
+
 * `cd` into the forked copy of this repo.
 * **RUN** `yarn` or `npm install` to retrieve all `server-side` the dependencies.
 * **LOOK** at all the files you've been given for this project. One important file to note is `server.js`. This file contains an **API** that you are going to be interfacing with. Below is documentation on how to interact with the **API**.
 * **RUN** `yarn start` or `npm start` to get your API up and running on `http://localhost:3333`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data.
 * After your API is up and running, you can open chrome and type in `http://localhost:3333/smurfs`. You should see an empty Array `[]` returned to you. This is an array that your **API** will be using to store our Smurf Data.
+
+- [x] Set up react app and get it running
+
 * **LOOK** at your `smurfs` directory and notice it's just a plain ol' React App that we've built using `create-react-app`.
 * We've added a typical `redux` file structure for:
 
@@ -46,6 +55,8 @@ src
 ## API Design - This is how you'll interface with the API and what is required from every endpoint.
 
 ### GET '/smurfs'
+
+- [x] Get smurfs from the server and display
 
 * To retrieve an array all the smurfs in the Smurf DB simply write a get to the endpoint `'/smurfs'`.
 * Because `Redux-Thunk` is wired up as a middleware for this project. Be sure to utilize thunks when appropriate:
@@ -73,6 +84,9 @@ return dispatch => {
 ```
 
 ### POST '/smurfs'
+
+- [x] Create form to add smurfs
+- [x] Send new smurf to server and display new smurf list
 
 * To add a smurf to the Smurf DB you'll need all three fields. `name`, `age`, and `height`.
 * Example:
@@ -113,6 +127,8 @@ return dispatch => {
 
 ### PUT '/smurfs/123', where 123 is the Id of the smurf you want to modify
 
+- [ ] Update smurf on server and display new smurf list
+
 * For this endpoint to work, you'll need an `id` added to the URL, and at least one field to update on the Smurf object. `name` `age` `height`.
 * Example:
 
@@ -140,6 +156,8 @@ output:
 ```
 
 ### DELETE '/smurfs/123', where 123 is the Id of the smurf you want to remove
+
+- [x] Delete smurf from server and display new smurf list
 
 * For this endpoint to work, all you need is an id sent up as part of the request url.
 
