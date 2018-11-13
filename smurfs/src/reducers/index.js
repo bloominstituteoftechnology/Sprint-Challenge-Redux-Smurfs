@@ -1,4 +1,4 @@
-import {FETCHING, FAILURE, SUCCESS} from "../actions";
+import {FETCHING, FAILURE, SUCCESS, ADDING} from "../actions";
 
 const initialState = {
     smurfs: [],
@@ -22,6 +22,8 @@ export default (state = initialState, action) => {
             return {...state, ...{loading: action.loading}};
         case FAILURE:
             return {...state, ...{error: action.error}};
+        case ADDING:
+            return {...state, ...{adding: action.adding}};
         default:
             return state;
     }
