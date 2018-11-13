@@ -19,6 +19,9 @@ import axios from 'axios';
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const FETCHING_SMURFS_SUCCESS = 'FETCHING_SMURFS_SUCCESS';
 export const FETCHING_SMURFS_FAILURE = 'FETCHING_SMURFS_FAILURE';
+export const CREATING_SMURFS = 'CREATING_SMURFS';
+export const CREATING_SMURFS_SUCCESS = 'CREATING_SMURFS_SUCCESS';
+export const CREATING_SMURFS_FAILURE = 'CREATING_SMURFS_FAILURE';
 
 const URL = `http://localhost:3333`
 
@@ -32,6 +35,20 @@ export function getSmurfs() {
       })
       .catch(err => {
         dispatch({ type: FETCHING_SMURFS_FAILURE, payload: err });
+      })
+  }
+}
+
+export function addSmurf(smurf) {
+  return function(dispatch) {
+    dispatch({ CREATING_SMURFS })
+    axios
+      .post(`${URL}/smurfs`, smurf)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        dispatch({ type: CREATING_SMURFS_FAILURE, payload: err });
       })
   }
 }

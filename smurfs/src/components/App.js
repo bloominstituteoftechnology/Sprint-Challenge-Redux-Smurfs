@@ -8,32 +8,33 @@ import './App.css';
  */
 
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions';
+import { addSmurf, getSmurfs } from '../actions';
 
 class App extends Component {
+    state = {
+      name: '',
+      age: null,
+      height: ''
+    }
+  
+  componentDidMount() {
+    this.props.getSmurfs();
+  };
 
-componentDidMount() {
-  this.props.getSmurfs();
-    // state = {
-    //   name: '',
-    //   age: '',
-    //   height: ''
-    // }
-}
+  changeHandler = event => {
+    this.setState({[event.target.name]: event.target.value})
+  };
 
   render() {
     return (
       <div className="App">
-
-      {/* 
-      <form onSubmit={}>
-        <input type="text" name="name" value={this.state.name} placeholder={Enter name...} onChange={} />
-        <input type="text" name="age" value={this.state.age} placeholder={Enter age...} onChange={} />
-        <input type="text" name="height" value={this.state.name} placeholder={Enter height...} onChange={} /> 
+      
+      <form onSubmit={() => this.props.addSmurf(this.state)}>
+        <input type="text" name="name" value={this.state.name} placeholder="Enter name..." onChange={this.changeHandler} />
+        <input type="number" name="age" value={this.state.age} placeholder="Enter age..." onChange={this.changeHandler} />
+        <input type="text" name="height" value={this.state.height} placeholder="Enter height..." onChange={this.changeHandler} /> 
         <button type="submit">Add Smurf</button>
       </form>
-    */}
-
 
         {this.props.fetchingSmurfs ? <h2>Loading...</h2> : null }
         {!this.props.fetchingSmurfs && this.props.smurfs.length ?
@@ -48,22 +49,6 @@ componentDidMount() {
                 )
               })}
             </ul> : null}
-
-
-        {/* {this.props.fetchingSmurfs ? <h2>Loading...</h2> : null }
-        {!this.props.fetchingSmurfs && this.props.smurfs.length
-          ? 
-            <ul>
-              {this.props.smurfs.map(smurf => {
-                <li>
-                  <h2>Name: {smurf.name}</h2>
-                  <p>Age: {smurf.age}</p>
-                  <p>Height: {smurf.height}</p>
-                </li>
-              })}
-            </ul> 
-          : 
-            null } */}
       </div>
     );
   }
@@ -74,4 +59,4 @@ const mapStateToProps = state => ({
   fetchingSmurfs: state.fetchingSmurfs,
 });
 
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { addSmurf, getSmurfs })(App);
