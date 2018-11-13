@@ -1,4 +1,4 @@
-import Reat, { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addSmurf } from '../actions/index'
 
@@ -37,4 +37,4 @@ const mapStateToProps = state => {
     return {}
 }
 
-export default connect(mapStateToProps, {addSmurf: addSmurf})(AddSmurf)
+export default connect(mapStateToProps, {addSmurf: addSmurf})(CreateSmurf)

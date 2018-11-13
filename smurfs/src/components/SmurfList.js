@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { getSmurfs } from '../actions/index'
+import  { getSmurfs } from '../actions/index';
+import Smurf from './Smurf'
 
 class SmurfList extends Component {
     constructor(props){
@@ -16,7 +17,7 @@ class SmurfList extends Component {
             <div>
                 {this.props.loading ? <h1>LOADING</h1> : null}
                 {this.props.error !== '' ? <h1>{this.props.error}</h1>: null}
-                {this.props.smurfs.map( smurf => <Smurf smurf={smurf} key ={smuf.id}/>)}
+                {this.props.smurfs.map( smurf => <Smurf smurf={smurf} key ={smurf.id}/>)}
             </div>
         )
     }
@@ -28,3 +29,4 @@ const mapStateToProps = state => {
         loading: state.loading
     }
 }
+export default connect(mapStateToProps,{getSmurfs})(SmurfList)
