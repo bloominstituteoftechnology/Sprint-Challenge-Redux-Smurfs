@@ -1,6 +1,7 @@
 import axios from 'axios'
 export const GET_SMURFS = "GET_SMURFS";
 export const GETTING_SMURFS = "GETTING_SMURFS";
+export const ADDING_SMURF = "ADDING_SMURF"
 export const ERROR = "ERROR";
 
 export const getSmurfs = () => {
@@ -18,7 +19,7 @@ export const getSmurfs = () => {
 
 export const addSmurf = (newSmurf) => {
     return (dispatch) => {
-        dispatch({type: GETTING_SMURFS})
+        dispatch({type: ADDING_SMURF})
         axios.post(`http://localhost:3333/smurfs`, newSmurf)
         .then(response => {
             dispatch({type:GET_SMURFS, smurfs: response.data})
