@@ -7,7 +7,7 @@ export const getSmurfs = () => {
     return (dispatch) => {
         dispatch({type: GETTING_SMURFS})
         axios.get(`http://localhost:3333/smurfs`)
-        .then(resonse => {
+        .then(response => {
             dispatch({type: GET_SMURFS, smurfs: response.data})
         })
         .catch(err => {
