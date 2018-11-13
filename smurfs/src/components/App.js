@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import './App.css';
 
 import HomeView from '../views/HomeView';
-import CreateView from '../views/CreateView';
+import FormView from '../views/FormView';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -15,7 +15,8 @@ class App extends Component {
     return (
       <div className="App">
         <Route exact path="/" component={HomeView} />
-        <Route path="/create" component={CreateView} />
+        <Route path="/create" component={FormView} />
+        <Route path="/update/:id" component={FormView} />
       </div>
     );
   }

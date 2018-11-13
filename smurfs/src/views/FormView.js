@@ -2,13 +2,13 @@ import React from 'react';
 import HeaderView from './HeaderView';
 import SmurfForm from '../components/SmurfForm';
 
-const HomeView = (props) => {
+const FormView = (props) => {
     return (
         <React.Fragment>
             <HeaderView />
-            <SmurfForm />
+            <SmurfForm id={props.match.params.id} />
         </React.Fragment>
     )
 }
 
-export default HomeView;
+export default FormView;

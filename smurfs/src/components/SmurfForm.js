@@ -1,27 +1,37 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { createSmurf } from '../actions'
+import { createSmurf, updateSmurf } from '../actions'
 
 class SmurfForm extends React.Component {
-    state = {
-      name: '',
-      age: '',
-      height: ''
-    }
+  state = {
+    name: '',
+    age: '',
+    height: ''
+  }
 
 
   inputHandler = e => {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({[e.target.name]: e.target.value});
   }
 
   submitHandler = e => {
-    e.preventDefault()
-    this.props.createSmurf(this.state)
-    this.setState({name: '', age: '', height: ''})
+    e.preventDefault();
+    if (this.props.id) {
+      this.props.updateSmurf(this.state);
+    } else {
+      this.props.createSmurf(this.state);
+    }
+    this.setState({name: '', age: '', height: ''});
   }
 
-  render(){
+  componentDidMount() {
+    if (this.props.id) {
+      this.setState(this.props.smurfs.find(smurf => smurf.id === Number(this.props.id)));
+    }
+  }
+
+  render() {
     return (
       <form className="smurf-form" onSubmit={this.submitHandler}>
         <input 
@@ -42,13 +52,13 @@ class SmurfForm extends React.Component {
             value={this.state.height} 
             onChange={this.inputHandler} 
             placeholder="Height" />
-        <button type="submit">Create</button>
+        <button type="submit">{this.props.id?'Update':'Create'}</button>
       </form>
     )
   }
 }
 const mapStateToProps = state => {
-  return {}
+  return {smurfs: state.smurfs}
 }
 
-export default connect(mapStateToProps, { createSmurf })(SmurfForm);
+export default connect(mapStateToProps, { createSmurf, updateSmurf })(SmurfForm);

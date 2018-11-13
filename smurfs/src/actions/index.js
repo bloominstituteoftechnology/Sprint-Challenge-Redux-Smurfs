@@ -44,6 +44,19 @@ export const createSmurf = (smurf) => {
   }
 }
 
+export const updateSmurf = (smurf) => {
+  return (dispatch) => {
+    // dispatch({type: LOADING});
+    axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+      .then( response => {
+        dispatch({type: SUCCESS, smurfs: response.data});
+      })
+      .catch( err => {
+        dispatch({type: ERROR, errorMessage: "Unable to update smurf"});
+      })
+  }
+}
+
 export const deleteSmurf = (id) => {
   return (dispatch) => {
     // dispatch({type: LOADING});
