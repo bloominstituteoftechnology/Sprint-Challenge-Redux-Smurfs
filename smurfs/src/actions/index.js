@@ -41,11 +41,11 @@ export function getSmurfs() {
 
 export function addSmurf(smurf) {
   return function(dispatch) {
-    dispatch({ CREATING_SMURFS })
+    dispatch({ type: CREATING_SMURFS })
     axios
       .post(`${URL}/smurfs`, smurf)
       .then(response => {
-        console.log(response);
+        dispatch({ type: CREATING_SMURFS_SUCCESS, payload: response.data });
       })
       .catch(err => {
         dispatch({ type: CREATING_SMURFS_FAILURE, payload: err });

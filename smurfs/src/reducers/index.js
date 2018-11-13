@@ -4,7 +4,10 @@
 import {
   FETCHING_SMURFS,
   FETCHING_SMURFS_SUCCESS,
-  FETCHING_SMURFS_FAILURE
+  FETCHING_SMURFS_FAILURE,
+  CREATING_SMURFS,
+  CREATING_SMURFS_SUCCESS,
+  CREATING_SMURFS_FAILURE,
 } from '../actions';
 
 
@@ -12,7 +15,7 @@ import {
 const initialState = {
     smurfs: [],
     fetchingSmurfs: false,
-    // addingSmurf: false
+    addingSmurf: false,
     // not worrying about this YET as it's a stretch goal
     // updatingSmurf: false
     // deletingSmurf: false
@@ -36,13 +39,28 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         smurfs: action.payload,
+        error: null,
       });
-    case FETCHING_SMURFS_FAILURE: {
+    case FETCHING_SMURFS_FAILURE: 
       return Object.assign({}, state, {
         fetchingSmurfs: false,
         error: action.payload,
       });
-    }
+    case CREATING_SMURFS:
+      return Object.assign({}, state, {
+        addingSmurf: true,
+      });
+    case CREATING_SMURFS_SUCCESS: 
+      return Object.assign({}, state, {
+        addingSmurf: false,
+        smurfs: action.payload,
+        error: null,
+      });
+    case CREATING_SMURFS_FAILURE: 
+      return Object.assign({}, state, {
+        addingSmurf: false,
+        error: action.payload,
+      });
     default:
       return state;
   }
