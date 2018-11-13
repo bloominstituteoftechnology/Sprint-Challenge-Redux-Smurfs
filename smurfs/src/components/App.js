@@ -16,7 +16,7 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS!</h1>
         <div>Here's some Smurfs!</div>
-        <Route path="/create" component={CreateSmurf}/>
+        <CreateSmurf/>
         <SmurfList/>
         <div>Have fun!</div>
       </div>
