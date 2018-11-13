@@ -17,7 +17,7 @@ class Smurfs extends Component {
             <div>
                {/* <Smurf />  */}
                <h1>{this.props.error}</h1>
-               {this.props.smurfs.map( smurf => <Smurf key={smurf.name} smurf={smurf} />)}
+               {this.props.smurfs.map( smurf => <Smurf key={smurf.name} id={smurf.id} smurf={smurf} />)}
             </div>
         );
     }

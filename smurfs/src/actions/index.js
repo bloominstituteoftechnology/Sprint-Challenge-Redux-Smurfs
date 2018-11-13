@@ -39,10 +39,10 @@
       }
   }
 
-  export const updateSmurf = (smurf) => {
+  export const updateSmurf = (newSmurf) => {
     return dispatch => {
       dispatch({type: LOADING})
-      axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf )
+      axios.put(`http://localhost:3333/smurfs/${newSmurf.id}`, newSmurf )
          .then(response => {
                  dispatch({type:UPDATE_SMURF, payload: response.data})
               })

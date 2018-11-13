@@ -10,7 +10,8 @@ class Smurf extends Component {
          this.state = {
              name: '',
              age: '',
-             height:''
+             height:'',
+             id:''
          }
      }
     
@@ -23,11 +24,13 @@ class Smurf extends Component {
           this.props.deleteSmurfs(this.props.smurf.id);
      }
      inputChange= e => {
-        this.setState({[e.target.name]: e.target.value})
+        this.setState({[e.target.name]: e.target.value, id: this.props.id})
       }
     
       submitHandler = (event) => {
         event.preventDefault();
+        
+        
         console.log(this.state)
         if(event.target.classList.contains("editButton")) {
             if(event.target.parentNode.previousElementSibling.style.display === '') {
@@ -54,6 +57,7 @@ class Smurf extends Component {
            <h2>Name: {smurf.name}</h2>
            <p>Age: {smurf.age}</p>
            <p>Height: {smurf.height}</p>
+           <p>Id # {smurf.id}</p>
            <form  className="update-form">
                 <input type='text' name="name"
                        placeholder="Name" 
