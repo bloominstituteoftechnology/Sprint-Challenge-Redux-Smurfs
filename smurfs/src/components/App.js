@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Router, NavLink } from 'react-router-dom'
+import { connect } from "react-redux"; // Nov-13
 
 import logo from './D2rdroid1.png';
 import './App.css';
@@ -12,6 +13,7 @@ import './App.css';
 import SmurfsList from './SmurfsList'
 import CreateSmurfForm from './CreateSmurfForm'
 import UpdateSmurf from './UpdateSmurfForm'
+import { loadSmurfs } from "../actions/smurfsActions"; // Nov-13
 
 class App extends Component {
   render() {
@@ -38,4 +40,20 @@ class App extends Component {
   }
 }
 
-export default App;
+ // Nov-13 added mapStateToProps statement
+ 
+const mapStateToProps = (state) => {
+  return {
+    smurfs: state.smurfs,
+    error: state.error,
+    loading: state.loadingSmurfs
+  };
+};
+
+// Nov-13 added `connect` statement before exporting `App`
+export default connect(
+  mapStateToProps,
+  {
+    loadSmurfs
+  }
+)(App);

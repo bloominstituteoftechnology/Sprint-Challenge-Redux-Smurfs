@@ -5,6 +5,22 @@ export const LOAD_SMURFS = "LOAD_SMURFS";
 export const LOADING = "LOADING";
 export const ERROR = "ERROR";
 
+/* Mykeal:  
+1.  Should actions in smurfsActions.js have a different action type for each action? Like
+  loadSmurfs  type: LOADING 
+  createSmurf type: CREATING
+  deleteSmurf type: DELETING
+  updateSmurf type: UPDATING
+
+2.  Should all of these be exported above?
+      export const LOAD_SMURFS = "LOAD_SMURFS";
+      export const LOADING = "LOADING";
+      export const CREATING = "CREATING";
+      export const DELETING = "DELETING";
+      export const UPDATING = "UPDATING";
+      export const ERROR = "ERROR";
+*/
+
 // GET
 export const loadSmurfs = () => {
   return dispatch => {
