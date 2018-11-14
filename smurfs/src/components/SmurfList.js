@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { FETCHING, SUCCESS, FAILURE, fetchSmurfs } from '../actions';
+import { fetchSmurfs, deleteSmurf } from '../actions';
+import Smurf from './Smurf'
 
 class SmurfList extends React.Component {
     componentDidMount() {
@@ -16,7 +17,14 @@ class SmurfList extends React.Component {
                 <h1>SMURFS! 2.0 W/ Redux</h1>
                 <ul>
                     {this.props.smurfs.map(smurf => {
-                        return <p>{smurf.name} is {smurf.age} years old, and {smurf.height} tall!</p>;
+                        return <Smurf
+                        key={smurf.id}
+                        id={smurf.id}
+                        name={smurf.name}
+                        age={smurf.age}
+                        height={smurf.height}
+                        onDeleteClick={this.props.onDeleteClick}
+                        />
                     })}
                 </ul>
             </div>
@@ -27,8 +35,15 @@ class SmurfList extends React.Component {
 const mapStateToProps = state => {
     return {
         smurfs: state.smurfs,
-        fetching: state.fetching
+        fetching: state.fetchingSmurfs
     }
 }
 
-export default connect(mapStateToProps, { FETCHING, SUCCESS, FAILURE, fetchSmurfs })(SmurfList);
+// const mapDispatchToProps = (dispatch) => {
+//     return ({
+//         onDeleteClick: id => dispatch(deleteSmurf(id)),
+//         fetchSmurfs: dispatch(fetchSmurfs())
+//     })
+// }
+
+export default connect(mapStateToProps, { fetchSmurfs })(SmurfList);
