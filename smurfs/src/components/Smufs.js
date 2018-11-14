@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Actions:
-import { getSmurfs } from '../actions';
+import { getSmurfs, deleteSmurf } from '../actions';
 
 // Components:
 import Smurf from './Smurf';
@@ -17,6 +17,8 @@ class Smurfs extends Component {
     this.props.getSmurfs();
   };
 
+  // Handle delete
+  handleDelete = (event) => {};
 
   render() {
     return(
@@ -24,7 +26,7 @@ class Smurfs extends Component {
         { this.props.fetching ? <h1 className='fullAlert'>The Smurfs are on their way...</h1> : null }
         { this.props.error !== null ? <h1 className='fullAlert'>{this.props.error}</h1> : null }
         { this.props.smurfs.map( (smurf) =>
-          <Smurf smurf={smurf} key={smurf.id} />
+          <Smurf smurf={smurf} key={smurf.id} handleDelete={this.handleDelete} />
         )}
       </div>
     );

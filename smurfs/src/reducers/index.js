@@ -49,6 +49,8 @@ export default ( state = initialState, action ) => {
       return Object.assign( {}, {error: action.errMsg, loading: false});
 
     case DELETING:
+      return Object.assign( {}, state, {deleting: true} );
+      
     default:
       return state;
   }

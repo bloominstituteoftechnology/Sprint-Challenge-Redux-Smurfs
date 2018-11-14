@@ -56,4 +56,15 @@ export const addSmurf = (smurf) => {
 export const editSmurf = () => {};
 
 // Stretch - DELETE to remove:
-export const deleteSmurf = () => {};
+export const deleteSmurf = (id) => {
+  return (dispatch) => {
+    dispatch( {type: DELETING } );
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
+      .then( (response) => {
+        dispatch( {type: UPDATING, smurfs: response.data} );
+      })
+      .catch( (err) => {
+        dispatch( {type: ERROR, errMsg: "This stubborn Smurf just won't go away!"})
+      });
+  };
+};
