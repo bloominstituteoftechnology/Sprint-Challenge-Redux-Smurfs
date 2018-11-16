@@ -11,11 +11,10 @@ import './index.css';
 import App from './components/App';
 /* You need some sort of reducer */;
 
+//  this is the most basic reducer. A function that returns and object. Replace it.
+// const store = createStore( () => {},applyMiddleware(/* be sure to throw in the proper middlewares here*/));
+
 const middleware = applyMiddleware(thunk, logger)
-// const store = createStore(
-//   () => {}, // this is the most basic reducer. A function that returns and object. Replace it.
-//   applyMiddleware(/* be sure to throw in the proper middlewares here*/)
-// );
 const store = createStore(SmurfsReducer, middleware);
 
 ReactDOM.render(

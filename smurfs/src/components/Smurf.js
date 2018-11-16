@@ -1,3 +1,30 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { deleteSmurf } from "../actions/smurfsActions";
+
+const Smurf = (props) => {
+  // const { smurf, deleteSmurf } = props
+
+  return (
+    <div className="smurf-card">
+      <button onClick={() => props.deleteSmurf(props.id)}>DELETE ME :(</button>
+      <h2>{props.name}</h2>
+      <h4>{props.age}</h4>
+      <p>{props.height}</p>
+      <img src={props.img} alt="Smurf" />
+    </div>
+  );
+};
+const mapStateToProps = () => {
+  return {};
+};
+export default connect(
+  mapStateToProps,
+  { deleteSmurf }
+)(Smurf);
+
+/*
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -37,3 +64,4 @@ import { deleteSmurf } from '../actions/smurfsActions'
 
 const mapStateToProps = () => ({})
 export default connect(mapStateToProps, { deleteSmurf })(Smurf)
+*/

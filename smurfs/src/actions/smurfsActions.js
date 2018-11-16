@@ -1,20 +1,21 @@
 // ☞ 9f961353-ab89-4744-a8be-196d19d96edb
 
 import axios from "axios";
+export const FETCHING = "FETCHING";
 export const LOAD_SMURFS = "LOAD_SMURFS";
-export const LOADING = "LOADING";
+export const SUCCESS = "SUCCESS";
 export const ERROR = "ERROR";
 
 /* Mykeal:  
 1.  Should actions in smurfsActions.js have a different action type for each action? Like
-  loadSmurfs  type: LOADING 
+  fetchingSmurfs  type: FETCHING 
   createSmurf type: CREATING
   deleteSmurf type: DELETING
   updateSmurf type: UPDATING
 
 2.  Should all of these be exported above?
       export const LOAD_SMURFS = "LOAD_SMURFS";
-      export const LOADING = "LOADING";
+      export const FETCHING = "FETCHING";
       export const CREATING = "CREATING";
       export const DELETING = "DELETING";
       export const UPDATING = "UPDATING";
@@ -22,13 +23,13 @@ export const ERROR = "ERROR";
 */
 
 // GET
-export const loadSmurfs = () => {
+export const fetchingSmurfs = () => {
   return dispatch => {
-    dispatch({ type: LOADING });
+    dispatch({ type: FETCHING });
     axios
-      .get("http://localhost:5000/smurfs")
+      .get("http://localhost:3333/smurfs")
       .then(response => {
-        dispatch({ type: LOAD_SMURFS, smurfs: response.data });
+        dispatch({ type: SUCCESS, payload: response.data,fetching: false });
       })
       .catch(err => {
         dispatch({
@@ -43,11 +44,11 @@ export const loadSmurfs = () => {
 // POST
 export const createSmurf = (newSmurf) => {
   return (dispatch) => {
-    dispatch({ type: LOADING });
+    dispatch({ type: FETCHING });
     axios
-      .post('http://localhost:5000/smurfs', newSmurf)
+      .post('http://localhost:3333/smurfs', newSmurf)
       .then(response => {
-        dispatch({ type: LOAD_SMURFS, smurfs: response.data });
+        dispatch({ type: LOAD_SMURFS, payload: response.data });
       })
       .catch(err => {
         dispatch({
@@ -62,9 +63,9 @@ export const createSmurf = (newSmurf) => {
 
 export const deleteSmurf = id => {
   return dispatch => {
-    dispatch({ type: LOADING });
+    dispatch({ type: FETCHING });
     axios
-      .delete(`http://localhost:5000/smurfs/${id}`)
+      .delete(`http://localhost:3333/smurfs/${id}`)
       .then(response => {
         dispatch({ type: LOAD_SMURFS, smurfs: response.data });
       })
@@ -81,7 +82,7 @@ export const deleteSmurf = id => {
 // PUT
 export const updateSmurf = updatedSmurf => {
   return dispatch => {
-    dispatch({ type: LOADING });
+    dispatch({ type: FETCHING });
     axios
       .put(`http://localhost:5000/smurfs/${updatedSmurf.id}`)
       .then(response => {
@@ -99,9 +100,9 @@ export const updateSmurf = updatedSmurf => {
 
 export const updateSmurfForm = updatedSmurf => {
   return dispatch => {
-    dispatch({ type: LOADING });
+    dispatch({ type: FETCHING });
     axios
-      .put(`http://localhost:5000/smurfs/${updatedSmurf.id}`)
+      .put(`http://localhost:3333/smurfs/${updatedSmurf.id}`)
       .then(response => {
         dispatch({ type: LOAD_SMURFS, smurfs: response.data });
       })

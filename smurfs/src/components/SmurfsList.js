@@ -1,38 +1,53 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from "react";
+import Smurf from "./Smurf";
 
-import { loadSmurfs } from '../actions/smurfsActions'
-import Smurf from './Smurf'
-import CreateSmurfForm from './CreateSmurfForm';
+const SmurfsList = props => {
+  return (
+    <div className="smurf-list">
+      {props.smurfs.map(smurf => {
+        return <Smurf {...smurf} key={smurf.id} />;
+      })}
+    </div>
+  );
+};
 
-class SmurfsList extends Component {
-  constructor(props){
-    super(props)
-  }
+export default SmurfsList;
 
-  componentDidMount(){
-    this.props.loadSmurfs()
-  }
+// import React, { Component } from 'react'
+// import { connect } from 'react-redux'
 
-  render(){
-    return (
-      <div>
-        { this.props.loading ? <h1>LOADING</h1> : null }
+// import { fetchingSmurfs } from '../actions/smurfsActions'
+// import Smurf from './Smurf'
+// import CreateSmurfForm from './CreateSmurfForm';
 
-        { this.props.error !== '' ? <h1> {this.props.error}</h1> : null }
+// class SmurfsList extends Component {
+//   constructor(props){
+//     super(props)
+//   }
 
-        { this.props.smurfs.map( smurf => <Smurf smurf={smurf} key={smurf.id}/>)}
-      </div>
-    )
-  }
-}
+//   componentDidMount(){
+//     this.props.fetchingSmurfs()
+//   }
 
-const mapStateToProps = state => {
-  return {
-    smurfs: state.smurfs,
-    error: state.error,
-    loading: state.loading
-  }
-}
+//   render(){
+//     return (
+//       <div>
+//         { this.props.loading ? <h1>FETCHING</h1> : null }
 
-export default connect(mapStateToProps, { loadSmurfs })(SmurfsList)
+//         { this.props.error !== '' ? <h1> {this.props.error}</h1> : null }
+
+//         { this.props.smurfs.map( smurf => <Smurf smurf={smurf} key={smurf.id}/>)}
+//       </div>
+//     )
+//   }
+// }
+
+// const mapStateToProps = state => {
+//   return {
+//     smurfs: state.smurfs,
+//     error: state.error,
+//     loading: state.loading
+//   }
+// }
+
+// export default connect(mapStateToProps, { fetchingSmurfs })(SmurfsList)

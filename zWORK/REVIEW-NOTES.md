@@ -13,7 +13,7 @@ Changes
   export default connect(
     mapStateToProps,
     {
-      loadSmurfs // action
+      fetchingSmurfs // action
     }
   ) (App);
 
