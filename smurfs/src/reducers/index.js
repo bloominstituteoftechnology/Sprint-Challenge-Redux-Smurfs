@@ -19,8 +19,6 @@ export default (state = initialState, action)=>{
     case FAILURE:
      return {...state, error:[action.payload]}
 
-
-   
     default:
     return state;
 
