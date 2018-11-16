@@ -1,0 +1,115 @@
+[
+  {
+    "id": 0,
+    "img":"./src/images/BeerSmurf.jpg",
+    "name": "Beer Smurf",
+    "age": "",
+    "height": "",
+    "description":"I wonder what the drinking age is in Smurf Village? This Smurf must be old enough, and his smile shows what a great time you can have throwing back a few foamy brewskies. Heck, he would make a perfect spokesman for Budweiser, enabling them to reach an ever younger demographic than they did with the Bud Bowl!"
+  },
+  {
+    "id": 1,
+    "img":"./src/images/BrainySmurf.jpeg",
+    "name": "Brainy Smurf",
+    "age": "200",
+    "height": "",
+    "description":""
+  },
+  {
+    "id": 2,
+    "img":"./src/images/CancerSmurf",
+    "name": "Cancer Smurf",
+    "age": "",
+    "height": "",
+    "description":""
+  },
+  
+  {
+    "id": 3,
+    "img":"./src/images/CardPlayerSmurf.jpg",
+    "name": "Card Player Smurf",
+    "age": "200",
+    "height": "",
+    "description":"This Smurf teaches kids that cheating at Poker is a great big laugh, and is even pretty obvious about it, ready to stack the deck with the card stuck in his waistband. Also known as Gets The Crap Beat Out of Him by Angry Gamblers Smurf."
+  },
+  {
+    "id": 4,
+    "img":"./src/images/DevilSmurf.jpg",
+    "name": "Beelzebub Smurf",
+    "age": "666",
+    "height": "666",
+    "description":"All bad little Smurfs beware! Devil Smurf waits for your little blue, eternal souls if you Smurf your life up cheating at cards, getting sloshed or doing some of the other fun adult activities mentioned on this list."
+  },
+  {
+    "id": 5,
+    "img":"./src/images/GrimReaperSmurf.jpg",
+    "name": "Grim Reaper Smurf",
+    "age": "",
+    "height": "",
+    "description":"If it wasn’t enough to know there’s a Devil Smurf waiting for you in the afterlife, here’s the guy who’s gonna place his cold, blue grasp on your life and take you there!"
+  },
+  {
+    "id": 6,
+    "img":"./src/images/MysticSmurf.jpg",
+    "name": "Mystic Smurf",
+    "age": "",
+    "height": "",
+    "description":""
+  },
+  {
+    "id": 7,
+    "img":"./src/images/PeacePipeSmurf",
+    "name": "Peace Pipe Smurf",
+    "age": "",
+    "height": "",
+    "description":""
+  },
+  {
+    "id": 8,
+    "img":"./src/images/Rosa.png",
+    "name": "Rosa Smurf",
+    "age": "",
+    "height": "",
+    "description":""
+  },
+  {
+    "id": 9,
+    "img":"./src/images/Smurfblossom.png",
+    "name": "Blossom Smurf",
+    "age": "",
+    "height": "",
+    "description":""
+  },
+  {
+    "id": 10,
+    "img":"./src/images/Smurfette.png",
+    "name": "Smurfette",
+    "age": "50",
+    "height": "",
+    "description":"To celebrate 50 years of Smurfs, Schleich released a figurine of Smurfette jumping out of a giant cake. Thankfully, they neglected to depict the next scene where her white dress flies across the room and lands on Papa’s hat."
+  },
+  {
+    "id": 11,
+    "img":"./src/images/Smurfstorm.png",
+    "name": "Stormy Smurf",
+    "age": "",
+    "height": "",
+    "description":""
+  },
+  {
+    "id": 12,
+    "img":"./src/images/SurpriseSmurfette.png",
+    "name": "Surprise Smurfette",
+    "age": "50",
+    "height": "",
+    "description":"To celebrate 50 years of Smurfs, Schleich released a figurine of Smurfette jumping out of a giant cake. Thankfully, they neglected to depict the next scene where her white dress flies across the room and lands on Papa’s hat."
+  },
+  {
+    "id": 13,
+    "img":"./src/images/",
+    "name": "Axe Murderer Smurf",
+    "age": "",
+    "height": "",
+    "description":"Okay, he’s really Woodcutter Smurf. But the way he’s brandishing that axe and the crazed expression on his face make him look more like Jack Nicholson in The Shining. “Here’s Smurfy!”"
+  }
+]

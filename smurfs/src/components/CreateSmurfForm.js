@@ -27,9 +27,13 @@ class CreateSmurf extends Component {
   render(){
     return (
       <form onSubmit={this.submitHandler}>
+      <p>CREATE SMURF FORM</p>
+        <input type="text" name="img" value={ this.state.img } onChange={this.inputHandler} placeholder="Image"/>
+        {/* <input type="text" name="img" value={"../images/" && this.state.img} onChange={this.inputHandler} placeholder="Image"/> */}
         <input type="text" name="name" value={this.state.name} onChange={this.inputHandler} placeholder="Name"/>
-        <input type="text" name="age" value={this.state.nickname} onChange={this.inputHandler} placeholder="Age"/>
-        <input type="text" name="height" value={this.state.description} onChange={this.inputHandler} placeholder="Height"/>
+        <input type="text" name="age" value={this.state.age} onChange={this.inputHandler} placeholder="Age"/>
+        <input type="text" name="height" value={this.state.height} onChange={this.inputHandler} placeholder="Height"/>
+        <input type="text" name="height" value={this.state.description} onChange={this.inputHandler} placeholder="Description"/>
         <button type="submit">Add Smurf</button>
       </form>
     )

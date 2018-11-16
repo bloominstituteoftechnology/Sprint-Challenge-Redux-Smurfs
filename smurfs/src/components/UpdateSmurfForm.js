@@ -38,10 +38,12 @@ class UpdateSmurf extends Component {
   render(){
     return (
       <form onSubmit={ this.submitHandler}>
+      <p>UPDATE SMURF FORM</p>
+        <input type="text" name="img" value={this.state.img} onChange={this.inputHandler} placeholder="Image"/>
         <input type="text" name="name" value={this.state.name} onChange={this.inputHandler} placeholder="Name"/>
         <input type="text" name="age" value={this.state.age} onChange={this.inputHandler} placeholder="Age"/>
         <input type="text" name="height" value={this.state.height} onChange={this.inputHandler} placeholder="Height"/>
-        <input type="text" name="img" value={this.state.img} onChange={this.inputHandler} placeholder="Image"/>
+        <input type="text" name="height" value={this.state.description} onChange={this.inputHandler} placeholder="Description"/>
         <button type="submit">Update</button>
       </form>
     )
