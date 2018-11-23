@@ -4,3 +4,5 @@
 1.  What is middleware?
 1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 1.  Which `react-redux` method links up our `components` with our `redux store`?
+
+Jerrard Smith
