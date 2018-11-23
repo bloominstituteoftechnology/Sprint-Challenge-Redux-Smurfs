@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'redux'
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 

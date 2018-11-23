@@ -1,6 +1,8 @@
 /*
-  Be sure to import in all of the action types from `../actions`
+  Be sure to import in all of the action  from `../actions`
 */
+import { FETCHING, ADDING, UPDATING, DELETING, FAILURE } from '../actions/index'
+
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -13,7 +15,32 @@
    error: null
  }
 */
+const initState = {
+ smurfs: [],
+ fetching: false,
+ adding: false,
+ updating: false,
+ deleting: false,
+ error: ''
+}
 
+//  add dispatch
+export default (state = initState, action) => {
+ switch(action.type){
+  case FETCHING:
+  return {}
+  case ADDING:
+  return {}
+  case UPDATING:
+  return {}
+  case DELETING:
+  return {}
+  case FAILURE:
+  return {}
+  default:
+  return state 
+ }
+}
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
