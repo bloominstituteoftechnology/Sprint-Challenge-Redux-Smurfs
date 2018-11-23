@@ -24,9 +24,8 @@ const initState = {
  error: ''
 }
 
-//  add dispatch
-export default (state = initState, action) => {
- switch(action.type){
+export const reducer = (state = initState, action) => {
+ switch(action){
   case FETCHING:
   return {}
   case ADDING:

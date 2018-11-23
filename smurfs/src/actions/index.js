@@ -1,31 +1,27 @@
+import axios from 'axios'
+
 export const FETCHING = 'FETCHING'
 export const ADDING = 'ADDING'
 export const UPDATING = 'UPDATING'
 export const DELETING = 'DELETING'
 export const FAILURE = 'FAILURE'
+export const SUCCESS = 'SUCCESS'
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
 
-export const fetching = (smurfs) => {
- return {type: FETCHING, payload: smurfs}
-}
-
-export const adding = (smurf) => {
- return {type: ADDING, payload: smurf}
-}
-
-export const updating = (id) => {
- return {type: UPDATING, payload: id}
-}
-
-export const deleting = (id) => {
- return {type: DELETING, payload: id}
-}
-
-export const failure = () => {
- return {type: FAILURE, payload: 'Smurfs not found'}
+export const getSmurfs = () => dispatch => {
+ dispatch({type: FETCHING})
+ axios
+ .get('http://localhost:3333/smurfs')
+ .then(response => {
+  console.log(response.data)
+  dispatch({type: SUCCESS, payload: response})
+ })
+ .catch(err => {
+  console.log(err)
+ })
 }
 /*
   For this project you'll need at least 2 action creators for the main portion,
