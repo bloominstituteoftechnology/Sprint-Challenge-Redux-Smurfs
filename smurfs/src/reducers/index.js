@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action  from `../actions`
 */
-import { FETCHING, ADDING, UPDATING, DELETING, FAILURE } from '../actions/index'
+import { FETCHING, ADDING, UPDATING, DELETING, FAILURE, SUCCESS } from '../actions/index'
 
 
 /*
@@ -18,6 +18,7 @@ import { FETCHING, ADDING, UPDATING, DELETING, FAILURE } from '../actions/index'
 const initState = {
  smurfs: [],
  fetching: false,
+ received: false,
  adding: false,
  updating: false,
  deleting: false,
@@ -25,9 +26,18 @@ const initState = {
 }
 
 export const reducer = (state = initState, action) => {
- switch(action){
+ switch(action.type){
   case FETCHING:
-  return {}
+  return {...state, 
+   fetching: true,
+   received: false,
+ }
+  case SUCCESS:
+  return Object.assign({}, state, {
+   smurfs: action.payload,
+   fetching: false,
+   received: true 
+  })
   case ADDING:
   return {}
   case UPDATING:

@@ -9,13 +9,6 @@ import { getSmurfs } from '../actions/index'
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
- constructor(){
-  super()
-  this.state = {
-   smurfs: []
-  }
- }
-
  componentDidMount(){
   this.props.getSmurfs()
  }
@@ -32,7 +25,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
- const { smurfs } = state.smurfs
+ const { smurfs } = state
+ console.log(state)
  return {
   smurfs: smurfs
  }
