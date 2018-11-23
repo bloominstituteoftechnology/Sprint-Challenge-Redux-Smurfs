@@ -5,10 +5,17 @@ class SmurfsContainer extends React.Component {
  constructor(){
   super()
   this.state = {
-
+   name: '',
+   height: '',
+   age: ''
   }
  }
 
+ inputHandler = event => {
+  this.setState({
+   [event.target.name]: event.target.value
+  })
+ }
  render(){
   return(
    <div>
@@ -19,8 +26,13 @@ class SmurfsContainer extends React.Component {
      name={smurf.name}
      height={smurf.height}
      age={smurf.age}
+     inputHandler={this.inputHandler}
+     stateName={this.state.name}
+     stateHeight={this.state.height}
+     stateAge={this.state.age}
 
     />)}
+  
    </div>
   )
  }

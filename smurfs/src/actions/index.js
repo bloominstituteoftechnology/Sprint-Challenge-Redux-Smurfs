@@ -23,6 +23,15 @@ export const getSmurfs = () => dispatch => {
   console.log(err)
  })
 }
+
+export const addSmurf = () => {
+ axios
+}
+
+export const deleteSmurf = () => {
+ axios
+}
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
