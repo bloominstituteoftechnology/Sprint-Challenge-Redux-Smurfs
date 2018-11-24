@@ -1,9 +1,6 @@
 import axios from 'axios'
 
 export const FETCHING = 'FETCHING'
-export const ADDING = 'ADDING'
-export const UPDATING = 'UPDATING'
-export const DELETING = 'DELETING'
 export const FAILURE = 'FAILURE'
 export const SUCCESS = 'SUCCESS'
 /* 
@@ -21,15 +18,26 @@ export const getSmurfs = () => dispatch => {
  })
  .catch(err => {
   console.log(err)
+  dispatch({type: FAILURE, payload: 'No smurfs fetched.'})
  })
 }
 
-export const addSmurf = () => {
+export const addSmurf = (data) => dispatch => {
+ dispatch({type: FETCHING})
  axios
+ .post('http://localhost:3333/smurfs', data)
+ .then(response => {
+  dispatch({type: SUCCESS, payload: response.data})
+ })
+ .catch(err => {
+  dispatch({type: FAILURE, payload: 'Smurf not added.' })
+ })
 }
 
-export const deleteSmurf = () => {
+export const deleteSmurf = () => dispatch => {
+ dispatch({type: FETCHING})
  axios
+ .delete('http://localhost:3333/smurfs')
 }
 
 /*

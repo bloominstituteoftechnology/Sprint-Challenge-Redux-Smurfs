@@ -27,10 +27,12 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
- const { smurfs } = state
+ const { smurfs, fetching, error } = state
  console.log(state)
  return {
-  smurfs: smurfs
+  smurfs: smurfs,
+  fetching: fetching,
+  error: error
  }
 }
 

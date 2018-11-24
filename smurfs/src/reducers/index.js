@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action  from `../actions`
 */
-import { FETCHING, ADDING, UPDATING, DELETING, FAILURE, SUCCESS } from '../actions/index'
+import { FETCHING, FAILURE, SUCCESS } from '../actions/index'
 
 
 /*
@@ -18,10 +18,6 @@ import { FETCHING, ADDING, UPDATING, DELETING, FAILURE, SUCCESS } from '../actio
 const initState = {
  smurfs: [],
  fetching: false,
- received: false,
- adding: false,
- updating: false,
- deleting: false,
  error: ''
 }
 
@@ -30,22 +26,14 @@ export const reducer = (state = initState, action) => {
   case FETCHING:
   return {...state, 
    fetching: true,
-   received: false,
  }
   case SUCCESS:
   return Object.assign({}, state, {
-   smurfs: action.payload,
+   smurfs: [...action.payload],
    fetching: false,
-   received: true 
   })
-  case ADDING:
-  return {}
-  case UPDATING:
-  return {}
-  case DELETING:
-  return {}
   case FAILURE:
-  return {}
+  return Object.assign({}, state, {fetching: false, error: action.payload})
   default:
   return state 
  }
