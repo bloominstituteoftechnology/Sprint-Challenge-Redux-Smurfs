@@ -44,7 +44,7 @@ src
 
 ## Project Description
 
-- For today's challenge you're going to be building a `React/Redux` application that interfaces with the same `smurfs` api you played with last week. The key differences here are that you're going to be wiring up Redux. and `redux-thunk`
+[x]- For today's challenge you're going to be building a `React/Redux` application that interfaces with the same `smurfs` api you played with last week. The key differences here are that you're going to be wiring up Redux. and `redux-thunk`
 
 ## API Design - This is how you'll interface with the API and what is required from every endpoint.
 
