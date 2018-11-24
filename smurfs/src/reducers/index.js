@@ -12,7 +12,7 @@ const initialState = {
 	error: null
 };
 
-const rootReducer = (state = initialState, action) => {
+const RootReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCHING:
 			return { ...state, fetchingSmurfs: true };
@@ -34,10 +34,12 @@ const rootReducer = (state = initialState, action) => {
 				addingSmurf: false,
 				error: null
 			};
+		default:
+			return state;
 	}
 };
 
-export default rootReducer;
+export default RootReducer;
 
 /*
   You'll only need one smurf reducer for this project.

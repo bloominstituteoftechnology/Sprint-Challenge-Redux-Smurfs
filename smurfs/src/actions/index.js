@@ -29,7 +29,7 @@ export const addSmurf = data => dispatch => {
 		.post('http://localhost:3333/smurfs', {
 			name: data.name,
 			age: data.age,
-			height: data.height
+			height: data.height + 'cm'
 		})
 		.then(response => {
 			console.log('response=' + response.data);
