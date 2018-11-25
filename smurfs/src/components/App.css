@@ -26,3 +26,33 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.close {
+  color: red;
+  border: 1px solid black;
+  padding: 5px;
+  text-align: right;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-right: 30px;
+
+}
+
+.close:hover {
+  background-color: grey;
+  color: white;
+}
+
+.smurfz {
+  border: 1px solid lightgrey;
+  padding: 10px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
