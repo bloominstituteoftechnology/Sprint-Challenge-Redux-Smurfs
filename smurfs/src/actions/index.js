@@ -3,14 +3,24 @@ import axios from 'axios';
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+
 export const FETCHING = "FETCHING";
+export const FETCHED = "FETCHED";
 export const ADDING = "ADDING";
 export const UPDATING = "UPDATING";
 export const DELETING = "DELETING";
-export const FAILING = "FAILING";
+export const ERROR = "ERROR";
 
 export const fetchSmurfs = () => dispatch => {
-  
+  dispatch({ type: FETCHING });
+  axios 
+    .get('http://localhost:3333/smurfs')
+    .then(res => {
+      dispatch({ FETCHED, smurfs: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: "ERROR", errorMessage: 'ERROR!'})
+    })
 }
 /*
   For this project you'll need at least 2 action creators for the main portion,
