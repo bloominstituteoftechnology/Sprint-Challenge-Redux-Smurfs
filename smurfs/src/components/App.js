@@ -7,6 +7,14 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state ={
+      name: '',
+      age: '',
+      height: ''
+    };
+  }
   render() {
     return (
       <div className="App">
