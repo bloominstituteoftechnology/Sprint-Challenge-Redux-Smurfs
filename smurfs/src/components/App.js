@@ -3,6 +3,7 @@ import './App.css';
 import Smurfs from './Smurfs';
 import { connect } from "react-redux";
 import {fetchSmurfs} from '../actions';
+import AddSmurfForm from './AddSmurfForm';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -20,6 +21,7 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <Smurfs />
+        <AddSmurfForm />
       </div>
     );
   }
