@@ -5,7 +5,7 @@ import { addSmurf } from "../actions";
 class AddSmurfForm extends Component {
   render() {
     return (
-      <form>
+      <form onSubmit= {this.props.addNewSmurf}>
         <input
           onChange={this.props.inputHandler}
           name="name"
