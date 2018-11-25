@@ -27,6 +27,7 @@ class AddSmurfForm extends Component {
           value={this.props.height}
           placeholder="...height"
         />
+        <button>Add Smurf</button>
       </form>
     );
   }
