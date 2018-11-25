@@ -17,7 +17,7 @@ export const fetchSmurfs = () => dispatch => {
   axios 
     .get('http://localhost:3333/smurfs')
     .then(res => {
-      dispatch({ FETCHED, smurfs: res.data })
+      dispatch({ type: FETCHED, smurfs: res.data })
     })
     .catch(err => {
       dispatch({ type: "ERROR", errorMessage: 'ERROR!'})
