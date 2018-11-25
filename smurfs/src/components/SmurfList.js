@@ -4,10 +4,6 @@ import Smurf from './Smurf';
 import { connect } from 'react-redux';
 
 class SmurfList extends React.Component {
-    constructor(props){
-        super(props)
-    }
-
     componentDidMount() {
         this.props.fetchingSmurfs();
     }
@@ -17,8 +13,9 @@ class SmurfList extends React.Component {
             <div>
                 {this.props.fetching ? <h2>Fetching Data. Please Wait</h2> : null }
                 {this.props.error !== '' ? <h2>{this.props.error}</h2>: '' }
-                {this.props.smurfs.map(smurf => 
-                    <Smurf smurf={smurf} key={smurf.id} />)}
+                {this.props.smurfs.map(smurf => (
+                    <Smurf smurf={smurf} key={smurf.id} />
+                ))}
             </div>
         )
     }

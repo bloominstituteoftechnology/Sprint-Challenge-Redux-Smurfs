@@ -33,8 +33,4 @@ class AddSmurf extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {}
-}
-
-export default connect (mapStateToProps, {addingSmurf: addingSmurf})(AddSmurf);
+export default connect ( () => {}, {addingSmurf: addingSmurf})(AddSmurf);

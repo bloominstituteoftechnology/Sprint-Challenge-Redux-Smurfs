@@ -54,7 +54,5 @@
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
-}
-
-.smurfContainer {
+  margin-bottom: 15px;
 }
