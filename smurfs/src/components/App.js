@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
+import { Route, Link } from 'react-router-dom'
+// connect allows us to link our global state to a component
 import { getSmurfs } from '../actions/index'
 import SmurfsContainer from './SmurfsContainer'
 /*
@@ -20,19 +22,19 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-        <SmurfsContainer smurfs={this.props.smurfs}/>
+        <Link to='/smurfs'/>
+        {/* <SmurfsContainer smurfs={this.props.smurfs}/> */}
+        <Route render={props => <SmurfsContainer smurfs={props.smurfs}/>} />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
- const { smurfs, fetching, error } = state
+ const { smurfs } = state
  console.log(state)
  return {
   smurfs: smurfs,
-  fetching: fetching,
-  error: error
  }
 }
 

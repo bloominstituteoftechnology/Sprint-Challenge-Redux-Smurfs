@@ -23,13 +23,12 @@ export const getSmurfs = () => dispatch => {
 }
 
 export const addSmurf = (data) => dispatch => {
- dispatch({type: FETCHING})
  axios
  .post('http://localhost:3333/smurfs', data)
  .then(response => {
   dispatch({type: SUCCESS, payload: response.data})
  })
- .catch(err => {
+ .catch(() => {
   dispatch({type: FAILURE, payload: 'Smurf not added.' })
  })
 }

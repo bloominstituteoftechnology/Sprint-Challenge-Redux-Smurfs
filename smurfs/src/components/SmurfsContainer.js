@@ -21,9 +21,12 @@ class SmurfsContainer extends React.Component {
 
  submitHandler = event => {
   event.preventDefault()
-  // debugger
   this.props.addSmurf({name: this.state.name, height: this.state.height, age: this.state.age})
 
+ }
+
+ deleteHandler = event => {
+  
  }
  render(){
   return(
