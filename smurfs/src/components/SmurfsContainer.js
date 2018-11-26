@@ -1,7 +1,7 @@
 import React from 'react'
 import Smurf from './Smurf'
 import { connect } from 'react-redux'
-import { addSmurf } from '../actions/index'
+import { addSmurf, deleteSmurf } from '../actions/index'
 
 class SmurfsContainer extends React.Component {
  constructor(){
@@ -25,8 +25,8 @@ class SmurfsContainer extends React.Component {
 
  }
 
- deleteHandler = event => {
-  
+ deleteHandler = (id) => {
+  this.props.deleteSmurf(id)
  }
  render(){
   return(
@@ -58,7 +58,9 @@ class SmurfsContainer extends React.Component {
      index={smurf.index}
      name={smurf.name}
      height={smurf.height}
+     id={smurf.id}
      age={smurf.age}
+     deleteHandler={this.deleteHandler}
     />)}
    </div>
   )
@@ -72,4 +74,4 @@ const mapStateToProps = state => {
  }
 }
 
-export default connect(mapStateToProps, { addSmurf })(SmurfsContainer)
+export default connect(mapStateToProps, { addSmurf, deleteSmurf })(SmurfsContainer)

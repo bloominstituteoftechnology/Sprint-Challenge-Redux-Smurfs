@@ -33,11 +33,16 @@ export const addSmurf = (data) => dispatch => {
  })
 }
 
-export const deleteSmurf = () => dispatch => {
- dispatch({type: FETCHING})
+export const deleteSmurf = (id) => dispatch => {
  axios
- .delete('http://localhost:3333/smurfs')
-}
+ .delete(`http://localhost:3333/smurfs/${id}`)
+ .then(response => {
+  dispatch({type: SUCCESS, payload: response.data})
+ })
+  .catch(() => {
+   dispatch({type: FAILURE, payload: "Smurf not removed."})
+  })
+ }
 
 /*
   For this project you'll need at least 2 action creators for the main portion,

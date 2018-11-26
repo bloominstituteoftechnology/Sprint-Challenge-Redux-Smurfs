@@ -16,6 +16,8 @@
 - The difference is that component state can allow for each individual component to "hold" and alter it's state, and potentially the state of other connected components.
   Application state allows for removal of most of the state from components, and allows for easier state management in larger applications, as it's only held in one place/object.
 1.  What is middleware?
- 
+- Middleware is a piece, or group of pieces of software that sit in between actions, and reducers, and allow for the actions to be intercepted and worked on before being shipped off to reducers.
 1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+- Redux-thunk is a library that allows us to make use of asynchronous operations within our react-redux application, such as making api calls to recieve or send off data.
 1.  Which `react-redux` method links up our `components` with our `redux store`?
+- The method "connect" allows a specific component to access the global store, in combination with mapStateToProps, because the state is in the store, which is then accessible as a prop.
