@@ -3,28 +3,43 @@ import { connect } from "react-redux";
 import { addSmurf } from "../actions";
 
 class AddSmurfForm extends Component {
+ 
+  state={
+    name: '',
+    age: '',
+    height: ''
+  }
+
+  inputHandler = e => {
+    this.setState({[e.target.name]: e.target.value})
+  }
+
+  addNewSmurf = e => {
+    e.preventDefault()
+    this.props.addSmurf(this.state)
+  }
   render() {
     return (
-      <form onSubmit= {this.props.addNewSmurf}>
+      <form onSubmit={this.addNewSmurf}>
         <input
-          onChange={this.props.inputHandler}
+          onChange={this.inputHandler}
           name="name"
           type="text"
-          value={this.props.name}
+          value={this.state.name}
           placeholder="...name"
         />
         <input
-          onChange={this.props.inputHandler}
+          onChange={this.inputHandler}
           name="age"
           type="number"
-          value={this.props.age}
+          value={this.state.age}
           placeholder="...age"
         />
         <input
-          onChange={this.props.inputHandler}
+          onChange={this.inputHandler}
           name="height"
           type="text"
-          value={this.props.height}
+          value={this.state.height}
           placeholder="...height"
         />
         <button>Add Smurf</button>
