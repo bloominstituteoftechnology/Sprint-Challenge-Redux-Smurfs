@@ -20,6 +20,11 @@ class Smurf extends React.Component {
 
  submitSmurf = (id, obj) => {
   this.props.updateSmurf(id, obj)
+  this.setState({
+   newname: '',
+   newage: '',
+   newheight: ''
+  })
  }
   render() {
     return (
