@@ -44,30 +44,26 @@ export default (state =  initialState , action) => {
     case FETCHED:
       return {
         ...state,
-        smurfs: action.smurfs,
+        smurfs: action.payload,
         fetchingSmurfs: false,
         smurfsFetched: true,
-        error: null
       };
     case ADDING:
       return {
         ...state,
-        smurfs: action.smurfs,
         addingSmurf: true
       };
     case ADDED:
       return {
         ...state,
-        smurfs: action.smurfs,
+        smurfs: action.payload,
         addingSmurf: false,
         smurfAdded: true
       };
     case ERROR:
       return {
         ...state,
-        fetchingSmurfs: false,
-        smurfsFetched: false,
-        error: action.errorMessage
+        error: action.payload
       };
     default:
       return state;

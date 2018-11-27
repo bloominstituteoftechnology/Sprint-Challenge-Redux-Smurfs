@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Smurfs from './Smurfs';
-import { connect } from "react-redux";
+
 import {fetchSmurfs} from '../actions';
 import AddSmurfForm from './AddSmurfForm';
 /*
@@ -11,27 +11,12 @@ import AddSmurfForm from './AddSmurfForm';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
-  // state= {
-  //   name: '',
-  //   age: '',
-  //   height: ''
-  // }
+ 
   
 
-  componentDidMount() {
-    this.props.fetchSmurfs()
-  }
-
-  // inputHandler = e => {
-  //   e.preventDefault();
-  //   this.setState({[e.target.name]: e.target.value})
-  // }
-
-  // addNewSmurf = e => {
-  //   e.preventDefault();
-  //   this.props.addSmurf(this.state)
   
-  // }
+
+ 
   render() {
     return (
       <div className="App">
@@ -43,15 +28,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    fetchingSmurfs: state.fetchingSmurfs,
-    smurfs: state.smurfs,
-    error: state.errorMessage
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  {fetchSmurfs}
-)(App)
+export default App;
