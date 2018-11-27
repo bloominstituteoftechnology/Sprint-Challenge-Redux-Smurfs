@@ -18,8 +18,8 @@
 
 ## Initializing Project - READ THIS CAREFULLY, you have two apps here. A server, and a client.
 
-* `cd` into the forked copy of this repo.
-* **RUN** `yarn` or `npm install` to retrieve all `server-side` the dependencies.
+[x] `cd` into the forked copy of this repo.
+[x] **RUN** `yarn` or `npm install` to retrieve all `server-side` the dependencies.
 * **LOOK** at all the files you've been given for this project. One important file to note is `server.js`. This file contains an **API** that you are going to be interfacing with. Below is documentation on how to interact with the **API**.
 * **RUN** `yarn start` or `npm start` to get your API up and running on `http://localhost:3333`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data.
 * After your API is up and running, you can open chrome and type in `http://localhost:3333/smurfs`. You should see an empty Array `[]` returned to you. This is an array that your **API** will be using to store our Smurf Data.
@@ -36,7 +36,7 @@ src
 ```
 
 * **Open** `src/index.js` to make sure that your app is ready to roll with the proper middleware.
-* **cd** into `smurfs` and run `yarn` or `npm install` to retrieve the client side dependencies.
+[x] **cd** into `smurfs` and run `yarn` or `npm install` to retrieve the client side dependencies.
 * **RUN** `yarn start` or `npm start` to fire up your React application. There ought to be a pretty little message awaiting you welcoming you to the app. `Follow` the prompting.
 
 ## Project Description
