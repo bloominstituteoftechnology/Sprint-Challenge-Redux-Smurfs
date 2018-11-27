@@ -3,7 +3,7 @@ import { FETCHING, SUCCESS, FAILURE} from "../actions";
  const initialState = {
    smurfs: [],
    fetching: false,
-   adding:false,
+   addingSmurf: false,
    error: null,
 
  };

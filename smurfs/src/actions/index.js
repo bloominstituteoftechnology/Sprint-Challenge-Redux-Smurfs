@@ -5,7 +5,7 @@ export const FETCHING = "FETCHING";
 
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";
-export const ADDING = "ADDING";
+
 
 export const fetch = () => {
   return (dispatch) => {
@@ -21,15 +21,15 @@ export const fetch = () => {
   }
 }
 
-export const addSmurf = (smurf) => {
+export const addSmurf = (addedsmurfs) => {
   return dispatch => {
-    dispatch({ type: ADDING });
+    dispatch({ type: FETCHING });
     axios
-    .post("http://localhost:3333/smurfs",  smurf)
+    .post("http://localhost:3333/smurfs",  addedsmurfs)
     .then(response => {
       dispatch({
         type: SUCCESS,
-        payload: response.data,
+        smurfs: response.data
       })
     })
     .catch(error => {
