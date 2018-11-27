@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions/index';
 import smurf from './Smurf';
-import smurfList from './SmurfList'
 
 class SmurfVillage extends Component { 
     componentDidMount() {
@@ -15,7 +14,7 @@ class SmurfVillage extends Component {
         }
         return (
             <div>
-            <SmurfList smurfs={this.props.smurfs} />
+            {this.props.smurfs.map( (smurf, index) => <smurf smurf={smurf} key={index} />)}
             </div>
         );
       }
@@ -28,4 +27,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getSmurfs })(SmurfList)
+export default connect(mapStateToProps, { getSmurfs })(SmurfVillage)
