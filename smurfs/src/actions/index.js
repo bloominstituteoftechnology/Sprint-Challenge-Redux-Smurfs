@@ -36,7 +36,7 @@ export const getSmurfs = () => {
     })
     .catch(error => {
       dispatch({
-        type: ERROR
+        type: ERROR,
         payload: "Unable to load smurf data"
       });
     })
@@ -44,9 +44,65 @@ export const getSmurfs = () => {
   }
 }
 
-export const addSmurf = () => {
+export const addSmurf = (smurfObj) => {
   return dispatch => {
     dispatch({
       type: ADD_SMURF,
     })
-    axios.post('http://localhost:3333/smurfs', {name:
+    axios.post('http://localhost:3333/smurfs', smurfObj)
+    .then( response => {
+      dispatch({
+        type: SUCCESS,
+        payload: response.data
+      })
+    })
+    .catch(error => {
+      dispatch({
+        type: ERROR,
+        payload: "Unable to delete smurf data"
+      })
+    })
+    }
+  }
+  
+export const updateSmurf = (smurfObject) => {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_SMURF,
+    })
+    axios.put('http://localhost:3333/smurfs', smurfObject)
+    .then( response => {
+      dispatch({
+        type: SUCCESS,
+        payload: response.data
+      })
+    })
+    .catch(error => {
+      dispatch({
+        type: ERROR,
+        payload: "Unable to update smurf data"
+      })
+    })
+    }
+  }
+
+  export const deleteSmurf = (smurfObject) => {
+    return dispatch => {
+      dispatch({
+        type: DELETE_SMURF,
+      })
+      axios.delete('http://localhost:3333/smurfs', smurfObject)
+      .then( response => {
+        dispatch({
+          type: SUCCESS,
+          payload: response.data
+        })
+      })
+      .catch(error => {
+        dispatch({
+          type: ERROR,
+          payload: "Unable to delete smurf data"
+        })
+      })
+      }
+    }
