@@ -10,6 +10,9 @@ export const FETCHED = 'FETCHED'; //
 export const ERROR = 'ERROR'; //
 export const ADDING = 'ADDING';
 export const ADDED = 'ADDED';
+export const UPDATING = 'UPDATING';
+export const UPDATED = 'UPDATED';
+export const DELETED = 'DELETED';
 
 export const getSmurfs = () => dispatch => {
 	dispatch({ type: FETCHING });
@@ -36,7 +39,41 @@ export const addSmurf = data => dispatch => {
 			dispatch({ type: ADDED, payload: response.data });
 		})
 		.catch(err => {
-			dispatch({ type: ERROR, message: 'addFriend got an error' });
+			dispatch({ type: ERROR, message: 'addSmurf got an error' });
+		});
+};
+
+export const updateSmurf = data => dispatch => {
+	console.log('update action fired');
+	dispatch({ type: UPDATING, payload: data.id });
+};
+
+export const submitUpdate = data => dispatch => {
+	console.log('data for update=' + data.name);
+	axios
+		.put(`http://localhost:3333/smurfs/${data.id}`, {
+			id: data.id,
+			name: data.name,
+			height: data.height
+		})
+		.then(response => {
+			console.log('submit update response=' + response.data);
+			console.log('updated data =' + response.data);
+			dispatch({ type: UPDATED, payload: response.data });
+		})
+		.catch(err => {
+			dispatch({ type: ERROR, message: 'submitUpdate got an error' });
+		});
+};
+
+export const deleteSmurf = data => dispatch => {
+	axios
+		.delete(`http://localhost:3333/smurfs/${data.id}`)
+		.then(response => {
+			dispatch({ type: DELETED, payload: response.data });
+		})
+		.catch(err => {
+			dispatch({ type: ERROR, message: 'deleteSmurf got an error' });
 		});
 };
 /*

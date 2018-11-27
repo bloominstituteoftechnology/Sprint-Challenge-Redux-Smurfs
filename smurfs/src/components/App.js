@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getSmurfs, addSmurf } from '../actions/index.js';
+import { getSmurfs, addSmurf, updateSmurf } from '../actions/index.js';
+import IndividualSmurf from './IndividualSmurf.js';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -42,12 +43,45 @@ class App extends Component {
 		});
 	};
 
+	updateClicked = (data, e) => {
+		e.preventDefault();
+		this.props.updateSmurf(data);
+		console.log('updatingSmurf status=' + this.props.updatingSmurf);
+		console.log('current props=' + this.props);
+	};
+
 	render() {
 		if (this.props.fetching) {
 			return <h1>Summoning Smurfs</h1>;
 		}
 		if (this.props.adding) {
 			return <h1>adding your SMURF</h1>;
+		}
+
+		if (this.props.updating) {
+			return (
+				<div>
+					<h1>UPDATING A SMURF</h1>
+					{console.log('candidate=' + this.props.candidate)}
+					{this.props.smurfs.map(smurf => {
+						if (smurf.id === this.props.candidate) {
+							return <IndividualSmurf smurf={smurf} />;
+						}
+						return (
+							<div>
+								{smurf.name}
+								&nbsp; {smurf.age}
+								&nbsp; years old&nbsp;
+								{smurf.height}
+								&nbsp;
+								<button onClick={e => this.updateClicked(smurf, e)}>
+									UPDATE ME
+								</button>
+							</div>
+						);
+					})}
+				</div>
+			);
 		}
 
 		return (
@@ -60,6 +94,9 @@ class App extends Component {
 							&nbsp; years old&nbsp;
 							{smurf.height}
 							&nbsp;
+							<button onClick={e => this.updateClicked(smurf, e)}>
+								UPDATE ME
+							</button>
 						</div>
 					);
 				})}
@@ -98,10 +135,12 @@ const mapStateToProps = state => {
 		fetching: state.fetchingSmurfs,
 		smurfs: state.smurfs,
 		error: state.error,
-		adding: state.addingSmurf
+		adding: state.addingSmurf,
+		updating: state.updatingSmurf,
+		candidate: state.id
 	};
 };
 export default connect(
 	mapStateToProps,
-	{ getSmurfs, addSmurf }
+	{ getSmurfs, addSmurf, updateSmurf }
 )(App);

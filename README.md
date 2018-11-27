@@ -50,7 +50,8 @@ src
 
 ### GET '/smurfs'
 
-- To retrieve an array all the smurfs in the Smurf DB simply write a get to the endpoint `'/smurfs'`.
+[x]- To retrieve an array all the smurfs in the Smurf DB simply write a get to the endpoint `'/smurfs'`.
+
 - Because `Redux-Thunk` is wired up as a middleware for this project. Be sure to utilize thunks when appropriate:
 
 ```js

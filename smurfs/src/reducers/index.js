@@ -1,7 +1,16 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHED, FETCHING, ERROR, ADDED, ADDING } from '../actions';
+import {
+	FETCHED,
+	FETCHING,
+	ERROR,
+	ADDED,
+	ADDING,
+	UPDATING,
+	UPDATED,
+	DELETED
+} from '../actions';
 
 const initialState = {
 	smurfs: [],
@@ -9,7 +18,9 @@ const initialState = {
 	addingSmurf: false,
 	updatingSmurf: false,
 	deletingSmurf: false,
-	error: null
+	updatingSmurf: true,
+	error: null,
+	id: null
 };
 
 const RootReducer = (state = initialState, action) => {
@@ -33,6 +44,32 @@ const RootReducer = (state = initialState, action) => {
 				smurfs: action.payload,
 				addingSmurf: false,
 				error: null
+			};
+		case UPDATING:
+			console.log('payload reducer is getting=' + action.payload);
+			return {
+				...state,
+				updatingSmurf: true,
+				id: action.payload
+			};
+		case UPDATED:
+			console.log('updated fired' + action.payload);
+			let newSmurfs = state.smurfs.slice();
+
+			newSmurfs = action.payload;
+			return {
+				...state,
+				updatingSmurf: false,
+				id: '',
+				smurfs: newSmurfs
+			};
+		case DELETED:
+			let newS = state.smurfs.slice();
+
+			newS = action.payload;
+			return {
+				...state,
+				smurfs: newS
 			};
 		default:
 			return state;
