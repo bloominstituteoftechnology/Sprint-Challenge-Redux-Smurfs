@@ -40,7 +40,7 @@ export default (state = initialState, action) => {
         deletingSmurf: false,
       })
     case ERROR:
-      return Object.assign({}.state, {
+      return Object.assign({},state, {
         fetchingSmurfs: false,
         error: action.payload,
       })
