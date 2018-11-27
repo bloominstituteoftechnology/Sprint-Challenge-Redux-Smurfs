@@ -1,6 +1,14 @@
-1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
-1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
-1.  What is middleware?
-1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-1.  Which `react-redux` method links up our `components` with our `redux store`?
+##1. Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
+Object.assign(), Array.map() and Array.filter() all produce no side effects, which means they alter no variables or data other than their arguments. We use Object.assign() to make a new object which represents a new state in Redux.
+##2. Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+The store is an object which holds the current application state as well as the methods getState()(to get the current state), dispatch(to send a new action to the reducer), subscribe(which monitors an app for changes in state) and replaceReducer(to change the reducer being used). The reducer is a function which generates the state. How it does so is determined by which actions it receives. Actions are different ways we want the state modified, such as adding an item, removing an item or shifting into a 'loading' mode while we wait for data from an API.
+
+##3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
+Application state stores data that the whole application would be 'interested' in. Component state is useful for data which only a single component needs to be concerned with, such as the current value of an input field. Once the input field is submitted, we will likely want the whole application to know about the data the user submitted, so the final product goes up to Application state, but while the user is typing the rest of the application doesn't need to know about it. Using Component state helps us avoid the agony of prop drilling, and/or the memory use of wiring every component up unnecessarily to the Application state.
+
+##4. What is middleware?
+Middleware sits between the action and the reducer, and controls how and when the action object is sent to the reducer. So, for example, if the action needs to fetch some data, middleware like thunk will wait to send the object to the reducer until it has the data.
+##5. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+Thunk gives us access to dispatch, which is usually only on the store, in our actions file. We can then set conditions for when we want the action dispatched, based usually on the status of a data request from an API.
+##6. Which `react-redux` method links up our `components` with our `redux store`?
+Provider wraps our application and provides the components with access to our store. They interact with the store through our reducers, which are passed into the createStore function which we use to initialize our store and our application state. Then, we connect individual components up to the provider using the connect function, and give those components access to the data in the store using the mapStateToProps function which is passed to connect.
