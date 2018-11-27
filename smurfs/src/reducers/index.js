@@ -3,7 +3,9 @@ import { FETCHING, SUCCESS, FAILURE} from "../actions";
  const initialState = {
    smurfs: [],
    fetching: false,
+   adding:false,
    error: null,
+
  };
 
 export default (state= initialState, action) =>{
@@ -11,11 +13,12 @@ export default (state= initialState, action) =>{
     case FETCHING:
       return{...state, fetching: true};
     case SUCCESS:
-      return{...state, smurfs: action.payload, fetching: false};
+      return{...state, smurfs: action.smurfs, fetching: false};
     case FAILURE:
       return{...state, fetching: false, error: action.payload};
     default:
-        return state;    
+        return state;
+    
   }
 };
 
