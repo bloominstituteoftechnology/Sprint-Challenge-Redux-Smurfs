@@ -22,5 +22,10 @@ class SmurfVillage extends Component {
     }
 
 const mapStateToProps = (state) => {
-    return {smurfs: state.smurfs, loading: state.loading, error: state.error}
+    return {
+        smurfs: state.smurfs,
+        fetchingSmurfs: state.fetchingSmurfs
+    }
 }
+
+export default connect(mapStateToProps, { getSmurfs })(SmurfList)
