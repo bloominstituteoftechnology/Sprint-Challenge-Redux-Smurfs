@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { LOADING, COMPLETE, ERROR, ADDING, UPDATING, DELETING } from '../actions';
+import{LOAD_SMURFS,LOADING_SMURFS,ADDING_SMURF,ADD_SMURF,ERROR,DELETING,DELETED} from '../actions';
 
 
 /*
@@ -9,10 +9,8 @@ import { LOADING, COMPLETE, ERROR, ADDING, UPDATING, DELETING } from '../actions
 */
 const initialState = {
   smurfs: [],
-  fetchingSmurfs: false,
-  smurfsLoaded: false,
+  loadingSmurfs: false,
   addingSmurf: false,
-  updatingSmurf: false,
   deletingSmurf: false,
   error: null,
 }
@@ -24,42 +22,23 @@ const initialState = {
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case LOADING:
-      return Object.assign({},state, {
-        fetchingSmurfs: true,
-      })
-    case COMPLETE:
-      return Object.assign({},state, {
-        fetchingSmurfs: false,
-        smurfs: action.payload,
-        smurfsLoaded: true,
-        addingSmurf: false,
-        updatingSmurf: false,
-        deletingSmurf: false,
-      })
+export const smurfsReducer = (state = initialState, action) => {
+  switch(action.type) {
+    case LOADING_SMURFS:
+    return {...state, loadingSmurfs: true};
+    case LOAD_SMURFS:
+    return {...state, smurfs: action.payload, loadingSmurfs: false};
+    case ADDING_SMURF:
+    return {...state, addingSmurf: true};
+    case ADD_SMURF:
+    return {...state, smurfs: action.payload, addingSmurf: false};
     case ERROR:
-      return Object.assign({},state, {
-        fetchingSmurfs: false,
-        error: action.payload,
-      })
-    case ADDING:
-      return Object.assign({},state, {
-        addingSmurf: true,
-        smurfsLoaded: false,
-      })
-    case UPDATING:
-      return Object.assign({},state, {
-        smurfsLoaded: false,
-        updatingSmurf: true,
-      })
+    return {...state, loadingSmurfs: false, addingSmurf: false, error: action.payload};
     case DELETING:
-      return Object.assign({},state, {
-        smurfsLoaded: false,
-        deletingSmurf: true,
-      })
+    return Object.assign({},state,{deletingSmurf:true})
+    case DELETED:
+    return Object.assign({},state,{deletingSmurf:false,smurfs:action.payload})
     default:
-      return state
+    return state;
   }
-}
+};

@@ -3,12 +3,13 @@ import axios from 'axios';
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
-export const LOADING = 'LOADING';
-export const COMPLETE = 'COMPLETE';
+export const LOAD_SMURFS = 'LOAD_SMURFS';
+export const LOADING_SMURFS = 'LOADING_SMURFS';
+export const ADDING_SMURF = 'ADDING_SMURF'
+export const ADD_SMURF = 'ADD_SMURF';
 export const ERROR = 'ERROR';
-export const ADDING = 'ADDING';
-export const UPDATING = 'UPDATING';
-export const DELETING = 'DELETING';
+export const DELETING='DELETING';
+export const DELETED='DELETED';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -20,100 +21,45 @@ export const DELETING = 'DELETING';
    U - updateSmurf
    D - deleteSmurf
 */
-export const loadSmurfsAction = () => {
+const URL = `http://localhost:3333/smurfs`;
+
+export const loadSmurfs = () => {
+  const smurfs = axios.get(`${URL}`);
   return dispatch => {
-    dispatch({
-      type: LOADING,
+    dispatch({type: LOADING_SMURFS});
+    smurfs.then(response => {
+      dispatch({type: LOAD_SMURFS, payload: response.data});
     })
-    axios
-      .get('http://localhost:3333/smurfs')
-      .then(response => {
-        console.log(response);
-        dispatch({
-          type: COMPLETE,
-          payload: response.data
-        })
-      })
-      .catch(error => {
-        dispatch({
-          type: ERROR,
-          payload: 'Unable to load Smurfs from server. Please refresh page to try again.'
-        })
-      })
-  }
-}
-export const addSmurfAction = (nameValue, ageValue, heightValue) => {
+    .catch(err => {
+      dispatch({type: ERROR, payload: err});
+    });
+  };
+};
+
+ export const addSmurf = smurf => {
+  const newSmurf = axios.post(`${URL}`,smurf);
+  console.log(newSmurf);
   return dispatch => {
-    dispatch({ type: ADDING });
-    axios
-      .post('http://localhost:3333/smurfs', {
-        name: nameValue,
-        age: parseInt(ageValue, 10),
-        height: heightValue,
-      })
-      .then(response => {
-        console.log(response);
-        dispatch({
-          type: COMPLETE,
-          payload: response.data,
-        })
-      })
-      .catch(error => {
-        console.log(error);
-        dispatch({
-          type: ERROR,
-          payload: 'Unable to add new Smurf. Please refresh page and try again.',
-        })
-      })
-  }
-}
-export const updateSmurfAction = (nameValue, ageValue, heightValue, idValue) => {
-  return dispatch => {
-    dispatch({
-      type: UPDATING,
+    dispatch({type:ADDING_SMURF});
+    newSmurf
+    .then(response => {
+      dispatch({type: ADD_SMURF , payload: response.data});
     })
-    axios
-      .put(`http://localhost:3333/smurfs/${idValue}`, {
-        name: nameValue,
-        age: parseInt(ageValue, 10),
-        height: heightValue,
-      })
-      .then(response => {
-        console.log(response);
-        dispatch({
-          type: COMPLETE,
-          payload: response.data,
-        })
-      })
-      .catch(error => {
-        console.log(error);
-        dispatch({
-          type: ERROR,
-          payload: 'Unable to update this Smurf. Please refresh the page and try again.',
-        })
-      })
-  }
-}
-export const deleteSmurfAction = (idValue) => {
+    .catch(err => {
+      dispatch({type: ERROR, payload: err});
+    });
+  };
+};
+
+export const deleteSmurf = id => {
+  const request = axios.delete(`http://localhost:3333/smurfs/${id}`);
   return dispatch => {
-    dispatch({
-      type: DELETING,
+    dispatch({type: DELETING});
+    request.then(response => {
+      dispatch({type: DELETED, payload: response.data})
     })
-    axios
-      .delete(`http://localhost:3333/smurfs/${idValue}`)
-      .then(response => {
-        console.log(response);
-        dispatch({
-          type: COMPLETE,
-          payload: response.data,
-        })
-      })
-      .catch(error => {
-        console.log(error);
-        dispatch({
-          type: ERROR,
-          payload: 'Unable to delete the smurf, Please try again',
-        })
-      })
+    .catch(err => {
+      dispatch({type: ERROR, payload: err})
+    })
   }
 }
