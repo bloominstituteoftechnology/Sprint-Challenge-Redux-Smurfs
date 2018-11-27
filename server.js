@@ -14,28 +14,26 @@ const sendUserError = (msg, res) => {
 
 let smurfs = [
   {
+    id: 0,
     name: 'Brainey',
     age: 200,
     height: '5cm'
-  },
-  {
-    name: 'Smurfette',
-    age: 346,
-    height: '3cm'
-  },
-  {
-    name: 'Papa Smurf',
-    age: 2309,
-    height: '4cm'
   }
 ];
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
-let smurfId = 0;
 
 server.post('/smurfs', (req, res) => {
   const { name, age, height } = req.body;
+  let smurfId
+
+  if (smurfs.length === 0) {
+    smurfId = 0
+  } else {
+    smurfId = smurfs[smurfs.length - 1].id + 1
+  }
+
   const newSmurf = { name, age, height, id: smurfId };
   if (!name || !age || !height) {
     return sendUserError(
@@ -77,7 +75,7 @@ server.put('/smurfs/:id', (req, res) => {
 
 server.delete('/smurfs/:id', (req, res) => {
   const { id } = req.params;
-  const foundSmurf = smurfs.find(smurf => smurf.id == id);
+  const foundSmurf = smurfs.find(smurf => smurf.id === id);
 
   if (foundSmurf) {
     const SmurfRemoved = { ...foundSmurf };
