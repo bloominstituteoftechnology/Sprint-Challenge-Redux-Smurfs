@@ -27,7 +27,7 @@ class Smurf extends React.Component {
      <h1>{this.props.name}</h1> 
      <h3>{this.props.height}</h3> 
      <h4>{this.props.age}</h4>
-     <form >
+     <form onSubmit={() => this.props.deleteHandler(this.props.id)}>
       <input type='text'
        name="newname"
        value={this.state.newname}
@@ -42,14 +42,16 @@ class Smurf extends React.Component {
        name="newheight"
        value={this.state.newemail}
        onChange={this.updateHandler}
-      />
+      />  
+      <button>Delete Smurf</button>
+
      </form>
      <button onClick={() => this.submitSmurf(this.props.id,
       {name: this.state.newname, age: this.state.newage, height: this.state.newheight}
      )}>
       Update Smurf
      </button>
-     <button onClick={() => this.props.deleteHandler(this.props.id)}>Delete Smurf</button>
+   
     </div>
     )
   }
