@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-import { Route, Link } from 'react-router-dom'
 // connect allows us to link our global state to a component
 import { getSmurfs } from '../actions/index'
 import SmurfsContainer from './SmurfsContainer'
