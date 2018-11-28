@@ -29,7 +29,6 @@ class App extends Component {
 
 const mapStateToProps = state => {
  const { smurfs } = state
- console.log(state)
  return {
   smurfs: smurfs,
  }

@@ -14,18 +14,26 @@ const sendUserError = (msg, res) => {
 
 let smurfs = [
   {
+    id: 0,
     name: 'Brainey',
     age: 200,
-    height: '5cm',
+    height: '5cm'
   }
 ];
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
-let smurfId = 0;
 
 server.post('/smurfs', (req, res) => {
   const { name, age, height } = req.body;
+  let smurfId
+
+  if (smurfs.length === 0) {
+    smurfId = 0
+  } else {
+    smurfId = smurfs[smurfs.length - 1].id + 1
+  }
+
   const newSmurf = { name, age, height, id: smurfId };
   if (!name || !age || !height) {
     return sendUserError(

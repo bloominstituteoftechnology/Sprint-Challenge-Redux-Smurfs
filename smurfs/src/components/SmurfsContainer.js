@@ -34,39 +34,39 @@ class SmurfsContainer extends React.Component {
  }
  render(){
   return(
-   <div>
- <form onSubmit={this.submitHandler}>
+ <div>
+  <form onSubmit={this.submitHandler}>
    <input
-   onChange={this.inputHandler}
-   type="text"
-   name="name"
-   value={this.state.name}
-   />
-   <input
-   onChange={this.inputHandler}
-   type="text"
-   name="age"
-   value={this.state.age}
-   />
-   <input
-   onChange={this.inputHandler}
-   type="text"
-   name="height"
-   value={this.state.height}
-   />
-   <button>Add Smurf</button>
-  </form>
+    onChange={this.inputHandler}
+    type="text"
+    name="name"
+    value={this.state.name}
+    />
+    <input
+    onChange={this.inputHandler}
+    type="text"
+    name="age"
+    value={this.state.age}
+    />
+    <input
+    onChange={this.inputHandler}
+    type="text"
+    name="height"
+    value={this.state.height}
+    />
+    <button>Add Smurf</button>
+    </form>
     {this.props.smurfs.map((smurf, index) => <Smurf
-     key={index}
-     smurf={smurf.smurf}
-     index={smurf.index}
-     name={smurf.name}
-     height={smurf.height}
-     id={smurf.id}
-     age={smurf.age}
-     deleteHandler={this.deleteHandler}
-    />)}
-   </div>
+    key={index}
+    smurf={smurf.smurf}
+    index={smurf.index}
+    name={smurf.name}
+    height={smurf.height}
+    id={smurf.id}
+    age={smurf.age}
+    deleteHandler={this.deleteHandler}
+   />)}
+ </div>
   )
  }
 }
