@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHED_SMURFS, FETCHING_SMURFS, SMURF_ERROR } from "../actions";
+// import { FETCHED_SMURFS, FETCHING_SMURFS, SMURF_ERROR } from "../actions";
 /*
  Your initial/default state for this project could 
  *Although does not have to* look a lot like this*/
@@ -9,9 +9,9 @@ import { FETCHED_SMURFS, FETCHING_SMURFS, SMURF_ERROR } from "../actions";
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
-  // addingSmurf: false,
-  // updatingSmurf: false,
-  // deletingSmurf: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
   error: null
 };
 
@@ -23,23 +23,19 @@ const initialState = {
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-const smurfReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case FETCHING_SMURFS:
-      return Object.assign({}, state, { fetching: true });
-    case FETCHED_SMURFS:
-    return Object.assign({}, state, {
-      fetchingSmurfs: false,
-      smurfs: [...action.payload]
-    });
-    case SMURF_ERROR:
-    return Object.assign({}, state, {
-      fetchingSmurfs: false,
-      error: action.payload
-    });
+export const smurfReducer = (state = initialState, action) => {
+  switch(action.type) {
+    case 'FETCHING_SMURF':
+    return Object.assign({}, state, {fetchingSmurfs: true}); 
+    case 'SMURF_FETCHED': 
+    return Object.assign({}, state, {fetchingSmurfs: false, smurfs: action.payload}); 
+    case 'SAVING_SMURF': 
+    return Object.assign({}, state, {addingSmurfs: true}); 
+    case'SMURF_SAVED': 
+    return Object.assign({}, state, {addingSmurfs: false, smurfs: action.payload}); 
+    case 'SMURF_ERROR': 
+    return Object.assign({}, state, {error: action.payload}); 
     default:
-    return state;
+    return state; 
   }
-};
-
-export default smurfReducer
+}
