@@ -2,11 +2,11 @@
   Be sure to import in all of the action types from `../actions`
 */
 import { 
-  ADDSMURF,
-  GETSMRUFS,
-  UPDATESMURF,
-  DELETESMURF,
-} from '.../actions/index.js';
+  ADD_SMURF,
+  GET_SMRUFS,
+  UPDATE_SMURF,
+  DELETE_SMURF,
+} from '../actions/index.js';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
 */
@@ -20,18 +20,25 @@ const initialState = {
   error: null
 }
 
-const rootReducer = (state, initialState, action) => {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case FETCHINGSMURFS:
-    //   return {};
-    case ADDSMURF: 
+    
+    case ADD_SMURF: 
+      return {
+        ...state,
+        smurfs: action.payload, 
+        addingSmurf:true
+      };
+
+    case UPDATE_SMURF: 
       return {};
-    case UPDATESMURF: 
+
+    case DELETE_SMURF:
       return {};
-    case DELETESMURF:
-      return {};
+
     // case ERROR: 
     //   return {};
+    break;
   }
 }
 
