@@ -1,6 +1,6 @@
 import React from "react";
 
-const Smurfs = props => {
+const Smurf = props => {
   return (
     <div classname="Smurf">
       <p>Name: {props.name}</p>
@@ -10,4 +10,4 @@ const Smurfs = props => {
   );
 };
 
-export default Smurfs;
+export default Smurf;
