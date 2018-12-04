@@ -3,9 +3,7 @@
 */
 import { 
   ADD_SMURF,
-  GET_SMRUFS,
-  UPDATE_SMURF,
-  DELETE_SMURF,
+  GET_SMURFS,
 } from '../actions/index.js';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -20,34 +18,21 @@ const initialState = {
   error: null
 }
 
-const rootReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     
     case ADD_SMURF: 
       return {
         ...state,
-        smurfs: action.payload, 
-        addingSmurf:true
+        smurfs: action.payload
       };
 
-    case UPDATE_SMURF: 
-      return {};
+    case GET_SMURFS: 
+      return {
+        ...state,
+        smurfs: action.payload
+      };
 
-    case DELETE_SMURF:
-      return {};
-
-    // case ERROR: 
-    //   return {};
-    break;
+      default: return state;
   }
 }
-
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
-  There is no need for 'combineReducers' in this project.
-  Components can then read your store as, `state` and not `state.fooReducer`.
-*/
-
-export default rootReducer;
