@@ -4,6 +4,7 @@
 */
 import axios from 'axios';
 
+// GET
 export const FETCH_SMURFS = 'FETCHING_SMURFS';
 export const FETCH_SMURFS_SUCCESS = 'FETCHING_SMURFS_SUCCESS';
 export const FETCH_SMURFS_FAILURE = 'FETCHING_SMURFS_FAILURE';
@@ -26,6 +27,7 @@ export const fetchSmurfs = () => dispatch => {
     });
 };
 
+// ADD
 export const ADD_SMURF = 'ADD_SMURF';
 export const ADD_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS';
 export const ADD_SMURF_FAILURE = 'ADD_SMURF_FAILURE';
