@@ -31,7 +31,7 @@ export const DELETE_SMURFS_FAILURE = "  DELETE_SMURFS_FAILURE";
 export const addSmurf = smurf => dispatch => {
   dispatch({type: ADD_SMURFS_START});
   axios
-    .post('', smurf)
+    .post('http://localhost:3333/smurfs', smurf)
     .then(res => {
       console.log(res)
       dispatch({
@@ -45,7 +45,7 @@ export const addSmurf = smurf => dispatch => {
 export const getSmurf = () => dispatch => {
   dispatch({type: FETCH_SMURFS_START});
   axios
-    .get('')
+    .get('http://localhost:3333/smurfs')
     .then(res => {
       console.log(res)
       console.log('fetch finished');
