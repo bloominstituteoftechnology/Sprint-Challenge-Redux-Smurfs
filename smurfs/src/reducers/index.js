@@ -10,7 +10,10 @@ import {
   ADD_SMURF_FAILURE,
   DELETE_SMURF_START,
   DELETE_SMURF_SUCCESS,
-  DELETE_SMURF_FAILURE
+  DELETE_SMURF_FAILURE,
+  UPDATE_SMURF_SUCCESS,
+  UPDATE_SMURF_FAILURE,
+  UPDATE_SMURF_START
 } from '../actions';
 
 /*
@@ -93,6 +96,23 @@ const smurfReducer = (state=initState,action) => {
       return {
         ...state,
         deletingSmurf: false,
+        error: action.payload
+      }
+    case UPDATE_SMURF_START:
+      return {
+        ...state,
+        updatingSmurf: true
+      }
+    case UPDATE_SMURF_SUCCESS:
+      return {
+        ...state,
+        updatingSmurf: false,
+        smurfs: action.payload
+      }
+    case UPDATE_SMURF_FAILURE:
+      return {
+        ...state,
+        updatingSmurf: false,
         error: action.payload
       }
     default:
