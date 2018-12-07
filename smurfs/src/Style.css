@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  background-color: blue;
+  border-bottom: 5px solid black;
+  margin-bottom: 20px;
+  font-family: 'Indie Flower', cursive;
+}
+
+.header-link {
+  padding: 20px 50px;
+  color: white;
+  text-decoration: none;
+  font-size: 48px;
+  border-left: 2px solid black;
+}
+
+.header-link:hover {
+  color: blue;
+  background-color: white;
+  transition: 0.3s all ease-in;
+}
