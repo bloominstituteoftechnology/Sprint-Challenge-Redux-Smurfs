@@ -3,9 +3,9 @@
 */
 
 import { 
-  START_REQUEST,
   REQUEST_SUCCESS,
   REQUEST_FAIL,
+  GET_SMURFS,
   // ADD_SMURF,
   // GET_SMURFS,
   // UPDATE_SMURF,
@@ -35,7 +35,7 @@ const initialState = {
 
  const reducer = (state = initialState, action) => {
    switch(action.type){
-    case START_REQUEST:
+    case GET_SMURFS:
       return {
         ...state,
         requestingSmurfs: true
@@ -57,8 +57,6 @@ const initialState = {
     }
 
     // case ADD_SMURF:
-
-    // case GET_SMURFS:
 
     // case UPDATE_SMURF:
 
