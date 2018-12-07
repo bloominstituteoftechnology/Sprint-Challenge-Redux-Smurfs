@@ -7,7 +7,15 @@ import { connect } from 'react-redux';
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
+
+import {
+  getSmurfs
+} from '../actions';
 class App extends Component {
+
+  componentDidMount(){
+    this.props.getSmurfs()
+  }
 
   render() {
     return (
@@ -26,4 +34,14 @@ const mapStateToProps = state => {
     ...state
   }
 }
-export default connect(mapStateToProps)(App);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getSmurfs: () => dispatch(getSmurfs())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
