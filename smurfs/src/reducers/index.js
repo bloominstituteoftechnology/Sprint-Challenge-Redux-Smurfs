@@ -43,7 +43,47 @@ const reducer = (state = initialState, action) => {
           fetchingSmurfs:false,
           error: action.payload
         }
-        
+
+        //add conditions ============
+      case ADD_FETCH:
+        return {
+          ...state,
+          addingSmurf:true
+        }
+      case ADD_SUCCESS:
+        return {
+          ...state,
+          error: null,
+          addingSmurf:false,
+          smurfs: action.payload
+        }
+      case ADD_FAILURE:
+        return {
+          ...state,
+          addingSmurf:false,
+          error: action.payload
+        }
+
+        //delete condiitons =============
+      case DELETE_FETCH:
+        return {
+          ...state,
+          deletingSmurf:true
+        }
+      case DELETE_SUCCESS:
+        return {
+          ...state,
+          error: null,
+          deletingSmurf:false,
+          smurfs: action.payload
+        }
+      case DELETE_FAILURE:
+        return {
+          ...state,
+          deletingSmurf:false,
+          error: action.payload
+        }
+
       default:
         return state;
     }

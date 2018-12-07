@@ -27,7 +27,7 @@ class App extends Component {
                 <Smurf
                     key={smurf.id}
                     smurf={smurf}
-                    // deleteFriend={props.deleteSmurf}
+                    deleteSmurf={this.props.deleteSmurf}
                     // startUpdate={props.startUpdate}
                 />
             ))}

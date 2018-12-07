@@ -11,7 +11,7 @@ const Smurf = props => {
                 <p >height:  {props.smurf.height}</p> 
             </div>
         </div>
-        {/* <button onClick={() => props.deleteFriend(props.smurf.id)}> Delete </button> */}
+        <button onClick={() => props.deleteSmurf(props.smurf.id)}> Delete </button>
     </div> 
     )
 }

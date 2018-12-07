@@ -35,26 +35,26 @@ export const fetchSmurfs = () => dispatch => {
 }
 
 export const addSmurf = (newSmurf) => dispatch => {
-  dispatch({ type: FETCH});
+  dispatch({ type: ADD_FETCH});
   axios
       .post('http://localhost:3333/smurfs', newSmurf)
       .then(response => {
-          dispatch({ type: SUCCESS, payload: response.data});
+          dispatch({ type: ADD_SUCCESS, payload: response.data});
       })
       .catch(err => {
-          dispatch({ type: FAILURE, payload: err });
+          dispatch({ type: ADD_FAILURE, payload: err });
       })
 }
 
 export const deleteSmurf = (id) => dispatch => {
-  dispatch({ type: FETCH});
+  dispatch({ type: DELETE_FETCH});
   axios
       .delete(`http://localhost:3333/smurfs/${id}`)
       .then(response => {
-          dispatch({ type: SUCCESS, payload: response.data});
+          dispatch({ type: DELETE_SUCCESS, payload: response.data});
       })
       .catch(err => {
-          dispatch({ type: FAILURE, payload: err });
+          dispatch({ type: DELETE_FAILURE, payload: err });
       })
 }
 
