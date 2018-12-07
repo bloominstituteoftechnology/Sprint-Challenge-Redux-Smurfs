@@ -27,7 +27,7 @@ class App extends Component {
   };
 
   render() {
-    const { smurfs, addSmurf } = this.props;
+    const { smurfs, addSmurf, updateSmurf } = this.props;
     const { deleteSmurf, toggleForm } = this;
     return (
       <div className="App">
@@ -54,8 +54,8 @@ class App extends Component {
             <SmurfForm add={addSmurf} />
             {this.state.update && (
               <SmurfForm
-                update={this.props.updateSmurf}
-                toggle={this.toggleForm}
+                update={updateSmurf}
+                toggle={toggleForm}
                 id={this.state.id}
                 smurfs={smurfs}
                 updating
