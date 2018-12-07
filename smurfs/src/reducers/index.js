@@ -13,7 +13,7 @@ import {
 
 
  //Your initial/default state for this project could *Although does not have to* look a lot like this
- initialState = {
+ const initialState = {
    smurfs: [],
    fetching: false,
    error: null
@@ -31,7 +31,7 @@ import {
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-export default smurfReducer = (state = initialState, action) => {
+const smurfReducer = (state = initialState, action) => {
   switch(action.type){
     case FETCH_SUMRF_START:
       return{
@@ -73,3 +73,5 @@ export default smurfReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default smurfReducer;

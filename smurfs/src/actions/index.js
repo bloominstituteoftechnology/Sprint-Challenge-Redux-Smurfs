@@ -4,6 +4,7 @@
   Be sure to export each action type so you can pull it into your reducer
 */
 import axios from 'axios';
+
 export const FETCH_SUMRF_START = "FETCH_SUMRF_START";
 export const FETCH_SUMRF_SUCCESS = "FETCH_SUMRF_SUCCESS";
 export const FETCH_SUMRF_FAILURE = "FETCH_SUMRF_FAILURE";
@@ -23,7 +24,7 @@ export const ADD_SUMRF_FAILURE = "ADD_SUMRF_FAILURE";
    D - deleteSmurf
 */
 
-export const getSmurfs = () => {
+export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCH_SUMRF_START });
   axios
     .get('http://localhost:3333/smurfs')
