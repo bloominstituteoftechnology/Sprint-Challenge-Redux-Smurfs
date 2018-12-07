@@ -27,3 +27,47 @@ export const DELETE_SMURFS_FAILURE = "  DELETE_SMURFS_FAILURE"
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const addSmurf = smurf => dispatch => {
+  dispatch({type: ADD_SMURFS_START});
+  axios
+    .post('', smurf)
+    .then(res => {
+      console.log(res)
+      dispatch({
+        type: ADD_SMURFS_SUCCESS,
+        payload: res.data
+      })
+    })
+    .catch(err => dispatch({ type: ADD_SMURFS_FAILURE, payload: err }))
+}
+
+export const getSmurf = () => dispatch => {
+  dispatch({type: FETCH_SMURFS_START});
+  axios
+    .get('')
+    .then(res => {
+      console.log(res)
+      console.log('fetch finished');
+      dispatch({
+        type: FETCH_SMURFS_SUCCESS,
+        payload: res.data
+      })
+    })
+    .catch(err => dispatch({ type: FETCH_SMURFS_FAILURE, payload: err }))
+}
+
+
+
+// function getItems() {
+//   return function(dispatch) {
+//     axios
+//       .get('http://localhost:3333/items')
+//       .then(response => {
+//         console.log(response);
+//         this.setState({ items: response.data });
+//       })
+//       .catch(err => console.log(err));
+//   };
+// }
+
