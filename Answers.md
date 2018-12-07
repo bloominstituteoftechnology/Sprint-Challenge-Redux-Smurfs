@@ -20,4 +20,4 @@
 
 1.  Which `react-redux` method links up our `components` with our `redux store`?
 
-    --Connect
+--Connect
