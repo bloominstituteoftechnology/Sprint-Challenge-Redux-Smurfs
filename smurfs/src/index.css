@@ -93,3 +93,17 @@ span {
   justify-content: space-between;
 }
 
+.cancel {
+  width: 45%;
+  margin: 0 auto;
+  height: 30px;
+  background-color: #88ccff;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+}
+

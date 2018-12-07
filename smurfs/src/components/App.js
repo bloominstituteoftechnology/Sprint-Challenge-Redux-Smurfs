@@ -7,6 +7,7 @@ import SmurfForm from "./SmurfForm";
 class App extends Component {
   state = {
     update: false,
+    showForm: false,
     id: ""
   };
 
@@ -15,11 +16,11 @@ class App extends Component {
   }
 
   toggleForm = e => {
-    const id = e.target.id;
-    this.state.update
-      ? this.setState({ update: false, id: "" })
-      : this.setState({ update: true, id: id });
-    // this.setState({ update: !this.state.hidden, id: id });
+    if (e.target.id.length > 0) {
+      this.setState({ update: true, id: e.target.id });
+    } else {
+      this.setState({ update: false, id: "" });
+    }
   };
 
   deleteSmurf = e => {
@@ -27,8 +28,8 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.id);
     const { smurfs, addSmurf } = this.props;
+    const { deleteSmurf, toggleForm } = this;
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -37,13 +38,13 @@ class App extends Component {
             {smurfs.map((smurf, index) => {
               return (
                 <div className="smurf-card" key={index}>
-                  <span onClick={this.deleteSmurf} id={smurf.id}>
+                  <span onClick={deleteSmurf} id={smurf.id}>
                     X
                   </span>
                   <h2>{smurf.name}</h2>
                   <p>{smurf.age}</p>
                   <p>{smurf.height}</p>
-                  <button id={smurf.id} onClick={this.toggleForm}>
+                  <button id={smurf.id} onClick={toggleForm}>
                     Update {smurf.name}
                   </button>
                 </div>
@@ -63,12 +64,6 @@ class App extends Component {
             )}
           </div>
         </div>
-
-        {/* <SmurfForm add={addSmurf} toggle={this.toggleForm} /> */}
-
-        {/* <button onClick={this.toggleForm}>
-          {this.state.hidden ? "Add Smurf" : "Hide Form"}
-        </button> */}
       </div>
     );
   }

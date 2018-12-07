@@ -13,6 +13,10 @@ export default class SmurfForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  hide = () => {
+    this.props.clear();
+  };
+
   submit = e => {
     e.preventDefault();
     if (this.props.updating) {
@@ -22,16 +26,15 @@ export default class SmurfForm extends Component {
     }
     this.setState({ name: "", age: "", height: "" });
   };
+
   render() {
-    const { updating } = this.props;
+    const { updating, toggle } = this.props;
+    const { name, age, height } = this.state;
     if (this.props.updating) {
-      console.log(this.props.smurfs);
       smurf = this.props.smurfs
         .filter(smurf => smurf.id === parseInt(this.props.id, 10))
         .pop();
-      console.log(smurf);
     }
-    updating && console.log(smurf);
     return (
       <div className="form-card">
         <h2>{updating ? `Edit ${smurf.name}` : "Add Smurf"}</h2>
@@ -39,7 +42,7 @@ export default class SmurfForm extends Component {
           Name:
           <input
             name="name"
-            value={this.state.name}
+            value={name}
             onChange={this.handleChange}
             placeholder="name"
           />
@@ -47,20 +50,24 @@ export default class SmurfForm extends Component {
           <input
             name="age"
             type="number"
-            value={this.state.age}
+            value={age}
             onChange={this.handleChange}
             placeholder="age"
           />
           Height:
           <input
             name="height"
-            value={this.state.height}
+            value={height}
             onChange={this.handleChange}
             placeholder="height"
           />
           <div className="button-container">
             <button type="submit">Add Smurf</button>
-            {updating && <button onClick={this.hide}>Hide Form</button>}
+            {updating && (
+              <div className="cancel" onClick={toggle}>
+                Cancel
+              </div>
+            )}
           </div>
         </form>
       </div>
