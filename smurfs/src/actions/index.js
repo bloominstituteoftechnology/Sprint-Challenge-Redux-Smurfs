@@ -62,7 +62,7 @@ export const deleteSmurf = id => dispatch => {
   console.log('deleting smurf', id)
   dispatch({type: DELETE_SMURFS_START});
   axios
-    .post(`http://localhost:3333/smurfs/${id}`)
+    .delete(`http://localhost:3333/smurfs/${id}`)
     .then(res => {
       console.log(res)
       dispatch({
