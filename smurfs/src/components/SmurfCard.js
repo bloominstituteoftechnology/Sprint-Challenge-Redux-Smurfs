@@ -20,7 +20,7 @@ class SmurfCard extends React.Component {
     render(){
         return(
             <div className='individual-smurf'>
-                <p onClick={this.deleteSmurf}>Delete</p>
+                <i className="fas fa-trash-alt" onClick={this.deleteSmurf}></i>
                 <p className='smurf-name'>{this.props.smurfData.name}</p>
                 <p className='smurf-age'>{this.props.smurfData.age}</p>
                 <p className='smurf-height'>{this.props.smurfData.height}</p>

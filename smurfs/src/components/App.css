@@ -1,36 +1,138 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
 .App {
-  text-align: center;
+  height: 100vh;
+  font-size: 1.6rem;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App h1 {
+  font-size: 3rem;
+  margin: 2rem;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.smurf-list-container {
+  margin: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.smurf-list-container .individual-smurf {
+  width: 20rem;
+  padding: 2rem 1.5rem;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.individual-smurf .fa-trash-alt {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+}
+
+.individual-smurf p {
+  margin: 0.5rem 0;
+}
+
+.individual-smurf .smurf-name {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.individual-smurf button {
+  margin-top: 1rem;
+}
+
+.edit-form {
+  position: absolute;
+  bottom: -13rem;
+  background-color: black;
+  color: white;
+  padding: 1.5rem 0.7rem;
+}
+
+.edit-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-form form input {
+  border: none;
+  border-bottom: 1px solid white;
+  margin: 0.5rem;
+  background-color: black;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.edit-form form input::placeholder {
+  color: white;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 
 .hide {
   display: none;
-}
-
-.add-form {
-  display: inline;
 }

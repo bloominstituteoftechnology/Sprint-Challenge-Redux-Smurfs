@@ -24,7 +24,7 @@ class SmurfEditForm extends React.Component {
 
     render() {
         return(
-            <div className={this.props.shouldOpenForm ? 'add-form' : 'hide'}>
+            <div className={this.props.shouldOpenForm ? 'edit-form' : 'hide'}>
                 <form onSubmit={this.editSmurf}>
                     <input
                         type='text'
