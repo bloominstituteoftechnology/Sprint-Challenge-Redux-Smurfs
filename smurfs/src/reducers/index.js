@@ -47,7 +47,7 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				smurfs: action.payload,
-				addingSmurfs: true,
+				addingSmurf: true,
 			};
 
 		default:

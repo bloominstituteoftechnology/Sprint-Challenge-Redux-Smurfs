@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import './App.css';
 import {getSmurfs} from '../actions'
 import SmurfList from './SmurfList/SmurfList';
+import AddSmurfForm from './AddSmurfForm/AddSmurfForm';
+
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -21,6 +23,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
+        <AddSmurfForm />
         <SmurfList smurfs={this.props.smurfs}/>
       </div>
     );
@@ -36,12 +39,19 @@ function mapStateToProps(state) {
 	};
 }
 
+// function mapDispatchToProps(dispatch) {
+//   return (
+//     () => {
+//       dispatch(this.props.addNewSmurf) 
+//     }
+//   )
+// }
+
 export default connect(
   mapStateToProps,
+  // mapDispatchToProps,
 {
   getSmurfs,
-  // addNewFriend,
   },
 )(App);
 
-// export {App, connect};

@@ -15,10 +15,13 @@
 */
 import axios from "axios";
 
+// import { newSmurf } from '../components/AddSmurfForm/AddSmurfForm';
+
 export const FETCHING = "FETCHING";
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";
 export const ADD_NEW_SMURF = "ADD_NEW_SMURF";
+
 
 export const getSmurfs = () => dispatch => {
 	dispatch({ type: FETCHING });
@@ -39,3 +42,24 @@ export const getSmurfs = () => dispatch => {
 			});
 		});
 };
+
+// export const addNewSmurf = () => {
+//   // dispatch({ type: ADD_NEW_SMURF });
+  
+// 	axios
+// 		.post("http://localhost:3333/smurfs", newSmurf)
+// 		.then(res => {
+// 			console.log("Server Response: ", res);
+// 			// dispatch({
+// 			// 	type: SUCCESS,
+// 			// 	payload: res.data,
+// 			// });
+// 		})
+// 		.catch(err => {
+// 			console.log("Server Error: ", err);
+// 			// dispatch({
+// 			// 	type: FAILURE,
+// 			// 	payload: err,
+// 			// });
+// 		});
+// }
