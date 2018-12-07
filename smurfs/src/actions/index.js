@@ -1,8 +1,16 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
-
+import axios from 'axios';
+export const FETCH = 'FETCH';
+export const SUCCESS = 'SUCCESS';
+export const FAILURE = 'FAILURE';
+export const ADD_FETCH = 'ADD_FETCH';
+export const ADD_SUCCESS = 'ADD_SUCCESS';
+export const ADD_FAILURE = 'ADD_FAILURE';
+export const DELETE_FETCH = 'DELETE_FETCH';
+export const DELETE_SUCCESS = 'DELETE_SUCCESS';
+export const DELETE_FAILURE = 'DELETE_FAILURE';
+export const UPDATE_FETCH = 'UPDATE_FETCH';
+export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
+export const UPDATE_FAILURE = 'UPDATE_FAILURE';
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -13,3 +21,51 @@
    U - updateSmurf
    D - deleteSmurf
 */
+export const fetchSmurfs = () => dispatch => {
+  dispatch({ type: FETCH});
+  console.log('fetched');
+  axios
+      .get('http://localhost:3333/smurfs')
+      .then(response => {
+          dispatch({ type: SUCCESS, payload: response.data});
+      })
+      .catch(err => {
+          dispatch({ type: FAILURE, payload: err });
+      })
+}
+
+export const addSmurf = (newSmurf) => dispatch => {
+  dispatch({ type: FETCH});
+  axios
+      .post('http://localhost:3333/smurfs', newSmurf)
+      .then(response => {
+          dispatch({ type: SUCCESS, payload: response.data});
+      })
+      .catch(err => {
+          dispatch({ type: FAILURE, payload: err });
+      })
+}
+
+export const deleteSmurf = (id) => dispatch => {
+  dispatch({ type: FETCH});
+  axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(response => {
+          dispatch({ type: SUCCESS, payload: response.data});
+      })
+      .catch(err => {
+          dispatch({ type: FAILURE, payload: err });
+      })
+}
+
+export const updateSmurf = (newSmurf) => dispatch => {
+  dispatch({ type: FETCH});
+  axios
+      .put(`http://localhost:3333/smurfs/${newSmurf.id}`, newSmurf)
+      .then(response => {
+          dispatch({ type: SUCCESS, payload: response.data});
+      })
+      .catch(err => {
+          dispatch({ type: FAILURE, payload: err });
+      })
+}
