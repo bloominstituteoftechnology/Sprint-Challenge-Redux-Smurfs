@@ -1,4 +1,6 @@
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { addANewSmurf, getTheSmurfs } from '../actions';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -20,3 +22,18 @@ class App extends Component {
 }
 
 export default App;
+
+const mapStateToProps = state => {
+  console.log(state);
+  console.log(state.smurfs);
+  console.log(state.loading);
+  return {
+    smurfs: state.smurfs,
+    error: state.error,
+    loading: state.loading,
+  }
+};
+
+export default connect(
+  mapStateToProps /* mapStateToProps replaces null here */,
+  {addANewSmurf, getTheSmurfs}) (App);
