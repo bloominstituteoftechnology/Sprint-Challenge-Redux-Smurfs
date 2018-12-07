@@ -46,10 +46,10 @@ class App extends Component {
         
         <div className="formDiv">
           <form onSubmit={this.submitHandler}>
-            <input onChange={this.inputHandler} value={this.state.name} type="text" name="name" placeholder="Enter New Smuffy name Here" ></input>
-            <input onChange={this.inputHandler} value={this.state.age} type="number" name="age" placeholder="Smuffy age?"></input>
-            <input onChange={this.inputHandler} value={this.state.height} type="text" name="height" placeholder="How Tall Is This Smurf?" ></input>
-            <button type="submit">Press Enter To Add This Smurf To The Village!</button>
+            <input className="formValues" onChange={this.changeHandler} value={this.state.name} type="text" name="name" placeholder="Enter A Smuffy name Here" ></input>
+            <input className="formValues" onChange={this.changeHandler} value={this.state.age} type="number" name="age" placeholder="Smuffy age?"></input>
+            <input className="formValues" onChange={this.changeHandler} value={this.state.height} type="text" name="height" placeholder="How Tall Is This Smurf?" ></input>
+            <button className="formValues" type="submit">Press Enter To Add This Smurf To The Village!</button>
           </form>
         
         
@@ -59,7 +59,8 @@ class App extends Component {
 
           {this.props.smurfs.map((eachSmurf, i) => {
             return (
-              <div key={i}><h1>Smurffy Name: {eachSmurf.name}</h1>
+              <div key={i}><h3>Smurffy Name:</h3>
+                <h1>{eachSmurf.name}</h1>
                 <h4>Smurffy Age: {eachSmurf.age} </h4>
                 <h4>Smurffy Height: {eachSmurf.height}</h4></div>);
           })}
@@ -83,6 +84,4 @@ const mapStateToProps = state => {
   }
 };
 
-export default connect(
-  mapStateToProps /* mapStateToProps replaces null here */,
-  {addANewSmurf, getTheSmurfs}) (App);
+export default connect(mapStateToProps,{addANewSmurf, getTheSmurfs})(App);

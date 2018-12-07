@@ -6,7 +6,8 @@ const defaultState = {
     loading: false,
 };
 
-export const rootReducer = (state = defaultState, action) => {
+// export 
+const rootReducer = (state = defaultState, action) => {
     switch (action.type) {
         case FETCH_DATA_START:
             return {
@@ -30,6 +31,9 @@ export const rootReducer = (state = defaultState, action) => {
             return state;
     }
 };
+
+export default rootReducer;
+
 
 /*
   Be sure to import in all of the action types from `../actions`
