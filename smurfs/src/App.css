@@ -26,3 +26,10 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.smurf {
+  margin: 0 auto;
+  border: 2px solid blue;
+  width: 200px;
+  margin-top: 10px;
+}
