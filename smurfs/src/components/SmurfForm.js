@@ -14,7 +14,7 @@ export default class SmurfForm extends Component {
 		return (
 			<React.Fragment>
 				<Form mode={this.props.mode} onSubmit={this.handleMode()}>
-					<H2>Add a Smurf to the Villiage</H2>
+					<H2>{this.props.mode} a Smurf</H2>
 					<Input
 						placeholder="Name..."
 						name="name"

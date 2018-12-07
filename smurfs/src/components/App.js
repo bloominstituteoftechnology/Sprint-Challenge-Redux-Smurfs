@@ -18,7 +18,8 @@ class App extends Component {
         age: '',
         height: ''
       },
-      mode: 'Add'
+      mode: 'Add',
+      id: ''
     }
   }
 
@@ -32,17 +33,18 @@ class App extends Component {
   }
 
   updateSmurf = (id) => {
-    this.props.updateSmurf(this.state.friend, id)
+    this.props.updateSmurf(this.state.friend, this.state.id)
   }
 
   deleteSmurf = (id) => {
     this.props.deleteSmurf(id)
   }
 
-  toggleMode = () => {
+  toggleMode = (id) => {
       this.setState({
         ...this.state,
-       mode: 'Update'
+       mode: 'Update',
+       id: id
       })
   }
 
