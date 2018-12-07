@@ -26,18 +26,44 @@
 import { 
   FETCHING_START, 
   FETCHING_SUCCESS, 
-  FETCHING_FAILURE
+  FETCHING_FAILURE,
+  ADDING_SMURF_START,
+  ADDING_SMURF_SUCCESS,
+  ADDING_SMURF_FAILURE,
 } from '../actions';
 
 const initialState = {
   smurfs: [],
   fetching: false,
+  adding: false,
   error: null,
 
 }
 
 const smurfsReducer = (state = initialState, action) => {
   switch (action.type) {
+
+    // Adding Smurf Cases
+    case ADDING_SMURF_START:
+      return {
+        ...state,
+        adding: true,
+      };
+    case ADDING_SMURF_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        adding: false,
+        smurfs: action.payload,
+      };
+    case ADDING_SMURF_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        adding: false,
+      };
+
+    // Fetching Smurfs Cases
     case FETCHING_START:
       return {
         ...state,

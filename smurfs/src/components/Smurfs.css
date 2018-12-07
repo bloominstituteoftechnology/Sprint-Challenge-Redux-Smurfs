@@ -1,0 +1,28 @@
+
+.smurf-span {
+    width: 190px;
+}
+
+.smurf-name {
+    font-weight: bold;
+}
+
+.smurf-container {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.smurf-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.smurf-spacing {
+    margin-bottom: 10px;
+}
+
+.table-header {
+    border-bottom: 2px solid lightgray;
+    margin-bottom: 20px;
+}
