@@ -4,18 +4,24 @@
 import {
   FETCH_SMURFS_LOADING,
   FETCH_SMURFS_SUCCESS,
-  FETCH_SMURFS_FAILURE
+  FETCH_SMURFS_FAILURE,
+  ADD_SMURF_LOADING,
+  ADD_SMURF_SUCCESS,
+  ADD_SMURF_FAILURE,
+  REMOVE_SMURF_LOADING,
+  REMOVE_SMURF_SUCCESS,
+  REMOVE_SMURF_FAILURE
 } from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
-  addingSmurf: false,
-  deletingSmurf: false,
   updatingSmurf: false,
  */
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
+  addingSmurf: false,
+  deletingSmurf: false,
   error: null
 };
 
@@ -44,6 +50,52 @@ export const smurfsReducer = (state = initialState, action) => {
         smurfs: action.payload
       };
     case FETCH_SMURFS_FAILURE:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        deletingSmurf: false,
+        error: action.payload
+      };
+    case ADD_SMURF_LOADING:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: true,
+        deletingSmurf: false
+      };
+    case ADD_SMURF_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        deletingSmurf: false,
+        smurfs: action.payload
+      };
+    case ADD_SMURF_FAILURE:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        deletingSmurf: false,
+        error: action.payload
+      };
+    case REMOVE_SMURF_LOADING:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        deletingSmurf: true
+      };
+    case REMOVE_SMURF_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        deletingSmurf: false,
+        smurfs: action.payload
+      };
+    case REMOVE_SMURF_FAILURE:
       return {
         ...state,
         fetchingSmurfs: false,

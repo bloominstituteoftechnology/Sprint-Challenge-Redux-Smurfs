@@ -1,23 +1,22 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { urlLinks } from '../components/App';
-import { getSmurfs } from '../store/actions';
+import { getSmurfs, addSmurf, removeSmurf } from '../store/actions';
 import Header from '../components/Header';
-import SmurfsVillage from '../components/SmurfsVillage';
+import SmurfForm from '../components/SmurfForm';
 
 /***************************************************************************************************
  ********************************************* Component *******************************************
  **************************************************************************************************/
-class HomeView extends Component {
+class FormView extends Component {
   componentDidMount() {
     this.props.getSmurfs();
   }
-
   render() {
     return (
       <Fragment>
         <Header {...this.props} urlLinks={urlLinks} />
-        <SmurfsVillage {...this.props} />
+        <SmurfForm {...this.props} />
       </Fragment>
     );
   }
@@ -26,12 +25,13 @@ class HomeView extends Component {
 const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs,
+    addingSmurf: state.addingSmurf,
+    deletingSmurf: state.deletingSmurf,
     error: state.error
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getSmurfs }
-)(HomeView);
+  { getSmurfs, addSmurf, removeSmurf }
+)(FormView);

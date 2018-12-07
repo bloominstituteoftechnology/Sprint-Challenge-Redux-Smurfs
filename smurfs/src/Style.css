@@ -57,3 +57,125 @@ body {
 .smurf-name {
   font-family: 'Indie Flower', cursive;
 }
+
+.add-smurf-form {
+  border-bottom: 2px solid black;
+}
+
+.add-smurf-form h1 {
+  font-family: 'Indie Flower', cursive;
+}
+
+.add-smurf-form div {
+  margin-bottom: 25px;
+}
+
+.add-smurf-form div input:not(:last-child) {
+  margin-right: 25px;
+}
+
+.add-smurf-button {
+  border-radius: 5px;
+  width: 15%;
+  height: 30px;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: -1px 3px 10px 1px rgba(0, 0, 0, 0.3);
+  background-color: blue;
+  border-color: blue;
+}
+
+.add-smurf-button:hover {
+  border-top-color: #add8e6;
+  border-left-color: #add8e6;
+  background: linear-gradient(#add8e6, #0000ff);
+}
+
+.add-smurf-button:active {
+  border-top-color: #0000ff;
+  border-left-color: #0000ff;
+  border-right-color: #add8e6;
+  border-bottom-color: #add8e6;
+  background: linear-gradient(#0000ff, #add8e6);
+}
+
+.remove-smurf-form {
+  border-bottom: 2px solid black;
+}
+
+.remove-smurf-form h1 {
+  font-family: 'Indie Flower', cursive;
+}
+
+.remove-smurf-form div {
+  margin-bottom: 25px;
+}
+
+.remove-smurf-form div select {
+  /* styling */
+  background-color: white;
+  border: thin solid blue;
+  border-radius: 5px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+  outline: none;
+  width: 400px;
+  text-align-last: center; /* Only works in chrome */
+
+  /* reset */
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, blue 50%),
+    linear-gradient(135deg, blue 50%, transparent 50%),
+    linear-gradient(to right, skyblue, skyblue);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+  background-repeat: no-repeat;
+}
+
+.remove-smurf-form div select:focus {
+  background-image: linear-gradient(45deg, white 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, white 50%),
+    linear-gradient(to right, gray, gray);
+  background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em, 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+  background-repeat: no-repeat;
+  border-color: grey;
+  outline: 0;
+}
+
+.remove-smurf-button {
+  border-radius: 5px;
+  width: 15%;
+  height: 30px;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: -1px 3px 10px 1px rgba(0, 0, 0, 0.3);
+  background-color: red;
+  border-color: red;
+}
+
+.remove-smurf-button:hover {
+  border-top-color: #ff0000;
+  border-left-color: #ff0000;
+  background: linear-gradient(#ff0000, #a00000);
+}
+
+.remove-smurf-button:active {
+  border-top-color: red;
+  border-left-color: red;
+  border-right-color: #ff0000;
+  border-bottom-color: #ff0000;
+  background: linear-gradient(#a00000, #ff0000);
+}

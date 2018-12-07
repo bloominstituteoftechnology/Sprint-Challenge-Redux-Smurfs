@@ -51,6 +51,12 @@ const Header = props => {
       <Link className='header-link' to={props.urlLinks.home}>
         Smurf Village
       </Link>
+      <Link
+        className='header-link'
+        to={`${props.urlLinks.home}${props.urlLinks.smurfForm}`}
+      >
+        Smurf Form
+      </Link>
     </div>
   );
 };
