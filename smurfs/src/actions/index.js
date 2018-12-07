@@ -11,6 +11,10 @@ export const POST_REQUEST = 'POST_REQUEST';
 export const POST_SUCCESS = 'POST_SUCCESS';
 export const POST_FAILURE = 'POST_FAILURE';
 
+export const DELETE_REQUEST = 'DELETE_REQUEST';
+export const DELETE_SUCCESS = 'DELETE_SUCCESS';
+export const DELETE_FAILURE = 'DELETE_FAILURE';
+
 /*
   base url to Smurf API
 */
@@ -42,5 +46,18 @@ export const addSmurf = (smurf) => (dispatch) => {
     })
     .catch( err => {
       dispatch({ type: POST_FAILURE, payload: err })
+    })
+}
+
+export const deleteSmurf = (id) => (dispatch) => {
+  dispatch ({type: DELETE_REQUEST});
+
+  axios
+    .delete(BASE_URL + `/${id}`, id)
+    .then( res => {
+      dispatch({ type: DELETE_SUCCESS, payload: res.data })
+    })
+    .catch( err => {
+      dispatch({ type: DELETE_FAILURE, payload: err })
     })
 }

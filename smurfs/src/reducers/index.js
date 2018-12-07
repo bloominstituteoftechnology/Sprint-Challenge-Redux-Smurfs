@@ -15,6 +15,7 @@ const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
   addingSmurf: false,
+  deletingSmurf: false,
   error: null,
 }
 
@@ -42,13 +43,26 @@ export default (state = initialState, action) => {
         addingSmurf: false,
         smurfs: action.payload,
       }
+      case actions.DELETE_REQUEST:
+      return {
+        ...state,
+        deletingSmurf: true,
+      }
+    case actions.DELETE_SUCCESS:
+      return {
+        ...state,
+        deletingSmurf: false,
+        smurfs: action.payload,
+      }
     case actions.GET_FAILURE:
     case actions.POST_FAILURE:
+    case actions.DELETE_FAILURE:
       return {
         ...state,
         fetchingSmurfs: false,
         addingSmurf: false,
-        smurfs: action.payload,
+        deletingSmurf: false,
+        error: action.payload,
       }
     default:
       return state;
