@@ -64,3 +64,16 @@ export const getSmurf = id => dispatch => {
     dispatch({type: GET_SMURF, payload: id})
   })
 }
+
+export const deleteSmurf = id => dispatch => {
+  axios
+  .delete(`http://localhost:3333/smurfs/${id}`)
+  .then(resp => {
+    dispatch({type: REQUEST_SUCCESS, payload: resp.data});
+  })
+  .catch(err => {
+    dispatch({type: REQUEST_FAIL, payload: err});
+  }).then(() => {
+    dispatch({type: GET_SMURF, payload: id})
+  })
+}

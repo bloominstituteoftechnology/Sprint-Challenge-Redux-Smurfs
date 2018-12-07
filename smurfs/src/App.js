@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Link } from 'react-router';
+import { Route, NavLink } from 'react-router-dom';
 
 import SmurfFormView from './views/SmurfFormView';
 import SmurfListView from './views/SmurfListView';
@@ -9,6 +9,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <nav>
+        <NavLink to='/'>Home</NavLink>
+        <br></br>
+        <NavLink to='/add-smurf'>Add Smurf</NavLink>
+      </nav>
         <Route 
           exact 
           path='/'
