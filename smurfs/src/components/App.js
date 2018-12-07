@@ -26,21 +26,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-        
-
+        <h1>I AM GARGAMEL!</h1>
+        <div>This is my list of imprisoned Smurfs.</div>
+        <div>When they anger me, i feed them to my cat, Azrael</div>
+        <div className="smurf-list">
         {this.props.smurfs.map(smurf => 
           <Smurf smurf={smurf} 
           deleteSmurf={this.props.deleteSmurf} 
           updateSmurf={this.props.updateSmurf} />)}
+        </div>
 
         {this.state.addingSmurf ? 
-        <AddForm addSmurf={this.props.addSmurf} toggleAdding={this.toggleAdding}/>
+        <div className='smurf-card'>
+          <AddForm addSmurf={this.props.addSmurf} toggleAdding={this.toggleAdding}/>
+        </div>
         :
-        <button onClick={this.toggleAdding}>Add a Smurf</button>
+        <button className='open-add-form' onClick={this.toggleAdding}>Add a Smurf</button>
         }
         
       </div>

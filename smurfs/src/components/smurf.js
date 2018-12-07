@@ -12,19 +12,21 @@ class Smurf extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="smurf-card">
                 {this.state.isUpdating ? 
+
                     <AddForm forUpdate 
                     smurf={this.props.smurf} 
                     updateSmurf={this.props.updateSmurf}
                     deleteSmurf={this.props.deleteSmurf}
                     toggleUpdate={this.makeUpdate} />
+
                 :
                     <div>
                     <h3>{this.props.smurf.name}</h3>
                     <p>{this.props.smurf.age}</p>
                     <p>{this.props.smurf.height}</p>
-                    <button onClick={this.makeUpdate}>Update or Delete</button>
+                    <button className='open-update' onClick={this.makeUpdate}>Update or Delete</button>
                     </div>
                 }
             </div>
