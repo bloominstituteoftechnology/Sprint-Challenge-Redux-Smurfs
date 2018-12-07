@@ -13,7 +13,8 @@ class FormSmurf extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log('it works.. IT WORKS!!');
-    this.props.addSmurf(this.state)
+    const {inputName: name, inputAge: age, inputHeight: height} = this.state;
+    this.props.addSmurf({name, age, height})
     this.setState({
       inputName: '',
       inputAge: '',

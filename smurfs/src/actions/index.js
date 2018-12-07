@@ -29,6 +29,7 @@ export const DELETE_SMURFS_FAILURE = "  DELETE_SMURFS_FAILURE";
 */
 
 export const addSmurf = smurf => dispatch => {
+  console.log('adding smurf', smurf)
   dispatch({type: ADD_SMURFS_START});
   axios
     .post('http://localhost:3333/smurfs', smurf)
