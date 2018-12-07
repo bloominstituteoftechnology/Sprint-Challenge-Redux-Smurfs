@@ -6,10 +6,10 @@ import {
   START_REQUEST,
   REQUEST_SUCCESS,
   REQUEST_FAIL,
-  ADD_SMURF,
-  GET_SMURFS,
-  UPDATE_SMURF,
-  DELETE_SMURF
+  // ADD_SMURF,
+  // GET_SMURFS,
+  // UPDATE_SMURF,
+  // DELETE_SMURF
  } from "../actions";
 
  /*
@@ -33,13 +33,28 @@ const initialState = {
   error: null
 }
 
- const reducer = (state, action) => {
+ const reducer = (state = initialState, action) => {
    switch(action.type){
-    // case START_REQUEST:
+    case START_REQUEST:
+      return {
+        ...state,
+        requestingSmurfs: true
+      }
 
-    // case REQUEST_SUCCESS:
+    case REQUEST_SUCCESS:
+    return {
+      ...state,
+      requestingSmurfs: false,
+      smurfs: action.payload,
+      error: null
+    }
 
-    // case REQUEST_FAIL:
+    case REQUEST_FAIL:
+    return {
+      ...state,
+      requestingSmurfs: false,
+      error: action.payload
+    }
 
     // case ADD_SMURF:
 

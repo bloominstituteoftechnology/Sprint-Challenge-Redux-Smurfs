@@ -20,3 +20,16 @@ export const DELETE_SMURF = 'DELETE_SMURF';
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const startRequest = () => dispatch => {
+  dispatch({type: START_REQUEST});
+
+  axios
+    .get('http://localhost:3333/smurfs')
+    .then(resp => {
+      dispatch({type: REQUEST_SUCCESS, payload: resp});
+    })
+    .catch(err => {
+      dispatch({type: REQUEST_FAIL, payload: err});
+    })
+}
