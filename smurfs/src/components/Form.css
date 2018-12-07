@@ -15,3 +15,16 @@
 .form div input{
     width: 100%;
 }
+.smurf{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border: 1px solid black;
+    margin: 5px 0px;
+    width: 100%;
+}
+.list{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0%)
+}
