@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadingSmurf, addSmurf } from "../actions";
+import { loadingSmurf, addSmurf, removeSmurf } from "../actions";
 import Smurf from "./Smurf";
 import "./App.css";
 /*
@@ -21,7 +21,10 @@ class App extends Component {
   componentDidMount() {
     this.props.loadingSmurf();
   }
-
+  deleteHandle = id => {
+    // console.log(id);
+    this.props.removeSmurf(id);
+  };
   submitHandle = e => {
     e.preventDefault();
     this.props.addSmurf(this.state);
@@ -64,7 +67,11 @@ class App extends Component {
           <button type="submit">Add a new smurf</button>
         </form>
         {this.props.smurfs.map(smurf => (
-          <Smurf key={smurf.id} smurf={smurf} />
+          <Smurf
+            key={smurf.id}
+            smurf={smurf}
+            deleteHandle={this.deleteHandle}
+          />
         ))}
       </div>
     );
@@ -84,5 +91,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { loadingSmurf, addSmurf }
+  { loadingSmurf, addSmurf, removeSmurf }
 )(App);

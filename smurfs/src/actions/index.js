@@ -12,7 +12,7 @@ export const EDIT_SMURF = "EDIT_SMURF";
 export const REMOVE_SMURF = "REMOVE_SMURF";
 export const REMOVE_COMPLETE = "REMOVE_COMPLETE";
 
-const URL = "http://localhost:3333/smurfs/";
+const URL = "http://localhost:3333/smurfs";
 export const loadingSmurf = () => dispatch => {
   dispatch({ type: LOADING_SMURF });
   axios

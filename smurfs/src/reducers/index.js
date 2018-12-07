@@ -5,7 +5,9 @@ import {
   ADD_SMURF,
   ADD_COMPLETE,
   LOADING_SMURF,
-  LOADING_COMPLETE
+  LOADING_COMPLETE,
+  REMOVE_SMURF,
+  REMOVE_COMPLETE
 } from "../actions";
 const initialState = {
   smurfs: [],
@@ -39,6 +41,17 @@ export default (state = initialState, action) => {
         ...state,
         smurfs: action.payload,
         addingSmurf: !state.addingSmurf
+      };
+    case REMOVE_SMURF:
+      return {
+        ...state,
+        deletingSmurf: !state.deletingSmurf
+      };
+    case REMOVE_COMPLETE:
+      return {
+        ...state,
+        smurfs: action.payload,
+        deletingSmurf: !state.deletingSmurf
       };
     default:
       return state;
