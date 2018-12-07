@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class SmurfsForm extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             name: '',
             age: '',
@@ -10,10 +10,11 @@ class SmurfsForm extends Component {
         };
     }
 
-    addSmurf = event => {
-        event.preventDefault();
+    addSmurf = e => {
+        e.preventDefault();
         console.log('state submit', this.state);
-        this.props.submit(this.state);
+        let smurf = this.state;
+        this.props.addSmurf(smurf);
         this.setState({
             name: '',
             age: '',
