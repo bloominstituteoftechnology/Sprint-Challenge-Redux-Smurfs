@@ -5,9 +5,14 @@ import axios from 'axios';
   Be sure to export each action type so you can pull it into your reducer
 */
 
-export const FETCH_SMURF_START = 'ADD_SMURF_START';
-export const FETCH_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS';
-export const FETCH_SMURF_FAILURE = 'ADD_SMURF_FAILURE';
+export const FETCH_SMURF_START = 'FETCH_SMURF_START';
+export const FETCH_SMURF_SUCCESS = 'FETCH_SMURF_SUCCESS';
+export const FETCH_SMURF_FAILURE = 'FETCH_SMURF_FAILURE';
+
+export const ADD_SMURF_START = 'ADD_SMURF_START';
+export const ADD_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS';
+export const ADD_SMURF_FAILURE = 'ADD_SMURF_FAILURE';
+
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -32,5 +37,17 @@ export const fetchSmurfs = () => dispatch => {
     })
     .catch(error => {
       dispatch({ type: FETCH_SMURF_FAILURE, payload: error })
+    });
+}
+
+export const addSmurfs = smurfData => dispatch=> {
+  dispatch({ type: ADD_SMURF_START });
+  axios
+    .post(url, smurfData)
+    .then(response => {
+      dispatch({ type: ADD_SMURF_SUCCESS, payload: response.data })
+    })
+    .catch(error => {
+      dispatch({ type: ADD_SMURF_FAILURE, payload: error })
     });
 }
