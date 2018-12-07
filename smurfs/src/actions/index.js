@@ -58,10 +58,10 @@ export const deleteSmurf = (id) => dispatch => {
       })
 }
 
-export const updateSmurf = (newSmurf) => dispatch => {
+export const updateSmurf = (id, newSmurf) => dispatch => {
   dispatch({ type: FETCH});
   axios
-      .put(`http://localhost:3333/smurfs/${newSmurf.id}`, newSmurf)
+      .put(`http://localhost:3333/smurfs/${id}`, newSmurf)
       .then(response => {
           dispatch({ type: SUCCESS, payload: response.data});
       })

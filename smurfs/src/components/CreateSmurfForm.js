@@ -10,7 +10,20 @@ class CreateSmurfForm extends Component {
         }
     }
 
-    // componentDidUpdate(prevprops, prevstate){
+    componentDidUpdate(prevprops){
+        let editFriend= this.props.editFriend;
+        console.log(editFriend);
+        if(!(prevprops.editFriend === editFriend)){
+        if(editFriend.name){
+            this.setState({
+            name: editFriend.name,
+            age: editFriend.age,
+            height: editFriend.height
+            })
+            return;
+        }
+    }
+    }
 
     changeHandler = event => {
         this.setState({
@@ -21,17 +34,27 @@ class CreateSmurfForm extends Component {
       submitHandler = ev => {
           let newSmurf = {...this.state, age: parseInt(this.state.age)}
           ev.preventDefault();
-          this.props.addSmurf(newSmurf)
+          if(!this.props.editFriend.name){
+            this.props.addSmurf(newSmurf);
+          }else{
+            let getSmurf = {}
+            for(let key in newSmurf){
+                if(!(newSmurf[key] === this.props.editFriend[key])){
+                    getSmurf[key] = newSmurf[key]
+                }
+            }
+              this.props.updateToList(this.props.editFriend.id, getSmurf);
+          }
           
           this.setState({
             name: '',
             age: '',
-            email: ''
+            height: ''
           })
       }
   
     render() {
-      console.log()
+      
       return (
         
          <form onSubmit={this.submitHandler}>
@@ -56,7 +79,7 @@ class CreateSmurfForm extends Component {
             value={this.state.height}
             placeholder="height"
           />
-          <button>add smurf</button>
+          <button>{this.props.editFriend.name ? 'Edit Smurf' : 'Add Smurf'}</button>
              
          </form>
         

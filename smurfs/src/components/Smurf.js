@@ -3,8 +3,8 @@ import React from 'react';
 const Smurf = props => {
     
     return (
-    <div className="card" >
-        <div>
+    <div className={props.index === 0 ? "card firstCard" : "card"} >
+        <div onClick={() => props.startUpdate(props.smurf)}>
             <h4 >{props.smurf.name}</h4>
             <div className="info">
                 <p >age:  {props.smurf.age}</p>

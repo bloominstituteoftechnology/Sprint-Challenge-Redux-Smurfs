@@ -11,10 +11,24 @@ import Smurf from './Smurf';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
-
+  state = {
+    editFriend: {}
+  }
 
   componentDidMount(){
     this.props.fetchSmurfs();
+  }
+
+  startUpdate = (obj) =>{ 
+    this.setState({
+      editFriend: obj
+    })
+  }
+  updateToList = (id,obj) => {
+    this.props.updateSmurf(id, obj);
+    this.setState({
+      editFriend: {}
+  })
   }
 
   render() {
@@ -22,15 +36,18 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         
-        <CreateSmurfForm {...this.props}/>
-        {this.props.smurfs.map(smurf => (
-                <Smurf
-                    key={smurf.id}
-                    smurf={smurf}
-                    deleteSmurf={this.props.deleteSmurf}
-                    // startUpdate={props.startUpdate}
-                />
-            ))}
+        <CreateSmurfForm {...this.props} editFriend={this.state.editFriend} updateToList={this.updateToList}/>
+        <div className='list'>
+        {this.props.smurfs.map((smurf,index) => (
+              <Smurf
+                  key={smurf.id}
+                  smurf={smurf}
+                  index={index}
+                  deleteSmurf={this.props.deleteSmurf}
+                  startUpdate={this.startUpdate}
+              />
+          ))}
+        </div>
       </div>
     );
   }
