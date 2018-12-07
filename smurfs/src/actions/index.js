@@ -37,6 +37,6 @@ export const getSmurfs = () => dispatch => {
       dispatch({type: GET_SMURF_SUCCESS, payload: res.data});
     })
     .catch(err => {
-      dispatch: ({type: GET_SMURF_FAILURE, payload: err});
+      dispatch({type: GET_SMURF_FAILURE, payload: err});
     });
 };
