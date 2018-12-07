@@ -54,7 +54,7 @@ export const deleteSmurf = id => dispatch => {
     .delete(`http://localhost:3333/smurfs/${id}`)
     .then(response => {
       dispatch({ type: DELETE_SMURF_SUCCESS, payload: response.data });
-      alert('Meow! Nom Nom Nom')
+      alert("Meow! Nom Nom Nom");
     })
     .catch(err => dispatch({ type: DELETE_SMURF_FAILURE, payload: err }));
 };

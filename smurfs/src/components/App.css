@@ -1,28 +1,36 @@
+* {
+  color: blue;
+  font-family: "Luckiest Guy", cursive;
+}
+
 .App {
   text-align: center;
+  background-image: url("https://www.topbestalternatives.com/wp-content/uploads/2017/11/smurfs-village.jpg");
+  height: 576px;
+  width: 1024px;
+  margin: 0 auto;
+  padding-top: 1px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.loading-text p {
+  text-align: center;
+  font-size: 100px;
+  color: Red;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.form-container {
+  position: absolute;
+  top: 510px;
+  right: 310px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.smurf-container {
+  height: 400px;
+  overflow-y: scroll;
+  width: 400px;
+  margin: 0 auto;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.fa-cat {
+  color: brown;
 }

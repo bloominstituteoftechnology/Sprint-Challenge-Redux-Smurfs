@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import './App.css';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import "./App.css";
+import { connect } from "react-redux";
 
-import SmurfList from './SmurfList';
-import SmurfForm from './SmurfForm';
-import EditSmurfForm from './EditSmurfForm';
-import { getSmurfs, addSmurf } from '../actions'
+import SmurfList from "./SmurfList";
+import SmurfForm from "./SmurfForm";
+import EditSmurfForm from "./EditSmurfForm";
+import { getSmurfs, addSmurf } from "../actions";
 
 /*
  to wire this component up you're going to need a few things.
@@ -20,17 +20,23 @@ class App extends Component {
 
   render() {
     if (this.props.isFetching || !this.props.smurfs) {
-      return <p>Smurfing Smurfs...</p>
+      return <div className="loading-text"><p>Smurfing Smurfs...</p></div>;
     }
-
 
     return (
       <div className="App">
-      <SmurfList {...this.props} />
-      <br/><br/>
-      <SmurfForm />
-      <br/><br/>
-      <EditSmurfForm />
+        <container className="smurf-container">
+        <h1>Welcome to our Smurf Village. Be one of us!</h1>
+        <p>Scroll down to visit us!</p>
+        <SmurfList {...this.props} />
+        </container>
+        <br />
+        <br />
+        <container className="form-container">
+        <SmurfForm />
+        <br/>
+        <EditSmurfForm />
+        </container>
       </div>
     );
   }
@@ -38,10 +44,14 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-  smurfs: state.smurfs,
-  isFetching: state.isFetching,
-  isAdding: state.isAdding,
-  error: state.error,
-}};
+    smurfs: state.smurfs,
+    isFetching: state.isFetching,
+    isAdding: state.isAdding,
+    error: state.error
+  };
+}
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf })(App);
+export default connect(
+  mapStateToProps,
+  { getSmurfs, addSmurf }
+)(App);

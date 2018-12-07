@@ -3,13 +3,16 @@ import React from "react";
 function Smurf(props) {
   return (
     <div>
-        <br/><br/>
-          Name: {props.smurf.name} <br />
-          Age: {props.smurf.age} <br />
-          Height: {props.smurf.height} <br />
-          ID: {props.smurf.id}<br />
-          <button onClick={props.deleteSmurf}>Azrael is hungry!</button>
-          <br/><br/>
+      <br />
+      <br />
+      Name: {props.smurf.name} <br />
+      Age: {props.smurf.age} <br />
+      Height: {props.smurf.height} <br />
+      ID: {props.smurf.id}
+      <br />
+      <button onClick={props.deleteSmurf}>Azrael is hungry! <i class="fas fa-cat" /></button>
+      <br />
+      <br />
     </div>
   );
 }

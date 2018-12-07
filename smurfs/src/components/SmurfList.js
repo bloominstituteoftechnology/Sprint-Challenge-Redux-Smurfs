@@ -1,18 +1,23 @@
 import React from "react";
-import { connect } from 'react-redux';
-import { deleteSmurf } from '../actions';
-import Smurf from './Smurf';
+import { connect } from "react-redux";
+import { deleteSmurf } from "../actions";
+import Smurf from "./Smurf";
 
 function SmurfList(props) {
   return (
-      <div>
+    <div className="smurf-container">
       {props.smurfs.map(smurf => (
-        <Smurf key={smurf.name}
-        smurf={smurf}
-        deleteSmurf={props.deleteSmurf.bind(null, smurf.id)} />
+        <Smurf
+          key={smurf.name}
+          smurf={smurf}
+          deleteSmurf={props.deleteSmurf.bind(null, smurf.id)}
+        />
       ))}
-      </div>
-  )
+    </div>
+  );
 }
 
-export default connect(null, { deleteSmurf })(SmurfList);
+export default connect(
+  null,
+  { deleteSmurf }
+)(SmurfList);
