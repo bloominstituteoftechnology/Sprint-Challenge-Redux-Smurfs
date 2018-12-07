@@ -42,7 +42,6 @@ export const Main = styled.main`
 `;
 
 export const Section = styled.section`
-border: 1px solid black;
  display: flex;
  flex-flow: row wrap;
  justify-content: space-around;
@@ -99,7 +98,11 @@ export const Button = styled.button`
  font-family: 'Oswald', sans-serif;
  :hover {
 	 background: #373F51;
-	 color: #7BE6F7
+	 color: #7BE6F7;
+	 cursor: pointer;
+ }
+ :focus {
+	 outline: none;
  }
 `
 export const Div = styled.div`
@@ -127,8 +130,12 @@ export const H2 = styled.h2`
 `;
 
 export const H3 = styled.h3`
-color: #F9FBFF;
-margin: 2.5% 0;
+	display: ${props => props.mode === 'Add' ? 'none': null};
+	color: #F9FBFF;
+	margin: 2.5% 0;
 	font-size: 1.4rem;
 	font-family: 'Oswald', sans-serif;
+	:hover {
+	cursor:	${props => props.form  ? 'pointer': null};
+	}
 `

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Break, Form, Input,  Button, H2 } from '../styles';
+import { H3, Form, Input,  Button, H2 } from '../styles';
 
 export default class SmurfForm extends Component {
 	handleMode = () => {
 	if (this.props.mode === 'Update') {
-		return this.props.updateSmurf 
+		return this.props.updateSmurf; 
 	} else {
 		return this.props.addSmurf;
 	} 
@@ -14,7 +14,7 @@ export default class SmurfForm extends Component {
 		return (
 			<React.Fragment>
 				<Form mode={this.props.mode} onSubmit={this.handleMode()}>
-					<H2>{this.props.mode} a Smurf</H2>
+					<H2>{this.props.mode} {this.props.name}</H2>
 					<Input
 						placeholder="Name..."
 						name="name"
@@ -39,6 +39,7 @@ export default class SmurfForm extends Component {
 						onChange={this.props.handleChange}
 					/>
 					<Button type="submit">{this.props.mode}</Button>
+					<H3 form mode={this.props.mode} onClick={this.props.defaultForm}>Cancel</H3>
 				</Form>
 			</React.Fragment>
 		);

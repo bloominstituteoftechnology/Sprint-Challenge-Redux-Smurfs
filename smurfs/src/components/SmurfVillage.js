@@ -1,5 +1,5 @@
 import React from 'react';
-import {Main, H2, Section} from '../styles'
+import {Main, Section} from '../styles'
 import SmurfForm from './SmurfForm'
 import SmurfList from './SmurfList'
 
@@ -15,6 +15,7 @@ const SmurfVillage = props => {
             height={props.height}
             addSmurf={props.addSmurf}
             updateSmurf={props.updateSmurf}
+            defaultForm={props.defaultForm}
             />
             <SmurfList 
             toggleMode={props.toggleMode}
