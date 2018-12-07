@@ -2,6 +2,8 @@
   Be sure to import in all of the action types from `../actions`
 */
 
+import { FETCHING, ADDING, UPDATING, DELETING, SUCCESS, FAILURE } from '../actions';
+
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -14,6 +16,16 @@
  }
 */
 
+const initialState = {
+
+  smurfs: [],
+  fetchingSmurfs: false
+  addingSmurf: false
+  updatingSmurf: false
+  deletingSmurf: false
+
+}
+
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer.
@@ -22,8 +34,40 @@
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-export default function() {
+export default function(state = initialState, action) {
 
-  
+  switch (action.type) {
+
+    case FETCHING:
+      return {...state, fetchingSmurfs: true}
+
+    case ADDING:
+      return {...state, addingSmurf: true}
+
+    case UPDATING:
+      return {...state, updatingSmurf: true}
+
+    case DELETING:
+      return {...state, deletingSmurf: true}
+
+    case SUCCESS:
+      return {
+
+        smurfs: action.payload,
+        fetchingSmurfs: false
+        addingSmurf: false
+        updatingSmurf: false
+        deletingSmurf: false
+
+      }
+
+    case FAILURE:
+      console.log(action.payload);
+      return state;
+
+    default:
+      return state;
+
+  }
 
 }

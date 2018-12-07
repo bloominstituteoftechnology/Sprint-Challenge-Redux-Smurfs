@@ -71,6 +71,6 @@ export const deleteSmurf = smurf => dispatch => {
       type: SUCCESS,
       payload: res.data
     }))
-    .catch(err => console.log(err));
+    .catch(err => dispatch({type: FAILURE, payload: err}));
 
 }
