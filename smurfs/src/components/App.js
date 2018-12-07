@@ -12,6 +12,7 @@ import SmurfForm from './SmurfForm';
  `How do I ensure that my component links the state to props?`
  */
 
+let newId = 1;
 
 class App extends Component {
   constructor() {
@@ -19,10 +20,10 @@ class App extends Component {
     this.state = {
       name: '',
       age: 0,
-      height: ''
+      height: '',
+      id: newId++
     }
   }
-
 
   componentDidMount() {
     this.props.fetch_smurfs();

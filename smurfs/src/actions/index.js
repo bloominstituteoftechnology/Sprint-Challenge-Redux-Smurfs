@@ -38,6 +38,7 @@ export const fetch_smurfs = () => dispatch => {
 
 export const onHandleSubmit = (newSmurf) => dispatch => {
     dispatch({ type: ON_HANDLE_SUBMIT });
+    // console.log('onHandleSubmit', newSmurf)
     axios 
         .post('http://localhost:3333/smurfs', newSmurf)
         .then(response => {
@@ -50,9 +51,12 @@ export const onHandleSubmit = (newSmurf) => dispatch => {
 
 export const onUpdateSmurf = (myUpdatedSmurf) => dispatch => {
     dispatch({ type: UPDATE_SMURF });
+    console.log('onUpdateSmurf', myUpdatedSmurf)
     axios 
-        .put('http://localhost:3333/smurfs/:id', myUpdatedSmurf)
+        // .put(`http://localhost:3333/smurfs/${myUpdatedSmurf.id}`, myUpdatedSmurf)
+          .put(`http://localhost:3333/smurfs/2`, myUpdatedSmurf)
         .then(response => {
+          console.log('onUpdateSmurf', response.data.id)
             dispatch({ type: FETCH_SUCCESS, payload: response.data})
         })
     .catch(err => {
