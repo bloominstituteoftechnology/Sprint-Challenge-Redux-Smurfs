@@ -1,7 +1,14 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import {GETTING_SMURFS, GET_SMURF_FAILURE, GET_SMURF_SUCCESS} from '../actions';
+import {
+  GETTING_SMURFS,
+  GET_SMURF_FAILURE,
+  GET_SMURF_SUCCESS,
+  ADDING_SMURF,
+  ADD_SMURF_SUCCESS,
+  ADD_SMURF_FAILURE,
+} from '../actions';
 
 // Your initial/default state for this project could *Although does not have to* look a lot like this
 const initialState = {
@@ -36,6 +43,27 @@ export default (state = initialState, action) => {
       console.log('noooo', action.payload);
       return {
         ...state,
+        error: action.payload,
+      };
+    }
+    case ADDING_SMURF: {
+      console.log('adding smurf');
+      return {
+        ...state,
+        addingSmurf: true,
+      };
+    }
+    case ADD_SMURF_SUCCESS: {
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfs: action.payload,
+      };
+    }
+    case ADD_SMURF_FAILURE: {
+      return {
+        ...state,
+        addingSmurf: false,
         error: action.payload,
       };
     }

@@ -4,6 +4,10 @@ export const GETTING_SMURFS = 'GETTING_SMURFS';
 export const GET_SMURF_SUCCESS = 'GET_SMURFS_SUCCESS';
 export const GET_SMURF_FAILURE = 'GET_SMURF_FAILURE';
 
+export const ADDING_SMURF = 'ADDING_SMURF';
+export const ADD_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS';
+export const ADD_SMURF_FAILURE = 'ADD_SMURF_FAILURE';
+
 // not sure why this didn't work...try again later
 //const ax = axios.create({
 //baseUrl: 'http://localhost:3333/',
@@ -38,5 +42,18 @@ export const getSmurfs = () => dispatch => {
     })
     .catch(err => {
       dispatch({type: GET_SMURF_FAILURE, payload: err});
+    });
+};
+
+export const addSmurf = smurf => dispatch => {
+  console.log('adding smurf');
+  dispatch({type: ADDING_SMURF});
+  axios
+    .post(`${url}/smurfs`, smurf)
+    .then(res => {
+      dispatch({type: ADD_SMURF_SUCCESS, payload: res.data});
+    })
+    .catch(err => {
+      dispatch({type: ADD_SMURF_FAILURE, payload: err});
     });
 };
