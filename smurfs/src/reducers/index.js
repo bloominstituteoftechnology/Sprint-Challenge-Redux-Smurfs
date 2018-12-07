@@ -1,7 +1,17 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
-
+import {
+  FETCHING_SMURFS,
+  FETCHING_SMURFS_SUCCESS,
+  FETCHING_SMURFS_FAILURE,
+  ADD_SMURF,
+  ADD_SMURF_SUCCESS,
+  ADD_SMURF_FAILURE,
+  DELETE_SMURF,
+  DELETE_SMURF_SUCCESS,
+  DELETE_SMURF_FAILURE,
+  EDIT_SMURF,
+  EDIT_SMURF_SUCCESS,
+  EDIT_SMURF_FAILURE
+} from "../actions";
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
