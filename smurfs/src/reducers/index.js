@@ -21,6 +21,7 @@ const initialState = {
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
+    // Fetching Smurfs Data //
     case FETCHING_SMURFS:
       return {
         ...state,
@@ -42,8 +43,7 @@ const reducers = (state = initialState, action) => {
         error: action.payload
       };
 
-    // Add New Friend //
-
+    // Add New Smurf //
     case ADD_START:
       return {
         ...state,
@@ -65,8 +65,7 @@ const reducers = (state = initialState, action) => {
         error: action.payload
       };
 
-    // Update Friend //
-
+    // Update Smurf //
     case UPDATE_START:
       return {
         ...state,
@@ -88,8 +87,7 @@ const reducers = (state = initialState, action) => {
         error: action.payload
       };
 
-    // Delete Friend //
-
+    // Delete Smurf //
     case DELETE_START:
       return {
         ...state,

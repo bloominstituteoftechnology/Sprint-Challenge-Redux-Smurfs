@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
