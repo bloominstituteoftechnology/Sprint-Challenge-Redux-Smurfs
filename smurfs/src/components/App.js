@@ -33,7 +33,6 @@ class App extends Component {
               <li key={smurf.id}>
                 Name: {smurf.name}, Age: {smurf.age}, Height: {smurf.height}
                 cm&nbsp;
-                <button onClick={this.updateClick}>Update</button>
                 <UpdateSmurf id={smurf.id} hidden={this.state.isHidden} />
                 <button
                   className="del-btn"

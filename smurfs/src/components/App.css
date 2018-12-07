@@ -1,6 +1,7 @@
 .App {
     text-align: center;
-    height: 100vh;
+    width: 1900px;
+    height: 1000px;
     color: #B0294C;
     font-weight: bolder;
 }
@@ -46,6 +47,7 @@
     box-shadow: 3px 5px 10px #1F56B3;
     background-image: url('https://wallpapersite.com/images/wallpapers/smurfs-the-lost-village-3000x1621-animation-2017-hd-7262.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .App li {
@@ -58,7 +60,7 @@
     border-radius: 6px;
     box-shadow: 3px 5px 10px #1F56B3;
     padding-bottom: 20px;
-    margin: 80px;
+    margin: 10px;
     width: 400px;
     color: #B0294C;
 }
@@ -68,7 +70,7 @@
 }
 
 .del-btn {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 
@@ -89,10 +91,10 @@ button {
 }
 
 .smurf-container {
-    margin-top: 20px;
+    margin-top: 10px;
     border: 1px solid lightgrey;
     border-radius: 6px;
     box-shadow: 3px 5px 10px #1F56B3;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     width: 800px;
 }

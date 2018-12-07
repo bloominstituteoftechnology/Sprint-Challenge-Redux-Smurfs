@@ -57,7 +57,7 @@ class UpdateSmurfForm extends Component {
             value={this.state.height}
             onChange={this.changeHandler}
           />
-          <button type="submit">Submit</button>
+          <button type="submit">Update</button>
         </form>
       </div>
     );
