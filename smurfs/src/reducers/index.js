@@ -89,6 +89,7 @@ export default (state = initialState, action) => {
         ...state,
         updatingSmurf: false,
         smurfs: action.payload,
+        selectedSmurf: null,
       };
     }
     case EDIT_SMURF_FAILURE: {

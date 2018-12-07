@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addSmurf} from '../actions';
+import {addSmurf, editSmurf} from '../actions';
 
 class SmurfForm extends React.Component {
   constructor() {
@@ -30,8 +30,15 @@ class SmurfForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log('hs', this.props.selected);
     if (this.state.name && this.state.age && this.state.height) {
-      this.props.addSmurf(this.state);
+      const func = this.props.selected
+        ? this.props.editSmurf
+        : this.props.addSmurf;
+      const args = this.props.selected
+        ? {...this.state, id: this.props.selected.id}
+        : this.state;
+      func(args);
       this.clearState();
     }
   };
@@ -69,5 +76,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {addSmurf},
+  {addSmurf, editSmurf},
 )(SmurfForm);

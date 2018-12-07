@@ -73,7 +73,7 @@ export const editSmurf = smurf => dispatch => {
   console.log('editing smurf');
   dispatch({type: EDITING_SMURF, payload: smurf});
   axios
-    .put(`${url}/smurf/{smurf.id}`, smurf)
+    .put(`${url}/smurfs/${smurf.id}`, smurf)
     .then(res => {
       dispatch({type: EDIT_SMURF_SUCCESS, payload: res.data});
     })
