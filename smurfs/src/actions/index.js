@@ -58,6 +58,22 @@ export const getSmurf = () => dispatch => {
     .catch(err => dispatch({ type: FETCH_SMURFS_FAILURE, payload: err }))
 }
 
+export const deleteSmurf = id => dispatch => {
+  console.log('deleting smurf', id)
+  dispatch({type: DELETE_SMURFS_START});
+  axios
+    .post(`http://localhost:3333/smurfs/${id}`)
+    .then(res => {
+      console.log(res)
+      dispatch({
+        type: DELETE_SMURFS_SUCCESS,
+        payload: res.data
+      })
+    })
+    .catch(err => dispatch({ type: DELETE_SMURFS_FAILURE, payload: err }))
+}
+
+
 
 
 // function getItems() {
