@@ -1,6 +1,23 @@
+import {
+  FETCH_SMURFS_START,
+  FETCH_SMURFS_SUCCESS,
+  FETCH_SMURFS_FAILURE,
+  ADD_SMURF_START,
+  ADD_SMURF_SUCCESS,
+  ADD_SMURF_FAILURE
+} from "../actions";
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
+
+
+const initialState = {
+  smurfs: [],
+  isFetching: false,
+  isAdding: false,
+  error: null
+};
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -13,6 +30,51 @@
    error: null
  }
 */
+
+const smurfsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_SMURFS_START:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case FETCH_SMURFS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        smurfs: action.payload,
+        error: null
+      };
+    case FETCH_SMURFS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload
+      };
+    case ADD_SMURF_START:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case ADD_SMURF_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        smurfs: action.payload,
+        error: null
+      };
+    case ADD_SMURF_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload
+      };
+    default:
+      return state;
+  }
+};
+
+export default smurfsReducer;
 
 /*
   You'll only need one smurf reducer for this project.
