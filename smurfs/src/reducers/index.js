@@ -33,6 +33,9 @@ import {
   DELETE_SMURF_START,
   DELETE_SMURF_SUCCESS,
   DELETE_SMURF_FAILURE,
+  UPDATE_SMURF_START,
+  UPDATE_SMURF_SUCCESS,
+  UPDATE_SMURF_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -40,12 +43,33 @@ const initialState = {
   fetching: false,
   adding: false,
   deleting: false,
+  updaiting: false,
   error: null,
 
 }
 
 const smurfsReducer = (state = initialState, action) => {
   switch (action.type) {
+
+    // Updaing Smurf Cases
+    case UPDATE_SMURF_START:
+      return {
+        ...state,
+        updating: true,
+      };
+    case UPDATE_SMURF_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        updating: false,
+        smurfs: action.payload,
+      };
+    case UPDATE_SMURF_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updating: false,
+      };
 
     // Deleting Smurf Cases
     case DELETE_SMURF_START:

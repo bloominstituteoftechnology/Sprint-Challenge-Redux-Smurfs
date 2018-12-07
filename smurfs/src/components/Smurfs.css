@@ -15,7 +15,10 @@
 .smurf-content {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px dashed lightgray;
+    padding-bottom: 5px;
 }
 
 .smurf-spacing {
@@ -28,7 +31,17 @@
 }
 
 .smurf-delete-btn {
-    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.smurf-control-btns-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.smurf-edit-btn {
     font-weight: bold;
     cursor: pointer;
 }

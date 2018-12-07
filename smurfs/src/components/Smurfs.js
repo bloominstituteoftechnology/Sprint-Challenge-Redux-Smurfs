@@ -19,7 +19,10 @@ const smurfs = props => {
                             <span className='smurf-span'>{smurf.name}</span>
                             <span className='smurf-span'>{smurf.age}</span>
                             <span className='smurf-span'>{smurf.height}</span>
-                            <span onClick={() => props.deletingSmurf(smurf.id)} className='smurf-delete-btn'>X</span>
+                            <div className='smurf-control-btns-container'>
+                                <span onClick={() => props.deletingSmurf(smurf.id)} className='smurf-delete-btn'>[X]</span>
+                                <span className='smurf-edit-btn'>[E]</span>
+                            </div>
                         </div> 
                     </div>
                 );
