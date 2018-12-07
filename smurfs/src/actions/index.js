@@ -11,6 +11,7 @@ export const UPDATING = 'UPDATING';
 export const DELETING = 'DELETING';
 export const SUCCESS = 'SUCCESS';
 export const FAILURE = 'FAILURE';
+export const UPDATE_FORM = 'UPDATE_FORM';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -72,5 +73,16 @@ export const deleteSmurf = smurf => dispatch => {
       payload: res.data
     }))
     .catch(err => dispatch({type: FAILURE, payload: err}));
+
+}
+
+export const setFormToUpdate = smurf => {
+
+  return {
+
+    type: UPDATE_FORM,
+    payload: smurf
+
+  }
 
 }

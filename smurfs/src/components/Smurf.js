@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { deleteSmurf } from '../actions';
+import { deleteSmurf, setFormToUpdate } from '../actions';
 
-function Smurf({smurf, deleteSmurf}) {
+function Smurf({smurf, deleteSmurf, setFormToUpdate}) {
 
   return (
 
@@ -12,6 +12,7 @@ function Smurf({smurf, deleteSmurf}) {
       <h2>{smurf.name}</h2>
       <p>Age: {smurf.age}</p>
       <p>Height: {smurf.height}</p>
+      <button onClick={() => setFormToUpdate(smurf)}>Update</button>
       <span className='delete' onClick={() => deleteSmurf(smurf)}>X</span>
 
     </div>
@@ -20,4 +21,4 @@ function Smurf({smurf, deleteSmurf}) {
 
 }
 
-export default connect(null, { deleteSmurf })(Smurf);
+export default connect(null, { deleteSmurf, setFormToUpdate })(Smurf);

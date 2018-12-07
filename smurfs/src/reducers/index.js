@@ -2,7 +2,7 @@
   Be sure to import in all of the action types from `../actions`
 */
 
-import { FETCHING, ADDING, UPDATING, DELETING, SUCCESS, FAILURE } from '../actions';
+import { FETCHING, ADDING, UPDATING, DELETING, SUCCESS, FAILURE, UPDATE_FORM } from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -23,7 +23,8 @@ const initialState = {
   addingSmurf: false,
   updatingSmurf: false,
   deletingSmurf: false,
-  error: null
+  error: null,
+  smurfToUpdate: null
 
 }
 
@@ -58,12 +59,16 @@ export default function(state = initialState, action) {
         fetchingSmurfs: false,
         addingSmurf: false,
         updatingSmurf: false,
-        deletingSmurf: false
+        deletingSmurf: false,
+        smurfToUpdate: null
 
       }
 
     case FAILURE:
       return {...state, error: action.payload};
+
+    case UPDATE_FORM:
+      return {...state, smurfToUpdate: action.payload}
 
     default:
       return state;

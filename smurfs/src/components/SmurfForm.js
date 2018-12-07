@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addSmurf } from '../actions';
+import { addSmurf, updateSmurf } from '../actions';
 
 class SmurfForm extends React.Component {
 
@@ -13,7 +13,17 @@ class SmurfForm extends React.Component {
 
       name: '',
       age: 0,
-      height: 0
+      height: ''
+
+    }
+
+  }
+
+  componentDidUpdate(prevProps) {
+
+    if (this.props.smurfToUpdate && this.props.smurfToUpdate !== prevProps.smurfToUpdate) {
+
+      this.setState(this.props.smurfToUpdate);
 
     }
 
@@ -33,13 +43,11 @@ class SmurfForm extends React.Component {
 
     e.preventDefault();
 
-    this.props.addSmurf({
+    if (this.props.smurfToUpdate)
+      this.props.updateSmurf(this.state);
 
-      name: this.state.name,
-      age: this.state.age,
-      height: this.state.height + 'cm'
-
-    });
+    else
+      this.props.addSmurf(this.state);
 
     this.setState({
 
@@ -61,7 +69,7 @@ class SmurfForm extends React.Component {
 
         <span>Name: </span><input type='text' name='name' onChange={this.handleChange} placeholder='name' value={this.state.name} />
         <span>Age: </span><input type='number' name='age' onChange={this.handleChange} value={this.state.age} />
-        <span>Height (in cm): </span><input type='number' name='height' onChange={this.handleChange} value={this.state.height} />
+        <span>Height: </span><input type='text' name='height' placeholder='height' onChange={this.handleChange} value={this.state.height} />
         <button onClick={this.handleSubmission}>Add smurf!</button>
 
       </form>
@@ -72,4 +80,14 @@ class SmurfForm extends React.Component {
 
 }
 
-export default connect(null, { addSmurf })(SmurfForm);
+function mapStateToProps(state) {
+
+  return {
+
+    smurfToUpdate: state.smurfToUpdate
+
+  }
+
+}
+
+export default connect(mapStateToProps, { addSmurf, updateSmurf })(SmurfForm);
