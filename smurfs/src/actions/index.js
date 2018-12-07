@@ -17,6 +17,10 @@ export const EDIT_SMURF_START = 'EDIT_SMURF_START';
 export const EDIT_SMURF_SUCCESS = 'EDIT_SMURF_SUCCESS';
 export const EDIT_SMURF_FAILURE = 'EDIT_SMURF_FAILURE';
 
+export const DELETE_SMURF_START = 'DELETE_SMURF_START';
+export const DELETE_SMURF_SUCCESS = 'DELETE_SMURF_SUCCESS';
+export const DELETE_SMURF_FAILURE = 'DELETE_SMURF_FAILURE';
+
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -65,5 +69,17 @@ export const editSmurfs = (smurfData, id) => dispatch => {
     })
     .catch(error => {
       dispatch({ type: EDIT_SMURF_FAILURE, payload: error })
+    });
+}
+
+export const deleteSmurfs = id => dispatch => {
+  dispatch({ type: DELETE_SMURF_START });
+  axios
+    .delete(`${url}${id}`)
+    .then(response => {
+      dispatch({ type: DELETE_SMURF_SUCCESS, payload: response.data })
+    })
+    .catch(error => {
+      dispatch({ type: DELETE_SMURF_FAILURE, payload: error })
     });
 }

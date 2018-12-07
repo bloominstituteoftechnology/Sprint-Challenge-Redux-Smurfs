@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { deleteSmurfs } from '../actions';
 
 import SmurfEditForm from './SmurfEditForm';
 
@@ -10,9 +12,15 @@ class SmurfCard extends React.Component {
         }
     }
 
+    deleteSmurf = event => {
+        event.preventDefault();
+        this.props.deleteSmurfs(this.props.smurfData.id)
+    }
+
     render(){
         return(
             <div className='individual-smurf'>
+                <p onClick={this.deleteSmurf}>Delete</p>
                 <p className='smurf-name'>{this.props.smurfData.name}</p>
                 <p className='smurf-age'>{this.props.smurfData.age}</p>
                 <p className='smurf-height'>{this.props.smurfData.height}</p>
@@ -32,4 +40,4 @@ class SmurfCard extends React.Component {
     }
 }
 
-export default SmurfCard;
+export default connect(null, { deleteSmurfs })(SmurfCard);
