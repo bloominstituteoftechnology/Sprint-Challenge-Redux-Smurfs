@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadingSmurf, addSmurf, removeSmurf } from "../actions";
+import { loadingSmurf, addSmurf, removeSmurf, editSmurf } from "../actions";
 import Smurf from "./Smurf";
 import "./App.css";
 /*
@@ -21,6 +21,18 @@ class App extends Component {
   componentDidMount() {
     this.props.loadingSmurf();
   }
+  editHandle = id => {
+    console.log("editing");
+    this.setState({
+      name: this.props.smurfs[id].name,
+      age: this.props.smurfs[id].age,
+      height: this.props.smurfs[id].height
+    });
+  };
+  confirmHandle = id => {
+    console.log("confirming");
+    this.props.editSmurf(id, this.state);
+  };
   deleteHandle = id => {
     // console.log(id);
     this.props.removeSmurf(id);
@@ -28,6 +40,11 @@ class App extends Component {
   submitHandle = e => {
     e.preventDefault();
     this.props.addSmurf(this.state);
+    this.setState({
+      name: "",
+      age: "",
+      height: ""
+    });
   };
   inputHandle = e => {
     this.setState({
@@ -66,11 +83,15 @@ class App extends Component {
           />
           <button type="submit">Add a new smurf</button>
         </form>
+        <button type="submit" onClick={this.confirmHandle}>
+          confirm edit
+        </button>
         {this.props.smurfs.map(smurf => (
           <Smurf
             key={smurf.id}
             smurf={smurf}
             deleteHandle={this.deleteHandle}
+            editHandle={this.editHandle}
           />
         ))}
       </div>
@@ -91,5 +112,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { loadingSmurf, addSmurf, removeSmurf }
+  { loadingSmurf, addSmurf, removeSmurf, editSmurf }
 )(App);

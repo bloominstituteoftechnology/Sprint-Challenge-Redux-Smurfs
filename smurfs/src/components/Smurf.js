@@ -10,7 +10,9 @@ const Smurf = props => {
       <button onClick={() => props.deleteHandle(props.smurf.id)}>
         murder this smurf
       </button>
-      <button>edit smurf</button>
+      <button onClick={() => props.editHandle(props.smurf.id)}>
+        edit smurf
+      </button>
     </div>
   );
 };

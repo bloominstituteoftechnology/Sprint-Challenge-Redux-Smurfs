@@ -9,6 +9,7 @@ export const LOADING_COMPLETE = "LOADING_COMPLETE";
 export const ADD_SMURF = "ADD_SMURF";
 export const ADD_COMPLETE = "ADD_COMPLETE";
 export const EDIT_SMURF = "EDIT_SMURF";
+export const EDIT_COMPLETE = "EDIT_COMPLETE";
 export const REMOVE_SMURF = "REMOVE_SMURF";
 export const REMOVE_COMPLETE = "REMOVE_COMPLETE";
 
@@ -38,6 +39,15 @@ export const removeSmurf = id => dispatch => {
     .delete(`${URL}/${id}`)
     .then(response => {
       dispatch({ type: REMOVE_COMPLETE, payload: response.data });
+    })
+    .catch(err => ({ err }));
+};
+export const editSmurf = (id, update) => dispatch => {
+  dispatch({ type: EDIT_SMURF });
+  axios
+    .put(`${URL}/${id}`, update)
+    .then(response => {
+      dispatch({ type: EDIT_COMPLETE, paylaod: response.data });
     })
     .catch(err => ({ err }));
 };
