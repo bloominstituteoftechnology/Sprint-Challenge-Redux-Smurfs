@@ -28,7 +28,7 @@ class SmurfForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="SmurfForm">
         <h2>Add More Smurfs</h2>
         <form onSubmit={(event) => {
           event.preventDefault();
@@ -59,7 +59,7 @@ class SmurfForm extends React.Component {
             placeholder="height"
           />
           
-          <button className="form-button">
+          <button className="btn-primary">
             Add Smurf
           </button>
         </form>
