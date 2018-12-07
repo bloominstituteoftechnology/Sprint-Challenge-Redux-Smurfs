@@ -1,7 +1,6 @@
 import React from 'react';
-import './styling/AddNewSmurf.css';
 
-class AddSmurfForm extends React.Component {
+class EditSmurfForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,14 +10,17 @@ class AddSmurfForm extends React.Component {
         }
     }
 
-    addingNewSmurf = e => {
-        e.preventDefault();
-        this.props.addNewSmurf(this.state);
+    componentDidMount() {
         this.setState({
-            name: '',
-            age: '',
-            height: ''
+            name: this.props.smurfName,
+            age: this.props.smurfAge,
+            height: this.props.smurfHeight
         });
+    }
+
+    editSmurf = e => {
+        e.preventDefault();
+        this.props.updatingSmurfHandler(this.props.smurfId, this.state);
     }
 
     handleChange = e => {
@@ -30,7 +32,7 @@ class AddSmurfForm extends React.Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.addingNewSmurf} className='newSmurfForm'>
+                <form onSubmit={this.editSmurf} className='newSmurfForm'>
                     <input 
                         type="text"
                         required='true'
@@ -61,11 +63,11 @@ class AddSmurfForm extends React.Component {
                         className='inputField'
                         autoComplete='off'
                     />
-                    <button className='newSmurfForm-Btn'>Add Smurf</button>
+                    <button className='newSmurfForm-Btn edit-btn'>Edit {} Smurf</button>
                 </form>
             </div>
         );
     }
 }
 
-export default AddSmurfForm;
+export default EditSmurfForm;

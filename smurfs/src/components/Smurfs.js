@@ -1,5 +1,6 @@
 import React from 'react';
-import './Smurfs.css';
+import './styling/Smurfs.css';
+import Smurf from '../components/Smurf';
 
 const smurfs = props => {
     return (
@@ -11,22 +12,13 @@ const smurfs = props => {
                     <span className='smurf-span smurf-name'>HEIGHT</span>
                 </div> 
             </div>
-
-            {props.smurfs.map((smurf) => {
-                return (
-                    <div key={smurf.id} className='smurf-container'>
-                        <div className='smurf-content smurf-spacing'>
-                            <span className='smurf-span'>{smurf.name}</span>
-                            <span className='smurf-span'>{smurf.age}</span>
-                            <span className='smurf-span'>{smurf.height}</span>
-                            <div className='smurf-control-btns-container'>
-                                <span onClick={() => props.deletingSmurf(smurf.id)} className='smurf-delete-btn'>[X]</span>
-                                <span className='smurf-edit-btn'>[E]</span>
-                            </div>
-                        </div> 
-                    </div>
-                );
-            })}
+            <div>
+                {props.smurfs.map(smurf => {
+                    return <Smurf key={smurf.id} smurfChar={smurf} deletingSmurf={props.deletingSmurfChar} updateSmurf={props.updateSmurfHandler} />;
+                })}
+                {console.log(props.smurfsArr)}
+            </div>
+            
         </div>
     );
 };

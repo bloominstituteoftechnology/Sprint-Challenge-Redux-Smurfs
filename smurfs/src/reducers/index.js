@@ -43,7 +43,7 @@ const initialState = {
   fetching: false,
   adding: false,
   deleting: false,
-  updaiting: false,
+  updating: false,
   error: null,
 
 }
