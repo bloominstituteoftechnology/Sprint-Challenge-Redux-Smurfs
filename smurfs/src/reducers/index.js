@@ -1,9 +1,16 @@
-import { combineReducers } from 'redux';
-
 import {
   FETCH_SMURFS_START,
   FETCH_SMURFS_SUCCESS,
-  FETCH_SMURFS_FAILURE
+  FETCH_SMURFS_FAILURE,
+  ADD_SMURFS_START,
+  ADD_SMURFS_SUCCESS,
+  ADD_SMURFS_FAILURE,
+  UPDATE_SMURFS_START,
+  UPDATE_SMURFS_SUCCESS,
+  UPDATE_SMURFS_FAILURE,
+  DELETE_SMURFS_START,
+  DELETE_SMURFS_SUCCESS,
+  DELETE_SMURFS_FAILURE
 } from '../actions';
 
 /*
@@ -41,40 +48,92 @@ const initialSmurfsState = {
 
 const smurfReducer = (state = initialSmurfsState, action) => {
   switch (action.type) {
+    case ADD_SMURFS_START:
+      return {
+        ...state,
+        fetchingSmurfs: true,
+        addingSmurf: true,
+      };
+    case ADD_SMURFS_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        smurfs: action.payload
+      };
+    case ADD_SMURFS_FAILURE:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        error: action.payload
+      };
+      case UPDATE_SMURFS_START:
+      return {
+        ...state,
+        fetchingSmurfs: true,
+        updatingSmurf: true,
+      };
+    case UPDATE_SMURFS_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        updatingSmurf: false,
+        smurfs: action.payload
+      };
+    case UPDATE_SMURFS_FAILURE:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        updatingSmurf: false,
+        error: action.payload
+      };
+      case DELETE_SMURFS_START:
+      return {
+        ...state,
+        fetchingSmurfs: true,
+        deletingSmurf: true,
+      };
+    case DELETE_SMURFS_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        deletingSmurf: false,
+        smurfs: action.payload
+      };
+    case DELETE_SMURFS_FAILURE:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        deletingSmurf: false,
+        error: action.payload
+      };
     case FETCH_SMURFS_START:
       return {
         ...state,
-        fetching: true
+        fetchingSmurfs: true
       };
     case FETCH_SMURFS_SUCCESS:
       return {
         ...state,
         error: null,
-        fetching: false,
-        doggos: action.payload
+        fetchingSmurfs: false,
+        smurfs: action.payload
       };
-    case FETCH_SMURFS_FAILURE:
-      return {
+      case FETCH_SMURFS_FAILURE:
+       return {
         ...state,
-        fetching: false,
+        fetchingSmurfs: false,
         error: action.payload
-      };
+       }
     default:
       return state;
   }
 }
 
-export default combineReducers({
-  smurfReducer
-});
+export default smurfReducer;
 
 
-import {
-  ADD_TODO,
-  FETCH_DOGGOS_START,
-  FETCH_DOGGOS_SUCCESS,
-  FETCH_DOGGOS_FAILURE
-} from '../actions';
 
 
 
