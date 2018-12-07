@@ -85,6 +85,7 @@ input::placeholder {
 
 button {
     background-color: #1F56B3;
+    box-shadow: 2px 2px 3px #B0294C;
     color: antiquewhite;
     border-radius: 4px;
     width: 90px;
