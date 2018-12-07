@@ -9,7 +9,7 @@ const initialState = {
     error: null
 };
 
-export default (smurfReducer = (state = initialState, action) => {
+export const smurfReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_START:
             return {
@@ -19,7 +19,9 @@ export default (smurfReducer = (state = initialState, action) => {
         case FETCH_SUCCESS:
             return {
                 ...state,
-                fetchingSmurfs: false
+                fetchingSmurfs: false,
+                smurfs: action.payload,
+                error: null
             };
         case FETCH_FAILURE:
             return {
@@ -38,7 +40,7 @@ export default (smurfReducer = (state = initialState, action) => {
                 smurfs: state.smurfs.filter()
             };
     }
-});
+};
 
 /*
   You'll only need one smurf reducer for this project.
