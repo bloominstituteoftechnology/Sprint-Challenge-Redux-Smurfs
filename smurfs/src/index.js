@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import reducers from './reducers';
+import { smurfReducer as reducers } from './reducers';
 
 const store = createStore(reducers, applyMiddleware(thunk, logger));
 
