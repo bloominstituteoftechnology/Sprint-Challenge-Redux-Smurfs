@@ -54,7 +54,6 @@ export const onUpdateSmurf = (myUpdatedSmurf) => dispatch => {
     dispatch({ type: UPDATE_SMURF });
     console.log('onUpdateSmurf', myUpdatedSmurf)
     axios 
-        // .put(`http://localhost:3333/smurfs/${myUpdatedSmurf.id}`, myUpdatedSmurf)
           .put(`http://localhost:3333/smurfs/${myUpdatedSmurf.id}`, myUpdatedSmurf)
         .then(response => {
           console.log('onUpdateSmurf', response.data.id)
