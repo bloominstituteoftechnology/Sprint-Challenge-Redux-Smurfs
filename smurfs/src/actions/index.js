@@ -13,3 +13,76 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+
+import axios from 'axios';
+
+export const FETCHING_START = 'FETCHING_START';
+export const FETCHING_SUCCESS = 'FETCHING_SUCCESS';
+export const FETCHING_FAILURE = 'FETCHING_FAILURE';
+
+export const ADDING_SMURF_START = 'ADDING_SMURF_START';
+export const ADDING_SMURF_SUCCESS = 'ADDING_SMURF_SUCCESS';
+export const ADDING_SMURF_FAILURE = 'ADDING_SMURF_FAILURE';
+
+export const DELETE_SMURF_START = 'DELTE_SMURF_START';
+export const DELETE_SMURF_SUCCESS = 'DELETE_SMURF_SUCCESS';
+export const DELETE_SMURF_FAILURE = 'DELETE_SMURF_FAILURE';
+
+export const UPDATE_SMURF_START = 'UPDATE_SMURF_START';
+export const UPDATE_SMURF_SUCCESS = 'UPDATE_SMURF_SUCCESS';
+export const UPDATE_SMURF_FAILURE ='UPDATE_SMURF_FAILURE';
+
+const URL = 'http://localhost:3333/smurfs';
+
+export const addingSmurfs = newSmurf => dispatch => {
+  dispatch({ type: ADDING_SMURF_START });
+  axios
+    .post(URL, newSmurf)
+    .then(res => {
+      // console.log(res);
+      dispatch({ type: ADDING_SMURF_SUCCESS, payload: res.data});
+    })
+    .catch(err => {
+      dispatch({ type: ADDING_SMURF_FAILURE, payload: err});
+    });
+};
+
+export const deleteSmurf = id => dispatch => {
+  dispatch({ type: DELETE_SMURF_START });
+  axios
+    .delete(`${URL}/${id}`)
+    .then(res => {
+      // console.log(res);
+      dispatch({ type: DELETE_SMURF_SUCCESS, payload: res.data});
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_SMURF_FAILURE, payload: err});
+    });
+};
+
+export const updateSmurf = (id, newInfo) => dispatch => {
+  dispatch({ type: UPDATE_SMURF_START });
+  axios
+    .put(`${URL}/${id}`, newInfo)
+    .then(res => {
+      // console.log(res);
+      dispatch({ type: UPDATE_SMURF_SUCCESS, payload: res.data});
+    })
+    .catch(err => {
+      dispatch({ type: UPDATE_SMURF_FAILURE, payload: err});
+    });
+};
+
+export const fetchingSmurfs = () => dispatch => {
+  dispatch({ type: FETCHING_START });
+  axios
+    .get(URL)
+    .then(res => {
+      // console.log(res);
+      dispatch({ type: FETCHING_SUCCESS, payload: res.data});
+    })
+    .catch(err => {
+      dispatch({ type: FETCHING_FAILURE, payload: err});
+    });
+};

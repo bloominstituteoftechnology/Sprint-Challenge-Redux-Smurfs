@@ -1,0 +1,51 @@
+
+.smurf-span {
+    width: 190px;
+}
+
+.smurf-name {
+    font-weight: bold;
+}
+
+.smurf-container {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.smurf-content {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px dashed lightgray;
+    padding-bottom: 5px;
+}
+
+.smurf-spacing {
+    margin-bottom: 10px;
+}
+
+.table-header {
+    border-bottom: 2px solid lightgray;
+    margin-bottom: 20px;
+}
+
+.smurf-delete-btn {
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.smurf-control-btns-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.smurf-edit-btn {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.edit-form-container-hide {
+    display: none;
+}

@@ -1,22 +1,56 @@
 import React, { Component } from 'react';
-import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import './styling/App.css';
+import { connect } from 'react-redux';
+import { fetchingSmurfs, addingSmurfs, deleteSmurf, updateSmurf } from '../actions';
+
+import Smurfs from '../components/Smurfs';
+import AddSmurfForm from '../components/AddSmurfForm';
+
 class App extends Component {
+
+  componentDidMount() {
+    this.props.fetchingSmurfs();
+  }
+
   render() {
+    if(this.props.updating) {
+      return <h3>Updating Smurf ...</h3>
+    }
+    if(this.props.deleting) {
+      return <h3>Removing Smurf ...</h3>
+    }
+    if(this.props.adding) {
+      return <h3>Adding New Smurf ...</h3>
+    }
+    if(this.props.fetching) {
+      return <h3>Loading Smurfs ...</h3>
+    }
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <AddSmurfForm addNewSmurf={this.props.addingSmurfs}/>
+        <Smurfs
+          smurfs={this.props.smurfs} 
+          deletingSmurfChar={this.props.deleteSmurf} 
+          updateSmurfHandler={this.props.updateSmurf}
+        />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    smurfs: state.smurfs,
+    fetching: state.fetching,
+    adding: state.adding,
+    deleting: state.deleteSmurf,
+    updating: state.updating,
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { fetchingSmurfs, addingSmurfs, deleteSmurf, updateSmurf }
+) (App);

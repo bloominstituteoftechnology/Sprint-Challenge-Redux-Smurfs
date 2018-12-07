@@ -21,3 +21,118 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+
+import { 
+  FETCHING_START, 
+  FETCHING_SUCCESS, 
+  FETCHING_FAILURE,
+  ADDING_SMURF_START,
+  ADDING_SMURF_SUCCESS,
+  ADDING_SMURF_FAILURE,
+  DELETE_SMURF_START,
+  DELETE_SMURF_SUCCESS,
+  DELETE_SMURF_FAILURE,
+  UPDATE_SMURF_START,
+  UPDATE_SMURF_SUCCESS,
+  UPDATE_SMURF_FAILURE,
+} from '../actions';
+
+const initialState = {
+  smurfs: [],
+  fetching: false,
+  adding: false,
+  deleting: false,
+  updating: false,
+  error: null,
+
+}
+
+const smurfsReducer = (state = initialState, action) => {
+  switch (action.type) {
+
+    // Updaing Smurf Cases
+    case UPDATE_SMURF_START:
+      return {
+        ...state,
+        updating: true,
+      };
+    case UPDATE_SMURF_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        updating: false,
+        smurfs: action.payload,
+      };
+    case UPDATE_SMURF_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updating: false,
+      };
+
+    // Deleting Smurf Cases
+    case DELETE_SMURF_START:
+      return {
+        ...state,
+        deleting: true,
+      };
+    case DELETE_SMURF_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        deleting: false,
+        smurfs: action.payload,
+      };
+    case DELETE_SMURF_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        deleting: false,
+      };
+
+    // Adding Smurf Cases
+    case ADDING_SMURF_START:
+      return {
+        ...state,
+        adding: true,
+      };
+    case ADDING_SMURF_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        adding: false,
+        smurfs: action.payload,
+      };
+    case ADDING_SMURF_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        adding: false,
+      };
+
+    // Fetching Smurfs Cases
+    case FETCHING_START:
+      return {
+        ...state,
+        fetching: true,
+      };
+    case FETCHING_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        fetching: false,
+        smurfs: action.payload,
+      };
+    case FETCHING_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        fetching: false,
+      };
+    default:
+    return state;
+  }
+};
+
+export default smurfsReducer;
