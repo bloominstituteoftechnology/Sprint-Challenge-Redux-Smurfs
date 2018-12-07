@@ -15,6 +15,7 @@ class App extends Component {
         <h1>SMURF VILLAGE</h1>
         <hr />
         <Form />
+        <hr />
         <SmurfVillage {...this.props} />
       </div>
     );

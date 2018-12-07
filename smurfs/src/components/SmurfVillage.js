@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSmurfs } from "../actions";
 import Smurf from "./Smurf";
+import styled from "styled-components";
+
+const Village = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-around;
+`;
 
 class SmurfVillage extends Component {
   render() {
@@ -9,7 +18,7 @@ class SmurfVillage extends Component {
       return <h3>Loading Smurf Village...</h3>;
     }
     return (
-      <div>
+      <Village>
         {this.props.smurfs.map(smurf => (
           <Smurf
             key={smurf.id}
@@ -20,7 +29,7 @@ class SmurfVillage extends Component {
             height={smurf.height}
           />
         ))}
-      </div>
+      </Village>
     );
   }
 }
