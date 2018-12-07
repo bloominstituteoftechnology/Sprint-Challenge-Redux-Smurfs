@@ -1,5 +1,14 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import {
+  ADD_SMURF,
+  REMOVE_SMURF,
+  EDIT_SMURF,
+  LOADING_SMURF,
+  LOADING_COMPLETE
+} from "../actions";
+
+import "./App.css";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -19,4 +28,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  smurfs: state.smurfs
+});
+
+export default connect(
+  mapStateToProps,
+  { ADD_SMURF, REMOVE_SMURF, EDIT_SMURF, LOADING_SMURF, LOADING_COMPLETE }
+)(App);
