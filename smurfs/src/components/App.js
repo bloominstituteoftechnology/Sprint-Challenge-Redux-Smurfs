@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import SmurfForm from "./SmurfForm";
 import Smurfs from "./Smurfs";
 
-import { fetchSmurf, addSmurf } from "../actions";
+import { fetchSmurf, addSmurf, deleteSmurf } from "../actions";
 
 import "./App.css";
 
@@ -23,6 +23,7 @@ class App extends Component {
           </NavLink>
           <NavLink to="/form">Form</NavLink>
         </nav>
+        <h1>Welcome to Smurfland!</h1>
         <Route
           exact path="/"
           render={properties => <Smurfs {...properties} {...this.props} />}
@@ -40,10 +41,11 @@ const mapStateToProps = state => ({
   smurfs: state.smurfs,
   fetchingSmurfs: state.fetchingSmurfs,
   addingSmurf: state.addingSmurf,
+  deletingSmurf: state.deletingSmurf,
   error: state.error
 });
 
 export default withRouter(connect(
   mapStateToProps,
-  { fetchSmurf, addSmurf },
+  { fetchSmurf, addSmurf, deleteSmurf },
 )(App));

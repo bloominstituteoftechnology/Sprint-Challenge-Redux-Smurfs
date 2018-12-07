@@ -45,37 +45,23 @@ input {
   margin: 0 auto;
 }
 
-.Smurfs {
-  border: 1px solid #efefef;
-  width: 70%;
-  margin: 0 auto;
-  padding: 6rem 4rem;
-}
-
-.Smurfs a {
-  text-decoration: none;
-  color: darkslategray;
-}
-
-.Smurfs h1 {
-  margin-bottom: 3rem;
-}
-
 .Smurf {
   margin: 0 auto;
   margin-bottom: 2rem;
   border: 1px solid #efefef;
   padding: 2rem;
   width: 60%;
-  cursor: pointer;
 }
 
 .Smurf h3, p { 
   margin-bottom: 1rem;
 }
 
+button {
+  cursor: pointer;
+}
 
 .list-btn {
   padding: 1rem;
-  width: 100px;
+  width: 150px;
 }
