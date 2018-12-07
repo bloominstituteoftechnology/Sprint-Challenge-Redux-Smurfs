@@ -51,7 +51,7 @@ class AddSmurfForm extends Component {
             value={this.state.height}
             onChange={this.changeHandler}
           />
-          <button type="submit">Submit</button>
+          <button type="submit">Add Smurf</button>
         </form>
       </div>
     );
