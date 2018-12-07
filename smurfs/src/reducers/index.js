@@ -6,6 +6,7 @@ import {
   REQUEST_SUCCESS,
   REQUEST_FAIL,
   GET_SMURFS,
+  GET_SMURF,
   ADD_SMURF,
   // UPDATE_SMURF,
   // DELETE_SMURF
@@ -25,6 +26,7 @@ import {
 
 const initialState = {
   smurfs: [],
+  smurf: {},
   requestingSmurfs: false,
   addingSmurf: false,
   updatingSmurf: false,
@@ -32,12 +34,17 @@ const initialState = {
   error: null
 }
 
+const getSmurfById = (state, id) => {
+  return state.smurfs.filter(s => `${s.id}` === id)[0];;
+}
+
  const reducer = (state = initialState, action) => {
    switch(action.type){
     case GET_SMURFS:
       return {
         ...state,
-        requestingSmurfs: true
+        requestingSmurfs: true,
+        smurf: null
       }
 
     case REQUEST_SUCCESS:
@@ -56,6 +63,12 @@ const initialState = {
       error: action.payload,
       addingSmurf: false
     }
+
+    case GET_SMURF:
+      return {
+        ...state,
+        smurf: getSmurfById(state, action.payload)
+      }
 
     case ADD_SMURF:
     return {

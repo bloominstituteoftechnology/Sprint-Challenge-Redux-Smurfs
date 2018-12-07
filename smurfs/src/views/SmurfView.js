@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import {
-//     addSmurf
-// } from '../actions';
-
 import Smurf from '../components/Smurf';
+import {
+    getSmurf,
+    getSmurfs
+} from '../actions';
 class SmurfView extends Component {
+    componentDidMount = () => {
+        this.props.getSmurf(this.props.match.params.smurfId)
+    }
+
     render(){
         return(
-            <h1>Smurf View</h1>
+            <Smurf smurf={this.props.smurf}/>
         )
     }
 }
@@ -19,6 +23,14 @@ const mapStateToProps = state => {
     }
   }
 
+  const mapDispatchToProps = dispatch => {
+    return {
+        getSmurf: id => dispatch(getSmurf(id)),
+        getSmurfs: () => dispatch(getSmurfs())
+    }
+  }
+
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
   )(SmurfView);
