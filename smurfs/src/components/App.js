@@ -6,6 +6,8 @@ import {
   fetchSmurfs,
   addSmurf,
   deleteSmurf,
+  updateSmurf,
+  selectSmurf,
 } from '../actions';
 
 import SmurfForm from './SmurfForm';
@@ -13,6 +15,10 @@ import SmurfList from './SmurfList';
 
 
 class App extends Component {
+  state = {
+    update: false,
+  }
+
   componentDidMount() {
     console.log ('mounted');
     this.props.fetchSmurfs();
@@ -41,5 +47,7 @@ export default connect(
     fetchSmurfs,
     addSmurf,
     deleteSmurf,
+    updateSmurf,
+    selectSmurf,
   }
 )(App);

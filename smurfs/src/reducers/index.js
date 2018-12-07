@@ -13,9 +13,11 @@ import * as actions from '../actions'
 */
 const initialState = {
   smurfs: [],
+  smurf: null,
   fetchingSmurfs: false,
   addingSmurf: false,
   deletingSmurf: false,
+  updatingSmurf: false,
   error: null,
 }
 
@@ -31,6 +33,7 @@ export default (state = initialState, action) => {
         ...state,
         fetchingSmurfs: false,
         smurfs: action.payload,
+        error: null,
       }
     case actions.POST_REQUEST:
       return {
@@ -42,8 +45,9 @@ export default (state = initialState, action) => {
         ...state,
         addingSmurf: false,
         smurfs: action.payload,
+        error: null,
       }
-      case actions.DELETE_REQUEST:
+    case actions.DELETE_REQUEST:
       return {
         ...state,
         deletingSmurf: true,
@@ -53,16 +57,36 @@ export default (state = initialState, action) => {
         ...state,
         deletingSmurf: false,
         smurfs: action.payload,
+        error: null,
+      }
+    case actions.PUT_REQUEST:
+      return {
+        ...state,
+        updatingSmurf: true,
+      }
+    case actions.PUT_SUCCESS:
+      return {
+        ...state,
+        updatingSmurf: false,
+        smurfs: action.payload,
+        error: null,
       }
     case actions.GET_FAILURE:
     case actions.POST_FAILURE:
     case actions.DELETE_FAILURE:
+    case actions.PUT_FAILURE:
       return {
         ...state,
         fetchingSmurfs: false,
         addingSmurf: false,
         deletingSmurf: false,
+        updatingSmurf: false,
         error: action.payload,
+      }
+    case actions.SELECT_SMURF:
+      return {
+        ...state,
+        smurf: state.smurfs.find(smurf => smurf.id === action.payload.id)
       }
     default:
       return state;

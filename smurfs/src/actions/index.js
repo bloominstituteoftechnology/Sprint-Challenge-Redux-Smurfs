@@ -15,6 +15,12 @@ export const DELETE_REQUEST = 'DELETE_REQUEST';
 export const DELETE_SUCCESS = 'DELETE_SUCCESS';
 export const DELETE_FAILURE = 'DELETE_FAILURE';
 
+export const PUT_REQUEST = 'PUT_REQUEST';
+export const PUT_SUCCESS = 'PUT_SUCCESS';
+export const PUT_FAILURE = 'PUT_FAILURE';
+
+export const SELECT_SMURF = 'SELECT_SMURF';
+
 /*
   base url to Smurf API
 */
@@ -61,3 +67,23 @@ export const deleteSmurf = (id) => (dispatch) => {
       dispatch({ type: DELETE_FAILURE, payload: err })
     })
 }
+
+export const updateSmurf = (smurf,id) => (dispatch) => {
+  dispatch ({type: PUT_REQUEST});
+
+  axios
+    .put(BASE_URL + `/${id}`, smurf)
+    .then( res => {
+      dispatch({ type: PUT_SUCCESS, payload: res.data })
+    })
+    .catch( err => {
+      dispatch({ type: PUT_FAILURE, payload: err })
+    })
+}
+
+export const selectSmurf = (id) => ({
+  type: SELECT_SMURF,
+  payload: {
+    id: id,
+  }
+})
