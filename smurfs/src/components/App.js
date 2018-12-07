@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
+import { connect } from "react-redux";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -19,4 +21,11 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(
+	({ smurfs }) => ({ smurfs }),
+	{
+		getSmurfs,
+		addSmurf,
+		deleteSmurf
+	}
+)(App);
