@@ -44,6 +44,7 @@ const initialSmurfsState = {
   updatingSmurf: false,
   deletingSmurf: false,
   error: null,
+  selectedSmurf: null,
 };
 
 const smurfReducer = (state = initialSmurfsState, action) => {

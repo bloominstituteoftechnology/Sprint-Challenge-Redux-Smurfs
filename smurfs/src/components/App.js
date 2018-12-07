@@ -22,7 +22,11 @@ class App extends Component {
 
   handleUpdate = id => {
     console.log(id)
-    this.props.updateSmurf(id);
+    //this.props.updateSmurf(id);
+  }
+
+  toggleUpdateForm() {
+
   }
 
   render() {
@@ -34,7 +38,7 @@ class App extends Component {
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
 
-        <FormSmurf addSmurf={this.props.addSmurf}/>
+        <FormSmurf updateForm={this.handleUpdate} addSmurf={this.props.addSmurf}/>
         <Smurfs smurfs={this.props.smurfs}
           deleteSmurf={this.handleDelete}
           updateSmurf={this.handleUpdate} />
