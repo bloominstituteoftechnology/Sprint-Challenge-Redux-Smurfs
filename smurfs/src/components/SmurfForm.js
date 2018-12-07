@@ -11,6 +11,7 @@ const SmurfForm = props => {
                 <input type='submit' value='Add Smurf' onClick={props.handleSubmit}/>
             </form>
                 <input type='submit' value='Update Smurf' onClick={props.updateSmurf}/>
+                <input type='submit' value='Delete Smurf' onClick={props.deleteSmurf}/>
         </div>
     )};
 

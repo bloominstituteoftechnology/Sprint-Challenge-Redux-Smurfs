@@ -3,7 +3,8 @@ import {
   FETCH_SUCCESS,
   FETCH_FAILURE,
   ON_HANDLE_SUBMIT,
-  UPDATE_SMURF
+  UPDATE_SMURF,
+  DELETE_SMURF
 } from '../actions';
 
 const initialState = {
@@ -11,7 +12,7 @@ const initialState = {
    fetchingSmurfs: false,
    addingSmurf: false,
    updatingSmurf: false,
-  //  deletingSmurf: false
+   deletingSmurf: false,
    error: null
  }
 
@@ -37,6 +38,7 @@ export const smurfReducer = (state = initialState, action) => {
                 fetchingSmurfs: false,
                 addingSmurf: false,
                 updatingSmurf: false,
+                deletingSmurf: false,
                 error: null,
                 smurfs: action.payload
             };
@@ -46,14 +48,16 @@ export const smurfReducer = (state = initialState, action) => {
                 fetchingSmurfs: false,
                 updatingSmurf: false,
                 addingSmurf: false,
+                deletingSmurf: false,
                 error: action.payload
             };
         case ON_HANDLE_SUBMIT:
-            console.log('from ON_HANDLE_SUBMIT', state)
+            // console.log('from ON_HANDLE_SUBMIT', state)
             return {
                 ...state, 
                 fetchingSmurfs: false,
                 updatingSmurf: false,
+                deletingSmurf: false,
                 addingSmurf: true
                 }
         case UPDATE_SMURF:
@@ -61,7 +65,16 @@ export const smurfReducer = (state = initialState, action) => {
                 ...state,
                 updatingSmurf: true,
                 fetchingSmurfs: false,
-                addingSmurf: false
+                addingSmurf: false,
+                deletingSmurf: false
+            }
+        case DELETE_SMURF:
+            return {
+                ...state,
+                updatingSmurf: true,
+                fetchingSmurfs: false,
+                addingSmurf: false,
+                deletingSmurf: true
             }
         default: 
             return state;

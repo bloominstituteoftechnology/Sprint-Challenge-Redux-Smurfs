@@ -21,6 +21,7 @@ export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
 export const ON_HANDLE_SUBMIT = 'ON_HANDLE_SUBMIT';
 export const UPDATE_SMURF = 'UPDATE_SMURF';
+export const DELETE_SMURF = 'DELETE_SMURF';
 
 export const fetch_smurfs = () => dispatch => {
     dispatch({ type: FETCH_START });
@@ -57,6 +58,19 @@ export const onUpdateSmurf = (myUpdatedSmurf) => dispatch => {
           .put(`http://localhost:3333/smurfs/${myUpdatedSmurf.id}`, myUpdatedSmurf)
         .then(response => {
           console.log('onUpdateSmurf', response.data.id)
+            dispatch({ type: FETCH_SUCCESS, payload: response.data})
+        })
+    .catch(err => {
+        dispatch({ type: FETCH_FAILURE, payload: err })
+    });
+};
+
+export const onDeleteSmurf = (deleteSmurfData) => dispatch => {
+    dispatch({ type: DELETE_SMURF });
+    console.log('delete smurf', deleteSmurfData)
+    axios 
+        .delete(`http://localhost:3333/smurfs/${deleteSmurfData.id}`, deleteSmurfData)
+        .then(response => {
             dispatch({ type: FETCH_SUCCESS, payload: response.data})
         })
     .catch(err => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetch_smurfs, onHandleSubmit, onUpdateSmurf } from '../actions';
+import { fetch_smurfs, onHandleSubmit, onUpdateSmurf, onDeleteSmurf } from '../actions';
 import Smurf from './Smurf';
 import SmurfForm from './SmurfForm';
 
@@ -47,6 +47,11 @@ class App extends Component {
     this.props.onUpdateSmurf(this.state)
   }
 
+  deleteSmurf = (event) => {
+    event.preventDefault();
+    this.props.onDeleteSmurf(this.state)
+  }
+
   render() {
     // console.log('state name', this.state)
     return (
@@ -58,6 +63,7 @@ class App extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           updateSmurf={this.updateSmurf}
+          deleteSmurf={this.deleteSmurf}
         />
       </div>
     );
@@ -70,7 +76,8 @@ const mapStateToProps = (state) => {
     smurfs: state.smurfReducer.smurfs,
     fetchingSmurfs: state.smurfReducer.fetchingSmurfs,
     addingSmurf: state.smurfReducer.addingSmurf,
-    updatingSmurf: state.smurfReducer.updatingSmurf
+    updatingSmurf: state.smurfReducer.updatingSmurf,
+    deletingSmurf: state.smurfReducer.deletingSmurf
   }
 }
 
@@ -79,6 +86,7 @@ export default connect(
   {
     fetch_smurfs,
     onHandleSubmit,
-    onUpdateSmurf
+    onUpdateSmurf,
+    onDeleteSmurf
   }
 )(App)
