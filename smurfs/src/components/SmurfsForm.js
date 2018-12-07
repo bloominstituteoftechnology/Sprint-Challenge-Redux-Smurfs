@@ -13,8 +13,7 @@ class SmurfsForm extends Component {
     addSmurf = e => {
         e.preventDefault();
         console.log('state submit', this.state);
-        let smurf = this.state;
-        this.props.addSmurf(smurf);
+        this.props.addSmurf(this.state);
         this.setState({
             name: '',
             age: '',
