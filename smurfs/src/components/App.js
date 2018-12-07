@@ -8,6 +8,7 @@ import {
 } from '../actions';
 
 import SmurfForm from './SmurfForm';
+import SmurfList from './SmurfList';
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
         <h1>Redux - Smurfs</h1>
         <div>Welcome to my Redux version of Smurfs!</div>
         <SmurfForm addSmurf={this.props.addSmurf}/>
+        <SmurfList smurfs={this.props.smurfs} fetchingSmurfs={this.props.fetchingSmurfs}/>
       </div>
     );
   }
