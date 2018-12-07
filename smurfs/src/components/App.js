@@ -9,7 +9,8 @@ import { connect } from 'react-redux';
  */
 
 import {
-  getSmurfs
+  getSmurfs,
+  addSmurf
 } from '../actions';
 
 import SmurfForm from './SmurfForm';
@@ -23,7 +24,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfForm smurfs={this.props.smurfs}/>
+        <SmurfForm 
+          smurfs={this.props.smurfs}
+          addSmurf={this.props.addSmurf}
+        />
         <SmurfList smurfs={this.props.smurfs}/>
       </div>
     );
@@ -38,7 +42,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getSmurfs: () => dispatch(getSmurfs())
+    getSmurfs: () => dispatch(getSmurfs()),
+    addSmurf: smurfInfo => dispatch(addSmurf(smurfInfo))
   }
 }
 

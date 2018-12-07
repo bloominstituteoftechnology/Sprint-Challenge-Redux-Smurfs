@@ -6,8 +6,7 @@ import {
   REQUEST_SUCCESS,
   REQUEST_FAIL,
   GET_SMURFS,
-  // ADD_SMURF,
-  // GET_SMURFS,
+  ADD_SMURF,
   // UPDATE_SMURF,
   // DELETE_SMURF
  } from "../actions";
@@ -46,17 +45,25 @@ const initialState = {
       ...state,
       requestingSmurfs: false,
       smurfs: action.payload,
-      error: null
+      error: null,
+      addingSmurf: false
     }
 
     case REQUEST_FAIL:
     return {
       ...state,
       requestingSmurfs: false,
-      error: action.payload
+      error: action.payload,
+      addingSmurf: false
     }
 
-    // case ADD_SMURF:
+    case ADD_SMURF:
+    return {
+      ...state,
+      smurfs: action.payload,
+      addingSmurf: true
+    }
+
 
     // case UPDATE_SMURF:
 
