@@ -7,7 +7,8 @@ class SmurfForm extends Component {
             newSmurf: {
                 name: '',
                 age: 0,
-                height: 0
+                height: 0,
+                id: 1
             }
         }
     }
@@ -34,6 +35,7 @@ class SmurfForm extends Component {
             this.props.addSmurf(this.state.newSmurf)
             this.setState({
                 newSmurf: {
+                    id: this.state.newSmurf.id + 1,
                     name: '',
                     age: 0,
                     height: 0
