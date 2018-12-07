@@ -26,27 +26,30 @@ class App extends Component {
     console.log(this.props);
     return (
       <div className="App">
-        <h1>Smurf-Redux</h1>
-        <ul>
-          {this.props.smurfs.map(smurf => (
-            <li key={smurf.id}>
-              Name: {smurf.name}, Age: {smurf.age}, Height: {smurf.height}
-              cm&nbsp;
-              <button onClick={this.updateClick}>Update</button>
-              <UpdateSmurf id={smurf.id} hidden={this.state.isHidden} />
-              <button
-                className="del-btn"
-                onClick={() => {
-                  this.props.deleteSmurf(smurf.id);
-                  this.forceUpdate();
-                }}
-              >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-        <SmurfForm />
+        <div className="smurf-container">
+          <h1>Smurf-Redux</h1>
+          <ul>
+            {this.props.smurfs.map(smurf => (
+              <li key={smurf.id}>
+                Name: {smurf.name}, Age: {smurf.age}, Height: {smurf.height}
+                cm&nbsp;
+                <button onClick={this.updateClick}>Update</button>
+                <UpdateSmurf id={smurf.id} hidden={this.state.isHidden} />
+                <button
+                  className="del-btn"
+                  onClick={() => {
+                    this.props.deleteSmurf(smurf.id);
+                    this.forceUpdate();
+                  }}
+                >
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          <SmurfForm />
+        </div>
       </div>
     );
   }

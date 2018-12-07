@@ -39,6 +39,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
     border: 1px solid lightgrey;
     border-radius: 6px;
@@ -57,7 +58,7 @@
     border-radius: 6px;
     box-shadow: 3px 5px 10px #1F56B3;
     padding-bottom: 20px;
-    margin: 40px;
+    margin: 80px;
     width: 400px;
     color: #B0294C;
 }
@@ -93,4 +94,5 @@ button {
     border-radius: 6px;
     box-shadow: 3px 5px 10px #1F56B3;
     padding-bottom: 20px;
+    width: 800px;
 }

@@ -28,33 +28,31 @@ class AddSmurfForm extends Component {
     console.log(this.props);
     return (
       <div className="smurf-form">
-        <div className="smurf-container">
-          <h1>Add a Smurf</h1>
-          <form onSubmit={this.submitForm}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={this.state.name}
-              onChange={this.changeHandler}
-            />
-            <input
-              type="number"
-              name="age"
-              placeholder="Age"
-              value={this.state.age}
-              onChange={this.changeHandler}
-            />
-            <input
-              type="number"
-              name="height"
-              placeholder="Height"
-              value={this.state.height}
-              onChange={this.changeHandler}
-            />
-            <button type="submit">Submit</button>
-          </form>
-        </div>
+        <h1>Add a Smurf</h1>
+        <form onSubmit={this.submitForm}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={this.state.name}
+            onChange={this.changeHandler}
+          />
+          <input
+            type="number"
+            name="age"
+            placeholder="Age"
+            value={this.state.age}
+            onChange={this.changeHandler}
+          />
+          <input
+            type="number"
+            name="height"
+            placeholder="Height"
+            value={this.state.height}
+            onChange={this.changeHandler}
+          />
+          <button type="submit">Submit</button>
+        </form>
       </div>
     );
   }
