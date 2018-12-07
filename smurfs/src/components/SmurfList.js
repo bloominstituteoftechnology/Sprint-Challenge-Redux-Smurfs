@@ -10,7 +10,7 @@ const SmurfList = ({smurfs, error, fetchingSmurfs, deleteSmurf, toggleForm}) => 
           <Header as="h4">Something has gone teribbly wrong.</Header> :
           fetchingSmurfs ?
             <Loader active inline='centered' /> :
-            <Card.Group>
+            <Card.Group centered>
               {
                 smurfs.map(smurf => (
                   <Card key={smurf.id}>
