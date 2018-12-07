@@ -12,7 +12,7 @@ import SmurfForm from './SmurfForm';
  `How do I ensure that my component links the state to props?`
  */
 
-let newId = 1;
+// let newId = 1;
 
 class App extends Component {
   constructor() {
@@ -21,7 +21,7 @@ class App extends Component {
       name: '',
       age: 0,
       height: '',
-      id: newId++
+      id: ''
     }
   }
 
@@ -48,7 +48,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('state name', this.state.name)
+    // console.log('state name', this.state)
     return (
       <div className="App">
         {this.props.smurfs.map((smurf, index) => {
@@ -65,7 +65,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("mapstate =", state)
+  // console.log("mapstate =", state)
   return {
     smurfs: state.smurfReducer.smurfs,
     fetchingSmurfs: state.smurfReducer.fetchingSmurfs,

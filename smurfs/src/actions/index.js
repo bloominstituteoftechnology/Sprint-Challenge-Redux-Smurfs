@@ -54,7 +54,7 @@ export const onUpdateSmurf = (myUpdatedSmurf) => dispatch => {
     console.log('onUpdateSmurf', myUpdatedSmurf)
     axios 
         // .put(`http://localhost:3333/smurfs/${myUpdatedSmurf.id}`, myUpdatedSmurf)
-          .put(`http://localhost:3333/smurfs/2`, myUpdatedSmurf)
+          .put(`http://localhost:3333/smurfs/${myUpdatedSmurf.id}`, myUpdatedSmurf)
         .then(response => {
           console.log('onUpdateSmurf', response.data.id)
             dispatch({ type: FETCH_SUCCESS, payload: response.data})
