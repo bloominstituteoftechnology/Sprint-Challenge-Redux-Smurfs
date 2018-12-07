@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { H3, Form, Input,  Button, H2 } from '../styles';
+import { H3, Form, Input,  Button, H2, Section } from '../styles';
 
 export default class SmurfForm extends Component {
 	handleMode = () => {
@@ -12,7 +12,7 @@ export default class SmurfForm extends Component {
 
 	render() {
 		return (
-			<React.Fragment>
+			<Section>
 				<Form mode={this.props.mode} onSubmit={this.handleMode()}>
 					<H2>{this.props.mode} {this.props.name}</H2>
 					<Input
@@ -38,10 +38,10 @@ export default class SmurfForm extends Component {
 						value={this.props.height}
 						onChange={this.props.handleChange}
 					/>
-					<Button type="submit">{this.props.mode}</Button>
-					<H3 form mode={this.props.mode} onClick={this.props.defaultForm}>Cancel</H3>
+					<Button mode={'form'} type="submit">{this.props.mode}</Button>
+					<H3 form={'form'} mode={this.props.mode} onClick={this.props.defaultForm}>Cancel</H3>
 				</Form>
-			</React.Fragment>
+			</Section>
 		);
 	}
 }

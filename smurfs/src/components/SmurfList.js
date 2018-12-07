@@ -1,10 +1,10 @@
 import React from 'react';
 
-import {Div, H2, H3, Button} from '../styles'
+import {Div, H2, H3, Button, Section} from '../styles'
 
 const SmurfList = props => {
     return (
-        <React.Fragment>
+        <Section>
             {props.smurfs.map((smurf, index) => {
                 return (
                 <Div column key={index}>
@@ -19,7 +19,7 @@ const SmurfList = props => {
                 </Div>
                 );
             })}
-        </React.Fragment>
+        </Section>
     )
 }
 

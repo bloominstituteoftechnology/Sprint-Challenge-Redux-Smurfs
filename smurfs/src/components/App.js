@@ -30,11 +30,12 @@ class App extends Component {
   addSmurf = (event) => {
     event.preventDefault();
     this.props.addSmurf(this.state.smurf);
+    this.defaultForm();
   }
 
   updateSmurf = () => {
     this.props.updateSmurf(this.state.smurf, this.state.id);
-    this.defaultForm()
+    this.defaultForm();
   }
 
   deleteSmurf = (id) => {

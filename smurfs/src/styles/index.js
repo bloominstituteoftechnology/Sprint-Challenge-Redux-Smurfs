@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, keyframes } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 export const GlobalStyle = createGlobalStyle`
@@ -20,24 +20,25 @@ export const AppContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding:  2.5%;
+	padding:  2%;
 `;
 
 export const H1 = styled.h1`
 	font-size: 4rem;
 	color: #F9FBFF;
 	font-family: 'Pacifico', cursive;
-	margin-bottom: 2.5%;
+	margin-bottom: 1%;
 `;
 
 export const Main = styled.main`
-	border-radius: 30%;
+	border-radius: 50%;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: space-around;
 	align-items: center;
-	width: 700px;
-	padding: 1%;
+	width: 600px;
+	padding: 2.5% 2.5% 9%;
+	border: 5px solid #F9FBFF;
 	background: #F9FBFF;
 `;
 
@@ -45,38 +46,25 @@ export const Section = styled.section`
  display: flex;
  flex-flow: row wrap;
  justify-content: space-around;
- align-items: center;
+ align-items: space-between;
  width: 90%;
- padding: 2.5% 0;
+ padding: 0;
  position: relative;
- margin: 0% 0 1%;
-`
-export const Break = styled.div`
-border: 1px solid black;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 0;
-width: 50%;
-margin: 200px;
-position: absolute;
+ margin: 0;
 `
 
 export const Form = styled.form`
-shape-outside: circle(50%);
-shape-margin: 20%;
-top: 10;
 display: flex;
-background: #373F51;
+background: #7BE6F7;
 flex-flow: column nowrap;
 justify-content: space-around;
 align-items: center;
-border: 2px solid #7BE6F7;
-border-radius: 25px;
+border: 2px solid #373F51;
+border-radius: 50%;
 padding: 2.5% 0;
-width: 35%;
-margin: 0%;
+width: 400px;
+height: 200px;
+margin: 0 0 2.5%;
 font-family: 'Oswald', sans-serif;
 `
 
@@ -84,38 +72,44 @@ export const Input = styled.input`
 width: 50%;
 border: 1px solid black;
 text-align: center;
-margin: 2.5%;
+margin: .5%;
 border-radius: 5px;
+:focus {
+	 outline: none;
+ }
 `
 
 export const Button = styled.button`
- width: 30%;
- background: #7BE6F7;
- padding: 5%;
- margin-top: 5%;
- border: 2px solid #F9FBFF;
+ width:${props => props.mode === 'form' ? '75px' : '30%'};
+ background: #F9FBFF;
+ padding: 2.5%;
+ margin-top: 2.5%;
+ border: 2px solid #373F51;
  border-radius: 50%;
+ color: #373F51;
  font-family: 'Oswald', sans-serif;
+ text-align: center;
  :hover {
+	 color: #F9FBFF;
 	 background: #373F51;
-	 color: #7BE6F7;
 	 cursor: pointer;
+	 border: 2px solid #F9FBFF;
  }
  :focus {
 	 outline: none;
  }
 `
 export const Div = styled.div`
-border: ${props => props.column ? "2px solid #7BE6F7" : 'none'};
+border: ${props => props.column ? "2px solid #373F51;" : 'none'};
 display: flex;
 flex-flow: ${props => props.column ? "column nowrap" : 'row nowrap'};
 justify-content: space-around;
 align-items: center;
-position: relative ;
-background: #373F51;
+background: #7BE6F7;
 padding: 5%;
-margin: 2.5% 0;
+margin: 1% 0;
 width: 100px;
+height: 100px;
 border-radius: 50%;
 `
 export const H2 = styled.h2`
@@ -123,19 +117,19 @@ export const H2 = styled.h2`
 	font-size: 1.8rem;
 	font-family: 'Oswald', sans-serif;
 	font-weight: bold;
-	padding: 2.5%;
+	padding: 3%;
 	width: 100%;
 	text-align: center;
-	color: #F9FBFF;
+	color: #373F51;
 `;
 
 export const H3 = styled.h3`
 	display: ${props => props.mode === 'Add' ? 'none': null};
-	color: #F9FBFF;
-	margin: 2.5% 0;
+	color: #373F51;
+	margin: 1% 0;
 	font-size: 1.4rem;
 	font-family: 'Oswald', sans-serif;
 	:hover {
-	cursor:	${props => props.form  ? 'pointer': null};
+	cursor:	${props => props.form === 'form'  ? 'pointer': null};
 	}
 `
