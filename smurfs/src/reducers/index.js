@@ -11,8 +11,9 @@ const initialState =
  {
    smurfs: [],
    error: null,
-   requestingData: false
+   requestingData: false, 
  }
+
 
 export const reducer = (state = initialState, action) => {
   switch(action.type) {

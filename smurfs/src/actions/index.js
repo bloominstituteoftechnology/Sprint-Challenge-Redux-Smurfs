@@ -11,8 +11,7 @@ export const requestSmurfs = () => dispatch => {
   axios
     .get(`http://localhost:3333/smurfs`)
     .then((response) => {
-      console.log('Response:',response)
-      response.data.forEach((item, index) => item.id = index)
+      console.log('Response:',response) 
       dispatch({type: REQUEST_SUCCESS, payload: response.data})
     })
     .catch(err => {
@@ -25,7 +24,7 @@ dispatch({type: ADD});
 axios
   .post(`http://localhost:3333/smurfs`, smurf)
   .then((response) => {
-    dispatch({type: REQUEST_SUCCESS, payload: response.data})
+  dispatch({type: REQUEST_SUCCESS, payload: response.data})
   })
   .catch(err => {
     dispatch({type: REQUEST_ERROR, err})
@@ -49,7 +48,7 @@ export const deleteSmurf = (id) => dispatch => {
   axios
     .delete(`http://localhost:3333/smurfs/${id}`)
     .then((response) => {
-			dispatch({ type: REQUEST_SUCCESS, payload: response.data });
+    dispatch({ type: REQUEST_SUCCESS, payload: response.data });
 		})
 		.catch((err) => {
 			dispatch({ type: REQUEST_ERROR, err });
