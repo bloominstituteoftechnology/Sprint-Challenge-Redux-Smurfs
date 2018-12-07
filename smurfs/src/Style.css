@@ -30,3 +30,30 @@ body {
   background-color: white;
   transition: 0.3s all ease-in;
 }
+
+.smurfs-list {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.smurf {
+  border: 1px solid black;
+  background: blue;
+  color: white;
+  margin: 10px;
+  padding: 0 10px;
+  border-radius: 10px;
+}
+
+.smurf:hover {
+  cursor: pointer;
+  background-color: lightblue;
+  color: black;
+  transition: 0.3s all ease-in;
+}
+
+.smurf-name {
+  font-family: 'Indie Flower', cursive;
+}
