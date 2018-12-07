@@ -10,11 +10,17 @@
 ## Questions - Self Study - You can exercise your Google-Fu for this and any other _Sprint Challenge_ in the future.
 
 1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
+map, filter, reduce or concat as well. Object.assing or we can use the spread operator
 1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+Actions define the type of event/action that is happening and what kind of effect it produces (i.e. payload). Reducers take in actions and output either the default state object or a different object ot be assigned to the redux store. The store is where the state is kept in Redux. The reducer helps to connect the store to our application and make the state inside the store available to components of our App.
 1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
+(Not sure I know what exaclty this is asking) Application state is store in the root of our application and is passed down as props to lower level components. Component state is store locally in a component for things like controlled inputs. This state is not passed down through props.
 1.  What is middleware?
+It's a third party extension point between dispatching an action and and the moment is reaches the redux store.
 1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+Redux thunk is middleware that allows us to run asynchronous functions. It also allows us to chain functions in our actions instead of using actions that solely produce an object like normal.
 1.  Which `react-redux` method links up our `components` with our `redux store`?
+connect()()
 
 ## Initializing Project - READ THIS CAREFULLY, you have two apps here. A server, and a client.
 
