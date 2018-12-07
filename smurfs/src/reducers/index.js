@@ -1,4 +1,4 @@
-import {FETCHING,SUCCESS,FAILURE,ADDING} from "../actions"
+import {FETCHING,SUCCESS,FAILURE,ADDING,DELETING} from "../actions"
 
 
  const initialState = {
@@ -12,6 +12,8 @@ import {FETCHING,SUCCESS,FAILURE,ADDING} from "../actions"
       case FETCHING:
         return {...state,fetching:true}
       case ADDING:
+        return {...state,fetching:true}
+      case DELETING:
         return {...state,fetching:true}
       case SUCCESS:
         return {...state,smurfs:action.payload,fetching:false}

@@ -4,6 +4,7 @@ export const FETCHING="FETCHING";
 export const SUCCESS="SUCCESS";
 export const FAILURE="FAILURE";
 export const ADDING="ADDING";
+export const DELETING="DELETING";
 
 export const getSmurfs = () => (dispatch) => {
   dispatch({type:FETCHING})
@@ -37,6 +38,23 @@ export const addSmurf = (input) => (dispatch) =>{
         return false
       })
   )
+}
+
+export const deleteSmurf = (input) => (dispatch) =>{
+  dispatch({type:DELETING})
+  axios
+  .delete(`http://localhost:3333/smurfs/${input}`)
+  .then(response => {
+    dispatch({type:SUCCESS,payload: response.data})
+    return true
+  })
+  .catch(
+    error => {
+      console.dir(error)
+      alert(error.response.data.Error)
+      dispatch({type:FAILURE,payload: error})
+      return false
+    })
 }
 
 /*
