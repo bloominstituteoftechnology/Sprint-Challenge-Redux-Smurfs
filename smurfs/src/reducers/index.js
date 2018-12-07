@@ -52,6 +52,11 @@ const smurfReducer = (state = initialSmurfsState, action) => {
     case ADD_SMURFS_START:
       return {
         ...state,
+        selectedSmurf: action.payload,
+      };
+    case ADD_SMURFS_START:
+      return {
+        ...state,
         fetchingSmurfs: true,
         addingSmurf: true,
       };

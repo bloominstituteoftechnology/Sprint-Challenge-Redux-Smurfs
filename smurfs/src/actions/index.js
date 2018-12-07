@@ -11,6 +11,7 @@ export const UPDATE_SMURFS_FAILURE = "  UPDATE_SMURFS_FAILURE";
 export const DELETE_SMURFS_START = "  DELETE_SMURFS_START";
 export const DELETE_SMURFS_SUCCESS = "  DELETE_SMURFS_SUCCESS";
 export const DELETE_SMURFS_FAILURE = "  DELETE_SMURFS_FAILURE";
+export const SELECTING_SMURFS_START = " SELECTING_SMURFS_START ";
 
 /* 
   Action Types Go Here!
@@ -86,4 +87,9 @@ export const updateSmurf = (id, smurf) => dispatch => {
       })
     })
     .catch(err => dispatch({ type: UPDATE_SMURFS_FAILURE, payload: err }))
+}
+
+export const selectingSmurf = smurf => dispatch => {
+  console.log('selecting smurf', smurf)
+  dispatch({type: SELECTING_SMURFS_START, payload: smurf});
 }

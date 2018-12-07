@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurf, addSmurf, deleteSmurf, updateSmurf} from '../actions';
+import { getSmurf, addSmurf, deleteSmurf, updateSmurf, selectingSmurf} from '../actions';
 import Smurfs from './Smurfs.js'
 import FormSmurf from './FormSmurf'
 import './App.css'; 
@@ -20,9 +20,10 @@ class App extends Component {
     this.props.deleteSmurf(id);
   }
 
-  handleUpdate = id => {
-    console.log(id)
+  handleUpdate = smurf => {
+    //console.log(smurf)
     //this.props.updateSmurf(id);
+    this.props.selectingSmurf(smurf);
   }
 
   toggleUpdateForm() {
@@ -38,7 +39,11 @@ class App extends Component {
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
 
-        <FormSmurf updateForm={this.handleUpdate} addSmurf={this.props.addSmurf}/>
+        <FormSmurf 
+          selectedSmurf={this.props.selectedSmurf} 
+          addSmurf={this.props.addSmurf}
+          updateSmurf={this.props.updateSmurf}/>
+
         <Smurfs smurfs={this.props.smurfs}
           deleteSmurf={this.handleDelete}
           updateSmurf={this.handleUpdate} />
@@ -57,5 +62,5 @@ const mapStateToProps = state => {
 }
 export default connect(
   mapStateToProps,
-  { getSmurf, addSmurf, deleteSmurf, updateSmurf }
+  { getSmurf, addSmurf, deleteSmurf, updateSmurf, selectingSmurf }
 )(App);
