@@ -7,12 +7,12 @@ const Smurfs = props => {
     <div className="smurfs">
       <h1>Smurf Village</h1>
       <ul>
-        {props.smurfs.map(smurf => {
+        {props.smurfs.map((smurf, idx) => {
           return (
             <Smurf
               {...props}
               name={smurf.name}
-              id={smurf.id}
+              id={idx}
               age={smurf.age}
               height={smurf.height}
               key={smurf.id}
