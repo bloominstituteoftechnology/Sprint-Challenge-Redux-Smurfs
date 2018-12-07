@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-function Smurf({smurf}) {
+import { deleteSmurf } from '../actions';
+
+function Smurf({smurf, deleteSmurf}) {
 
   return (
 
@@ -9,6 +12,7 @@ function Smurf({smurf}) {
       <h2>{smurf.name}</h2>
       <p>Age: {smurf.age}</p>
       <p>Height: {smurf.height}</p>
+      <span className='delete' onClick={() => deleteSmurf(smurf)}>X</span>
 
     </div>
 
@@ -16,4 +20,4 @@ function Smurf({smurf}) {
 
 }
 
-export default Smurf;
+export default connect(null, { deleteSmurf })(Smurf);
