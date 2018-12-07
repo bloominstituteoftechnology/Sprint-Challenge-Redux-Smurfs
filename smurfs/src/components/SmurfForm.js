@@ -13,23 +13,30 @@ export default class SmurfForm extends Component {
 
   submit = e => {
     e.preventDefault();
-    this.props.add(this.state);
+    if (this.props.updating) {
+      this.props.update(this.state, this.props.id);
+    } else {
+      this.props.add(this.state);
+    }
     this.setState({ name: "", age: "", height: "" });
   };
   render() {
+    if (this.props.updating) {
+      let smurf = this.props.smurfs.filter(smurf => smurf.id === this.props.id);
+      console.log(smurf);
+    }
     return (
       <div className="form-card">
-        <h2>{this.props.update ? `Edit Smurf` : "Add Smurf"}</h2>
+        <h2>{this.props.updating ? `Edit Smurf` : "Add Smurf"}</h2>
         <form onSubmit={this.submit}>
-          {this.props.update && (
-            <input name="id" value={this.state.id} placeholder="ID" />
-          )}
+          Name:
           <input
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
             placeholder="name"
           />
+          Age:
           <input
             name="age"
             type="number"
@@ -37,13 +44,19 @@ export default class SmurfForm extends Component {
             onChange={this.handleChange}
             placeholder="age"
           />
+          Height:
           <input
             name="height"
             value={this.state.height}
             onChange={this.handleChange}
             placeholder="height"
           />
-          <button type="submit">Add Smurf</button>
+          <div className="button-container">
+            <button type="submit">Add Smurf</button>
+            {this.props.updating && (
+              <button onClick={this.hide}>Hide Form</button>
+            )}
+          </div>
         </form>
       </div>
     );

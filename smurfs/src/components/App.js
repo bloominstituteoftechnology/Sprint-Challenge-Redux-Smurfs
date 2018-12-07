@@ -6,7 +6,7 @@ import SmurfForm from "./SmurfForm";
 
 class App extends Component {
   state = {
-    hidden: true,
+    update: false,
     id: ""
   };
 
@@ -16,8 +16,10 @@ class App extends Component {
 
   toggleForm = e => {
     const id = e.target.id;
-    const smurf = this.props.smurfs.filter(smurf => smurf.id === id);
-    this.setState({ hidden: !this.state.hidden });
+    this.state.update
+      ? this.setState({ update: false, id: "" })
+      : this.setState({ update: true, id: id });
+    // this.setState({ update: !this.state.hidden, id: id });
   };
 
   deleteSmurf = e => {
@@ -25,6 +27,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state.id);
     const { smurfs, addSmurf } = this.props;
     return (
       <div className="App">
@@ -47,15 +50,18 @@ class App extends Component {
               );
             })}
           </div>
-          {this.state.hidden ? (
+          <div className="form-container">
             <SmurfForm add={addSmurf} />
-          ) : (
-            <SmurfForm
-              update={this.props.updateSmurf}
-              toggle={this.toggleForm}
-              updating
-            />
-          )}
+            {this.state.update && (
+              <SmurfForm
+                update={this.props.updateSmurf}
+                toggle={this.toggleForm}
+                id={this.state.id}
+                smurfs={smurfs}
+                updating
+              />
+            )}
+          </div>
         </div>
 
         {/* <SmurfForm add={addSmurf} toggle={this.toggleForm} /> */}
