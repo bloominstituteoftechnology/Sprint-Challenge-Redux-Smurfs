@@ -1,15 +1,11 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING, SUCCESS, FAILURE, ADD_NEW_SMURF } from "../actions";
+import { PENDING, SUCCESS, FAILURE, } from "../actions";
 
 const initialState = {
 	smurfs: [],
-  fetchingSmurfs: false,
-  smurfsFetched: false,
-	addingSmurf: false,
-	updatingSmurf: false,
-	deletingSmurf: false,
+  pending: false,
 	error: null,
 };
 
@@ -22,32 +18,23 @@ const initialState = {
 */
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case FETCHING:
+		case PENDING:
 			return {
 				...state,
-				fetchingSmurfs: true,
-				smurfsFetched: false,
+				pending: true,
 			};
 		case SUCCESS:
 			return {
 				...state,
-				smurfs: action.payload,
-				smurfsFetched: true,
+				smurfs: [...action.payload],
 				error: false,
-				fetchingSmurfs: false,
+				pending: false,
 			};
 		case FAILURE:
 			return {
 				...state,
 				error: action.payload,
-				fetchingSmurfs: false,
-				smurfsFetched: false,
-			};
-		case ADD_NEW_SMURF:
-			return {
-				...state,
-				smurfs: action.payload,
-				addingSmurf: true,
+				pending: false,
 			};
 
 		default:

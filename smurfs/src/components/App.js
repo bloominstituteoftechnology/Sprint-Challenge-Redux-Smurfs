@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 
 import './App.css';
-import {getSmurfs} from '../actions'
+import {getSmurfs, addNewSmurf} from '../actions'
 import SmurfList from './SmurfList/SmurfList';
 import AddSmurfForm from './AddSmurfForm/AddSmurfForm';
 
@@ -15,15 +15,22 @@ import AddSmurfForm from './AddSmurfForm/AddSmurfForm';
 class App extends Component {
 
   componentDidMount() {
-		console.log("CDM App.js Props: ", this.props);
+		// console.log("CDM App.js Props: ", this.props);
 		this.props.getSmurfs();
 	}
 
   render() {
     return (
       <div className="App">
+        {this.props.pending ? <h4>LOADING...</h4> : null };
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <AddSmurfForm />
+        <AddSmurfForm 
+          smurfs={this.props.smurfs}
+          name={this.props.name}
+          age={this.props.age}
+          height={this.props.height}
+          addNewSmurf={this.props.addNewSmurf}
+        />
         <SmurfList smurfs={this.props.smurfs}/>
       </div>
     );
@@ -31,10 +38,10 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("mapStateToProps ", state);
+  // console.log("mapStateToProps ", state);
 	return {
 		smurfs: state.smurfs,
-		fetchingSmurfs: state.fetchingSmurfs,
+		pending: state.pending,
 		error: state.error,
 	};
 }
@@ -52,6 +59,7 @@ export default connect(
   // mapDispatchToProps,
 {
   getSmurfs,
+  addNewSmurf
   },
 )(App);
 
