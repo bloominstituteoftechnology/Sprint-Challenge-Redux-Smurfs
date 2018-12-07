@@ -4,6 +4,8 @@
     height: 1000px;
     color: #B0294C;
     font-weight: bolder;
+    text-shadow: 2px 2px blue;
+    font-size: 20px;
 }
 
 
