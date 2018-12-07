@@ -19,7 +19,7 @@ class App extends Component {
         return (
             <div className="App">
                 <SmurfsList smurfs={this.props.smurfs} />
-                <SmurfsForm submit={this.props.addSmurf} />
+                <SmurfsForm addSmurf={this.props.addSmurf} />
             </div>
         );
     }
@@ -29,13 +29,16 @@ const mapStateToProps = state => {
     console.log(state);
     return {
         smurfs: state.smurfs,
-        fetching: state.fetchingSmurfs
+        fetchingSmurfs: state.fetchingSmurfs,
+        addingSmurfs: state.addingSmurf,
+        updatingSmurf: state.updatingSmurf,
+        deletingSmurf: state.deletingSmurf
     };
 };
 
 const mapDispatchToProps = dispatch => ({
     fetchSmurfs: () => dispatch(fetchSmurfs()),
-    addSmurf: () => dispatch(addSmurf())
+    addSmurf: smurf => dispatch(addSmurf(smurf))
 });
 
 export default connect(
