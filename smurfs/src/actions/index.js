@@ -4,7 +4,8 @@ export const FETCH_START = 'FETCH_START',
     FETCH_SUCCESS = 'FETCH_SUCCESS',
     FETCH_FAILURE = 'FETCH_FAILURE',
     ADD_SMURF = 'ADD_SMURF',
-    REMOVE_SMURF = 'REMOVE_SMURF';
+    REMOVE_SMURF = 'REMOVE_SMURF',
+    SMURF_ADDED = 'SMURF_ADDED';
 
 export const fetchSmurfs = () => dispatch => {
     dispatch({ type: FETCH_START });
@@ -13,6 +14,20 @@ export const fetchSmurfs = () => dispatch => {
         .then(response => {
             console.log(response);
             dispatch({ type: FETCH_SUCCESS, payload: response.data });
+        })
+        .catch(err => {
+            dispatch({ type: FETCH_FAILURE, payload: err });
+        });
+};
+
+export const addSmurf = smurf => dispatch => {
+    console.log('smurf post', smurf);
+    dispatch({ type: ADD_SMURF });
+    axios
+        .post('http://localhost:3333/smurfs/', smurf)
+        .then(response => {
+            console.log(response);
+            dispatch({ type: SMURF_ADDED, payload: response.data });
         })
         .catch(err => {
             dispatch({ type: FETCH_FAILURE, payload: err });

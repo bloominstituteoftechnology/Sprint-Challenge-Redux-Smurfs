@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SmurfsList from './SmurfsList';
 import SmurfsForm from './SmurfsForm';
-import { fetchSmurfs } from './../actions';
+import { fetchSmurfs, addSmurf } from './../actions';
 import { connect } from 'react-redux';
 /*
  to wire this component up you're going to need a few things.
@@ -19,7 +19,7 @@ class App extends Component {
         return (
             <div className="App">
                 <SmurfsList smurfs={this.props.smurfs} />
-                <SmurfsForm />
+                <SmurfsForm submit={this.props.addSmurf} />
             </div>
         );
     }
@@ -34,7 +34,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    fetchSmurfs: () => dispatch(fetchSmurfs())
+    fetchSmurfs: () => dispatch(fetchSmurfs()),
+    addSmurf: () => dispatch(addSmurf())
 });
 
 export default connect(

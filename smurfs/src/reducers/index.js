@@ -3,7 +3,8 @@ import {
     FETCH_SUCCESS,
     FETCH_FAILURE,
     ADD_SMURF,
-    REMOVE_SMURF
+    REMOVE_SMURF,
+    SMURF_ADDED
 } from '../actions';
 
 const initialState = {
@@ -37,13 +38,20 @@ export const smurfReducer = (state = initialState, action) => {
         case ADD_SMURF:
             return {
                 ...state,
-                smurfs: [...state.smurfs, action.payload.smurf]
+                addingSmurf: true
             };
         case REMOVE_SMURF:
             return {
                 ...state,
                 //TODO filter smurfs
                 smurfs: state.smurfs.filter()
+            };
+        case SMURF_ADDED:
+            return {
+                ...state,
+                addingSmurf: false,
+                smurfs: action.payload,
+                err: null
             };
         default:
             return state;
