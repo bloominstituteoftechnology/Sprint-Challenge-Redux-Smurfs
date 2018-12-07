@@ -32,12 +32,12 @@ export const smurfReducer = (state = initialState, action) => {
         case FETCH_FAILURE:
             return {
                 ...state,
-                error: err
+                error: action.payload.err
             };
         case ADD_SMURF:
             return {
                 ...state,
-                smurfs: [...state.smurfs, payload.smurf]
+                smurfs: [...state.smurfs, action.payload.smurf]
             };
         case REMOVE_SMURF:
             return {
