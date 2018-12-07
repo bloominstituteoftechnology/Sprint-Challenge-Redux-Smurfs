@@ -19,9 +19,9 @@ import { FETCHING, ADDING, UPDATING, DELETING, SUCCESS, FAILURE } from '../actio
 const initialState = {
 
   smurfs: [],
-  fetchingSmurfs: false
-  addingSmurf: false
-  updatingSmurf: false
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
   deletingSmurf: false
 
 }
@@ -54,9 +54,9 @@ export default function(state = initialState, action) {
       return {
 
         smurfs: action.payload,
-        fetchingSmurfs: false
-        addingSmurf: false
-        updatingSmurf: false
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        updatingSmurf: false,
         deletingSmurf: false
 
       }
