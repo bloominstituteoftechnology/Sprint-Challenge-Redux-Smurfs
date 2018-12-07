@@ -10,7 +10,7 @@ import './App.css';
 import axios from 'axios';
 import Smurfs from './Smurfs';
 import { connect } from 'react-redux';
-import { getSmurfs, addSmurf } from '../actions';
+import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
 
 // for testing in console
 window.axios = axios;
@@ -24,7 +24,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Smurfs smurfs={this.props.smurfs} addSmurf={this.props.addSmurf}/>
+        <Smurfs smurfs={this.props.smurfs} addSmurf={this.props.addSmurf} deleteSmurf={this.props.deleteSmurf}/>
       </div>
     );
   }
@@ -44,6 +44,7 @@ function mapDispatchToProps(dispatch){
   return {
     getSmurfs: () => dispatch(getSmurfs()),
     addSmurf: newSmurf => dispatch(addSmurf(newSmurf)),
+    deleteSmurf: smurfId => dispatch(deleteSmurf(smurfId))
   }
 }
 
