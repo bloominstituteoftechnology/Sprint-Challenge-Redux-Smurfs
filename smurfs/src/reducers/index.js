@@ -22,7 +22,8 @@ const initialState = {
   fetchingSmurfs: false,
   addingSmurf: false,
   updatingSmurf: false,
-  deletingSmurf: false
+  deletingSmurf: false,
+  error: null
 
 }
 
@@ -62,8 +63,7 @@ export default function(state = initialState, action) {
       }
 
     case FAILURE:
-      console.log(action.payload);
-      return state;
+      return {...state, error: action.payload};
 
     default:
       return state;
