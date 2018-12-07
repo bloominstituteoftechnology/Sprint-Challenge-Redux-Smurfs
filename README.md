@@ -41,14 +41,14 @@ src
 
 ## Project Description
 
-- For today's challenge you're going to be building a `React/Redux` application that interfaces with the same `smurfs` api you played with last week. The key differences here are that you're going to be wiring up Redux. and `redux-thunk`
+[x] - For today's challenge you're going to be building a `React/Redux` application that interfaces with the same `smurfs` api you played with last week. The key differences here are that you're going to be wiring up Redux. and `redux-thunk`
 
 ## API Design - This is how you'll interface with the API and what is required from every endpoint.
 
 ### GET '/smurfs'
 
-- To retrieve an array all the smurfs in the Smurf DB simply write a get to the endpoint `'/smurfs'`.
-- Because `Redux-Thunk` is wired up as a middleware for this project. Be sure to utilize thunks when appropriate:
+[x] - To retrieve an array all the smurfs in the Smurf DB simply write a get to the endpoint `'/smurfs'`.
+[x] - Because `Redux-Thunk` is wired up as a middleware for this project. Be sure to utilize thunks when appropriate:
 
 ```js
 return dispatch => {
@@ -74,7 +74,8 @@ return dispatch => {
 
 ### POST '/smurfs'
 
-- To add a smurf to the Smurf DB you'll need all three fields. `name`, `age`, and `height`.
+[x] - To add a smurf to the Smurf DB you'll need all three fields. `name`, `age`, and `height`.
+
 - Example:
 
 ```js
@@ -85,10 +86,10 @@ return dispatch => {
 }
 ```
 
-- If a smurf is created correctly, you should see a response that is an array of smurfs with uniqe id's assigned to each smurf.
-- Initially Brainey will be in the array, but it takes more than one smurf to make the village. Be sure to add a few smurfs to populate our smurf village.
-- **HINT** if you are going to be working on Stretch Problem, you'll need to use that unique `id`.
-- Example of object created in Smurf DB:
+[x] - If a smurf is created correctly, you should see a response that is an array of smurfs with unique id's assigned to each smurf.
+[x] - Initially Brainey will be in the array, but it takes more than one smurf to make the village. Be sure to add a few smurfs to populate our smurf village.
+[x] - **HINT** if you are going to be working on Stretch Problem, you'll need to use that unique `id`.
+[x] - Example of object created in Smurf DB:
 
 ```js
 [

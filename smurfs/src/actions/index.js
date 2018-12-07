@@ -25,7 +25,7 @@ export const getSmurfs = () => dispatch => {
     .catch(err => dispatch({ type: FETCHING_SMURFS_FAILURE, payload: err }));
 };
 
-export const addSmurf = () => dispatch => {
+export const addSmurf = smurf => dispatch => {
   dispatch({ type: ADD_SMURF });
   axios
     .post(URL, smurf)
@@ -33,7 +33,7 @@ export const addSmurf = () => dispatch => {
     .catch(err => dispatch({ type: ADD_SMURF_FAILURE, payload: err }));
 };
 
-export const deleteSmurf = () => dispatch => {
+export const deleteSmurf = smurf => dispatch => {
   dispatch({ type: DELETE_SMURF });
   axios
     .delete(`${URL}${smurf}`, smurf)
@@ -41,7 +41,7 @@ export const deleteSmurf = () => dispatch => {
     .catch(err => dispatch({ type: DELETE_SMURF_FAILURE, payload: err }));
 };
 
-export const updateSmurf = () => dispatch => {
+export const updateSmurf = smurf => dispatch => {
   dispatch({ type: EDIT_SMURF });
   axios
     .put(`${URL}${smurf.id}`, smurf)
