@@ -44,8 +44,8 @@ export const getSmurfs = () => {
 	}
 };
 
-export const addNewSmurf = data => {
-	const smurfs = axios.post("http://localhost:3333/smurfs", data);
+export const addNewSmurf = (name, age, height) => {
+	const smurfs = axios.post("http://localhost:3333/smurfs", name, age, height);
 	return dispatch => {
 		dispatch({ type: PENDING });
 		smurfs

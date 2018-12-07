@@ -5,6 +5,9 @@ import { PENDING, SUCCESS, FAILURE, } from "../actions";
 
 const initialState = {
 	smurfs: [],
+	name: '',
+	age: 0,
+	height: '',
   pending: false,
 	error: null,
 };

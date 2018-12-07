@@ -3,34 +3,28 @@ import axios from "axios";
 import { connect } from "react-redux";
 
 class AddSmurfForm extends React.Component {
-	// constructor(props) {
-	// 	super(props);
-	// 	this.state = {
-	// 		smurfs: [],
-	// 		name: "",
-	// 		age: "",
-	// 		height: "",
-	// 	};
-	// }
+	constructor(props) {
+		super(props);
+		this.state = {
+			smurfs: [],
+			name: "",
+			age: "",
+			height: "",
+		};
+	}
 
 	handleChange = event => {
 		this.setState({ [event.target.name]: event.target.value });
 	};
 
-	handleSubmit = event => {
+	handleSubmit = (event) => {
 		event.preventDefault();
-		this.props.addNewSmurf({
-			newSmurf: {
-				name: this.props.name,
-				age: this.props.age,
-				height: this.props.height,
-			},
-		});
+		this.props.addNewSmurf(this.state);
 		this.setState({smurf: ''})
 	};
 
 	render() {
-		// console.log('FORM PROPS', this.props)
+		console.log('FORM PROPS', this.props)
 		return (
 			<div>
 				<h1>Smurf Form</h1>
