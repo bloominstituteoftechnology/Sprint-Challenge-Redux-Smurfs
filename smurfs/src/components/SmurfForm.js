@@ -12,6 +12,15 @@ class SmurfForm extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.selected !== prevProps.selected) {
+      if (this.props.selected) {
+        const s = this.props.selected;
+        this.setState({name: s.name, age: s.age, height: s.height});
+      } else this.clearState();
+    }
+  }
+
   clearState = () => {
     this.setState({name: '', age: '', height: ''});
   };
@@ -51,7 +60,14 @@ class SmurfForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    selected: state.selectedSmurf,
+    updating: state.updatingSmurf,
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   {addSmurf},
 )(SmurfForm);

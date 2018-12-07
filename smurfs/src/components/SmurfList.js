@@ -6,7 +6,7 @@ const SmurfList = props => {
     <div>
       <h2>Smurf Village</h2>
       {props.smurfs.map(s => (
-        <Smurf key={s.id} smurf={s} />
+        <Smurf key={s.name} smurf={s} selectSmurf={props.selectSmurf} />
       ))}
     </div>
   );

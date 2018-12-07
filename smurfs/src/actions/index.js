@@ -8,6 +8,12 @@ export const ADDING_SMURF = 'ADDING_SMURF';
 export const ADD_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS';
 export const ADD_SMURF_FAILURE = 'ADD_SMURF_FAILURE';
 
+export const EDITING_SMURF = 'EDITING_SMURF';
+export const EDIT_SMURF_SUCCESS = 'EDII_SMURF_SUCCESS';
+export const EDIT_SMURF_FAILURE = 'EDIT_SMURF_FAILURE';
+
+export const SMURF_SELECTED = 'SMURF_SELECTED';
+
 // not sure why this didn't work...try again later
 //const ax = axios.create({
 //baseUrl: 'http://localhost:3333/',
@@ -54,6 +60,24 @@ export const addSmurf = smurf => dispatch => {
       dispatch({type: ADD_SMURF_SUCCESS, payload: res.data});
     })
     .catch(err => {
-      dispatch({type: ADD_SMURF_FAILURE, payload: err});
+      console.log(err.data);
+      dispatch({type: ADD_SMURF_FAILURE, payload: err.data});
+    });
+};
+
+export const selectSmurf = name => dispatch => {
+  dispatch({type: SMURF_SELECTED, payload: name});
+};
+
+export const editSmurf = smurf => dispatch => {
+  console.log('editing smurf');
+  dispatch({type: EDITING_SMURF, payload: smurf});
+  axios
+    .put(`${url}/smurf/{smurf.id}`, smurf)
+    .then(res => {
+      dispatch({type: EDIT_SMURF_SUCCESS, payload: res.data});
+    })
+    .catch(err => {
+      dispatch({type: EDIT_SMURF_FAILURE, payload: err.data});
     });
 };

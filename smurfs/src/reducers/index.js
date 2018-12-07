@@ -8,6 +8,10 @@ import {
   ADDING_SMURF,
   ADD_SMURF_SUCCESS,
   ADD_SMURF_FAILURE,
+  EDITING_SMURF,
+  EDIT_SMURF_SUCCESS,
+  EDIT_SMURF_FAILURE,
+  SMURF_SELECTED,
 } from '../actions';
 
 // Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -18,6 +22,7 @@ const initialState = {
   updatingSmurf: false,
   deletingSmurf: false,
   error: null,
+  selectedSmurf: null,
 };
 
 export default (state = initialState, action) => {
@@ -64,6 +69,32 @@ export default (state = initialState, action) => {
       return {
         ...state,
         addingSmurf: false,
+        error: action.payload,
+      };
+    }
+    case SMURF_SELECTED: {
+      return {
+        ...state,
+        selectedSmurf: state.smurfs.find(s => s.name === action.payload),
+      };
+    }
+    case EDITING_SMURF: {
+      return {
+        ...state,
+        updatingSmurf: true,
+      };
+    }
+    case EDIT_SMURF_SUCCESS: {
+      return {
+        ...state,
+        updatingSmurf: false,
+        smurfs: action.payload,
+      };
+    }
+    case EDIT_SMURF_FAILURE: {
+      return {
+        ...state,
+        updatingSmurf: false,
         error: action.payload,
       };
     }
