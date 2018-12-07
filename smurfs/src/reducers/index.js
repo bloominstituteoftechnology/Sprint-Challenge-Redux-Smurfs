@@ -17,17 +17,23 @@ const reducer = (state = initialState, action) => {
   switch(action.type) {
     case SMURF_FETCHING:
       return {
-
+        ...state,
+        fetchingSmurfs: true
       }
 
     case SMURF_SUCCESS:
       return {
-
+        ...state,
+        fetchingSmurfs: false,
+        smurfs: action.payload,
+        error: null
       }
 
     case SMURF_FAILURE:
       return {
-
+        ...state,
+        fetchingSmurfs: false,
+        error: action.payload
       }
 
     default:
