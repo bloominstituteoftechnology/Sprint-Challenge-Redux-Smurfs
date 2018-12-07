@@ -1,0 +1,17 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    position: absolute;
+    top:0%;
+    left: 0%;
+    transform: translate(10%,0%)
+}
+.form div{
+    padding: 20px;
+    padding-top: 0px;
+
+}
+.form div input{
+    width: 100%;
+}
