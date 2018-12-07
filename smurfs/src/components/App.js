@@ -7,7 +7,6 @@ import SmurfForm from "./SmurfForm";
 class App extends Component {
   state = {
     update: false,
-    showForm: false,
     id: ""
   };
 
