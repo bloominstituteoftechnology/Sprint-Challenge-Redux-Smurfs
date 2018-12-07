@@ -1,11 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {
+    addSmurf
+} from '../actions';
+
+import SmurfForm from '../components/SmurfForm';
 
 class SmurfFormView extends Component {
     render(){
         return(
-            <h1>Smurf Form View</h1>
+            <SmurfForm/>
         )
     }
 }
 
-export default SmurfFormView;
+const mapStateToProps = state => {
+    return {
+      ...state
+    }
+  }
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+        addSmurf: smurfInfo => dispatch(addSmurf(smurfInfo))
+    }
+  }
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SmurfFormView);;

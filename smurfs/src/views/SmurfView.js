@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+// import {
+//     addSmurf
+// } from '../actions';
 
+import Smurf from '../components/Smurf';
 class SmurfView extends Component {
     render(){
         return(
@@ -8,4 +13,12 @@ class SmurfView extends Component {
     }
 }
 
-export default SmurfView;
+const mapStateToProps = state => {
+    return {
+      ...state
+    }
+  }
+
+export default connect(
+    mapStateToProps
+  )(SmurfView);
