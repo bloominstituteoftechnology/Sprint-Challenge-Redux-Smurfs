@@ -10,7 +10,8 @@ import {
   UPDATE_SMURFS_FAILURE,
   DELETE_SMURFS_START,
   DELETE_SMURFS_SUCCESS,
-  DELETE_SMURFS_FAILURE
+  DELETE_SMURFS_FAILURE,
+  SELECTING_SMURFS
 } from '../actions';
 
 /*
@@ -48,8 +49,9 @@ const initialSmurfsState = {
 };
 
 const smurfReducer = (state = initialSmurfsState, action) => {
+  console.log(action.type ,action.payload)
   switch (action.type) {
-    case ADD_SMURFS_START:
+    case SELECTING_SMURFS:
       return {
         ...state,
         selectedSmurf: action.payload,
@@ -79,20 +81,23 @@ const smurfReducer = (state = initialSmurfsState, action) => {
         ...state,
         fetchingSmurfs: true,
         updatingSmurf: true,
+        selectedSmurf: null,
       };
     case UPDATE_SMURFS_SUCCESS:
       return {
         ...state,
         fetchingSmurfs: false,
         updatingSmurf: false,
-        smurfs: action.payload
+        smurfs: action.payload,
+        selectedSmurf: null,
       };
     case UPDATE_SMURFS_FAILURE:
       return {
         ...state,
         fetchingSmurfs: false,
         updatingSmurf: false,
-        error: action.payload
+        error: action.payload,
+        selectedSmurf: null,
       };
       case DELETE_SMURFS_START:
       return {

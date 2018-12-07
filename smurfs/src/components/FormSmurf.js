@@ -21,6 +21,7 @@ class FormSmurf extends React.Component {
       inputName: '',
       inputAge: '',
       inputHeight: '',
+      selected: false
     })
   }
 
@@ -31,16 +32,24 @@ class FormSmurf extends React.Component {
   }
 
   render() {
-    console.log(this.props.seletedSmurf)
-    if(this.props.seletedSmurf) {
+    console.log(this.props.selectedSmurf, 'checking selected')
+    if(this.props.selectedSmurf) {
+      // if(this.state.selected)this.setState({
+      //   inputName: this.props.selectedSmurf.name,
+      //   inputAge: this.props.selectedSmurf.age,
+      //   inputHeight: this.props.selectedSmurf.height,
+      //   selected: true,
+      // })
       return (
-        <form onSubmit={(e) => this.handleSubmit(e, this.props.seletedSmurf)}>
-          <h1>updating {this.props.seletedSmurf.name}</h1>
-          <input type='text' onChange={this.handleChange} name={'inputName'} value={this.state.inputName}  placeholder={'Smurf Name'}/>
-          <input type='text' onChange={this.handleChange} name={'inputAge'} value={this.state.inputAge} placeholder={'Smurf age'}/>
-          <input type='text' onChange={this.handleChange} name={'inputHeight'} value={this.state.inputHeight} placeholder={'Smurf height'}/>
-          <button type={'submit'}>Submit</button>
-        </form>
+        <React.Fragment>
+          <h1>updating {this.props.selectedSmurf.name}</h1>
+          <form onSubmit={(e) => this.handleSubmit(e, this.props.selectedSmurf)}>
+            <input type='text' onChange={this.handleChange} name={'inputName'} value={this.state.inputName}  placeholder={'Smurf Name'}/>
+            <input type='text' onChange={this.handleChange} name={'inputAge'} value={this.state.inputAge} placeholder={'Smurf age'}/>
+            <input type='text' onChange={this.handleChange} name={'inputHeight'} value={this.state.inputHeight} placeholder={'Smurf height'}/>
+            <button type={'submit'}>Submit</button>
+          </form>
+        </React.Fragment>
       )
     } else return (
       <form onSubmit={(e) => this.handleSubmit(e)}>
