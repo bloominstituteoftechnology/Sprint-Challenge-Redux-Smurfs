@@ -142,10 +142,11 @@ output:
 
 ### DELETE '/smurfs/123', where 123 is the Id of the smurf you want to remove
 
-- For this endpoint to work, all you need is an id sent up as part of the request url.
+[x] - For this endpoint to work, all you need is an id sent up as part of the request url.
 
-- If your delete worked, you'll get a an array back with all of the smurfs but with your requested smurf removed.
-- You don't need any input beyond the url parameter of the smurf, so if we send up a delete request to `/smurfs/123` then you'll remove the smurf by that id.
+[x] - If your delete worked, you'll get a an array back with all of the smurfs but with your requested smurf removed.
+[x] - You don't need any input beyond the url parameter of the smurf, so if we send up a delete request to `/smurfs/123` then you'll remove the smurf by that id.
+
 - Example:
 
 ```js

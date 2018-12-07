@@ -11,7 +11,10 @@ export const FETCHING_SMURFS = "FETCHING_SMURFS",
   DELETE_SMURF_FAILURE = "DELETE_SMURF_FAILURE",
   EDIT_SMURF = "EDIT_SMURF",
   EDIT_SMURF_SUCCESS = "EDIT_SMURF_SUCCESS",
-  EDIT_SMURF_FAILURE = "EDIT_SMURF_FAILURE";
+  EDIT_SMURF_FAILURE = "EDIT_SMURF_FAILURE",
+  GET_SINGLE_SMURF = "GET_SINGLE_SMURF",
+  GET_SINGLE_SMURF_SUCCESS = "GET_SINGLE_SMURF_SUCCESS",
+  GET_SINGLE_SMURF_FAILURE = "GET_SINGLE_SMURF_FAILURE";
 
 const URL = "http://localhost:3333/smurfs/";
 
@@ -23,6 +26,16 @@ export const getSmurfs = () => dispatch => {
       dispatch({ type: FETCHING_SMURFS_SUCCESS, payload: data })
     )
     .catch(err => dispatch({ type: FETCHING_SMURFS_FAILURE, payload: err }));
+};
+
+export const getSingleSmurf = smurf => dispatch => {
+  dispatch({ type: GET_SINGLE_SMURF });
+  axios
+    .get(`${URL}${smurf}`, smurf)
+    .then(({ data }) =>
+      dispatch({ type: GET_SINGLE_SMURF_SUCCESS, payload: data })
+    )
+    .catch(err => dispatch({ type: GET_SINGLE_SMURF_FAILURE, payload: err }));
 };
 
 export const addSmurf = smurf => dispatch => {

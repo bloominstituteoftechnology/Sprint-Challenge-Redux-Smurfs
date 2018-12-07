@@ -106,9 +106,10 @@ class Form extends Component {
   }
 }
 
-const mapStateTpProps = state => ({
-  smurfs: state.smurfs,
-  fetchingSmurfs: state.fetchingSmurfs
+const mapStateTpProps = ({ smurfs, fetchingSmurfs, error }) => ({
+  smurfs,
+  fetchingSmurfs,
+  error
 });
 
 export default connect(
