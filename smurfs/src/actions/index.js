@@ -4,28 +4,43 @@ import axios from "axios";
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
-export const ADD_SMURF = "ADD_SMURF";
-export const GET_SMURF = "GET_SMURF";
-export const EDIT_SMURF = "EDIT_SMURF";
-export const REMOVE_SMURF = "REMOVE_SMURF";
 export const LOADING_SMURF = "LOADING_SMURF";
 export const LOADING_COMPLETE = "LOADING_COMPLETE";
-export const CREATING_SMURF = "CREATING_SMURF";
-export const EDITING_SMURF = "EDITING_SMURF";
-export const DELETING_SMURF = "DELETING_SMURF";
+export const ADD_SMURF = "ADD_SMURF";
+export const ADD_COMPLETE = "ADD_COMPLETE";
+export const EDIT_SMURF = "EDIT_SMURF";
+export const REMOVE_SMURF = "REMOVE_SMURF";
+export const REMOVE_COMPLETE = "REMOVE_COMPLETE";
 
-const URL = "http://localhost:3333/smurfs";
+const URL = "http://localhost:3333/smurfs/";
 export const loadingSmurf = () => dispatch => {
   dispatch({ type: LOADING_SMURF });
   axios
     .get(URL)
     .then(response => {
-      console.log(response);
       dispatch({ type: LOADING_COMPLETE, payload: response.data });
     })
     .catch(err => ({ err }));
 };
+export const addSmurf = newSmurf => dispatch => {
+  dispatch({ type: ADD_SMURF });
+  axios
+    .post(URL, newSmurf)
+    .then(response => {
+      dispatch({ type: ADD_COMPLETE, payload: response.data });
+    })
+    .catch(err => ({ err }));
+};
 
+export const removeSmurf = id => dispatch => {
+  dispatch({ type: REMOVE_SMURF });
+  axios
+    .delete(`${URL}/${id}`)
+    .then(response => {
+      dispatch({ type: REMOVE_COMPLETE, payload: response.data });
+    })
+    .catch(err => ({ err }));
+};
 /*
 
 

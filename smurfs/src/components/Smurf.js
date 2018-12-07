@@ -7,6 +7,7 @@ const Smurf = props => {
       <p>{props.smurf.age}</p>
       <p>{props.smurf.height}</p>
       <button>murder this smurf</button>
+      <button>edit smurf</button>
     </div>
   );
 };

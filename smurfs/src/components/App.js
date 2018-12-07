@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadingSmurf } from "../actions";
+import { loadingSmurf, addSmurf } from "../actions";
 import Smurf from "./Smurf";
 import "./App.css";
 /*
@@ -21,8 +21,10 @@ class App extends Component {
   componentDidMount() {
     this.props.loadingSmurf();
   }
+
   submitHandle = e => {
     e.preventDefault();
+    this.props.addSmurf(this.state);
   };
   inputHandle = e => {
     this.setState({
@@ -34,6 +36,7 @@ class App extends Component {
     if (this.props.fetchingSmurfs === true) {
       return <h2>smurfing the smurfs</h2>;
     }
+    // console.log("render", this.props.smurfs);
     return (
       <div className="App">
         <form onSubmit={this.submitHandle}>
@@ -68,16 +71,18 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  smurfs: state.smurfs,
-  fetchingSmurfs: state.fetchingSmurfs,
-  addingSmurf: state.addingSmurf,
-  updatingSmurf: state.updatingSmurf,
-  deletingSmurf: state.deletingSmurf,
-  error: "failed"
-});
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs,
+    addingSmurf: state.addingSmurf,
+    updatingSmurf: state.updatingSmurf,
+    deletingSmurf: state.deletingSmurf,
+    error: state.error
+  };
+};
 
 export default connect(
   mapStateToProps,
-  { loadingSmurf }
+  { loadingSmurf, addSmurf }
 )(App);
