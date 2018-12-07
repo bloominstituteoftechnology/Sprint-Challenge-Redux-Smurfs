@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetch_smurfs, onHandleSubmit } from '../actions';
+import { fetch_smurfs, onHandleSubmit, onUpdateSmurf } from '../actions';
 import Smurf from './Smurf';
 import SmurfForm from './SmurfForm';
 
@@ -41,6 +41,11 @@ class App extends Component {
     this.props.onHandleSubmit(this.state);
   }
 
+  updateSmurf = (event) => {
+    event.preventDefault();
+    this.props.onUpdateSmurf(this.state)
+  }
+
   render() {
     console.log('state name', this.state.name)
     return (
@@ -51,6 +56,7 @@ class App extends Component {
         <SmurfForm 
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          updateSmurf={this.updateSmurf}
         />
       </div>
     );
@@ -61,7 +67,9 @@ const mapStateToProps = (state) => {
   console.log("mapstate =", state)
   return {
     smurfs: state.smurfReducer.smurfs,
-    fetchingSmurfs: state.smurfReducer.smurfs
+    fetchingSmurfs: state.smurfReducer.fetchingSmurfs,
+    addingSmurf: state.smurfReducer.addingSmurf,
+    updatingSmurf: state.smurfReducer.updatingSmurf
   }
 }
 
@@ -69,6 +77,7 @@ export default connect(
   mapStateToProps,
   {
     fetch_smurfs,
-    onHandleSubmit
+    onHandleSubmit,
+    onUpdateSmurf
   }
 )(App)

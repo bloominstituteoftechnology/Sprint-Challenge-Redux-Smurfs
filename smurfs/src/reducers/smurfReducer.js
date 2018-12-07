@@ -2,14 +2,15 @@ import {
   FETCH_START,
   FETCH_SUCCESS,
   FETCH_FAILURE,
-  ON_HANDLE_SUBMIT
+  ON_HANDLE_SUBMIT,
+  UPDATE_SMURF
 } from '../actions';
 
 const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
    addingSmurf: false,
-  //  updatingSmurf: false
+   updatingSmurf: false,
   //  deletingSmurf: false
    error: null
  }
@@ -35,6 +36,7 @@ export const smurfReducer = (state = initialState, action) => {
                 ...state,
                 fetchingSmurfs: false,
                 addingSmurf: false,
+                updatingSmurf: false,
                 error: null,
                 smurfs: action.payload
             };
@@ -42,6 +44,7 @@ export const smurfReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 fetchingSmurfs: false,
+                updatingSmurf: false,
                 addingSmurf: false,
                 error: action.payload
             };
@@ -50,10 +53,16 @@ export const smurfReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 fetchingSmurfs: false,
+                updatingSmurf: false,
                 addingSmurf: true
-                // friends: state.friends.map(friend => 
-                //     friend.id === action.payload ? {...friend} : friend)
                 }
+        case UPDATE_SMURF:
+            return {
+                ...state,
+                updatingSmurf: true,
+                fetchingSmurfs: false,
+                addingSmurf: false
+            }
         default: 
             return state;
     }
