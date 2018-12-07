@@ -1,4 +1,6 @@
 import React from "react";
+// // import styled from "styled-components";
+// import styled from "styled-components";
 
 export default class SmurfForm extends React.Component {
   state = {
@@ -10,9 +12,15 @@ export default class SmurfForm extends React.Component {
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  submit = e => {
+    e.preventDefault();
+    this.props.add(this.state);
+    this.setState({ name: "", age: "", height: "" });
+  };
   render() {
     return (
-      <form>
+      <form onSubmit={this.submit}>
         <input
           name="name"
           value={this.state.name}
@@ -21,6 +29,7 @@ export default class SmurfForm extends React.Component {
         />
         <input
           name="age"
+          type="number"
           value={this.state.age}
           onChange={this.handleChange}
           placeholder="age"
@@ -30,8 +39,9 @@ export default class SmurfForm extends React.Component {
           type="number"
           value={this.state.height}
           onChange={this.handleChange}
-          placeholder="age"
+          placeholder="height"
         />
+        <button type="submit">Add</button>
       </form>
     );
   }

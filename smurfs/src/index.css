@@ -2,4 +2,37 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
 }
+button {
+  margin-bottom: 3%;
+  margin-top: 1%;
+  background-color: #88ccff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  color: #88ccff;
+  background-color: white
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 0 auto;
+  width: 50%;
+}
+
+form input {
+  width: 50%;
+  margin-bottom: 3%;
+}
+
+form button {
+  width: 30%;
+  margin: 0 auto;
+  
+}
+
