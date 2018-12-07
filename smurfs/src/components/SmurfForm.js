@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+let smurf;
+
 export default class SmurfForm extends Component {
   state = {
     name: "",
@@ -21,13 +23,18 @@ export default class SmurfForm extends Component {
     this.setState({ name: "", age: "", height: "" });
   };
   render() {
+    const { updating } = this.props;
     if (this.props.updating) {
-      let smurf = this.props.smurfs.filter(smurf => smurf.id === this.props.id);
+      console.log(this.props.smurfs);
+      smurf = this.props.smurfs
+        .filter(smurf => smurf.id === parseInt(this.props.id, 10))
+        .pop();
       console.log(smurf);
     }
+    updating && console.log(smurf);
     return (
       <div className="form-card">
-        <h2>{this.props.updating ? `Edit Smurf` : "Add Smurf"}</h2>
+        <h2>{updating ? `Edit ${smurf.name}` : "Add Smurf"}</h2>
         <form onSubmit={this.submit}>
           Name:
           <input
@@ -53,9 +60,7 @@ export default class SmurfForm extends Component {
           />
           <div className="button-container">
             <button type="submit">Add Smurf</button>
-            {this.props.updating && (
-              <button onClick={this.hide}>Hide Form</button>
-            )}
+            {updating && <button onClick={this.hide}>Hide Form</button>}
           </div>
         </form>
       </div>

@@ -4,6 +4,7 @@ body {
   font-family: sans-serif;
   box-sizing: border-box;
 }
+
 button {
   margin-bottom: 3%;
   margin-top: 1%;
@@ -46,6 +47,9 @@ input[name='age'], input[name='height'] {
 
 span {
   cursor: pointer;
+  position: absolute;
+  top: 10%;
+  right: 30%;
 }
 
 .App {
@@ -63,6 +67,10 @@ span {
   display: flex;
   flex-direction: column;
   width: 45%;
+}
+
+.smurf-card {
+  position: relative;
 }
 
 .form-container {
