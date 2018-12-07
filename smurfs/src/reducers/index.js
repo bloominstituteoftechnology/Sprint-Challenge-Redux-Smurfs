@@ -9,15 +9,15 @@ import {
 
 
 const initialState = {
-   smurfs: [],
-   fetchingSmurfs: false,
-   addingSmurf: false,
-   deletingSmurf: false,
-   error: null
+  smurfs: [],
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  deletingSmurf: false,
+  error: null
 }
 
 const smurfReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case FETCHING_SMURF_START:
       return {
         ...state,
@@ -37,7 +37,7 @@ const smurfReducer = (state = initialState, action) => {
         error: action.payload
       }
     case ADD_SMURF_START:
-      return { 
+      return {
         ...state,
         fetchingSmurfs: true,
       }
@@ -53,7 +53,7 @@ const smurfReducer = (state = initialState, action) => {
         fetchingSmurfs: false,
         error: action.payload
       }
-    default: 
+    default:
       return state;
   }
 }

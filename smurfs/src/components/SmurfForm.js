@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class SmurfForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      age: '',
-      height: ''
+      name: "",
+      age: "",
+      height: ""
     };
   }
 
@@ -15,15 +15,15 @@ class SmurfForm extends Component {
   };
 
   submitHandler = event => {
-    event.preventDefault()
+    event.preventDefault();
     this.props.addSmurf(this.state);
     this.setState({
-      name: '',
-      age: '',
-      height: ''
+      name: "",
+      age: "",
+      height: ""
     });
     this.props.history.push("/");
-  }
+  };
 
   render() {
     return (
@@ -47,7 +47,9 @@ class SmurfForm extends Component {
             value={this.state.height}
             name="height"
           />
-          <button className="btn" type="submit">Add to the village</button>
+          <button className="btn" type="submit">
+            Add to the village
+          </button>
         </form>
       </div>
     );

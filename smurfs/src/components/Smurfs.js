@@ -1,7 +1,7 @@
 import React from "react";
 
 const Smurfs = props => {
-  if( !props.smurfs || !props.smurfs.length) {
+  if (!props.smurfs || !props.smurfs.length) {
     return <h3>Smurfs are loading!</h3>
   }
 
