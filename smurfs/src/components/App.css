@@ -32,6 +32,13 @@
     }
 } */
 
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
 .App li {
     list-style: none;
 }
@@ -42,4 +49,9 @@
 
 .del-btn {
     margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+input {
+    margin-right: 20px;
 }

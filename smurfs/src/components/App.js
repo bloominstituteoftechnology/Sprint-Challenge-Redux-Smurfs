@@ -26,12 +26,12 @@ class App extends Component {
     console.log(this.props);
     return (
       <div className="App">
-        <h1>Smurfs 2.0 w/ Redux</h1>
+        <h1>Smurf-Redux</h1>
         <ul>
           {this.props.smurfs.map(smurf => (
             <li key={smurf.id}>
               Name: {smurf.name}, Age: {smurf.age}, Height: {smurf.height}
-              &nbsp;
+              cm&nbsp;
               <button onClick={this.updateClick}>Update</button>
               <UpdateSmurf id={smurf.id} hidden={this.state.isHidden} />
               <button

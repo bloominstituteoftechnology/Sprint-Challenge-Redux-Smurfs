@@ -19,4 +19,5 @@
 --Thunk returns another function it can call async calls or dispatch if certain conditions are met.
 
 1.  Which `react-redux` method links up our `components` with our `redux store`?
+
     --Connect
