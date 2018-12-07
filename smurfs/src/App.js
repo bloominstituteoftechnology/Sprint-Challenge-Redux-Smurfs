@@ -11,10 +11,10 @@ import { connect } from 'react-redux';
 import {
   getSmurfs,
   addSmurf
-} from '../actions';
+} from './actions';
 
-import SmurfForm from './SmurfForm';
-import SmurfList from './SmurfList';
+import SmurfForm from './components/SmurfForm';
+import SmurfList from './components/SmurfList';
 class App extends Component {
 
   componentDidMount(){
