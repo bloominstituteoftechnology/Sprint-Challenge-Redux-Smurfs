@@ -38,7 +38,7 @@ export const addSmurf = smurf => dispatch => {
     .catch(err => dispatch({ type: ADD_SMURF_FAILURE, payload: err }));
 };
 
-export const editSmurf = (smurf, id) => dispatch => {
+export const editSmurf = (id, smurf) => dispatch => {
   dispatch({ type: EDIT_SMURF_START });
   axios
     .put(`http://localhost:3333/smurfs/${id}`, smurf)

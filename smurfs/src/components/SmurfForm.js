@@ -9,6 +9,7 @@ class SmurfForm extends React.Component {
             name: '',
             age: '',
             height: '',
+            id: '',
         }
     }
 
@@ -40,6 +41,8 @@ class SmurfForm extends React.Component {
                 value={this.state[name]}
                 onChange={this.handleChange} />
         )
+
+
         return (
             <div>
             <form onSubmit={this.submitHandler} autoComplete="nope">

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import SmurfList from './SmurfList';
 import SmurfForm from './SmurfForm';
+import EditSmurfForm from './EditSmurfForm';
 import { getSmurfs, addSmurf } from '../actions'
 
 /*
@@ -28,6 +29,8 @@ class App extends Component {
       <SmurfList {...this.props} />
       <br/><br/>
       <SmurfForm />
+      <br/><br/>
+      <EditSmurfForm />
       </div>
     );
   }
