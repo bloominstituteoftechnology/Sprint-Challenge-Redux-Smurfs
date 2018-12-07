@@ -12,7 +12,12 @@ export const EDITING_SMURF = 'EDITING_SMURF';
 export const EDIT_SMURF_SUCCESS = 'EDII_SMURF_SUCCESS';
 export const EDIT_SMURF_FAILURE = 'EDIT_SMURF_FAILURE';
 
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const DELETE_SMURF_SUCCESS = 'DELETE_SMURF_SUCCESS';
+export const DELETE_SMURF_FAILURE = 'DELETE_SMURF_FAILURE';
+
 export const SMURF_SELECTED = 'SMURF_SELECTED';
+export const CLEAR_SELECTED = 'CLEAR_SELECTED';
 
 // not sure why this didn't work...try again later
 //const ax = axios.create({
@@ -80,4 +85,20 @@ export const editSmurf = smurf => dispatch => {
     .catch(err => {
       dispatch({type: EDIT_SMURF_FAILURE, payload: err.data});
     });
+};
+
+export const deleteSmurf = id => dispatch => {
+  dispatch({type: DELETING_SMURF});
+  axios
+    .delete(`${url}/smurfs/${id}`)
+    .then(res => {
+      dispatch({type: DELETE_SMURF_SUCCESS, payload: res.data});
+    })
+    .catch(err => {
+      dispatch({type: DELETE_SMURF_FAILURE, payload: err.data});
+    });
+};
+
+export const clearSelected = () => dispatch => {
+  dispatch({type: CLEAR_SELECTED});
 };

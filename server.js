@@ -8,7 +8,7 @@ server.use(cors());
 
 const sendUserError = (msg, res) => {
   res.status(422);
-  res.json({ Error: msg });
+  res.json({Error: msg});
   return;
 };
 
@@ -16,21 +16,22 @@ let smurfs = [
   {
     name: 'Brainey',
     age: 200,
-    height: '5cm'
-  }
+    height: '5cm',
+    id: 0,
+  },
 ];
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
-let smurfId = 0;
+let smurfId = 1;
 
 server.post('/smurfs', (req, res) => {
-  const { name, age, height } = req.body;
-  const newSmurf = { name, age, height, id: smurfId };
+  const {name, age, height} = req.body;
+  const newSmurf = {name, age, height, id: smurfId};
   if (!name || !age || !height) {
     return sendUserError(
       'Ya gone did smurfed! Name/Age/Height are all required to create a smurf in the smurf DB.',
-      res
+      res,
     );
   }
   const findSmurfByName = smurf => {
@@ -39,7 +40,7 @@ server.post('/smurfs', (req, res) => {
   if (smurfs.find(findSmurfByName)) {
     return sendUserError(
       `Ya gone did smurfed! ${name} already exists in the smurf DB.`,
-      res
+      res,
     );
   }
 
@@ -49,8 +50,8 @@ server.post('/smurfs', (req, res) => {
 });
 
 server.put('/smurfs/:id', (req, res) => {
-  const { id } = req.params;
-  const { name, age, height } = req.body;
+  const {id} = req.params;
+  const {name, age, height} = req.body;
   const findSmurfById = smurf => {
     return smurf.id == id;
   };
@@ -66,11 +67,11 @@ server.put('/smurfs/:id', (req, res) => {
 });
 
 server.delete('/smurfs/:id', (req, res) => {
-  const { id } = req.params;
+  const {id} = req.params;
   const foundSmurf = smurfs.find(smurf => smurf.id == id);
 
   if (foundSmurf) {
-    const SmurfRemoved = { ...foundSmurf };
+    const SmurfRemoved = {...foundSmurf};
     smurfs = smurfs.filter(smurf => smurf.id != id);
     res.status(200).json(smurfs);
   } else {

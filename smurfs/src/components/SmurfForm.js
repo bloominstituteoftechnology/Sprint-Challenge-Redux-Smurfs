@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addSmurf, editSmurf} from '../actions';
+import {addSmurf, editSmurf, clearSelected} from '../actions';
 
 class SmurfForm extends React.Component {
   constructor() {
@@ -57,12 +57,17 @@ class SmurfForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        {this.makeInput('name')}
-        {this.makeInput('age')}
-        {this.makeInput('height')}
-        {this.makeInput('submit', 'submit')}
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          {this.makeInput('name')}
+          {this.makeInput('age')}
+          {this.makeInput('height')}
+          {this.makeInput('submit', 'submit')}
+        </form>
+        {this.props.selected && (
+          <button onClick={this.props.clearSelected}>Clear Selected</button>
+        )}
+      </div>
     );
   }
 }
@@ -76,5 +81,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {addSmurf, editSmurf},
+  {addSmurf, editSmurf, clearSelected},
 )(SmurfForm);
