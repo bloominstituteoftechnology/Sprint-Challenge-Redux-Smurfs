@@ -38,16 +38,39 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+          <header>
+            <h1>SMURFS! 2.0 W/ Redux</h1>
+            <div>Welcome to your Redux version of Smurfs!</div>
+            <div>Have fun!</div>
+          </header>
+        
+        <div className="formDiv">
+          <form onSubmit={this.submitHandler}>
+            <input onChange={this.inputHandler} value={this.state.name} type="text" name="name" placeholder="Enter New Smuffy name Here" ></input>
+            <input onChange={this.inputHandler} value={this.state.age} type="number" name="age" placeholder="Smuffy age?"></input>
+            <input onChange={this.inputHandler} value={this.state.height} type="text" name="height" placeholder="How Tall Is This Smurf?" ></input>
+            <button type="submit">Press Enter To Add This Smurf To The Village!</button>
+          </form>
+        
+        
+        </div>
+
+        <div className="SmurfVillageBox">
+
+          {this.props.smurfs.map((eachSmurf, i) => {
+            return (
+              <div key={i}><h1>Smurffy Name: {eachSmurf.name}</h1>
+                <h4>Smurffy Age: {eachSmurf.age} </h4>
+                <h4>Smurffy Height: {eachSmurf.height}</h4></div>);
+          })}
+
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+// export default App;
 
 const mapStateToProps = state => {
   console.log(state);

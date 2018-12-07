@@ -6,7 +6,7 @@ const defaultState = {
     loading: false,
 };
 
-export const rootReducer = (state = initialState, action) => {
+export const rootReducer = (state = defaultState, action) => {
     switch (action.type) {
         case FETCH_DATA_START:
             return {
