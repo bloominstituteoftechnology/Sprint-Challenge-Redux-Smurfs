@@ -3,16 +3,20 @@ import { connect } from 'react-redux';
 
 import { deleteSmurf, setFormToUpdate } from '../actions';
 
-function Smurf({smurf, deleteSmurf, setFormToUpdate}) {
+import './Smurf.scss';
+
+function Smurf({smurf, deleteSmurf, setFormToUpdate, smurfToUpdate}) {
+
+  console.log(smurf);
 
   return (
 
-    <div className='smurf'>
+    <div className={smurfToUpdate && smurfToUpdate.id === smurf.id ? 'smurf updating' : 'smurf'}>
 
       <h2>{smurf.name}</h2>
       <p>Age: {smurf.age}</p>
       <p>Height: {smurf.height}</p>
-      <button onClick={() => setFormToUpdate(smurf)}>Update</button>
+      <button onClick={() => setFormToUpdate(smurf)}>{smurfToUpdate ? 'Cancel' : 'Update'}</button>
       <span className='delete' onClick={() => deleteSmurf(smurf)}>X</span>
 
     </div>
@@ -21,4 +25,14 @@ function Smurf({smurf, deleteSmurf, setFormToUpdate}) {
 
 }
 
-export default connect(null, { deleteSmurf, setFormToUpdate })(Smurf);
+function mapStateToProps(state) {
+
+  return {
+
+    smurfToUpdate: state.smurfToUpdate
+
+  }
+
+}
+
+export default connect(mapStateToProps, { deleteSmurf, setFormToUpdate })(Smurf);

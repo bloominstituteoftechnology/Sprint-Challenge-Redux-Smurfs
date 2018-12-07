@@ -1,0 +1,38 @@
+.smurf {
+
+  border: 1px solid black;
+  width: 200px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: lightblue;
+  position: relative;
+
+  h2 {
+
+    margin-top: 0px;
+
+  }
+
+  .delete {
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+
+    &:hover {
+
+      color: white;
+
+    }
+
+  }
+
+}
+
+.updating {
+
+  background-color: lightgreen;
+
+}

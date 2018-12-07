@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Smurf from './Smurf.js';
 import { fetchSmurfs } from '../actions';
 
+import './SmurfList.scss';
+
 class SmurfList extends React.Component {
 
   componentDidMount() {

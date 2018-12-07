@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { addSmurf, updateSmurf } from '../actions';
 
+import './SmurfForm.scss';
+
 class SmurfForm extends React.Component {
 
   constructor() {
@@ -12,7 +14,7 @@ class SmurfForm extends React.Component {
     this.state = {
 
       name: '',
-      age: 0,
+      age: 'age',
       height: ''
 
     }
@@ -24,6 +26,18 @@ class SmurfForm extends React.Component {
     if (this.props.smurfToUpdate && this.props.smurfToUpdate !== prevProps.smurfToUpdate) {
 
       this.setState(this.props.smurfToUpdate);
+
+    }
+
+    if (!this.props.smurfToUpdate && prevProps.smurfToUpdate) {
+
+      this.setState({
+
+        name: '',
+        age: 'age',
+        height: ''
+
+      });
 
     }
 
@@ -43,6 +57,8 @@ class SmurfForm extends React.Component {
 
     e.preventDefault();
 
+    console.log(this.props.smurfToUpdate);
+
     if (this.props.smurfToUpdate)
       this.props.updateSmurf(this.state);
 
@@ -52,10 +68,10 @@ class SmurfForm extends React.Component {
     this.setState({
 
       name: '',
-      age: 0,
-      height: 0
+      age: 'age',
+      height: ''
 
-    })
+    });
 
     return false;
 
@@ -65,12 +81,12 @@ class SmurfForm extends React.Component {
 
     return (
 
-      <form onSumbit={this.handleSubmission} className='smurf-form'>
+      <form onSubmit={this.handleSubmission} className='smurf-form'>
 
-        <span>Name: </span><input type='text' name='name' onChange={this.handleChange} placeholder='name' value={this.state.name} />
-        <span>Age: </span><input type='number' name='age' onChange={this.handleChange} value={this.state.age} />
-        <span>Height: </span><input type='text' name='height' placeholder='height' onChange={this.handleChange} value={this.state.height} />
-        <button onClick={this.handleSubmission}>Add smurf!</button>
+        <div><span>Name: &nbsp;</span><input type='text' name='name' onChange={this.handleChange} placeholder='name' value={this.state.name} /></div>
+        <div><span>Age: &nbsp;&nbsp;&nbsp;&nbsp;</span><input type='number' placeholder='age' name='age' onChange={this.handleChange} value={this.state.age} /></div>
+        <div><span>Height: </span><input type='text' name='height' placeholder='height' onChange={this.handleChange} value={this.state.height} /></div>
+        <button>{this.props.smurfToUpdate ? 'Update Smurf!' : 'Add Smurf!'}</button>
 
       </form>
 

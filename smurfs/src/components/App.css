@@ -1,3 +1,12 @@
+body {
+
+  background-image: url('https://i.pinimg.com/originals/c2/28/71/c2287142d91eb4bd54bbd248c3486127.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+
+}
+
 .App {
   text-align: center;
 }

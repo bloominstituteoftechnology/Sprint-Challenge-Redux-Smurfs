@@ -65,10 +65,13 @@ export default function(state = initialState, action) {
       }
 
     case FAILURE:
-      return {...state, error: action.payload};
+      return {...state, error: action.payload.message};
 
     case UPDATE_FORM:
-      return {...state, smurfToUpdate: action.payload}
+      if (state.smurfToUpdate !== action.payload)
+        return {...state, smurfToUpdate: action.payload}
+      else
+        return {...state, smurfToUpdate: null}
 
     default:
       return state;
