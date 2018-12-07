@@ -14,6 +14,7 @@ import * as actions from '../actions'
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
+  addingSmurf: false,
   error: null,
 }
 
@@ -30,10 +31,23 @@ export default (state = initialState, action) => {
         fetchingSmurfs: false,
         smurfs: action.payload,
       }
+    case actions.POST_REQUEST:
+      return {
+        ...state,
+        addingSmurf: true,
+      }
+    case actions.POST_SUCCESS:
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfs: action.payload,
+      }
     case actions.GET_FAILURE:
+    case actions.POST_FAILURE:
       return {
         ...state,
         fetchingSmurfs: false,
+        addingSmurf: false,
         smurfs: action.payload,
       }
     default:

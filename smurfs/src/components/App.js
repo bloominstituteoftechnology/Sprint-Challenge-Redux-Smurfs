@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 
 import './App.css';
 import {
-  fetchSmurfs
+  fetchSmurfs,
+  addSmurf,
 } from '../actions';
+
+import SmurfForm from './SmurfForm';
 
 
 class App extends Component {
@@ -18,6 +21,7 @@ class App extends Component {
       <div className="App">
         <h1>Redux - Smurfs</h1>
         <div>Welcome to my Redux version of Smurfs!</div>
+        <SmurfForm addSmurf={this.props.addSmurf}/>
       </div>
     );
   }
@@ -27,5 +31,6 @@ export default connect(
   state => state,
   {
     fetchSmurfs,
+    addSmurf,
   }
 )(App);
