@@ -29,6 +29,20 @@
 
   }
 
+  button {
+
+    background-color: #ff00ae;
+    border: 1px solid purple;
+    cursor: pointer;
+
+    &:hover {
+
+      background-color: #e88dcb;
+
+    }
+
+  }
+
 }
 
 .updating {

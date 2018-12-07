@@ -16,7 +16,7 @@ function Smurf({smurf, deleteSmurf, setFormToUpdate, smurfToUpdate}) {
       <h2>{smurf.name}</h2>
       <p>Age: {smurf.age}</p>
       <p>Height: {smurf.height}</p>
-      <button onClick={() => setFormToUpdate(smurf)}>{smurfToUpdate ? 'Cancel' : 'Update'}</button>
+      <button onClick={() => setFormToUpdate(smurf)}>{smurfToUpdate && smurfToUpdate.id === smurf.id ? 'Cancel' : 'Update'}</button>
       <span className='delete' onClick={() => deleteSmurf(smurf)}>X</span>
 
     </div>

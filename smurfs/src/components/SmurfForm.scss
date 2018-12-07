@@ -17,6 +17,15 @@
   button {
 
     margin-top: 2.5px;
+    background-color: #ff00ae;
+    border: 1px solid purple;
+    cursor: pointer;
+
+    &:hover {
+
+      background-color: #e88dcb;
+
+    }
 
   }
 
