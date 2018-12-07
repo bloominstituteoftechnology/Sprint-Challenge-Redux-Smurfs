@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import { getSmurfs, addSmurf, deleteSmurf } from '../actions';
+import { getSmurfs, addSmurf, deleteSmurf, editSmurf } from '../actions';
 
 import SmurfsList from '../components/SmurfsList';
 import AddSmurf from '../components/AddSmurf';
@@ -41,11 +41,12 @@ function mapStateToProps(state){
   console.log(state);
   return{
     smurfs: state.smurfs,
-    isFetching: state.fetching
+    isFetching: state.fetching,
+    error: state.error
   };
 }
 
 export default connect(
   mapStateToProps,
-  {getSmurfs, addSmurf, deleteSmurf}
+  {getSmurfs, addSmurf, deleteSmurf, editSmurf}
 )(App);
