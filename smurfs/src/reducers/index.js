@@ -45,6 +45,8 @@ export const smurfReducer = (state = initialState, action) => {
                 //TODO filter smurfs
                 smurfs: state.smurfs.filter()
             };
+        default:
+            return state;
     }
 };
 
