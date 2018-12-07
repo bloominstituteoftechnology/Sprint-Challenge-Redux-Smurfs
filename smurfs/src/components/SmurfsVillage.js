@@ -1,6 +1,16 @@
 import React from 'react';
 import Smurf from './Smurf';
-import '../Style.css';
+import styled from 'styled-components';
+
+/***************************************************************************************************
+ ********************************************** Styles *********************************************
+ **************************************************************************************************/
+const UlSmurfList = styled.ul`
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
 
 /***************************************************************************************************
  ********************************************* Component *******************************************
@@ -10,7 +20,7 @@ const SmurfsVillage = props => {
     <div>
       {props.fetchingSmurfs ? <h2>Loading Smurf Village...</h2> : null}
       <img src={require('../images/SmurfVillage.png')} alt='' />
-      <ul className='smurfs-list'>
+      <UlSmurfList>
         {props.smurfs.map(smurf => {
           return (
             <Smurf
@@ -22,7 +32,7 @@ const SmurfsVillage = props => {
             />
           );
         })}
-      </ul>
+      </UlSmurfList>
     </div>
   );
 };

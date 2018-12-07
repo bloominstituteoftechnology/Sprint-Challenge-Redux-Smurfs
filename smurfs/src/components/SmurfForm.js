@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// redux won't load with styled-components
-import '../Style.css';
+import styled from 'styled-components';
 
 /***************************************************************************************************
  ********************************************* Variables *******************************************
@@ -15,143 +14,143 @@ const submitTypes = {
 /***************************************************************************************************
  ********************************************** Styles *********************************************
  **************************************************************************************************/
-// const FormAddSmurf = styled.form`
-//   border-bottom: 2px solid black;
+const FormAddSmurf = styled.form`
+  border-bottom: 2px solid black;
 
-//   h1 {
-//     font-family: 'Indie Flower', cursive;
-//   }
+  h1 {
+    font-family: 'Indie Flower', cursive;
+  }
 
-//   div {
-//     margin-bottom: 25px;
+  div {
+    margin-bottom: 25px;
 
-//     input:not(:last-child) {
-//       margin-right: 25px;
-//     }
-//   }
-// `;
+    input:not(:last-child) {
+      margin-right: 25px;
+    }
+  }
+`;
 
-// const FormRemoveSmurf = styled.form`
-//   border-bottom: 2px solid black;
+const FormRemoveSmurf = styled.form`
+  border-bottom: 2px solid black;
 
-//   h1 {
-//     font-family: 'Indie Flower', cursive;
-//   }
+  h1 {
+    font-family: 'Indie Flower', cursive;
+  }
 
-//   div {
-//     margin-bottom: 25px;
+  div {
+    margin-bottom: 25px;
 
-//     select {
-//       /* styling */
-//       background-color: white;
-//       border: thin solid blue;
-//       border-radius: 5px;
-//       display: inline-block;
-//       font: inherit;
-//       line-height: 1.5em;
-//       padding: 0.5em 3.5em 0.5em 1em;
-//       outline: none;
-//       width: 400px;
-//       text-align-last: center; /* Only works in chrome */
+    select {
+      /* styling */
+      background-color: white;
+      border: thin solid blue;
+      border-radius: 5px;
+      display: inline-block;
+      font: inherit;
+      line-height: 1.5em;
+      padding: 0.5em 3.5em 0.5em 1em;
+      outline: none;
+      width: 400px;
+      text-align-last: center; /* Only works in chrome */
 
-//       /* reset */
-//       margin: 0;
-//       -webkit-box-sizing: border-box;
-//       -moz-box-sizing: border-box;
-//       box-sizing: border-box;
-//       -webkit-appearance: none;
-//       -moz-appearance: none;
-//       background-image: linear-gradient(45deg, transparent 50%, blue 50%),
-//         linear-gradient(135deg, blue 50%, transparent 50%),
-//         linear-gradient(to right, skyblue, skyblue);
-//       background-position: calc(100% - 20px) calc(1em + 2px),
-//         calc(100% - 15px) calc(1em + 2px), 100% 0;
-//       background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
-//       background-repeat: no-repeat;
+      /* reset */
+      margin: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, blue 50%),
+        linear-gradient(135deg, blue 50%, transparent 50%),
+        linear-gradient(to right, skyblue, skyblue);
+      background-position: calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px), 100% 0;
+      background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+      background-repeat: no-repeat;
 
-//       &:focus {
-//         background-image: linear-gradient(45deg, white 50%, transparent 50%),
-//           linear-gradient(135deg, transparent 50%, white 50%),
-//           linear-gradient(to right, gray, gray);
-//         background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em,
-//           100% 0;
-//         background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
-//         background-repeat: no-repeat;
-//         border-color: grey;
-//         outline: 0;
-//       }
-//     }
-//   }
-// `;
+      &:focus {
+        background-image: linear-gradient(45deg, white 50%, transparent 50%),
+          linear-gradient(135deg, transparent 50%, white 50%),
+          linear-gradient(to right, gray, gray);
+        background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em,
+          100% 0;
+        background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+        background-repeat: no-repeat;
+        border-color: grey;
+        outline: 0;
+      }
+    }
+  }
+`;
 
-// const FormSubmitButton = styled.button`
-//   border-radius: 5px;
-//   width: 15%;
-//   height: 30px;
-//   outline: none;
-//   cursor: pointer;
-//   color: white;
-//   text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
-//   box-shadow: -1px 3px 10px 1px rgba(0, 0, 0, 0.3);
+const FormSubmitButton = styled.button`
+  border-radius: 5px;
+  width: 15%;
+  height: 30px;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: -1px 3px 10px 1px rgba(0, 0, 0, 0.3);
 
-//   /* Add Smurf Button */
-//   background-color: ${props =>
-//     props.submitType === submitTypes.create && `blue`};
-//   border-color: ${props => props.submitType === submitTypes.create && `blue`};
+  /* Add Smurf Button */
+  background-color: ${props =>
+    props.submitType === submitTypes.create && `blue`};
+  border-color: ${props => props.submitType === submitTypes.create && `blue`};
 
-//   /* Remove Smurf Button */
-//   background-color: ${props =>
-//     props.submitType === submitTypes.delete && `red`};
-//   border-color: ${props => props.submitType === submitTypes.delete && `red`};
+  /* Remove Smurf Button */
+  background-color: ${props =>
+    props.submitType === submitTypes.delete && `red`};
+  border-color: ${props => props.submitType === submitTypes.delete && `red`};
 
-//   &:hover {
-//     /* Add Smurf Button */
-//     border-top-color: ${props =>
-//       props.submitType === submitTypes.create && `#add8e6`};
-//     border-left-color: ${props =>
-//       props.submitType === submitTypes.create && `#add8e6`};
-//     background: ${props =>
-//       props.submitType === submitTypes.create &&
-//       `linear-gradient(#add8e6, #0000ff)`};
+  &:hover {
+    /* Add Smurf Button */
+    border-top-color: ${props =>
+      props.submitType === submitTypes.create && `#add8e6`};
+    border-left-color: ${props =>
+      props.submitType === submitTypes.create && `#add8e6`};
+    background: ${props =>
+      props.submitType === submitTypes.create &&
+      `linear-gradient(#add8e6, #0000ff)`};
 
-//     /* Remove Smurf Button */
-//     border-top-color: ${props =>
-//       props.submitType === submitTypes.delete && `#ff0000`};
-//     border-left-color: ${props =>
-//       props.submitType === submitTypes.delete && `#ff0000`};
-//     background: ${props =>
-//       props.submitType === submitTypes.delete &&
-//       `linear-gradient(#ff0000, #a00000)`};
-//   }
+    /* Remove Smurf Button */
+    border-top-color: ${props =>
+      props.submitType === submitTypes.delete && `#ff0000`};
+    border-left-color: ${props =>
+      props.submitType === submitTypes.delete && `#ff0000`};
+    background: ${props =>
+      props.submitType === submitTypes.delete &&
+      `linear-gradient(#ff0000, #a00000)`};
+  }
 
-//   &:active {
-//     /* Add Smurf Button */
-//     border-top-color: ${props =>
-//       props.submitType === submitTypes.create && `#0000ff`};
-//     border-left-color: ${props =>
-//       props.submitType === submitTypes.create && `#0000ff`};
-//     border-right-color: ${props =>
-//       props.submitType === submitTypes.create && `#add8e6`};
-//     border-bottom-color: ${props =>
-//       props.submitType === submitTypes.create && `#add8e6`};
-//     background: ${props =>
-//       props.submitType === submitTypes.create &&
-//       `linear-gradient(#0000ff, #add8e6)`};
+  &:active {
+    /* Add Smurf Button */
+    border-top-color: ${props =>
+      props.submitType === submitTypes.create && `#0000ff`};
+    border-left-color: ${props =>
+      props.submitType === submitTypes.create && `#0000ff`};
+    border-right-color: ${props =>
+      props.submitType === submitTypes.create && `#add8e6`};
+    border-bottom-color: ${props =>
+      props.submitType === submitTypes.create && `#add8e6`};
+    background: ${props =>
+      props.submitType === submitTypes.create &&
+      `linear-gradient(#0000ff, #add8e6)`};
 
-//     /* Remove Smurf Button */
-//     border-top-color: ${props =>
-//       props.submitType === submitTypes.delete && `red`};
-//     border-left-color: ${props =>
-//       props.submitType === submitTypes.delete && `red`};
-//     border-right-color: ${props =>
-//       props.submitType === submitTypes.delete && `#ff0000`};
-//     border-bottom-color: ${props =>
-//       props.submitType === submitTypes.delete && `#ff0000`};
-//     background: ${props =>
-//       props.submitType === submitTypes.delete &&
-//       `linear-gradient(#a00000, #ff0000)`};
-//   }
-// `;
+    /* Remove Smurf Button */
+    border-top-color: ${props =>
+      props.submitType === submitTypes.delete && `red`};
+    border-left-color: ${props =>
+      props.submitType === submitTypes.delete && `red`};
+    border-right-color: ${props =>
+      props.submitType === submitTypes.delete && `#ff0000`};
+    border-bottom-color: ${props =>
+      props.submitType === submitTypes.delete && `#ff0000`};
+    background: ${props =>
+      props.submitType === submitTypes.delete &&
+      `linear-gradient(#a00000, #ff0000)`};
+  }
+`;
 
 /***************************************************************************************************
  ********************************************* Component *******************************************
@@ -256,7 +255,7 @@ class SmurfForm extends Component {
         {this.props.deletingSmurf ? (
           <h2>Removing Smurf from Village...</h2>
         ) : null}
-        <form
+        <FormAddSmurf
           className='add-smurf-form'
           onSubmit={e =>
             this.submitHandler(e, submitTypes.create, submitTypes.noDeleteId)
@@ -284,16 +283,16 @@ class SmurfForm extends Component {
             />
           </div>
           <div>
-            <button
+            <FormSubmitButton
               className='add-smurf-button'
               type='submit'
               submitType={submitTypes.create}
             >
               Add to the village
-            </button>
+            </FormSubmitButton>
           </div>
-        </form>
-        <form
+        </FormAddSmurf>
+        <FormRemoveSmurf
           className='remove-smurf-form'
           onSubmit={e =>
             this.submitHandler(e, submitTypes.delete, this.state.deleteSmurfId)
@@ -301,13 +300,13 @@ class SmurfForm extends Component {
         >
           <h1>Remove Smurf from Village</h1>
           <div>
-            <button
+            <FormSubmitButton
               className='remove-smurf-button'
               type='submit'
               submitType={submitTypes.delete}
             >
               Remove from the village
-            </button>
+            </FormSubmitButton>
           </div>
           <div>
             <select onChange={this.deleteHandleChange}>
@@ -320,7 +319,7 @@ class SmurfForm extends Component {
               {this.renderSortedSmurfList()}
             </select>
           </div>
-        </form>
+        </FormRemoveSmurf>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 import HomeView from '../views/HomeView';
 import FormView from '../views/FormView';
@@ -8,6 +9,9 @@ import FormView from '../views/FormView';
   Just remember, `how do I `connect` my components to redux?`
   `How do I ensure that my component links the state to props?`
  */
+/***************************************************************************************************
+ ********************************************* Variables *******************************************
+ **************************************************************************************************/
 export const urlLinks = {
   server: 'http://localhost:3333',
   home: '/',
@@ -15,10 +19,20 @@ export const urlLinks = {
   smurfForm: 'form'
 };
 
+/***************************************************************************************************
+ ********************************************** Styles *********************************************
+ **************************************************************************************************/
+const DivWrapper = styled.div`
+  text-align: center;
+`;
+
+/***************************************************************************************************
+ ********************************************* Component *******************************************
+ **************************************************************************************************/
 class App extends Component {
   render() {
     return (
-      <div className='App'>
+      <DivWrapper>
         <Route
           exact
           path={urlLinks.home}
@@ -29,7 +43,7 @@ class App extends Component {
           path={`${urlLinks.home}${urlLinks.smurfForm}`}
           render={props => <FormView {...props} />}
         />
-      </div>
+      </DivWrapper>
     );
   }
 }
