@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { fetchSmurfs, addSmurf, editSmurf, deleteSmurf } from '../actions';
+import SmurfList from './SmurfList';
+import Form from './Form';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -6,17 +11,49 @@ import './App.css';
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
+
+ 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.fetchSmurfs();
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <Form 
+          addSmurf={this.props.addSmurf}
+          editSmurf={this.props.editSmurf} 
+        />
+        <SmurfList 
+          smurfs={this.props.smurfs}
+          deleteSmurf={this.props.deleteSmurf} 
+        />
       </div>
     );
   }
+
 }
 
-export default App;
+function mapDispatchToProps(dispatch){
+  return {
+    fetchSmurfs: () => dispatch(fetchSmurfs()),
+    addSmurf: newSmurf => dispatch(addSmurf(newSmurf)),
+    editSmurf: (editedSmurf, id) => dispatch(editSmurf(editedSmurf, id)),
+    deleteSmurf: id => dispatch(deleteSmurf(id)),
+  }
+}
+
+function mapStateToProps(state, ownProps) {
+  return {
+    ...ownProps,
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs,
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
