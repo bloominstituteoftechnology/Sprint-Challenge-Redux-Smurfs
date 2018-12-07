@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurf } from '../actions';
+import { getSmurf, addSmurf} from '../actions';
 import Smurfs from './Smurfs.js'
 import FormSmurf from './FormSmurf'
 import './App.css'; 
@@ -15,15 +15,15 @@ class App extends Component {
     this.props.getSmurf();
   }
   render() {
-    console.log(this.props.smurfs, 'in render')
+    console.log(this.props, 'in render')
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-        
-        <FormSmurf />
+
+        <FormSmurf addSmurf={this.props.addSmurf}/>
         <Smurfs smurfs={this.props.smurfs} />
         
       </div>
@@ -40,5 +40,5 @@ const mapStateToProps = state => {
 }
 export default connect(
   mapStateToProps,
-  { getSmurf }
+  { getSmurf, addSmurf }
 )(App);
