@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 
 const store = createStore(
-  () => {}, // this is the most basic reducer. A function that returns and object. Replace it.
+  rootReducer, // this is the most basic reducer. A function that returns and object. Replace it.
   applyMiddleware(thunk,logger)
 );
 
@@ -19,3 +19,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+// need implement id

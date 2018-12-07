@@ -10,15 +10,20 @@ import './App.css';
  */
 class App extends Component {
   componentDidMount() {
-    //this.props.getSmurf();
+    this.props.getSmurf();
   }
   render() {
+    console.log(this.props.smurfs, 'in render')
+    if(this.props.smurfs.length === 0) return <h1>loading...</h1>
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        <div>{this.props.smurfs.map(smurf => {
+          return <p key={smurf.id}>{smurf.name}</p>
+        })}</div>
       </div>
     );
   }
@@ -26,7 +31,13 @@ class App extends Component {
 
 //export default App;
 // will edit
+
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs
+  }
+}
 export default connect(
-  null,
+  mapStateToProps,
   { getSmurf }
 )(App);
