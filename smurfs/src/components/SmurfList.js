@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Segment, Header, Loader, Button } from 'semantic-ui-react';
 
-const SmurfList = ({smurfs, error, fetchingSmurfs, deleteSmurf}) => {
+const SmurfList = ({smurfs, error, fetchingSmurfs, deleteSmurf, toggleForm}) => {
   return (
     <Segment>
       <Header as='h2'>Smurf List</Header>
@@ -21,7 +21,7 @@ const SmurfList = ({smurfs, error, fetchingSmurfs, deleteSmurf}) => {
                     </Card.Content>
                     <Card.Content extra>
                       <div className='ui two buttons'>
-                        <Button basic color='green'>
+                        <Button onClick={() => toggleForm(smurf.id)} basic color='green'>
                           Update
                         </Button>
                         <Button onClick={() => deleteSmurf(smurf.id)} basic color='red'>
