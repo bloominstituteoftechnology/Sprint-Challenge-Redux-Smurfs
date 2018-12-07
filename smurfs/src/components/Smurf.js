@@ -13,6 +13,10 @@ const Card = styled.div`
   border: 1px solid red;
   border-radius: 7px;
   position: relative;
+
+  &:first-of-type {
+    pointer-events: none;
+  }
 `;
 
 const Span = styled.span`
@@ -28,11 +32,11 @@ const Span = styled.span`
   }
 `;
 
-export default function Smurf({ name, age, height }) {
+export default function Smurf({ name, age, height, deleteSmurf, id }) {
   return (
     <Card>
       <h2>
-        Name: {name} <Span>X</Span>
+        Name: {name} <Span onClick={() => deleteSmurf(id)}>X</Span>
       </h2>
       <h4>Age: {age}</h4>
       <h4>Height: {height}</h4>

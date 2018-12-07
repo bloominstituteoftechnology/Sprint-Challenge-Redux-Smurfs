@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getSmurfs } from "../actions";
+import { getSmurfs, deleteSmurf } from "../actions";
 import Smurf from "./Smurf";
 import styled from "styled-components";
 
@@ -21,8 +21,8 @@ class SmurfVillage extends Component {
       <Village>
         {this.props.smurfs.map(smurf => (
           <Smurf
-            key={smurf.id}
-            id={smurf.id}
+            key={smurf.id ? smurf.id : Date.now()}
+            id={smurf.id ? smurf.id : Date.now()}
             {...this.props}
             name={smurf.name}
             age={smurf.age}
@@ -42,5 +42,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getSmurfs }
+  { getSmurfs, deleteSmurf }
 )(SmurfVillage);
