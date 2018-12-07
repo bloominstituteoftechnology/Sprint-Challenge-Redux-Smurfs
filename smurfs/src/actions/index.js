@@ -13,6 +13,10 @@ export const ADD_SMURF_START = 'ADD_SMURF_START';
 export const ADD_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS';
 export const ADD_SMURF_FAILURE = 'ADD_SMURF_FAILURE';
 
+export const EDIT_SMURF_START = 'EDIT_SMURF_START';
+export const EDIT_SMURF_SUCCESS = 'EDIT_SMURF_SUCCESS';
+export const EDIT_SMURF_FAILURE = 'EDIT_SMURF_FAILURE';
+
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -49,5 +53,17 @@ export const addSmurfs = smurfData => dispatch=> {
     })
     .catch(error => {
       dispatch({ type: ADD_SMURF_FAILURE, payload: error })
+    });
+}
+
+export const editSmurfs = (smurfData, id) => dispatch => {
+  dispatch({ type: EDIT_SMURF_START });
+  axios
+    .put(`${url}${id}`, smurfData)
+    .then(response => {
+      dispatch({ type: EDIT_SMURF_SUCCESS, payload: response.data })
+    })
+    .catch(error => {
+      dispatch({ type: EDIT_SMURF_FAILURE, payload: error })
     });
 }

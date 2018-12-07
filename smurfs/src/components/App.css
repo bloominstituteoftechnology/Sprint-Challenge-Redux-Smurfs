@@ -26,3 +26,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.hide {
+  display: none;
+}
+
+.add-form {
+  display: inline;
+}
