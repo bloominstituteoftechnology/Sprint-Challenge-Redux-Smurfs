@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Container, Header } from 'semantic-ui-react';
 
 import './App.css';
 import {
@@ -26,9 +27,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>Redux - Smurfs</h1>
-        <div>Welcome to my Redux version of Smurfs!</div>
+      <Container style={{ padding: '20px' }} className="App">
+        <Header as="h1">Redux - Smurfs</Header>
+        <Container>Welcome to my Redux version of Smurfs!</Container>
         <SmurfForm addSmurf={this.props.addSmurf}/>
         <SmurfList
           smurfs={this.props.smurfs}
@@ -36,7 +37,7 @@ class App extends Component {
           deleteSmurf={this.props.deleteSmurf}
           error={this.props.error}
         />
-      </div>
+      </Container>
     );
   }
 }

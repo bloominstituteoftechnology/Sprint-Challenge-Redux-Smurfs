@@ -1,4 +1,5 @@
 import React from 'react';
+import { Segment, Header, Form, Button } from 'semantic-ui-react'
 
 class SmurfForm extends React.Component {
   state = {
@@ -34,33 +35,39 @@ class SmurfForm extends React.Component {
       return <h3>Adding a Smurf ... </h3>
     } else {
       return (
-        <div className="add-smurf-form">
-          <h3>Add a Smurf</h3>
-          <form action="submit" onSubmit={this.onSubmit}>
-            <input
-              name="name"
-              value={this.state.name}
-              onChange={this.onChange}
-              type="text"
-              placeholder="Add smurf's name"
-            />
-            <input
-              name="age"
-              value={this.state.age}
-              onChange={this.onChange}
-              type="text"
-              placeholder="Add smurf's age"
-            />
-            <input
-              name="height"
-              value={this.state.height}
-              onChange={this.onChange}
-              type="text"
-              placeholder="Add smurf's height"
-            />
-            <button type="submit">Add</button>
-          </form>
-        </div>
+        <Segment className="add-smurf-form">
+          <Header as="h2">Add a Smurf</Header>
+          <Form action="submit" onSubmit={this.onSubmit}>
+            <Form.Field>
+              <input
+                name="name"
+                value={this.state.name}
+                onChange={this.onChange}
+                type="text"
+                placeholder="Add smurf's name"
+              />
+            </Form.Field>
+            <Form.Field>
+              <input
+                name="age"
+                value={this.state.age}
+                onChange={this.onChange}
+                type="text"
+                placeholder="Add smurf's age"
+              />
+            </Form.Field>
+            <Form.Field>
+              <input
+                name="height"
+                value={this.state.height}
+                onChange={this.onChange}
+                type="text"
+                placeholder="Add smurf's height"
+              />
+            </Form.Field>
+            <Button type="submit">Add</Button>
+          </Form>
+        </Segment>
       );
     }
   }
