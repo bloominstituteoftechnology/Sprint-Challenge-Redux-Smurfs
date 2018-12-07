@@ -7,8 +7,8 @@ const Smurf = props => {
         <div onClick={() => props.startUpdate(props.smurf)}>
             <h4 >{props.smurf.name}</h4>
             <div className="info">
-                <p >age:  {props.smurf.age}</p>
-                <p >height:  {props.smurf.height}</p> 
+                <p ><span>age:</span>  {props.smurf.age}</p>
+                <p ><span>height:</span>  {props.smurf.height}</p> 
             </div>
         </div>
         <button onClick={() => props.deleteSmurf(props.smurf.id)}> Delete </button>

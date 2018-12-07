@@ -47,12 +47,15 @@
   margin: 5px auto;
   font-weight: bold;
   border: 2px solid black;
+  background: white;
   padding: 5px;
+  box-shadow: 0 2px 8px 3px  blue;
   
 }
 .App form button:hover{
   background: black;
   color: white;
+  box-shadow: none;
 }
 .info{
   display: flex;
@@ -69,5 +72,15 @@
 }
 .list{
   border-top: 2px solid black;
-  margin-top: 30px;
+
+}
+.info p{
+  margin-right: 10px;
+}
+.info span{
+  font-style: italic;
+  text-decoration: underline;
+  text-decoration-color: goldenrod;
+  font-weight: bold;
+  font-size: 15px;
 }

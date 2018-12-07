@@ -37,7 +37,9 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         
         <CreateSmurfForm {...this.props} editFriend={this.state.editFriend} updateToList={this.updateToList}/>
+        <h2>Smurf Village</h2>
         <div className='list'>
+        
         {this.props.smurfs.map((smurf,index) => (
               <Smurf
                   key={smurf.id}
