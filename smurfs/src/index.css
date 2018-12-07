@@ -33,6 +33,33 @@ form input {
 form button {
   width: 30%;
   margin: 0 auto;
-  
+}
+
+span {
+  cursor: pointer;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start
+}
+
+.smurf-list {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
 }
 
