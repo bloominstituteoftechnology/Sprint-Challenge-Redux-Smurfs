@@ -13,6 +13,10 @@ export const ADD_SUMRF_START = "ADD_SUMRF_START";
 export const ADD_SUMRF_SUCCESS = "ADD_SUMRF_SUCCESS";
 export const ADD_SUMRF_FAILURE = "ADD_SUMRF_FAILURE";
 
+export const DELETE_SUMRF_START = "DELETE_SUMRF_START";
+export const DELETE_SUMRF_SUCCESS = "DELETE_SUMRF_SUCCESS";
+export const DELETE_SUMRF_FAILURE = "DELETE_SUMRF_FAILURE";
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -48,4 +52,18 @@ export const addSmurf = item => dispatch => {
       });
     })
     .catch(err => dispatch({ type: ADD_SUMRF_FAILURE, payload: err }));
+};
+
+export const deleteSmurf = id => dispatch => {
+  dispatch({ type: DELETE_SUMRF_START });
+  axios
+    .delete(`http://localhost:3333/smurfs/${id}`)
+    .then(response => {
+      console.log(response);
+      dispatch({
+        type: DELETE_SUMRF_SUCCESS,
+        payload: response.data
+      });
+    })
+    .catch(err => dispatch({ type: DELETE_SUMRF_FAILURE, payload: err }));
 };

@@ -8,20 +8,22 @@ import {
   FETCH_SUMRF_FAILURE,
   ADD_SUMRF_START,
   ADD_SUMRF_SUCCESS,
-  ADD_SUMRF_FAILURE
+  ADD_SUMRF_FAILURE,
+  DELETE_SUMRF_START,
+  DELETE_SUMRF_SUCCESS,
+  DELETE_SUMRF_FAILURE
 } from "../actions";
 
+//Your initial/default state for this project could *Although does not have to* look a lot like this
+const initialState = {
+  smurfs: [],
+  fetching: false,
+  error: null
+};
 
- //Your initial/default state for this project could *Although does not have to* look a lot like this
- const initialState = {
-   smurfs: [],
-   fetching: false,
-   error: null
- }
-
- // addingSmurf: false
-  //  updatingSmurf: false
-  //  deletingSmurf: false
+// addingSmurf: false
+//  updatingSmurf: false
+//  deletingSmurf: false
 
 /*
   You'll only need one smurf reducer for this project.
@@ -32,39 +34,57 @@ import {
 */
 
 const smurfReducer = (state = initialState, action) => {
-  switch(action.type){
+  switch (action.type) {
     case FETCH_SUMRF_START:
-      return{
+      return {
         ...state,
         fetching: true
       };
     case FETCH_SUMRF_SUCCESS:
-      return{
+      return {
         ...state,
         error: null,
         fetching: false,
         smurfs: action.payload
       };
     case FETCH_SUMRF_FAILURE:
-      return{
+      return {
         ...state,
         fetching: false,
         error: action.payload
       };
     case ADD_SUMRF_START:
-      return{
+      return {
         ...state,
         fetching: true
       };
     case ADD_SUMRF_SUCCESS:
-      return{
+      return {
         ...state,
         fetching: false,
         error: false,
         smurfs: action.payload
       };
     case ADD_SUMRF_FAILURE:
-      return{
+      return {
+        ...state,
+        fetching: false,
+        error: action.payload
+      };
+    case DELETE_SUMRF_START:
+      return {
+        ...state,
+        fetching: true
+      };
+    case DELETE_SUMRF_SUCCESS:
+      return {
+        ...state,
+        fetching: false,
+        error: false,
+        smurfs: action.payload
+      };
+    case DELETE_SUMRF_FAILURE:
+      return {
         ...state,
         fetching: false,
         error: action.payload
