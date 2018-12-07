@@ -12,13 +12,14 @@ const smurfs = props => {
                 </div> 
             </div>
 
-            {props.smurfs.map((smurf, index) => {
+            {props.smurfs.map((smurf) => {
                 return (
                     <div key={smurf.id} className='smurf-container'>
                         <div className='smurf-content smurf-spacing'>
                             <span className='smurf-span'>{smurf.name}</span>
                             <span className='smurf-span'>{smurf.age}</span>
                             <span className='smurf-span'>{smurf.height}</span>
+                            <span onClick={() => props.deletingSmurf(smurf.id)} className='smurf-delete-btn'>X</span>
                         </div> 
                     </div>
                 );

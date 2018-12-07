@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchingSmurfs, addingSmurfs } from '../actions';
+import { fetchingSmurfs, addingSmurfs, deleteSmurf } from '../actions';
 
 import SmurfsList from '../components/Smurfs';
 import AddSmurfForm from '../components/AddSmurfForm';
@@ -13,6 +13,9 @@ class App extends Component {
   }
 
   render() {
+    if(this.props.deleting) {
+      return <h3>Removing Smurf ...</h3>
+    }
     if(this.props.adding) {
       return <h3>Adding New Smurf ...</h3>
     }
@@ -23,7 +26,7 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <AddSmurfForm addNewSmurf={this.props.addingSmurfs}/>
-        <SmurfsList smurfs={this.props.smurfs}/>
+        <SmurfsList smurfs={this.props.smurfs} deletingSmurf={this.props.deleteSmurf}/>
       </div>
     );
   }
@@ -35,10 +38,11 @@ const mapStateToProps = (state) => {
     smurfs: state.smurfs,
     fetching: state.fetching,
     adding: state.adding,
+    deleting: state.deleteSmurf,
   };
 }
 
 export default connect(
   mapStateToProps,
-  { fetchingSmurfs, addingSmurfs }
+  { fetchingSmurfs, addingSmurfs, deleteSmurf }
 ) (App);

@@ -26,3 +26,9 @@
     border-bottom: 2px solid lightgray;
     margin-bottom: 20px;
 }
+
+.smurf-delete-btn {
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+}
