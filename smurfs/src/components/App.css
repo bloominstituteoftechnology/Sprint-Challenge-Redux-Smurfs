@@ -40,6 +40,9 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+    box-shadow: 3px 5px 10px #1F56B3;
     background-image: url('https://wallpapersite.com/images/wallpapers/smurfs-the-lost-village-3000x1621-animation-2017-hd-7262.jpg');
     background-size: cover;
 }
@@ -82,4 +85,12 @@ button {
     color: antiquewhite;
     border-radius: 4px;
     width: 90px;
+}
+
+.smurf-container {
+    margin-top: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+    box-shadow: 3px 5px 10px #1F56B3;
+    padding-bottom: 20px;
 }
