@@ -8,6 +8,7 @@ const SmurfCard = props => {
       <div>{props.smurf.age}</div>
       <div>{props.smurf.height}</div>
       <button onClick={() => props.deleteSmurf(props.smurf.id)}>destory</button>
+      <button onClick={() => props.updateSmurf(props.smurf.id)}>update</button>
     </div>
   )
 }
