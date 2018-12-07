@@ -1,9 +1,9 @@
-# Assessing your Redux Fu
+# Assessing your Redux Fu 
 
-* The objective of this challenge is to get you used to answering a few questions about `Redux/Immutability` that are commonly asked in interviews.
-* We also have some more reps for you to help hammer in the knowledge you've thus far learned.
+<!-- * The objective of this challenge is to get you used to answering a few questions about `Redux/Immutability` that are commonly asked in interviews. -->
+<!-- * We also have some more reps for you to help hammer in the knowledge you've thus far learned. -->
 * Answers to your written questions will be recorded in _Answers.md_
-* This is to be worked on alone but you can use outside resources. You can _reference_ any old code you may have, and the React Documentation, however, please refrain from copying and pasting any of your answers. Try and understand the question and put your responses in your own words. Be as thorough as possible when explaining something.
+<!-- * This is to be worked on alone but you can use outside resources. You can _reference_ any old code you may have, and the React Documentation, however, please refrain from copying and pasting any of your answers. Try and understand the question and put your responses in your own words. Be as thorough as possible when explaining something. -->
 
 ## Start by forking and cloning this repository.
 
@@ -18,26 +18,26 @@
 
 ## Initializing Project - READ THIS CAREFULLY, you have two apps here. A server, and a client.
 
-* `cd` into the forked copy of this repo.
-* **RUN** `yarn` or `npm install` to retrieve all `server-side` the dependencies.
-* **LOOK** at all the files you've been given for this project. One important file to note is `server.js`. This file contains an **API** that you are going to be interfacing with. Below is documentation on how to interact with the **API**.
-* **RUN** `yarn start` or `npm start` to get your API up and running on `http://localhost:3333`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data.
-* After your API is up and running, you can open chrome and type in `http://localhost:3333/smurfs`. You should see an empty Array `[]` returned to you. This is an array that your **API** will be using to store our Smurf Data.
-* **LOOK** at your `smurfs` directory and notice it's just a plain ol' React App that we've built using `create-react-app`.
-* We've added a typical `redux` file structure for:
+<!-- * `cd` into the forked copy of this repo. -->
+<!-- * **RUN** `yarn` or `npm install` to retrieve all `server-side` the dependencies. -->
+<!-- * **LOOK** at all the files you've been given for this project. One important file to note is `server.js`. This file contains an **API** that you are going to be interfacing with. Below is documentation on how to interact with the **API**. -->
+<!-- * **RUN** `yarn start` or `npm start` to get your API up and running on `http://localhost:3333`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data. -->
+<!-- * After your API is up and running, you can open chrome and type in `http://localhost:3333/smurfs`. You should see an empty Array `[]` returned to you. This is an array that your **API** will be using to store our Smurf Data. -->
+<!-- * **LOOK** at your `smurfs` directory and notice it's just a plain ol' React App that we've built using `create-react-app`. -->
+<!-- * We've added a typical `redux` file structure for: -->
 
-```
+<!-- ```
 src
   - components
   - reducers
     - index.js
   - actions
     - index.js
-```
+``` -->
 
-* **Open** `src/index.js` to make sure that your app is ready to roll with the proper middleware.
-* **cd** into `smurfs` and run `yarn` or `npm install` to retrieve the client side dependencies.
-* **RUN** `yarn start` or `npm start` to fire up your React application. There ought to be a pretty little message awaiting you welcoming you to the app. `Follow` the prompting.
+<!-- * **Open** `src/index.js` to make sure that your app is ready to roll with the proper middleware. -->
+<!-- * **cd** into `smurfs` and run `yarn` or `npm install` to retrieve the client side dependencies. -->
+<!-- * **RUN** `yarn start` or `npm start` to fire up your React application. There ought to be a pretty little message awaiting you welcoming you to the app. `Follow` the prompting. -->
 
 ## Project Description
 
