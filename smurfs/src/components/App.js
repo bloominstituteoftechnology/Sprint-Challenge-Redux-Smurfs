@@ -23,6 +23,18 @@ class App extends Component {
   }
 
 
+  submitHandler = e => {
+  e.preventDefault ();
+  this.props.addANewSmurf(this.state);
+  this.setState ({ name: '', age: '', height: '', });
+  };
+  
+  changeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value});
+  };
+
+
+
   render() {
     return (
       <div className="App">
