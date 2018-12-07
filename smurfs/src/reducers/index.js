@@ -14,18 +14,20 @@ const initialState = {
   addingSmurf: false,
   updatingSmurf: false,
   deletingSmurf: false,
-  error: null
+  error: "failed"
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING_SMURF:
+      console.log("loading", state, action);
       return {
         ...state,
         smurfs: action.payload,
         fetchingSmurfs: !state.fetchingSmurfs
       };
     case LOADING_COMPLETE:
+      console.log("loaded", state, action);
       return {
         ...state,
         smurfs: action.payload,

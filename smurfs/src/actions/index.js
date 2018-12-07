@@ -15,7 +15,7 @@ export const EDITING_SMURF = "EDITING_SMURF";
 export const DELETING_SMURF = "DELETING_SMURF";
 
 const URL = "http://localhost:3333/smurfs";
-const loadingSmurf = () => dispatch => {
+export const loadingSmurf = () => dispatch => {
   dispatch({ type: LOADING_SMURF });
   axios
     .get(URL)

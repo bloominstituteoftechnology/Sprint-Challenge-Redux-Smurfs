@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  ADD_SMURF,
-  REMOVE_SMURF,
-  EDIT_SMURF,
-  LOADING_SMURF,
-  LOADING_COMPLETE
-} from "../actions";
-
+import { loadingSmurf } from "../actions";
+import Smurf from "./Smurf";
 import "./App.css";
 /*
  to wire this component up you're going to need a few things.
@@ -16,23 +10,74 @@ import "./App.css";
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "",
+      age: "",
+      height: ""
+    };
+  }
+  componentDidMount() {
+    this.props.loadingSmurf();
+  }
+  submitHandle = e => {
+    e.preventDefault();
+  };
+  inputHandle = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
   render() {
+    if (this.props.fetchingSmurfs === true) {
+      return <h2>smurfing the smurfs</h2>;
+    }
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <form onSubmit={this.submitHandle}>
+          <input
+            type="text"
+            placeholder="name"
+            name="name"
+            value={this.state.name}
+            onChange={this.inputHandle}
+          />
+          <input
+            type="text"
+            placeholder="age"
+            name="age"
+            value={this.state.age}
+            onChange={this.inputHandle}
+          />
+          <input
+            type="text"
+            placeholder="height"
+            name="height"
+            value={this.state.height}
+            onChange={this.inputHandle}
+          />
+          <button type="submit">Add a new smurf</button>
+        </form>
+        {this.props.smurfs.map(smurf => (
+          <Smurf key={smurf.id} smurf={smurf} />
+        ))}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  smurfs: state.smurfs
+  smurfs: state.smurfs,
+  fetchingSmurfs: state.fetchingSmurfs,
+  addingSmurf: state.addingSmurf,
+  updatingSmurf: state.updatingSmurf,
+  deletingSmurf: state.deletingSmurf,
+  error: "failed"
 });
 
 export default connect(
   mapStateToProps,
-  { ADD_SMURF, REMOVE_SMURF, EDIT_SMURF, LOADING_SMURF, LOADING_COMPLETE }
+  { loadingSmurf }
 )(App);
