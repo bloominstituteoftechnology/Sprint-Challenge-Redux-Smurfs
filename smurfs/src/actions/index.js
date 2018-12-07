@@ -54,8 +54,9 @@ export const addSmurf = smurf => dispatch => {
 		.then(response => {
 			console.log("Add succeeded", response);
 			dispatch({
-				type: ADD_SMURF_SUCCESS
-            });
+				type: ADD_SMURF_SUCCESS,
+				payload: response.data
+			});
 		})
 		.catch(err => {
 			console.log("Add Failed", err);
@@ -67,10 +68,11 @@ export const deleteSmurf = id => dispatch => {
 	dispatch({ type: DELETE_SMURF_START });
 	axios
 		.delete(`${URL}/${id}`)
-		.then(responce => {
-			console.log("Deleted succeeded", responce);
+		.then(response => {
+			console.log("Deleted succeeded", response);
 			dispatch({
 				type: DELETE_SMURF_SUCCESS,
+				payload: response.data
 			});
 		})
 		.catch(err => {
