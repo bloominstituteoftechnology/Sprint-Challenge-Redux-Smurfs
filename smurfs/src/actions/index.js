@@ -1,15 +1,32 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from "axios";
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+const url = "http://localhost:3333/smurfs"
+
+export const addSmurf = (newSmurf) => {
+  return dispatch => {
+    dispatch( { type: "ADDING_SMURF" });
+    console.log("A message before the axios call")
+    axios
+      .post(url, newSmurf)
+      .then(response => {
+        dispatch({ type: "ADDED", smurfs: response.data })
+      .catch(error => {
+        dispatch({ type: "ERROR", errorMessage: "An error occurred" })
+      })
+      })
+  }
+}
+
+export const fetchSmurf = () => {
+  return dispatch => {
+    dispatch( { type: "FETCHING_SMURF" });
+    axios
+      .get(url)
+      .then(response => {
+        dispatch({ type: "FETCHED", smurfs: response.data })
+      .catch(error => {
+        dispatch({ type: "ERROR", errorMessage: "An error occurred" })
+      })
+      })
+  }
+}
