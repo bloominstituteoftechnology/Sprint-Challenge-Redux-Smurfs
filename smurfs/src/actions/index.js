@@ -38,7 +38,7 @@ export const addSmurf = smurf => dispatch => {
             type: ADDING_SMURF_FAILURE,
             payload: data
         }));
-}
+};
 
 export const deleteSmurf = id => dispatch => {
     dispatch({type: DELETING_SMURF});
@@ -51,4 +51,4 @@ export const deleteSmurf = id => dispatch => {
             type: DELETING_SMURF_FAILURE,
             payload: data
         }))
-}
+};
