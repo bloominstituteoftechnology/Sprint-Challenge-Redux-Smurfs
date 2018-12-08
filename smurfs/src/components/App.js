@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 
 import './App.css';
-import {getSmurfs, addNewSmurf} from '../actions'
+import {getSmurfs, addNewSmurf, deleteSmurf} from '../actions'
 import SmurfList from './SmurfList/SmurfList';
 import AddSmurfForm from './AddSmurfForm/AddSmurfForm';
 
@@ -17,21 +17,31 @@ class App extends Component {
   componentDidMount() {
 		// console.log("CDM App.js Props: ", this.props);
 		this.props.getSmurfs();
+  }
+  
+  handleDelete = event => {
+		event.preventDefault();
+		this.props.deleteSmurf();
 	}
 
   render() {
+    console.log('App', this.props)
     return (
       <div className="App">
         {this.props.pending ? <h4>LOADING...</h4> : null };
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <AddSmurfForm 
           smurfs={this.props.smurfs}
+          id={this.props.id}
           name={this.props.name}
           age={this.props.age}
           height={this.props.height}
           addNewSmurf={this.props.addNewSmurf}
         />
-        <SmurfList smurfs={this.props.smurfs}/>
+        <SmurfList 
+          smurfs={this.props.smurfs}
+          deleteSmurf={this.props.deleteSmurf}
+        />
       </div>
     );
   }
@@ -59,7 +69,8 @@ export default connect(
   // mapDispatchToProps,
 {
   getSmurfs,
-  addNewSmurf
+  addNewSmurf,
+  deleteSmurf
   },
 )(App);
 

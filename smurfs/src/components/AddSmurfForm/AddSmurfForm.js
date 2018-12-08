@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 
 class AddSmurfForm extends React.Component {
@@ -8,8 +7,9 @@ class AddSmurfForm extends React.Component {
 		this.state = {
 			smurfs: [],
 			name: "",
-			age: "",
+			age: 0,
 			height: "",
+			id: 0
 		};
 	}
 
@@ -23,6 +23,11 @@ class AddSmurfForm extends React.Component {
 		this.setState({smurf: ''})
 	};
 
+	// handleDelete = event => {
+	// 	event.preventDefault();
+	// 	this.props.deleteSmurf();
+	// }
+
 	render() {
 		console.log('FORM PROPS', this.props)
 		return (
@@ -30,6 +35,12 @@ class AddSmurfForm extends React.Component {
 				<h1>Smurf Form</h1>
 				<div>
 					<form onSubmit={this.addSmurf}>
+						{/* <input
+							onChange={this.handleChange}
+							placeholder="id"
+							value={this.props.id}
+							name="id"
+						/> */}
 						<input
 							onChange={this.handleChange}
 							placeholder="name"
@@ -50,7 +61,7 @@ class AddSmurfForm extends React.Component {
 							name="height"
 						/>
 						<button onClick={this.handleSubmit}>
-							Add to the village
+							Add Smurf
 						</button>
 						{/* {this.props.error !== null ? <h4>{this.props.error}</h4> : null} */}
 					</form>

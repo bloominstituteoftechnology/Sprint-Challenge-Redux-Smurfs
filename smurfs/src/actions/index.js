@@ -23,7 +23,7 @@ export const FAILURE = "FAILURE";
 
 
 export const getSmurfs = () => {
-	const smurfs = axios.get("http://localhost:3333/smurfs");
+	const smurfs = axios.get(`http://localhost:3333/smurfs/${id}`);
 	return dispatch => {
 		dispatch({ type: PENDING });
 		smurfs
@@ -44,18 +44,14 @@ export const getSmurfs = () => {
 	}
 };
 
-export const addNewSmurf = (name, age, height) => {
-	const smurfs = axios.post("http://localhost:3333/smurfs", name, age, height);
+export const addNewSmurf = data => {
+	const smurfs = axios.post("http://localhost:3333/smurfs", data);
 	return dispatch => {
 		dispatch({ type: PENDING });
 		smurfs
 			.then(res => {
 				console.log("ADDING > Server Response: ", res);
 				dispatch(getSmurfs())
-				// 	{
-				// 	type: SUCCESS,
-				// 	payload: res.data,
-				// });
 			})
 			.catch(err => {
 				console.log("ADDING > Server Error: ", err);
@@ -66,3 +62,23 @@ export const addNewSmurf = (name, age, height) => {
 			});
 	}
 };
+
+export const deleteSmurf = id => {
+	const smurfs = axios.delete("http://localhost:3333/smurfs", id);
+	return dispatch => {
+		dispatch({ type: PENDING });
+		smurfs
+			.then(res => {
+				console.log("DELETING > Server Response: ", res);
+				dispatch(getSmurfs())
+			})
+			.catch(err => {
+				console.log("DELETING > Server Error: ", err);
+				dispatch({
+					type: FAILURE,
+					payload: err,
+				});
+			});
+	}
+};
+
