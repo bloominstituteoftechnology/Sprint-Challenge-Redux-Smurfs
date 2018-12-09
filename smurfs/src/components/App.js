@@ -1,22 +1,49 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import Smurfs from './Smurfs';
+import SmurfForm from './SmurfForm';
+
 class App extends Component {
+
+
+  componentDidMount() {
+    this.loadSmurfs();
+  }
+  
+  onSmurfAddedButtonClick = () => {
+    this.loadSmurfs();
+  }
+  
+  loadSmurfs = () => {
+    axios
+    .get('http://localhost:3333/smurfs')
+    .then(response => {
+      let maxId = response.data[response.data.length-1].id+1;
+      console.log("maxId: " + maxId);
+      this.setState(() => ({ 
+        smurfs: response.data,
+        maxId: maxId,
+        loading: false
+      }));
+    })
+    .catch(error => {
+      console.error('Server Error', error);
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        
+        <Smurfs smurfs={this.state.smurfs} isFetching={this.state.fetchingSmurfs} />
       </div>
     );
   }
 }
 
 export default App;
+
+/*
+<SmurfForm {...props} />
+ */
