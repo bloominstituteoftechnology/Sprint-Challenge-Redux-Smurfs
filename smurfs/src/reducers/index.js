@@ -8,10 +8,6 @@ import {
 
 } from '../actions';
 
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
-
 const initState = {
   smurfs: [],
   fetchingSmurfs: false,

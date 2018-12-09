@@ -1,45 +1,24 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+function Smurfs(props){
 
-class Smurfs extends Component {
-	/*
-	componentDidMount() {
-	    axios
-	      .get(
-	        `http://localhost:3333/itemById/${
-	          this.props.match.params.itemId
-	        }`
-	      )
-	      .then(response => {
-	        console.log(response);
-	        this.setState({
-	          item: response.data
-	        });
-	      })
-	      .catch(err => console.log(err));
-	  }*/
-
-	render() {
-    	return (
-			<div>
-				smurfs
-			</div>
-		);
-
+	if(props.fetchingSmurfs){
+		return <h4>Loading smurfs...</h4>
 	}
+
+	return(
+		<div>
+			{props.smurfs.map(smurf => (
+				<div key={smurf.id}>
+					<p>{smurf.name}</p>
+					<p>{smurf.age}</p>
+					<p>{smurf.height}</p>
+				</div>
+			))}
+		</div>
+	);
+
 }
 
 export default Smurfs;
-
-//add br tags for spacing
-//
-/*
-{props.smurfs.map(smurf => {
-					{smurf.name}
-				})}
- 
-<div >{smurf.name}</div>
-<div>{smurf.age}</div>
-<div>{smurf.height}</div>
- */

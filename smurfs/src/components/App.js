@@ -3,47 +3,47 @@ import axios from 'axios';
 import './App.css';
 import Smurfs from './Smurfs';
 import SmurfForm from './SmurfForm';
+import { connect } from 'react-redux';
+
+import { fetchSmurfs } from '../actions/';
+import { addSmurf } from '../actions/';
+
 
 class App extends Component {
 
-
+  
   componentDidMount() {
-    this.loadSmurfs();
-  }
-  
-  onSmurfAddedButtonClick = () => {
-    this.loadSmurfs();
-  }
-  
-  loadSmurfs = () => {
-    axios
-    .get('http://localhost:3333/smurfs')
-    .then(response => {
-      let maxId = response.data[response.data.length-1].id+1;
-      console.log("maxId: " + maxId);
-      this.setState(() => ({ 
-        smurfs: response.data,
-        maxId: maxId,
-        loading: false
-      }));
-    })
-    .catch(error => {
-      console.error('Server Error', error);
-    });
+    this.props.fetchSmurfs();
   }
 
   render() {
+    if(this.props.fetchingSmurfs){
+      return <h4>Loading smurfs...</h4>
+    }
     return (
       <div className="App">
-        
-        <Smurfs smurfs={this.state.smurfs} isFetching={this.state.fetchingSmurfs} />
+        <SmurfForm {...this.props} />
+        <Smurfs {...this.props} />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  smurfs: state.smurfs,
+  fetchingSmurfs: state.fetchingSmurfs,
+  addingSmurf: state.addingSmurf,
+  updatingSmurf: state.updatingSmurf,
+  deletingSmurf: state.deletingSmurf,
+  error: state.error
+});
+
+export default connect(
+  mapStateToProps,
+  { fetchSmurfs, addSmurf }
+)(App);
 
 /*
 <SmurfForm {...props} />
+<Smurfs {...this.props} />
  */
