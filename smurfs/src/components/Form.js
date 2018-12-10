@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
- class Form extends Component {
+
+class Form extends Component {
   constructor() {
     super();
     this.state = {
@@ -13,8 +14,9 @@ import React, { Component } from 'react';
   };
   render() {
     const { name, age, height } = this.state;
+    const { handleAddSmurf } = this.props;
     return (
-      <form>
+      <form onSubmit={e => handleAddSmurf({ name, age, height }, e)}>
         <input
           type="text"
           value={name}
@@ -41,4 +43,5 @@ import React, { Component } from 'react';
     );
   }
 }
- export default Form;
+
+export default Form;
