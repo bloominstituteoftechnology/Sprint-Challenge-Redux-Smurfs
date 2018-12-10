@@ -9,14 +9,23 @@ class Form extends Component {
       age: ''
     };
   }
+
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  formSubmit = e => {
+    e.preventDefault();
+    const { name, age, height } = this.state;
+    this.props.handleAddSmurf({ name, age, height });
+    this.setState({ name: '', age: '', height: '' });
+  };
+
   render() {
     const { name, age, height } = this.state;
-    const { handleAddSmurf } = this.props;
+    // const { handleAddSmurf } = this.props;
     return (
-      <form onSubmit={e => handleAddSmurf({ name, age, height }, e)}>
+      <form className="form" onSubmit={this.formSubmit}>
         <input
           type="text"
           value={name}
@@ -38,7 +47,7 @@ class Form extends Component {
           placeholder="Enter age..."
           onChange={this.handleInputChange}
         />
-        <button type="submit">Add Smurf</button>
+        <button type="submit">{this.props.title}</button>
       </form>
     );
   }
