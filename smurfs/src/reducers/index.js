@@ -7,7 +7,12 @@ import {
   FETCH_SMURFS_FAILURE,
   ADD_SMURFS_REQUEST,
   ADD_SMURFS_SUCCESS,
-  ADD_SMURFS_FAILURE
+  ADD_SMURFS_FAILURE,
+  DELETE_SMURFS_REQUEST,
+  DELETE_SMURFS_SUCCESS,
+  DELETE_SMURFS_FAILURE,
+  UPDATE_SMURFS_REQUEST,
+  UPDATE_FORM
 } from "../actions";
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -19,7 +24,8 @@ const initialState = {
   //addingSmurf: false    -> I don't use the use of any of these. I mean, they only confuse the logic until we get to updating.
   //updatingSmurf: false
   //deletingSmurf: false
-  error: null
+  error: null,
+  currentSmurf: null
 };
 
 const smurfsReducer = (state = initialState, action) => {
@@ -59,7 +65,35 @@ const smurfsReducer = (state = initialState, action) => {
         fetchingSmurfs: false,
         error: action.payload
       };
-
+      case DELETE_SMURFS_REQUEST:
+      return {
+        ...state,
+        fetchingSmurfs: true
+      };
+      case DELETE_SMURFS_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        smurfs: action.payload
+      };
+    case DELETE_SMURFS_FAILURE:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        error: action.payload
+      };
+    case UPDATE_SMURFS_REQUEST:
+      return {
+        ...state,
+        fetchingSmurfs: true,
+        currentSmurf: null
+      };
+    
+    case UPDATE_FORM:
+    return {
+      ...state,
+      currentSmurf: action.payload
+    };
     default:
       return state;
   }

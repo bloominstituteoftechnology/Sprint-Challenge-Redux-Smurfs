@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { getSmurfs, addSmurf } from "../actions";
+import { getSmurfs, addSmurf, deleteSmurf, updateForm } from "../actions";
 import Smurf from "./Smurf";
 import AddSmurf from "./AddSmurf";
 /*
@@ -20,18 +20,25 @@ class App extends Component {
     if (this.props.fetchingSmurfs) {
       return <h2>Hold your horses, we are loading.</h2>;
     }
+    if (this.props.error) {
+      return <h1>WHOA BIG EXPLOSION THINGY THERE BE A ERROR MATEY!</h1>
+    }
     return (
-      
-      this.props.smurfs.map((smurf, id) => (
-      <div className="App">
+      <Fragment>
         <AddSmurf />
-        <Smurf {...this.props} key={smurf.id} smurf={smurf} />
+        { this.props.smurfs.map((smurf, id) => (
+          <div className="App">
+        
+        <Smurf {...this.props} key={smurf.id} smurf={smurf} deleteSmurf={this.props.deleteSmurf} updateForm={this.props.updateForm} />
         
         {/* <h2>{this.props.smurfs[id].name}</h2>
         <p>{this.props.smurfs[id].age}</p>
         <p>{this.props.smurfs[id].height}</p> */}
       </div>
-    )))
+    ))})
+    </Fragment>
+    )
+   
   }
 }
 
@@ -42,5 +49,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getSmurfs, addSmurf }
+  { getSmurfs, addSmurf, deleteSmurf, updateForm }
 )(App);

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { addSmurf } from '../actions';
+import { addSmurf, updateSmurf } from '../actions';
+import { bindActionCreators } from "redux";
 
 class AddSmurf extends Component {
   /*
@@ -16,9 +17,20 @@ class AddSmurf extends Component {
     this.state = {
       name: "",
       age: "",
-      height: ""
+      height: "",
+      //currentSmurf: 
     };
   }
+
+  componentDidUpdate = (previousProps) => 
+  {
+    if (this.props.currentSmurf && this.props.currentSmurf !== previousProps.currentSmurf)
+    this.updateSmurf() 
+    
+  }
+
+
+  
 
   changeHandler = event => {
     this.setState({
@@ -28,15 +40,24 @@ class AddSmurf extends Component {
 
   submitHandler = event => {
     event.preventDefault();
-    this.props.addSmurf(this.state);
+    if (this.props.currentSmurf) (this.props.updateSmurf(this.state)) 
+    else (this.props.addSmurf(this.state))
     this.setState(
       (this.state = {
         name: "",
         age: "",
         height: ""
+        
       })
     );
   };
+
+  updateSmurf = () => {
+    this.setState(    
+        this.props.currentSmurf
+    )
+  };
+
 
   render() {
     return (
@@ -63,7 +84,7 @@ class AddSmurf extends Component {
             value={this.state.height}
             placeholder="Please add height"
           />
-          <button>Please Submit</button>
+          <button>{ this.props.currentSmurf ? `Please Update!` : `Please Submit Smurf`}</button>
         </form>
       </div>
     );
@@ -71,6 +92,11 @@ class AddSmurf extends Component {
 
 }
 
+const mapStateToProps = state => ({
+
+  currentSmurf: state.currentSmurf,
+
+});
 
 export default connect(
-    null, { addSmurf })(AddSmurf);
+    mapStateToProps, { addSmurf, updateSmurf })(AddSmurf);
