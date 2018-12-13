@@ -13,7 +13,7 @@ class SmurfList extends Component {
 		return (
 			<div>
 				{this.props.fetchingSmurfs ? <h1>Loading Smurfs...</h1> : null}
-				{this.props.error !== '' ? <h1>{this.props.error</h1> : null}
+				{this.props.error !== '' ? <h1>{this.props.error}</h1> : null}
 				{this.props.smurfs.map(smurf => 
 					<Smurf 
 						smurf={smurf}
