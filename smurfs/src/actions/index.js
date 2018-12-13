@@ -33,7 +33,7 @@ export const addSmurf = (addedSmurf) => {
   }
 }
 
-eport const getSmurfs = () => {
+export const getSmurfs = () => {
   return (dispatch) => {
     dispatch({ type: FETCHING });
     axios
