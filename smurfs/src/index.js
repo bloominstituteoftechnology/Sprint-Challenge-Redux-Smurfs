@@ -10,7 +10,7 @@ import rootReducer from "./reducers";
 import {BrowserRouter as Router } from 'react-router-dom'
 
 const store = createStore(
-  rootReducer, // this is the most basic reducer. A function that returns and object. Replace it.
+  rootReducer, 
   applyMiddleware(logger, thunk)
 );
 
