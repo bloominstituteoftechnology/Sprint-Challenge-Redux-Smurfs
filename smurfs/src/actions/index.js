@@ -48,3 +48,15 @@ export const addSmurf = smurf => {
       });
   };
 };
+//
+// export const addSmurf = smurf => {
+//     return dispatch => {
+//       dispatch({ type: ADD_SMURF });
+//   axios
+//     .post('http://localhost:5000/api/friends', smurf)
+//     .then(response => {
+//       console.log(response)
+//       dispatch({ type: ADD_SUCCESS, payload: response.data})
+//     })
+//     .catch(err => dispatch({ type: ADD_ERROR, payload: err}))}
+// };

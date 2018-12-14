@@ -36,7 +36,7 @@ class SmurfForm extends React.Component {
             />
 
             <input
-              type='number'
+              type='text'
               name='age'
               placeholder='Age'
               onChange={this.handleChange}
@@ -58,7 +58,7 @@ class SmurfForm extends React.Component {
 
 const mapStateToProps = state => {
   return{
-    createSmurf: state.createSmurf
+    addSmurf: state.addSmurf
   }
 }
 

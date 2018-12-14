@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import  SmurfList  from "../components/SmurfList";
+import SmurfList from "../components/SmurfList";
 
 import { fetchSmurf } from '../actions';
 
