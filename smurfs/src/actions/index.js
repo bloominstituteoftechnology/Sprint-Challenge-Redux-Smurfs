@@ -1,7 +1,7 @@
 
 import axios from "axios";
 export const LOADING = "LOADING";
-export const FETCH_SMURFS = "FETCH_SMURFS";
+export const GET_SMURFS = "GET_SMURFS";
 export const ERROR = "ERROR";
 export const ADD_SMURF = "ADD_SMURF";
 export const DELETE_SMURF = "DELETE_SMURF";
@@ -9,13 +9,13 @@ export const UPDATE_SMURF = "UPDATE_SMURF";
 
 const URL = "http://localhost:3333";
 
-export const fetchSmurfs = () => dispatch => {
+export const getSmurfs = () => dispatch => {
 dispatch({ type: LOADING });
 axios
   .get(`${URL}/smurfs`)
   .then(response => {
     console.log(response.data);
-    dispatch({ type: FETCH_SMURFS, payload: response.data });
+    dispatch({ type: GET_SMURFS, payload: response.data });
   })
   .catch(err => {
     dispatch({ type: ERROR, payload: err.errorMessage });

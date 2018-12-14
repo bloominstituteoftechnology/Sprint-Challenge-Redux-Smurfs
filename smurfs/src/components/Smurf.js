@@ -9,16 +9,16 @@ const Smurf = ({ smurf, deleteSmurf }) => {
         deleteSmurf (smurf.id)
     }
 return (
-    <div key={smurf.id} className="smurf-card">
-    <p className="close-button" onClick={clickHandler}>
-        x
+    <div key={smurf.id} className="character-card">
+    <p className="btn" onClick={clickHandler}>
+        <button>CLICK ME </button>
     </p>
         <h2>{smurf.name}</h2>
-        <p>Smurf's age:{smurf.age}</p>
-        <p>And smurfs' height:{smurf.height}</p>
+        <p>Smurf's Age:{smurf.age}</p>
+        <p>Add Smurf's Height:{smurf.height}</p>
         <Link to={`/update/${smurf.id}`} style={{ textDecoration: 'none', color: 'blue', cursor: 'pointer' }}>Update</Link>
     </div>
-);
+   );
 };
 
 const mapStateToProps = () =>({})

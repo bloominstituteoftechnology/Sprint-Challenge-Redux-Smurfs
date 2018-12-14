@@ -1,5 +1,6 @@
 
-import { LOADING, FETCH_SMURFS, ADD_SMURF, UPDATE_SMURF, DELETE_SMURF, ERROR } from '../actions'
+import { LOADING, GET_SMURFS, ADD_SMURF, UPDATE_SMURF, DELETE_SMURF, ERROR } from '../actions'
+
 
 const initState = {
     smurfs: [],
@@ -17,7 +18,7 @@ export const whackASmurf = (state = initState, action) => {
     switch (action.type) {
         case LOADING:
             return { ...state, loading: true }
-        case FETCH_SMURFS:
+        case GET_SMURFS:
             return { ...state, smurfs: action.payload, loading: false }
         case ADD_SMURF:
             return { ...state, smurfs: action.payload, addingSmurf: true, loading: false }

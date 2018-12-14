@@ -1,11 +1,11 @@
 import React from "react";
-import { fetchSmurfs } from '../actions/index'
+import { getSmurfs } from '../actions/index'
 import Smurf from './Smurf'
 import { connect } from 'react-redux'
 class SmurfList extends React.Component {
 
     componentDidMount() {
-        this.props.fetchSmurfs()
+        this.props.getSmurfs()
     }
     render() {
     return (
@@ -27,4 +27,4 @@ const mapStateToProps = state => {
         loading: state.whackASmurf.loading
     }
 }
-export default connect(mapStateToProps, {fetchSmurfs})(SmurfList);
+export default connect(mapStateToProps, {getSmurfs})(SmurfList);
