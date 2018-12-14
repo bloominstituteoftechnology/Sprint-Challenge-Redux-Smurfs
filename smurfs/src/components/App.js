@@ -21,11 +21,12 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchSmurf();
   }
-  
+
   render() {
     return (
       <div className="App">
-
+      <Smurfs />
+      <SmurfForm />
       </div>
     );
   }
@@ -33,7 +34,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    smurfs: state.smurfs,
+    smurfs: state.smurfs
   }
 }
 

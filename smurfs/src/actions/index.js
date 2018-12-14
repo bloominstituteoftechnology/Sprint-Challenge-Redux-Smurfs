@@ -24,7 +24,7 @@ export const ERROR = 'ERROR';
 
 const url = 'http://localhost:3333/'
 
-export const fetchSmurf = dispatch => {
+export const fetchSmurf = () => dispatch => {
   dispatch({
     type: FETCH_SMURF
   })
