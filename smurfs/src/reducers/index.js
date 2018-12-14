@@ -24,7 +24,8 @@ import {
 const initState = {
   smurfs: [],
   error: null,
-  fetchingSmurfs: false
+  fetchingSmurfs: false,
+  editing: false
 };
 
 /*
