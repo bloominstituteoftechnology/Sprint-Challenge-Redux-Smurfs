@@ -1,6 +1,21 @@
 .App {
   text-align: center;
-  background-color: #88CCFF;
-  
+  background-color: #88CCFF;  
 }
 
+input[type=text] {
+  border: 1px solid blue;
+  background-color: white;
+  color: blue;
+}
+
+input[type=number] {
+  border: 1px solid blue;
+  background-color: white;
+  color:blue;
+}
+
+.btn{
+  background-color: blue;
+  color: white;
+}
