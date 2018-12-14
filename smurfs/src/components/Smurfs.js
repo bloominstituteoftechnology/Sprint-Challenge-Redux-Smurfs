@@ -7,15 +7,15 @@ class Smurfs extends Component {
     return (
       <div className="Smurfs">
         <h1>Smurf Village</h1>
-          {/* {this.props.smurfs.map(smurf => {
+          {this.props.smurfs.map(smurf => {
             return (
               <Smurf
                 name={smurf.name}
                 age={smurf.age}
                 height={smurf.height}
               />
-            ); */}
-          {/* })} */}
+            );
+           })}
       </div>
     );
   }

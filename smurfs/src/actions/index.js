@@ -44,7 +44,7 @@ export const fetchSmurf = () => dispatch => {
   })
 }
 
-export const addSmurf = dispatch => smurf => {
+export const addSmurf = smurf => dispatch => {
   dispatch({
     type: ADD_SMURF
   })

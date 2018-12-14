@@ -48,7 +48,7 @@ export const smurfReducer = (state = initialState, action) => {
     case SMURF_FETCHED:
     return {
       ...state,
-      smurfs: [...state.smurfs, ...action.payload],
+      smurfs: action.payload,
       fetching: false
     }
 
@@ -61,6 +61,7 @@ export const smurfReducer = (state = initialState, action) => {
     case SMURF_ADDED:
     return {
       ...state,
+      smurfs: action.payload,
       adding: false
     }
 
