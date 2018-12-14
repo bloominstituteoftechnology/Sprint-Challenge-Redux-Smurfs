@@ -10,16 +10,22 @@ class SmurfList extends React.Component {
     }
 
     render() {
-        <div>
-            { this.props.fetchingSmurfs ? <h2>Looking for Smurfs...</h2> : null}
+        if (this.props.fetchingSmurfs) {
             return (
-                {this.props.smurfs.map(smurf => {
+                <div>
+                    <h1>Looking for Smurfs...</h1>
+                </div>
+            );
+        }
+        return (
+            <div>
+            {this.props.smurfs.map(smurf => {
                 return (
                     <Smurf key={smurf.id} smurf={smurf} />
-                ) 
-                })}        
-        );
-        </div>
+                )
+            })}
+            </div>
+        )
     }
 }
 
