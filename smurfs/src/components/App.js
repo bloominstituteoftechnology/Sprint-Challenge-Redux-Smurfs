@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
-import {BrowserRouter as Router} from 'react-router-dom';
+// import {BrowserRouter as Router} from 'react-router-dom';
 
-import Header from "./Header";
+// import Header from "./Header";
 import SmurfForm from "./SmurfForm";
 import SmurfList from "./SmurfList";
 
@@ -11,7 +11,7 @@ import SmurfList from "./SmurfList";
 import { getSmurfs } from "../actions";
 
 import "./App.css";
-import { smurfsReducer } from "../reducers/smurfsReducer";
+// import { smurfsReducer } from "../reducers/smurfsReducer";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 

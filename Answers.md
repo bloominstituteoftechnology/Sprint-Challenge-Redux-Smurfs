@@ -20,4 +20,4 @@
     Redux-thunk is a middleware that returns a function instead of an object.
 
 6.  Which `react-redux` method links up our `components` with our `redux store`?
-    Connect (mapState,mapProps)(react-component);
+    Connect (mapStateToProps,mapDispatchToProps)(react-component);
