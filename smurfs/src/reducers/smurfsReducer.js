@@ -23,6 +23,11 @@ export const smurfsReducer = (state = initialState, action) => {
         smurfs: action.payload,
         creatingSmurfs: false
       };
+    case actionTypes.EDITING_SMURFS:
+      return {...state, updatingSmurfs:true};
+    // case actionTypes.DELETE_SMURF:
+    //   return
+    
     case actionTypes.ERROR:
       return {
         ...state,

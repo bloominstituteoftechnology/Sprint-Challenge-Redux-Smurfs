@@ -25,7 +25,7 @@ class SmurfList extends Component {
                   height={smurf.height}
                 />
                 {/* <button onClick={() => this.deleteSmurf(smurf.id)}>
-                  Delete
+                  DELETE
                 </button> */}
               </div>
             );

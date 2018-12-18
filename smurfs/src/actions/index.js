@@ -21,6 +21,7 @@ export const GET_SMURFS = "GET_SMURFS";
 export const GETTING_SMURFS = "GETTING_SMURFS";
 export const CREATING_SMURFS = "CREATING_SMURFS";
 export const CREATE_SMURFS = "CREATE_SMURFS";
+export const EDITING_SMURFS = "EDITING_SMURFS";
 // export const ERROR = "ERROR";
 // export const ERROR = "ERROR";
 // export const ERROR = "ERROR";
@@ -54,3 +55,34 @@ export const createSmurf = newSmurf => {
       });
   };
 };
+
+
+// put request
+export const editSmurfs = editSmurf => {
+  const smurfs = axios.put(URL, editSmurf);
+  return dispatch => {
+    dispatch({type: EDITING_SMURFS});
+    smurfs.id
+      .then(response => {
+        dispatch({type: EDITING_SMURFS, payload: response.data});
+      })
+      .catch(err => {
+        dispatch({type: ERROR, payload: err});
+      });
+  };
+};
+
+
+// export const deleteSmurf = deleteSmurf => {
+//   const smurfs = axios.delete(URL, deleteSmurf);
+//   return dispatch => {
+//     dispatch({type: DELETE_SMURFS});
+//     smurfs.id
+//       .then(response => {
+//         dispatch({type: CREATE_SMURFS, payload: response.data});
+//       })
+//       .catch(err => {
+//         dispatch({type: ERROR, payload: err});
+//       });
+//   };
+// };
