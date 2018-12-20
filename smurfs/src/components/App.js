@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { getSmurfs } from '../actions';
+import { createSmurf } from '../actions';
 import { connect } from 'react-redux';
+import Form from './form';
 
 /*
  to wire this component up you're going to need a few things.
@@ -13,13 +15,17 @@ class App extends Component {
 
   componentDidMount(){
     this.props.getSmurfs();
+    this.props.createSmurf();
   }
   render() {
 
 
     return (
       <div>
+        <Form />
       { this.props.smurfs.map(smurf=><div>{smurf.name}</div>)}
+      { this.props.smurfs.map(smurf=><div>{smurf.age}</div>)}
+      { this.props.smurfs.map(smurf=><div>{smurf.height}</div>)}
       </div>
     );
   }
@@ -32,4 +38,4 @@ const mapState = state => {
     smurfs: state.smurfs
   }
 }
-export default connect(mapState, {getSmurfs})(App);
+export default connect(mapState, {getSmurfs, createSmurf})(App);

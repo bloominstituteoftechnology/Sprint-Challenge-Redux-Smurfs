@@ -41,19 +41,19 @@ export const getSmurfs = () => {
   };
 };
 
-// export const createSmurf = smurf => {
-//   const newSmurf = axios.post(`${URL}`, smurf);
-//   return dispatch => {
-//     dispatch({ type: CREATING_SMURF });
-//     newFriend
-//       .then(({ data }) => {
-//         dispatch({ type: CREATE_SMURF, payload: data });
-//       })
-//       .catch(err => {
-//         dispatch({ type: ERROR, payload: err });
-//       });
-//   };
-// };
+export const createSmurf = smurf => {
+  const newSmurf = axios.post(`${URL}`, smurf);
+  return dispatch => {
+    dispatch({ type: CREATING_SMURF });
+    newSmurf
+      .then(({ data }) => {
+        dispatch({ type: CREATE_SMURF, payload: data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
 
 // export const deleteSmurf = id => {
 //   const deletedSmurf = axios.delete(`${URL}/${id}`)
