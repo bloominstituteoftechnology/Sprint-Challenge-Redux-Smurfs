@@ -32,6 +32,11 @@ export const main_reducer = (state = initialstate, action) => {
       ...state,
       loading:true,
     }
+    case CREATE_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload,
+      }
     case ERROR:
     return {
       ...state,
