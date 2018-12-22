@@ -17,7 +17,7 @@ class SmurfsContent extends Component {
 
   render() {
     if (this.props.fetching) {
-      <h2>Smurfs are loading...</h2>
+      return <h2>Smurfs are loading...</h2>
     }
     return (
       <div>
