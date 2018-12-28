@@ -12,7 +12,7 @@ export const SMURF_ADDED = "SMURF_ADDED";
 export const SMURF_FETCHED = "SMURF_FETCHED"; 
 export const SMURF_ERROR = "SMURF_ERROR";
 
-
+// TODO - review if should add promise.
 // get
 export const getSmurfs = () =>  {
   return dispatch => {
@@ -46,5 +46,6 @@ export const addSmurf = (smurf) =>  {
 };
 
 // put
+
 
 // delete
