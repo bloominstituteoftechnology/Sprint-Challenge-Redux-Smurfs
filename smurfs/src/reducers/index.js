@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING, SUCCESS, FAILURE } from '../actions/index.js';
+import { FETCHING, POSTING, SUCCESS, FAILURE } from '../actions/index.js';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -32,6 +32,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case FETCHING:
       return Object.assign({}, state, { fetchingSmurfs: true });
+    case POSTING:
+      return Object.assign({}, state, { addingSmurf: true });
     case SUCCESS:
       return Object.assign({}, state, {
         smurfs: action.payload,
