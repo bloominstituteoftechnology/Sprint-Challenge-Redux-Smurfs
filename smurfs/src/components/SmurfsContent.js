@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { getSmurfs } from '../actions';
 
+import SmurfForm from './SmurfForm';
 import SmurfsList from './SmurfsList';
 
 class SmurfsContent extends Component {
@@ -21,6 +22,7 @@ class SmurfsContent extends Component {
     }
     return (
       <div>
+        <SmurfForm />
         <SmurfsList smurfs={this.props.smurfs} />
       </div>
     );
