@@ -38,12 +38,13 @@ export const getSmurfs = () => {
   }
 }
 
-export const createSmurf = () => {
+export const createSmurf = smurf => {
   return dispatch => {
     dispatch({ type: POSTING });
     axios
-      .post('http://localhost:3333/smurfs')
+      .post('http://localhost:3333/smurfs', smurf)
       .then(response => {
+        console.log(response);
         dispatch({
           type: SUCCESS,
           payload: response.data
