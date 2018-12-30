@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { addSmurf } from "../actions/index.js";
 
 
 
@@ -15,6 +17,10 @@ class BSmurfForm extends Component {
 }
 
 //Handlers
+inputHandler = event => {
+    this.setState({ [e.target.name]: event.target.value});
+}
+
     submitHandler =  event => {
             e.preventDefault();
             this.props.addSmurf(this.state);
@@ -26,11 +32,10 @@ class BSmurfForm extends Component {
     }
 
 
-    inputHandler = event => {
-            this.setState({ [e.target.name]: event.target.value});
-    }
+    
 
     render(){
+
         return(
             <form onSubmit={this.submitHandler}>
 				<input 
@@ -56,11 +61,11 @@ class BSmurfForm extends Component {
 				/>
 				<button type='submit'>Add Smurf</button>
 			</form>
-        )
+        );
     }
 
-}
+
 
 const mapStateToProps = () => ({});
 
-export default connect(mapStateToProps, { addSmurf })(SmurfForm);
+export default connect(mapStateToProps, {  })(BSmurform);
