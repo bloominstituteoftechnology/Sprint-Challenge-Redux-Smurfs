@@ -10,4 +10,4 @@ const ASmurf = props => {
 	)
 }
 
-export default Smurf; 
+export default ASmurf; 

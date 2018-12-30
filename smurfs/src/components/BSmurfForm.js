@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { addSmurf } from "../actions/index.js";
 
-class SmurfForm extends Component {
+class BSmurfForm extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -68,4 +68,4 @@ class SmurfForm extends Component {
 
 const mapStateToProps = () => ({});
 
-export default connect(mapStateToProps, {addSmurf})(BSmurform);
+export default connect(mapStateToProps, {addSmurf})(BSmurfForm);

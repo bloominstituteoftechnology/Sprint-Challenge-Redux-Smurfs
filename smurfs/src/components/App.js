@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import SmurfList from './SmurfList';
+import SmurfList from './CList';
 import SmurfForm from './BSmurfForm';
 import './App.css';
 
