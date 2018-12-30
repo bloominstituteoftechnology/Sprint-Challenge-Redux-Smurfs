@@ -59,4 +59,8 @@ class BSmurfForm extends Component {
         )
     }
 
-    
+}
+
+const mapStateToProps = () => ({});
+
+export default connect(mapStateToProps, { addSmurf })(SmurfForm);
