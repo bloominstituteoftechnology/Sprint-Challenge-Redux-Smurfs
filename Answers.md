@@ -1,6 +1,6 @@
 1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
 
-Map, filter, and reduce are typically the methods that we go to when we want to manipulate data but want to avoid side-effects. This is done by basically making a new array object by using those above functions, thereby avoiding direct mutation of the original array.
+Map, filter, and reduce are typically the methods that we go to when we want to manipulate data but want to avoid side-effects. This is done by basically making a new array by using those above functions, thereby avoiding direct mutation of the original array.
 
 Object.assign() is the function we typically use to extend the properties of another object.
 
@@ -9,7 +9,7 @@ Object.assign() is the function we typically use to extend the properties of ano
 'Actions' seem to be oddly named, as they are actually quite inert and, well, sort of "plain". Afterall, they are simply plain javascript objects, or functions that return such objects, and contain an action type and the data that we want associated with that type. It's easier to think of our 'actions' as the actual object that gets triggered by users interacting with our app, or at least the description of the changes that will occur.
 
 'Reducers' are where the logic of our changes is written, which ironically means this is where the action actually takes place. 
-'Reducers' basically are like the function reduce, and take in our state and the action dispatched, and REDUCES it to a new state, which then replaces the old state in the store. Pretty nifty! Key thing: reducers NEVER modify the state directly, but instead replaces it wholesale. 
+'Reducers' basically are like the function reduce, and take in our state and the action dispatched, and REDUCES it to a new state, which then replaces the old state in the store. Pretty nifty! Key thing: reducers SHOULDN'T modify the state directly, but instead should replace it wholesale. 
 
 Our 'store', finally, is where we have our state, our actions, and our reducers. It is then "provided" by the Provider, which basically makes this 'store' (I like to think of it as an armory) available to all our components, presentational OR compositional. 
 1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
