@@ -12,6 +12,9 @@
 
 1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
 
+  Application state is the one true state for an application. Redux is an implementation of this, that creates a single global state for an application.
+
+  Component state is state that is confined to a single component such as a form. This state isn't used by any other part of an application unless it has been passed down through props.
 
 
 1.  What is middleware?
