@@ -20,6 +20,7 @@ class AddSmurfs extends Component {
         age: "",
         height: ""
         });
+        this.props.g
         }
 
     handleInputChange = e => {

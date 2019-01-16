@@ -13,7 +13,7 @@ export const addSmurf = smurf => dispatch => {
     })
 };
 
-export const getSmurfs = smurf => dispatch => {
+export const getSmurfs = () => dispatch => {
   axios 
     .get(`${target}/smurfs`)
     .then( res => { 
