@@ -18,7 +18,6 @@ const initialState = {
 	addingSmurf: false,
 	updatingSmurf: false,
 	deletingSmurf: false,
-	updatingSmurf: true,
 	error: null,
 	id: null
 };

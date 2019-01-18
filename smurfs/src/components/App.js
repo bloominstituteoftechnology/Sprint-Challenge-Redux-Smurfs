@@ -59,6 +59,7 @@ class App extends Component {
 		}
 
 		if (this.props.updating) {
+			console.log('la laupdating=' + this.props.updating);
 			return (
 				<div>
 					<h1>UPDATING A SMURF</h1>

@@ -29,7 +29,6 @@ class IndividualSmurf extends React.Component {
 
 	submitHandler = e => {
 		e.preventDefault();
-		this.props.updateSmurf();
 		this.props.submitUpdate(this.state);
 	};
 
