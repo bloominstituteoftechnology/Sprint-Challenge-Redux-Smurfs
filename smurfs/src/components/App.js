@@ -1,24 +1,65 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react'
+import { connect } from "react-redux"; // THE CONNECT FUNCTION MAKES OUR COMPONENT AWARE OF REDUX
+import { getSmurfs, addSmurf } from "../actions"; // IMPORT DECLARED ACTIONS
 import Header from "./Header";
-import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-      <Header />
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
+import Form from "./Form";
+
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+      this.state = {
+        name: "",
+        age: "",
+        height: "",
+      }
+  }
+
+  inputHandler = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  submitHandler = (e) => {
+    e.preventDefault();
+    this.props.addSmurf(this.state);
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    })
+  }
+
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
+
+  render(){
+    return(
+      <React.Fragment>
+        <Header />
+        <ul>
+          {this.props.smurfs.map( (smurf, index) => {
+            return<li key={index}>
+                Name: {smurf.name} 
+                Age: {smurf.age} 
+                Height: {smurf.height}cm
+              </li>})}
+        </ul>
+        <Form />
+      </React.Fragment>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+  smurfs: state.smurfs,
+  error: state.error,
+  loading: state.loading,
+  }
+};
+
+export default connect(mapStateToProps, { getSmurfs, addSmurf } )(App);
+
