@@ -6,18 +6,18 @@ import {
 
 const defaultState = {
   smurfs: [],
-  error: "",
+  error: false,
   loading: false,
 }
 
 export const rootReducer = (state = defaultState, action) => {
   switch(action.type){
     case LOADING:
-      return {...state, loading: true}
+      return {...state, loading: true, error: false}
     case GET_SMURFS:
       return {...state, smurfs: action.smurfs, loading: false, error: ''}
     case ERROR_MESSAGE:
-      return {...state,  state, error: action.errorMessage, loading: false}
+      return {...state, loading: false, error: true}
     default:
       return state
   }

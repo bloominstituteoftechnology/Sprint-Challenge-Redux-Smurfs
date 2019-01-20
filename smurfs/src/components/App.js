@@ -37,18 +37,18 @@ class App extends React.Component {
 
   render(){
     return(
-      <React.Fragment>
+      <Fragment>
         <Header />
         <ul>
           {this.props.smurfs.map( (smurf, index) => {
             return<li key={index}>
-                Name: {smurf.name} 
-                Age: {smurf.age} 
+                Name: {smurf.name} <br />
+                Age: {smurf.age} <br />
                 Height: {smurf.height}cm
               </li>})}
         </ul>
         <Form />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
