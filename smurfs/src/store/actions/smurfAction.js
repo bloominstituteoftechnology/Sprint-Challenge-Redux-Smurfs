@@ -57,3 +57,42 @@ export const postSmurf = newsmurf => dispatch => {
       })
     );
 };
+
+export const removeSmurf = id => dispatch => {
+  dispatch({
+    type: DELETE_SMURF
+  });
+  axios
+    .delete(`${URL}/${id}`)
+    .then(res =>
+      dispatch({
+        type: DELETE_SMURF_SUCCESS,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: DELETE_SMURF_FAIL,
+        payload: err
+      })
+    );
+};
+export const submitUpdated = (id, updated) => dispatch => {
+  dispatch({
+    type: UPDATE_SMURF
+  });
+  axios
+    .put(`${URL}/${id}`, updated)
+    .then(res =>
+      dispatch({
+        type: UPDATE_SMURF_SUCCESS,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: UPDATE_SMURF_FAIL,
+        payload: err
+      })
+    );
+};

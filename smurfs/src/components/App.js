@@ -3,7 +3,12 @@ import "./App.css";
 import MainNavBar from "./MainNavBar";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
-import { getSmurf, postSmurf } from "../store/actions/smurfAction";
+import {
+  getSmurf,
+  postSmurf,
+  removeSmurf,
+  submitUpdated
+} from "../store/actions/smurfAction";
 import SmurfLists from "./SmurfLists";
 import SmurfForm from "./SmurfForm";
 import SingleSmurf from "./SingleSmurf";
@@ -14,7 +19,8 @@ class App extends Component {
     this.state = {
       age: "",
       name: "",
-      height: ""
+      height: "",
+      isUpdated: false
     };
   }
   handleChange = e => {
@@ -27,12 +33,18 @@ class App extends Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-    this.addSmurf();
+    const { isUpdated } = this.state;
+    if (isUpdated) {
+      this.submitUpdatedSmurf();
+    } else {
+      this.addSmurf();
+    }
     this.props.history.push("/");
     this.setState({
       age: "",
       name: "",
-      height: ""
+      height: "",
+      isUpdated: false
     });
   };
   addSmurf = () => {
@@ -43,8 +55,31 @@ class App extends Component {
     };
     this.props.postSmurf(newSmurf);
   };
+  deleteSmurf = id => {
+    this.props.removeSmurf(id);
+    this.props.history.push("/");
+  };
+  submitUpdatedSmurf = () => {
+    const updatedsmrf = {
+      age: this.state.age,
+      name: this.state.name,
+      height: this.state.height
+    };
+    this.props.submitUpdated(this.state.id, updatedsmrf);
+  };
+  updateSmurf = smurf => {
+    this.setState({
+      age: smurf.age,
+      height: smurf.height,
+      name: smurf.name,
+      id: smurf.id,
+      isUpdated: true
+    });
+    this.props.history.push("/form");
+  };
+
   render() {
-    const { smurf } = this.props;
+    const { smurf, isUpdated } = this.props;
     return (
       <div className="App">
         <MainNavBar />
@@ -57,6 +92,7 @@ class App extends Component {
               age={this.state.age}
               name={this.state.name}
               height={this.state.height}
+              isUpdated={isUpdated}
               {...props}
             />
           )}
@@ -66,11 +102,16 @@ class App extends Component {
           path="/"
           render={props => <SmurfLists {...props} smurfs={smurf} />}
         />
-
         <Route
           exact
           path="/smurf/:id"
-          render={props => <SingleSmurf {...props} smurfs={smurf} />}
+          render={props => (
+            <SingleSmurf
+              {...props}
+              updateSmurf={this.updateSmurf}
+              deleteSmurf={this.deleteSmurf}
+            />
+          )}
         />
       </div>
     );
@@ -83,5 +124,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getSmurf, postSmurf }
+  { getSmurf, postSmurf, removeSmurf, submitUpdated }
 )(App);

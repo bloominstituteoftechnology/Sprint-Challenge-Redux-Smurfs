@@ -3,7 +3,14 @@ import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 class SmurfForm extends React.Component {
   render() {
-    const { handleChange, handleSubmit, age, name, height } = this.props;
+    const {
+      handleChange,
+      handleSubmit,
+      age,
+      name,
+      height,
+      isUpdated
+    } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
         <Row form>
@@ -42,7 +49,7 @@ class SmurfForm extends React.Component {
             placeholder="height"
           />
         </FormGroup>
-        <Button type="submit">Submit</Button>
+        <Button type="submit">{isUpdated ? "Update" : "Submit"}</Button>
       </Form>
     );
   }

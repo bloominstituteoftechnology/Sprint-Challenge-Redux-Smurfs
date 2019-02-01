@@ -57,6 +57,42 @@ export default function smurfReducer(state = initialState, action) {
         loading: true,
         errors: action.payload
       };
+    case DELETE_SMURF:
+      return {
+        ...state,
+        loading: true
+      };
+    case DELETE_SMURF_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        errors: "",
+        smurf: action.payload
+      };
+    case DELETE_SMURF_FAIL:
+      return {
+        ...state,
+        loading: true,
+        errors: action.payload
+      };
+    case UPDATE_SMURF:
+      return {
+        ...state,
+        loading: true
+      };
+    case UPDATE_SMURF_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        errors: "",
+        smurf: action.payload
+      };
+    case UPDATE_SMURF_FAIL:
+      return {
+        ...state,
+        loading: true,
+        errors: action.payload
+      };
     default:
       return state;
   }
