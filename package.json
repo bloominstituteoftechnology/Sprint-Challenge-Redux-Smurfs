@@ -4,7 +4,9 @@
   "description": "Redux Sprint Challenge",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "server": "nodemon server.js",
+    "client": "npm start --prefix smurfs",
+    "dev": "concurrently \"npm run server\" \"npm run smurfs\""
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,7 @@
   },
   "homepage": "https://github.com/LambdaSchool/Sprint-Challenge--Redux#readme",
   "dependencies": {
+    "concurrently": "^4.1.0",
     "cors": "^2.8.4",
     "express": "^4.16.3"
   },
