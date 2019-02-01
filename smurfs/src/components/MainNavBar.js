@@ -24,7 +24,7 @@ class MainNavBar extends Component {
             <NavItem>
               <NavLink to="/">Smurfs</NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem style={{ marginLeft: "20px" }}>
               <NavLink to="/form">Smurf Form</NavLink>
             </NavItem>
           </Nav>

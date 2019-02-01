@@ -78,15 +78,35 @@ class App extends Component {
     this.props.history.push("/form");
   };
 
+  cancelForm = () => {
+    this.setState({
+      age: "",
+      name: "",
+      height: "",
+      isUpdated: false
+    });
+    this.props.history.push("/");
+  };
+
   render() {
-    const { smurf, isUpdated } = this.props;
+    const { smurf, loading, errors } = this.props;
+    const { isUpdated } = this.state;
+
     return (
       <div className="App">
         <MainNavBar />
+        {loading && (
+          <img
+            src="https://media1.tenor.com/images/72b72ff0c392a16c6b12e80bbe3473c5/tenor.gif?itemid=4989541"
+            alt="loading"
+          />
+        )}
+        {errors && <h1>{errors}</h1>}
         <Route
           path="/form"
           render={props => (
             <SmurfForm
+              cancelForm={this.cancelForm}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
               age={this.state.age}
@@ -119,7 +139,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  smurf: state.smurfReducer.smurf
+  smurf: state.smurfReducer.smurf,
+  loading: state.smurfReducer.loading,
+  errors: state.smurfReducer.errors
 });
 
 export default connect(

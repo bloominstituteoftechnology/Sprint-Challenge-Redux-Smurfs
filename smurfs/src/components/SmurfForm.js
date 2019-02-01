@@ -9,10 +9,11 @@ class SmurfForm extends React.Component {
       age,
       name,
       height,
-      isUpdated
+      isUpdated,
+      cancelForm
     } = this.props;
     return (
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} style={{ maxWidth: 900, margin: "0 auto" }}>
         <Row form>
           <Col md={6}>
             <FormGroup>
@@ -50,6 +51,9 @@ class SmurfForm extends React.Component {
           />
         </FormGroup>
         <Button type="submit">{isUpdated ? "Update" : "Submit"}</Button>
+        <Button style={{ marginLeft: 10 }} color="danger" onClick={cancelForm}>
+          Cancel
+        </Button>
       </Form>
     );
   }

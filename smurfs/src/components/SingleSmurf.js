@@ -33,6 +33,13 @@ class SingleSmurf extends Component {
   componentDidMount() {
     this.fetchSingleSmurf();
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.smurfs !== this.props.smurf) {
+      this.props.history.push("/");
+    }
+  }
+
   componentWillReceiveProps(nextProp) {
     if (this.props.match.params.id !== nextProp.match.params.id) {
       this.fetchSingleSmurf(nextProp.match.params.id);
