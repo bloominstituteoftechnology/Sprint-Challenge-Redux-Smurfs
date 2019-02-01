@@ -1,0 +1,75 @@
+.Smurfs {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  align-items: center;
+  
+}
+
+.headingContainer {
+  margin: 25px;
+  background-image: url('http://worldartsme.com/images/wood-background-clipart-1.jpg');
+  width: 35%;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+  box-shadow: 5px 5px 15px 5px #000000;
+  border-radius: 50%;
+}
+
+.villageSign {
+  margin: -2px;
+  font-family: 'Spicy Rice';
+  color: rgb(179, 167, 13);
+  font-size: 62px;
+  text-shadow: -3px 5px 7px rgba(2, 23, 37, 0.72);
+  letter-spacing: 1.5px;
+
+}
+
+.Smurfs .listHeader {
+  color: rgb(179, 167, 13);
+  font-family: 'Spicy Rice';
+  background-image: url('http://worldartsme.com/images/wood-background-clipart-1.jpg');
+  padding: 14px;
+  font-size: 1.5rem;
+  text-shadow: -3px 5px 7px rgba(1, 19, 31, 0.72);
+  -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+  box-shadow: 5px 5px 15px 5px #000000;
+  border-radius: 50%;
+}
+
+.smurfListZone {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.smurfList {
+  background-color: rgb(190, 190, 245);
+  min-width: 150px;
+  padding: 5px;
+  margin: 5px;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+  box-shadow: 5px 5px 15px 5px #270683;
+  border-radius:15%;
+  
+}
+
+ul {
+  display: flex;
+  font-family: cursive;
+  letter-spacing: 1px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  flex-direction: column;
+  list-style-type:none;
+}
+
+.smurfListName {
+  padding: 10px 30px;
+}
+
+.smurfListName:hover {
+  box-shadow: 2px 2px 7px 1px #1C6EA4;
+  border-radius: 28%;
+  cursor: pointer;
+}
