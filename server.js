@@ -14,9 +14,17 @@ const sendUserError = (msg, res) => {
 
 let smurfs = [
   {
+    img: './src/images/BrainySmurf.jpeg',
     name: 'Brainey',
     age: 200,
     height: '5cm'
+  },
+  {
+    img: './src/images/BeerSmurf.jpg',
+    name: 'Beer Smurf',
+    age: 100,
+    height: '123cm',
+    description: 'I wonder what the drinking age is in Smurf Village? This Smurf must be old enough, and his smile shows what a great time you can have throwing back a few foamy brewskies. Heck, he would make a perfect spokesman for Budweiser, enabling them to reach an ever younger demographic than they did with the Bud Bowl!'
   }
 ];
 server.get('/smurfs', (req, res) => {
