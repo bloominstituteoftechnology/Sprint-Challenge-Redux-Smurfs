@@ -3,20 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./components/App";
-import thunk from "redux-thunk";
-import logger from "redux-logger";
-import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import /* You need some sort of reducer */ "./reducers";
-
-const store = createStore(
-  () => {}, // this is the most basic reducer. A function that returns and object. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
-);
-
-ReactDOM.render(
+import { BrowserRouter as Router, withRouter } from "react-router-dom";
+import store from "./store/store";
+const AppWithRouter = withRouter(App);
+const app = (
   <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
+    <Router>
+      <AppWithRouter />
+    </Router>
+  </Provider>
 );
+ReactDOM.render(app, document.getElementById("root"));
+// serviceWorker.unregister();

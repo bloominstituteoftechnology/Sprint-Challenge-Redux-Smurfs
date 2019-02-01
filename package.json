@@ -6,7 +6,7 @@
   "scripts": {
     "server": "nodemon server.js",
     "client": "npm start --prefix smurfs",
-    "dev": "concurrently \"npm run server\" \"npm run smurfs\""
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
