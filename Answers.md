@@ -10,3 +10,4 @@ your application state is global and your component state is local.
 
 3 Describe redux-thunk, what does it allow us to do? How does it change our action-creators?
 redux thunk is a middle ware that lets you call action creators that return a function instead of an action object.
+///
