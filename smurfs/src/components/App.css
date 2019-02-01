@@ -2,27 +2,66 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1.6rem;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 32px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+nav a {
+  text-decoration: none;
+  color: darkslategray;
 }
 
-.App-title {
-  font-size: 1.5em;
+nav a.active {
+  border-bottom: 1px solid darkslategray;
 }
 
-.App-intro {
-  font-size: large;
+.SmurfForm {
+  border: 1px solid #efefef;
+  width: 50%;
+  margin: 0 auto;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.SmurfForm form {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+}
+
+input {
+  padding: 10px;
+  width: 75%;
+  margin: 0 auto;
+  margin-bottom: 1.2rem;
+}
+
+.btn {
+  padding: 1.2rem;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.Smurf {
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  border: 1px solid #efefef;
+  padding: 2rem;
+  width: 60%;
+}
+
+.Smurf h3, p { 
+  margin-bottom: 1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.list-btn {
+  padding: 1rem;
+  width: 150px;
 }
