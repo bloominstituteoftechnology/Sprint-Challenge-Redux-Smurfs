@@ -1,28 +1,123 @@
 .App {
   text-align: center;
+  max-width: 900px;
+  min-height: 70vh;
+  background: rgba(136, 178, 247, .7);
+  margin: 40px auto 0 auto;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.smurfs-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto;
+  
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.Smurf {
+  width: 500px;
+  border: 1px solid rgb(231, 232, 236);
+  margin-bottom: 20px;
+  height: 180px;
+  transition: all .2s ease-in-out; 
+  border-radius: 2px;
+  color: #38404c;
+  background: rgba(231, 232, 236, .2);
+  text-decoration: none;
+}
+
+.Smurf:first-child {
+  margin-top: 20px;
+}
+
+.Smurf:hover {
+  transform: scale(1.1);
+  background: rgba(231, 232, 236, .4);
+  cursor: pointer;
+}
+
+.Smurf h2 {
+  color: black;
+  font-size: 2.5rem;
+  margin-bottom: 27px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.Smurf h4 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  
+}
+
+
+/* Smurf Form */
+.SmurfForm form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.SmurfForm form input:first-child {
+  margin-top: 20px;
+}
+
+.SmurfForm form input {
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 500px;
+  margin-bottom: 20px;
+  color:  #7575a3;
+  font-weight: bold;
+  font-family: 'Coming Soon', cursive;
+  font-size: 1.5rem;
+}
+
+.btn-primary {
+  margin-bottom: 60px;
+  background-color: #51b4ff;
+  border: none;
   color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
 }
 
-.App-title {
-  font-size: 1.5em;
+.btn-primary:hover {
+  background: rgb(81, 180, 255, .3);
+  color: black;
 }
 
-.App-intro {
-  font-size: large;
+/* Delete Button */
+
+.btn-delete {
+  margin-bottom: 15px;
+  background-color: #ff9999;
+  border: none;
+  color: #fff;
+  padding: 8px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.btn-delete:hover {
+  background:  #ffcccc;
+  color: black;
 }
