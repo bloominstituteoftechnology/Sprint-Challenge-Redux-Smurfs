@@ -1,5 +1,30 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+.wholeApp{
+  text-align: center;
+  width: 100%;
+  background-color: aquamarine;
 }
+ul{
+  margin-left:23%;
+}
+.smurfContainer{
+  max-width: 500px;
+  width: 100%;
+  background-color:rgb(155, 212, 248);
+  border:1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding-top:15px;
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+.smurfContainer:hover{
+  background-color:#00BFFF;
+  padding-top: 25px;
+  padding-bottom:25px;
+  font-size: 25px;
+  color:rgb(17, 17, 206);
+  transition:.5s;
+}
+
+
