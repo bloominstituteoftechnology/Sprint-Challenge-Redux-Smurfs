@@ -1,28 +1,107 @@
 .App {
-  text-align: center;
+    text-align: center;
+    width: 1900px;
+    height: 1000px;
+    color: #B0294C;
+    font-weight: bolder;
+    text-shadow: 2px 2px blue;
+    font-size: 20px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+
+/* .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+} */
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+    box-shadow: 3px 5px 10px #1F56B3;
+    background-image: url('https://wallpapersite.com/images/wallpapers/smurfs-the-lost-village-3000x1621-animation-2017-hd-7262.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.App li {
+    list-style: none;
+}
+
+.smurf-form {
+    margin-top: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+    box-shadow: 3px 5px 10px #1F56B3;
+    padding-bottom: 20px;
+    margin: 10px;
+    width: 400px;
+    color: #B0294C;
+}
+
+.smurf-form input {
+    margin: 10px;
+}
+
+.del-btn {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    margin-right: 20px;
+}
+
+input::placeholder {
+    color: #1F56B3;
+    padding-left: 5px;
+}
+
+button {
+    background-color: #1F56B3;
+    box-shadow: 2px 2px 3px #B0294C;
+    color: antiquewhite;
+    border-radius: 4px;
+    width: 90px;
+}
+
+.smurf-container {
+    margin-top: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+    box-shadow: 3px 5px 10px #1F56B3;
+    padding-bottom: 10px;
+    width: 800px;
+}
+
+.smurf-container h1 {
+    padding-left: 40px;
 }
