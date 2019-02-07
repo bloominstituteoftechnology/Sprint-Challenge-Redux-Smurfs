@@ -29,10 +29,6 @@ class Form extends React.Component {
     })
   }
 
-  componentDidMount() {
-    this.props.getSmurfs();
-  }
-
   render() {
     return (
       <div className="form">

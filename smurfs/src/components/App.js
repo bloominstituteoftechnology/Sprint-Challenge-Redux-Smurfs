@@ -5,37 +5,7 @@ import Header from "./Header";
 import Form from "./Form";
 
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-      this.state = {
-        name: "",
-        age: "",
-        height: "",
-      }
-  }
-
-  inputHandler = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-
-  submitHandler = (event) => {
-    event.preventDefault();
-    this.props.addSmurf(this.state);
-    this.setState({
-      name: '',
-      age: '',
-      height: ''
-    })
-  }
-
-  componentDidMount() {
-    this.props.getSmurfs();
-  }
-
-  render(){
+const App extends Component {
     return(
       <Fragment>
         <Header />
@@ -53,13 +23,5 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-  smurfs: state.smurfs,
-  error: state.error,
-  loading: state.loading,
-  }
-};
-
-export default connect(mapStateToProps, { getSmurfs, addSmurf } )(App);
+export default App;
 
