@@ -21,8 +21,8 @@ class App extends React.Component {
     })
   }
 
-  submitHandler = (e) => {
-    e.preventDefault();
+  submitHandler = (event) => {
+    event.preventDefault();
     this.props.addSmurf(this.state);
     this.setState({
       name: '',
