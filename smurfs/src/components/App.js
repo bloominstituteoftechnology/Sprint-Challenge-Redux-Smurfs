@@ -1,20 +1,49 @@
 import React, { Component } from 'react';
-import './App.css';
+import styled from 'styled-components';
+import { Route } from 'react-router-dom';
+import HomeView from '../views/HomeView';
+import FormView from '../views/FormView';
 /*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
+  to wire this component up you're going to need a few things.
+  I'll let you do this part on your own. 
+  Just remember, `how do I `connect` my components to redux?`
+  `How do I ensure that my component links the state to props?`
  */
+/***************************************************************************************************
+ ********************************************* Variables *******************************************
+ **************************************************************************************************/
+export const urlLinks = {
+  server: 'http://localhost:3333',
+  home: '/',
+  smurfs: 'smurfs',
+  smurfForm: 'form'
+};
+
+/***************************************************************************************************
+ ********************************************** Styles *********************************************
+ **************************************************************************************************/
+const DivWrapper = styled.div`
+  text-align: center;
+`;
+
+/***************************************************************************************************
+ ********************************************* Component *******************************************
+ **************************************************************************************************/
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
+      <DivWrapper>
+        <Route
+          exact
+          path={urlLinks.home}
+          render={props => <HomeView {...props} />}
+        />
+        <Route
+          exact
+          path={`${urlLinks.home}${urlLinks.smurfForm}`}
+          render={props => <FormView {...props} />}
+        />
+      </DivWrapper>
     );
   }
 }
