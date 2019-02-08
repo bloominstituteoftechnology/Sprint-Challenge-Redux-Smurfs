@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import SmurfForm from './SmurfForm';
+import Smurfs from './Smurfs';
+import Navbar from './Navbar';
+import About from './About';
+import { Route } from 'react-router-dom';
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      smurfs: [],
+    };
+  }
+  // add any needed code to ensure that the smurfs collection exists on state and it has data coming from the server
+  // Notice what your map function is looping over and returning inside of Smurfs.
+  // You'll need to make sure you have the right properties on state and pass them down to props.
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+      <Navbar branding ="Redux Smurfs"/>
+      <SmurfForm />
+      <div className="container">
+        <switch>
+            <Route exact path='/' component={Smurfs} />
+            <Route exact path='/about' component={About} />
+        </switch>
+      </div>
       </div>
     );
   }
