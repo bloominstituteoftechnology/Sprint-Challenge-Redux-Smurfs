@@ -19,7 +19,7 @@ export function fetchSmurfs() {
         axios
             .get('http://localhost:3333/smurfs')
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 dispatch({
                     type: SUCCESS,
                     payload: response.data
@@ -39,13 +39,14 @@ export function addSmurf(smurf) {
     const newSmurf = {
         name: smurf.name,
         age: smurf.age,
-        email: smurf.email
+        height: smurf.height
     }
     return dispatch => {
         dispatch({ type: ADDING })
         axios
-            .post(`http://localhost:5000/smurfs`, newSmurf)
+            .post(`http://localhost:3333/smurfs`, newSmurf)
             .then(response => {
+                console.log(response)
                 dispatch({
                     type: ADDED,
                     payload: response.data
@@ -64,7 +65,7 @@ export function deleteSmurf(id) {
     return dispatch => {
         dispatch({ type: DELETING })
         axios
-            .delete(`http://localhost:5000/smurfs/${id}`)
+            .delete(`http://localhost:3333/smurfs/${id}`)
             .then(response => {
                 dispatch({
                     type: DELETED,
@@ -85,11 +86,11 @@ export function editForm(smurf) {
         dispatch({ type: EDITFORM, payload: smurf })
     }
 }
-export function editsmurf(id, smurf) {
+export function editSmurf(id, smurf) {
     return dispatch => {
         dispatch({ type: EDITING})
         axios
-            .put(`http://localhost:5000/smurfs/${id}`, smurf)
+            .put(`http://localhost:3333/smurfs/${id}`, smurf)
             .then(response => {
                 dispatch({
                     type: EDITED,

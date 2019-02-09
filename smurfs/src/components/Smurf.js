@@ -13,7 +13,7 @@ const Smurf = props => {
                 <h3>{props.smurf.age}</h3>
             </div>
             <div className="card-detail">
-                <h4>{props.smurf.email}</h4>
+                <h4>{props.smurf.height}</h4>
             </div>
             <button variant="warning" onClick={() => props.editForm(props.smurf)}>
                 Edit 

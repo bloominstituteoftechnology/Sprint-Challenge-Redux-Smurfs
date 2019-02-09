@@ -1,25 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editForm, editSmurf } from '../actions';
+import { addSmurf } from '../actions';
 
-class EditForm extends React.Component {
+class SmurfForm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             smurf: {
-                id: this.props.smurf.id,
-                name: this.props.smurf.name, 
-                age: this.props.smurf.age, 
-                height: this.props.smurf.height 
+                name: '',
+                age: '',
+                height: ''
             }
         }
     }
-
-    editSmurfHandler = e => {
+    addSmurfHandler = e => {
         e.preventDefault();
-        console.log(this.props);
-        this.props.editSmurf(this.state.smurf.id, this.state.smurf);
+        this.props.addSmurf(this.state.smurf);
         this.setState({
             smurf: {
                 name: '',
@@ -27,12 +24,10 @@ class EditForm extends React.Component {
                 height: ''
             }
         })
-        console.log(this.state)
     }
 
 
     changeHandler = e => {
-        // e.preventDefault();
         this.setState({
             smurf: {
                 ...this.state.smurf,
@@ -44,9 +39,8 @@ class EditForm extends React.Component {
     }
     render() {
         return(
-
-            <form className="editForm" onSubmit={this.editSmurfHandler}>
-                <h1>Edit smurf</h1>
+            <form className="addForm" onSubmit={this.addSmurfHandler}>
+                <h1>Add a Smurf</h1>
                 <input  
                     onChange={this.changeHandler}
                     type="text"
@@ -71,23 +65,10 @@ class EditForm extends React.Component {
                     placeholder="height"
                 />
                 <br></br>
-                <button type="submit">Update</button>
-                
+                <button type="submit">Add </button>
             </form>
         )
     }
 }
 
-const mstp = state => {
-    return  {
-        editId: state.editId,
-        smurf: {
-            id: state.smurf.id,
-            name: state.smurf.name,
-            age: state.smurf.age,
-            height: state.smurf.height
-        }
-    }
-}
-
-export default connect(mstp, {editForm, editSmurf})(EditForm);
+export default connect(null, {addSmurf})(SmurfForm);

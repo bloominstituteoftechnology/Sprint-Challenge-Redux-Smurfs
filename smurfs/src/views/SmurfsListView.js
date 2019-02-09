@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import SmurfsList from './../components/SmurfsList';
 import SmurfForm from './../components/SmurfForm';
 import EditForm from './../components/EditForm';
-
 import { fetchSmurfs, addSmurf, editForm } from '../actions';
 
 
@@ -34,7 +33,7 @@ class SmurfsListView extends React.Component {
     }
 }
 
-const mapStateToProps = ({ smurfReducer: state }) => {
+const mapStateToProps = state => {
     return {
         smurfs: state.smurfs,
         loading: state.loading,
