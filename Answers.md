@@ -21,4 +21,6 @@
 
     Redux Thunk middleware allows us to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. For example, we can show Loading... while we are waiting to get the data from the server.
 
-1.  Which `react-redux` method links up our `components` with our `redux store`?
+<!-- 1.  Which `react-redux` method links up our `components` with our `redux store`? -->
+
+    Connect. It can take mapStateToProps & actions as arguments when exporting a component.
