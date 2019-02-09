@@ -1,6 +1,4 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import * as actions from '../actions'
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -13,11 +11,84 @@
    error: null
  }
 */
+const initialState = {
+  smurfs: [],
+  smurf: null,
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  deletingSmurf: false,
+  updatingSmurf: false,
+  error: null,
+}
 
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
-  There is no need for 'combineReducers' in this project.
-  Components can then read your store as, `state` and not `state.fooReducer`.
-*/
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case actions.GET_REQUEST:
+      return {
+        ...state,
+        fetchingSmurfs: true,
+      }
+    case actions.GET_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        smurfs: action.payload,
+        error: null,
+      }
+    case actions.POST_REQUEST:
+      return {
+        ...state,
+        addingSmurf: true,
+      }
+    case actions.POST_SUCCESS:
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfs: action.payload,
+        error: null,
+      }
+    case actions.DELETE_REQUEST:
+      return {
+        ...state,
+        deletingSmurf: true,
+      }
+    case actions.DELETE_SUCCESS:
+      return {
+        ...state,
+        deletingSmurf: false,
+        smurfs: action.payload,
+        error: null,
+      }
+    case actions.PUT_REQUEST:
+      return {
+        ...state,
+        updatingSmurf: true,
+      }
+    case actions.PUT_SUCCESS:
+      return {
+        ...state,
+        updatingSmurf: false,
+        smurfs: action.payload,
+        error: null,
+      }
+    case actions.GET_FAILURE:
+    case actions.POST_FAILURE:
+    case actions.DELETE_FAILURE:
+    case actions.PUT_FAILURE:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        deletingSmurf: false,
+        updatingSmurf: false,
+        error: action.payload,
+      }
+    case actions.SELECT_SMURF:
+      return {
+        ...state,
+        smurf: state.smurfs.find(smurf => smurf.id === action.payload.id)
+      }
+    default:
+      return state;
+  }
+}

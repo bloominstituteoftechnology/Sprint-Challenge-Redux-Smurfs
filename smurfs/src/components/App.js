@@ -1,22 +1,73 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Container, Header } from 'semantic-ui-react';
+
 import './App.css';
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
+import {
+  fetchSmurfs,
+  addSmurf,
+  deleteSmurf,
+  updateSmurf,
+  selectSmurf,
+} from '../actions';
+
+import SmurfForm from './SmurfForm';
+import SmurfList from './SmurfList';
+
+
 class App extends Component {
+  state = {
+    update: false,
+    id: '',
+  }
+
+  componentDidMount() {
+    this.props.fetchSmurfs();
+  }
+
+  toggleForm = (id) => {
+    if (id) {
+      this.setState({ update: true, id: id });
+      this.props.selectSmurf(id);
+    } else {
+      this.setState({ update: false, id: "" });
+    }
+  };
+
   render() {
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
+      <Container style={{ padding: '20px' }} className="App">
+        <Header as="h1">Redux - Smurfs</Header>
+        <Container>Welcome to my Redux version of Smurfs!</Container>
+        {
+          !this.state.update ? 
+            <SmurfForm handleSubmit={this.props.addSmurf}/> :
+            <SmurfForm
+              update
+              smurf={this.props.smurf}
+              toggleForm={this.toggleForm}
+              handleSubmit={this.props.updateSmurf}
+            />
+        }
+        <SmurfList
+          smurfs={this.props.smurfs}
+          fetchingSmurfs={this.props.fetchingSmurfs}
+          deleteSmurf={this.props.deleteSmurf}
+          toggleForm={this.toggleForm}
+          error={this.props.error}
+        />
+      </Container>
     );
   }
 }
 
-export default App;
+export default connect(
+  state => state,
+  {
+    fetchSmurfs,
+    addSmurf,
+    deleteSmurf,
+    updateSmurf,
+    selectSmurf,
+  }
+)(App);
