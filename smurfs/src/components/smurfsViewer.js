@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import { getSmurfs } from '../actions/index';
+import { getSmurfs, deleteSmurf } from '../actions/index';
 
 import Smurfs from './smurfs';
 
@@ -11,12 +12,25 @@ class SmurfsViewer extends Component {
     }
 
     render() {
+        console.log(this.props.smurfs)
+        if(this.props.loading) {
+            return (<h1>LOADING SMURFS....</h1>)
+        }
         return(
             <div>
-                <Smurfs />
+                <Smurfs smurfs={this.props.smurfs} deleteSmurf={this.props.deleteSmurf}/>
             </div>
         )
     }
 }
 
-export default connect(null, { getSmurfs })(SmurfsViewer);
+const mstp = state => {
+    console.log("FROM VIEWER:", state)
+    return {
+        smurfs: state.smurfs,
+        loading: state.loading
+    }
+}
+
+export default connect(mstp, { getSmurfs, deleteSmurf })(SmurfsViewer);
+

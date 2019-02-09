@@ -11,7 +11,7 @@ export default function reducer(state= initialState, action) {
     case LOADING:
       return {
         ...state,
-        friends: [],
+        smurfs: [],
         loading: true,
         err: ''
       }
@@ -19,7 +19,7 @@ export default function reducer(state= initialState, action) {
     case SUCCESS:
       return {
         ...state,
-        friends: action.payload,
+        smurfs: action.payload,
         loading: false,
         err: ''
       }
@@ -30,7 +30,7 @@ export default function reducer(state= initialState, action) {
         loading: false,
         err: action.payload
       }
-      
+
     default: 
       return state;
   }

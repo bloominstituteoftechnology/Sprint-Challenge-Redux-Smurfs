@@ -20,7 +20,7 @@ export const addSmurf = (smurf) => dispatch => {
 
 export const deleteSmurf = (id) => dispatch => {
   dispatch({ type: LOADING })
-  axios.post(`http://localhost:3333/smurfs/${id}`, id)
+  axios.delete(`http://localhost:3333/smurfs/${id}`, id)
     .then(res => dispatch({ type: SUCCESS, payload: res.data}))
     .catch(err => dispatch({ type: FAILURE, payload: err}))
 }
