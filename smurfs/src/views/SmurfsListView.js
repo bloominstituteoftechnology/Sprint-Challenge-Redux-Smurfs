@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { SmurfList, SmurfForm, EditForm} from '../components';
+import SmurfsList from './../components/SmurfsList';
+import SmurfForm from './../components/SmurfForm';
+import EditForm from './../components/EditForm';
+
 import { fetchSmurfs, addSmurf, editForm } from '../actions';
 
 
@@ -17,12 +20,12 @@ class SmurfsListView extends React.Component {
                 { this.props.addForm ?
                 
                 <div>
-                    {/* <SmurfForm /> */}
-                    {/* <SmurfList smurfs={this.props.smurfs} />  */}
+                    <SmurfForm />
+                    <SmurfsList smurfs={this.props.smurfs} /> 
                 </div> 
                 :
                 <div>
-                    {/* <EditForm smurf={this.props.smurf} id={this.props.editId} /> */}
+                    <EditForm smurf={this.props.smurf} id={this.props.editId} />
                 </div>    
             }
                     

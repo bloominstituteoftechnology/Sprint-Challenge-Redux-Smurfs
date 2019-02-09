@@ -17,8 +17,9 @@ export function fetchSmurfs() {
     return dispatch => {
         dispatch({ type: LOADING })
         axios
-            .get('http://localhost:5000/smurfs')
+            .get('http://localhost:3333/smurfs')
             .then(response => {
+                console.log(response);
                 dispatch({
                     type: SUCCESS,
                     payload: response.data
