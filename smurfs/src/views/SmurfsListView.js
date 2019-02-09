@@ -5,7 +5,6 @@ import SmurfForm from './../components/SmurfForm';
 import EditForm from './../components/EditForm';
 import { fetchSmurfs, addSmurf, editForm } from '../actions';
 
-
 class SmurfsListView extends React.Component {
 
     componentDidMount() {
@@ -16,6 +15,13 @@ class SmurfsListView extends React.Component {
         return(
             <div className="smurflist-wrapper">
                 
+                { this.props.loading && <h2><p>Loading smurfs</p></h2> }
+                { this.props.added && <h2>Smurf added</h2>}
+                { this.props.deleted && <p>Deleting smurf</p>}
+                { this.props.deleting && <h2>Smurtf Deleted</h2>}
+                { this.props.editing && <p>Editing smurf</p>}
+                { this.props.edited && <h2><p>Smurf edited</p></h2>}
+
                 { this.props.addForm ?
                 
                 <div>

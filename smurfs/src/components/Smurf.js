@@ -7,19 +7,19 @@ const Smurf = props => {
         <div className="smurf-card">
         
             <div className="card-detail">
-                <h2>{props.smurf.name}</h2>
+                <h2> <bold>name</bold> {props.smurf.name}</h2>
             </div>
             <div className="card-detail">
-                <h3>{props.smurf.age}</h3>
+                <h3> <bold>age</bold> {props.smurf.age}</h3>
             </div>
             <div className="card-detail">
-                <h4>{props.smurf.height}</h4>
+                <h4> <bold>height</bold> {props.smurf.height}</h4>
             </div>
             <button variant="warning" onClick={() => props.editForm(props.smurf)}>
-                Edit 
+                Edit
             </button>
             <button variant="danger" onClick={() => props.deleteSmurf(props.smurf.id)}>
-                Delete 
+                Delete
             </button>    
             
         </div>
