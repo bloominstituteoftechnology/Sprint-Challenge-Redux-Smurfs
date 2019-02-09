@@ -1,4 +1,4 @@
-import { FETCHING_SMURFS, SUCCESS, FETCHING_ERROR, ADDING_SMURF } from '../actions'
+import { FETCHING_SMURFS, SUCCESS, ERROR, ADDING_SMURF, DELETING_SMURF} from '../actions'
 
 const initialState = {
     smurfs: [],
@@ -24,7 +24,7 @@ function reducer (state = initialState, action) {
       smurfs: action.payload,
       error: null
     }
-    case FETCHING_ERROR:
+    case ERROR:
     return {
       ...state,
       error: action.payload
@@ -33,6 +33,12 @@ function reducer (state = initialState, action) {
     return {
       ...state,
       addingSmurf: true,
+      error: null
+    }
+    case DELETING_SMURF:
+    return {
+      ...state,
+      deletingSmurf: true,
       error: null
     }
   default:

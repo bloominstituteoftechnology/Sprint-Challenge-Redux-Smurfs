@@ -25,7 +25,7 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
        
         <p>{this.props.smurfs.map(smurf => {
-          return <Smurf smurf={smurf} key={smurf.name} />
+          return <Smurf smurf={smurf} key={smurf.id} id={smurf.id} />
         })}</p>
         <SmurfForm />
       </div>
