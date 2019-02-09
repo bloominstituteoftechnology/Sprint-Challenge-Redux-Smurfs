@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './App.css';
 import SmurfsViewer from './smurfsViewer';
-import Form from './form';
 
 /*
  to wire this component up you're going to need a few things.
@@ -12,10 +11,10 @@ import Form from './form';
  */
 class App extends Component {
   render() {
+    
     return (
       <div>
         <SmurfsViewer />
-        <Form />
       </div>
     );
   }

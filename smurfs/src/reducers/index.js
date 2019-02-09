@@ -1,9 +1,12 @@
-import { LOADING, SUCCESS, FAILURE } from '../actions/index';
+import { LOADING, SUCCESS, FAILURE, UPDATE } from '../actions/index';
 
 const initialState = {
   smurfs: [],
   loading: false,
   error: "",
+  updateID: "",
+  clicked: false,
+  update: []
 }
 
 export default function reducer(state= initialState, action) {
@@ -30,6 +33,14 @@ export default function reducer(state= initialState, action) {
         loading: false,
         err: action.payload
       }
+
+      case UPDATE:
+        return{
+          ...state,
+          updateID: action.payloadId,
+          clicked: true,
+          update: action.payloadObj
+        }
 
     default: 
       return state;

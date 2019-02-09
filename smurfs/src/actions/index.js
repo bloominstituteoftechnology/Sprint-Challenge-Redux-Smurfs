@@ -3,6 +3,7 @@ import axios from 'axios';
 export const LOADING = "LOADING";
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";
+export const UPDATE = "UPDATE";
 
 export const getSmurfs = () => dispatch => {
     dispatch({ type: LOADING })
@@ -23,6 +24,22 @@ export const deleteSmurf = (id) => dispatch => {
   axios.delete(`http://localhost:3333/smurfs/${id}`, id)
     .then(res => dispatch({ type: SUCCESS, payload: res.data}))
     .catch(err => dispatch({ type: FAILURE, payload: err}))
+}
+
+export const updateSmurf = (id, obj) => dispatch => {
+  dispatch({ type: LOADING })
+  axios.put(`http://localhost:3333/smurfs/${id}`, obj)
+    .then(res => dispatch({ type: SUCCESS, payload: res.data}))
+    .get(err => dispatch({ type: FAILURE, payload: err}))
+}
+
+export const update = (id, obj) => {
+  console.log('FROM UPDATE FUNC:' , obj)
+  return {
+    type: UPDATE,
+    payloadId: id,
+    payloadObj: obj
+  }
 }
 
 
