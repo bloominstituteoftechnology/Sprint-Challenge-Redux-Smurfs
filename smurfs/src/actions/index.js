@@ -1,3 +1,111 @@
+import axios from 'axios';
+
+export const SUCCESS = "SUCCESS";
+export const FAILURE = "FAILURE";
+export const LOADING = "LOADING";
+export const ADDING = "ADDING";
+export const ADDED = "ADDED";
+export const EDITING = "EDITING";
+export const EDITED = "EDITED";
+export const DELETING = "DELETING";
+export const DELETED = "DELETED";
+export const EDITFORM = "EDITFORM";
+
+
+
+export function fetchSmurfs() {
+    return dispatch => {
+        dispatch({ type: LOADING })
+        axios
+            .get('http://localhost:5000/smurfs')
+            .then(response => {
+                dispatch({
+                    type: SUCCESS,
+                    payload: response.data
+                });
+            })
+            .catch(err => {
+                dispatch({
+                    type: FAILURE,
+                    payload: err
+                })
+            })
+    }
+}
+
+export function addSmurf(smurf) {
+
+    const newSmurf = {
+        name: smurf.name,
+        age: smurf.age,
+        email: smurf.email
+    }
+    return dispatch => {
+        dispatch({ type: ADDING })
+        axios
+            .post(`http://localhost:5000/smurfs`, newSmurf)
+            .then(response => {
+                dispatch({
+                    type: ADDED,
+                    payload: response.data
+                });
+            })
+            .catch(err => {
+                dispatch({
+                    type: FAILURE,
+                    payload: err
+                })
+            })
+    }
+}
+
+export function deleteSmurf(id) {
+    return dispatch => {
+        dispatch({ type: DELETING })
+        axios
+            .delete(`http://localhost:5000/smurfs/${id}`)
+            .then(response => {
+                dispatch({
+                    type: DELETED,
+                    payload: response.data
+                });
+            })
+            .catch(err => {
+                dispatch({
+                    type: FAILURE,
+                    payload: err
+                })
+            })
+    }
+}
+
+export function editForm(smurf) {
+    return dispatch => {
+        dispatch({ type: EDITFORM, payload: smurf })
+    }
+}
+export function editsmurf(id, smurf) {
+    return dispatch => {
+        dispatch({ type: EDITING})
+        axios
+            .put(`http://localhost:5000/smurfs/${id}`, smurf)
+            .then(response => {
+                dispatch({
+                    type: EDITED,
+                    payload: response.data
+                });
+            })
+            .catch(err => {
+                dispatch({
+                    type: FAILURE,
+                    payload: err
+                })
+            })
+    }
+    
+}
+
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
