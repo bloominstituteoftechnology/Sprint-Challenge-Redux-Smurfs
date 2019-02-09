@@ -7,18 +7,22 @@ class UpdateForm extends Component {
     constructor() {
         super();
         this.state = {
-            smurf: {
-                name: "",
-                age: "",
-                height: ""
-            }
+            update: [],
+            id: ''
         }
+    }
+
+    componentDidMount() {
+        this.setState({
+            update: this.props.update,
+            id: this.props.updateID
+        })
     }
 
     handleChange = e => {
         this.setState({
-            smurf: {
-                ...this.state.smurf,
+            update: {
+                ...this.state.update,
                 [e.target.name]: e.target.value
             }
         });
@@ -28,33 +32,40 @@ class UpdateForm extends Component {
         return(
             <div>
          
-            <h4 >Add another Smurf:</h4>
+            <h4 >Edit the Smurf:</h4>
             <input 
                 type="text"
                 placeholder="Smurfs Name" 
                 name="name"
                 onChange={this.handleChange}
-                value={this.state.smurf.name}
+                value={this.state.update.name}
                 />
             <input 
                 type="text" 
                 name="age"
                 placeholder="Age"
                 onChange={this.handleChange}
-                value={this.state.smurf.age}
+                value={this.state.update.age}
                 />
             <input 
                 type="text"
                 name="height" 
                 placeholder="Height" 
                 onChange={this.handleChange}
-                value={this.state.smurf.height}
+                value={this.state.update.height}
                 />
-            <button className="submit" onClick={() => this.props.updateSmurf(this.state.smurf)}>Add</button>
+            <button className="submit" onClick={() => this.props.updateSmurf(this.props.updateID, this.state.update)}>Update</button>
         
     </div>
         )
     }
 }
 
-export default connect(null, { updateSmurf })(UpdateForm)
+const mstp = state => {
+    return {
+        update: [],
+        updateID: state.updateID,
+    }
+}
+
+export default connect(mstp, { updateSmurf })(UpdateForm)

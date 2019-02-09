@@ -1,4 +1,4 @@
-import { LOADING, SUCCESS, FAILURE, UPDATE } from '../actions/index';
+import { LOADING, SUCCESS, FAILURE, UPDATE, SUCCESSFUL_UPDATE } from '../actions/index';
 
 const initialState = {
   smurfs: [],
@@ -42,15 +42,18 @@ export default function reducer(state= initialState, action) {
           update: action.payloadObj
         }
 
+        case SUCCESSFUL_UPDATE:
+          return {
+            ...state,
+            smurfs: action.payload,
+            loading: false,
+            err: '',
+            updateID: "",
+            clicked: false,
+            update: []
+          }
+
     default: 
       return state;
   }
 }
-
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
-  There is no need for 'combineReducers' in this project.
-  Components can then read your store as, `state` and not `state.fooReducer`.
-*/

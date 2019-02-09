@@ -4,6 +4,7 @@ export const LOADING = "LOADING";
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";
 export const UPDATE = "UPDATE";
+export const SUCCESSFUL_UPDATE = "SUCCESSFUL_UPDATE";
 
 export const getSmurfs = () => dispatch => {
     dispatch({ type: LOADING })
@@ -29,8 +30,8 @@ export const deleteSmurf = (id) => dispatch => {
 export const updateSmurf = (id, obj) => dispatch => {
   dispatch({ type: LOADING })
   axios.put(`http://localhost:3333/smurfs/${id}`, obj)
-    .then(res => dispatch({ type: SUCCESS, payload: res.data}))
-    .get(err => dispatch({ type: FAILURE, payload: err}))
+    .then(res => dispatch({ type: SUCCESSFUL_UPDATE, payload: res.data}))
+    .catch(err => dispatch({ type: FAILURE, payload: err}))
 }
 
 export const update = (id, obj) => {
