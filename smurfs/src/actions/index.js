@@ -1,15 +1,56 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import axios from 'axios';
+export const REQUEST_SENT = 'REQUEST_SENT';
+export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
+export const REQUEST_ERROR = 'REQUEST_ERROR';
+export const ADD = 'ADD';
+export const UPDATE = 'UPDATE';
+export const DELETE = 'DELETE';
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+export const requestSmurfs = () => dispatch => {
+  dispatch({type: REQUEST_SENT});
+  axios
+    .get(`http://localhost:3333/smurfs`)
+    .then((response) => {
+      console.log('Response:',response) 
+      dispatch({type: REQUEST_SUCCESS, payload: response.data})
+    })
+    .catch(err => {
+      dispatch({type: REQUEST_ERROR, err})
+    });
+};
+
+export const addSmurf = (smurf) => dispatch => {
+dispatch({type: ADD});
+axios
+  .post(`http://localhost:3333/smurfs`, smurf)
+  .then((response) => {
+  dispatch({type: REQUEST_SUCCESS, payload: response.data})
+  })
+  .catch(err => {
+    dispatch({type: REQUEST_ERROR, err})
+  });
+};
+
+export const updateSmurf = (smurf, id) => dispatch => {
+  dispatch({type: UPDATE});
+  axios
+    .put(`http://localhost:3333/smurfs/${id}`, smurf)
+    .then((response) => {
+			dispatch({ type: REQUEST_SUCCESS, payload: response.data });
+		})
+		.catch((err) => {
+			dispatch({ type: REQUEST_ERROR, err });
+		});
+}
+
+export const deleteSmurf = (id) => dispatch => {
+  dispatch({type: DELETE});
+  axios
+    .delete(`http://localhost:3333/smurfs/${id}`)
+    .then((response) => {
+    dispatch({ type: REQUEST_SUCCESS, payload: response.data });
+		})
+		.catch((err) => {
+			dispatch({ type: REQUEST_ERROR, err });
+		});
+}
