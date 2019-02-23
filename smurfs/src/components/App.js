@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {getSmurfs} from './../actions/index'
+import {creatingSmurf}from './../actions/index'
 import {smurfReducer} from './../reducers/index'
 import { connect } from 'react-redux';
 import './App.css';
@@ -19,9 +20,9 @@ class App extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleAddFriend = _ => {
+  handleAddSmurf = _ => {
     const { name, age, height } = this.state;
-    this.props.createSmurf({ name, age, height });
+    this.props.creatingSmurf({ name, age, height });
     this.setState({ name: '', age: '', height: '' });
   };
   componentDidMount() {
@@ -77,13 +78,13 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  const { smurfReducer } = state;
-  console.log (state)
+const mapStateToProps = smurfReducer => {
+  
   return {
     smurfs: smurfReducer.smurfs,
     error: smurfReducer.error,
     gettingSmurfs: smurfReducer.gettingSmurfs
+    // creatingSmurf: smurfReducer.creatingSmurfSmurf
   };
 };
 export default connect(mapStateToProps, { getSmurfs })(App);

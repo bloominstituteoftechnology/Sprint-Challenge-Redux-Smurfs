@@ -18,7 +18,7 @@ export const getSmurfs = () => {
   const smurfs = axios.get(`${URL}/get`);
   return dispatch => {
     dispatch({ type: GETTING_SMURFS })
-    
+    smurfs
       .then(response => {
         dispatch({ type: GET_SMURFS, payload: response.data });
       })

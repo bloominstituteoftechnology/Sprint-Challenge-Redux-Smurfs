@@ -12,7 +12,7 @@ import * as actionTypes from '../actions';
 console.log (actionTypes)
 const initialState = {
   smurf: {},
-  gettingSmurfs: true,
+  gettingSmurfs: false,
   creatingSmurf: false,
   error: null
 };
