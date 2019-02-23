@@ -15,7 +15,7 @@ export const CREATE_SMURF = 'CREATE_SMURF';
 const URL = 'http://localhost:3333/smurfs';
 
 export const getSmurfs = () => {
-  const friends = axios.get(`${URL}/get`);
+  const smurfs = axios.get(`${URL}/get`);
   return dispatch => {
     dispatch({ type: GETTING_SMURFS });
     smurfs
