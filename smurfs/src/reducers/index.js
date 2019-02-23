@@ -1,3 +1,11 @@
+import { combineReducers } from 'redux';
+import { smurfsReducer } from './smurfsReducer';
+import { smurfReducer } from './smurfReducer';
+
+export default combineReducers({
+  smurfsReducer,
+  smurfReducer
+});
 /*
   Be sure to import in all of the action types from `../actions`
 */
