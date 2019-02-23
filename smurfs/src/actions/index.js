@@ -17,8 +17,8 @@ const URL = 'http://localhost:3333/smurfs';
 export const getSmurfs = () => {
   const smurfs = axios.get(`${URL}/get`);
   return dispatch => {
-    dispatch({ type: GETTING_SMURFS });
-    smurfs
+    dispatch({ type: GETTING_SMURFS })
+    
       .then(response => {
         dispatch({ type: GET_SMURFS, payload: response.data });
       })

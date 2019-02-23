@@ -9,10 +9,10 @@
   Be sure to import in all of the action types from `../actions`
 */
 import * as actionTypes from '../actions';
-
+console.log (actionTypes)
 const initialState = {
-  smurfs: [],
-  gettingSmurfs: false,
+  smurf: {},
+  gettingSmurfs: true,
   creatingSmurf: false,
   error: null
 };
@@ -29,6 +29,7 @@ const initialState = {
  }
 */
 export const smurfReducer = (state = initialState, action) => {
+  console.log (state)
   switch (action.type) {
     case actionTypes.GETTING_SMURFS:
       return { ...state, gettingSmurfs: true };
