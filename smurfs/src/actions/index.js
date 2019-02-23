@@ -32,3 +32,16 @@ export const getSmurfs = () => {
       });
   };
 };
+
+export const newSmurf = newSmurf => {
+  return dispatch => {
+    dispatch({ type: GET_SMURFS });
+    axios
+      .post('http://localhost:3333/smurfs', newSmurf)
+      .then(res => dispatch({ type: SUCCESS, payload: res.data }))
+      .catch(err => {
+        console.log(err);
+        dispatch({ type: ERROR, payload: 'Error getting list of smurfs!' });
+      });
+  };
+};

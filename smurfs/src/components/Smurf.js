@@ -4,8 +4,8 @@ const Smurf = props => {
   return (
     <div>
       <h2>{props.name}</h2>
-      <p>{props.height} tall</p>
-      <p>{props.age} years old</p>
+      <p>Height: {props.height} tall</p>
+      <p>Age: {props.age}</p>
     </div>
   );
 };
