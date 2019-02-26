@@ -19,16 +19,18 @@ class App extends Component {
   }}
 
   handleInputChange = event => {
-    this.setState({ [event.target]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   handleAddSmurf = _ => {
+  
     const { name, age, height } = this.state;
     this.props.createSmurf({ name, age, height });
     this.setState({ name: '', age: '', height: '' });
   };
   componentDidMount() {
     this.props.getSmurfs();
+    // this.setState(getSmurfs.smurfs)
 
   }
   render() {
@@ -42,13 +44,23 @@ class App extends Component {
         <div className="Flex-Container">
           {this.props.gettingSmurfs ? (
             <h3>Hunting Smurfs</h3>
-          ) : (
-          <ul>
             
-            {this.state.smurfs.name}
+          ) : (
+            
+            this.props.smurfs.map(s => {
+
+              return <ul>
+                <li>{s.name} </li>
+                <li>{s.age}</li>
+                <li>{s.height}</li>
+                </ul>
+            }))
+            // this.props.smurfs.map(s => {
+            //   return(
+               
           
-          </ul>
-          )}
+          }
+
         </div>
       
           <form className="Column-Layout">
