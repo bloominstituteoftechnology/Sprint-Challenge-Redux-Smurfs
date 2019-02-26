@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {getSmurfs} from './../actions/index'
-import {creatingSmurf}from './../actions/index'
+import {createSmurf}from './../actions/index'
 import {smurfReducer} from './../reducers/index'
 import { connect } from 'react-redux';
 import './App.css';
@@ -12,22 +12,24 @@ import './App.css';
  */
 class App extends Component {
   state = {
+    smurfs:{
     name:'',
     age:'',
-    height:'',
-  }
+    height:''
+  }}
+
   handleInputChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target]: event.target.value });
   };
 
   handleAddSmurf = _ => {
     const { name, age, height } = this.state;
-    this.props.creatingSmurf({ name, age, height });
+    this.props.createSmurf({ name, age, height });
     this.setState({ name: '', age: '', height: '' });
   };
   componentDidMount() {
-    console.log (getSmurfs())
     this.props.getSmurfs();
+
   }
   render() {
     
@@ -41,7 +43,11 @@ class App extends Component {
           {this.props.gettingSmurfs ? (
             <h3>Hunting Smurfs</h3>
           ) : (
-            this.props.smurfs
+          <ul>
+            
+            {this.state.smurfs.name}
+          
+          </ul>
           )}
         </div>
       
@@ -78,13 +84,13 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = smurfReducer => {
+const mapStateToProps = state => {
   
   return {
-    smurfs: smurfReducer.smurfs,
-    error: smurfReducer.error,
-    gettingSmurfs: smurfReducer.gettingSmurfs
+    smurfs: state.smurfs,
+    error: state.error,
+    gettingSmurfs: state.gettingSmurfs
     // creatingSmurf: smurfReducer.creatingSmurfSmurf
   };
 };
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs, createSmurf })(App);

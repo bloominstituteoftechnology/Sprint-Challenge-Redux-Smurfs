@@ -12,13 +12,13 @@ export const CREATE_SMURF = 'CREATE_SMURF';
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
-const URL = 'http://localhost:3333/smurfs';
+const URL = 'https://localhost:3333/smurfs';
 
 export const getSmurfs = () => {
-  const smurfs = axios.get(`${URL}/get`);
+  
   return dispatch => {
     dispatch({ type: GETTING_SMURFS })
-    smurfs
+    axios.get(`https://localhost:3333/smurfs`)
       .then(response => {
         dispatch({ type: GET_SMURFS, payload: response.data });
       })
@@ -29,12 +29,12 @@ export const getSmurfs = () => {
 };
 
 export const createSmurf = smurf => {
-  const newSmurf = axios.post(`${URL}/create`, smurf);
+  
   return dispatch => {
     dispatch({ type: CREATING_SMURF });
-    newSmurf
-      .then(({ data }) => {
-        dispatch({ type: CREATE_SMURF, payload: data });
+    axios.post(`https://localhost:3333/smurfs`)
+      .then(({ response }) => {
+        dispatch({ type: CREATE_SMURF, payload: response.data });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
