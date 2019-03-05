@@ -27,7 +27,7 @@ class App extends Component {
           </div>
           )}
         </div>
-        {/* <AddSmurf addsmurf = {this.props.createSmurf} /> */}
+        <AddSmurf addsmurf = {this.props.createSmurf} />
       </div>
     );
   }
