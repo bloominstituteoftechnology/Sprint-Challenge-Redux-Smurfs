@@ -13,15 +13,27 @@ class SmurfsList extends React.Component {
     render(){
         return(
             <div>
-                <h2>smurfs list</h2>
+
+                {console.log(this.props.smurfs)}
+                {this.props.smurfs.map(smurf => {
+                    return(
+                        <div className="indiv-smurf" key={Date.now()}>
+                            <h2>name: {smurf.name}</h2>
+                            <p>age: {smurf.age}</p>
+                            <p>height: {smurf.height}</p>
+                        </div>
+                    );
+                })}
             </div>
         );
     }
 }
 
+
 const mapStateToProps = state => {
     return{
-        fetchingSmurfs: state.fetchingSmurfs
+        fetchingSmurfs: state.fetchingSmurfs,
+        smurfs: state.smurfs
     }
 }
 

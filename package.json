@@ -19,7 +19,8 @@
   "homepage": "https://github.com/LambdaSchool/Sprint-Challenge--Redux#readme",
   "dependencies": {
     "cors": "^2.8.4",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "react-dom": "^16.8.4"
   },
   "devDependencies": {
     "nodemon": "^1.17.2"
