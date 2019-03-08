@@ -56,5 +56,7 @@ export const smurfReducer = (state = initialState, action) => {
         gettingSmurfs: false,
         err: action.payload
       }
+    default:
+    return state;
   }
 }

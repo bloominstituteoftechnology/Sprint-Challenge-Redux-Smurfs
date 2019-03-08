@@ -36,3 +36,23 @@ export const getSmurfs = () => dispatch => {
     })
 }
 
+//ADD SMURF LITERAL/ACTIONS
+export const ADD_SMURFS_START = "ADD_SMURFS_START";
+export const ADD_SMURFS_SUCCESS = "ADD_SMURFS_SUCCESS";
+export const ADD_SMURFS_FAILURE = "ADD_SMURFS_FAILURE";
+
+export const addSmurf = () => dispatch => {
+  dispatch({type: ADD_SMURFS_START});
+    axios
+    .post(url)
+    .then(res => {
+      console.log(res)
+      dispatch({type: ADD_SMURFS_SUCCESS, payload: res.data})
+    })
+    .catch(err => {
+      console.log(err)
+      dispatch({type: ADD_SMURFS_FAILURE, payload: err})
+    })
+}
+
+
