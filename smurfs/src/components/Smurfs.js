@@ -9,16 +9,18 @@ const Smurfs = (props) => {
   return (
     <div className="smurfs-container">
       <h2>Smurf Village</h2>
-      {smurfs.map(smurf => (
-        <Smurf
-          name={smurf.name}
-          age={smurf.age}
-          id={smurf.id}
-          key={`${smurf.id}-${smurf.age}`}
-          height={smurf.height}
-          deleteSmurf={deleteSmurf}
-        />
-      ))}
+      <div className="smurf-list">
+        {smurfs.map(smurf => (
+          <Smurf
+            name={smurf.name}
+            age={smurf.age}
+            id={smurf.id}
+            key={`${smurf.id}-${smurf.age}`}
+            height={smurf.height}
+            deleteSmurf={deleteSmurf}
+          />
+        ))}
+      </div>
     </div>
 
   );
