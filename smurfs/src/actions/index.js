@@ -51,16 +51,17 @@ export const fetchSmurfsFailure = (error) => {
   };
 };
 
-export const addSmurfSuccess = (newSmurfs) => {
-  return {
-    type: ADD_SMURF_SUCCESS,
-    payload: {
-      newSmurfs,
-    },
-  };
-};
+export const addSmurfSuccess = newSmurfs => ({
+  type: ADD_SMURF_SUCCESS,
+  payload: {
+    newSmurfs,
+  },
+});
 
 export const addSmurfFailure = (error) => {
+  if (!error) {
+    throw new Error('addSmurfFailure requires an error message');
+  }
   return {
     type: ADD_SMURF_FAILURE,
     payload: {
@@ -69,16 +70,17 @@ export const addSmurfFailure = (error) => {
   };
 };
 
-export const deleteSmurfSuccess = (newSmurfs) => {
-  return {
-    type: DELETE_SMURF_SUCCESS,
-    payload: {
-      newSmurfs,
-    },
-  };
-};
+export const deleteSmurfSuccess = newSmurfs => ({
+  type: DELETE_SMURF_SUCCESS,
+  payload: {
+    newSmurfs,
+  },
+});
 
 export const deleteSmurfFailure = (error) => {
+  if (!error) {
+    throw new Error('deleteSmurfFailure requires an error message');
+  }
   return {
     type: DELETE_SMURF_FAILURE,
     payload: {
