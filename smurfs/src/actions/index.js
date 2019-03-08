@@ -27,7 +27,7 @@ export const ADD_SMURF = 'ADD_SMURF';
 
 let url = 'http://localhost:3333'
 
-export const getSmurfs = dispatch () => {
+export const getSmurfs = () => dispatch => {
 
 dispatch({type: FETCH_SMURFS})
 axios
