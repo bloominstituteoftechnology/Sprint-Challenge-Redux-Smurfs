@@ -75,6 +75,12 @@ button {
   font-size: 14px;
   border-radius: 3px;
   height: 60px;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+  background: #f4da78;
 }
 
 button.delete {
@@ -93,6 +99,32 @@ button.delete:hover {
 .smurf {
   max-width: 300px;
   margin: 0 auto;
+  border: 1px solid #F2D460;
+  border-radius: 5px;
+  
+}
+
+.smurf-name {
+
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+  height: 80px;
+}
+
+.smurf-name h3 {
+  color: #F2D460;
+  border-bottom: 1px solid #F2D460;
+}
+
+.smurf-details p {
+  color: #FFFFFF;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.smurf-details span {
+  color: #F2D460;
+  margin-right: 10px;
 }
 
 
