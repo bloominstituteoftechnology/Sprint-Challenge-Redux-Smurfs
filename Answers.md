@@ -10,6 +10,12 @@ Actions are objects that return an action type and a payload which is usually da
 
 Application state is global which means any component in the app can have access to it. Component state is local which means only that specific component needs to access it. Component state is good for forms whereas appplication state is good for holding the data that the whole app needs.
 
-1.  What is middleware?
-1.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-1.  Which `react-redux` method links up our `components` with our `redux store`?
+4.  What is middleware?
+
+Middleware is a programming tool to intercept a process which either allows the process to continue or start a different process.
+
+5.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+
+
+6.  Which `react-redux` method links up our `components` with our `redux store`?
