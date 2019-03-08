@@ -26,7 +26,7 @@ const SmurfForm = (props) => {
 
   return (
     <div className="smurf-form-container">
-      <h2>Add a new smurf</h2>
+      <h3>Add a new smurf</h3>
       <form className="smurf-form">
         <input
           name="name"
