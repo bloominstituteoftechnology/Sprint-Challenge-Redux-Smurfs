@@ -3,7 +3,8 @@ import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchSmurfs } from '../actions';
+import { fetchSmurfs, addSmurf } from '../actions';
+import SmurfForm from './SmurfForm';
 import Smurfs from './Smurfs';
 /*
  to wire this component up you're going to need a few things.
@@ -12,7 +13,7 @@ import Smurfs from './Smurfs';
  `How do I ensure that my component links the state to props?`
  */
 const App = ({
-  state, dispatchFetchSmurfs,
+  state, dispatchFetchSmurfs, dispatchAddSmurf,
 }) => {
   return (
     <div className="App">
@@ -20,6 +21,7 @@ const App = ({
       <div>Welcome to your Redux version of Smurfs!</div>
       <div>Start inside of your `src/index.js` file!</div>
       <div>Have fun!</div>
+      <SmurfForm addSmurf={dispatchAddSmurf} />
       <Smurfs
         smurfs={state}
         fetchSmurfs={dispatchFetchSmurfs}
@@ -30,6 +32,7 @@ const App = ({
 
 App.propTypes = {
   state: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  dispatchAddSmurf: PropTypes.func.isRequired,
   dispatchFetchSmurfs: PropTypes.func.isRequired,
 };
 
@@ -37,4 +40,4 @@ const mapStateToProps = state => ({
   state,
 });
 
-export default connect(mapStateToProps, { dispatchFetchSmurfs: fetchSmurfs })(App);
+export default connect(mapStateToProps, { dispatchFetchSmurfs: fetchSmurfs, dispatchAddSmurf: addSmurf })(App);
