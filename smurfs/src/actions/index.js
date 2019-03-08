@@ -24,3 +24,33 @@ export const DELETE_SMURF_FAILURE = 'ADD_SMURF';
    U - updateSmurf
    D - deleteSmurf
 */
+
+// Synchronous action creators
+
+export const fetchSmurfSuccess = (smurfs) => {
+  return {
+    type: FETCH_SMURFS_SUCCESS,
+    payload: smurfs,
+  };
+};
+
+export const fetchSmurfFailure = (error) => {
+  return {
+    type: FETCH_SMURFS_FAILURE,
+    payload: error,
+  };
+};
+
+export const addSmurfSuccess = (newSmurfs) => {
+  return {
+    type: ADD_SMURF_SUCCESS,
+    payload: newSmurfs,
+  };
+};
+
+export const addSmurfFailure = (error) => {
+  return {
+    type: ADD_SMURF_FAILURE,
+    payload: error,
+  };
+};
