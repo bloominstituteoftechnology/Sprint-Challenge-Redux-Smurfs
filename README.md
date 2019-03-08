@@ -23,8 +23,16 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+Actions are plain Javascript objects that send data from an application to the store. They require a type property which indicates what sort of action is being performed and data associated with that action type and are dispatched to the reducer. Reducers connect the actions to the store and indicate how the state of an application changes as a result of the actions dispatched to the store. The store is an object that connects actions and reducers and holds the state of the application. It is know as a 'single source of truth' because you only have a single store that contains the entire state in a Redux application.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is essentially a global store and can be accessed by any component that is connected to the store, whereas component state is stored locally within a component and cannot be accessed by other components unless it gets passed in as a prop to other components. Component state should be used within small applications and Application state is recommended  to be used with large or growing applications specifically because it can be accessed by any number of components as long as they are connected.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+Redux-thunk is a middleware that enables the handling of async operations inside action creators. It is essentially a function that returns another function and, in doing so, takes  a dispatch function as an argument. 
 
 ## Project Set Up
 
