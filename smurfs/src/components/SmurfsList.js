@@ -22,7 +22,7 @@ class SmurfsList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    smurfs: state
+    smurfs: state.smurfs
 });
 
 export default connect(

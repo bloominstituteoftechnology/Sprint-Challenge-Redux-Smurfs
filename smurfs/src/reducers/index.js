@@ -47,7 +47,7 @@ export const smurfReducer = (state = initialState, action) => {
     case GET_SMURFS_SUCCESS: 
       return {
         ...state,
-        smurfs: action.payload,
+        smurfs: [...state.smurfs,...action.payload],
         gettingSmurfs: false
       }
     case GET_SMURFS_FAILURE:
