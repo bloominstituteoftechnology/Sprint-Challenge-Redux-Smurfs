@@ -1,7 +1,11 @@
 .App {
   text-align: center;
+  
+  height: 100%;
+}
+
+body {
   background: #5373EB;
-  /* height: 100%; */
 }
 
 h3 {
