@@ -3,11 +3,11 @@ import Smurf from './Smurf';
 
 const SmurfList = props => {
     return(
-    <div>
-        {props.smurfs.map(smurf=>{
-        <Smurf smurf={smurf}></Smurf>
-        })}
-    </div>
+        <div>
+             {props.smurfies.map(smurf=>{
+            return(<Smurf smurf={smurf}></Smurf>)})}
+
+        </div>
     )
 }
 

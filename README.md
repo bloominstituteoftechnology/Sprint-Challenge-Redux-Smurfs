@@ -28,7 +28,7 @@ Actions are functions that are sent to reducers through a method called dispatch
 
 - [x] What is the difference between Application state and Component state? When would be a good time to use one over the other?
 
-Compoent state is a state that is not communicated outside of that component, such as in a local form component, in order to change the input fields. Application states are global states that effect the entire application and these are stored inside store. We use these when more than one component's state is being effected by the state.
+Component state is a state that is not communicated outside of that component, such as in a local form component, in order to change the input fields. Application states are global states that effect the entire application and these are stored inside store. We use these when more than one component's state is being effected by the state.
 
 
 - [x] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
@@ -68,7 +68,7 @@ This file contains an **API** that you are going to be interfacing with. Below i
 Your finished project must include all of the following requirements:
 
 - [x] Start in the `index.js` file by following all the prompts there to ensure that `Redux-Thunk` is wired up properly.
-- [ ] Because `Redux-Thunk` is wired up as a middleware for this project. Be sure to utilize thunks when appropriate:
+- [x] Because `Redux-Thunk` is wired up as a middleware for this project. Be sure to utilize thunks when appropriate:
 
 ```js
 return dispatch => {
@@ -83,8 +83,8 @@ return dispatch => {
 
 ### GET '/smurfs'
 
-- [ ] Retrieve an array all the Smurfs in the Smurf DB by writing a `GET` to the endpoint `/smurfs`.
-- [ ] Double check that your response from the server is an array of smurfs.
+- [x] Retrieve an array all the Smurfs in the Smurf DB by writing a `GET` to the endpoint `/smurfs`.
+- [x] Double check that your response from the server is an array of smurfs.
 
 ```js
 [
@@ -99,7 +99,7 @@ return dispatch => {
 
 ### POST '/smurfs'
 
-- [ ] Design the functionality to add a smurf to the Smurf DB you'll need all three fields. `name`, `age`, and `height`.
+- [x] Design the functionality to add a smurf to the Smurf DB you'll need all three fields. `name`, `age`, and `height`.
 
 Example of the shape of data to be sent to the `POST` endpoint:
 
@@ -111,7 +111,7 @@ Example of the shape of data to be sent to the `POST` endpoint:
 }
 ```
 
-- [ ] Double check to make sure that a smurf is created correctly once your functionality is built out.
+- [x] Double check to make sure that a smurf is created correctly once your functionality is built out.
 
 Initially Brainey will be in the array, but it takes more than one smurf to make the village. Be sure to add a few smurfs to populate our smurf village.
 
@@ -142,7 +142,7 @@ The following two endpoints are here for you if you'd like to push yourselves a 
 
 ### PUT '/smurfs/123', where 123 is the Id of the smurf you want to modify
 
-- [ ] For this endpoint to work, you'll need an `id` added to the URL, and at least one field to update on the Smurf object. `name` `age` `height`.
+- [] For this endpoint to work, you'll need an `id` added to the URL, and at least one field to update on the Smurf object. `name` `age` `height`.
 
 Example:
 

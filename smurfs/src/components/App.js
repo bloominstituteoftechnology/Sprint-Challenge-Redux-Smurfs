@@ -4,7 +4,7 @@ import SmurfView from '../views/SmurfView'
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div>
         <SmurfView></SmurfView>
       </div>
     );

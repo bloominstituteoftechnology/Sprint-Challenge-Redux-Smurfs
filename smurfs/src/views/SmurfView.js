@@ -13,7 +13,7 @@ componentDidMount(){
     return (
       <div >
           <SmurfForm addSmurf={this.props.addSmurf}/>
-          <SmurfList smurfs={this.props.smurfs}/>
+          <SmurfList smurfies={this.props.smurfs}/>
       </div>
     );
   }
@@ -21,8 +21,7 @@ componentDidMount(){
 
 const mapStateToProps = state => {
   return {
-    smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs
+    smurfs: state.smurfs
 }
 }
 

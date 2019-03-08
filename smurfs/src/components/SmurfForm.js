@@ -30,9 +30,9 @@ addSmurfHandler = e => {
 render(){
     return(
         <div>
-            <input name='name' type='text' placeHolder='Name' value={this.state.smurf.name} onChange={this.changeHandler}/>
-            <input name='height' type='text' placeHolder='Height' value={this.state.smurf.height} onChange={this.changeHandler}/>
-            <input name='age' type='text' placeHolder='Age' value={this.state.smurf.age} onChange={this.changeHandler}/>
+            <input name='name' type='text' placeholder='Name' value=            {this.state.smurf.name} onChange={this.changeHandler}/>
+            <input name='height' type='text' placeholder='Height' value=        {this.state.smurf.height} onChange={this.changeHandler}/>
+            <input name='age' type='text' placeholder='Age' value=              {this.state.smurf.age} onChange={this.changeHandler}/>
             <button onClick={this.addSmurfHandler}>Submit</button>
         </div>
     )
