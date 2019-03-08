@@ -19,3 +19,5 @@ Middleware is a programming tool to intercept a process which either allows the 
 Redux thunk is an middleware that allows us to use asynchronous programming in our React Redux application. It allows our action creators to make API calls.
 
 6.  Which `react-redux` method links up our `components` with our `redux store`?
+
+The connect method links up our components to our redux store.
