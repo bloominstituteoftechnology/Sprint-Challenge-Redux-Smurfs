@@ -54,3 +54,17 @@ export const addSmurfFailure = (error) => {
     payload: error,
   };
 };
+
+export const deleteSmurfSuccess = (newSmurfs) => {
+  return {
+    type: DELETE_SMURF_SUCCESS,
+    payload: newSmurfs,
+  };
+};
+
+export const deleteSmurfFailure = (error) => {
+  return {
+    type: DELETE_SMURF_FAILURE,
+    payload: error,
+  };
+};
