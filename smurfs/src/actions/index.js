@@ -122,3 +122,17 @@ export const addSmurf = (name, age, height) => async (dispatch) => {
     dispatch(addSmurfFailure(error));
   }
 };
+
+export const deleteSmurf = id => async (dispatch) => {
+  dispatch({ type: DELETE_SMURF });
+  const config = {
+    method: 'DELETE',
+  };
+  try {
+    const result = await fetch(`http://localhost:3333/smurfs/${id}`, config);
+    const jsonResult = await result.json();
+    dispatch(deleteSmurfSuccess(jsonResult));
+  } catch (error) {
+    dispatch(deleteSmurfFailure(error));
+  }
+};
