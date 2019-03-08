@@ -46,9 +46,11 @@ const AddSmurfForm = props => {
                         name: name,
                         age: age,
                         height: height,
-                        id: Date.now()
+                        id: Math.random()
                     }
-
+                    setName("");
+                    setAge("");
+                    setHeight("");
                     props.addSmurf(newSmurf);
                 }}
                 type="submit">submit smurf</button>

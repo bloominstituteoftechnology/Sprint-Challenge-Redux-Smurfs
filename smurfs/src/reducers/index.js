@@ -4,7 +4,10 @@ import {
   FETCH_SMURFS_FAIL,
   ADD_SMURFS_START,
   ADD_SMURFS_SUCCESS,
-  ADD_SMURFS_FAIL
+  ADD_SMURFS_FAIL,
+  DEL_SMURFS_START,
+  DEL_SMURFS_SUCCESS,
+  DEL_SMURFS_FAIL
 } from '../actions';
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -20,6 +23,29 @@ import {
 
 const reducer = (state = initialState, action) => {
   switch(action.type){
+                  //adding smurf
+    case DEL_SMURFS_START: 
+      return{
+        ...state,
+        deletingSmurf: true
+      }
+
+    case DEL_SMURFS_SUCCESS: 
+      return{
+        ...state,
+        deletingSmurf: false,
+        smurfs: action.payload.data
+      }
+
+    case DEL_SMURFS_FAIL: 
+    console.error(action.payload);
+    return{
+      ...state,
+      deletingSmurf: false
+    }
+
+
+
                   //adding smurf
     case ADD_SMURFS_START: 
       return{
