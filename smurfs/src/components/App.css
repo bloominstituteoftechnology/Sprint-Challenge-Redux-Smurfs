@@ -1,11 +1,100 @@
 .App {
   text-align: center;
+  background: #5373EB;
+  height: 100vh;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+h3 {
+  margin: 0;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
 }
+
+h2 {
+  margin: 0;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 20px;
+  font-size: 36px;
+}
+
+span {
+  color: #303233;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+p {
+  color: #303233;
+  font-size: 16px;
+}
+
+.smurf-form {
+  max-width: 800px;
+  margin: 0 auto;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.smurfs-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+form {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  margin: 60px;
+}
+
+input {
+  width: 200px;
+  margin-right: 10px;
+  height: 40px;
+  border-radius: 3px;
+  border: 1px solid #F2D460;
+  padding: 10px;
+  color: #303233;
+  font-size: 14px;
+}
+
+input::placeholder {
+  font-size: 14px;
+}
+
+button {
+  background: #F2D460;
+  color: #303233;
+  width: 200px;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 3px;
+  height: 60px;
+}
+
+button.delete {
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+  padding: 10px;
+  background: #4FA8ED;
+  height: 60px;
+  color: white;
+}
+
+button.delete:hover {
+  background :#ff5b61;
+}
+
+.smurf {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
 
 .App-header {
   background-color: #222;
