@@ -7,11 +7,11 @@ export const FETCH_SMURFS = 'FETCH_SMURFS';
 export const FETCH_SMURFS_SUCCESS = 'FETCH_SMURFS_SUCCESS';
 export const FETCH_SMURFS_FAILURE = 'FETCH_SMURFS_FAILURE';
 export const ADD_SMURF = 'ADD_SMURF';
-export const ADD_SMURF_SUCCESS = 'ADD_SMURF';
-export const ADD_SMURF_FAILURE = 'ADD_SMURF';
-export const DELETE_SMURF = 'ADD_SMURF';
-export const DELETE_SMURF_SUCCESS = 'ADD_SMURF';
-export const DELETE_SMURF_FAILURE = 'ADD_SMURF';
+export const ADD_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS';
+export const ADD_SMURF_FAILURE = 'ADD_SMURF_FAILURE';
+export const DELETE_SMURF = 'DELETE_SMURF';
+export const DELETE_SMURF_SUCCESS = 'DELETE_SMURF_SUCCESS';
+export const DELETE_SMURF_FAILURE = 'DELETE_SMURF_FAILURE';
 
 
 /*
@@ -28,6 +28,9 @@ export const DELETE_SMURF_FAILURE = 'ADD_SMURF';
 // Synchronous action creators
 
 export const fetchSmurfsSuccess = (smurfs) => {
+  if (!smurfs) {
+    throw new Error('fetchSmurfsSuccess requires a smurfs result');
+  }
   return {
     type: FETCH_SMURFS_SUCCESS,
     payload: {
@@ -37,6 +40,9 @@ export const fetchSmurfsSuccess = (smurfs) => {
 };
 
 export const fetchSmurfsFailure = (error) => {
+  if (!error) {
+    throw new Error('fetchSmurfsFailure requires an error message');
+  }
   return {
     type: FETCH_SMURFS_FAILURE,
     payload: {
