@@ -18,7 +18,8 @@ const store = createStore(
   applyMiddleware(thunk, logger),
 );
 
-store.dispatch(actions.fetchSmurfs());
+// store.dispatch(actions.fetchSmurfs());
+
 
 ReactDOM.render(
   <Provider store={store}>

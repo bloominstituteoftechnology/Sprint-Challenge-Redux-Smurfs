@@ -39,35 +39,45 @@ export const fetchSmurfsSuccess = (smurfs) => {
 export const fetchSmurfsFailure = (error) => {
   return {
     type: FETCH_SMURFS_FAILURE,
-    payload: error,
+    payload: {
+      error,
+    },
   };
 };
 
 export const addSmurfSuccess = (newSmurfs) => {
   return {
     type: ADD_SMURF_SUCCESS,
-    payload: newSmurfs,
+    payload: {
+      newSmurfs,
+    },
   };
 };
 
 export const addSmurfFailure = (error) => {
   return {
     type: ADD_SMURF_FAILURE,
-    payload: error,
+    payload: {
+      error,
+    },
   };
 };
 
 export const deleteSmurfSuccess = (newSmurfs) => {
   return {
     type: DELETE_SMURF_SUCCESS,
-    payload: newSmurfs,
+    payload: {
+      newSmurfs,
+    },
   };
 };
 
 export const deleteSmurfFailure = (error) => {
   return {
     type: DELETE_SMURF_FAILURE,
-    payload: error,
+    payload: {
+      error,
+    },
   };
 };
 
@@ -81,5 +91,28 @@ export const fetchSmurfs = () => async (dispatch) => {
     dispatch(fetchSmurfsSuccess(jsonResult));
   } catch (error) {
     dispatch(fetchSmurfsFailure(error));
+  }
+};
+
+export const addSmurf = (name, age, height) => async (dispatch) => {
+  dispatch({ type: ADD_SMURF });
+  const smurf = {
+    name: String(name),
+    age: Number(age),
+    height: String(height),
+  };
+  const config = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(smurf),
+  };
+  try {
+    const result = await fetch('http://localhost:3333/smurfs', config);
+    const jsonResult = await result.json();
+    dispatch(addSmurfSuccess(jsonResult));
+  } catch (error) {
+    dispatch(addSmurfFailure(error));
   }
 };
