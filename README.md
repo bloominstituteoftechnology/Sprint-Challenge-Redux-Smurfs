@@ -23,8 +23,24 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+      Actions are like tickets. you put a ticket in a machine, and some shit happens. thats exactly what actions are. you interact with your app, firing an action creator, sending an action to the reducer with or without some payload, and that fires an actual THING to happen.
+
+      "What do you call that THING tho tom??" WELL IM HAPPY YOU ASKED. Take a gander on into your reducers. Your reducer lives in your store, right up next to your application state. we shoot that ticket into the reducer, and the reducers takes it, does what it says, and replaces your old state with some new state. 
+
+      "But whats the store"? I HAVE ALL THE ANSWERS!!! The store is like.... well i mean a store! It houses your all of your Application level state/whatever state you want it hold, along with your reducers and any middleware that sits between your actions and reducers. it bundles all that up kinto one package and makes it work nicely together.
+
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+    Application state is really anything that you need in mroe than one Component. i.e. account information might be needed all over the application, and thus is going to be Application state. Component state is the oposite. for instance, if youre filling out a form, your whole state dosnt need to know about the form input fields. they jsut need to know what you submit when youre done (maybe, maybe not!!). So for this, wed likely use Component level state.
+
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+    Generally our action creators MUST return an object. this make doing sync redux impossible. BUT WHAT IF WE COULD RETURN FUNCTIONS FROM OUR ACTION CREATORS?? BING BANG BOOM POW BROTHAS AND SISTERS, meet redux-thunk! it allows us to return funtions from our action creators and in turn do redux asynchronysly. 
+
+
 
 ## Project Set Up
 
