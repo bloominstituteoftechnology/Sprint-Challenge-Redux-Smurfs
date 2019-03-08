@@ -27,14 +27,16 @@ export const DELETE_SMURF_FAILURE = 'ADD_SMURF';
 
 // Synchronous action creators
 
-export const fetchSmurfSuccess = (smurfs) => {
+export const fetchSmurfsSuccess = (smurfs) => {
   return {
     type: FETCH_SMURFS_SUCCESS,
-    payload: smurfs,
+    payload: {
+      smurfs,
+    },
   };
 };
 
-export const fetchSmurfFailure = (error) => {
+export const fetchSmurfsFailure = (error) => {
   return {
     type: FETCH_SMURFS_FAILURE,
     payload: error,
@@ -67,4 +69,17 @@ export const deleteSmurfFailure = (error) => {
     type: DELETE_SMURF_FAILURE,
     payload: error,
   };
+};
+
+// Asynchronous action creators
+
+export const fetchSmurfs = () => async (dispatch) => {
+  dispatch({ type: FETCH_SMURFS });
+  try {
+    const result = await fetch('http://localhost:3333/smurfs');
+    const jsonResult = await result.json();
+    dispatch(fetchSmurfsSuccess(jsonResult));
+  } catch (error) {
+    dispatch(fetchSmurfsFailure(error));
+  }
 };
