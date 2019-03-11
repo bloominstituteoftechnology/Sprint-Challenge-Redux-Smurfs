@@ -1,10 +1,6 @@
-[Settings]
-ID = "90c60166-d819-4056-8a61-817ab749bddb"
-
-
 [build]
-    base = "smurfs-app/"
-    publish = "smurfs-app/build/"
+    base = "smurfs"
+    publish = "smurfs/build/"
     command = "yarn build"
 
 [[redirects]]
