@@ -1,6 +1,6 @@
 [build]
     base = "smurfs"
-    publish = "smurfs/build/"
+    publish = "smurfs/build"
     command = "yarn build"
 
 [[redirects]]
