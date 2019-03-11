@@ -1,9 +1,0 @@
-[build]
-    base = "smurfs"
-    publish = "smurfs/build"
-    command = "yarn build"
-
-[[redirects]]
-    from = "/*"
-    to = "/index.html"
-    status = 200
