@@ -1,0 +1,9 @@
+[build]
+    base = "smurfs-app/"
+    publish = "smurfs-app/build/"
+    command = "yarn build"
+
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
