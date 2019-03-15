@@ -26,3 +26,77 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.App {
+  text-align: center;
+}
+
+
+.SmurfVillage {
+  background-color: #549d48;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  
+  
+}
+
+.Smurf {
+ 
+ 
+  width: 250px;
+  height: 250px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  background-image: url("./assets/smurf-house.png");
+  overflow: hidden;
+}
+
+.smurf-form {
+  position: sticky;
+  margin-bottom: 40px;
+  top: 0px;
+  z-index: 3;
+}
+
+.trash {
+  margin-top: 90px;
+  margin-left: 200px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.smurf-nameplate {
+  text-decoration: underline white;
+  color: rgb(255, 255, 255);
+  margin-top: -80px;
+  margin-left: -80px;
+  transform: matrix(1,0,4,3,2,-100);
+  background-color: rgb(214, 150, 52);
+  width: 190px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+  position: relative
+  
+
+}
+
+.smurf-name {
+  color: white;
+  position: relative;
+  right: 15px;
+  top: -120px;
+  z-index: 2;
+  margin-top: -80px;
+  pointer-events: none
+}
