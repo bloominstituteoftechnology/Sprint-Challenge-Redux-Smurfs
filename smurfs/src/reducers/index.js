@@ -1,18 +1,39 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-
+import { 
+  ADDSMURF,
+  GETSMRUFS,
+  UPDATESMURF,
+  DELETESMURF,
+} from '.../actions/index.js';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
-   error: null
- }
 */
+
+const initialState = {
+  smurfs: [],
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
+  error: null
+}
+
+const rootReducer = (state, initialState, action) => {
+  switch (action.type) {
+    // case FETCHINGSMURFS:
+    //   return {};
+    case ADDSMURF: 
+      return {};
+    case UPDATESMURF: 
+      return {};
+    case DELETESMURF:
+      return {};
+    // case ERROR: 
+    //   return {};
+  }
+}
 
 /*
   You'll only need one smurf reducer for this project.
@@ -21,3 +42,5 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+export default rootReducer;
