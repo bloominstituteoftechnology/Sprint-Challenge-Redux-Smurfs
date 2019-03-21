@@ -1,9 +1,13 @@
 const express = require('express');
 const cors = require('cors');
-const port = 3333;
+// const port = 3333;
+const path = require('path');
 
 const server = express();
-server.use(express.json());
+
+const pathToIndexHtml = path.join(__dirname, 'build', 'index.html');
+const pathToBuildFolder = path.join(__dirname, 'build')
+server.use(express.statit(pathToBuildFolder));
 server.use(cors());
 
 const sendUserError = (msg, res) => {
@@ -55,6 +59,10 @@ let smurfs = [
     height: '9cm'
   }
 ];
+
+server.get('/', (req, res) => {
+  res.sendFile(pathToIndexHtml);
+})
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
@@ -114,7 +122,7 @@ server.delete('/smurfs/:id', (req, res) => {
   }
 });
 
-server.listen(port, err => {
+server.listen(process.env.PORT || 5000, err => {
   if (err) console.log(err);
-  console.log(`server is listening on port ${port}`);
+  console.log(`server is listening on port ${process.env.PORT}`);
 });
