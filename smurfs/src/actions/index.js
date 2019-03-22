@@ -4,32 +4,32 @@
 */
 import axios from 'axios';
 
-export const FETCHING = 'FETCHING';
-export const ADDING = 'ADDING';
-export const SUCCESS = 'SUCCESS';
-export const FAILURE = 'FAILURE'
 
-export const getSmurfs = (dispatch) => {
-  dispatch = ({ type: FETCHING })
+export const ADD_SMURFS_START = 'ADD_SMURFS_START';
+export const ADD_SMURFS_SUCCESS = 'ADD_SMURFS_SUCCESS';
+export const ADD_SMURFS_FAIL = 'ADD_SMURFS_FAILURE'
+
+export const getSmurfs = () => dispatch => {
+  dispatch = ({ type: ADD_SMURFS_START });
   axios
     .get('http://localhost:3333/smurfs')
     .then(response => 
-      dispatch = ({ type: SUCCESS, payload: response.data})
+      dispatch = ({ type: ADD_SMURFS_SUCCESS, payload: response.data})
       )
     .catch(error => {console.log(error)
-      dispatch = ({ type: FAILURE, payload: error})
+      dispatch = ({ type: ADD_SMURFS_FAIL, payload: error})
     })
 }
 
 export const addSmurf = (dispatch) => {
-  dispatch = ({ type: ADDING })
+  dispatch = ({ type: ADD_SMURFS_START })
   axios 
     .post('http://localhost:3333/smurfs')
     .then(response => 
-      dispatch = ({ type: SUCCESS, payload: response.data })
+      dispatch = ({ type: ADD_SMURFS_SUCCESS, payload: response.data })
       )
     .catch(error => {console.log(error)
-      dispatch = ({ type: SUCCESS, payload: error})
+      dispatch = ({ type: ADD_SMURFS_FAIL, payload: error})
     })
 }
 
