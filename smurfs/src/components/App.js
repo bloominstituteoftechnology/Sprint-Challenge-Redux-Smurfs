@@ -13,7 +13,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      smurfs: {
+      smurf: {
         name: '',
         age: null,
         height: ''
@@ -22,19 +22,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.getSmurfs();
+    this.props.getSmurfs(this.state.smurfs);
   };
 
   addSmurf = e => {
     e.preventDefault();
-    this.props.postSmurfs(this.state.smurfs)
+    this.props.postSmurfs(this.state.smurf)
   }
 
 
   handleChanges = e => {
     this.setState({
-      smurfs: {
-        ...this.state.smurfs,
+      smurf: {
+        ...this.state.smurf,
       [e.target.name]: e.target.value }
     });
   };
@@ -44,21 +44,15 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to Smurfs Village Redux!</div>
-        <div>Have fun!</div>
-        <p>
-          name={this.state.smurfs.name}
-          age={this.state.smurfs.age}
-          height={this.state.smurfs.height}
-        </p>
-       
+        <div>Have fun!</div>     
         <div> 
-          {this.state.smurfs.map((smurfs, index) => {
+          {this.props.smurfs.map((smurf, index) => {
             return (
-              <div>
-                <h2>key={index}</h2>  
-                <h2>{smurfs.name}</h2>
-                <h2>{smurfs.age}</h2>
-                <h2>{smurfs.height}</h2>
+              <div key={index}>
+                <h2></h2>  
+                <h2>{smurf.name}</h2>
+                <h2>{smurf.age}</h2>
+                <h2>{smurf.height}</h2>
               </div>
             )
           })}
@@ -68,7 +62,7 @@ class App extends Component {
         <input 
           type='text'
           name='name'
-          value={this.state.smurfs.name}
+          value={this.state.smurf.name}
           placeholder='name'
           onChange={this.handleChanges}
         />
@@ -76,7 +70,7 @@ class App extends Component {
         <input 
           type='text'
           name='age'
-          value={this.state.smurfs.age}
+          value={this.state.smurf.age}
           placeholder='age'
           onChange={this.handleChanges}
         />
@@ -84,14 +78,14 @@ class App extends Component {
         <input 
           type='text'
           name='height'
-          value={this.state.smurfs.height}
+          value={this.state.smurf.height}
           placeholder='height'
           onChange={this.handleChanges}
         />
 
         <button type="submit">Add Smurf</button>
         </form>
-        <h1>{this.props.state.smurfs}</h1>
+        <h1>{this.props.smurf}</h1>
       </div>
     );
   }

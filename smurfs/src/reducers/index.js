@@ -31,8 +31,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
-        fetchingSmurfs: false,
-        error: null
+        fetchingSmurfs: false
       };  
       default:
         return state;
@@ -47,7 +46,7 @@ export const rootReducer = (state = initialState, action) => {
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
+  This will guard your name spacing issues.
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
