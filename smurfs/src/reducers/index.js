@@ -7,31 +7,33 @@ import { FETCH_SMURF, FETCH_SMURF_SUCCESS, FETCH_SMURF_FAILURE } from '../action
    smurfs: [],
    fetchingSmurfs: false,
   //  addingSmurf: false,
-   updatingSmurf: false,
+  //  updatingSmurf: false,
   //  deletingSmurf: false,
    error: null
  };
 
-export default (state = initialState, action) => {
+export const rootReducer = (state = initialState, action) => {
   console.log('default', action)
   switch (action.type) {
     case FETCH_SMURF:
       return {
         ...state,
-        fetching: true
+        fetchingSmurfs: true
       };
     case FETCH_SMURF_SUCCESS:
       return {
         ...state,
         smurfs: action.payload,
-        fetching: false
+        fetchingSmurfs: false,
+        error: null
       };
     case FETCH_SMURF_FAILURE:
       return {
         ...state,
-        smurfs: action.payload,
-        fetching: false
-      };
+        error: action.payload,
+        fetchingSmurfs: false,
+        error: null
+      };  
       default:
         return state;
   }
