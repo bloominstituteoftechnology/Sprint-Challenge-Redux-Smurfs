@@ -23,8 +23,22 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+[Actions make up all the possible actions that a user can perform while working with the app, i.e. logging into the app, looking at a status. Their role is to take in the new data, notate what type of data it is and send it over to the reducer.
+
+Reducers are essentially the brain of the redux store, they are the logic that notes that the store has received an action and then determines how the store should update in response to the action.
+
+Stores are simply a database type object that represents everything that changes within the application. Which is why they are considered the 'single source of truth' because they contain the state of the application. ]
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+[Application state is a global entity whereas Component state is a local on. For instance in libraries such as Redux we have databases such as 'store' to hold state, this is an example of an application state since any component anywhere within that app has access to its state so long as its hooked up to it. 
+
+However, component state is within the particular component you're looking at, meaning it can only update within that specific component its housed in and cn be passed down to its children]
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+[redux-thunk is a middleware that lets you call an action creator but not just any action creator, only ones that return a function rather than an action object. What this means is that we can use it to attach the store's dispatch method to the function, allowing us to delay the dispatch of an action or to dispatch after certain conditions are met.]
 
 ## Project Set Up
 
