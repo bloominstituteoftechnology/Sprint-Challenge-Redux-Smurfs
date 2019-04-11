@@ -27,7 +27,7 @@ const AddSmurfForm = props => {
 
                     setAge(e.target.value)
                 }}
-                type="text" />
+                type="number" />
 
                 <label>height:</label>
                 <input 
@@ -36,7 +36,7 @@ const AddSmurfForm = props => {
 
                     setHeight(e.target.value)
                 }}
-                type="text" />
+                type="number" />
 
                 <button 
                 onClick={e => {

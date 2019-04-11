@@ -29,7 +29,7 @@ class SmurfsList extends React.Component {
                                 console.log(e.target.id);
                                 this.props.deleteSmurf(e.target.id);
                             }}
-                            type="text">x</button>
+                            type="text">REMOVE</button>
                         </div>
                     );
                 })}
