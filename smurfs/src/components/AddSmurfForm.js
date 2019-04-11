@@ -11,7 +11,7 @@ const AddSmurfForm = props => {
     return(
         <div className="smurf-form">
             <form>
-                <label>name:</label>
+                <label>Name:</label>
                 <input 
                 value={name}
                 onChange={e => {
