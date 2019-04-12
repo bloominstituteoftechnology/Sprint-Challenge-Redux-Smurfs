@@ -13,27 +13,27 @@ export const ADD_SMURFS_FAIL = 'ADD+SMURFS_FAIL';
 
 
 export const getSmurfs = () => dispatch => {
-  dispatch = ({ type: GET_SMURFS_START });
+  dispatch({ type: GET_SMURFS_START });
   axios
     .get('http://localhost:3333/smurfs')
-    .then(res => 
-      dispatch = ({ type: GET_SMURFS_SUCCESS, payload: res })
-      )
-      .catch(err => { console.log(err)
-        dispatch =({ type: GET_SMURFS_FAIL, payload: err})
-      })
+    .then(res => {
+      dispatch({ type: GET_SMURFS_SUCCESS, payload: res })
+    })
+    .catch(err => {
+        dispatch({ type: GET_SMURFS_FAIL, payload: err})
+    })
 }
 
-export const addSmurf = () => dispatch => {
-  dispatch = ({ type: ADD_SMURFS_START });
+export const addSmurf = (newSmurf) => dispatch => {
+  dispatch({ type: ADD_SMURFS_START });
   axios
-    .get('http://localhost:3333/smurfs')
-    .then(res => 
-      dispatch = ({ type: ADD_SMURFS_SUCCESS, payload: res })
-      )
-      .catch(err => { console.log(err)
-        dispatch =({ type: ADD_SMURFS_FAIL, payload: err})
-      })
+    .post('http://localhost:3333/smurfs', newSmurf)
+    .then(res => {
+      dispatch({ type: ADD_SMURFS_SUCCESS, payload: res })
+    })
+    .catch(err => {
+        dispatch({ type: ADD_SMURFS_FAIL, payload: err})
+    })
 }
 /*
   For this project you'll need at least 2 action creators for the main portion,

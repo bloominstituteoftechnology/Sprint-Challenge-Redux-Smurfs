@@ -9,7 +9,7 @@ import {
   ADD_SMURFS_SUCCESS,
   ADD_SMURFS_FAIL
 }
-from '../actions/index';
+from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -58,7 +58,7 @@ export const smurfReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingSmurfs: false,
-        smurfs: action.paylaod.data
+        smurfs: action.payload.data
       }
     case GET_SMURFS_FAIL:
       return {
