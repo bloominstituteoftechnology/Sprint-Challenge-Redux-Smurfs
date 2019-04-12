@@ -8,22 +8,22 @@ export const POST_SUCCESS = 'POST_SUCCESS';
 export const POST_ERROR = 'POST_ERROR';
 
 export function getSmurfs() {
-  return function(disptach) {
+  return function(dispatch) {
     dispatchEvent({ type: FETCH_START });
     axios
       .get('http://localhost:3333/smurfs')
-      .then(red => dispatchEvent({ type: FETCH_SUCCESS, payload: resizeBy.data }))
-      .catch(err => dispatchEvent({ type: FETCH_SUCCESS, payload: err}))
+      .then(res => dispatch({ type: FETCH_SUCCESS, payload: res.data }))
+      .catch(err => dispatch({ type: FETCH_SUCCESS, payload: err}))
   };
 }
 
-export function addSmurf(adedSmurf) {
+export function addSmurf(addedSmurf) {
   return function(dispatch) {
     dispatch({ type: POST_START });
     axios
       .post('http://localhost:3333/smurfs', addedSmurf)
       .then(res => dispatch({ type: POST_SUCCESS, payload: res.data }))
-      .catch(err => dipatch({ type: POST_ERROR, payload: err }))
+      .catch(err => dispatch({ type: POST_ERROR, payload: err }))
   }
 }
 
