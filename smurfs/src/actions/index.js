@@ -2,7 +2,23 @@
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+import axios from 'axios';
 
+export const GET_SMURFS_START = 'GET_SMURFS_START';
+export const GET_SMURFS_SUCCESS = 'GET_SMURFS_SUCCESS';
+export const GET_SMURFS_FAIL = 'GET_SMURFS_FAIL';
+
+export const getSmurfs = () => dispatch => {
+  dispatch = ({ type: GET_SMURFS_START });
+  axios
+    .get('http://localhost:3333/smurfs')
+    .then(res => 
+      dispatch = ({ type: GET_SMURFS_SUCCESS, payload: res })
+      )
+      .catch(err => 
+        dispatch =({ type: GET_SMURFS_FAIL, payload: err})
+        )
+}
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.

@@ -9,8 +9,8 @@ import { Provider } from 'react-redux';
 import /* You need some sort of reducer */ './reducers';
 
 const store = createStore(
-  () => {}, // this is the most basic reducer. A function that returns and object. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+  () => {}, 
+  applyMiddleware(thunk, logger)
 );
 
 ReactDOM.render(
