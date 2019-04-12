@@ -9,7 +9,7 @@ export const POST_ERROR = 'POST_ERROR';
 
 export function getSmurfs() {
   return function(dispatch) {
-    dispatchEvent({ type: FETCH_START });
+    dispatch({ type: FETCH_START });
     axios
       .get('http://localhost:3333/smurfs')
       .then(res => dispatch({ type: FETCH_SUCCESS, payload: res.data }))

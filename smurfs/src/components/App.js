@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import SmurfList from './SmurfList';
+// import SmurfList from './SmurfList';
 import SmurfForm from './SmurfForm';
-import { getSmurf } from '../actions/index';
+import { getSmurfs } from '../actions/index';
+import SmurfList from './SmurfList';
 
 /*
  to wire this component up you're going to need a few things.
@@ -24,7 +25,7 @@ class App extends Component {
           <h1>Smurf Village</h1>
         </div>
         <div>
-          <smurfList smurfs={this.props.smurf} />
+          <SmurfList smurfs={this.props.smurfs} />
           <SmurfForm />
         </div>
       </div>
@@ -40,4 +41,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps, { getSmurf })(App);
+export default connect(mapStateToProps, { getSmurfs })(App);

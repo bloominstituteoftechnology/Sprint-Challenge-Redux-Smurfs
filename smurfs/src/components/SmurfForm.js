@@ -1,7 +1,7 @@
 import React from 'react';
-import { runInThisContext } from 'vm';
+// import { runInThisContext } from 'vm';
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions/index';
+import { addSmurf } from '../actions/index';
 
 class SmurfForm extends React.Component {
     constructor(props) {
@@ -15,17 +15,17 @@ class SmurfForm extends React.Component {
         }
     }
 
-    handleChange = e => {
-        this.setstate({
+    handleChange = event => {
+        this.setState({
             newSmurf: {
                 ...this.state.newSmurf,
-                [e.target.name]: e.target.value
+                [event.target.name]: event.target.value
             }
         });
     };
 
-    addSmurf = e => {
-        e.preventDefault();
+    addSmurf = event => {
+        event.preventDefault();
         this.props.addSmurf(this.state.newSmurf);
     }
 
@@ -38,7 +38,7 @@ class SmurfForm extends React.Component {
                         name='name'
                         placeholder='Name'
                         onChange={this.handleChange}
-                        value={this.state.newSurf.name}
+                        value={this.state.newSmurf.name}
                     />
                     <input
                         type='text'
@@ -73,4 +73,4 @@ const mapStateToProps = (state) => {
   
 
   export default connect(mapStateToProps,
-    {getSmurfs})(SmurfForm);
+    {addSmurf})(SmurfForm);
