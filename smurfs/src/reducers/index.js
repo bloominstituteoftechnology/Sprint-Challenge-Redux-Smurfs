@@ -7,26 +7,61 @@ import {
     POST_ERROR,
 } from '../actions/index';
 
-const initialStat = {
+const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
    addingSmurf: false,
-   updatingSmurf: false,
-   deletingSmurf: false,
-   error: null
+   error: null,
+   postError: '',
+  postSuccessMessage: ''
+};
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case FETCH_START:
+      return {
+        ...state,
+        fetchingFriend: true
+      }
+    case FETCH_SUCCESS:
+      return {
+        ...state,
+        smurfs: action.payload,
+        fetchSmurfs: false
+      }
+    case FETCH_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+        fetchingSmurfs: false
+      }
+    case POST_START:
+      return {
+        ...state,
+        addingSmurf: true,
+        postError: '',
+        postSuccessMessage: ''
+      }
+    case POST_SUCCESS:
+      return {
+        ...state,
+        addingSmurf: false,
+        postError: '',
+        postSuccessMessage:action.payload
+      }
+    case POST_ERROR:
+      return {
+        ...state,
+        addingSmurf: false,
+        postError: '',
+        postSuccessMessage: ''
+      }
+    default:
+      return state;
+  }
 }
 
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
-
-/*
- Your initial/default state for this project could *Although does not have to* look a lot like this
- {
-  
- }
-*/
-
+export default reducer;
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
