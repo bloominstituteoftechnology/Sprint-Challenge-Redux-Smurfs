@@ -1,3 +1,32 @@
+import axios from 'axios';
+
+export const FETCH_START = 'FETCH_START';
+export const FETCH_SUCCESS = 'FETCH_SUCCESS';
+export const FETCH_ERROR = 'FETCH_ERROR';
+export const POST_START = 'POST_START';
+export const POST_SUCCESS = 'POST_SUCCESS';
+export const POST_ERROR = 'POST_ERROR';
+
+export function getSmurfs() {
+  return function(disptach) {
+    dispatchEvent({ type: FETCH_START });
+    axios
+      .get('http://localhost:3333/smurfs')
+      .then(red => dispatchEvent({ type: FETCH_SUCCESS, payload: resizeBy.data }))
+      .catch(err => dispatchEvent({ type: FETCH_SUCCESS, payload: err}))
+  };
+}
+
+export function addSmurf(adedSmurf) {
+  return function(dispatch) {
+    dispatch({ type: POST_START });
+    axios
+      .post('http://localhost:3333/smurfs', addedSmurf)
+      .then(res => dispatch({ type: POST_SUCCESS, payload: res.data }))
+      .catch(err => dipatch({ type: POST_ERROR, payload: err }))
+  }
+}
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
