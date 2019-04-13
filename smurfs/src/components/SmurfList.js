@@ -10,15 +10,17 @@ class SmurfList extends React.Component {
 
     render() {
         return (
+         <div>
             <div className='smurf-list'>
              {this.props.smurfs.map(smurf => (
                <div key={smurf.id}>
                 <h2>Name: {smurf.name}</h2>
-                <p>age: {smurf.age}</p>
-                <p>height: {smurf.height}</p>
+                <p>Age: {smurf.age}</p>
+                <p>Height: {smurf.height}</p>
                </div> 
               ))}
             </div>
+         </div>
         )
     }
 }

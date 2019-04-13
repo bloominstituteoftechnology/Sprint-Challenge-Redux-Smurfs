@@ -18,7 +18,7 @@ const initialState =
  {
    smurfs: [],
    fetchingSmurfs: false,
-   addingSmurfs: false,
+   addingSmurf: false,
    error: null
  }
 
@@ -35,18 +35,18 @@ export const smurfReducer = (state = initialState, action) => {
     case ADD_SMURFS_START:
       return {
         ...state,
-       addingSmurfs: true
+       addingSmurf: true
       }
     case ADD_SMURFS_SUCCESS:
       return {
         ...state,
-        addingSmurfs: false,
-        smurfs: action.paylaod.data
+        addingSmurf: false,
+        smurfs: action.payload
       }
     case ADD_SMURFS_FAIL:
       return {
         ...state,
-        addingSmurfs: false,
+        addingSmurf: false,
         error: action.payload
       }  
     case GET_SMURFS_START:
@@ -58,7 +58,7 @@ export const smurfReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingSmurfs: false,
-        smurfs: action.payload.data
+        smurfs: action.payload
       }
     case GET_SMURFS_FAIL:
       return {
