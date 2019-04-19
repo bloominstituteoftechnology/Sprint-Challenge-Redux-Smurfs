@@ -1,28 +1,48 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: black;
+  color: pink;
+  height: 100vh;
+}
+button {
+  cursor: pointer;
+}
+button:hover {
+  background: black;
+  color: pink;
+  border: 2px solid pink;
+}
+.smurf-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.smurf-card {
+  background: pink;
+  border: 2px solid black;
+  margin: 10px;
+  color: black;
+  box-sizing: border-box;
+  min-width: 200px;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  max-width: 400px;
 }
-
-.App-title {
-  font-size: 1.5em;
+.open-add-form {
+  margin-top: 70px;
+  font-size: 30px;
+  padding: 10px 25px;
 }
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.open-update {
+  width: 100%;
+  margin: 0;
 }
