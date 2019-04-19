@@ -32,11 +32,11 @@ class SmurfVillage extends Component {
         return(
             <div>
                 <div>
-                    {this.props.smurf.map((smurf,id) =>
-                        <Smurf Key ={id} smurf={smurf}/>)}
+                    {this.props.smurfs.map((smurf, id) =>
+                        <Smurf Key ={id} smurf={smurf} />)}
                 </div>
                 <div>
-                    <form onSubmit = {this.handleSubmit}></form>
+                    <form onSubmit = {this.handleSubmit}>
                 <input onChange = {this.handlechange}
                 type ='name'
                 placeholder="name"
@@ -56,6 +56,7 @@ class SmurfVillage extends Component {
                 value = {this.state.height}
                 />
                 <button value="submit">Add Smurf</button>
+                </form>
                 </div>
             </div>
         )
@@ -70,4 +71,4 @@ const mapStateToProps = state =>{
 export default connect(
     mapStateToProps,
     {getsmurf, addSmurf}
-)(SmurfVillage)
+)(SmurfVillage);
