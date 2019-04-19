@@ -1,5 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Boogaloo", cursive;
+  background: #29B3E7;
+  color: white;
+}
+
+.App h1 {
+  font-size: 70px;
+  text-transform: uppercase;
+  /* text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+    0 20px 20px rgba(0, 0, 0, 0.15); */
+    /* text-shadow:
+		-1px -1px 0 #AA0422,
+		1px -1px 0 #AA0422,
+		-1px 1px 0 #AA0422,
+		1px 1px 0 #AA0422; */
+}
+
+.smurf-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px auto;
+  width: 80%;
+  justify-content: center;
+}
+
+.smurf-container {
+  background: #AA0422;
+  padding: 10px;
+  margin: 15px;
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
+}
+
+.smurf-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.smurf-buttons .button{
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.smurf-card h3 {
+  font-weight: lighter;
+  font-size: 24px;
+}
+
+.add-form form {
+  margin: 0 auto;
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+}
+
+form input {
+  text-align: center;
+  padding: 6px;
+  font-size: 16px;
+  font-family: "Boogaloo", cursive;
+  border: 1px solid #AA0422;
+  border-radius: 3px;
+}
+
+form button {
+  font-family: "Boogaloo", cursive;
+  text-transform: uppercase;
+  color: #AA0422;
+  border: 1px solid #AA0422;
+  background: white;
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+form button:hover{
+  color: white;
+  border: 1px solid white;
+  background: #AA0422;
+}
+
+.smurf-container form {
+  flex-direction: column;
+  margin-top: -130px;
+}
+.smurf-container form input {
+  width: 90%;
+  margin: 5px;
+}
+.smurf-container form button {
+  margin-top: 10px;
 }
