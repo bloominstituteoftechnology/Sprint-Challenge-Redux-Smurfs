@@ -56,6 +56,7 @@ const Wrapper = Styled.div`
     font-size: 1.6rem;
     height: 100%;
     justify-content: center;
+    align-items: center;
     width: 100%;
 
     .smurfs {

@@ -60,11 +60,11 @@ class Smurf extends Component {
     inactive = () =>
         (
             <div className='smurf'>
-                <pre>ID: {this.props.data.id}</pre>
+                <pre>ID: {this.state.id}</pre>
                 <pre>name: {this.state.name}</pre>
                 <button onClick={this.h_toggle_render}>Change</button>
-                <pre>age: {this.props.data.age}</pre>
-                <pre>height: {this.props.data.height}</pre>
+                <pre>age: {this.state.age}</pre>
+                <pre>height: {this.state.height}</pre>
                 <button onClick={this.h_execution}>Kill</button>
             </div>
         )
