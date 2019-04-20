@@ -1,7 +1,12 @@
+import axios from "axios";
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+export const FETCHING = 'FETCHING';
+export const GET_SMURFS = 'GET_SMURFS';
+export const ERROR = 'ERROR';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -13,3 +18,31 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const addSmurf = (addedSmurf) => {
+  return (dispatch) => {
+    dispatch({ type: FETCHING });
+    axios 
+      .post(`http://localhost:3333/smurfs`, addedSmurf)
+      .then(response => {
+        dispatch({ type: GET_SMURFS, smurfs: response.data })
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, error: "Gargamel has all the smurfs!"})
+      });
+  }
+}
+
+export const getSmurfs = () => {
+  return (dispatch) => {
+    dispatch({ type: FETCHING });
+    axios
+      .get(`http://localhost:3333/smurfs`)
+      .then(response => {
+        dispatch({ type: GET_SMURFS, smurfs: response.data })
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, error: "You weren't able to rescue a smurf from Gargamel!" })
+      });
+  }
+}
