@@ -26,3 +26,20 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.smurf-list-wrapper {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.smurf-card {
+  border: 2px solid #222;
+  margin: 10px auto;
+  padding: 10px;
+  list-style: none;
+  width: 400px;
+}
+
+.smurf-card h4 {
+  color: #222;
+}
