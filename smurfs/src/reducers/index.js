@@ -1,23 +1,198 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import { DELETING, SUCCESS, FAILURE, LOADING, ADDING, ADDED, EDITING, EDITED, DELETED, EDITFORM } from '../actions';
 
-/*
- Your initial/default state for this project could *Although does not have to* look a lot like this
- {
-   smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
-   error: null
- }
-*/
+const initialState = {
+    smurfs: [],
+    loading: true,
+    error: '',
+    adding: false,
+    added: false,
+    editing: false,
+    edited: false,
+    deleting: false,
+    editForm: false,
+    addForm: true,
+    editId: null,
+    smurf: {}
+}
 
-/*
-  You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
-  There is no need for 'combineReducers' in this project.
-  Components can then read your store as, `state` and not `state.fooReducer`.
-*/
+export const smurfReducer = (state = initialState, action) => {
+    switch (action.type){
+
+        case EDITFORM: 
+            return {
+                ...state,
+                smurfs: [],
+                loading: false,
+                error: '',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentSmurf: false,
+                editForm: true,
+                addForm: false,
+                smurf: action.payload
+            }
+            
+        case EDITING: 
+
+            return {
+                ...state,
+                smurfs: [],
+                loading: false,
+                error: '',
+                adding: false,
+                added: false,
+                editing: true,
+                edited: false,
+                deleting: false,
+                currentSmurf: false,
+                editForm: true,
+                addForm: false,
+                editId: null
+            }
+
+        case EDITED: 
+
+            return {
+                ...state,
+                smurfs: action.payload,
+                loading: false,
+                error: '',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: true,
+                deleting: false,
+                currentSmurf: false,
+                editForm: false,
+                addForm: true,
+                smurf: action.payload
+            }
+        case DELETING: 
+            return {
+                ...state,
+                smurfs: [],
+                loading: false,
+                error: '',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: true,
+                currentSmurf: false,
+                editForm: false,
+                addForm: true,
+                editId: null
+            }
+
+        case DELETED: 
+            return {
+                ...state,
+                smurfs: action.payload,
+                loading: false,
+                error: '',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                deleted: false,
+                currentSmurf: false,
+                editForm: false,
+                addForm: true,
+                editId: null
+            }
+
+        case ADDING: 
+            return {
+                ...state,
+                smurfs: [],
+                loading: false,
+                error: '',
+                adding: true,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentSmurf: false,
+                editForm: false,
+                addForm: true,
+                editId: null
+            }
+
+        case ADDED: 
+            
+            return  {
+                ...state,
+                smurfs: action.payload,
+                loading: false,
+                error: '',
+                adding: false,
+                added: true,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentSmurf: false,
+                editForm: false,
+                addForm: true,
+                editId: null
+            }
+
+        case LOADING:
+            return {
+                ...state,
+                smurfs: [],
+                loading: true,
+                error: '',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentSmurf: false,
+                editForm: false,
+                addForm: true,
+                editId: null
+            }
+        
+        case SUCCESS:
+            return {
+                ...state,
+                smurfs: action.payload,
+                loading: false,
+                error: '',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentSmurf: false,
+                editForm: false,
+                addForm: true,
+                editId: null
+            }
+
+        case FAILURE: 
+            return {
+                ...state,
+                smurfs: [],
+                loading: false,
+                error: 'We had a trouble finding this',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentSmurf: false,
+                editForm: false,
+                addForm: true,
+                editId: null
+            }
+
+        default: 
+            return state;
+    }
+}
+export default smurfReducer;
