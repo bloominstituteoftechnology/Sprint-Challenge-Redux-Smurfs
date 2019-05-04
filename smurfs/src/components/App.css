@@ -26,3 +26,33 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.card{
+  max-width: 300px;
+}
+.SmurfForm{
+  margin: 20px auto;
+  
+}
+ul{
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+.smurfcard .card{
+  max-width: 600px;
+  margin: 20px auto;
+}
+.smurfcard .card .btn-primary,.smurfcard .card .btn-danger {
+  display: none
+}
+.update{
+  background: #20c997;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.update .btn-primary{
+  background: #fd7e14;
+
+}
