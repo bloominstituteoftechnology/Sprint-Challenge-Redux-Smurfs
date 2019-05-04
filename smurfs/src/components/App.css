@@ -1,28 +1,86 @@
 .App {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.smurf-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.smurf-wrapper h1 {
+  width: 100%;
   text-align: center;
+  margin-bottom: 3rem;
+  font-size: 3rem;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.card {
+  border-radius: 5px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 3px 6px -3px rgba(0, 0, 0, 0.5);
+  width: 30%;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.card h3 {
+  font-weight: bold;
+  font-size: 2rem;
 }
 
-.App-title {
-  font-size: 1.5em;
+.card .btns {
+  display: flex;
+  justify-content: space-between;
 }
 
-.App-intro {
-  font-size: large;
+.card .btns .btn {
+  outline: none;
+  border: transparent;
+  border-radius: 5px;
+  padding: 1rem 3rem;
+  color: #fff;
+  margin-top: 2rem;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.card .btns .btn-remove {
+  background: #db3832;
+}
+
+.card .btns .btn-edit {
+  background: #75aff5;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin: 3rem auto;
+  box-shadow: 0 3px 6px -3px rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  background: #fff;
+}
+
+.form input {
+  width: 30%;
+  border: 1px solid #efefef;
+  border-radius: 5px;
+  margin: 1rem 0;
+  background: #fafafa;
+  padding: 1rem 1.5rem;
+  font-size: inherit;
+}
+
+.form button {
+  margin-top: 3rem;
+  border: 1px solid #efefef;
+  background: #75aff5;
+  color: #fafafa;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  font-family: inherit;
+  border-radius: 5px;
 }
