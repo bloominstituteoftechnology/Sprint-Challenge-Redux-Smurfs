@@ -1,3 +1,40 @@
+import { FETCH_DATA_START, FETCH_DATA_GOOD, FETCH_DATA_FAIL } from "../actions";
+
+const defaultState = {
+    smurfs: [],
+    error: '',
+    loading: false,
+};
+
+// export 
+const rootReducer = (state = defaultState, action) => {
+    switch (action.type) {
+        case FETCH_DATA_START:
+            return {
+                ...state,
+                loading: true
+            };
+        case FETCH_DATA_GOOD:
+            return {
+                ...state,
+                error: null,
+                loading: false,
+                smurfs: action.payload,
+            };
+        case FETCH_DATA_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            };
+        default:
+            return state;
+    }
+};
+
+export default rootReducer;
+
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
