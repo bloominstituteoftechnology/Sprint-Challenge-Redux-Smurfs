@@ -13,3 +13,76 @@
    U - updateSmurf
    D - deleteSmurf
 */
+import axios from 'axios';
+
+export const ERROR = 'ERROR';
+export const GET_SMURFS = 'GET_SMURFS';
+export const GETTING_SMURFS = 'GETTING_SMURFS';
+export const CREATING_SMURF = 'CREATING_SMURF';
+export const CREATE_SMURF = 'CREATE_SMURF';
+export const UPDATE_SMURF = 'UPDATE_SMURFS';
+export const DELETE_SMURF = 'DELETE_SMURF';
+export const UPDATING_SMURF = 'UPDATING_SMURF';
+export const DELETING_SMURF = 'DELETING_SMURF';
+export const SINGLE_SMURF = 'SINGLE_SMURF';
+export const TOGGLE_UPDATE_SMURF = 'TOGGLE_UPDATE_SMURF';
+
+/* const URL = 'http://localhost:3333/smurfs'; */
+
+
+export const getSmurfs = () => {
+    return (dispatch) => {
+      dispatch({type: GETTING_SMURFS})
+      axios.get('http://localhost:3333/smurfs')
+        .then( response => {
+          dispatch({type: GET_SMURFS, payload: response.data})
+        })
+        .catch( err => {
+          dispatch({type: ERROR, payload: err})
+        })
+    }
+  }
+
+export const createSmurf = (newSmurf) => {
+    return (dispatch) => {
+      dispatch({type: CREATING_SMURF})
+     /* const newSmurf =  */axios.post('http://localhost:3333/smurfs', newSmurf)
+        .then( response => {
+           /*  console.log("data:", data) */
+          dispatch({ type: CREATE_SMURF, payload: response.data })
+         
+        })
+        .catch( err => {
+          dispatch({ type: ERROR, payload: err })
+        })
+    }
+  } 
+
+
+export const deleteSmurf = id => {
+    return (dispatch) => {
+      dispatch({type: DELETING_SMURF})
+      axios.delete(`http://localhost:3333/smurfs/${id}`)
+        .then(({ data }) => {
+            dispatch({ type: DELETE_SMURF, payload: data });
+            dispatch({ type: SINGLE_SMURF, payload: {} });
+        })
+        .catch( err => {
+          dispatch({type: ERROR, payload: err })
+        })
+  
+    }
+  }
+
+export const toggleShowUpdate = () => {
+  return {
+    type: TOGGLE_UPDATE_SMURF
+  };
+};
+
+export const updateSingleSmurf = smurf => {
+  return {
+    type: SINGLE_SMURF,
+    payload: smurf
+  };
+};

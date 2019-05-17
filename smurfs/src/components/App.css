@@ -26,3 +26,121 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.App-header {
+  background-color: rgb(75, 83, 95);
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: white;
+  font-family: fantasy;
+}
+
+body {
+  background-color: rgb(75, 83, 95);
+}
+
+.form-container {
+  display: inline;
+  padding: 10px;
+  width: 50%;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+.x-spot {
+  text-align: right;
+  border: 1px solid rgb(0, 34, 128);
+  cursor: pointer;
+}
+
+.h4 {
+  width: 300px;
+}
+
+.App-Title {
+  font-size: 1.5em;
+  border: 4px solid rgb(122, 197, 247);
+  padding: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: rgb(42, 128, 199);
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.select-btn {
+  background-color: rgb(97, 176, 221);
+  margin: 4px;
+}
+
+.selected-container {
+  background-color: white;
+  height: 130px;
+  background-image: linear-gradient(180deg, rgba(105, 158, 236, 0.589), rgba(0, 77, 128, 0.459));
+}
+
+.Smurf-Container {
+  display: flex;
+  width:20%;
+  margin-left: 10%;
+}
+
+li {
+  list-style: none;
+}
+
+.Smurf-List {
+  text-align: left;
+  border: 4px solid rgb(122, 197, 247);
+  width: 200px;
+  color: black;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: white;
+  background-image: linear-gradient(180deg, rgba(105, 158, 236, 0.589), rgba(0, 77, 128, 0.459));
+}
+
+.Flex-Container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgb(75, 83, 95);
+}
+
+.Column-Layout {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  width: 725px;
+  margin-left: 200px;
+  border: 4px solid rgb(122, 197, 247);
+}
+
+.input {
+  padding: 4px;
+  color: black;
+  width: 200px;
+  border: 1px solid rgb(122, 197, 247);
+  background-image: linear-gradient(180deg, rgba(105, 158, 236, 0.589), rgba(0, 77, 128, 0.459));
+}
+
+.button {
+  background-color: rgb(122, 197, 247);
+}
