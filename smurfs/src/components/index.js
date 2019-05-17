@@ -33,20 +33,20 @@ export const createSmurf = (newSmurf) => {
       })
   }
 }
-
-export const deleteSmurf = (id) => {
-  return (dispatch) => {
-    dispatch({type: LOADING})
-    axios.delete(`http://localhost:3333/smurfs/${id}`)
-      .then( response => {
-        dispatch({ type: GET_SMURFS, smurfs: response.data })
-      })
-      .catch( err => {
-        dispatch({type: ERROR, errorMessage: "Smurfs are hard to get rid of, try again."})
-      })
-
-  }
-}
+//
+// export const deleteSmurf = (id) => {
+//   return (dispatch) => {
+//     dispatch({type: LOADING})
+//     axios.delete(`http://localhost:3333/smurfs/${id}`)
+//       .then( response => {
+//         dispatch({ type: GET_SMURFS, smurfs: response.data })
+//       })
+//       .catch( err => {
+//         dispatch({type: ERROR, errorMessage: "Smurfs are hard to get rid of, try again."})
+//       })
+//
+//   }
+// }
 //
 // export const updateSmurf = (updatedAvenger) => {
 //   return (dispatch) => {
