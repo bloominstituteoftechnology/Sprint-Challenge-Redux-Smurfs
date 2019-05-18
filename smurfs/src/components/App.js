@@ -14,21 +14,21 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         {this.props.fetchingSmurfs ? (
-        <div>Start inside of your `src/index.js` file!</div>	          <div> Loading da smurfz </div>
-        <div>Have fun!</div>	        ) : (
+          <div> Loading da smurfz </div>
+        ) : (
           <div>
-            {this.props.smurfs.map(smurf => {
-              return (
-                <div key={smurf.index}>
-                  <p>Name: {smurf.name}</p>
-                  <p>Age: {smurf.age}</p>
-                  <p>Height: {smurf.height}</p>
-                </div>
-              )
-            })}
-          </div>
-        )}
-        <SmurfsForm />
+          {this.props.smurfs.map(smurf => {
+            return (
+              <div key={smurf.index}>
+                <p>Name: {smurf.name}</p>
+                <p>Age: {smurf.age}</p>
+                <p>Height: {smurf.height}</p>
+              </div>
+            )
+          })}
+        </div>
+      )}
+      <SmurfsForm />
       </div>
     );
   }
