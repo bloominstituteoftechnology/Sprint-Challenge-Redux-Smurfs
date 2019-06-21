@@ -6,13 +6,29 @@
   width: fit-content;
   margin: 50px auto;
   border-radius: 10px;
+  padding-bottom: 50px;
+}
+
+@keyframes rainbow { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 25%}
+    100%{background-position:0% 50%}
 }
 
 h2{
     color: #AEC5EB;
     text-decoration: underline;
     font-size: 40px;
+    background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+    text-align: center;
+    background-size: 800% 800%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 2s ease infinite;
 }
+
+
+
 .smurf_and_buttons{
     display: flex;
     justify-content: space-evenly;
@@ -55,24 +71,18 @@ h2{
 }
 
 hr {
-    margin-top: 55px;
-    overflow: visible;
-    height: 30px;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px 0 0 0;
-    border-radius: 20px;
+    border: none;
     width: 75%;
-}
-hr:before { 
-    display: block;
-    content: "";
-    height: 30px;
-    margin-top: -31px;
-    border-style: solid;
-    border-color: black;
-    border-width: 0 0 1px 0;
-    border-radius: 20px;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    height: 40px;
+    background: linear-gradient(135deg, #F9DEC9 25%, transparent 25%) -20px 0,
+    linear-gradient(225deg, #F9DEC9 25%, transparent 25%) -20px 0,
+    linear-gradient(315deg, #F9DEC9 25%, transparent 25%),
+    linear-gradient(45deg, #F9DEC9 25%, transparent 25%);
+    background-size: 40px 40px;
+    background-color: #3A405A;
 }
 
 form{
