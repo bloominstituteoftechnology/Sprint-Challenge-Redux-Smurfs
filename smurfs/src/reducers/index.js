@@ -13,12 +13,12 @@ const initialState =  {
  export const fetchSmurfsRequest = (state = initialState, action) => {
   switch(action.type) {
     case types.FETCH_SMURFS:
+      debugger
       return {...state, isFetching:true};
 
     case types.FETCH_SUCCESS:
       return {
         smurfs: [...state.smurfs, action.payload],
-
       };
 
     case types.FETCH_FAIL:
@@ -34,7 +34,6 @@ const initialState =  {
     return state;
   }
  };
-
 
  export default combineReducers({
    fetchSmurfsRequest
