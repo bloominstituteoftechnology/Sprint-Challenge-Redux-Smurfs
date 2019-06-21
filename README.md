@@ -22,9 +22,19 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-- [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
-- [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+- [x] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+In the view, you can trigger actions, which are sets of instructions that are dispatched to the reducers. 
+The reducer (and reducers inside it) will generate of a new modified state based on the actions.
+Because state is immutable, every time a new state is generated, the new copy is added to the store, which is a tree like object keeping all versions of the state.
+
+- [x] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is the global state that can be accessed by every component and children through props. Component state is a state that is only accessible to a single component. If the state of a component doesn't interact with any other component, the state can be kept within that component and doesn't need to be kept in the application state.
+
+- [x] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+Thunk allows Redux deal with async operations (like requesting and interacting with a server). Actions creators normally return objects and redux thunk allows actiosn creators to return functions.
 
 ## Project Set Up
 
