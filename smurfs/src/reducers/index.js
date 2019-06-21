@@ -47,6 +47,7 @@ export const rootReducer = ( state = initialState, action) => {
     case ADD_SMURF_SUCCESS:
     return{
       ...state,
+      smurfs:action.payload,
       fetching: false,
       error:''
     }

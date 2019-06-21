@@ -3,6 +3,7 @@ import './App.css';
 import {connect} from 'react-redux';
 import {fetchSmurfs} from '../actions';
 import SmurfForm from './SmurfForm';
+//import SmurfyVillage from './SmurfyVillage';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -26,6 +27,7 @@ class App extends Component {
           </p>
         ))}
         <SmurfForm />
+        
       </div>
     );
   }
@@ -33,6 +35,7 @@ class App extends Component {
 const mapStateToProps = (state)=>{
   return{
     smurfs: state.smurfs,
+    fetchSmurfs: state.fetchSmurfs
     
 
   }

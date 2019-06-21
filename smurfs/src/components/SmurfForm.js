@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addSmurf } from '../actions/';
 
+
 class SmurfForm extends React.Component {
     
-            state = {
-               newSmurfy:{ 
-                name: '',
-                age: '',
-                height:''
+    state = {
+        newSmurfy:{ 
+            name: '',
+            age: '',
+            height:''
                 }
             }
         
@@ -31,7 +32,7 @@ addSmurf = e => {
 render() {
     return(
         <div>
-            <form onSubmit={this.addSmurf}>
+        <form onSubmit={this.addSmurf}>
                 <input 
                     type='text'
                     name='name'
@@ -53,7 +54,7 @@ render() {
                     onChange={this.handleChange}
                     value={this.state.newSmurfy.height}
                 />
-                <button type='submit'>{this.props.addSmurf }</button>
+                <button type='submit'>{this.props.addSmurf}Add More Smurfs</button>
             </form>
         </div>
     )
