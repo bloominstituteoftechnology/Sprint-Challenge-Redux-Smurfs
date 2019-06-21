@@ -1,28 +1,116 @@
-.App {
+.app_container {
   text-align: center;
+  background: #F9DEC9;
+  min-width: 500px;
+  min-height: 500px;
+  width: fit-content;
+  margin: 50px auto;
+  border-radius: 10px;
+  padding-bottom: 50px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+@keyframes rainbow { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 25%}
+    100%{background-position:0% 50%}
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+h2{
+    color: #AEC5EB;
+    text-decoration: underline;
+    font-size: 40px;
+    background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+    text-align: center;
+    background-size: 800% 800%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 2s ease infinite;
 }
 
-.App-title {
-  font-size: 1.5em;
+
+
+.smurf_and_buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+.smurf{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    color: #3A405A;
 }
 
-.App-intro {
-  font-size: large;
+.smurf span{
+    font-weight: 700;
+    font-size: 26px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.smurf p {
+    font-weight: 600;
+    margin: 0;
+    font-size: 20px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 15px;
+    height: 70px;
+}
+.buttons button{
+    color: #3A405A;
+    background: #AEC5EB;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+hr {
+    border: none;
+    width: 75%;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    height: 40px;
+    background: linear-gradient(135deg, #F9DEC9 25%, transparent 25%) -20px 0,
+    linear-gradient(225deg, #F9DEC9 25%, transparent 25%) -20px 0,
+    linear-gradient(315deg, #F9DEC9 25%, transparent 25%),
+    linear-gradient(45deg, #F9DEC9 25%, transparent 25%);
+    background-size: 40px 40px;
+    background-color: #3A405A;
+}
+
+form{
+    display: flex;
+    height: 150px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+form label{
+    color: #3A405A;
+    font-weight: lighter;
+    font-family: 'Fredoka One', cursive;
+    font-size:16px;
+}
+
+form .submit{
+    color: #3A405A;
+    background: #AEC5EB;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.input_and_label {
+    display: flex;
+    justify-content: space-between;
+    width: 270px;
 }
