@@ -47,7 +47,7 @@ class SmurfForm extends Component {
             <>
             <form onSubmit = {(e => this.formSubmit(e))}>
                 <div className="input_and_label">
-                <label for={this.state.activeSmurf.name}>Name:</label>
+                <label htmlFor={this.state.activeSmurf.name}>Name:</label>
                 <input 
                     type="text"
                     name="name"
@@ -56,7 +56,7 @@ class SmurfForm extends Component {
                 />
                 </div>
                 <div className="input_and_label">
-                <label for={this.state.activeSmurf.age}>Age:</label>
+                <label htmlFor={this.state.activeSmurf.age}>Age:</label>
                 <input
                     type="text"
                     name="age"
@@ -65,7 +65,7 @@ class SmurfForm extends Component {
                 />
                 </div>
                 <div className="input_and_label">
-                <label for={this.state.activeSmurf.height}>Height(cm):</label>
+                <label htmlFor={this.state.activeSmurf.height}>Height(cm):</label>
                 <input
                     type="text"
                     name="height"
