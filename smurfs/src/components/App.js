@@ -23,39 +23,39 @@ class App extends Component {
       <div className="App">
         <h1>The Dreaded Smurf Village</h1>
         <div className='smurfs-container'>
-          {this.props.smurfs.map(smurfs => {
-              console.log(smurfs)
+          {this.props.smurfs.map(smurf => {
+              console.log('map of smurfs', smurf)
           return (
-          <div className='smurfs-item' key={smurfs.id}>
-              <h4>{smurfs.name}</h4>
-              <p>{smurfs.age}</p>
-              <p>{smurfs.height}</p>
+          <div className='smurf-item' key={smurf.id}>
+              <h4>{smurf.name}</h4>
+              <p>{smurf.age}</p>
+              <p>{smurf.height}</p>
           </div>
           )
           })}
         </div>
         <div className='smurfs-changes'>
           <form className='smurf-form' onSumbit={this.addSmurf}>
-              <input 
-                  type='text'
-                  name='name'
-                  value={this.state.newSmurf.name}
-                  onChange={this.changeHandler}
-                  placeholder='name'
-                  />
-              <input 
-                  type='number'
-                  name='age'
-                  value={this.state.newSmurf.age}
-                  onChange={this.changeHandler}
-                  placeholder='age'/>
-              <input 
-                  type='string'
-                  name='height'
-                  value={this.state.newSmurf.height}
-                  onChange={this.changeHandler}
-                  placeholder='height'/>
-                  <button onClick={this.addSmurf}>add smurf</button>
+            <input 
+                type='text'
+                name='name'
+                value={this.state.newSmurf.name}
+                onChange={this.changeHandler}
+                placeholder='name'
+                />
+            <input 
+                type='number'
+                name='age'
+                value={this.state.newSmurf.age}
+                onChange={this.changeHandler}
+                placeholder='age'/>
+            <input 
+                type='string'
+                name='height'
+                value={this.state.newSmurf.height}
+                onChange={this.changeHandler}
+                placeholder='height'/>
+            <button onClick={this.addSmurf}>add smurf</button>
           </form>
         </div>
       </div>
@@ -64,9 +64,17 @@ class App extends Component {
 
   addSmurf = event => {
     event.preventDefault();
+    console.log('state of newsmurf on addsmurf', this.state.newSmurf)
     this.props.addNewSmurf(this.state.newSmurf)
-    console.log(this.props.smurf)
-    console.log(this.state.newSmurf)
+    this.setState({
+      newSmurf: {
+        name: '',
+        age: '',
+        height: ''
+      }
+    })
+    console.log('this.props.smurf in app.js', this.props.smurf)
+    console.log('this.state.newSmurf in app.js', this.state.newSmurf)
   }
 
   changeHandler = event => {

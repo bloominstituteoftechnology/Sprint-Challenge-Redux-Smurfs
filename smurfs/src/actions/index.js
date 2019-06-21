@@ -19,10 +19,15 @@ export const getSmurfs = () => dispatch => {
     });
 };
 
-export const addNewSmurf = (newSmurf) => {
-    console.log('action', newSmurf);
-    return {
-        type: ADD_NEW_SMURF,
-        payload: newSmurf
-    }
+export const addNewSmurf = (newSmurf) => dispatch => {
+    console.log('action in addNewSmurf', newSmurf);
+  axios
+    .post('http://localhost:3333/smurfs', newSmurf)
+    .then(response => {
+      console.log('.then in addNewSmurf', response.data)
+      dispatch({ type: ADD_NEW_SMURF, payload: response.data });
+    })
+    .catch(error => {
+      console.error(error.response.error);
+    });
 }
