@@ -10,12 +10,12 @@ class AddSmurfForm extends Component {
 
     heightRef = React.createRef();
 
-    onSubmit = event => {
+    handleClick = event => {
         event.preventDefault();
         this.props.postSmurf({
             name: this.nameRef.current.value,
             age: this.ageRef.current.value,
-            height: this.heightRef.current.value,
+            height: this.heightRef.current.value +'cm',
         });
         this.nameRef.current.value = '';
         this.ageRef.current.value = '';
@@ -28,12 +28,12 @@ class AddSmurfForm extends Component {
             <h5>Name</h5>
             <input type="text" ref={this.nameRef} />
             <h5>Age</h5>
-            <input type="text" ref={this.ageRef} />
+            <input type="number" ref={this.ageRef} />
             <h5>Height</h5>
-            <input type="text" ref={this.heightRef} />
+            <input type="number" ref={this.heightRef} />
             <br />
             <br />
-            <button type="submit" onClick={this.onSubmit}>
+            <button type="submit" onClick={this.handleClick}>
               Add smurf to village
             </button>
           </form>

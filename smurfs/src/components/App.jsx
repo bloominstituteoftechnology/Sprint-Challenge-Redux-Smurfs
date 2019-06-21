@@ -33,7 +33,6 @@ function mapStateToProps(state) {
     ...state,
     smurfs: state.fetchSmurfsRequest.smurfs,
     fetching: state.fetchSmurfsRequest.isFetching,
-    adding: state.fetchSmurfsRequest.isAdding,
     error: state.fetchSmurfsRequest.error,
   };
 }
