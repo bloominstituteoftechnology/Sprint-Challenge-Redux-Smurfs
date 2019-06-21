@@ -1,20 +1,48 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { postSmurf } from '../actions/actions';
 
-export default class AddSmurfForm extends Component {
 
+class AddSmurfForm extends Component {
+    nameRef = React.createRef();
+
+    ageRef = React.createRef();
+
+    heightRef = React.createRef();
+
+    onSubmit = event => {
+        event.preventDefault();
+        this.props.postSmurf({
+            name: this.nameRef.current.value,
+            age: this.ageRef.current.value,
+            height: this.heightRef.current.value,
+        });
+        this.nameRef.current.value = '';
+        this.ageRef.current.value = '';
+        this.heightRef.current.value= '';
+    }
 
     render() {
         return (
-            <form action="">
-                <h5>Name</h5>
-                <input type="text"/>
-                <h5>Age</h5>
-                <input type="text"/>
-                <h5>Height</h5>
-                <input type="text"/>
-                <br/><br/>
-                <button>Add smurf to village</button>
-            </form>
-        )
+          <form>
+            <h5>Name</h5>
+            <input type="text" ref={this.nameRef} />
+            <h5>Age</h5>
+            <input type="text" ref={this.ageRef} />
+            <h5>Height</h5>
+            <input type="text" ref={this.heightRef} />
+            <br />
+            <br />
+            <button type="submit" onClick={this.onSubmit}>
+              Add smurf to village
+            </button>
+          </form>
+        );
     }
 }
+
+function mapStateToProps(state) {
+    return state;
+}
+
+export default connect(mapStateToProps, { postSmurf })(AddSmurfForm);
