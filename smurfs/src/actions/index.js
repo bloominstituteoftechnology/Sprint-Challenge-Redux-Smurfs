@@ -1,7 +1,35 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
+import * as types from './types';
+import axios from 'axios';
+
+const smurfAPI = 'http://localhost:3333';
+
+export const fetchSmurfs = () => dispatch => {
+  dispatch({type: types.FETCH_SMURFS});
+
+  axios.get(smurfAPI)  
+
+  .then (res => {
+    dispatch({
+      type: types.FETCH_SUCCESS,
+      payload: res.data,
+    });
+  })
+
+  .catch(() => {
+    dispatch({
+      type: types.FETCH_FAIL,
+      payload: true,
+    });
+  })
+  
+  .finally(() => {
+    dispatch({
+      isFetching: false
+    })
+  });
+}
+
+
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -13,3 +41,4 @@
    U - updateSmurf
    D - deleteSmurf
 */
+

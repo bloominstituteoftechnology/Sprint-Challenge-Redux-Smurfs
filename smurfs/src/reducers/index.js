@@ -1,18 +1,37 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import * as types from '../actions/types';
 
-/*
- Your initial/default state for this project could *Although does not have to* look a lot like this
- {
+const initialState =  {
    smurfs: [],
-   fetchingSmurfs: false
-   addingSmurf: false
-   updatingSmurf: false
-   deletingSmurf: false
-   error: null
- }
-*/
+   isFetching: false,
+   isAdding: false,
+  //  updatingSmurf: false,
+  //  deletingSmurf: false,
+   error: false,
+ };
+
+ export const fetchSmurfsRequest = (state = initialState, action) => {
+  switch(action.type) {
+    case types.FETCH_SMURFS:
+      return {...state, isFetching:true};
+
+    case types.FETCH_SUCCESS:
+      return {
+        smurfs: [...state.smurfs, action.payload]
+      };
+
+    case types.FETCH_FAIL:
+      return {
+        ...state,
+        error: action.payload
+      };
+
+    case types.ADD_SMURF:
+      return state;
+
+    default:
+    return state;
+  }
+ };
 
 /*
   You'll only need one smurf reducer for this project.
