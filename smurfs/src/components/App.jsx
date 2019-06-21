@@ -3,6 +3,7 @@ import './App.css';
 
 import { connect } from 'react-redux';
 import { fetchSmurfs } from '../actions/actions';
+import AddSmurfForm from './AddSmurfForm';
 
 class App extends Component {
 
@@ -20,7 +21,8 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <h3>There are now {smurfs.length} smurfs in the database!</h3>
+        <h3>There are now {smurfs.length} smurfs in the village!</h3>
+        <AddSmurfForm />
       </div>
     );
   }
