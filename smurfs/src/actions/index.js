@@ -1,20 +1,28 @@
-import axios from axios;
-export const FETCH_SMURFS_START  = 'FETCH_SMURFS_START';
+import axios from 'axios';
+
+export const FETCHING_SMURFS  = 'FETCHING_SMURFS';
 export const FETCH_SMURFS_SUCCESS  = 'FETCH_SMURFS_SUCCESS';
 export const FETCH_SMURFS_FAILURE  = 'FETCH_SMURFS_FAILURE';
 
-export const getSmurfs = () => dispatch => {
-  dispatch({type:FETCH_SMURFS_START});
+export const ADD_SMURF = 'ADD_SMURF';
+export const GET_SMURF = 'GET_SMURF';
+export const SMURF_FAILURE = 'SMURF_FAILURE';
+
+
+export const fetchSmurfs = () => dispatch => {
+  dispatch({type:FETCHING_SMURFS});
   axios
     .get(`http://localhost:3333`)
     .then(res =>{
         dispatch({type:FETCH_SMURFS_SUCCESS, payload: res.data.results});
     })
-    .catch(err => dispatch({FETCH_SMURFS_FAILURE}));
+    .catch(err => dispatch({FETCH_SMURFS_FAILURE, payload: err}));
 }; 
 
 
-
+export const addSmurf = () => dispatch => {
+  dispatch({type: ADD_SMURF})
+}
 
 
 /* 

@@ -1,3 +1,34 @@
+import {
+  FETCHING_SMURFS,
+  FETCH_SMURFS_SUCCESS,
+  FETCH_SMURFS_FAILURE
+} from '../actions';
+
+const initialState = {
+  smurfs: [],
+   fetchingSmurfs: false,
+   addingSmurf: false,
+   updatingSmurf: false,
+   deletingSmurf: false,
+   error: null
+}
+
+export const rootReducer = ( state = initialState, action) => {
+  console.log('reducer', action)
+  switch(action.type) {
+    case FETCHING_SMURFS:
+    return{
+      ...state,
+
+    }
+  }
+}
+
+
+
+
+
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
