@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getSmurfs, addNewSmurf } from '../actions'
+import { getSmurfs, addNewSmurf, deleteSelectedSmurf } from '../actions'
 import './App.css';
-
 
 class App extends Component {
   state = {
@@ -11,7 +10,8 @@ class App extends Component {
       name: '',
       age: '',
       height: '',
-    }
+    },
+    selectedSmurf: ''
   }
 
   componentDidMount() {
@@ -25,11 +25,15 @@ class App extends Component {
         <div className='smurfs-container'>
           {this.props.smurfs.map(smurf => {
               console.log('map of smurfs', smurf)
+              this.setState({selectedSmurf: smurf.id})
           return (
           <div className='smurf-item' key={smurf.id}>
-              <h4>{smurf.name}</h4>
-              <p>{smurf.age}</p>
-              <p>{smurf.height}</p>
+            <h4>{smurf.name}</h4>
+            <p>{smurf.age}</p>
+            <p>{smurf.height}</p>
+            <div className='smurf-change'>
+            <button onClick={this.deleteSmurf}>x</button>
+            </div>
           </div>
           )
           })}
@@ -77,6 +81,13 @@ class App extends Component {
     console.log('this.state.newSmurf in app.js', this.state.newSmurf)
   }
 
+  deleteSmurf = (event) => {
+    event.preventDefault();
+    // this.setState({selectedSmurf: smurf.id})
+    console.log('event logger',event.smurf.id)
+    this.props.deleteSelectedSmurf(smurfID)
+  }
+
   changeHandler = event => {
     this.setState({
         newSmurf: {
@@ -93,4 +104,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { getSmurfs, addNewSmurf })(App);
+export default connect(mapStateToProps, { getSmurfs, addNewSmurf, deleteSelectedSmurf })(App);

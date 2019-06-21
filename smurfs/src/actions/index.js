@@ -3,6 +3,7 @@ import axios from 'axios';
 export const FETCH_SMURFS_START = 'FETCH_SMURFS_START';
 export const FETCH_SMURFS_SUCCESS = 'FETCH_SMURFS_SUCCESS';
 export const FETCH_SMURFS_FAILURE = 'FETCH_SMURFS_FAILURE';
+export const DELETE_SMURF = 'DELETE_SMURF';
 
 export const ADD_NEW_SMURF = 'ADD_NEW_SMURF'
 
@@ -30,4 +31,13 @@ export const addNewSmurf = (newSmurf) => dispatch => {
     .catch(error => {
       console.error(error.response.error);
     });
+}
+
+export const deleteSelectedSmurf = (smurfID) => dispatch => {
+  axios
+    .delete(`http://localhost:3333/smurfs/${smurfID}`, smurfID)
+    .then(response => {
+      console.log('deleting smurf in .then')
+      dispatch({ type: DELETE_SMURF, payload: response.data})
+    })
 }
