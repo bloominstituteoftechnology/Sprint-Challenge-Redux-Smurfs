@@ -7,7 +7,7 @@ import {
   FETCH_SMURFS_FAILURE,
   ADD_SMURF,
   ADD_SMURF_FAILURE,
-  DELETE_SMURF
+  // DELETE_SMURF
 } from "../actions";
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -34,7 +34,7 @@ const initialState = {
   fetchingSmurfs: false,
   addingSmurf: false,
   //updatingSmurf: false,
-  deletingSmurf: false,
+  // deletingSmurf: false,
   error: null
 }
 
@@ -69,13 +69,15 @@ export const reducer = (state = initialState, action) => {
         ...state,
         error: action.payload
       };
-      case DELETE_SMURF:
-        return {
-          ...state,
-          smurfs: state.smurfs.filter(smurf => 
-            smurf !== action.payload
-          )
-        };
+    // case DELETE_SMURF:
+    //   return {
+    //     ...state,
+    //     deletingSmurf: true,
+    //     smurfs: action.payload
+    //       // .filter(smurf => 
+    //       //   smurf !== action.payload
+    //       // )
+    //     };
 
     default:
       return state;

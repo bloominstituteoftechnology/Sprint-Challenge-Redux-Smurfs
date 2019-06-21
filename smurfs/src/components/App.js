@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { addSmurf, fetchSmurfs, deleteSmurf } from "../actions"
+import { addSmurf, fetchSmurfs, /*deleteSmurf*/ } from "../actions"
 import { connect } from 'react-redux';
 /*
  to wire this component up you're going to need a few things.
@@ -35,6 +35,8 @@ class App extends Component {
               <h2>Name: {smurf.name}</h2>
               <h2>Age: {smurf.age}</h2>
               <h2>Height: {smurf.height}</h2>
+              {/* <button onClick={e => this.deleteSmurf(e, smurf)}>X</button> */}
+
             </div>
           ))}
         </div>
@@ -70,29 +72,30 @@ class App extends Component {
     );
   };
 
+  handleChanges = e => {
+    e.preventDefault();
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
 
+  addSmurf = e => {
+    e.preventDefault();
+    const newSmurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    };
+    this.props.addSmurf(newSmurf);
+  }
 
-handleChanges = e => {
-  e.preventDefault();
-  this.setState({
-    [e.target.name]: e.target.value
-  });
-}
-
-addSmurf = e => {
-  e.preventDefault();
-  const newSmurf = {
-    name: this.state.name,
-    age: this.state.age,
-    height: this.state.height
-  };
-  this.props.addSmurf(newSmurf);
-}
-
+  // deleteSmurf = (e, smurf) => {
+  //   e.preventDefault();
+  //   this.props.deleteSmurf(smurf)
+  // }
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     smurfs: state.smurfs,
   }
@@ -102,19 +105,8 @@ export default connect(
   mapStateToProps,
   {
     addSmurf,
-    fetchSmurfs
+    fetchSmurfs,
+    // deleteSmurf
   }
 )(App);
 
-// export default App;
-// const mapStateToProps = state => {
-//   console.log(state);
-//   return {
-//     tasks: state.todoList.tasks
-//   };
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   { addNewTask, toggleTask, deleteCompletedTasks, deleteTask }
-// )(TodoList);
