@@ -11,6 +11,14 @@ class App extends Component {
   }
 
   render() {
+
+    let { smurfs, fetching, adding, error } = this.props;
+    if (fetching) {
+      return <h3>Smurfs are being parachuted.</h3>;
+    }
+    if (error) {
+      return <h3>Smurfs not found. :/</h3>;
+    }
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -23,7 +31,13 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  return state;
+  return {
+    ...state,
+    smurfs: state.fetchSmurfsRequest.smurfs,
+    fetching: state.fetchSmurfsRequest.isFetching,
+    adding: state.fetchSmurfsRequest.isAdding,
+    error: state.fetchSmurfsRequest.error,
+  };
 }
 
 export default connect(mapStateToProps, { fetchSmurfs })(App);

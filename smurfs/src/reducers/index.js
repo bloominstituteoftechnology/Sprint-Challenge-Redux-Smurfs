@@ -15,8 +15,11 @@ const initialState =  {
     case types.FETCH_SMURFS:
       return {...state, isFetching:true};
     case types.FETCH_SUCCESS:
+      console.log(action.payload);
       return {
-        smurfs: [...state.smurfs, action.payload],
+        ...state,
+        isFetching: false,
+        smurfs: action.payload,
       };
     case types.FETCH_FAIL:
       return {
