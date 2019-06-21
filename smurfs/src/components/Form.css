@@ -1,0 +1,30 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    position: absolute;
+    top:0%;
+    left: 0%;
+    transform: translate(10%,0%)
+}
+.form div{
+    padding: 20px;
+    padding-top: 0px;
+
+}
+.form div input{
+    width: 100%;
+}
+.smurf{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border: 1px solid black;
+    margin: 5px 0px;
+    width: 100%;
+}
+.list{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0%)
+}
