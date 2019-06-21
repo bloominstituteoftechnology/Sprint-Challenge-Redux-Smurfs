@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import { fetchSmurfs } from '../actions/actions';
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.fetchSmurfs();
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,9 +23,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    smurfs: state.fetchSmurfsRequest.smurfs,
-  }
+  return state;
 }
 
-export default connect(mapStateToProps, { actions })(App);
+export default connect(mapStateToProps, { fetchSmurfs })(App);

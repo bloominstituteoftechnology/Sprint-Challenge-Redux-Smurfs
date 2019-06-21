@@ -13,23 +13,18 @@ const initialState =  {
  export const fetchSmurfsRequest = (state = initialState, action) => {
   switch(action.type) {
     case types.FETCH_SMURFS:
-      debugger
       return {...state, isFetching:true};
-
     case types.FETCH_SUCCESS:
       return {
         smurfs: [...state.smurfs, action.payload],
       };
-
     case types.FETCH_FAIL:
       return {
         ...state,
         error: action.payload
       };
-
     case types.ADD_SMURF:
       return state;
-
     default:
     return state;
   }
