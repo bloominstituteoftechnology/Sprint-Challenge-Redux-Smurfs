@@ -11,6 +11,7 @@ class App extends Component {
         activeSmurf: null,
         isUpdating: false
     }
+    
     componentDidMount() {
         this.props.getSmurfs()
     }
@@ -31,14 +32,21 @@ class App extends Component {
   render() {
     return (
       <div className="app_container">
-          {this.isChanging() && <h2>Dem Smurfs Be Changing!</h2>}
+          {this.isChanging() ? <h2>Dem Smurfs Be Changing!</h2> : <h2>Smurf Village</h2>}
           <SmurfForm 
             activeSmurf={this.state.activeSmurf} 
             isUpdating={this.state.isUpdating} 
             add={this.props.postSmurf} 
             update={this.props.updateSmurf}/>
-          {this.props.errorMessage && <h3>{this.props.errorMessage}</h3>}
-          {this.props.smurfs.map(smurf => <Smurf key = {smurf.id} smurf={smurf} update={this.updateForm} delete={this.props.deleteSmurf} />)}
+          {this.props.errorMessage && <h3>"Ya gone did smurfed!"</h3>}
+          {this.props.smurfs.map(smurf => 
+            <Smurf 
+                key = {smurf.id} 
+                smurf={smurf} 
+                update={this.updateForm} 
+                delete={this.props.deleteSmurf} 
+            />
+        )}
       </div>
     );
   }

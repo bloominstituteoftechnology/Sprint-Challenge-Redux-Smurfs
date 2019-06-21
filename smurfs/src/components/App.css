@@ -1,4 +1,106 @@
-.App {
+.app_container {
   text-align: center;
+  background: #F9DEC9;
+  min-width: 500px;
+  min-height: 500px;
+  width: fit-content;
+  margin: 50px auto;
+  border-radius: 10px;
 }
 
+h2{
+    color: #AEC5EB;
+    text-decoration: underline;
+    font-size: 40px;
+}
+.smurf_and_buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+.smurf{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    color: #3A405A;
+}
+
+.smurf span{
+    font-weight: 700;
+    font-size: 26px;
+}
+
+.smurf p {
+    font-weight: 600;
+    margin: 0;
+    font-size: 20px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 15px;
+    height: 70px;
+}
+.buttons button{
+    color: #3A405A;
+    background: #AEC5EB;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+hr {
+    margin-top: 55px;
+    overflow: visible;
+    height: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+    width: 75%;
+}
+hr:before { 
+    display: block;
+    content: "";
+    height: 30px;
+    margin-top: -31px;
+    border-style: solid;
+    border-color: black;
+    border-width: 0 0 1px 0;
+    border-radius: 20px;
+}
+
+form{
+    display: flex;
+    height: 150px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+form label{
+    color: #3A405A;
+    font-weight: lighter;
+    font-family: 'Fredoka One', cursive;
+    font-size:16px;
+}
+
+form .submit{
+    color: #3A405A;
+    background: #AEC5EB;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.input_and_label {
+    display: flex;
+    justify-content: space-between;
+    width: 270px;
+}

@@ -38,8 +38,7 @@ export const getSmurfs = () => dispatch => {
             dispatch({type: GET_SUCCESS, payload: res.data})
         })
         .catch(err => {
-            console.log(err)
-            dispatch({type: GET_ERROR, payload: err.data})
+            dispatch({type: GET_ERROR, payload: "error"})
         })
 }
 
@@ -51,8 +50,7 @@ export const postSmurf = (smurf) => dispatch => {
             dispatch({type: POST_SUCCESS, payload: res.data})
         })
         .catch(err => {
-            console.log(err)
-            dispatch({type: POST_ERROR, payload: err.data})
+            dispatch({type: POST_ERROR, payload: "error"})
         })
 }
 
@@ -64,8 +62,7 @@ export const updateSmurf = (smurf) => dispatch => {
             dispatch({type: UPDATE_SUCCESS, payload: res.data})
         })
         .catch(err => {
-            console.log(err)
-            dispatch({type: UPDATE_ERROR, payload: err.data})
+            dispatch({type: UPDATE_ERROR, payload: "error"})
         })
 }
 
@@ -77,7 +74,6 @@ export const deleteSmurf = (smurf) => dispatch => {
             dispatch({type: DELETE_SUCCESS, payload: res.data})
         })
         .catch(err => {
-            console.log(err)
-            dispatch({type: DELETE_ERROR, payload: err.data})
+            dispatch({type: DELETE_ERROR, payload: "error"})
         })
 }

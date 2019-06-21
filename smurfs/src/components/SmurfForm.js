@@ -44,33 +44,43 @@ class SmurfForm extends Component {
     }
     render() {
         return (
+            <>
             <form onSubmit = {(e => this.formSubmit(e))}>
+                <div className="input_and_label">
+                <label for={this.state.activeSmurf.name}>Name:</label>
                 <input 
-                type="text"
-                name="name"
-                label="Name"
-                onChange={this.handleChanges}
-                value={this.state.activeSmurf.name}
+                    type="text"
+                    name="name"
+                    onChange={this.handleChanges}
+                    value={this.state.activeSmurf.name}
                 />
+                </div>
+                <div className="input_and_label">
+                <label for={this.state.activeSmurf.age}>Age:</label>
                 <input
                     type="text"
                     name="age"
-                    label="Age"
                     onChange={this.handleChanges}
                     value={this.state.activeSmurf.age}
                 />
+                </div>
+                <div className="input_and_label">
+                <label for={this.state.activeSmurf.height}>Height(cm):</label>
                 <input
                     type="text"
                     name="height"
-                    label="height"
                     onChange={this.handleChanges}
                     value={this.state.activeSmurf.height}
                 />
+                </div>
                 <input
+                    className="submit"
                     type="submit"
                     name="Submit"
                 />
             </form>
+            <hr></hr>
+            </>
         )
     }
 }
