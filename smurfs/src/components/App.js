@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.getSmurfs;
+    this.props.getSmurfs();
   }
 
   render() {
@@ -45,4 +45,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {getSmurfs})(App);
+export default connect(mapStateToProps, { getSmurfs })(App);
