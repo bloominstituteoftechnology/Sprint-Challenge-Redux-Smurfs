@@ -3,17 +3,15 @@ import {
   FETCH_SMURFS_SUCCESS,
   FETCH_SMURFS_FAILURE,
   ADD_SMURF,
-  GET_SMURF,
+  ADD_SMURF_SUCCESS,
   SMURF_FAILURE
+  
 } from '../actions';
 
 const initialState = {
   smurfs: [],
    fetching: false,
-   addingSmurf: false,
-   updatingSmurf: false,
-   deletingSmurf: false,
-   error: null
+   error: ''
 }
 
 export const rootReducer = ( state = initialState, action) => {
@@ -23,7 +21,7 @@ export const rootReducer = ( state = initialState, action) => {
     return{
       ...state,
       fetching:true,
-      err:''
+      error:''
 
     }
     case FETCH_SMURFS_SUCCESS:
@@ -31,15 +29,34 @@ export const rootReducer = ( state = initialState, action) => {
       ...state,
       smurfs: action.payload,
       fetching: false,
-      err: ''
+      error: ''
     }
     case FETCH_SMURFS_FAILURE:
     return{
       ...state,
       fetching: false,
-      err: action.payload
+      error: action.payload
 
     }
+    case ADD_SMURF:
+    return{
+      ...state,
+      fetching: true,
+      error: ''
+    }
+    case ADD_SMURF_SUCCESS:
+    return{
+      ...state,
+      fetching: false,
+      error:''
+    }
+    case SMURF_FAILURE:
+    return{
+      ...state,
+      fetching:false,
+      error:action.payload
+    }
+  
     default: 
     return state;
   }
