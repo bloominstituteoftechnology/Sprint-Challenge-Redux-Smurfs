@@ -1,0 +1,28 @@
+.small-width1{
+    padding: 5px;
+    background-color: white;
+    width: 45%;
+    margin: 0 auto;
+    border-radius: 0px 0px 8px 8px;
+    background-color: #FAEB12;
+}
+
+button{
+    width: 48%;
+    padding: 7px;
+    border-radius: 5px;
+    font-family: Helvetica, sans-serif;
+    background-color: #e53232;
+    color: white;
+    border: none;
+    margin-left: 5px;
+}
+
+button:hover{
+    cursor: pointer;
+    opacity: .9
+}
+
+.submit-form{
+    margin-top:40px;
+}

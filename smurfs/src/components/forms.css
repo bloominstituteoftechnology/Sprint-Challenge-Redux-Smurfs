@@ -1,0 +1,10 @@
+.submit{
+    width: 50px;
+    padding: 3px;
+}
+
+input{
+    font-family: Helvetica, sans-serif;
+    padding: 6px;
+    border-radius: 6px;
+}
