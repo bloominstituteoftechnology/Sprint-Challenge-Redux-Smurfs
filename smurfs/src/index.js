@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-// import logger from 'redux-logger';
 import { applyMiddleware, createStore } from "redux";
+import logger from "redux-logger";
 import thunk from "redux-thunk";
 import App from "./components/App";
 import "./index.css";
-import /* You need some sort of reducer */ "./reducers";
+import { rootReducer } from "./reducers";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 // () => {},
 // this is the most basic reducer. A function that returns and object. Replace it.
 
