@@ -25,4 +25,4 @@ To create a new object while extending the properties of another object, we use 
 
 1.  Which `react-redux` method links up our `components` with our `redux store`?
 
---> The react-redux method that links our components up with the redux store is createStore.  You then also want to wrap the app component within a <Provider> tag with the store as a listed prop so the wrapped app component has access to the store.
+--> The react-redux method that links our components up with the redux store is createStore.  You then also want to wrap the app component within a <Provider> tag with the store as a listed prop so the wrapped app component (and its child copmonents) has access to the store.
