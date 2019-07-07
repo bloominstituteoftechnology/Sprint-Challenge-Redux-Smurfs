@@ -15,24 +15,48 @@ export const reducer = (state = initialState, action) => {
       console.log('currently fetching smurfs...');
       return {
         ...state,
-        fetchingSmurfs: true
+        fetchingSmurfs: true,
+        addingSmurf: false,
+        updatingSmurf: false,
+        deletingSmurf: false
       }
     case UPDATING_SMURF:
       console.log('currently updating smurfs...');
+      console.log(action.payload);
       return {
         ...state,
-        smurfs: [...state.smurfs, action.payload[0]]
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        updatingSmurf: true,
+        deletingSmurf: false,
+        smurfs: action.payload
       }
     case ADDING_SMURF:
       console.log('currently adding smurfs...');
+      const newSmurf = {
+        value: action.payload
+      }
       return {
         ...state,
-        smurfs: [...state.smurfs, action.payload]
+        fetchingSmurfs: false,
+        addingSmurf: true,
+        updatingSmurf: false,
+        deletingSmurf: false,
+        smurfs: [...state.smurfs, newSmurf]
       }
     case DELETING_SMURF:
       console.log('deleting smurf...');
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        updatingSmurf: false,
+        deletingSmurf: true      
+      }
     case ERROR:
       console.log('error!');
+      console.log(action.payload);
+      break;
     default:
       return state;
   }

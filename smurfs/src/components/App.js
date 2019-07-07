@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchingSmurfs } from '../actions';
+import { fetchingSmurfs, addingSmurfs, deletingSmurf } from '../actions';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      smurfs: []
+      smurfs: [],
+      name: '',
+      age: '',
+      height: '',
+      // newSmurf: {
+      //   name: this.state.name,
+      //   age: this.state.age,
+      //   height: this.state.height
+      // }
     }
   }
 
@@ -17,20 +25,76 @@ class App extends Component {
     console.log(this.props);
   }
 
+  changeHandler = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  addSmurf = event => {
+    event.preventDefault();
+    const newSmurf = {
+      id: this.state.smurfs.length,
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    }
+    this.props.addingSmurfs(newSmurf);
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    });
+  }
+
+  deleteSmurf = id => {
+    this.props.deletingSmurf(id);
+  }
+
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
+        <div>
+          <p>Welcome to your Redux version of Smurfs!</p>
+          <p>Smurfs:</p>
+          <form onSubmit={this.addSmurf}>
+            <input 
+              type='text'
+              name='name'
+              placeholder='name'
+              value={this.state.name}
+              onChange={this.changeHandler}
+            />
+            <input 
+              type='text'
+              name='age'
+              placeholder='age'
+              value={this.state.age}
+              onChange={this.changeHandler}
+            />
+            <input 
+              type='text'
+              name='height'
+              placeholder='height'
+              value={this.state.height}
+              onChange={this.changeHandler}
+            />
+            <button onClick={this.addSmurf}>Add Smurf!</button>
+          </form>
+        </div>
         <div className='Smurfs-container'>
-          <p>Here are my smurfs!</p>
           {this.props.smurfs.map(smurf => {
             return(
-              <div className='smurf'>
-                <p>{smurf.name}</p>
-                <p>{smurf.age}</p>
-                <p>{smurf.height}</p>
+              <div className='smurf' key={smurf.name}>
+                <button 
+                  className='delete-button'
+                  key={smurf.id}
+                  onClick={() => this.deleteSmurf(smurf.id)}
+                >
+                  X
+                </button>
+                <p>Name: {smurf.name}</p>
+                <p>Age: {smurf.age}</p>
+                <p>Height: {smurf.height}</p>
               </div>
             );
           })}
@@ -47,4 +111,5 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchingSmurfs })(App);
+export default connect(mapStateToProps, 
+  { fetchingSmurfs, addingSmurfs, deletingSmurf })(App);

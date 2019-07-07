@@ -2,27 +2,25 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App .Smurfs-container {
+  border: 1px solid black;
+  width: 90%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin: auto;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.App .Smurfs-container .smurf {
+  border: 1px solid gold;
+  width: 50vh;
+  height: 50vh;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.App .Smurfs-container .smurf .delete-button {
+  width: 15%;
+  margin: 3%;
 }
