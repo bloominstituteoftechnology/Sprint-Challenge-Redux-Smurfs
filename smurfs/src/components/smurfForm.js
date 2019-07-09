@@ -17,8 +17,7 @@ class SmurfForm extends React.Component {
 }
      test = (e)=>{
          e.preventDefault();
-         console.log('PINCH MY BAKFAAT')
-      axios.post('http://localhost:3333/smurfs',e.target.value 
+       axios.post('http://localhost:3333/smurfs',e.target.value 
       )}
 
      addNewSmurf = e => {
