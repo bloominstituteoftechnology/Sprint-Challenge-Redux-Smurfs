@@ -24,7 +24,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 
-Action - sends payloads of information that send data from an application to the store.
+Actions - sends payloads of information that send data from an application to the store.
 Reducers - specify how the application's state changes in response to actions sent to the store.
 Store - is an object that holds the application's state tree.
 The store holds the source of all the data which gives you controllability of the components.
