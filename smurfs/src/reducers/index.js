@@ -26,8 +26,35 @@ import { GET_SMURF_START, GET_SMURF_SUCCESS, GET_SMURF_FAILED } from '../actions
 
 const initialState = {
   isLoading: false,
-  errorMassage: null,
+  errorMessage: null,
   smurfs: []
 }
 
-export default function
+export default function(state = initialState, action) {
+  switch (action.type) {
+    case GET_SMURF_START: {
+      return {
+        ...state,
+        isLoading: true,
+      }
+    }
+    case GET_SMURF_SUCCESS: {
+      const { smurfs } = action.payload
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: null,
+        smurfs,
+      }
+    }
+    case GET_SMURF_FAILED: {
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: action.payload.message
+      }
+    }
+    default:
+      return state
+  }
+}
