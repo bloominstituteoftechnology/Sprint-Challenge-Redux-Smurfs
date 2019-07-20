@@ -22,7 +22,7 @@
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-import { GET_SMURF_START, GET_SMURF_SUCCESS, GET_SMURF_FAILED } from '../actions/index';
+import { GET_SMURF_START, GET_SMURF_SUCCESS, GET_SMURF_FAILED, ADD_SMURF } from '../actions/index';
 
 const initialState = {
   isLoading: false,
@@ -52,6 +52,17 @@ export default function(state = initialState, action) {
         ...state,
         isLoading: false,
         errorMessage: action.payload.message
+      }
+    }
+    case ADD_SMURF: {
+      const { name, age, height } = action.payload
+      const newSmurf = state.smurfs.concat([
+        `${name}, ${age}, ${height}`
+      ])
+
+      return {
+        ...state,
+        smurfs:newSmurf
       }
     }
     default:
