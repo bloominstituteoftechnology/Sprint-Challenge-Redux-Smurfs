@@ -39,7 +39,7 @@ export default function(state = initialState, action) {
       }
     }
     case GET_SMURF_SUCCESS: {
-      const { smurfs } = action.payload
+      const smurfs = action.payload
       return {
         ...state,
         isLoading: false,

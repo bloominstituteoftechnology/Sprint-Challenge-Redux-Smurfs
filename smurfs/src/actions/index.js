@@ -23,7 +23,7 @@ export function getSmurf() {
   return (dispatch) => {
     dispatch({ type: GET_SMURF_START })
 
-    axios.get("http://localhost:3000/smurfs")
+    axios.get("http://localhost:3333/smurfs")
       .then((res) => {
         dispatch({ type: GET_SMURF_SUCCESS, payload: res.data })
       })
