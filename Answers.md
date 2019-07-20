@@ -1,5 +1,5 @@
 1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
-[Three JavaScript Array Methods that do not produce side-effects are .map(), .filter(), and .reduce(). The method that we use to create a new object while extending the properties of another object is .map().]
+[Three JavaScript Array Methods that do not produce side-effects are .map(), .filter(), and .reduce(). The method that we use to create a new object while extending the properties of another object is .filter().]
 
 1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 [Actions are functions that inpply all the actions and moves going on the the state.
@@ -24,4 +24,4 @@ And a new state tree is created.]
 ['redux-thunk' is used to make the flow asynchronous so we can make API calls from our action creators.]
 
 1.  Which `react-redux` method links up our `components` with our `redux store`?
-['redux-logger' ]
+['redux-logger' and 'redux- thunk']
