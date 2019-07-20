@@ -55,10 +55,7 @@ export default function(state = initialState, action) {
       }
     }
     case ADD_SMURF: {
-      const { name, age, height } = action.payload
-      const newSmurf = state.smurfs.concat([
-        `${name}, ${age}, ${height}`
-      ])
+      const newSmurf = state.smurfs.concat([action.payload])
 
       return {
         ...state,

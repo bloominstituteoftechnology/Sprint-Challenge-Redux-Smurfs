@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { getSmurf } from '../actions/index';
 import SmurfList from './SmurfList';
+import SmurfFrom from './SmurfFrom';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -17,7 +18,9 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h1>VILLAGE</h1>
         <SmurfList smurfs={this.props.smurfs}/>
+        <SmurfFrom />
       </div>
     );
   }

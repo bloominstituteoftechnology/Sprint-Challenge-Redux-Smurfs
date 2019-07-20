@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addSmurf } from '../actions/index';
 
-class addSmurf extends React.Component {
+class SmurfFrom extends React.Component {
 	constructor() {
 		super()
 		this.state = {
@@ -41,19 +41,19 @@ class addSmurf extends React.Component {
 				<h2>ADD A SMURF TO THE VILLAGE</h2>
 
 				<form onSubmit={this.submitSmurf}>
-					<input type="text" name="name" placeholder="Name" value={name} onChange={this.handleChange} required />
+					<input type="text" name="name" placeholder="Name" value={name} onChange={this.handleChange} />
 					
 					<br />
 
-					<input type="number" name="age" placeholder="Age" value={age} onChange={this.handleChange} required />
+					<input type="number" name="age" placeholder="Age" value={age} onChange={this.handleChange} />
 
                     <br />
                     
-                    <input type="number" name="height" placeholder="height" value={height} onChange={this.handleChange} required />
+                    <input type="number" name="height" placeholder="Height" value={height} onChange={this.handleChange} />
 
 					<br />
 
-					<button type="submit">Deposit</button>
+					<button type="submit">Add</button>
 				</form>
 			</section>
 		)
@@ -62,7 +62,7 @@ class addSmurf extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		smurf: state.smurf
+		smurfs: state.smurfs
 	}
 }
 
@@ -73,4 +73,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(addSmurf)
+)(SmurfFrom)
