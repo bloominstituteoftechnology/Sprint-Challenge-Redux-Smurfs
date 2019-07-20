@@ -28,6 +28,6 @@ export const addSmurf = newSmurf => dispatch => {
       dispatch({ type: ADD_SMURF_SUCCESS, payload: response.data })
     })
     .catch(err => {
-      dispatch({ type: ADD_SMURF_FAILURE, payload: err })
+      dispatch({ type: ADD_SMURF_FAILED, payload: err })
     })
 } 
