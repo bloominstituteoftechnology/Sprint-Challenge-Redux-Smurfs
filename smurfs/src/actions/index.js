@@ -20,7 +20,9 @@ export const GET_SMURFS = 'GET_SMURFS'
 export const GET_SMURFS_START = 'GET_SMURFS_START'
 export const GET_SMURFS_SUCCESS = 'GET_SMURFS_SUCCESS'
 export const GET_SMURFS_FAILED = 'GET_SMURFS_FAILED'
-
+export const ADD_SMURFS_START = 'ADD_SMURFS_START'
+export const ADD_SMURFS_SUCCESS = 'ADD_SMURFS_SUCCESS'
+export const ADD_SMURFS_FAILED = 'ADD_SMURFS_FAILED'
 
 export function getSmurfs(){
   return (dispatch) => {
@@ -32,6 +34,21 @@ export function getSmurfs(){
       })
       .catch((err) => {
         dispatch({ type: GET_SMURFS_FAILED, payload: err.response })
+      })
+  }
+}
+
+export function addSmurfs(name, age, height, id){
+  return (dispatch) => {
+    dispatch({ type: ADD_SMURFS_START })
+
+   return axios.post('http://localhost:3333/smurfs', {name, age, height})
+      .then((res) => {
+        
+        dispatch({ type: ADD_SMURFS_SUCCESS})
+      })
+      .catch((err) => {
+        dispatch({ type: ADD_SMURFS_FAILED, payload: err.response })
       })
   }
 }
