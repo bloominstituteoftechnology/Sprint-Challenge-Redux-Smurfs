@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Smurf from "./Smurf";
 import { getSmurfs, addSmurf, deleteSmurf } from "../actions/index";
 
 class SmurfsForm extends Component {
@@ -78,3 +79,14 @@ render() {
         </div>
     )
 }}
+
+const mapStateToProps = state => {
+    return {
+        smurf:state.smurfs
+    }
+}
+
+export default connect(
+    mapStateToProps, 
+    {getSmurfs, addSmurf, deleteSmurf}
+)(SmurfsForm);
