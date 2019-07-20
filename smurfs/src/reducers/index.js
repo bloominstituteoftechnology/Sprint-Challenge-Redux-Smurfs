@@ -21,3 +21,48 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+
+import { GET_SMURF_START, GET_SMURF_SUCCESS, GET_SMURF_FAILED, ADD_SMURF } from '../actions/index';
+
+const initialState = {
+  isLoading: false,
+  errorMessage: null,
+  smurfs: []
+}
+
+export default function(state = initialState, action) {
+  switch (action.type) {
+    case GET_SMURF_START: {
+      return {
+        ...state,
+        isLoading: true,
+      }
+    }
+    case GET_SMURF_SUCCESS: {
+      const smurfs = action.payload
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: null,
+        smurfs,
+      }
+    }
+    case GET_SMURF_FAILED: {
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: action.payload.message
+      }
+    }
+    case ADD_SMURF: {
+      const newSmurf = state.smurfs.concat([action.payload])
+
+      return {
+        ...state,
+        smurfs:newSmurf
+      }
+    }
+    default:
+      return state
+  }
+}
