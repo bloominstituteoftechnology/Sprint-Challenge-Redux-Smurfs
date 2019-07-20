@@ -19,6 +19,8 @@ export const GET_SMURF_START = 'GET_SMURF_START';
 export const GET_SMURF_SUCCESS = 'GET_SMURF_SUCCESS';
 export const GET_SMURF_FAILED = 'GET_SMURF_FAILED';
 
+export const ADD_SMURF = "ADD_SMURF";
+
 export function getSmurf() {
   return (dispatch) => {
     dispatch({ type: GET_SMURF_START })
@@ -30,5 +32,16 @@ export function getSmurf() {
       .catch((err) => {
         dispatch({ type: GET_SMURF_FAILED, payload: err.response.data })
       })
+  }
+}
+
+export function addSmurf(name, age, height) {
+  return {
+    type: ADD_SMURF,
+    payload: {
+      name,
+      age,
+      height
+    }
   }
 }
