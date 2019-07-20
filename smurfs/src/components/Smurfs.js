@@ -25,8 +25,10 @@ changeHandler = (event) => {
 }
 
 addSmurf = (event) => {
+    const { name, age, height } = this.state
     event.preventDefault()
-    this.props.addSmurfs()
+    this.props.addSmurfs(name, age, height)
+    this.setState({name: '', age: '', height: ''})
 }
 
     render(){

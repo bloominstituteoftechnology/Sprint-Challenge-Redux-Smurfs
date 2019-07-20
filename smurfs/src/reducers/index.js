@@ -30,10 +30,7 @@ const initialState = {
    addingSmurf: false,
    updatingSmurf: false,
    deletingSmurf: false,
-   error: null,
-   name: '',
-   age: '',
-   height: ''
+   error: null
 }
 
 export default function(state = initialState, action) {
@@ -74,7 +71,6 @@ export default function(state = initialState, action) {
         fetchingSmurfs: false,
         error: null,
         smurfs
-        
       }
     }
     case ADD_SMURFS_FAILED: {
