@@ -1,0 +1,13 @@
+1.  Actions is a way for a user to interact with the website. Actions also control
+    what events happen at what time. Reducers is the place where action will change
+    the state, api information, or any data that is sent through it abd publish it
+    to the store. The store is a library that stores and (can) display
+    all of the current and previous information.
+
+
+2.  Application state has one store that is accessible to any component that is linked
+    to io. Component state has multiple instances of different components and can be
+    overwelming with the amount of props being passed.
+
+3.  To explain it in its simplest form, its a function in a function. I will act as
+    function to connect the middleware to the reducer.
