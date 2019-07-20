@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'tls';
+import SmurfsForm from "./SmurfsForm";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -10,31 +10,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="smurf-box">
-          <h3>Name:{this.props.name}</h3>
-          <p>Age:{this.props.age} smurfs years old</p>
-          <p>Height:{this.props.height} tall</p>
-          <br />
-          <button 
-            className="delete-btn"
-            onClick= {e => {
-              this.props.deleteSmurf(this.props.id);
-            }}> Delete Smurf </button>
-        </div>
+      <h1> SMURFS! WHAT ARE THEY GOOD FOR?!</h1>
+      <SmurfsForm />
       </div>
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    smurfs: state.deleteSmurf
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  {deleteSmurf}
-  )(Smurf)
 
 export default App;
