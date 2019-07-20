@@ -1,18 +1,35 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import { FETCHING, FETCHING_SUCCESS, FETCHING_FAILED } from '../actions'
 
 const initialState = {
   smurfs: [],
-  fetchingSmurfs: false,
+  fetchingSmurf: false,
   addingSmurf: false,
-  updatingSmurf: false,
-  deletingSmurf: false,
   error: null,
 }
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
+    case FETCHING:
+      return {
+        ...state,
+        fetchingSmurf: false,
+        error: '',
+      }
+
+      case FETCHING_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurf: true,
+        error: '',
+        smurfs: [...state.smurfs, ...action.payload]
+      }
+
+      case FETCHING_FAILED:
+      return {
+        ...state,
+        fetchingSmurf: false,
+        error: action.payload,
+      }
     default:
       return state
   }

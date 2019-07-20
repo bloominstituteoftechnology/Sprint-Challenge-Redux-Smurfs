@@ -1,7 +1,9 @@
 import axios from 'axios'
 
 export const FETCHING = 'FETCHING'
+
 export const FETCHING_SUCCESS = 'FETCHING_SUCCESS'
+
 export const FETCHING_FAILED = 'FETCHING_FAILED'
 
 export const getSmurfs = () => dispatch => {
