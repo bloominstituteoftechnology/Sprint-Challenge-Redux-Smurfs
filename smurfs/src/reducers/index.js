@@ -25,7 +25,7 @@
 import { GET_SMURFS, GET_SMURFS_START, GET_SMURFS_SUCCESS, GET_SMURFS_FAILED, } from '../actions'
 
 const initialState = {
-  smurfs: [],
+   smurfs: [],
    fetchingSmurfs: false,
    addingSmurf: false,
    updatingSmurf: false,
@@ -42,17 +42,19 @@ export default function(state = initialState, action) {
       }
     }
     case  GET_SMURFS_SUCCESS: {
+      const { smurfs } = action.payload
       return {
         ...state,
         fetchingSmurfs: false,
-        error: null
+        error: null,
+        smurfs
       }
     }
     case GET_SMURFS_FAILED: {
       return {
         ...state,
         fetchingSmurfs: false,
-        error: action.payload.sendUserError
+        // error: action.payload.sendUserError
       }
     }
     default:

@@ -26,12 +26,12 @@ export function getSmurfs(){
   return (dispatch) => {
     dispatch({ type: GET_SMURFS_START })
 
-    axios.get('http://localhost:3333')
+    axios.get('http://localhost:3333/smurfs',)
       .then((res) => {
-        dispatch({ type: GET_SMURFS_SUCCESS, payload: res.smurfs })
+        dispatch({ type: GET_SMURFS_SUCCESS, payload: res.data })
       })
       .catch((err) => {
-        dispatch({ type: GET_SMURFS_FAILED, payload: err.response.data })
+        dispatch({ type: GET_SMURFS_FAILED, payload: err.response })
       })
   }
 }
