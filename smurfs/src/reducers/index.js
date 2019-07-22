@@ -24,6 +24,7 @@
 
 import { GET_SMURFS, GET_SMURFS_START, GET_SMURFS_SUCCESS, GET_SMURFS_FAILED, ADD_SMURFS_START, ADD_SMURFS_SUCCESS, ADD_SMURFS_FAILED, } from '../actions'
 
+
 const initialState = {
    smurfs: [],
    fetchingSmurfs: [],
@@ -33,7 +34,7 @@ const initialState = {
    error: null
 }
 
-export default function(state = initialState, action) {
+export const smurfsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_SMURFS_START: {
       return {
@@ -42,12 +43,12 @@ export default function(state = initialState, action) {
       }
     }
     case  GET_SMURFS_SUCCESS: {
-      const { smurfs } = action.payload
+     
       return {
         ...state,
         fetchingSmurfs: false,
         error: null,
-        smurfs
+        smurfs: action.payload
       }
     }
     case GET_SMURFS_FAILED: {
@@ -85,3 +86,4 @@ export default function(state = initialState, action) {
   }
 }
 
+export default smurfsReducer

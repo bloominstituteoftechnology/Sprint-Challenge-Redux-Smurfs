@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getSmurfs, addSmurfs } from '../actions'
 
-
 class Smurfs extends React.Component {
     constructor(){
         super()
@@ -32,15 +31,19 @@ addSmurf = (event) => {
 }
 
     render(){
-        console.log(this.props.smurfs)
+        console.log(this.props)
         return (
             <div>
+                
         <form onSubmit={this.addSmurf}>
         <input placeholder='name' value={this.state.name} onChange={this.changeHandler} name='name' />
         <input placeholder='age' value={this.state.age} onChange={this.changeHandler} name='age' />
         <input placeholder='height' value={this.state.height} onChange={this.changeHandler} name='height' />
             <button type='submit'>Press</button>
         </form>
+        {this.props.smurfs.map(smurf => {
+            return <li>{smurf.name} {smurf.age} {smurf.height}</li>
+        })} 
             </div>
         )
     }

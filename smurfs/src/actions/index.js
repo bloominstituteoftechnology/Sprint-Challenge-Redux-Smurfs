@@ -28,8 +28,9 @@ export function getSmurfs(){
   return (dispatch) => {
     dispatch({ type: GET_SMURFS_START })
 
-    axios.get('http://localhost:3333/smurfs',)
+    axios.get('http://localhost:3333/smurfs', )
       .then((res) => {
+        console.log(res)
         dispatch({ type: GET_SMURFS_SUCCESS, payload: res.data })
       })
       .catch((err) => {
@@ -42,7 +43,7 @@ export function addSmurfs(name, age, height){
   return (dispatch) => {
     dispatch({ type: ADD_SMURFS_START })
 
-    axios.post('http://localhost:3333/smurfs', { name, age, height })
+    return axios.post('http://localhost:3333/smurfs', { name, age, height })
       .then((res) => {
         dispatch({ type: ADD_SMURFS_SUCCESS})
       })
