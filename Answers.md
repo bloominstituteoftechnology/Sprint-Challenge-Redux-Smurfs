@@ -24,4 +24,4 @@ And a new state tree is created.]
 ['redux-thunk' is used to make the flow asynchronous so we can make API calls from our action creators.]
 
 1.  Which `react-redux` method links up our `components` with our `redux store`?
-['redux-logger' and 'redux- thunk']
+[connect and mapStateToProps]
