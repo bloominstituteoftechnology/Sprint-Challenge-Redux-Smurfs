@@ -27,32 +27,32 @@ class Form extends Component {
 
     render() {
         return(
-            <div>
-         
+            <div className="form">
+
             <h4 >Add another Smurf:</h4>
-            <input 
+            <input
                 type="text"
-                placeholder="Smurfs Name" 
+                placeholder="Smurfs Name"
                 name="name"
                 onChange={this.handleChange}
                 value={this.state.smurf.name}
                 />
-            <input 
-                type="text" 
+            <input
+                type="text"
                 name="age"
                 placeholder="Age"
                 onChange={this.handleChange}
                 value={this.state.smurf.age}
                 />
-            <input 
+            <input
                 type="text"
-                name="height" 
-                placeholder="Height" 
+                name="height"
+                placeholder="Height (cm)"
                 onChange={this.handleChange}
                 value={this.state.smurf.height}
                 />
             <button className="submit" onClick={() => this.props.addSmurf(this.state.smurf)}>Add</button>
-        
+
     </div>
         )
     }

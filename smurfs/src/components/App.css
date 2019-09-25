@@ -1,7 +1,84 @@
 .App {
   text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.App h1 {
+  color: white;
+  margin-top: 40px;
+  font-size: 40px;
+}
+
+.flexWrap {
+  width: 70%;
+  margin: 40px auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.smurfView {
+  width: 40%;
+  margin: 40px auto 10px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #FFF;
+  border-radius: 5px;
+}
+
+.smurfView img {
+  width: 25px;
+  height: 25px;
+}
+
+.imageWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 ul {
   list-style: none;
+}
+
+.form {
+  width: 25%;
+  margin: 0 auto;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+
+.form input {
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+}
+
+.form button {
+  background-color: #1C5D99;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  width: 50%;
+  margin: 10px auto 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form button:hover {
+  width: 55%;
+}
+
+.emptyWrap {
+  color: white;
+  font-size: 26px;
 }
