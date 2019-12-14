@@ -1,5 +1,11 @@
+body {
+  background-color: rgb(47, 98, 175);
+}
+
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .App-logo {
@@ -25,4 +31,25 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+/* .smurf-container {
+  border: 3px solid white;
+  display:flex;
+  justify-content: center;
+} */
+.App .smurf-card {
+  border: 2px solid white;
+  border-radius: 33%;
+  height: 100px;
+  min-width: 300px;
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-shadow: 2px black;
+  flex-direction: column;
+}
+
+.new-villager {
+  padding-bottom: 10px;
 }
