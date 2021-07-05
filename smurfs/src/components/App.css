@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  color: rgb(202, 133, 165);
+  background: rgb(140, 178, 204);
+  margin: 20px auto;
 }
 
 .App-logo {
@@ -26,3 +29,10 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.smurf-attr {
+  margin: 5px auto;
+  color: rgb(110, 15, 110);
+  font-weight: bold;
+}
+
