@@ -67,6 +67,7 @@ server.put('/smurfs/:id', (req, res) => {
 });
 
 server.delete('/smurfs/:id', (req, res) => {
+  console.log(req.params);
   const { id } = req.params;
   const foundSmurf = smurfs.find(smurf => smurf.id == id);
 
