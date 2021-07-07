@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Gaegu', cursive;
 }
 
 .App-logo {
@@ -25,4 +26,47 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.smurfs-container, .smurf-form {
+  max-width: 400px;
+  border: 1px solid blue;
+  border-radius: 10px;
+  padding: 10px 0;
+  margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.smurf-container, .smurf-form form {
+  border: 1px solid lightblue;
+  border-radius: 10px;
+  padding: 10px 5px;
+  margin: 10px;
+}
+
+.smurf-container .smurf {
+  margin-bottom: 5px;
+}
+
+button {
+  background: white;
+  border-radius: 10px;
+}
+
+button:hover {
+  background: blue;
+  cursor: pointer;
+  color: white;
+}
+
+.smurf-form input {
+  display: flex;
+  text-align: center;
+  font-family: 'Gaegu', cursive;
+}
+
+.smurf-form button {
+  margin-top: 5px;
 }
